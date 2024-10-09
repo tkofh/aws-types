@@ -1,0 +1,22 @@
+{
+  "name": "@repo/generator",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "run": "tsx ./src/index.ts"
+  },
+  "dependencies": {
+    "@effect/cli": "^0.46.1",
+    "@effect/platform": "^0.67.1",
+    "@effect/platform-node": "^0.62.1",
+    "@effect/schema": "^0.75.1",
+    "change-case": "^5.4.4",
+    "effect": "^3.9.1"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^22.7.5",
+    "tsx": "^4.19.1"
+  }
+}

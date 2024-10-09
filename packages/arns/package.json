@@ -1,0 +1,1712 @@
+{
+  "name": "@aws-types/arn",
+  "version": "0.0.1",
+  "description": "typed helpers for constructing ARNs",
+  "author": "Tim Morris <timthewebguy@gmail.com>",
+  "homepage": "https://github.com/tkofh/aws-types#readme",
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tkofh/aws-types.git"
+  },
+  "exports": {
+    "./a4b": {
+      "import": "./dist/services/a4b.mjs",
+      "require": "./dist/services/a4b.cjs",
+      "types": "./dist/services/a4b.d.ts"
+    },
+    "./access-analyzer": {
+      "import": "./dist/services/access-analyzer.mjs",
+      "require": "./dist/services/access-analyzer.cjs",
+      "types": "./dist/services/access-analyzer.d.ts"
+    },
+    "./account": {
+      "import": "./dist/services/account.mjs",
+      "require": "./dist/services/account.cjs",
+      "types": "./dist/services/account.d.ts"
+    },
+    "./acm": {
+      "import": "./dist/services/acm.mjs",
+      "require": "./dist/services/acm.cjs",
+      "types": "./dist/services/acm.d.ts"
+    },
+    "./acm-pca": {
+      "import": "./dist/services/acm-pca.mjs",
+      "require": "./dist/services/acm-pca.cjs",
+      "types": "./dist/services/acm-pca.d.ts"
+    },
+    "./airflow": {
+      "import": "./dist/services/airflow.mjs",
+      "require": "./dist/services/airflow.cjs",
+      "types": "./dist/services/airflow.d.ts"
+    },
+    "./amplify": {
+      "import": "./dist/services/amplify.mjs",
+      "require": "./dist/services/amplify.cjs",
+      "types": "./dist/services/amplify.d.ts"
+    },
+    "./amplifybackend": {
+      "import": "./dist/services/amplifybackend.mjs",
+      "require": "./dist/services/amplifybackend.cjs",
+      "types": "./dist/services/amplifybackend.d.ts"
+    },
+    "./amplifyuibuilder": {
+      "import": "./dist/services/amplifyuibuilder.mjs",
+      "require": "./dist/services/amplifyuibuilder.cjs",
+      "types": "./dist/services/amplifyuibuilder.d.ts"
+    },
+    "./aoss": {
+      "import": "./dist/services/aoss.mjs",
+      "require": "./dist/services/aoss.cjs",
+      "types": "./dist/services/aoss.d.ts"
+    },
+    "./apigateway": {
+      "import": "./dist/services/apigateway.mjs",
+      "require": "./dist/services/apigateway.cjs",
+      "types": "./dist/services/apigateway.d.ts"
+    },
+    "./app-integrations": {
+      "import": "./dist/services/app-integrations.mjs",
+      "require": "./dist/services/app-integrations.cjs",
+      "types": "./dist/services/app-integrations.d.ts"
+    },
+    "./appconfig": {
+      "import": "./dist/services/appconfig.mjs",
+      "require": "./dist/services/appconfig.cjs",
+      "types": "./dist/services/appconfig.d.ts"
+    },
+    "./appfabric": {
+      "import": "./dist/services/appfabric.mjs",
+      "require": "./dist/services/appfabric.cjs",
+      "types": "./dist/services/appfabric.d.ts"
+    },
+    "./appflow": {
+      "import": "./dist/services/appflow.mjs",
+      "require": "./dist/services/appflow.cjs",
+      "types": "./dist/services/appflow.d.ts"
+    },
+    "./application-autoscaling": {
+      "import": "./dist/services/application-autoscaling.mjs",
+      "require": "./dist/services/application-autoscaling.cjs",
+      "types": "./dist/services/application-autoscaling.d.ts"
+    },
+    "./application-signals": {
+      "import": "./dist/services/application-signals.mjs",
+      "require": "./dist/services/application-signals.cjs",
+      "types": "./dist/services/application-signals.d.ts"
+    },
+    "./appmesh": {
+      "import": "./dist/services/appmesh.mjs",
+      "require": "./dist/services/appmesh.cjs",
+      "types": "./dist/services/appmesh.d.ts"
+    },
+    "./appmesh-preview": {
+      "import": "./dist/services/appmesh-preview.mjs",
+      "require": "./dist/services/appmesh-preview.cjs",
+      "types": "./dist/services/appmesh-preview.d.ts"
+    },
+    "./apprunner": {
+      "import": "./dist/services/apprunner.mjs",
+      "require": "./dist/services/apprunner.cjs",
+      "types": "./dist/services/apprunner.d.ts"
+    },
+    "./appstream": {
+      "import": "./dist/services/appstream.mjs",
+      "require": "./dist/services/appstream.cjs",
+      "types": "./dist/services/appstream.d.ts"
+    },
+    "./appsync": {
+      "import": "./dist/services/appsync.mjs",
+      "require": "./dist/services/appsync.cjs",
+      "types": "./dist/services/appsync.d.ts"
+    },
+    "./apptest": {
+      "import": "./dist/services/apptest.mjs",
+      "require": "./dist/services/apptest.cjs",
+      "types": "./dist/services/apptest.d.ts"
+    },
+    "./aps": {
+      "import": "./dist/services/aps.mjs",
+      "require": "./dist/services/aps.cjs",
+      "types": "./dist/services/aps.d.ts"
+    },
+    "./arc-zonal-shift": {
+      "import": "./dist/services/arc-zonal-shift.mjs",
+      "require": "./dist/services/arc-zonal-shift.cjs",
+      "types": "./dist/services/arc-zonal-shift.d.ts"
+    },
+    "./artifact": {
+      "import": "./dist/services/artifact.mjs",
+      "require": "./dist/services/artifact.cjs",
+      "types": "./dist/services/artifact.d.ts"
+    },
+    "./athena": {
+      "import": "./dist/services/athena.mjs",
+      "require": "./dist/services/athena.cjs",
+      "types": "./dist/services/athena.d.ts"
+    },
+    "./auditmanager": {
+      "import": "./dist/services/auditmanager.mjs",
+      "require": "./dist/services/auditmanager.cjs",
+      "types": "./dist/services/auditmanager.d.ts"
+    },
+    "./autoscaling": {
+      "import": "./dist/services/autoscaling.mjs",
+      "require": "./dist/services/autoscaling.cjs",
+      "types": "./dist/services/autoscaling.d.ts"
+    },
+    "./aws-marketplace": {
+      "import": "./dist/services/aws-marketplace.mjs",
+      "require": "./dist/services/aws-marketplace.cjs",
+      "types": "./dist/services/aws-marketplace.d.ts"
+    },
+    "./b2bi": {
+      "import": "./dist/services/b2bi.mjs",
+      "require": "./dist/services/b2bi.cjs",
+      "types": "./dist/services/b2bi.d.ts"
+    },
+    "./backup": {
+      "import": "./dist/services/backup.mjs",
+      "require": "./dist/services/backup.cjs",
+      "types": "./dist/services/backup.d.ts"
+    },
+    "./backup-gateway": {
+      "import": "./dist/services/backup-gateway.mjs",
+      "require": "./dist/services/backup-gateway.cjs",
+      "types": "./dist/services/backup-gateway.d.ts"
+    },
+    "./batch": {
+      "import": "./dist/services/batch.mjs",
+      "require": "./dist/services/batch.cjs",
+      "types": "./dist/services/batch.d.ts"
+    },
+    "./bcm-data-exports": {
+      "import": "./dist/services/bcm-data-exports.mjs",
+      "require": "./dist/services/bcm-data-exports.cjs",
+      "types": "./dist/services/bcm-data-exports.d.ts"
+    },
+    "./bedrock": {
+      "import": "./dist/services/bedrock.mjs",
+      "require": "./dist/services/bedrock.cjs",
+      "types": "./dist/services/bedrock.d.ts"
+    },
+    "./billingconductor": {
+      "import": "./dist/services/billingconductor.mjs",
+      "require": "./dist/services/billingconductor.cjs",
+      "types": "./dist/services/billingconductor.d.ts"
+    },
+    "./braket": {
+      "import": "./dist/services/braket.mjs",
+      "require": "./dist/services/braket.cjs",
+      "types": "./dist/services/braket.d.ts"
+    },
+    "./budgets": {
+      "import": "./dist/services/budgets.mjs",
+      "require": "./dist/services/budgets.cjs",
+      "types": "./dist/services/budgets.d.ts"
+    },
+    "./bugbust": {
+      "import": "./dist/services/bugbust.mjs",
+      "require": "./dist/services/bugbust.cjs",
+      "types": "./dist/services/bugbust.d.ts"
+    },
+    "./cases": {
+      "import": "./dist/services/cases.mjs",
+      "require": "./dist/services/cases.cjs",
+      "types": "./dist/services/cases.d.ts"
+    },
+    "./cassandra": {
+      "import": "./dist/services/cassandra.mjs",
+      "require": "./dist/services/cassandra.cjs",
+      "types": "./dist/services/cassandra.d.ts"
+    },
+    "./ce": {
+      "import": "./dist/services/ce.mjs",
+      "require": "./dist/services/ce.cjs",
+      "types": "./dist/services/ce.d.ts"
+    },
+    "./chatbot": {
+      "import": "./dist/services/chatbot.mjs",
+      "require": "./dist/services/chatbot.cjs",
+      "types": "./dist/services/chatbot.d.ts"
+    },
+    "./chime": {
+      "import": "./dist/services/chime.mjs",
+      "require": "./dist/services/chime.cjs",
+      "types": "./dist/services/chime.d.ts"
+    },
+    "./cleanrooms": {
+      "import": "./dist/services/cleanrooms.mjs",
+      "require": "./dist/services/cleanrooms.cjs",
+      "types": "./dist/services/cleanrooms.d.ts"
+    },
+    "./cleanrooms-ml": {
+      "import": "./dist/services/cleanrooms-ml.mjs",
+      "require": "./dist/services/cleanrooms-ml.cjs",
+      "types": "./dist/services/cleanrooms-ml.d.ts"
+    },
+    "./cloud9": {
+      "import": "./dist/services/cloud9.mjs",
+      "require": "./dist/services/cloud9.cjs",
+      "types": "./dist/services/cloud9.d.ts"
+    },
+    "./clouddirectory": {
+      "import": "./dist/services/clouddirectory.mjs",
+      "require": "./dist/services/clouddirectory.cjs",
+      "types": "./dist/services/clouddirectory.d.ts"
+    },
+    "./cloudformation": {
+      "import": "./dist/services/cloudformation.mjs",
+      "require": "./dist/services/cloudformation.cjs",
+      "types": "./dist/services/cloudformation.d.ts"
+    },
+    "./cloudfront": {
+      "import": "./dist/services/cloudfront.mjs",
+      "require": "./dist/services/cloudfront.cjs",
+      "types": "./dist/services/cloudfront.d.ts"
+    },
+    "./cloudfront-keyvaluestore": {
+      "import": "./dist/services/cloudfront-keyvaluestore.mjs",
+      "require": "./dist/services/cloudfront-keyvaluestore.cjs",
+      "types": "./dist/services/cloudfront-keyvaluestore.d.ts"
+    },
+    "./cloudhsm": {
+      "import": "./dist/services/cloudhsm.mjs",
+      "require": "./dist/services/cloudhsm.cjs",
+      "types": "./dist/services/cloudhsm.d.ts"
+    },
+    "./cloudsearch": {
+      "import": "./dist/services/cloudsearch.mjs",
+      "require": "./dist/services/cloudsearch.cjs",
+      "types": "./dist/services/cloudsearch.d.ts"
+    },
+    "./cloudshell": {
+      "import": "./dist/services/cloudshell.mjs",
+      "require": "./dist/services/cloudshell.cjs",
+      "types": "./dist/services/cloudshell.d.ts"
+    },
+    "./cloudtrail": {
+      "import": "./dist/services/cloudtrail.mjs",
+      "require": "./dist/services/cloudtrail.cjs",
+      "types": "./dist/services/cloudtrail.d.ts"
+    },
+    "./cloudtrail-data": {
+      "import": "./dist/services/cloudtrail-data.mjs",
+      "require": "./dist/services/cloudtrail-data.cjs",
+      "types": "./dist/services/cloudtrail-data.d.ts"
+    },
+    "./cloudwatch": {
+      "import": "./dist/services/cloudwatch.mjs",
+      "require": "./dist/services/cloudwatch.cjs",
+      "types": "./dist/services/cloudwatch.d.ts"
+    },
+    "./codeartifact": {
+      "import": "./dist/services/codeartifact.mjs",
+      "require": "./dist/services/codeartifact.cjs",
+      "types": "./dist/services/codeartifact.d.ts"
+    },
+    "./codebuild": {
+      "import": "./dist/services/codebuild.mjs",
+      "require": "./dist/services/codebuild.cjs",
+      "types": "./dist/services/codebuild.d.ts"
+    },
+    "./codecatalyst": {
+      "import": "./dist/services/codecatalyst.mjs",
+      "require": "./dist/services/codecatalyst.cjs",
+      "types": "./dist/services/codecatalyst.d.ts"
+    },
+    "./codecommit": {
+      "import": "./dist/services/codecommit.mjs",
+      "require": "./dist/services/codecommit.cjs",
+      "types": "./dist/services/codecommit.d.ts"
+    },
+    "./codeconnections": {
+      "import": "./dist/services/codeconnections.mjs",
+      "require": "./dist/services/codeconnections.cjs",
+      "types": "./dist/services/codeconnections.d.ts"
+    },
+    "./codedeploy": {
+      "import": "./dist/services/codedeploy.mjs",
+      "require": "./dist/services/codedeploy.cjs",
+      "types": "./dist/services/codedeploy.d.ts"
+    },
+    "./codeguru-profiler": {
+      "import": "./dist/services/codeguru-profiler.mjs",
+      "require": "./dist/services/codeguru-profiler.cjs",
+      "types": "./dist/services/codeguru-profiler.d.ts"
+    },
+    "./codeguru-reviewer": {
+      "import": "./dist/services/codeguru-reviewer.mjs",
+      "require": "./dist/services/codeguru-reviewer.cjs",
+      "types": "./dist/services/codeguru-reviewer.d.ts"
+    },
+    "./codeguru-security": {
+      "import": "./dist/services/codeguru-security.mjs",
+      "require": "./dist/services/codeguru-security.cjs",
+      "types": "./dist/services/codeguru-security.d.ts"
+    },
+    "./codepipeline": {
+      "import": "./dist/services/codepipeline.mjs",
+      "require": "./dist/services/codepipeline.cjs",
+      "types": "./dist/services/codepipeline.d.ts"
+    },
+    "./codestar": {
+      "import": "./dist/services/codestar.mjs",
+      "require": "./dist/services/codestar.cjs",
+      "types": "./dist/services/codestar.d.ts"
+    },
+    "./codestar-connections": {
+      "import": "./dist/services/codestar-connections.mjs",
+      "require": "./dist/services/codestar-connections.cjs",
+      "types": "./dist/services/codestar-connections.d.ts"
+    },
+    "./codestar-notifications": {
+      "import": "./dist/services/codestar-notifications.mjs",
+      "require": "./dist/services/codestar-notifications.cjs",
+      "types": "./dist/services/codestar-notifications.d.ts"
+    },
+    "./codewhisperer": {
+      "import": "./dist/services/codewhisperer.mjs",
+      "require": "./dist/services/codewhisperer.cjs",
+      "types": "./dist/services/codewhisperer.d.ts"
+    },
+    "./cognito-identity": {
+      "import": "./dist/services/cognito-identity.mjs",
+      "require": "./dist/services/cognito-identity.cjs",
+      "types": "./dist/services/cognito-identity.d.ts"
+    },
+    "./cognito-idp": {
+      "import": "./dist/services/cognito-idp.mjs",
+      "require": "./dist/services/cognito-idp.cjs",
+      "types": "./dist/services/cognito-idp.d.ts"
+    },
+    "./cognito-sync": {
+      "import": "./dist/services/cognito-sync.mjs",
+      "require": "./dist/services/cognito-sync.cjs",
+      "types": "./dist/services/cognito-sync.d.ts"
+    },
+    "./comprehend": {
+      "import": "./dist/services/comprehend.mjs",
+      "require": "./dist/services/comprehend.cjs",
+      "types": "./dist/services/comprehend.d.ts"
+    },
+    "./config": {
+      "import": "./dist/services/config.mjs",
+      "require": "./dist/services/config.cjs",
+      "types": "./dist/services/config.d.ts"
+    },
+    "./connect": {
+      "import": "./dist/services/connect.mjs",
+      "require": "./dist/services/connect.cjs",
+      "types": "./dist/services/connect.d.ts"
+    },
+    "./connect-campaigns": {
+      "import": "./dist/services/connect-campaigns.mjs",
+      "require": "./dist/services/connect-campaigns.cjs",
+      "types": "./dist/services/connect-campaigns.d.ts"
+    },
+    "./consoleapp": {
+      "import": "./dist/services/consoleapp.mjs",
+      "require": "./dist/services/consoleapp.cjs",
+      "types": "./dist/services/consoleapp.d.ts"
+    },
+    "./controlcatalog": {
+      "import": "./dist/services/controlcatalog.mjs",
+      "require": "./dist/services/controlcatalog.cjs",
+      "types": "./dist/services/controlcatalog.d.ts"
+    },
+    "./controltower": {
+      "import": "./dist/services/controltower.mjs",
+      "require": "./dist/services/controltower.cjs",
+      "types": "./dist/services/controltower.d.ts"
+    },
+    "./cur": {
+      "import": "./dist/services/cur.mjs",
+      "require": "./dist/services/cur.cjs",
+      "types": "./dist/services/cur.d.ts"
+    },
+    "./databrew": {
+      "import": "./dist/services/databrew.mjs",
+      "require": "./dist/services/databrew.cjs",
+      "types": "./dist/services/databrew.d.ts"
+    },
+    "./dataexchange": {
+      "import": "./dist/services/dataexchange.mjs",
+      "require": "./dist/services/dataexchange.cjs",
+      "types": "./dist/services/dataexchange.d.ts"
+    },
+    "./datapipeline": {
+      "import": "./dist/services/datapipeline.mjs",
+      "require": "./dist/services/datapipeline.cjs",
+      "types": "./dist/services/datapipeline.d.ts"
+    },
+    "./datasync": {
+      "import": "./dist/services/datasync.mjs",
+      "require": "./dist/services/datasync.cjs",
+      "types": "./dist/services/datasync.d.ts"
+    },
+    "./datazone": {
+      "import": "./dist/services/datazone.mjs",
+      "require": "./dist/services/datazone.cjs",
+      "types": "./dist/services/datazone.d.ts"
+    },
+    "./dax": {
+      "import": "./dist/services/dax.mjs",
+      "require": "./dist/services/dax.cjs",
+      "types": "./dist/services/dax.d.ts"
+    },
+    "./deadline": {
+      "import": "./dist/services/deadline.mjs",
+      "require": "./dist/services/deadline.cjs",
+      "types": "./dist/services/deadline.d.ts"
+    },
+    "./deepcomposer": {
+      "import": "./dist/services/deepcomposer.mjs",
+      "require": "./dist/services/deepcomposer.cjs",
+      "types": "./dist/services/deepcomposer.d.ts"
+    },
+    "./deeplens": {
+      "import": "./dist/services/deeplens.mjs",
+      "require": "./dist/services/deeplens.cjs",
+      "types": "./dist/services/deeplens.d.ts"
+    },
+    "./deepracer": {
+      "import": "./dist/services/deepracer.mjs",
+      "require": "./dist/services/deepracer.cjs",
+      "types": "./dist/services/deepracer.d.ts"
+    },
+    "./detective": {
+      "import": "./dist/services/detective.mjs",
+      "require": "./dist/services/detective.cjs",
+      "types": "./dist/services/detective.d.ts"
+    },
+    "./devicefarm": {
+      "import": "./dist/services/devicefarm.mjs",
+      "require": "./dist/services/devicefarm.cjs",
+      "types": "./dist/services/devicefarm.d.ts"
+    },
+    "./devops-guru": {
+      "import": "./dist/services/devops-guru.mjs",
+      "require": "./dist/services/devops-guru.cjs",
+      "types": "./dist/services/devops-guru.d.ts"
+    },
+    "./directconnect": {
+      "import": "./dist/services/directconnect.mjs",
+      "require": "./dist/services/directconnect.cjs",
+      "types": "./dist/services/directconnect.d.ts"
+    },
+    "./dlm": {
+      "import": "./dist/services/dlm.mjs",
+      "require": "./dist/services/dlm.cjs",
+      "types": "./dist/services/dlm.d.ts"
+    },
+    "./dms": {
+      "import": "./dist/services/dms.mjs",
+      "require": "./dist/services/dms.cjs",
+      "types": "./dist/services/dms.d.ts"
+    },
+    "./docdb-elastic": {
+      "import": "./dist/services/docdb-elastic.mjs",
+      "require": "./dist/services/docdb-elastic.cjs",
+      "types": "./dist/services/docdb-elastic.d.ts"
+    },
+    "./drs": {
+      "import": "./dist/services/drs.mjs",
+      "require": "./dist/services/drs.cjs",
+      "types": "./dist/services/drs.d.ts"
+    },
+    "./ds": {
+      "import": "./dist/services/ds.mjs",
+      "require": "./dist/services/ds.cjs",
+      "types": "./dist/services/ds.d.ts"
+    },
+    "./ds-data": {
+      "import": "./dist/services/ds-data.mjs",
+      "require": "./dist/services/ds-data.cjs",
+      "types": "./dist/services/ds-data.d.ts"
+    },
+    "./dynamodb": {
+      "import": "./dist/services/dynamodb.mjs",
+      "require": "./dist/services/dynamodb.cjs",
+      "types": "./dist/services/dynamodb.d.ts"
+    },
+    "./ebs": {
+      "import": "./dist/services/ebs.mjs",
+      "require": "./dist/services/ebs.cjs",
+      "types": "./dist/services/ebs.d.ts"
+    },
+    "./ec2": {
+      "import": "./dist/services/ec2.mjs",
+      "require": "./dist/services/ec2.cjs",
+      "types": "./dist/services/ec2.d.ts"
+    },
+    "./ec2-instance-connect": {
+      "import": "./dist/services/ec2-instance-connect.mjs",
+      "require": "./dist/services/ec2-instance-connect.cjs",
+      "types": "./dist/services/ec2-instance-connect.d.ts"
+    },
+    "./ecr": {
+      "import": "./dist/services/ecr.mjs",
+      "require": "./dist/services/ecr.cjs",
+      "types": "./dist/services/ecr.d.ts"
+    },
+    "./ecr-public": {
+      "import": "./dist/services/ecr-public.mjs",
+      "require": "./dist/services/ecr-public.cjs",
+      "types": "./dist/services/ecr-public.d.ts"
+    },
+    "./ecs": {
+      "import": "./dist/services/ecs.mjs",
+      "require": "./dist/services/ecs.cjs",
+      "types": "./dist/services/ecs.d.ts"
+    },
+    "./eks": {
+      "import": "./dist/services/eks.mjs",
+      "require": "./dist/services/eks.cjs",
+      "types": "./dist/services/eks.d.ts"
+    },
+    "./eks-auth": {
+      "import": "./dist/services/eks-auth.mjs",
+      "require": "./dist/services/eks-auth.cjs",
+      "types": "./dist/services/eks-auth.d.ts"
+    },
+    "./elastic-inference": {
+      "import": "./dist/services/elastic-inference.mjs",
+      "require": "./dist/services/elastic-inference.cjs",
+      "types": "./dist/services/elastic-inference.d.ts"
+    },
+    "./elasticache": {
+      "import": "./dist/services/elasticache.mjs",
+      "require": "./dist/services/elasticache.cjs",
+      "types": "./dist/services/elasticache.d.ts"
+    },
+    "./elasticbeanstalk": {
+      "import": "./dist/services/elasticbeanstalk.mjs",
+      "require": "./dist/services/elasticbeanstalk.cjs",
+      "types": "./dist/services/elasticbeanstalk.d.ts"
+    },
+    "./elasticfilesystem": {
+      "import": "./dist/services/elasticfilesystem.mjs",
+      "require": "./dist/services/elasticfilesystem.cjs",
+      "types": "./dist/services/elasticfilesystem.d.ts"
+    },
+    "./elasticloadbalancing": {
+      "import": "./dist/services/elasticloadbalancing.mjs",
+      "require": "./dist/services/elasticloadbalancing.cjs",
+      "types": "./dist/services/elasticloadbalancing.d.ts"
+    },
+    "./elasticmapreduce": {
+      "import": "./dist/services/elasticmapreduce.mjs",
+      "require": "./dist/services/elasticmapreduce.cjs",
+      "types": "./dist/services/elasticmapreduce.d.ts"
+    },
+    "./elastictranscoder": {
+      "import": "./dist/services/elastictranscoder.mjs",
+      "require": "./dist/services/elastictranscoder.cjs",
+      "types": "./dist/services/elastictranscoder.d.ts"
+    },
+    "./elemental-appliances-software": {
+      "import": "./dist/services/elemental-appliances-software.mjs",
+      "require": "./dist/services/elemental-appliances-software.cjs",
+      "types": "./dist/services/elemental-appliances-software.d.ts"
+    },
+    "./elemental-support-cases": {
+      "import": "./dist/services/elemental-support-cases.mjs",
+      "require": "./dist/services/elemental-support-cases.cjs",
+      "types": "./dist/services/elemental-support-cases.d.ts"
+    },
+    "./emr-containers": {
+      "import": "./dist/services/emr-containers.mjs",
+      "require": "./dist/services/emr-containers.cjs",
+      "types": "./dist/services/emr-containers.d.ts"
+    },
+    "./emr-serverless": {
+      "import": "./dist/services/emr-serverless.mjs",
+      "require": "./dist/services/emr-serverless.cjs",
+      "types": "./dist/services/emr-serverless.d.ts"
+    },
+    "./entityresolution": {
+      "import": "./dist/services/entityresolution.mjs",
+      "require": "./dist/services/entityresolution.cjs",
+      "types": "./dist/services/entityresolution.d.ts"
+    },
+    "./es": {
+      "import": "./dist/services/es.mjs",
+      "require": "./dist/services/es.cjs",
+      "types": "./dist/services/es.d.ts"
+    },
+    "./events": {
+      "import": "./dist/services/events.mjs",
+      "require": "./dist/services/events.cjs",
+      "types": "./dist/services/events.d.ts"
+    },
+    "./evidently": {
+      "import": "./dist/services/evidently.mjs",
+      "require": "./dist/services/evidently.cjs",
+      "types": "./dist/services/evidently.d.ts"
+    },
+    "./execute-api": {
+      "import": "./dist/services/execute-api.mjs",
+      "require": "./dist/services/execute-api.cjs",
+      "types": "./dist/services/execute-api.d.ts"
+    },
+    "./finspace": {
+      "import": "./dist/services/finspace.mjs",
+      "require": "./dist/services/finspace.cjs",
+      "types": "./dist/services/finspace.d.ts"
+    },
+    "./finspace-api": {
+      "import": "./dist/services/finspace-api.mjs",
+      "require": "./dist/services/finspace-api.cjs",
+      "types": "./dist/services/finspace-api.d.ts"
+    },
+    "./firehose": {
+      "import": "./dist/services/firehose.mjs",
+      "require": "./dist/services/firehose.cjs",
+      "types": "./dist/services/firehose.d.ts"
+    },
+    "./fis": {
+      "import": "./dist/services/fis.mjs",
+      "require": "./dist/services/fis.cjs",
+      "types": "./dist/services/fis.d.ts"
+    },
+    "./fms": {
+      "import": "./dist/services/fms.mjs",
+      "require": "./dist/services/fms.cjs",
+      "types": "./dist/services/fms.d.ts"
+    },
+    "./forecast": {
+      "import": "./dist/services/forecast.mjs",
+      "require": "./dist/services/forecast.cjs",
+      "types": "./dist/services/forecast.d.ts"
+    },
+    "./frauddetector": {
+      "import": "./dist/services/frauddetector.mjs",
+      "require": "./dist/services/frauddetector.cjs",
+      "types": "./dist/services/frauddetector.d.ts"
+    },
+    "./freertos": {
+      "import": "./dist/services/freertos.mjs",
+      "require": "./dist/services/freertos.cjs",
+      "types": "./dist/services/freertos.d.ts"
+    },
+    "./fsx": {
+      "import": "./dist/services/fsx.mjs",
+      "require": "./dist/services/fsx.cjs",
+      "types": "./dist/services/fsx.d.ts"
+    },
+    "./gamelift": {
+      "import": "./dist/services/gamelift.mjs",
+      "require": "./dist/services/gamelift.cjs",
+      "types": "./dist/services/gamelift.d.ts"
+    },
+    "./geo": {
+      "import": "./dist/services/geo.mjs",
+      "require": "./dist/services/geo.cjs",
+      "types": "./dist/services/geo.d.ts"
+    },
+    "./glacier": {
+      "import": "./dist/services/glacier.mjs",
+      "require": "./dist/services/glacier.cjs",
+      "types": "./dist/services/glacier.d.ts"
+    },
+    "./globalaccelerator": {
+      "import": "./dist/services/globalaccelerator.mjs",
+      "require": "./dist/services/globalaccelerator.cjs",
+      "types": "./dist/services/globalaccelerator.d.ts"
+    },
+    "./glue": {
+      "import": "./dist/services/glue.mjs",
+      "require": "./dist/services/glue.cjs",
+      "types": "./dist/services/glue.d.ts"
+    },
+    "./grafana": {
+      "import": "./dist/services/grafana.mjs",
+      "require": "./dist/services/grafana.cjs",
+      "types": "./dist/services/grafana.d.ts"
+    },
+    "./greengrass": {
+      "import": "./dist/services/greengrass.mjs",
+      "require": "./dist/services/greengrass.cjs",
+      "types": "./dist/services/greengrass.d.ts"
+    },
+    "./groundstation": {
+      "import": "./dist/services/groundstation.mjs",
+      "require": "./dist/services/groundstation.cjs",
+      "types": "./dist/services/groundstation.d.ts"
+    },
+    "./guardduty": {
+      "import": "./dist/services/guardduty.mjs",
+      "require": "./dist/services/guardduty.cjs",
+      "types": "./dist/services/guardduty.d.ts"
+    },
+    "./health": {
+      "import": "./dist/services/health.mjs",
+      "require": "./dist/services/health.cjs",
+      "types": "./dist/services/health.d.ts"
+    },
+    "./healthlake": {
+      "import": "./dist/services/healthlake.mjs",
+      "require": "./dist/services/healthlake.cjs",
+      "types": "./dist/services/healthlake.d.ts"
+    },
+    "./honeycode": {
+      "import": "./dist/services/honeycode.mjs",
+      "require": "./dist/services/honeycode.cjs",
+      "types": "./dist/services/honeycode.d.ts"
+    },
+    "./iam": {
+      "import": "./dist/services/iam.mjs",
+      "require": "./dist/services/iam.cjs",
+      "types": "./dist/services/iam.d.ts"
+    },
+    "./identity-sync": {
+      "import": "./dist/services/identity-sync.mjs",
+      "require": "./dist/services/identity-sync.cjs",
+      "types": "./dist/services/identity-sync.d.ts"
+    },
+    "./identitystore": {
+      "import": "./dist/services/identitystore.mjs",
+      "require": "./dist/services/identitystore.cjs",
+      "types": "./dist/services/identitystore.d.ts"
+    },
+    "./imagebuilder": {
+      "import": "./dist/services/imagebuilder.mjs",
+      "require": "./dist/services/imagebuilder.cjs",
+      "types": "./dist/services/imagebuilder.d.ts"
+    },
+    "./inspector2": {
+      "import": "./dist/services/inspector2.mjs",
+      "require": "./dist/services/inspector2.cjs",
+      "types": "./dist/services/inspector2.d.ts"
+    },
+    "./internetmonitor": {
+      "import": "./dist/services/internetmonitor.mjs",
+      "require": "./dist/services/internetmonitor.cjs",
+      "types": "./dist/services/internetmonitor.d.ts"
+    },
+    "./iot": {
+      "import": "./dist/services/iot.mjs",
+      "require": "./dist/services/iot.cjs",
+      "types": "./dist/services/iot.d.ts"
+    },
+    "./iot1click": {
+      "import": "./dist/services/iot1click.mjs",
+      "require": "./dist/services/iot1click.cjs",
+      "types": "./dist/services/iot1click.d.ts"
+    },
+    "./iotanalytics": {
+      "import": "./dist/services/iotanalytics.mjs",
+      "require": "./dist/services/iotanalytics.cjs",
+      "types": "./dist/services/iotanalytics.d.ts"
+    },
+    "./iotdeviceadvisor": {
+      "import": "./dist/services/iotdeviceadvisor.mjs",
+      "require": "./dist/services/iotdeviceadvisor.cjs",
+      "types": "./dist/services/iotdeviceadvisor.d.ts"
+    },
+    "./iotevents": {
+      "import": "./dist/services/iotevents.mjs",
+      "require": "./dist/services/iotevents.cjs",
+      "types": "./dist/services/iotevents.d.ts"
+    },
+    "./iotfleethub": {
+      "import": "./dist/services/iotfleethub.mjs",
+      "require": "./dist/services/iotfleethub.cjs",
+      "types": "./dist/services/iotfleethub.d.ts"
+    },
+    "./iotfleetwise": {
+      "import": "./dist/services/iotfleetwise.mjs",
+      "require": "./dist/services/iotfleetwise.cjs",
+      "types": "./dist/services/iotfleetwise.d.ts"
+    },
+    "./iotjobsdata": {
+      "import": "./dist/services/iotjobsdata.mjs",
+      "require": "./dist/services/iotjobsdata.cjs",
+      "types": "./dist/services/iotjobsdata.d.ts"
+    },
+    "./iotsitewise": {
+      "import": "./dist/services/iotsitewise.mjs",
+      "require": "./dist/services/iotsitewise.cjs",
+      "types": "./dist/services/iotsitewise.d.ts"
+    },
+    "./iottwinmaker": {
+      "import": "./dist/services/iottwinmaker.mjs",
+      "require": "./dist/services/iottwinmaker.cjs",
+      "types": "./dist/services/iottwinmaker.d.ts"
+    },
+    "./iotwireless": {
+      "import": "./dist/services/iotwireless.mjs",
+      "require": "./dist/services/iotwireless.cjs",
+      "types": "./dist/services/iotwireless.d.ts"
+    },
+    "./iq": {
+      "import": "./dist/services/iq.mjs",
+      "require": "./dist/services/iq.cjs",
+      "types": "./dist/services/iq.d.ts"
+    },
+    "./iq-permission": {
+      "import": "./dist/services/iq-permission.mjs",
+      "require": "./dist/services/iq-permission.cjs",
+      "types": "./dist/services/iq-permission.d.ts"
+    },
+    "./ivs": {
+      "import": "./dist/services/ivs.mjs",
+      "require": "./dist/services/ivs.cjs",
+      "types": "./dist/services/ivs.d.ts"
+    },
+    "./ivschat": {
+      "import": "./dist/services/ivschat.mjs",
+      "require": "./dist/services/ivschat.cjs",
+      "types": "./dist/services/ivschat.d.ts"
+    },
+    "./kafka": {
+      "import": "./dist/services/kafka.mjs",
+      "require": "./dist/services/kafka.cjs",
+      "types": "./dist/services/kafka.d.ts"
+    },
+    "./kafka-cluster": {
+      "import": "./dist/services/kafka-cluster.mjs",
+      "require": "./dist/services/kafka-cluster.cjs",
+      "types": "./dist/services/kafka-cluster.d.ts"
+    },
+    "./kafkaconnect": {
+      "import": "./dist/services/kafkaconnect.mjs",
+      "require": "./dist/services/kafkaconnect.cjs",
+      "types": "./dist/services/kafkaconnect.d.ts"
+    },
+    "./kendra": {
+      "import": "./dist/services/kendra.mjs",
+      "require": "./dist/services/kendra.cjs",
+      "types": "./dist/services/kendra.d.ts"
+    },
+    "./kendra-ranking": {
+      "import": "./dist/services/kendra-ranking.mjs",
+      "require": "./dist/services/kendra-ranking.cjs",
+      "types": "./dist/services/kendra-ranking.d.ts"
+    },
+    "./kinesis": {
+      "import": "./dist/services/kinesis.mjs",
+      "require": "./dist/services/kinesis.cjs",
+      "types": "./dist/services/kinesis.d.ts"
+    },
+    "./kinesisanalytics": {
+      "import": "./dist/services/kinesisanalytics.mjs",
+      "require": "./dist/services/kinesisanalytics.cjs",
+      "types": "./dist/services/kinesisanalytics.d.ts"
+    },
+    "./kinesisvideo": {
+      "import": "./dist/services/kinesisvideo.mjs",
+      "require": "./dist/services/kinesisvideo.cjs",
+      "types": "./dist/services/kinesisvideo.d.ts"
+    },
+    "./kms": {
+      "import": "./dist/services/kms.mjs",
+      "require": "./dist/services/kms.cjs",
+      "types": "./dist/services/kms.d.ts"
+    },
+    "./lambda": {
+      "import": "./dist/services/lambda.mjs",
+      "require": "./dist/services/lambda.cjs",
+      "types": "./dist/services/lambda.d.ts"
+    },
+    "./launchwizard": {
+      "import": "./dist/services/launchwizard.mjs",
+      "require": "./dist/services/launchwizard.cjs",
+      "types": "./dist/services/launchwizard.d.ts"
+    },
+    "./lex": {
+      "import": "./dist/services/lex.mjs",
+      "require": "./dist/services/lex.cjs",
+      "types": "./dist/services/lex.d.ts"
+    },
+    "./license-manager": {
+      "import": "./dist/services/license-manager.mjs",
+      "require": "./dist/services/license-manager.cjs",
+      "types": "./dist/services/license-manager.d.ts"
+    },
+    "./license-manager-linux-subscriptions": {
+      "import": "./dist/services/license-manager-linux-subscriptions.mjs",
+      "require": "./dist/services/license-manager-linux-subscriptions.cjs",
+      "types": "./dist/services/license-manager-linux-subscriptions.d.ts"
+    },
+    "./lightsail": {
+      "import": "./dist/services/lightsail.mjs",
+      "require": "./dist/services/lightsail.cjs",
+      "types": "./dist/services/lightsail.d.ts"
+    },
+    "./logs": {
+      "import": "./dist/services/logs.mjs",
+      "require": "./dist/services/logs.cjs",
+      "types": "./dist/services/logs.d.ts"
+    },
+    "./lookoutequipment": {
+      "import": "./dist/services/lookoutequipment.mjs",
+      "require": "./dist/services/lookoutequipment.cjs",
+      "types": "./dist/services/lookoutequipment.d.ts"
+    },
+    "./lookoutmetrics": {
+      "import": "./dist/services/lookoutmetrics.mjs",
+      "require": "./dist/services/lookoutmetrics.cjs",
+      "types": "./dist/services/lookoutmetrics.d.ts"
+    },
+    "./lookoutvision": {
+      "import": "./dist/services/lookoutvision.mjs",
+      "require": "./dist/services/lookoutvision.cjs",
+      "types": "./dist/services/lookoutvision.d.ts"
+    },
+    "./m2": {
+      "import": "./dist/services/m2.mjs",
+      "require": "./dist/services/m2.cjs",
+      "types": "./dist/services/m2.d.ts"
+    },
+    "./machinelearning": {
+      "import": "./dist/services/machinelearning.mjs",
+      "require": "./dist/services/machinelearning.cjs",
+      "types": "./dist/services/machinelearning.d.ts"
+    },
+    "./macie2": {
+      "import": "./dist/services/macie2.mjs",
+      "require": "./dist/services/macie2.cjs",
+      "types": "./dist/services/macie2.d.ts"
+    },
+    "./managedblockchain": {
+      "import": "./dist/services/managedblockchain.mjs",
+      "require": "./dist/services/managedblockchain.cjs",
+      "types": "./dist/services/managedblockchain.d.ts"
+    },
+    "./mapcredits": {
+      "import": "./dist/services/mapcredits.mjs",
+      "require": "./dist/services/mapcredits.cjs",
+      "types": "./dist/services/mapcredits.d.ts"
+    },
+    "./mediaconnect": {
+      "import": "./dist/services/mediaconnect.mjs",
+      "require": "./dist/services/mediaconnect.cjs",
+      "types": "./dist/services/mediaconnect.d.ts"
+    },
+    "./mediaconvert": {
+      "import": "./dist/services/mediaconvert.mjs",
+      "require": "./dist/services/mediaconvert.cjs",
+      "types": "./dist/services/mediaconvert.d.ts"
+    },
+    "./medialive": {
+      "import": "./dist/services/medialive.mjs",
+      "require": "./dist/services/medialive.cjs",
+      "types": "./dist/services/medialive.d.ts"
+    },
+    "./mediapackage": {
+      "import": "./dist/services/mediapackage.mjs",
+      "require": "./dist/services/mediapackage.cjs",
+      "types": "./dist/services/mediapackage.d.ts"
+    },
+    "./mediapackage-vod": {
+      "import": "./dist/services/mediapackage-vod.mjs",
+      "require": "./dist/services/mediapackage-vod.cjs",
+      "types": "./dist/services/mediapackage-vod.d.ts"
+    },
+    "./mediapackagev2": {
+      "import": "./dist/services/mediapackagev2.mjs",
+      "require": "./dist/services/mediapackagev2.cjs",
+      "types": "./dist/services/mediapackagev2.d.ts"
+    },
+    "./mediastore": {
+      "import": "./dist/services/mediastore.mjs",
+      "require": "./dist/services/mediastore.cjs",
+      "types": "./dist/services/mediastore.d.ts"
+    },
+    "./mediatailor": {
+      "import": "./dist/services/mediatailor.mjs",
+      "require": "./dist/services/mediatailor.cjs",
+      "types": "./dist/services/mediatailor.d.ts"
+    },
+    "./medical-imaging": {
+      "import": "./dist/services/medical-imaging.mjs",
+      "require": "./dist/services/medical-imaging.cjs",
+      "types": "./dist/services/medical-imaging.d.ts"
+    },
+    "./memorydb": {
+      "import": "./dist/services/memorydb.mjs",
+      "require": "./dist/services/memorydb.cjs",
+      "types": "./dist/services/memorydb.d.ts"
+    },
+    "./mgh": {
+      "import": "./dist/services/mgh.mjs",
+      "require": "./dist/services/mgh.cjs",
+      "types": "./dist/services/mgh.d.ts"
+    },
+    "./mgn": {
+      "import": "./dist/services/mgn.mjs",
+      "require": "./dist/services/mgn.cjs",
+      "types": "./dist/services/mgn.d.ts"
+    },
+    "./migrationhub-orchestrator": {
+      "import": "./dist/services/migrationhub-orchestrator.mjs",
+      "require": "./dist/services/migrationhub-orchestrator.cjs",
+      "types": "./dist/services/migrationhub-orchestrator.d.ts"
+    },
+    "./mobiletargeting": {
+      "import": "./dist/services/mobiletargeting.mjs",
+      "require": "./dist/services/mobiletargeting.cjs",
+      "types": "./dist/services/mobiletargeting.d.ts"
+    },
+    "./monitron": {
+      "import": "./dist/services/monitron.mjs",
+      "require": "./dist/services/monitron.cjs",
+      "types": "./dist/services/monitron.d.ts"
+    },
+    "./mq": {
+      "import": "./dist/services/mq.mjs",
+      "require": "./dist/services/mq.cjs",
+      "types": "./dist/services/mq.d.ts"
+    },
+    "./neptune-db": {
+      "import": "./dist/services/neptune-db.mjs",
+      "require": "./dist/services/neptune-db.cjs",
+      "types": "./dist/services/neptune-db.d.ts"
+    },
+    "./neptune-graph": {
+      "import": "./dist/services/neptune-graph.mjs",
+      "require": "./dist/services/neptune-graph.cjs",
+      "types": "./dist/services/neptune-graph.d.ts"
+    },
+    "./network-firewall": {
+      "import": "./dist/services/network-firewall.mjs",
+      "require": "./dist/services/network-firewall.cjs",
+      "types": "./dist/services/network-firewall.d.ts"
+    },
+    "./networkmanager": {
+      "import": "./dist/services/networkmanager.mjs",
+      "require": "./dist/services/networkmanager.cjs",
+      "types": "./dist/services/networkmanager.d.ts"
+    },
+    "./networkmonitor": {
+      "import": "./dist/services/networkmonitor.mjs",
+      "require": "./dist/services/networkmonitor.cjs",
+      "types": "./dist/services/networkmonitor.d.ts"
+    },
+    "./nimble": {
+      "import": "./dist/services/nimble.mjs",
+      "require": "./dist/services/nimble.cjs",
+      "types": "./dist/services/nimble.d.ts"
+    },
+    "./notifications": {
+      "import": "./dist/services/notifications.mjs",
+      "require": "./dist/services/notifications.cjs",
+      "types": "./dist/services/notifications.d.ts"
+    },
+    "./notifications-contacts": {
+      "import": "./dist/services/notifications-contacts.mjs",
+      "require": "./dist/services/notifications-contacts.cjs",
+      "types": "./dist/services/notifications-contacts.d.ts"
+    },
+    "./oam": {
+      "import": "./dist/services/oam.mjs",
+      "require": "./dist/services/oam.cjs",
+      "types": "./dist/services/oam.d.ts"
+    },
+    "./omics": {
+      "import": "./dist/services/omics.mjs",
+      "require": "./dist/services/omics.cjs",
+      "types": "./dist/services/omics.d.ts"
+    },
+    "./one": {
+      "import": "./dist/services/one.mjs",
+      "require": "./dist/services/one.cjs",
+      "types": "./dist/services/one.d.ts"
+    },
+    "./opsworks": {
+      "import": "./dist/services/opsworks.mjs",
+      "require": "./dist/services/opsworks.cjs",
+      "types": "./dist/services/opsworks.d.ts"
+    },
+    "./opsworks-cm": {
+      "import": "./dist/services/opsworks-cm.mjs",
+      "require": "./dist/services/opsworks-cm.cjs",
+      "types": "./dist/services/opsworks-cm.d.ts"
+    },
+    "./organizations": {
+      "import": "./dist/services/organizations.mjs",
+      "require": "./dist/services/organizations.cjs",
+      "types": "./dist/services/organizations.d.ts"
+    },
+    "./osis": {
+      "import": "./dist/services/osis.mjs",
+      "require": "./dist/services/osis.cjs",
+      "types": "./dist/services/osis.d.ts"
+    },
+    "./outposts": {
+      "import": "./dist/services/outposts.mjs",
+      "require": "./dist/services/outposts.cjs",
+      "types": "./dist/services/outposts.d.ts"
+    },
+    "./panorama": {
+      "import": "./dist/services/panorama.mjs",
+      "require": "./dist/services/panorama.cjs",
+      "types": "./dist/services/panorama.d.ts"
+    },
+    "./payment-cryptography": {
+      "import": "./dist/services/payment-cryptography.mjs",
+      "require": "./dist/services/payment-cryptography.cjs",
+      "types": "./dist/services/payment-cryptography.d.ts"
+    },
+    "./payments": {
+      "import": "./dist/services/payments.mjs",
+      "require": "./dist/services/payments.cjs",
+      "types": "./dist/services/payments.d.ts"
+    },
+    "./pca-connector-ad": {
+      "import": "./dist/services/pca-connector-ad.mjs",
+      "require": "./dist/services/pca-connector-ad.cjs",
+      "types": "./dist/services/pca-connector-ad.d.ts"
+    },
+    "./pca-connector-scep": {
+      "import": "./dist/services/pca-connector-scep.mjs",
+      "require": "./dist/services/pca-connector-scep.cjs",
+      "types": "./dist/services/pca-connector-scep.d.ts"
+    },
+    "./pcs": {
+      "import": "./dist/services/pcs.mjs",
+      "require": "./dist/services/pcs.cjs",
+      "types": "./dist/services/pcs.d.ts"
+    },
+    "./personalize": {
+      "import": "./dist/services/personalize.mjs",
+      "require": "./dist/services/personalize.cjs",
+      "types": "./dist/services/personalize.d.ts"
+    },
+    "./pi": {
+      "import": "./dist/services/pi.mjs",
+      "require": "./dist/services/pi.cjs",
+      "types": "./dist/services/pi.d.ts"
+    },
+    "./pipes": {
+      "import": "./dist/services/pipes.mjs",
+      "require": "./dist/services/pipes.cjs",
+      "types": "./dist/services/pipes.d.ts"
+    },
+    "./polly": {
+      "import": "./dist/services/polly.mjs",
+      "require": "./dist/services/polly.cjs",
+      "types": "./dist/services/polly.d.ts"
+    },
+    "./private-networks": {
+      "import": "./dist/services/private-networks.mjs",
+      "require": "./dist/services/private-networks.cjs",
+      "types": "./dist/services/private-networks.d.ts"
+    },
+    "./profile": {
+      "import": "./dist/services/profile.mjs",
+      "require": "./dist/services/profile.cjs",
+      "types": "./dist/services/profile.d.ts"
+    },
+    "./proton": {
+      "import": "./dist/services/proton.mjs",
+      "require": "./dist/services/proton.cjs",
+      "types": "./dist/services/proton.d.ts"
+    },
+    "./purchase-orders": {
+      "import": "./dist/services/purchase-orders.mjs",
+      "require": "./dist/services/purchase-orders.cjs",
+      "types": "./dist/services/purchase-orders.d.ts"
+    },
+    "./q": {
+      "import": "./dist/services/q.mjs",
+      "require": "./dist/services/q.cjs",
+      "types": "./dist/services/q.d.ts"
+    },
+    "./qapps": {
+      "import": "./dist/services/qapps.mjs",
+      "require": "./dist/services/qapps.cjs",
+      "types": "./dist/services/qapps.d.ts"
+    },
+    "./qbusiness": {
+      "import": "./dist/services/qbusiness.mjs",
+      "require": "./dist/services/qbusiness.cjs",
+      "types": "./dist/services/qbusiness.d.ts"
+    },
+    "./qldb": {
+      "import": "./dist/services/qldb.mjs",
+      "require": "./dist/services/qldb.cjs",
+      "types": "./dist/services/qldb.d.ts"
+    },
+    "./quicksight": {
+      "import": "./dist/services/quicksight.mjs",
+      "require": "./dist/services/quicksight.cjs",
+      "types": "./dist/services/quicksight.d.ts"
+    },
+    "./ram": {
+      "import": "./dist/services/ram.mjs",
+      "require": "./dist/services/ram.cjs",
+      "types": "./dist/services/ram.d.ts"
+    },
+    "./rbin": {
+      "import": "./dist/services/rbin.mjs",
+      "require": "./dist/services/rbin.cjs",
+      "types": "./dist/services/rbin.d.ts"
+    },
+    "./rds": {
+      "import": "./dist/services/rds.mjs",
+      "require": "./dist/services/rds.cjs",
+      "types": "./dist/services/rds.d.ts"
+    },
+    "./rds-data": {
+      "import": "./dist/services/rds-data.mjs",
+      "require": "./dist/services/rds-data.cjs",
+      "types": "./dist/services/rds-data.d.ts"
+    },
+    "./rds-db": {
+      "import": "./dist/services/rds-db.mjs",
+      "require": "./dist/services/rds-db.cjs",
+      "types": "./dist/services/rds-db.d.ts"
+    },
+    "./redshift": {
+      "import": "./dist/services/redshift.mjs",
+      "require": "./dist/services/redshift.cjs",
+      "types": "./dist/services/redshift.d.ts"
+    },
+    "./redshift-data": {
+      "import": "./dist/services/redshift-data.mjs",
+      "require": "./dist/services/redshift-data.cjs",
+      "types": "./dist/services/redshift-data.d.ts"
+    },
+    "./redshift-serverless": {
+      "import": "./dist/services/redshift-serverless.mjs",
+      "require": "./dist/services/redshift-serverless.cjs",
+      "types": "./dist/services/redshift-serverless.d.ts"
+    },
+    "./refactor-spaces": {
+      "import": "./dist/services/refactor-spaces.mjs",
+      "require": "./dist/services/refactor-spaces.cjs",
+      "types": "./dist/services/refactor-spaces.d.ts"
+    },
+    "./rekognition": {
+      "import": "./dist/services/rekognition.mjs",
+      "require": "./dist/services/rekognition.cjs",
+      "types": "./dist/services/rekognition.d.ts"
+    },
+    "./repostspace": {
+      "import": "./dist/services/repostspace.mjs",
+      "require": "./dist/services/repostspace.cjs",
+      "types": "./dist/services/repostspace.d.ts"
+    },
+    "./resiliencehub": {
+      "import": "./dist/services/resiliencehub.mjs",
+      "require": "./dist/services/resiliencehub.cjs",
+      "types": "./dist/services/resiliencehub.d.ts"
+    },
+    "./resource-explorer-2": {
+      "import": "./dist/services/resource-explorer-2.mjs",
+      "require": "./dist/services/resource-explorer-2.cjs",
+      "types": "./dist/services/resource-explorer-2.d.ts"
+    },
+    "./resource-groups": {
+      "import": "./dist/services/resource-groups.mjs",
+      "require": "./dist/services/resource-groups.cjs",
+      "types": "./dist/services/resource-groups.d.ts"
+    },
+    "./robomaker": {
+      "import": "./dist/services/robomaker.mjs",
+      "require": "./dist/services/robomaker.cjs",
+      "types": "./dist/services/robomaker.d.ts"
+    },
+    "./rolesanywhere": {
+      "import": "./dist/services/rolesanywhere.mjs",
+      "require": "./dist/services/rolesanywhere.cjs",
+      "types": "./dist/services/rolesanywhere.d.ts"
+    },
+    "./route53": {
+      "import": "./dist/services/route53.mjs",
+      "require": "./dist/services/route53.cjs",
+      "types": "./dist/services/route53.d.ts"
+    },
+    "./route53-recovery-cluster": {
+      "import": "./dist/services/route53-recovery-cluster.mjs",
+      "require": "./dist/services/route53-recovery-cluster.cjs",
+      "types": "./dist/services/route53-recovery-cluster.d.ts"
+    },
+    "./route53-recovery-control-config": {
+      "import": "./dist/services/route53-recovery-control-config.mjs",
+      "require": "./dist/services/route53-recovery-control-config.cjs",
+      "types": "./dist/services/route53-recovery-control-config.d.ts"
+    },
+    "./route53-recovery-readiness": {
+      "import": "./dist/services/route53-recovery-readiness.mjs",
+      "require": "./dist/services/route53-recovery-readiness.cjs",
+      "types": "./dist/services/route53-recovery-readiness.d.ts"
+    },
+    "./route53profiles": {
+      "import": "./dist/services/route53profiles.mjs",
+      "require": "./dist/services/route53profiles.cjs",
+      "types": "./dist/services/route53profiles.d.ts"
+    },
+    "./route53resolver": {
+      "import": "./dist/services/route53resolver.mjs",
+      "require": "./dist/services/route53resolver.cjs",
+      "types": "./dist/services/route53resolver.d.ts"
+    },
+    "./rum": {
+      "import": "./dist/services/rum.mjs",
+      "require": "./dist/services/rum.cjs",
+      "types": "./dist/services/rum.d.ts"
+    },
+    "./s3": {
+      "import": "./dist/services/s3.mjs",
+      "require": "./dist/services/s3.cjs",
+      "types": "./dist/services/s3.d.ts"
+    },
+    "./s3-object-lambda": {
+      "import": "./dist/services/s3-object-lambda.mjs",
+      "require": "./dist/services/s3-object-lambda.cjs",
+      "types": "./dist/services/s3-object-lambda.d.ts"
+    },
+    "./s3-outposts": {
+      "import": "./dist/services/s3-outposts.mjs",
+      "require": "./dist/services/s3-outposts.cjs",
+      "types": "./dist/services/s3-outposts.d.ts"
+    },
+    "./s3express": {
+      "import": "./dist/services/s3express.mjs",
+      "require": "./dist/services/s3express.cjs",
+      "types": "./dist/services/s3express.d.ts"
+    },
+    "./sagemaker": {
+      "import": "./dist/services/sagemaker.mjs",
+      "require": "./dist/services/sagemaker.cjs",
+      "types": "./dist/services/sagemaker.d.ts"
+    },
+    "./sagemaker-geospatial": {
+      "import": "./dist/services/sagemaker-geospatial.mjs",
+      "require": "./dist/services/sagemaker-geospatial.cjs",
+      "types": "./dist/services/sagemaker-geospatial.d.ts"
+    },
+    "./sagemaker-mlflow": {
+      "import": "./dist/services/sagemaker-mlflow.mjs",
+      "require": "./dist/services/sagemaker-mlflow.cjs",
+      "types": "./dist/services/sagemaker-mlflow.d.ts"
+    },
+    "./savingsplans": {
+      "import": "./dist/services/savingsplans.mjs",
+      "require": "./dist/services/savingsplans.cjs",
+      "types": "./dist/services/savingsplans.d.ts"
+    },
+    "./scheduler": {
+      "import": "./dist/services/scheduler.mjs",
+      "require": "./dist/services/scheduler.cjs",
+      "types": "./dist/services/scheduler.d.ts"
+    },
+    "./schemas": {
+      "import": "./dist/services/schemas.mjs",
+      "require": "./dist/services/schemas.cjs",
+      "types": "./dist/services/schemas.d.ts"
+    },
+    "./scn": {
+      "import": "./dist/services/scn.mjs",
+      "require": "./dist/services/scn.cjs",
+      "types": "./dist/services/scn.d.ts"
+    },
+    "./sdb": {
+      "import": "./dist/services/sdb.mjs",
+      "require": "./dist/services/sdb.cjs",
+      "types": "./dist/services/sdb.d.ts"
+    },
+    "./secretsmanager": {
+      "import": "./dist/services/secretsmanager.mjs",
+      "require": "./dist/services/secretsmanager.cjs",
+      "types": "./dist/services/secretsmanager.d.ts"
+    },
+    "./securityhub": {
+      "import": "./dist/services/securityhub.mjs",
+      "require": "./dist/services/securityhub.cjs",
+      "types": "./dist/services/securityhub.d.ts"
+    },
+    "./securitylake": {
+      "import": "./dist/services/securitylake.mjs",
+      "require": "./dist/services/securitylake.cjs",
+      "types": "./dist/services/securitylake.d.ts"
+    },
+    "./serverlessrepo": {
+      "import": "./dist/services/serverlessrepo.mjs",
+      "require": "./dist/services/serverlessrepo.cjs",
+      "types": "./dist/services/serverlessrepo.d.ts"
+    },
+    "./servicecatalog": {
+      "import": "./dist/services/servicecatalog.mjs",
+      "require": "./dist/services/servicecatalog.cjs",
+      "types": "./dist/services/servicecatalog.d.ts"
+    },
+    "./servicediscovery": {
+      "import": "./dist/services/servicediscovery.mjs",
+      "require": "./dist/services/servicediscovery.cjs",
+      "types": "./dist/services/servicediscovery.d.ts"
+    },
+    "./servicequotas": {
+      "import": "./dist/services/servicequotas.mjs",
+      "require": "./dist/services/servicequotas.cjs",
+      "types": "./dist/services/servicequotas.d.ts"
+    },
+    "./ses": {
+      "import": "./dist/services/ses.mjs",
+      "require": "./dist/services/ses.cjs",
+      "types": "./dist/services/ses.d.ts"
+    },
+    "./shield": {
+      "import": "./dist/services/shield.mjs",
+      "require": "./dist/services/shield.cjs",
+      "types": "./dist/services/shield.d.ts"
+    },
+    "./signer": {
+      "import": "./dist/services/signer.mjs",
+      "require": "./dist/services/signer.cjs",
+      "types": "./dist/services/signer.d.ts"
+    },
+    "./simspaceweaver": {
+      "import": "./dist/services/simspaceweaver.mjs",
+      "require": "./dist/services/simspaceweaver.cjs",
+      "types": "./dist/services/simspaceweaver.d.ts"
+    },
+    "./sms-voice": {
+      "import": "./dist/services/sms-voice.mjs",
+      "require": "./dist/services/sms-voice.cjs",
+      "types": "./dist/services/sms-voice.d.ts"
+    },
+    "./snow-device-management": {
+      "import": "./dist/services/snow-device-management.mjs",
+      "require": "./dist/services/snow-device-management.cjs",
+      "types": "./dist/services/snow-device-management.d.ts"
+    },
+    "./sns": {
+      "import": "./dist/services/sns.mjs",
+      "require": "./dist/services/sns.cjs",
+      "types": "./dist/services/sns.d.ts"
+    },
+    "./sqlworkbench": {
+      "import": "./dist/services/sqlworkbench.mjs",
+      "require": "./dist/services/sqlworkbench.cjs",
+      "types": "./dist/services/sqlworkbench.d.ts"
+    },
+    "./sqs": {
+      "import": "./dist/services/sqs.mjs",
+      "require": "./dist/services/sqs.cjs",
+      "types": "./dist/services/sqs.d.ts"
+    },
+    "./ssm": {
+      "import": "./dist/services/ssm.mjs",
+      "require": "./dist/services/ssm.cjs",
+      "types": "./dist/services/ssm.d.ts"
+    },
+    "./ssm-contacts": {
+      "import": "./dist/services/ssm-contacts.mjs",
+      "require": "./dist/services/ssm-contacts.cjs",
+      "types": "./dist/services/ssm-contacts.d.ts"
+    },
+    "./ssm-incidents": {
+      "import": "./dist/services/ssm-incidents.mjs",
+      "require": "./dist/services/ssm-incidents.cjs",
+      "types": "./dist/services/ssm-incidents.d.ts"
+    },
+    "./ssm-quicksetup": {
+      "import": "./dist/services/ssm-quicksetup.mjs",
+      "require": "./dist/services/ssm-quicksetup.cjs",
+      "types": "./dist/services/ssm-quicksetup.d.ts"
+    },
+    "./ssm-sap": {
+      "import": "./dist/services/ssm-sap.mjs",
+      "require": "./dist/services/ssm-sap.cjs",
+      "types": "./dist/services/ssm-sap.d.ts"
+    },
+    "./sso": {
+      "import": "./dist/services/sso.mjs",
+      "require": "./dist/services/sso.cjs",
+      "types": "./dist/services/sso.d.ts"
+    },
+    "./sso-oauth": {
+      "import": "./dist/services/sso-oauth.mjs",
+      "require": "./dist/services/sso-oauth.cjs",
+      "types": "./dist/services/sso-oauth.d.ts"
+    },
+    "./states": {
+      "import": "./dist/services/states.mjs",
+      "require": "./dist/services/states.cjs",
+      "types": "./dist/services/states.d.ts"
+    },
+    "./storagegateway": {
+      "import": "./dist/services/storagegateway.mjs",
+      "require": "./dist/services/storagegateway.cjs",
+      "types": "./dist/services/storagegateway.d.ts"
+    },
+    "./sts": {
+      "import": "./dist/services/sts.mjs",
+      "require": "./dist/services/sts.cjs",
+      "types": "./dist/services/sts.d.ts"
+    },
+    "./swf": {
+      "import": "./dist/services/swf.mjs",
+      "require": "./dist/services/swf.cjs",
+      "types": "./dist/services/swf.d.ts"
+    },
+    "./synthetics": {
+      "import": "./dist/services/synthetics.mjs",
+      "require": "./dist/services/synthetics.cjs",
+      "types": "./dist/services/synthetics.d.ts"
+    },
+    "./textract": {
+      "import": "./dist/services/textract.mjs",
+      "require": "./dist/services/textract.cjs",
+      "types": "./dist/services/textract.d.ts"
+    },
+    "./thinclient": {
+      "import": "./dist/services/thinclient.mjs",
+      "require": "./dist/services/thinclient.cjs",
+      "types": "./dist/services/thinclient.d.ts"
+    },
+    "./timestream": {
+      "import": "./dist/services/timestream.mjs",
+      "require": "./dist/services/timestream.cjs",
+      "types": "./dist/services/timestream.d.ts"
+    },
+    "./timestream-influxdb": {
+      "import": "./dist/services/timestream-influxdb.mjs",
+      "require": "./dist/services/timestream-influxdb.cjs",
+      "types": "./dist/services/timestream-influxdb.d.ts"
+    },
+    "./tnb": {
+      "import": "./dist/services/tnb.mjs",
+      "require": "./dist/services/tnb.cjs",
+      "types": "./dist/services/tnb.d.ts"
+    },
+    "./transcribe": {
+      "import": "./dist/services/transcribe.mjs",
+      "require": "./dist/services/transcribe.cjs",
+      "types": "./dist/services/transcribe.d.ts"
+    },
+    "./transfer": {
+      "import": "./dist/services/transfer.mjs",
+      "require": "./dist/services/transfer.cjs",
+      "types": "./dist/services/transfer.d.ts"
+    },
+    "./translate": {
+      "import": "./dist/services/translate.mjs",
+      "require": "./dist/services/translate.cjs",
+      "types": "./dist/services/translate.d.ts"
+    },
+    "./trustedadvisor": {
+      "import": "./dist/services/trustedadvisor.mjs",
+      "require": "./dist/services/trustedadvisor.cjs",
+      "types": "./dist/services/trustedadvisor.d.ts"
+    },
+    "./ts": {
+      "import": "./dist/services/ts.mjs",
+      "require": "./dist/services/ts.cjs",
+      "types": "./dist/services/ts.d.ts"
+    },
+    "./vendor-insights": {
+      "import": "./dist/services/vendor-insights.mjs",
+      "require": "./dist/services/vendor-insights.cjs",
+      "types": "./dist/services/vendor-insights.d.ts"
+    },
+    "./verifiedpermissions": {
+      "import": "./dist/services/verifiedpermissions.mjs",
+      "require": "./dist/services/verifiedpermissions.cjs",
+      "types": "./dist/services/verifiedpermissions.d.ts"
+    },
+    "./voiceid": {
+      "import": "./dist/services/voiceid.mjs",
+      "require": "./dist/services/voiceid.cjs",
+      "types": "./dist/services/voiceid.d.ts"
+    },
+    "./vpc-lattice": {
+      "import": "./dist/services/vpc-lattice.mjs",
+      "require": "./dist/services/vpc-lattice.cjs",
+      "types": "./dist/services/vpc-lattice.d.ts"
+    },
+    "./vpc-lattice-svcs": {
+      "import": "./dist/services/vpc-lattice-svcs.mjs",
+      "require": "./dist/services/vpc-lattice-svcs.cjs",
+      "types": "./dist/services/vpc-lattice-svcs.d.ts"
+    },
+    "./waf": {
+      "import": "./dist/services/waf.mjs",
+      "require": "./dist/services/waf.cjs",
+      "types": "./dist/services/waf.d.ts"
+    },
+    "./waf-regional": {
+      "import": "./dist/services/waf-regional.mjs",
+      "require": "./dist/services/waf-regional.cjs",
+      "types": "./dist/services/waf-regional.d.ts"
+    },
+    "./wafv2": {
+      "import": "./dist/services/wafv2.mjs",
+      "require": "./dist/services/wafv2.cjs",
+      "types": "./dist/services/wafv2.d.ts"
+    },
+    "./wellarchitected": {
+      "import": "./dist/services/wellarchitected.mjs",
+      "require": "./dist/services/wellarchitected.cjs",
+      "types": "./dist/services/wellarchitected.d.ts"
+    },
+    "./wickr": {
+      "import": "./dist/services/wickr.mjs",
+      "require": "./dist/services/wickr.cjs",
+      "types": "./dist/services/wickr.d.ts"
+    },
+    "./wisdom": {
+      "import": "./dist/services/wisdom.mjs",
+      "require": "./dist/services/wisdom.cjs",
+      "types": "./dist/services/wisdom.d.ts"
+    },
+    "./workdocs": {
+      "import": "./dist/services/workdocs.mjs",
+      "require": "./dist/services/workdocs.cjs",
+      "types": "./dist/services/workdocs.d.ts"
+    },
+    "./worklink": {
+      "import": "./dist/services/worklink.mjs",
+      "require": "./dist/services/worklink.cjs",
+      "types": "./dist/services/worklink.d.ts"
+    },
+    "./workmail": {
+      "import": "./dist/services/workmail.mjs",
+      "require": "./dist/services/workmail.cjs",
+      "types": "./dist/services/workmail.d.ts"
+    },
+    "./workmailmessageflow": {
+      "import": "./dist/services/workmailmessageflow.mjs",
+      "require": "./dist/services/workmailmessageflow.cjs",
+      "types": "./dist/services/workmailmessageflow.d.ts"
+    },
+    "./workspaces": {
+      "import": "./dist/services/workspaces.mjs",
+      "require": "./dist/services/workspaces.cjs",
+      "types": "./dist/services/workspaces.d.ts"
+    },
+    "./workspaces-web": {
+      "import": "./dist/services/workspaces-web.mjs",
+      "require": "./dist/services/workspaces-web.cjs",
+      "types": "./dist/services/workspaces-web.d.ts"
+    },
+    "./xray": {
+      "import": "./dist/services/xray.mjs",
+      "require": "./dist/services/xray.cjs",
+      "types": "./dist/services/xray.d.ts"
+    }
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "unbuild": "latest"
+  },
+  "scripts": {
+    "build": "unbuild"
+  }
+}

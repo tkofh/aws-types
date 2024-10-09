@@ -1,0 +1,17 @@
+{
+  "name": "@repo/tests",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "run": "tsx ./src/index.ts"
+  },
+  "dependencies": {
+    "@aws-types/arn": "workspace:*"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^22.7.5",
+    "tsx": "^4.19.1"
+  }
+}

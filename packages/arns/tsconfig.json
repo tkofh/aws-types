@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "@repo/typescript-config/workspace.json",
+  "include": [
+    "./src",
+    "./package.json"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}
