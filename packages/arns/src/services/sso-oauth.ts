@@ -6,5 +6,5 @@ export interface ApplicationArnParameters {
 }
 export type ApplicationArn = `arn:${string}:sso::${string}:application/${string}/${string}`
 export function applicationArn(parameters: ApplicationArnParameters): ApplicationArn {
-  return `arn:${parameters.partition ?? ''}:sso::${parameters.accountId}:application/${parameters.instanceId}/${parameters.applicationId}`
+  return `arn:${parameters.partition ?? 'aws'}:sso::${parameters.accountId}:application/${parameters.instanceId}/${parameters.applicationId}`
 }

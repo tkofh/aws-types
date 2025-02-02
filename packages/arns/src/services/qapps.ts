@@ -6,7 +6,7 @@ export interface ApplicationArnParameters {
 }
 export type ApplicationArn = `arn:${string}:qbusiness:${string}:${string}:application/${string}`
 export function applicationArn(parameters: ApplicationArnParameters): ApplicationArn {
-  return `arn:${parameters.partition ?? ''}:qbusiness:${parameters.region}:${parameters.account}:application/${parameters.applicationId}`
+  return `arn:${parameters.partition ?? 'aws'}:qbusiness:${parameters.region}:${parameters.account}:application/${parameters.applicationId}`
 }
 
 export interface QappArnParameters {
@@ -18,7 +18,7 @@ export interface QappArnParameters {
 }
 export type QappArn = `arn:${string}:qapps:${string}:${string}:application/${string}/qapp/${string}`
 export function qappArn(parameters: QappArnParameters): QappArn {
-  return `arn:${parameters.partition ?? ''}:qapps:${parameters.region}:${parameters.account}:application/${parameters.applicationId}/qapp/${parameters.appId}`
+  return `arn:${parameters.partition ?? 'aws'}:qapps:${parameters.region}:${parameters.account}:application/${parameters.applicationId}/qapp/${parameters.appId}`
 }
 
 export interface QappSessionArnParameters {
@@ -31,5 +31,5 @@ export interface QappSessionArnParameters {
 }
 export type QappSessionArn = `arn:${string}:qapps:${string}:${string}:application/${string}/qapp/${string}/session/${string}`
 export function qappSessionArn(parameters: QappSessionArnParameters): QappSessionArn {
-  return `arn:${parameters.partition ?? ''}:qapps:${parameters.region}:${parameters.account}:application/${parameters.applicationId}/qapp/${parameters.appId}/session/${parameters.sessionId}`
+  return `arn:${parameters.partition ?? 'aws'}:qapps:${parameters.region}:${parameters.account}:application/${parameters.applicationId}/qapp/${parameters.appId}/session/${parameters.sessionId}`
 }

@@ -6,7 +6,7 @@ export interface DeviceInstanceArnParameters {
 }
 export type DeviceInstanceArn = `arn:${string}:one:${string}:${string}:device-instance/${string}`
 export function deviceInstanceArn(parameters: DeviceInstanceArnParameters): DeviceInstanceArn {
-  return `arn:${parameters.partition ?? ''}:one:${parameters.region}:${parameters.account}:device-instance/${parameters.deviceInstanceId}`
+  return `arn:${parameters.partition ?? 'aws'}:one:${parameters.region}:${parameters.account}:device-instance/${parameters.deviceInstanceId}`
 }
 
 export interface ConfigurationArnParameters {
@@ -18,7 +18,7 @@ export interface ConfigurationArnParameters {
 }
 export type ConfigurationArn = `arn:${string}:one:${string}:${string}:device-instance/${string}/configuration/${string}`
 export function configurationArn(parameters: ConfigurationArnParameters): ConfigurationArn {
-  return `arn:${parameters.partition ?? ''}:one:${parameters.region}:${parameters.account}:device-instance/${parameters.deviceInstanceId}/configuration/${parameters.version}`
+  return `arn:${parameters.partition ?? 'aws'}:one:${parameters.region}:${parameters.account}:device-instance/${parameters.deviceInstanceId}/configuration/${parameters.version}`
 }
 
 export interface DeviceConfigurationTemplateArnParameters {
@@ -29,7 +29,7 @@ export interface DeviceConfigurationTemplateArnParameters {
 }
 export type DeviceConfigurationTemplateArn = `arn:${string}:one:${string}:${string}:device-configuration-template/${string}`
 export function deviceConfigurationTemplateArn(parameters: DeviceConfigurationTemplateArnParameters): DeviceConfigurationTemplateArn {
-  return `arn:${parameters.partition ?? ''}:one:${parameters.region}:${parameters.account}:device-configuration-template/${parameters.templateId}`
+  return `arn:${parameters.partition ?? 'aws'}:one:${parameters.region}:${parameters.account}:device-configuration-template/${parameters.templateId}`
 }
 
 export interface SiteArnParameters {
@@ -40,7 +40,7 @@ export interface SiteArnParameters {
 }
 export type SiteArn = `arn:${string}:one:${string}:${string}:site/${string}`
 export function siteArn(parameters: SiteArnParameters): SiteArn {
-  return `arn:${parameters.partition ?? ''}:one:${parameters.region}:${parameters.account}:site/${parameters.siteId}`
+  return `arn:${parameters.partition ?? 'aws'}:one:${parameters.region}:${parameters.account}:site/${parameters.siteId}`
 }
 
 export interface UserArnParameters {
@@ -51,5 +51,5 @@ export interface UserArnParameters {
 }
 export type UserArn = `arn:${string}:one:${string}:${string}:user/${string}`
 export function userArn(parameters: UserArnParameters): UserArn {
-  return `arn:${parameters.partition ?? ''}:one:${parameters.region}:${parameters.account}:user/${parameters.userId}`
+  return `arn:${parameters.partition ?? 'aws'}:one:${parameters.region}:${parameters.account}:user/${parameters.userId}`
 }

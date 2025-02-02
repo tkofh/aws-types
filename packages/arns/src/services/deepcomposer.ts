@@ -6,7 +6,7 @@ export interface ModelArnParameters {
 }
 export type ModelArn = `arn:${string}:deepcomposer:${string}:${string}:model/${string}`
 export function modelArn(parameters: ModelArnParameters): ModelArn {
-  return `arn:${parameters.partition ?? ''}:deepcomposer:${parameters.region}:${parameters.account}:model/${parameters.modelId}`
+  return `arn:${parameters.partition ?? 'aws'}:deepcomposer:${parameters.region}:${parameters.account}:model/${parameters.modelId}`
 }
 
 export interface CompositionArnParameters {
@@ -17,7 +17,7 @@ export interface CompositionArnParameters {
 }
 export type CompositionArn = `arn:${string}:deepcomposer:${string}:${string}:composition/${string}`
 export function compositionArn(parameters: CompositionArnParameters): CompositionArn {
-  return `arn:${parameters.partition ?? ''}:deepcomposer:${parameters.region}:${parameters.account}:composition/${parameters.compositionId}`
+  return `arn:${parameters.partition ?? 'aws'}:deepcomposer:${parameters.region}:${parameters.account}:composition/${parameters.compositionId}`
 }
 
 export interface AudioArnParameters {
@@ -28,5 +28,5 @@ export interface AudioArnParameters {
 }
 export type AudioArn = `arn:${string}:deepcomposer:${string}:${string}:audio/${string}`
 export function audioArn(parameters: AudioArnParameters): AudioArn {
-  return `arn:${parameters.partition ?? ''}:deepcomposer:${parameters.region}:${parameters.account}:audio/${parameters.audioId}`
+  return `arn:${parameters.partition ?? 'aws'}:deepcomposer:${parameters.region}:${parameters.account}:audio/${parameters.audioId}`
 }

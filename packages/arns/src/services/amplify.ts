@@ -6,7 +6,7 @@ export interface AppsArnParameters {
 }
 export type AppsArn = `arn:${string}:amplify:${string}:${string}:apps/${string}`
 export function appsArn(parameters: AppsArnParameters): AppsArn {
-  return `arn:${parameters.partition ?? ''}:amplify:${parameters.region}:${parameters.account}:apps/${parameters.appId}`
+  return `arn:${parameters.partition ?? 'aws'}:amplify:${parameters.region}:${parameters.account}:apps/${parameters.appId}`
 }
 
 export interface BranchesArnParameters {
@@ -18,7 +18,7 @@ export interface BranchesArnParameters {
 }
 export type BranchesArn = `arn:${string}:amplify:${string}:${string}:apps/${string}/branches/${string}`
 export function branchesArn(parameters: BranchesArnParameters): BranchesArn {
-  return `arn:${parameters.partition ?? ''}:amplify:${parameters.region}:${parameters.account}:apps/${parameters.appId}/branches/${parameters.branchName}`
+  return `arn:${parameters.partition ?? 'aws'}:amplify:${parameters.region}:${parameters.account}:apps/${parameters.appId}/branches/${parameters.branchName}`
 }
 
 export interface JobsArnParameters {
@@ -31,7 +31,7 @@ export interface JobsArnParameters {
 }
 export type JobsArn = `arn:${string}:amplify:${string}:${string}:apps/${string}/branches/${string}/jobs/${string}`
 export function jobsArn(parameters: JobsArnParameters): JobsArn {
-  return `arn:${parameters.partition ?? ''}:amplify:${parameters.region}:${parameters.account}:apps/${parameters.appId}/branches/${parameters.branchName}/jobs/${parameters.jobId}`
+  return `arn:${parameters.partition ?? 'aws'}:amplify:${parameters.region}:${parameters.account}:apps/${parameters.appId}/branches/${parameters.branchName}/jobs/${parameters.jobId}`
 }
 
 export interface DomainsArnParameters {
@@ -43,7 +43,7 @@ export interface DomainsArnParameters {
 }
 export type DomainsArn = `arn:${string}:amplify:${string}:${string}:apps/${string}/domains/${string}`
 export function domainsArn(parameters: DomainsArnParameters): DomainsArn {
-  return `arn:${parameters.partition ?? ''}:amplify:${parameters.region}:${parameters.account}:apps/${parameters.appId}/domains/${parameters.domainName}`
+  return `arn:${parameters.partition ?? 'aws'}:amplify:${parameters.region}:${parameters.account}:apps/${parameters.appId}/domains/${parameters.domainName}`
 }
 
 export interface WebhooksArnParameters {
@@ -54,5 +54,5 @@ export interface WebhooksArnParameters {
 }
 export type WebhooksArn = `arn:${string}:amplify:${string}:${string}:webhooks/${string}`
 export function webhooksArn(parameters: WebhooksArnParameters): WebhooksArn {
-  return `arn:${parameters.partition ?? ''}:amplify:${parameters.region}:${parameters.account}:webhooks/${parameters.webhookId}`
+  return `arn:${parameters.partition ?? 'aws'}:amplify:${parameters.region}:${parameters.account}:webhooks/${parameters.webhookId}`
 }

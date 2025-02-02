@@ -6,5 +6,5 @@ export interface RepositoryArnParameters {
 }
 export type RepositoryArn = `arn:${string}:ecr:${string}:${string}:repository/${string}`
 export function repositoryArn(parameters: RepositoryArnParameters): RepositoryArn {
-  return `arn:${parameters.partition ?? ''}:ecr:${parameters.region}:${parameters.account}:repository/${parameters.repositoryName}`
+  return `arn:${parameters.partition ?? 'aws'}:ecr:${parameters.region}:${parameters.account}:repository/${parameters.repositoryName}`
 }

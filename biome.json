@@ -8,7 +8,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": []
+    "ignore": ["data.json"]
   },
   "formatter": {
     "enabled": true,
@@ -20,7 +20,10 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "recommended": true,
+      "style": {
+        "useNamingConvention": "off"
+      }
     }
   },
   "javascript": {

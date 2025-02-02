@@ -6,7 +6,7 @@ export interface DomainArnParameters {
 }
 export type DomainArn = `arn:${string}:codeartifact:${string}:${string}:domain/${string}`
 export function domainArn(parameters: DomainArnParameters): DomainArn {
-  return `arn:${parameters.partition ?? ''}:codeartifact:${parameters.region}:${parameters.account}:domain/${parameters.domainName}`
+  return `arn:${parameters.partition ?? 'aws'}:codeartifact:${parameters.region}:${parameters.account}:domain/${parameters.domainName}`
 }
 
 export interface RepositoryArnParameters {
@@ -18,7 +18,7 @@ export interface RepositoryArnParameters {
 }
 export type RepositoryArn = `arn:${string}:codeartifact:${string}:${string}:repository/${string}/${string}`
 export function repositoryArn(parameters: RepositoryArnParameters): RepositoryArn {
-  return `arn:${parameters.partition ?? ''}:codeartifact:${parameters.region}:${parameters.account}:repository/${parameters.domainName}/${parameters.repositoryName}`
+  return `arn:${parameters.partition ?? 'aws'}:codeartifact:${parameters.region}:${parameters.account}:repository/${parameters.domainName}/${parameters.repositoryName}`
 }
 
 export interface PackageGroupArnParameters {
@@ -30,7 +30,7 @@ export interface PackageGroupArnParameters {
 }
 export type PackageGroupArn = `arn:${string}:codeartifact:${string}:${string}:package-group/${string}${string}`
 export function packageGroupArn(parameters: PackageGroupArnParameters): PackageGroupArn {
-  return `arn:${parameters.partition ?? ''}:codeartifact:${parameters.region}:${parameters.account}:package-group/${parameters.domainName}${parameters.encodedPackageGroupPattern}`
+  return `arn:${parameters.partition ?? 'aws'}:codeartifact:${parameters.region}:${parameters.account}:package-group/${parameters.domainName}${parameters.encodedPackageGroupPattern}`
 }
 
 export interface PackageArnParameters {
@@ -45,5 +45,5 @@ export interface PackageArnParameters {
 }
 export type PackageArn = `arn:${string}:codeartifact:${string}:${string}:package/${string}/${string}/${string}/${string}/${string}`
 export function packageArn(parameters: PackageArnParameters): PackageArn {
-  return `arn:${parameters.partition ?? ''}:codeartifact:${parameters.region}:${parameters.account}:package/${parameters.domainName}/${parameters.repositoryName}/${parameters.packageFormat}/${parameters.packageNamespace}/${parameters.packageName}`
+  return `arn:${parameters.partition ?? 'aws'}:codeartifact:${parameters.region}:${parameters.account}:package/${parameters.domainName}/${parameters.repositoryName}/${parameters.packageFormat}/${parameters.packageNamespace}/${parameters.packageName}`
 }

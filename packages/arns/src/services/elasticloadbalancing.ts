@@ -6,7 +6,7 @@ export interface LoadbalancerArnParameters {
 }
 export type LoadbalancerArn = `arn:${string}:elasticloadbalancing:${string}:${string}:loadbalancer/${string}`
 export function loadbalancerArn(parameters: LoadbalancerArnParameters): LoadbalancerArn {
-  return `arn:${parameters.partition ?? ''}:elasticloadbalancing:${parameters.region}:${parameters.account}:loadbalancer/${parameters.loadBalancerName}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticloadbalancing:${parameters.region}:${parameters.account}:loadbalancer/${parameters.loadBalancerName}`
 }
 
 export interface ListenerAppArnParameters {
@@ -19,7 +19,7 @@ export interface ListenerAppArnParameters {
 }
 export type ListenerAppArn = `arn:${string}:elasticloadbalancing:${string}:${string}:listener/app/${string}/${string}/${string}`
 export function listenerAppArn(parameters: ListenerAppArnParameters): ListenerAppArn {
-  return `arn:${parameters.partition ?? ''}:elasticloadbalancing:${parameters.region}:${parameters.account}:listener/app/${parameters.loadBalancerName}/${parameters.loadBalancerId}/${parameters.listenerId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticloadbalancing:${parameters.region}:${parameters.account}:listener/app/${parameters.loadBalancerName}/${parameters.loadBalancerId}/${parameters.listenerId}`
 }
 
 export interface ListenerRuleAppArnParameters {
@@ -33,7 +33,7 @@ export interface ListenerRuleAppArnParameters {
 }
 export type ListenerRuleAppArn = `arn:${string}:elasticloadbalancing:${string}:${string}:listener-rule/app/${string}/${string}/${string}/${string}`
 export function listenerRuleAppArn(parameters: ListenerRuleAppArnParameters): ListenerRuleAppArn {
-  return `arn:${parameters.partition ?? ''}:elasticloadbalancing:${parameters.region}:${parameters.account}:listener-rule/app/${parameters.loadBalancerName}/${parameters.loadBalancerId}/${parameters.listenerId}/${parameters.listenerRuleId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticloadbalancing:${parameters.region}:${parameters.account}:listener-rule/app/${parameters.loadBalancerName}/${parameters.loadBalancerId}/${parameters.listenerId}/${parameters.listenerRuleId}`
 }
 
 export interface ListenerNetArnParameters {
@@ -46,7 +46,7 @@ export interface ListenerNetArnParameters {
 }
 export type ListenerNetArn = `arn:${string}:elasticloadbalancing:${string}:${string}:listener/net/${string}/${string}/${string}`
 export function listenerNetArn(parameters: ListenerNetArnParameters): ListenerNetArn {
-  return `arn:${parameters.partition ?? ''}:elasticloadbalancing:${parameters.region}:${parameters.account}:listener/net/${parameters.loadBalancerName}/${parameters.loadBalancerId}/${parameters.listenerId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticloadbalancing:${parameters.region}:${parameters.account}:listener/net/${parameters.loadBalancerName}/${parameters.loadBalancerId}/${parameters.listenerId}`
 }
 
 export interface ListenerRuleNetArnParameters {
@@ -60,7 +60,7 @@ export interface ListenerRuleNetArnParameters {
 }
 export type ListenerRuleNetArn = `arn:${string}:elasticloadbalancing:${string}:${string}:listener-rule/net/${string}/${string}/${string}/${string}`
 export function listenerRuleNetArn(parameters: ListenerRuleNetArnParameters): ListenerRuleNetArn {
-  return `arn:${parameters.partition ?? ''}:elasticloadbalancing:${parameters.region}:${parameters.account}:listener-rule/net/${parameters.loadBalancerName}/${parameters.loadBalancerId}/${parameters.listenerId}/${parameters.listenerRuleId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticloadbalancing:${parameters.region}:${parameters.account}:listener-rule/net/${parameters.loadBalancerName}/${parameters.loadBalancerId}/${parameters.listenerId}/${parameters.listenerRuleId}`
 }
 
 export interface LoadbalancerAppArnParameters {
@@ -72,7 +72,7 @@ export interface LoadbalancerAppArnParameters {
 }
 export type LoadbalancerAppArn = `arn:${string}:elasticloadbalancing:${string}:${string}:loadbalancer/app/${string}/${string}`
 export function loadbalancerAppArn(parameters: LoadbalancerAppArnParameters): LoadbalancerAppArn {
-  return `arn:${parameters.partition ?? ''}:elasticloadbalancing:${parameters.region}:${parameters.account}:loadbalancer/app/${parameters.loadBalancerName}/${parameters.loadBalancerId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticloadbalancing:${parameters.region}:${parameters.account}:loadbalancer/app/${parameters.loadBalancerName}/${parameters.loadBalancerId}`
 }
 
 export interface LoadbalancerNetArnParameters {
@@ -84,7 +84,7 @@ export interface LoadbalancerNetArnParameters {
 }
 export type LoadbalancerNetArn = `arn:${string}:elasticloadbalancing:${string}:${string}:loadbalancer/net/${string}/${string}`
 export function loadbalancerNetArn(parameters: LoadbalancerNetArnParameters): LoadbalancerNetArn {
-  return `arn:${parameters.partition ?? ''}:elasticloadbalancing:${parameters.region}:${parameters.account}:loadbalancer/net/${parameters.loadBalancerName}/${parameters.loadBalancerId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticloadbalancing:${parameters.region}:${parameters.account}:loadbalancer/net/${parameters.loadBalancerName}/${parameters.loadBalancerId}`
 }
 
 export interface TargetgroupArnParameters {
@@ -96,7 +96,7 @@ export interface TargetgroupArnParameters {
 }
 export type TargetgroupArn = `arn:${string}:elasticloadbalancing:${string}:${string}:targetgroup/${string}/${string}`
 export function targetgroupArn(parameters: TargetgroupArnParameters): TargetgroupArn {
-  return `arn:${parameters.partition ?? ''}:elasticloadbalancing:${parameters.region}:${parameters.account}:targetgroup/${parameters.targetGroupName}/${parameters.targetGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticloadbalancing:${parameters.region}:${parameters.account}:targetgroup/${parameters.targetGroupName}/${parameters.targetGroupId}`
 }
 
 export interface TruststoreArnParameters {
@@ -108,5 +108,5 @@ export interface TruststoreArnParameters {
 }
 export type TruststoreArn = `arn:${string}:elasticloadbalancing:${string}:${string}:truststore/${string}/${string}`
 export function truststoreArn(parameters: TruststoreArnParameters): TruststoreArn {
-  return `arn:${parameters.partition ?? ''}:elasticloadbalancing:${parameters.region}:${parameters.account}:truststore/${parameters.trustStoreName}/${parameters.trustStoreId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticloadbalancing:${parameters.region}:${parameters.account}:truststore/${parameters.trustStoreName}/${parameters.trustStoreId}`
 }

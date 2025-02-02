@@ -7,7 +7,7 @@ export interface AggregationAuthorizationArnParameters {
 }
 export type AggregationAuthorizationArn = `arn:${string}:config:${string}:${string}:aggregation-authorization/${string}/${string}`
 export function aggregationAuthorizationArn(parameters: AggregationAuthorizationArnParameters): AggregationAuthorizationArn {
-  return `arn:${parameters.partition ?? ''}:config:${parameters.region}:${parameters.account}:aggregation-authorization/${parameters.aggregatorAccount}/${parameters.aggregatorRegion}`
+  return `arn:${parameters.partition ?? 'aws'}:config:${parameters.region}:${parameters.account}:aggregation-authorization/${parameters.aggregatorAccount}/${parameters.aggregatorRegion}`
 }
 
 export interface ConfigurationAggregatorArnParameters {
@@ -18,7 +18,7 @@ export interface ConfigurationAggregatorArnParameters {
 }
 export type ConfigurationAggregatorArn = `arn:${string}:config:${string}:${string}:config-aggregator/${string}`
 export function configurationAggregatorArn(parameters: ConfigurationAggregatorArnParameters): ConfigurationAggregatorArn {
-  return `arn:${parameters.partition ?? ''}:config:${parameters.region}:${parameters.account}:config-aggregator/${parameters.aggregatorId}`
+  return `arn:${parameters.partition ?? 'aws'}:config:${parameters.region}:${parameters.account}:config-aggregator/${parameters.aggregatorId}`
 }
 
 export interface ConfigRuleArnParameters {
@@ -29,7 +29,7 @@ export interface ConfigRuleArnParameters {
 }
 export type ConfigRuleArn = `arn:${string}:config:${string}:${string}:config-rule/${string}`
 export function configRuleArn(parameters: ConfigRuleArnParameters): ConfigRuleArn {
-  return `arn:${parameters.partition ?? ''}:config:${parameters.region}:${parameters.account}:config-rule/${parameters.configRuleId}`
+  return `arn:${parameters.partition ?? 'aws'}:config:${parameters.region}:${parameters.account}:config-rule/${parameters.configRuleId}`
 }
 
 export interface ConformancePackArnParameters {
@@ -41,7 +41,7 @@ export interface ConformancePackArnParameters {
 }
 export type ConformancePackArn = `arn:${string}:config:${string}:${string}:conformance-pack/${string}/${string}`
 export function conformancePackArn(parameters: ConformancePackArnParameters): ConformancePackArn {
-  return `arn:${parameters.partition ?? ''}:config:${parameters.region}:${parameters.account}:conformance-pack/${parameters.conformancePackName}/${parameters.conformancePackId}`
+  return `arn:${parameters.partition ?? 'aws'}:config:${parameters.region}:${parameters.account}:conformance-pack/${parameters.conformancePackName}/${parameters.conformancePackId}`
 }
 
 export interface OrganizationConfigRuleArnParameters {
@@ -52,7 +52,7 @@ export interface OrganizationConfigRuleArnParameters {
 }
 export type OrganizationConfigRuleArn = `arn:${string}:config:${string}:${string}:organization-config-rule/${string}`
 export function organizationConfigRuleArn(parameters: OrganizationConfigRuleArnParameters): OrganizationConfigRuleArn {
-  return `arn:${parameters.partition ?? ''}:config:${parameters.region}:${parameters.account}:organization-config-rule/${parameters.organizationConfigRuleId}`
+  return `arn:${parameters.partition ?? 'aws'}:config:${parameters.region}:${parameters.account}:organization-config-rule/${parameters.organizationConfigRuleId}`
 }
 
 export interface OrganizationConformancePackArnParameters {
@@ -63,7 +63,7 @@ export interface OrganizationConformancePackArnParameters {
 }
 export type OrganizationConformancePackArn = `arn:${string}:config:${string}:${string}:organization-conformance-pack/${string}`
 export function organizationConformancePackArn(parameters: OrganizationConformancePackArnParameters): OrganizationConformancePackArn {
-  return `arn:${parameters.partition ?? ''}:config:${parameters.region}:${parameters.account}:organization-conformance-pack/${parameters.organizationConformancePackId}`
+  return `arn:${parameters.partition ?? 'aws'}:config:${parameters.region}:${parameters.account}:organization-conformance-pack/${parameters.organizationConformancePackId}`
 }
 
 export interface RemediationConfigurationArnParameters {
@@ -74,7 +74,7 @@ export interface RemediationConfigurationArnParameters {
 }
 export type RemediationConfigurationArn = `arn:${string}:config:${string}:${string}:remediation-configuration/${string}`
 export function remediationConfigurationArn(parameters: RemediationConfigurationArnParameters): RemediationConfigurationArn {
-  return `arn:${parameters.partition ?? ''}:config:${parameters.region}:${parameters.account}:remediation-configuration/${parameters.remediationConfigurationId}`
+  return `arn:${parameters.partition ?? 'aws'}:config:${parameters.region}:${parameters.account}:remediation-configuration/${parameters.remediationConfigurationId}`
 }
 
 export interface StoredQueryArnParameters {
@@ -86,5 +86,5 @@ export interface StoredQueryArnParameters {
 }
 export type StoredQueryArn = `arn:${string}:config:${string}:${string}:stored-query/${string}/${string}`
 export function storedQueryArn(parameters: StoredQueryArnParameters): StoredQueryArn {
-  return `arn:${parameters.partition ?? ''}:config:${parameters.region}:${parameters.account}:stored-query/${parameters.storedQueryName}/${parameters.storedQueryId}`
+  return `arn:${parameters.partition ?? 'aws'}:config:${parameters.region}:${parameters.account}:stored-query/${parameters.storedQueryName}/${parameters.storedQueryId}`
 }

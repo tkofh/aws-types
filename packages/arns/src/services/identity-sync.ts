@@ -6,7 +6,7 @@ export interface SyncProfileResourceArnParameters {
 }
 export type SyncProfileResourceArn = `arn:${string}:identity-sync:${string}:${string}:profile/${string}`
 export function syncProfileResourceArn(parameters: SyncProfileResourceArnParameters): SyncProfileResourceArn {
-  return `arn:${parameters.partition ?? ''}:identity-sync:${parameters.region}:${parameters.account}:profile/${parameters.syncProfileName}`
+  return `arn:${parameters.partition ?? 'aws'}:identity-sync:${parameters.region}:${parameters.account}:profile/${parameters.syncProfileName}`
 }
 
 export interface SyncTargetResourceArnParameters {
@@ -18,5 +18,5 @@ export interface SyncTargetResourceArnParameters {
 }
 export type SyncTargetResourceArn = `arn:${string}:identity-sync:${string}:${string}:target/${string}/${string}`
 export function syncTargetResourceArn(parameters: SyncTargetResourceArnParameters): SyncTargetResourceArn {
-  return `arn:${parameters.partition ?? ''}:identity-sync:${parameters.region}:${parameters.account}:target/${parameters.syncProfileName}/${parameters.syncTargetName}`
+  return `arn:${parameters.partition ?? 'aws'}:identity-sync:${parameters.region}:${parameters.account}:target/${parameters.syncProfileName}/${parameters.syncTargetName}`
 }

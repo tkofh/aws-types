@@ -6,7 +6,7 @@ export interface AssetArnParameters {
 }
 export type AssetArn = `arn:${string}:iotsitewise:${string}:${string}:asset/${string}`
 export function assetArn(parameters: AssetArnParameters): AssetArn {
-  return `arn:${parameters.partition ?? ''}:iotsitewise:${parameters.region}:${parameters.account}:asset/${parameters.assetId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotsitewise:${parameters.region}:${parameters.account}:asset/${parameters.assetId}`
 }
 
 export interface AssetModelArnParameters {
@@ -17,7 +17,7 @@ export interface AssetModelArnParameters {
 }
 export type AssetModelArn = `arn:${string}:iotsitewise:${string}:${string}:asset-model/${string}`
 export function assetModelArn(parameters: AssetModelArnParameters): AssetModelArn {
-  return `arn:${parameters.partition ?? ''}:iotsitewise:${parameters.region}:${parameters.account}:asset-model/${parameters.assetModelId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotsitewise:${parameters.region}:${parameters.account}:asset-model/${parameters.assetModelId}`
 }
 
 export interface TimeSeriesArnParameters {
@@ -28,7 +28,7 @@ export interface TimeSeriesArnParameters {
 }
 export type TimeSeriesArn = `arn:${string}:iotsitewise:${string}:${string}:time-series/${string}`
 export function timeSeriesArn(parameters: TimeSeriesArnParameters): TimeSeriesArn {
-  return `arn:${parameters.partition ?? ''}:iotsitewise:${parameters.region}:${parameters.account}:time-series/${parameters.timeSeriesId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotsitewise:${parameters.region}:${parameters.account}:time-series/${parameters.timeSeriesId}`
 }
 
 export interface GatewayArnParameters {
@@ -39,7 +39,7 @@ export interface GatewayArnParameters {
 }
 export type GatewayArn = `arn:${string}:iotsitewise:${string}:${string}:gateway/${string}`
 export function gatewayArn(parameters: GatewayArnParameters): GatewayArn {
-  return `arn:${parameters.partition ?? ''}:iotsitewise:${parameters.region}:${parameters.account}:gateway/${parameters.gatewayId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotsitewise:${parameters.region}:${parameters.account}:gateway/${parameters.gatewayId}`
 }
 
 export interface PortalArnParameters {
@@ -50,7 +50,7 @@ export interface PortalArnParameters {
 }
 export type PortalArn = `arn:${string}:iotsitewise:${string}:${string}:portal/${string}`
 export function portalArn(parameters: PortalArnParameters): PortalArn {
-  return `arn:${parameters.partition ?? ''}:iotsitewise:${parameters.region}:${parameters.account}:portal/${parameters.portalId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotsitewise:${parameters.region}:${parameters.account}:portal/${parameters.portalId}`
 }
 
 export interface ProjectArnParameters {
@@ -61,7 +61,7 @@ export interface ProjectArnParameters {
 }
 export type ProjectArn = `arn:${string}:iotsitewise:${string}:${string}:project/${string}`
 export function projectArn(parameters: ProjectArnParameters): ProjectArn {
-  return `arn:${parameters.partition ?? ''}:iotsitewise:${parameters.region}:${parameters.account}:project/${parameters.projectId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotsitewise:${parameters.region}:${parameters.account}:project/${parameters.projectId}`
 }
 
 export interface DashboardArnParameters {
@@ -72,7 +72,7 @@ export interface DashboardArnParameters {
 }
 export type DashboardArn = `arn:${string}:iotsitewise:${string}:${string}:dashboard/${string}`
 export function dashboardArn(parameters: DashboardArnParameters): DashboardArn {
-  return `arn:${parameters.partition ?? ''}:iotsitewise:${parameters.region}:${parameters.account}:dashboard/${parameters.dashboardId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotsitewise:${parameters.region}:${parameters.account}:dashboard/${parameters.dashboardId}`
 }
 
 export interface AccessPolicyArnParameters {
@@ -83,5 +83,5 @@ export interface AccessPolicyArnParameters {
 }
 export type AccessPolicyArn = `arn:${string}:iotsitewise:${string}:${string}:access-policy/${string}`
 export function accessPolicyArn(parameters: AccessPolicyArnParameters): AccessPolicyArn {
-  return `arn:${parameters.partition ?? ''}:iotsitewise:${parameters.region}:${parameters.account}:access-policy/${parameters.accessPolicyId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotsitewise:${parameters.region}:${parameters.account}:access-policy/${parameters.accessPolicyId}`
 }

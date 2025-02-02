@@ -6,7 +6,7 @@ export interface ChannelArnParameters {
 }
 export type ChannelArn = `arn:${string}:medialive:${string}:${string}:channel:${string}`
 export function channelArn(parameters: ChannelArnParameters): ChannelArn {
-  return `arn:${parameters.partition ?? ''}:medialive:${parameters.region}:${parameters.account}:channel:${parameters.channelId}`
+  return `arn:${parameters.partition ?? 'aws'}:medialive:${parameters.region}:${parameters.account}:channel:${parameters.channelId}`
 }
 
 export interface InputArnParameters {
@@ -17,7 +17,7 @@ export interface InputArnParameters {
 }
 export type InputArn = `arn:${string}:medialive:${string}:${string}:input:${string}`
 export function inputArn(parameters: InputArnParameters): InputArn {
-  return `arn:${parameters.partition ?? ''}:medialive:${parameters.region}:${parameters.account}:input:${parameters.inputId}`
+  return `arn:${parameters.partition ?? 'aws'}:medialive:${parameters.region}:${parameters.account}:input:${parameters.inputId}`
 }
 
 export interface InputDeviceArnParameters {
@@ -28,7 +28,7 @@ export interface InputDeviceArnParameters {
 }
 export type InputDeviceArn = `arn:${string}:medialive:${string}:${string}:inputDevice:${string}`
 export function inputDeviceArn(parameters: InputDeviceArnParameters): InputDeviceArn {
-  return `arn:${parameters.partition ?? ''}:medialive:${parameters.region}:${parameters.account}:inputDevice:${parameters.deviceId}`
+  return `arn:${parameters.partition ?? 'aws'}:medialive:${parameters.region}:${parameters.account}:inputDevice:${parameters.deviceId}`
 }
 
 export interface InputSecurityGroupArnParameters {
@@ -39,7 +39,7 @@ export interface InputSecurityGroupArnParameters {
 }
 export type InputSecurityGroupArn = `arn:${string}:medialive:${string}:${string}:inputSecurityGroup:${string}`
 export function inputSecurityGroupArn(parameters: InputSecurityGroupArnParameters): InputSecurityGroupArn {
-  return `arn:${parameters.partition ?? ''}:medialive:${parameters.region}:${parameters.account}:inputSecurityGroup:${parameters.inputSecurityGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:medialive:${parameters.region}:${parameters.account}:inputSecurityGroup:${parameters.inputSecurityGroupId}`
 }
 
 export interface MultiplexArnParameters {
@@ -50,7 +50,7 @@ export interface MultiplexArnParameters {
 }
 export type MultiplexArn = `arn:${string}:medialive:${string}:${string}:multiplex:${string}`
 export function multiplexArn(parameters: MultiplexArnParameters): MultiplexArn {
-  return `arn:${parameters.partition ?? ''}:medialive:${parameters.region}:${parameters.account}:multiplex:${parameters.multiplexId}`
+  return `arn:${parameters.partition ?? 'aws'}:medialive:${parameters.region}:${parameters.account}:multiplex:${parameters.multiplexId}`
 }
 
 export interface ReservationArnParameters {
@@ -61,7 +61,7 @@ export interface ReservationArnParameters {
 }
 export type ReservationArn = `arn:${string}:medialive:${string}:${string}:reservation:${string}`
 export function reservationArn(parameters: ReservationArnParameters): ReservationArn {
-  return `arn:${parameters.partition ?? ''}:medialive:${parameters.region}:${parameters.account}:reservation:${parameters.reservationId}`
+  return `arn:${parameters.partition ?? 'aws'}:medialive:${parameters.region}:${parameters.account}:reservation:${parameters.reservationId}`
 }
 
 export interface OfferingArnParameters {
@@ -72,7 +72,7 @@ export interface OfferingArnParameters {
 }
 export type OfferingArn = `arn:${string}:medialive:${string}:${string}:offering:${string}`
 export function offeringArn(parameters: OfferingArnParameters): OfferingArn {
-  return `arn:${parameters.partition ?? ''}:medialive:${parameters.region}:${parameters.account}:offering:${parameters.offeringId}`
+  return `arn:${parameters.partition ?? 'aws'}:medialive:${parameters.region}:${parameters.account}:offering:${parameters.offeringId}`
 }
 
 export interface SignalMapArnParameters {
@@ -83,7 +83,7 @@ export interface SignalMapArnParameters {
 }
 export type SignalMapArn = `arn:${string}:medialive:${string}:${string}:signal-map:${string}`
 export function signalMapArn(parameters: SignalMapArnParameters): SignalMapArn {
-  return `arn:${parameters.partition ?? ''}:medialive:${parameters.region}:${parameters.account}:signal-map:${parameters.signalMapId}`
+  return `arn:${parameters.partition ?? 'aws'}:medialive:${parameters.region}:${parameters.account}:signal-map:${parameters.signalMapId}`
 }
 
 export interface CloudwatchAlarmTemplateGroupArnParameters {
@@ -94,7 +94,7 @@ export interface CloudwatchAlarmTemplateGroupArnParameters {
 }
 export type CloudwatchAlarmTemplateGroupArn = `arn:${string}:medialive:${string}:${string}:cloudwatch-alarm-template-group:${string}`
 export function cloudwatchAlarmTemplateGroupArn(parameters: CloudwatchAlarmTemplateGroupArnParameters): CloudwatchAlarmTemplateGroupArn {
-  return `arn:${parameters.partition ?? ''}:medialive:${parameters.region}:${parameters.account}:cloudwatch-alarm-template-group:${parameters.cloudWatchAlarmTemplateGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:medialive:${parameters.region}:${parameters.account}:cloudwatch-alarm-template-group:${parameters.cloudWatchAlarmTemplateGroupId}`
 }
 
 export interface CloudwatchAlarmTemplateArnParameters {
@@ -105,7 +105,7 @@ export interface CloudwatchAlarmTemplateArnParameters {
 }
 export type CloudwatchAlarmTemplateArn = `arn:${string}:medialive:${string}:${string}:cloudwatch-alarm-template:${string}`
 export function cloudwatchAlarmTemplateArn(parameters: CloudwatchAlarmTemplateArnParameters): CloudwatchAlarmTemplateArn {
-  return `arn:${parameters.partition ?? ''}:medialive:${parameters.region}:${parameters.account}:cloudwatch-alarm-template:${parameters.cloudWatchAlarmTemplateId}`
+  return `arn:${parameters.partition ?? 'aws'}:medialive:${parameters.region}:${parameters.account}:cloudwatch-alarm-template:${parameters.cloudWatchAlarmTemplateId}`
 }
 
 export interface EventbridgeRuleTemplateGroupArnParameters {
@@ -116,7 +116,7 @@ export interface EventbridgeRuleTemplateGroupArnParameters {
 }
 export type EventbridgeRuleTemplateGroupArn = `arn:${string}:medialive:${string}:${string}:eventbridge-rule-template-group:${string}`
 export function eventbridgeRuleTemplateGroupArn(parameters: EventbridgeRuleTemplateGroupArnParameters): EventbridgeRuleTemplateGroupArn {
-  return `arn:${parameters.partition ?? ''}:medialive:${parameters.region}:${parameters.account}:eventbridge-rule-template-group:${parameters.eventBridgeRuleTemplateGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:medialive:${parameters.region}:${parameters.account}:eventbridge-rule-template-group:${parameters.eventBridgeRuleTemplateGroupId}`
 }
 
 export interface EventbridgeRuleTemplateArnParameters {
@@ -127,7 +127,7 @@ export interface EventbridgeRuleTemplateArnParameters {
 }
 export type EventbridgeRuleTemplateArn = `arn:${string}:medialive:${string}:${string}:eventbridge-rule-template:${string}`
 export function eventbridgeRuleTemplateArn(parameters: EventbridgeRuleTemplateArnParameters): EventbridgeRuleTemplateArn {
-  return `arn:${parameters.partition ?? ''}:medialive:${parameters.region}:${parameters.account}:eventbridge-rule-template:${parameters.eventBridgeRuleTemplateId}`
+  return `arn:${parameters.partition ?? 'aws'}:medialive:${parameters.region}:${parameters.account}:eventbridge-rule-template:${parameters.eventBridgeRuleTemplateId}`
 }
 
 export interface ClusterArnParameters {
@@ -138,7 +138,7 @@ export interface ClusterArnParameters {
 }
 export type ClusterArn = `arn:${string}:medialive:${string}:${string}:cluster:${string}`
 export function clusterArn(parameters: ClusterArnParameters): ClusterArn {
-  return `arn:${parameters.partition ?? ''}:medialive:${parameters.region}:${parameters.account}:cluster:${parameters.clusterId}`
+  return `arn:${parameters.partition ?? 'aws'}:medialive:${parameters.region}:${parameters.account}:cluster:${parameters.clusterId}`
 }
 
 export interface NodeArnParameters {
@@ -150,7 +150,7 @@ export interface NodeArnParameters {
 }
 export type NodeArn = `arn:${string}:medialive:${string}:${string}:node:${string}/${string}`
 export function nodeArn(parameters: NodeArnParameters): NodeArn {
-  return `arn:${parameters.partition ?? ''}:medialive:${parameters.region}:${parameters.account}:node:${parameters.clusterId}/${parameters.nodeId}`
+  return `arn:${parameters.partition ?? 'aws'}:medialive:${parameters.region}:${parameters.account}:node:${parameters.clusterId}/${parameters.nodeId}`
 }
 
 export interface NetworkArnParameters {
@@ -161,7 +161,7 @@ export interface NetworkArnParameters {
 }
 export type NetworkArn = `arn:${string}:medialive:${string}:${string}:network:${string}`
 export function networkArn(parameters: NetworkArnParameters): NetworkArn {
-  return `arn:${parameters.partition ?? ''}:medialive:${parameters.region}:${parameters.account}:network:${parameters.networkId}`
+  return `arn:${parameters.partition ?? 'aws'}:medialive:${parameters.region}:${parameters.account}:network:${parameters.networkId}`
 }
 
 export interface ChannelPlacementGroupArnParameters {
@@ -173,5 +173,5 @@ export interface ChannelPlacementGroupArnParameters {
 }
 export type ChannelPlacementGroupArn = `arn:${string}:medialive:${string}:${string}:channelPlacementGroup:${string}/${string}`
 export function channelPlacementGroupArn(parameters: ChannelPlacementGroupArnParameters): ChannelPlacementGroupArn {
-  return `arn:${parameters.partition ?? ''}:medialive:${parameters.region}:${parameters.account}:channelPlacementGroup:${parameters.clusterId}/${parameters.channelPlacementGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:medialive:${parameters.region}:${parameters.account}:channelPlacementGroup:${parameters.clusterId}/${parameters.channelPlacementGroupId}`
 }

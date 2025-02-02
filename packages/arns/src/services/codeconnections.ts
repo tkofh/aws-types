@@ -6,7 +6,7 @@ export interface ConnectionArnParameters {
 }
 export type ConnectionArn = `arn:${string}:codeconnections:${string}:${string}:connection/${string}`
 export function connectionArn(parameters: ConnectionArnParameters): ConnectionArn {
-  return `arn:${parameters.partition ?? ''}:codeconnections:${parameters.region}:${parameters.account}:connection/${parameters.connectionId}`
+  return `arn:${parameters.partition ?? 'aws'}:codeconnections:${parameters.region}:${parameters.account}:connection/${parameters.connectionId}`
 }
 
 export interface HostArnParameters {
@@ -17,7 +17,7 @@ export interface HostArnParameters {
 }
 export type HostArn = `arn:${string}:codeconnections:${string}:${string}:host/${string}`
 export function hostArn(parameters: HostArnParameters): HostArn {
-  return `arn:${parameters.partition ?? ''}:codeconnections:${parameters.region}:${parameters.account}:host/${parameters.hostId}`
+  return `arn:${parameters.partition ?? 'aws'}:codeconnections:${parameters.region}:${parameters.account}:host/${parameters.hostId}`
 }
 
 export interface RepositoryLinkArnParameters {
@@ -28,5 +28,5 @@ export interface RepositoryLinkArnParameters {
 }
 export type RepositoryLinkArn = `arn:${string}:codeconnections:${string}:${string}:repository-link/${string}`
 export function repositoryLinkArn(parameters: RepositoryLinkArnParameters): RepositoryLinkArn {
-  return `arn:${parameters.partition ?? ''}:codeconnections:${parameters.region}:${parameters.account}:repository-link/${parameters.repositoryLinkId}`
+  return `arn:${parameters.partition ?? 'aws'}:codeconnections:${parameters.region}:${parameters.account}:repository-link/${parameters.repositoryLinkId}`
 }

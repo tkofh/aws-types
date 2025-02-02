@@ -7,7 +7,7 @@ export interface AlbArnParameters {
 }
 export type AlbArn = `arn:${string}:elasticloadbalancing:${string}:${string}:loadbalancer/app/${string}/${string}`
 export function albArn(parameters: AlbArnParameters): AlbArn {
-  return `arn:${parameters.partition ?? ''}:elasticloadbalancing:${parameters.region}:${parameters.account}:loadbalancer/app/${parameters.loadBalancerName}/${parameters.loadBalancerId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticloadbalancing:${parameters.region}:${parameters.account}:loadbalancer/app/${parameters.loadBalancerName}/${parameters.loadBalancerId}`
 }
 
 export interface NlbArnParameters {
@@ -19,5 +19,5 @@ export interface NlbArnParameters {
 }
 export type NlbArn = `arn:${string}:elasticloadbalancing:${string}:${string}:loadbalancer/net/${string}/${string}`
 export function nlbArn(parameters: NlbArnParameters): NlbArn {
-  return `arn:${parameters.partition ?? ''}:elasticloadbalancing:${parameters.region}:${parameters.account}:loadbalancer/net/${parameters.loadBalancerName}/${parameters.loadBalancerId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticloadbalancing:${parameters.region}:${parameters.account}:loadbalancer/net/${parameters.loadBalancerName}/${parameters.loadBalancerId}`
 }

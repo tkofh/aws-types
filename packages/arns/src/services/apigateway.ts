@@ -6,7 +6,7 @@ export interface AccessLogSettingsArnParameters {
 }
 export type AccessLogSettingsArn = `arn:${string}:apigateway:${string}::/apis/${string}/stages/${string}/accesslogsettings`
 export function accessLogSettingsArn(parameters: AccessLogSettingsArnParameters): AccessLogSettingsArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/stages/${parameters.stageName}/accesslogsettings`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/stages/${parameters.stageName}/accesslogsettings`
 }
 
 export interface ApiArnParameters {
@@ -16,7 +16,7 @@ export interface ApiArnParameters {
 }
 export type ApiArn = `arn:${string}:apigateway:${string}::/apis/${string}`
 export function apiArn(parameters: ApiArnParameters): ApiArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}`
 }
 
 export interface ApisArnParameters {
@@ -25,7 +25,7 @@ export interface ApisArnParameters {
 }
 export type ApisArn = `arn:${string}:apigateway:${string}::/apis`
 export function apisArn(parameters: ApisArnParameters): ApisArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis`
 }
 
 export interface ApiMappingArnParameters {
@@ -36,7 +36,7 @@ export interface ApiMappingArnParameters {
 }
 export type ApiMappingArn = `arn:${string}:apigateway:${string}::/domainnames/${string}/apimappings/${string}`
 export function apiMappingArn(parameters: ApiMappingArnParameters): ApiMappingArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/domainnames/${parameters.domainName}/apimappings/${parameters.apiMappingId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/domainnames/${parameters.domainName}/apimappings/${parameters.apiMappingId}`
 }
 
 export interface ApiMappingsArnParameters {
@@ -46,7 +46,7 @@ export interface ApiMappingsArnParameters {
 }
 export type ApiMappingsArn = `arn:${string}:apigateway:${string}::/domainnames/${string}/apimappings`
 export function apiMappingsArn(parameters: ApiMappingsArnParameters): ApiMappingsArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/domainnames/${parameters.domainName}/apimappings`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/domainnames/${parameters.domainName}/apimappings`
 }
 
 export interface AuthorizerArnParameters {
@@ -57,7 +57,7 @@ export interface AuthorizerArnParameters {
 }
 export type AuthorizerArn = `arn:${string}:apigateway:${string}::/apis/${string}/authorizers/${string}`
 export function authorizerArn(parameters: AuthorizerArnParameters): AuthorizerArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/authorizers/${parameters.authorizerId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/authorizers/${parameters.authorizerId}`
 }
 
 export interface AuthorizersArnParameters {
@@ -67,7 +67,7 @@ export interface AuthorizersArnParameters {
 }
 export type AuthorizersArn = `arn:${string}:apigateway:${string}::/apis/${string}/authorizers`
 export function authorizersArn(parameters: AuthorizersArnParameters): AuthorizersArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/authorizers`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/authorizers`
 }
 
 export interface AuthorizersCacheArnParameters {
@@ -78,7 +78,7 @@ export interface AuthorizersCacheArnParameters {
 }
 export type AuthorizersCacheArn = `arn:${string}:apigateway:${string}::/apis/${string}/stages/${string}/cache/authorizers`
 export function authorizersCacheArn(parameters: AuthorizersCacheArnParameters): AuthorizersCacheArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/stages/${parameters.stageName}/cache/authorizers`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/stages/${parameters.stageName}/cache/authorizers`
 }
 
 export interface CorsArnParameters {
@@ -88,7 +88,7 @@ export interface CorsArnParameters {
 }
 export type CorsArn = `arn:${string}:apigateway:${string}::/apis/${string}/cors`
 export function corsArn(parameters: CorsArnParameters): CorsArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/cors`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/cors`
 }
 
 export interface DeploymentArnParameters {
@@ -99,7 +99,7 @@ export interface DeploymentArnParameters {
 }
 export type DeploymentArn = `arn:${string}:apigateway:${string}::/apis/${string}/deployments/${string}`
 export function deploymentArn(parameters: DeploymentArnParameters): DeploymentArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/deployments/${parameters.deploymentId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/deployments/${parameters.deploymentId}`
 }
 
 export interface DeploymentsArnParameters {
@@ -109,7 +109,7 @@ export interface DeploymentsArnParameters {
 }
 export type DeploymentsArn = `arn:${string}:apigateway:${string}::/apis/${string}/deployments`
 export function deploymentsArn(parameters: DeploymentsArnParameters): DeploymentsArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/deployments`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/deployments`
 }
 
 export interface ExportedApiArnParameters {
@@ -120,7 +120,7 @@ export interface ExportedApiArnParameters {
 }
 export type ExportedApiArn = `arn:${string}:apigateway:${string}::/apis/${string}/exports/${string}`
 export function exportedApiArn(parameters: ExportedApiArnParameters): ExportedApiArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/exports/${parameters.specification}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/exports/${parameters.specification}`
 }
 
 export interface IntegrationArnParameters {
@@ -131,7 +131,7 @@ export interface IntegrationArnParameters {
 }
 export type IntegrationArn = `arn:${string}:apigateway:${string}::/apis/${string}/integrations/${string}`
 export function integrationArn(parameters: IntegrationArnParameters): IntegrationArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/integrations/${parameters.integrationId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/integrations/${parameters.integrationId}`
 }
 
 export interface IntegrationsArnParameters {
@@ -141,7 +141,7 @@ export interface IntegrationsArnParameters {
 }
 export type IntegrationsArn = `arn:${string}:apigateway:${string}::/apis/${string}/integrations`
 export function integrationsArn(parameters: IntegrationsArnParameters): IntegrationsArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/integrations`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/integrations`
 }
 
 export interface IntegrationResponseArnParameters {
@@ -153,7 +153,7 @@ export interface IntegrationResponseArnParameters {
 }
 export type IntegrationResponseArn = `arn:${string}:apigateway:${string}::/apis/${string}/integrations/${string}/integrationresponses/${string}`
 export function integrationResponseArn(parameters: IntegrationResponseArnParameters): IntegrationResponseArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/integrations/${parameters.integrationId}/integrationresponses/${parameters.integrationResponseId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/integrations/${parameters.integrationId}/integrationresponses/${parameters.integrationResponseId}`
 }
 
 export interface IntegrationResponsesArnParameters {
@@ -164,7 +164,7 @@ export interface IntegrationResponsesArnParameters {
 }
 export type IntegrationResponsesArn = `arn:${string}:apigateway:${string}::/apis/${string}/integrations/${string}/integrationresponses`
 export function integrationResponsesArn(parameters: IntegrationResponsesArnParameters): IntegrationResponsesArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/integrations/${parameters.integrationId}/integrationresponses`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/integrations/${parameters.integrationId}/integrationresponses`
 }
 
 export interface ModelArnParameters {
@@ -175,7 +175,7 @@ export interface ModelArnParameters {
 }
 export type ModelArn = `arn:${string}:apigateway:${string}::/apis/${string}/models/${string}`
 export function modelArn(parameters: ModelArnParameters): ModelArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/models/${parameters.modelId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/models/${parameters.modelId}`
 }
 
 export interface ModelsArnParameters {
@@ -185,7 +185,7 @@ export interface ModelsArnParameters {
 }
 export type ModelsArn = `arn:${string}:apigateway:${string}::/apis/${string}/models`
 export function modelsArn(parameters: ModelsArnParameters): ModelsArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/models`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/models`
 }
 
 export interface ModelTemplateArnParameters {
@@ -196,7 +196,7 @@ export interface ModelTemplateArnParameters {
 }
 export type ModelTemplateArn = `arn:${string}:apigateway:${string}::/apis/${string}/models/${string}/template`
 export function modelTemplateArn(parameters: ModelTemplateArnParameters): ModelTemplateArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/models/${parameters.modelId}/template`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/models/${parameters.modelId}/template`
 }
 
 export interface RouteArnParameters {
@@ -207,7 +207,7 @@ export interface RouteArnParameters {
 }
 export type RouteArn = `arn:${string}:apigateway:${string}::/apis/${string}/routes/${string}`
 export function routeArn(parameters: RouteArnParameters): RouteArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/routes/${parameters.routeId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/routes/${parameters.routeId}`
 }
 
 export interface RoutesArnParameters {
@@ -217,7 +217,7 @@ export interface RoutesArnParameters {
 }
 export type RoutesArn = `arn:${string}:apigateway:${string}::/apis/${string}/routes`
 export function routesArn(parameters: RoutesArnParameters): RoutesArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/routes`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/routes`
 }
 
 export interface RouteResponseArnParameters {
@@ -229,7 +229,7 @@ export interface RouteResponseArnParameters {
 }
 export type RouteResponseArn = `arn:${string}:apigateway:${string}::/apis/${string}/routes/${string}/routeresponses/${string}`
 export function routeResponseArn(parameters: RouteResponseArnParameters): RouteResponseArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/routes/${parameters.routeId}/routeresponses/${parameters.routeResponseId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/routes/${parameters.routeId}/routeresponses/${parameters.routeResponseId}`
 }
 
 export interface RouteResponsesArnParameters {
@@ -240,7 +240,7 @@ export interface RouteResponsesArnParameters {
 }
 export type RouteResponsesArn = `arn:${string}:apigateway:${string}::/apis/${string}/routes/${string}/routeresponses`
 export function routeResponsesArn(parameters: RouteResponsesArnParameters): RouteResponsesArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/routes/${parameters.routeId}/routeresponses`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/routes/${parameters.routeId}/routeresponses`
 }
 
 export interface RouteRequestParameterArnParameters {
@@ -252,7 +252,7 @@ export interface RouteRequestParameterArnParameters {
 }
 export type RouteRequestParameterArn = `arn:${string}:apigateway:${string}::/apis/${string}/routes/${string}/requestparameters/${string}`
 export function routeRequestParameterArn(parameters: RouteRequestParameterArnParameters): RouteRequestParameterArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/routes/${parameters.routeId}/requestparameters/${parameters.requestParameterKey}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/routes/${parameters.routeId}/requestparameters/${parameters.requestParameterKey}`
 }
 
 export interface RouteSettingsArnParameters {
@@ -264,7 +264,7 @@ export interface RouteSettingsArnParameters {
 }
 export type RouteSettingsArn = `arn:${string}:apigateway:${string}::/apis/${string}/stages/${string}/routesettings/${string}`
 export function routeSettingsArn(parameters: RouteSettingsArnParameters): RouteSettingsArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/stages/${parameters.stageName}/routesettings/${parameters.routeKey}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/stages/${parameters.stageName}/routesettings/${parameters.routeKey}`
 }
 
 export interface StageArnParameters {
@@ -275,7 +275,7 @@ export interface StageArnParameters {
 }
 export type StageArn = `arn:${string}:apigateway:${string}::/apis/${string}/stages/${string}`
 export function stageArn(parameters: StageArnParameters): StageArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/stages/${parameters.stageName}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/stages/${parameters.stageName}`
 }
 
 export interface StagesArnParameters {
@@ -285,7 +285,7 @@ export interface StagesArnParameters {
 }
 export type StagesArn = `arn:${string}:apigateway:${string}::/apis/${string}/stages`
 export function stagesArn(parameters: StagesArnParameters): StagesArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apis/${parameters.apiId}/stages`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apis/${parameters.apiId}/stages`
 }
 
 export interface VpcLinkArnParameters {
@@ -295,7 +295,7 @@ export interface VpcLinkArnParameters {
 }
 export type VpcLinkArn = `arn:${string}:apigateway:${string}::/vpclinks/${string}`
 export function vpcLinkArn(parameters: VpcLinkArnParameters): VpcLinkArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/vpclinks/${parameters.vpcLinkId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/vpclinks/${parameters.vpcLinkId}`
 }
 
 export interface VpcLinksArnParameters {
@@ -304,7 +304,7 @@ export interface VpcLinksArnParameters {
 }
 export type VpcLinksArn = `arn:${string}:apigateway:${string}::/vpclinks`
 export function vpcLinksArn(parameters: VpcLinksArnParameters): VpcLinksArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/vpclinks`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/vpclinks`
 }
 
 export interface AccountArnParameters {
@@ -313,7 +313,7 @@ export interface AccountArnParameters {
 }
 export type AccountArn = `arn:${string}:apigateway:${string}::/account`
 export function accountArn(parameters: AccountArnParameters): AccountArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/account`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/account`
 }
 
 export interface ApiKeyArnParameters {
@@ -323,7 +323,7 @@ export interface ApiKeyArnParameters {
 }
 export type ApiKeyArn = `arn:${string}:apigateway:${string}::/apikeys/${string}`
 export function apiKeyArn(parameters: ApiKeyArnParameters): ApiKeyArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apikeys/${parameters.apiKeyId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apikeys/${parameters.apiKeyId}`
 }
 
 export interface ApiKeysArnParameters {
@@ -332,7 +332,7 @@ export interface ApiKeysArnParameters {
 }
 export type ApiKeysArn = `arn:${string}:apigateway:${string}::/apikeys`
 export function apiKeysArn(parameters: ApiKeysArnParameters): ApiKeysArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/apikeys`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/apikeys`
 }
 
 export interface BasePathMappingArnParameters {
@@ -343,7 +343,7 @@ export interface BasePathMappingArnParameters {
 }
 export type BasePathMappingArn = `arn:${string}:apigateway:${string}::/domainnames/${string}/basepathmappings/${string}`
 export function basePathMappingArn(parameters: BasePathMappingArnParameters): BasePathMappingArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/domainnames/${parameters.domainName}/basepathmappings/${parameters.basePath}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/domainnames/${parameters.domainName}/basepathmappings/${parameters.basePath}`
 }
 
 export interface BasePathMappingsArnParameters {
@@ -353,7 +353,7 @@ export interface BasePathMappingsArnParameters {
 }
 export type BasePathMappingsArn = `arn:${string}:apigateway:${string}::/domainnames/${string}/basepathmappings`
 export function basePathMappingsArn(parameters: BasePathMappingsArnParameters): BasePathMappingsArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/domainnames/${parameters.domainName}/basepathmappings`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/domainnames/${parameters.domainName}/basepathmappings`
 }
 
 export interface ClientCertificateArnParameters {
@@ -363,7 +363,7 @@ export interface ClientCertificateArnParameters {
 }
 export type ClientCertificateArn = `arn:${string}:apigateway:${string}::/clientcertificates/${string}`
 export function clientCertificateArn(parameters: ClientCertificateArnParameters): ClientCertificateArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/clientcertificates/${parameters.clientCertificateId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/clientcertificates/${parameters.clientCertificateId}`
 }
 
 export interface ClientCertificatesArnParameters {
@@ -372,7 +372,7 @@ export interface ClientCertificatesArnParameters {
 }
 export type ClientCertificatesArn = `arn:${string}:apigateway:${string}::/clientcertificates`
 export function clientCertificatesArn(parameters: ClientCertificatesArnParameters): ClientCertificatesArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/clientcertificates`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/clientcertificates`
 }
 
 export interface DocumentationPartArnParameters {
@@ -383,7 +383,7 @@ export interface DocumentationPartArnParameters {
 }
 export type DocumentationPartArn = `arn:${string}:apigateway:${string}::/restapis/${string}/documentation/parts/${string}`
 export function documentationPartArn(parameters: DocumentationPartArnParameters): DocumentationPartArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/documentation/parts/${parameters.documentationPartId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/documentation/parts/${parameters.documentationPartId}`
 }
 
 export interface DocumentationPartsArnParameters {
@@ -393,7 +393,7 @@ export interface DocumentationPartsArnParameters {
 }
 export type DocumentationPartsArn = `arn:${string}:apigateway:${string}::/restapis/${string}/documentation/parts`
 export function documentationPartsArn(parameters: DocumentationPartsArnParameters): DocumentationPartsArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/documentation/parts`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/documentation/parts`
 }
 
 export interface DocumentationVersionArnParameters {
@@ -404,7 +404,7 @@ export interface DocumentationVersionArnParameters {
 }
 export type DocumentationVersionArn = `arn:${string}:apigateway:${string}::/restapis/${string}/documentation/versions/${string}`
 export function documentationVersionArn(parameters: DocumentationVersionArnParameters): DocumentationVersionArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/documentation/versions/${parameters.documentationVersionId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/documentation/versions/${parameters.documentationVersionId}`
 }
 
 export interface DocumentationVersionsArnParameters {
@@ -414,7 +414,7 @@ export interface DocumentationVersionsArnParameters {
 }
 export type DocumentationVersionsArn = `arn:${string}:apigateway:${string}::/restapis/${string}/documentation/versions`
 export function documentationVersionsArn(parameters: DocumentationVersionsArnParameters): DocumentationVersionsArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/documentation/versions`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/documentation/versions`
 }
 
 export interface DomainNameArnParameters {
@@ -424,7 +424,7 @@ export interface DomainNameArnParameters {
 }
 export type DomainNameArn = `arn:${string}:apigateway:${string}::/domainnames/${string}`
 export function domainNameArn(parameters: DomainNameArnParameters): DomainNameArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/domainnames/${parameters.domainName}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/domainnames/${parameters.domainName}`
 }
 
 export interface DomainNamesArnParameters {
@@ -433,7 +433,7 @@ export interface DomainNamesArnParameters {
 }
 export type DomainNamesArn = `arn:${string}:apigateway:${string}::/domainnames`
 export function domainNamesArn(parameters: DomainNamesArnParameters): DomainNamesArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/domainnames`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/domainnames`
 }
 
 export interface GatewayResponseArnParameters {
@@ -444,7 +444,7 @@ export interface GatewayResponseArnParameters {
 }
 export type GatewayResponseArn = `arn:${string}:apigateway:${string}::/restapis/${string}/gatewayresponses/${string}`
 export function gatewayResponseArn(parameters: GatewayResponseArnParameters): GatewayResponseArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/gatewayresponses/${parameters.responseType}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/gatewayresponses/${parameters.responseType}`
 }
 
 export interface GatewayResponsesArnParameters {
@@ -454,7 +454,7 @@ export interface GatewayResponsesArnParameters {
 }
 export type GatewayResponsesArn = `arn:${string}:apigateway:${string}::/restapis/${string}/gatewayresponses`
 export function gatewayResponsesArn(parameters: GatewayResponsesArnParameters): GatewayResponsesArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/gatewayresponses`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/gatewayresponses`
 }
 
 export interface MethodArnParameters {
@@ -466,7 +466,7 @@ export interface MethodArnParameters {
 }
 export type MethodArn = `arn:${string}:apigateway:${string}::/restapis/${string}/resources/${string}/methods/${string}`
 export function methodArn(parameters: MethodArnParameters): MethodArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/resources/${parameters.resourceId}/methods/${parameters.httpMethodType}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/resources/${parameters.resourceId}/methods/${parameters.httpMethodType}`
 }
 
 export interface MethodResponseArnParameters {
@@ -479,7 +479,7 @@ export interface MethodResponseArnParameters {
 }
 export type MethodResponseArn = `arn:${string}:apigateway:${string}::/restapis/${string}/resources/${string}/methods/${string}/responses/${string}`
 export function methodResponseArn(parameters: MethodResponseArnParameters): MethodResponseArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/resources/${parameters.resourceId}/methods/${parameters.httpMethodType}/responses/${parameters.statusCode}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/resources/${parameters.resourceId}/methods/${parameters.httpMethodType}/responses/${parameters.statusCode}`
 }
 
 export interface RequestValidatorArnParameters {
@@ -490,7 +490,7 @@ export interface RequestValidatorArnParameters {
 }
 export type RequestValidatorArn = `arn:${string}:apigateway:${string}::/restapis/${string}/requestvalidators/${string}`
 export function requestValidatorArn(parameters: RequestValidatorArnParameters): RequestValidatorArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/requestvalidators/${parameters.requestValidatorId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/requestvalidators/${parameters.requestValidatorId}`
 }
 
 export interface RequestValidatorsArnParameters {
@@ -500,7 +500,7 @@ export interface RequestValidatorsArnParameters {
 }
 export type RequestValidatorsArn = `arn:${string}:apigateway:${string}::/restapis/${string}/requestvalidators`
 export function requestValidatorsArn(parameters: RequestValidatorsArnParameters): RequestValidatorsArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/requestvalidators`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/requestvalidators`
 }
 
 export interface ResourceArnParameters {
@@ -511,7 +511,7 @@ export interface ResourceArnParameters {
 }
 export type ResourceArn = `arn:${string}:apigateway:${string}::/restapis/${string}/resources/${string}`
 export function resourceArn(parameters: ResourceArnParameters): ResourceArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/resources/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/resources/${parameters.resourceId}`
 }
 
 export interface ResourcesArnParameters {
@@ -521,7 +521,7 @@ export interface ResourcesArnParameters {
 }
 export type ResourcesArn = `arn:${string}:apigateway:${string}::/restapis/${string}/resources`
 export function resourcesArn(parameters: ResourcesArnParameters): ResourcesArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/resources`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/resources`
 }
 
 export interface RestApiArnParameters {
@@ -531,7 +531,7 @@ export interface RestApiArnParameters {
 }
 export type RestApiArn = `arn:${string}:apigateway:${string}::/restapis/${string}`
 export function restApiArn(parameters: RestApiArnParameters): RestApiArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}`
 }
 
 export interface RestApisArnParameters {
@@ -540,7 +540,7 @@ export interface RestApisArnParameters {
 }
 export type RestApisArn = `arn:${string}:apigateway:${string}::/restapis`
 export function restApisArn(parameters: RestApisArnParameters): RestApisArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis`
 }
 
 export interface SdkArnParameters {
@@ -552,7 +552,7 @@ export interface SdkArnParameters {
 }
 export type SdkArn = `arn:${string}:apigateway:${string}::/restapis/${string}/stages/${string}/sdks/${string}`
 export function sdkArn(parameters: SdkArnParameters): SdkArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/stages/${parameters.stageName}/sdks/${parameters.sdkType}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis/${parameters.restApiId}/stages/${parameters.stageName}/sdks/${parameters.sdkType}`
 }
 
 export interface TemplateArnParameters {
@@ -562,7 +562,7 @@ export interface TemplateArnParameters {
 }
 export type TemplateArn = `arn:${string}:apigateway:${string}::/restapis/models/${string}/template`
 export function templateArn(parameters: TemplateArnParameters): TemplateArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis/models/${parameters.modelName}/template`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis/models/${parameters.modelName}/template`
 }
 
 export interface UsagePlanArnParameters {
@@ -572,7 +572,7 @@ export interface UsagePlanArnParameters {
 }
 export type UsagePlanArn = `arn:${string}:apigateway:${string}::/usageplans/${string}`
 export function usagePlanArn(parameters: UsagePlanArnParameters): UsagePlanArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/usageplans/${parameters.usagePlanId}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/usageplans/${parameters.usagePlanId}`
 }
 
 export interface UsagePlansArnParameters {
@@ -581,7 +581,7 @@ export interface UsagePlansArnParameters {
 }
 export type UsagePlansArn = `arn:${string}:apigateway:${string}::/usageplans`
 export function usagePlansArn(parameters: UsagePlansArnParameters): UsagePlansArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/usageplans`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/usageplans`
 }
 
 export interface UsagePlanKeyArnParameters {
@@ -592,7 +592,7 @@ export interface UsagePlanKeyArnParameters {
 }
 export type UsagePlanKeyArn = `arn:${string}:apigateway:${string}::/usageplans/${string}/keys/${string}`
 export function usagePlanKeyArn(parameters: UsagePlanKeyArnParameters): UsagePlanKeyArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/usageplans/${parameters.usagePlanId}/keys/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/usageplans/${parameters.usagePlanId}/keys/${parameters.id}`
 }
 
 export interface UsagePlanKeysArnParameters {
@@ -602,7 +602,7 @@ export interface UsagePlanKeysArnParameters {
 }
 export type UsagePlanKeysArn = `arn:${string}:apigateway:${string}::/usageplans/${string}/keys`
 export function usagePlanKeysArn(parameters: UsagePlanKeysArnParameters): UsagePlanKeysArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/usageplans/${parameters.usagePlanId}/keys`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/usageplans/${parameters.usagePlanId}/keys`
 }
 
 export interface TagsArnParameters {
@@ -612,5 +612,5 @@ export interface TagsArnParameters {
 }
 export type TagsArn = `arn:${string}:apigateway:${string}::/tags/${string}`
 export function tagsArn(parameters: TagsArnParameters): TagsArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/tags/${parameters.urlEncodedResourceArn}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/tags/${parameters.urlEncodedResourceArn}`
 }

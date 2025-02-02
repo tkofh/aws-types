@@ -7,7 +7,7 @@ export interface SellerDashboardArnParameters {
 }
 export type SellerDashboardArn = `arn:${string}:aws-marketplace::${string}:${string}/ReportingData/${string}/Dashboard/${string}`
 export function sellerDashboardArn(parameters: SellerDashboardArnParameters): SellerDashboardArn {
-  return `arn:${parameters.partition ?? ''}:aws-marketplace::${parameters.account}:${parameters.catalog}/ReportingData/${parameters.factTable}/Dashboard/${parameters.dashboardName}`
+  return `arn:${parameters.partition ?? 'aws'}:aws-marketplace::${parameters.account}:${parameters.catalog}/ReportingData/${parameters.factTable}/Dashboard/${parameters.dashboardName}`
 }
 
 export interface DeploymentParameterArnParameters {
@@ -20,7 +20,7 @@ export interface DeploymentParameterArnParameters {
 }
 export type DeploymentParameterArn = `arn:${string}:aws-marketplace:${string}:${string}:DeploymentParameter:catalogs/${string}/products/${string}/${string}`
 export function deploymentParameterArn(parameters: DeploymentParameterArnParameters): DeploymentParameterArn {
-  return `arn:${parameters.partition ?? ''}:aws-marketplace:${parameters.region}:${parameters.account}:DeploymentParameter:catalogs/${parameters.catalogName}/products/${parameters.productId}/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:aws-marketplace:${parameters.region}:${parameters.account}:DeploymentParameter:catalogs/${parameters.catalogName}/products/${parameters.productId}/${parameters.resourceId}`
 }
 
 export interface EntityArnParameters {
@@ -33,7 +33,7 @@ export interface EntityArnParameters {
 }
 export type EntityArn = `arn:${string}:aws-marketplace:${string}:${string}:${string}/${string}/${string}`
 export function entityArn(parameters: EntityArnParameters): EntityArn {
-  return `arn:${parameters.partition ?? ''}:aws-marketplace:${parameters.region}:${parameters.account}:${parameters.catalog}/${parameters.entityType}/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:aws-marketplace:${parameters.region}:${parameters.account}:${parameters.catalog}/${parameters.entityType}/${parameters.resourceId}`
 }
 
 export interface ChangeSetArnParameters {
@@ -45,5 +45,5 @@ export interface ChangeSetArnParameters {
 }
 export type ChangeSetArn = `arn:${string}:aws-marketplace:${string}:${string}:${string}/ChangeSet/${string}`
 export function changeSetArn(parameters: ChangeSetArnParameters): ChangeSetArn {
-  return `arn:${parameters.partition ?? ''}:aws-marketplace:${parameters.region}:${parameters.account}:${parameters.catalog}/ChangeSet/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:aws-marketplace:${parameters.region}:${parameters.account}:${parameters.catalog}/ChangeSet/${parameters.resourceId}`
 }

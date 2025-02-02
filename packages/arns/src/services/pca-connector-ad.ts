@@ -6,7 +6,7 @@ export interface ConnectorArnParameters {
 }
 export type ConnectorArn = `arn:${string}:pca-connector-ad:${string}:${string}:connector/${string}`
 export function connectorArn(parameters: ConnectorArnParameters): ConnectorArn {
-  return `arn:${parameters.partition ?? ''}:pca-connector-ad:${parameters.region}:${parameters.account}:connector/${parameters.connectorId}`
+  return `arn:${parameters.partition ?? 'aws'}:pca-connector-ad:${parameters.region}:${parameters.account}:connector/${parameters.connectorId}`
 }
 
 export interface DirectoryRegistrationArnParameters {
@@ -17,7 +17,7 @@ export interface DirectoryRegistrationArnParameters {
 }
 export type DirectoryRegistrationArn = `arn:${string}:pca-connector-ad:${string}:${string}:directory-registration/${string}`
 export function directoryRegistrationArn(parameters: DirectoryRegistrationArnParameters): DirectoryRegistrationArn {
-  return `arn:${parameters.partition ?? ''}:pca-connector-ad:${parameters.region}:${parameters.account}:directory-registration/${parameters.directoryId}`
+  return `arn:${parameters.partition ?? 'aws'}:pca-connector-ad:${parameters.region}:${parameters.account}:directory-registration/${parameters.directoryId}`
 }
 
 export interface ServicePrincipalNameArnParameters {
@@ -28,7 +28,7 @@ export interface ServicePrincipalNameArnParameters {
 }
 export type ServicePrincipalNameArn = `arn:${string}:pca-connector-ad:${string}:${string}:directory-registration/${string}`
 export function servicePrincipalNameArn(parameters: ServicePrincipalNameArnParameters): ServicePrincipalNameArn {
-  return `arn:${parameters.partition ?? ''}:pca-connector-ad:${parameters.region}:${parameters.account}:directory-registration/${parameters.directoryId}`
+  return `arn:${parameters.partition ?? 'aws'}:pca-connector-ad:${parameters.region}:${parameters.account}:directory-registration/${parameters.directoryId}`
 }
 
 export interface TemplateArnParameters {
@@ -40,7 +40,7 @@ export interface TemplateArnParameters {
 }
 export type TemplateArn = `arn:${string}:pca-connector-ad:${string}:${string}:connector/${string}/template/${string}`
 export function templateArn(parameters: TemplateArnParameters): TemplateArn {
-  return `arn:${parameters.partition ?? ''}:pca-connector-ad:${parameters.region}:${parameters.account}:connector/${parameters.connectorId}/template/${parameters.templateId}`
+  return `arn:${parameters.partition ?? 'aws'}:pca-connector-ad:${parameters.region}:${parameters.account}:connector/${parameters.connectorId}/template/${parameters.templateId}`
 }
 
 export interface TemplateGroupAccessControlEntryArnParameters {
@@ -52,5 +52,5 @@ export interface TemplateGroupAccessControlEntryArnParameters {
 }
 export type TemplateGroupAccessControlEntryArn = `arn:${string}:pca-connector-ad:${string}:${string}:connector/${string}/template/${string}`
 export function templateGroupAccessControlEntryArn(parameters: TemplateGroupAccessControlEntryArnParameters): TemplateGroupAccessControlEntryArn {
-  return `arn:${parameters.partition ?? ''}:pca-connector-ad:${parameters.region}:${parameters.account}:connector/${parameters.connectorId}/template/${parameters.templateId}`
+  return `arn:${parameters.partition ?? 'aws'}:pca-connector-ad:${parameters.region}:${parameters.account}:connector/${parameters.connectorId}/template/${parameters.templateId}`
 }

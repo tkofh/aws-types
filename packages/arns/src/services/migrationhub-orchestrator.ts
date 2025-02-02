@@ -6,7 +6,7 @@ export interface WorkflowArnParameters {
 }
 export type WorkflowArn = `arn:${string}:migrationhub-orchestrator:${string}:${string}:workflow/${string}`
 export function workflowArn(parameters: WorkflowArnParameters): WorkflowArn {
-  return `arn:${parameters.partition ?? ''}:migrationhub-orchestrator:${parameters.region}:${parameters.account}:workflow/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:migrationhub-orchestrator:${parameters.region}:${parameters.account}:workflow/${parameters.resourceId}`
 }
 
 export interface TemplateArnParameters {
@@ -17,5 +17,5 @@ export interface TemplateArnParameters {
 }
 export type TemplateArn = `arn:${string}:migrationhub-orchestrator:${string}:${string}:template/${string}`
 export function templateArn(parameters: TemplateArnParameters): TemplateArn {
-  return `arn:${parameters.partition ?? ''}:migrationhub-orchestrator:${parameters.region}:${parameters.account}:template/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:migrationhub-orchestrator:${parameters.region}:${parameters.account}:template/${parameters.resourceId}`
 }

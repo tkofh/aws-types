@@ -6,7 +6,7 @@ export interface CanaryArnParameters {
 }
 export type CanaryArn = `arn:${string}:synthetics:${string}:${string}:canary:${string}`
 export function canaryArn(parameters: CanaryArnParameters): CanaryArn {
-  return `arn:${parameters.partition ?? ''}:synthetics:${parameters.region}:${parameters.account}:canary:${parameters.canaryName}`
+  return `arn:${parameters.partition ?? 'aws'}:synthetics:${parameters.region}:${parameters.account}:canary:${parameters.canaryName}`
 }
 
 export interface GroupArnParameters {
@@ -17,5 +17,5 @@ export interface GroupArnParameters {
 }
 export type GroupArn = `arn:${string}:synthetics:${string}:${string}:group:${string}`
 export function groupArn(parameters: GroupArnParameters): GroupArn {
-  return `arn:${parameters.partition ?? ''}:synthetics:${parameters.region}:${parameters.account}:group:${parameters.groupId}`
+  return `arn:${parameters.partition ?? 'aws'}:synthetics:${parameters.region}:${parameters.account}:group:${parameters.groupId}`
 }

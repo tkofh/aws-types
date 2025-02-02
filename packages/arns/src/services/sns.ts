@@ -6,5 +6,5 @@ export interface TopicArnParameters {
 }
 export type TopicArn = `arn:${string}:sns:${string}:${string}:${string}`
 export function topicArn(parameters: TopicArnParameters): TopicArn {
-  return `arn:${parameters.partition ?? ''}:sns:${parameters.region}:${parameters.account}:${parameters.topicName}`
+  return `arn:${parameters.partition ?? 'aws'}:sns:${parameters.region}:${parameters.account}:${parameters.topicName}`
 }

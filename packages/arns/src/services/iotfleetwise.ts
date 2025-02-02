@@ -6,7 +6,7 @@ export interface CampaignArnParameters {
 }
 export type CampaignArn = `arn:${string}:iotfleetwise:${string}:${string}:campaign/${string}`
 export function campaignArn(parameters: CampaignArnParameters): CampaignArn {
-  return `arn:${parameters.partition ?? ''}:iotfleetwise:${parameters.region}:${parameters.account}:campaign/${parameters.campaignName}`
+  return `arn:${parameters.partition ?? 'aws'}:iotfleetwise:${parameters.region}:${parameters.account}:campaign/${parameters.campaignName}`
 }
 
 export interface DecodermanifestArnParameters {
@@ -17,7 +17,7 @@ export interface DecodermanifestArnParameters {
 }
 export type DecodermanifestArn = `arn:${string}:iotfleetwise:${string}:${string}:decoder-manifest/${string}`
 export function decodermanifestArn(parameters: DecodermanifestArnParameters): DecodermanifestArn {
-  return `arn:${parameters.partition ?? ''}:iotfleetwise:${parameters.region}:${parameters.account}:decoder-manifest/${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:iotfleetwise:${parameters.region}:${parameters.account}:decoder-manifest/${parameters.name}`
 }
 
 export interface FleetArnParameters {
@@ -28,7 +28,7 @@ export interface FleetArnParameters {
 }
 export type FleetArn = `arn:${string}:iotfleetwise:${string}:${string}:fleet/${string}`
 export function fleetArn(parameters: FleetArnParameters): FleetArn {
-  return `arn:${parameters.partition ?? ''}:iotfleetwise:${parameters.region}:${parameters.account}:fleet/${parameters.fleetId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotfleetwise:${parameters.region}:${parameters.account}:fleet/${parameters.fleetId}`
 }
 
 export interface ModelmanifestArnParameters {
@@ -39,7 +39,7 @@ export interface ModelmanifestArnParameters {
 }
 export type ModelmanifestArn = `arn:${string}:iotfleetwise:${string}:${string}:model-manifest/${string}`
 export function modelmanifestArn(parameters: ModelmanifestArnParameters): ModelmanifestArn {
-  return `arn:${parameters.partition ?? ''}:iotfleetwise:${parameters.region}:${parameters.account}:model-manifest/${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:iotfleetwise:${parameters.region}:${parameters.account}:model-manifest/${parameters.name}`
 }
 
 export interface SignalcatalogArnParameters {
@@ -50,7 +50,7 @@ export interface SignalcatalogArnParameters {
 }
 export type SignalcatalogArn = `arn:${string}:iotfleetwise:${string}:${string}:signal-catalog/${string}`
 export function signalcatalogArn(parameters: SignalcatalogArnParameters): SignalcatalogArn {
-  return `arn:${parameters.partition ?? ''}:iotfleetwise:${parameters.region}:${parameters.account}:signal-catalog/${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:iotfleetwise:${parameters.region}:${parameters.account}:signal-catalog/${parameters.name}`
 }
 
 export interface VehicleArnParameters {
@@ -61,5 +61,5 @@ export interface VehicleArnParameters {
 }
 export type VehicleArn = `arn:${string}:iotfleetwise:${string}:${string}:vehicle/${string}`
 export function vehicleArn(parameters: VehicleArnParameters): VehicleArn {
-  return `arn:${parameters.partition ?? ''}:iotfleetwise:${parameters.region}:${parameters.account}:vehicle/${parameters.vehicleId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotfleetwise:${parameters.region}:${parameters.account}:vehicle/${parameters.vehicleId}`
 }

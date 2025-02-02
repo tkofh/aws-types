@@ -6,7 +6,7 @@ export interface UserpoolArnParameters {
 }
 export type UserpoolArn = `arn:${string}:cognito-idp:${string}:${string}:userpool/${string}`
 export function userpoolArn(parameters: UserpoolArnParameters): UserpoolArn {
-  return `arn:${parameters.partition ?? ''}:cognito-idp:${parameters.region}:${parameters.account}:userpool/${parameters.userPoolId}`
+  return `arn:${parameters.partition ?? 'aws'}:cognito-idp:${parameters.region}:${parameters.account}:userpool/${parameters.userPoolId}`
 }
 
 export interface WebaclArnParameters {
@@ -19,5 +19,5 @@ export interface WebaclArnParameters {
 }
 export type WebaclArn = `arn:${string}:wafv2:${string}:${string}:${string}/webacl/${string}/${string}`
 export function webaclArn(parameters: WebaclArnParameters): WebaclArn {
-  return `arn:${parameters.partition ?? ''}:wafv2:${parameters.region}:${parameters.account}:${parameters.scope}/webacl/${parameters.name}/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:wafv2:${parameters.region}:${parameters.account}:${parameters.scope}/webacl/${parameters.name}/${parameters.id}`
 }

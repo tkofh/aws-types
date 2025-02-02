@@ -6,7 +6,7 @@ export interface NetworkArnParameters {
 }
 export type NetworkArn = `arn:${string}:private-networks:${string}:${string}:network/${string}`
 export function networkArn(parameters: NetworkArnParameters): NetworkArn {
-  return `arn:${parameters.partition ?? ''}:private-networks:${parameters.region}:${parameters.account}:network/${parameters.networkName}`
+  return `arn:${parameters.partition ?? 'aws'}:private-networks:${parameters.region}:${parameters.account}:network/${parameters.networkName}`
 }
 
 export interface NetworkSiteArnParameters {
@@ -18,7 +18,7 @@ export interface NetworkSiteArnParameters {
 }
 export type NetworkSiteArn = `arn:${string}:private-networks:${string}:${string}:network-site/${string}/${string}`
 export function networkSiteArn(parameters: NetworkSiteArnParameters): NetworkSiteArn {
-  return `arn:${parameters.partition ?? ''}:private-networks:${parameters.region}:${parameters.account}:network-site/${parameters.networkName}/${parameters.networkSiteName}`
+  return `arn:${parameters.partition ?? 'aws'}:private-networks:${parameters.region}:${parameters.account}:network-site/${parameters.networkName}/${parameters.networkSiteName}`
 }
 
 export interface NetworkResourceArnParameters {
@@ -30,7 +30,7 @@ export interface NetworkResourceArnParameters {
 }
 export type NetworkResourceArn = `arn:${string}:private-networks:${string}:${string}:network-resource/${string}/${string}`
 export function networkResourceArn(parameters: NetworkResourceArnParameters): NetworkResourceArn {
-  return `arn:${parameters.partition ?? ''}:private-networks:${parameters.region}:${parameters.account}:network-resource/${parameters.networkName}/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:private-networks:${parameters.region}:${parameters.account}:network-resource/${parameters.networkName}/${parameters.resourceId}`
 }
 
 export interface OrderArnParameters {
@@ -42,7 +42,7 @@ export interface OrderArnParameters {
 }
 export type OrderArn = `arn:${string}:private-networks:${string}:${string}:order/${string}/${string}`
 export function orderArn(parameters: OrderArnParameters): OrderArn {
-  return `arn:${parameters.partition ?? ''}:private-networks:${parameters.region}:${parameters.account}:order/${parameters.networkName}/${parameters.orderId}`
+  return `arn:${parameters.partition ?? 'aws'}:private-networks:${parameters.region}:${parameters.account}:order/${parameters.networkName}/${parameters.orderId}`
 }
 
 export interface DeviceIdentifierArnParameters {
@@ -54,5 +54,5 @@ export interface DeviceIdentifierArnParameters {
 }
 export type DeviceIdentifierArn = `arn:${string}:private-networks:${string}:${string}:device-identifier/${string}/${string}`
 export function deviceIdentifierArn(parameters: DeviceIdentifierArnParameters): DeviceIdentifierArn {
-  return `arn:${parameters.partition ?? ''}:private-networks:${parameters.region}:${parameters.account}:device-identifier/${parameters.networkName}/${parameters.deviceId}`
+  return `arn:${parameters.partition ?? 'aws'}:private-networks:${parameters.region}:${parameters.account}:device-identifier/${parameters.networkName}/${parameters.deviceId}`
 }

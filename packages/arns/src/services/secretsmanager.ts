@@ -6,5 +6,5 @@ export interface SecretArnParameters {
 }
 export type SecretArn = `arn:${string}:secretsmanager:${string}:${string}:secret:${string}`
 export function secretArn(parameters: SecretArnParameters): SecretArn {
-  return `arn:${parameters.partition ?? ''}:secretsmanager:${parameters.region}:${parameters.account}:secret:${parameters.secretId}`
+  return `arn:${parameters.partition ?? 'aws'}:secretsmanager:${parameters.region}:${parameters.account}:secret:${parameters.secretId}`
 }

@@ -6,7 +6,7 @@ export interface ProjectArnParameters {
 }
 export type ProjectArn = `arn:${string}:databrew:${string}:${string}:project/${string}`
 export function projectArn(parameters: ProjectArnParameters): ProjectArn {
-  return `arn:${parameters.partition ?? ''}:databrew:${parameters.region}:${parameters.account}:project/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:databrew:${parameters.region}:${parameters.account}:project/${parameters.resourceId}`
 }
 
 export interface DatasetArnParameters {
@@ -17,7 +17,7 @@ export interface DatasetArnParameters {
 }
 export type DatasetArn = `arn:${string}:databrew:${string}:${string}:dataset/${string}`
 export function datasetArn(parameters: DatasetArnParameters): DatasetArn {
-  return `arn:${parameters.partition ?? ''}:databrew:${parameters.region}:${parameters.account}:dataset/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:databrew:${parameters.region}:${parameters.account}:dataset/${parameters.resourceId}`
 }
 
 export interface RulesetArnParameters {
@@ -28,7 +28,7 @@ export interface RulesetArnParameters {
 }
 export type RulesetArn = `arn:${string}:databrew:${string}:${string}:ruleset/${string}`
 export function rulesetArn(parameters: RulesetArnParameters): RulesetArn {
-  return `arn:${parameters.partition ?? ''}:databrew:${parameters.region}:${parameters.account}:ruleset/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:databrew:${parameters.region}:${parameters.account}:ruleset/${parameters.resourceId}`
 }
 
 export interface RecipeArnParameters {
@@ -39,7 +39,7 @@ export interface RecipeArnParameters {
 }
 export type RecipeArn = `arn:${string}:databrew:${string}:${string}:recipe/${string}`
 export function recipeArn(parameters: RecipeArnParameters): RecipeArn {
-  return `arn:${parameters.partition ?? ''}:databrew:${parameters.region}:${parameters.account}:recipe/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:databrew:${parameters.region}:${parameters.account}:recipe/${parameters.resourceId}`
 }
 
 export interface JobArnParameters {
@@ -50,7 +50,7 @@ export interface JobArnParameters {
 }
 export type JobArn = `arn:${string}:databrew:${string}:${string}:job/${string}`
 export function jobArn(parameters: JobArnParameters): JobArn {
-  return `arn:${parameters.partition ?? ''}:databrew:${parameters.region}:${parameters.account}:job/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:databrew:${parameters.region}:${parameters.account}:job/${parameters.resourceId}`
 }
 
 export interface ScheduleArnParameters {
@@ -61,5 +61,5 @@ export interface ScheduleArnParameters {
 }
 export type ScheduleArn = `arn:${string}:databrew:${string}:${string}:schedule/${string}`
 export function scheduleArn(parameters: ScheduleArnParameters): ScheduleArn {
-  return `arn:${parameters.partition ?? ''}:databrew:${parameters.region}:${parameters.account}:schedule/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:databrew:${parameters.region}:${parameters.account}:schedule/${parameters.resourceId}`
 }

@@ -6,7 +6,7 @@ export interface OutpostArnParameters {
 }
 export type OutpostArn = `arn:${string}:outposts:${string}:${string}:outpost/${string}`
 export function outpostArn(parameters: OutpostArnParameters): OutpostArn {
-  return `arn:${parameters.partition ?? ''}:outposts:${parameters.region}:${parameters.account}:outpost/${parameters.outpostId}`
+  return `arn:${parameters.partition ?? 'aws'}:outposts:${parameters.region}:${parameters.account}:outpost/${parameters.outpostId}`
 }
 
 export interface SiteArnParameters {
@@ -17,5 +17,5 @@ export interface SiteArnParameters {
 }
 export type SiteArn = `arn:${string}:outposts:${string}:${string}:site/${string}`
 export function siteArn(parameters: SiteArnParameters): SiteArn {
-  return `arn:${parameters.partition ?? ''}:outposts:${parameters.region}:${parameters.account}:site/${parameters.siteId}`
+  return `arn:${parameters.partition ?? 'aws'}:outposts:${parameters.region}:${parameters.account}:site/${parameters.siteId}`
 }

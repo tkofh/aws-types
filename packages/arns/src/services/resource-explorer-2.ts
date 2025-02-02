@@ -7,7 +7,7 @@ export interface ViewArnParameters {
 }
 export type ViewArn = `arn:${string}:resource-explorer-2:${string}:${string}:view/${string}/${string}`
 export function viewArn(parameters: ViewArnParameters): ViewArn {
-  return `arn:${parameters.partition ?? ''}:resource-explorer-2:${parameters.region}:${parameters.account}:view/${parameters.viewName}/${parameters.viewUuid}`
+  return `arn:${parameters.partition ?? 'aws'}:resource-explorer-2:${parameters.region}:${parameters.account}:view/${parameters.viewName}/${parameters.viewUuid}`
 }
 
 export interface IndexArnParameters {
@@ -18,5 +18,5 @@ export interface IndexArnParameters {
 }
 export type IndexArn = `arn:${string}:resource-explorer-2:${string}:${string}:index/${string}`
 export function indexArn(parameters: IndexArnParameters): IndexArn {
-  return `arn:${parameters.partition ?? ''}:resource-explorer-2:${parameters.region}:${parameters.account}:index/${parameters.indexUuid}`
+  return `arn:${parameters.partition ?? 'aws'}:resource-explorer-2:${parameters.region}:${parameters.account}:index/${parameters.indexUuid}`
 }

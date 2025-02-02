@@ -6,7 +6,7 @@ export interface DeviceArnParameters {
 }
 export type DeviceArn = `arn:${string}:deeplens:${string}:${string}:device/${string}`
 export function deviceArn(parameters: DeviceArnParameters): DeviceArn {
-  return `arn:${parameters.partition ?? ''}:deeplens:${parameters.region}:${parameters.account}:device/${parameters.deviceName}`
+  return `arn:${parameters.partition ?? 'aws'}:deeplens:${parameters.region}:${parameters.account}:device/${parameters.deviceName}`
 }
 
 export interface ProjectArnParameters {
@@ -17,7 +17,7 @@ export interface ProjectArnParameters {
 }
 export type ProjectArn = `arn:${string}:deeplens:${string}:${string}:project/${string}`
 export function projectArn(parameters: ProjectArnParameters): ProjectArn {
-  return `arn:${parameters.partition ?? ''}:deeplens:${parameters.region}:${parameters.account}:project/${parameters.projectName}`
+  return `arn:${parameters.partition ?? 'aws'}:deeplens:${parameters.region}:${parameters.account}:project/${parameters.projectName}`
 }
 
 export interface ModelArnParameters {
@@ -28,5 +28,5 @@ export interface ModelArnParameters {
 }
 export type ModelArn = `arn:${string}:deeplens:${string}:${string}:model/${string}`
 export function modelArn(parameters: ModelArnParameters): ModelArn {
-  return `arn:${parameters.partition ?? ''}:deeplens:${parameters.region}:${parameters.account}:model/${parameters.modelName}`
+  return `arn:${parameters.partition ?? 'aws'}:deeplens:${parameters.region}:${parameters.account}:model/${parameters.modelName}`
 }

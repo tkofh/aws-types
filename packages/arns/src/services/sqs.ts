@@ -6,5 +6,5 @@ export interface QueueArnParameters {
 }
 export type QueueArn = `arn:${string}:sqs:${string}:${string}:${string}`
 export function queueArn(parameters: QueueArnParameters): QueueArn {
-  return `arn:${parameters.partition ?? ''}:sqs:${parameters.region}:${parameters.account}:${parameters.queueName}`
+  return `arn:${parameters.partition ?? 'aws'}:sqs:${parameters.region}:${parameters.account}:${parameters.queueName}`
 }

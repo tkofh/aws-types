@@ -6,7 +6,7 @@ export interface WorkloadArnParameters {
 }
 export type WorkloadArn = `arn:${string}:wellarchitected:${string}:${string}:workload/${string}`
 export function workloadArn(parameters: WorkloadArnParameters): WorkloadArn {
-  return `arn:${parameters.partition ?? ''}:wellarchitected:${parameters.region}:${parameters.account}:workload/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:wellarchitected:${parameters.region}:${parameters.account}:workload/${parameters.resourceId}`
 }
 
 export interface LensArnParameters {
@@ -17,7 +17,7 @@ export interface LensArnParameters {
 }
 export type LensArn = `arn:${string}:wellarchitected:${string}:${string}:lens/${string}`
 export function lensArn(parameters: LensArnParameters): LensArn {
-  return `arn:${parameters.partition ?? ''}:wellarchitected:${parameters.region}:${parameters.account}:lens/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:wellarchitected:${parameters.region}:${parameters.account}:lens/${parameters.resourceId}`
 }
 
 export interface ProfileArnParameters {
@@ -28,7 +28,7 @@ export interface ProfileArnParameters {
 }
 export type ProfileArn = `arn:${string}:wellarchitected:${string}:${string}:profile/${string}`
 export function profileArn(parameters: ProfileArnParameters): ProfileArn {
-  return `arn:${parameters.partition ?? ''}:wellarchitected:${parameters.region}:${parameters.account}:profile/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:wellarchitected:${parameters.region}:${parameters.account}:profile/${parameters.resourceId}`
 }
 
 export interface ReviewTemplateArnParameters {
@@ -39,5 +39,5 @@ export interface ReviewTemplateArnParameters {
 }
 export type ReviewTemplateArn = `arn:${string}:wellarchitected:${string}:${string}:review-template/${string}`
 export function reviewTemplateArn(parameters: ReviewTemplateArnParameters): ReviewTemplateArn {
-  return `arn:${parameters.partition ?? ''}:wellarchitected:${parameters.region}:${parameters.account}:review-template/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:wellarchitected:${parameters.region}:${parameters.account}:review-template/${parameters.resourceId}`
 }

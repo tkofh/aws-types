@@ -6,7 +6,7 @@ export interface DiscovererArnParameters {
 }
 export type DiscovererArn = `arn:${string}:schemas:${string}:${string}:discoverer/${string}`
 export function discovererArn(parameters: DiscovererArnParameters): DiscovererArn {
-  return `arn:${parameters.partition ?? ''}:schemas:${parameters.region}:${parameters.account}:discoverer/${parameters.discovererId}`
+  return `arn:${parameters.partition ?? 'aws'}:schemas:${parameters.region}:${parameters.account}:discoverer/${parameters.discovererId}`
 }
 
 export interface RegistryArnParameters {
@@ -17,7 +17,7 @@ export interface RegistryArnParameters {
 }
 export type RegistryArn = `arn:${string}:schemas:${string}:${string}:registry/${string}`
 export function registryArn(parameters: RegistryArnParameters): RegistryArn {
-  return `arn:${parameters.partition ?? ''}:schemas:${parameters.region}:${parameters.account}:registry/${parameters.registryName}`
+  return `arn:${parameters.partition ?? 'aws'}:schemas:${parameters.region}:${parameters.account}:registry/${parameters.registryName}`
 }
 
 export interface SchemaArnParameters {
@@ -29,5 +29,5 @@ export interface SchemaArnParameters {
 }
 export type SchemaArn = `arn:${string}:schemas:${string}:${string}:schema/${string}/${string}`
 export function schemaArn(parameters: SchemaArnParameters): SchemaArn {
-  return `arn:${parameters.partition ?? ''}:schemas:${parameters.region}:${parameters.account}:schema/${parameters.registryName}/${parameters.schemaName}`
+  return `arn:${parameters.partition ?? 'aws'}:schemas:${parameters.region}:${parameters.account}:schema/${parameters.registryName}/${parameters.schemaName}`
 }

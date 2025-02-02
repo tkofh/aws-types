@@ -5,7 +5,7 @@ export interface BillinggroupArnParameters {
 }
 export type BillinggroupArn = `arn:${string}:billingconductor::${string}:billinggroup/${string}`
 export function billinggroupArn(parameters: BillinggroupArnParameters): BillinggroupArn {
-  return `arn:${parameters.partition ?? ''}:billingconductor::${parameters.account}:billinggroup/${parameters.billingGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:billingconductor::${parameters.account}:billinggroup/${parameters.billingGroupId}`
 }
 
 export interface PricingplanArnParameters {
@@ -15,7 +15,7 @@ export interface PricingplanArnParameters {
 }
 export type PricingplanArn = `arn:${string}:billingconductor::${string}:pricingplan/${string}`
 export function pricingplanArn(parameters: PricingplanArnParameters): PricingplanArn {
-  return `arn:${parameters.partition ?? ''}:billingconductor::${parameters.account}:pricingplan/${parameters.pricingPlanId}`
+  return `arn:${parameters.partition ?? 'aws'}:billingconductor::${parameters.account}:pricingplan/${parameters.pricingPlanId}`
 }
 
 export interface PricingruleArnParameters {
@@ -25,7 +25,7 @@ export interface PricingruleArnParameters {
 }
 export type PricingruleArn = `arn:${string}:billingconductor::${string}:pricingrule/${string}`
 export function pricingruleArn(parameters: PricingruleArnParameters): PricingruleArn {
-  return `arn:${parameters.partition ?? ''}:billingconductor::${parameters.account}:pricingrule/${parameters.pricingRuleId}`
+  return `arn:${parameters.partition ?? 'aws'}:billingconductor::${parameters.account}:pricingrule/${parameters.pricingRuleId}`
 }
 
 export interface CustomlineitemArnParameters {
@@ -35,5 +35,5 @@ export interface CustomlineitemArnParameters {
 }
 export type CustomlineitemArn = `arn:${string}:billingconductor::${string}:customlineitem/${string}`
 export function customlineitemArn(parameters: CustomlineitemArnParameters): CustomlineitemArn {
-  return `arn:${parameters.partition ?? ''}:billingconductor::${parameters.account}:customlineitem/${parameters.customLineItemId}`
+  return `arn:${parameters.partition ?? 'aws'}:billingconductor::${parameters.account}:customlineitem/${parameters.customLineItemId}`
 }

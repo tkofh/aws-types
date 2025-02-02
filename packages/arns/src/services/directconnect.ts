@@ -6,7 +6,7 @@ export interface DxconArnParameters {
 }
 export type DxconArn = `arn:${string}:directconnect:${string}:${string}:dxcon/${string}`
 export function dxconArn(parameters: DxconArnParameters): DxconArn {
-  return `arn:${parameters.partition ?? ''}:directconnect:${parameters.region}:${parameters.account}:dxcon/${parameters.connectionId}`
+  return `arn:${parameters.partition ?? 'aws'}:directconnect:${parameters.region}:${parameters.account}:dxcon/${parameters.connectionId}`
 }
 
 export interface DxlagArnParameters {
@@ -17,7 +17,7 @@ export interface DxlagArnParameters {
 }
 export type DxlagArn = `arn:${string}:directconnect:${string}:${string}:dxlag/${string}`
 export function dxlagArn(parameters: DxlagArnParameters): DxlagArn {
-  return `arn:${parameters.partition ?? ''}:directconnect:${parameters.region}:${parameters.account}:dxlag/${parameters.lagId}`
+  return `arn:${parameters.partition ?? 'aws'}:directconnect:${parameters.region}:${parameters.account}:dxlag/${parameters.lagId}`
 }
 
 export interface DxvifArnParameters {
@@ -28,7 +28,7 @@ export interface DxvifArnParameters {
 }
 export type DxvifArn = `arn:${string}:directconnect:${string}:${string}:dxvif/${string}`
 export function dxvifArn(parameters: DxvifArnParameters): DxvifArn {
-  return `arn:${parameters.partition ?? ''}:directconnect:${parameters.region}:${parameters.account}:dxvif/${parameters.virtualInterfaceId}`
+  return `arn:${parameters.partition ?? 'aws'}:directconnect:${parameters.region}:${parameters.account}:dxvif/${parameters.virtualInterfaceId}`
 }
 
 export interface DxGatewayArnParameters {
@@ -38,5 +38,5 @@ export interface DxGatewayArnParameters {
 }
 export type DxGatewayArn = `arn:${string}:directconnect::${string}:dx-gateway/${string}`
 export function dxGatewayArn(parameters: DxGatewayArnParameters): DxGatewayArn {
-  return `arn:${parameters.partition ?? ''}:directconnect::${parameters.account}:dx-gateway/${parameters.directConnectGatewayId}`
+  return `arn:${parameters.partition ?? 'aws'}:directconnect::${parameters.account}:dx-gateway/${parameters.directConnectGatewayId}`
 }

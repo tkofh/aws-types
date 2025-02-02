@@ -6,7 +6,7 @@ export interface DomainsArnParameters {
 }
 export type DomainsArn = `arn:${string}:profile:${string}:${string}:domains/${string}`
 export function domainsArn(parameters: DomainsArnParameters): DomainsArn {
-  return `arn:${parameters.partition ?? ''}:profile:${parameters.region}:${parameters.account}:domains/${parameters.domainName}`
+  return `arn:${parameters.partition ?? 'aws'}:profile:${parameters.region}:${parameters.account}:domains/${parameters.domainName}`
 }
 
 export interface ObjectTypesArnParameters {
@@ -18,7 +18,7 @@ export interface ObjectTypesArnParameters {
 }
 export type ObjectTypesArn = `arn:${string}:profile:${string}:${string}:domains/${string}/object-types/${string}`
 export function objectTypesArn(parameters: ObjectTypesArnParameters): ObjectTypesArn {
-  return `arn:${parameters.partition ?? ''}:profile:${parameters.region}:${parameters.account}:domains/${parameters.domainName}/object-types/${parameters.objectTypeName}`
+  return `arn:${parameters.partition ?? 'aws'}:profile:${parameters.region}:${parameters.account}:domains/${parameters.domainName}/object-types/${parameters.objectTypeName}`
 }
 
 export interface IntegrationsArnParameters {
@@ -30,7 +30,7 @@ export interface IntegrationsArnParameters {
 }
 export type IntegrationsArn = `arn:${string}:profile:${string}:${string}:domains/${string}/integrations/${string}`
 export function integrationsArn(parameters: IntegrationsArnParameters): IntegrationsArn {
-  return `arn:${parameters.partition ?? ''}:profile:${parameters.region}:${parameters.account}:domains/${parameters.domainName}/integrations/${parameters.uri}`
+  return `arn:${parameters.partition ?? 'aws'}:profile:${parameters.region}:${parameters.account}:domains/${parameters.domainName}/integrations/${parameters.uri}`
 }
 
 export interface EventStreamsArnParameters {
@@ -42,7 +42,7 @@ export interface EventStreamsArnParameters {
 }
 export type EventStreamsArn = `arn:${string}:profile:${string}:${string}:domains/${string}/event-streams/${string}`
 export function eventStreamsArn(parameters: EventStreamsArnParameters): EventStreamsArn {
-  return `arn:${parameters.partition ?? ''}:profile:${parameters.region}:${parameters.account}:domains/${parameters.domainName}/event-streams/${parameters.eventStreamName}`
+  return `arn:${parameters.partition ?? 'aws'}:profile:${parameters.region}:${parameters.account}:domains/${parameters.domainName}/event-streams/${parameters.eventStreamName}`
 }
 
 export interface CalculatedAttributesArnParameters {
@@ -54,7 +54,7 @@ export interface CalculatedAttributesArnParameters {
 }
 export type CalculatedAttributesArn = `arn:${string}:profile:${string}:${string}:domains/${string}/calculated-attributes/${string}`
 export function calculatedAttributesArn(parameters: CalculatedAttributesArnParameters): CalculatedAttributesArn {
-  return `arn:${parameters.partition ?? ''}:profile:${parameters.region}:${parameters.account}:domains/${parameters.domainName}/calculated-attributes/${parameters.calculatedAttributeName}`
+  return `arn:${parameters.partition ?? 'aws'}:profile:${parameters.region}:${parameters.account}:domains/${parameters.domainName}/calculated-attributes/${parameters.calculatedAttributeName}`
 }
 
 export interface SegmentDefinitionsArnParameters {
@@ -66,5 +66,5 @@ export interface SegmentDefinitionsArnParameters {
 }
 export type SegmentDefinitionsArn = `arn:${string}:profile:${string}:${string}:domains/${string}/segment-definitions/${string}`
 export function segmentDefinitionsArn(parameters: SegmentDefinitionsArnParameters): SegmentDefinitionsArn {
-  return `arn:${parameters.partition ?? ''}:profile:${parameters.region}:${parameters.account}:domains/${parameters.domainName}/segment-definitions/${parameters.segmentDefinitionName}`
+  return `arn:${parameters.partition ?? 'aws'}:profile:${parameters.region}:${parameters.account}:domains/${parameters.domainName}/segment-definitions/${parameters.segmentDefinitionName}`
 }

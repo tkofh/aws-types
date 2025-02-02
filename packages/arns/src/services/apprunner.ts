@@ -7,7 +7,7 @@ export interface ServiceArnParameters {
 }
 export type ServiceArn = `arn:${string}:apprunner:${string}:${string}:service/${string}/${string}`
 export function serviceArn(parameters: ServiceArnParameters): ServiceArn {
-  return `arn:${parameters.partition ?? ''}:apprunner:${parameters.region}:${parameters.account}:service/${parameters.serviceName}/${parameters.serviceId}`
+  return `arn:${parameters.partition ?? 'aws'}:apprunner:${parameters.region}:${parameters.account}:service/${parameters.serviceName}/${parameters.serviceId}`
 }
 
 export interface ConnectionArnParameters {
@@ -19,7 +19,7 @@ export interface ConnectionArnParameters {
 }
 export type ConnectionArn = `arn:${string}:apprunner:${string}:${string}:connection/${string}/${string}`
 export function connectionArn(parameters: ConnectionArnParameters): ConnectionArn {
-  return `arn:${parameters.partition ?? ''}:apprunner:${parameters.region}:${parameters.account}:connection/${parameters.connectionName}/${parameters.connectionId}`
+  return `arn:${parameters.partition ?? 'aws'}:apprunner:${parameters.region}:${parameters.account}:connection/${parameters.connectionName}/${parameters.connectionId}`
 }
 
 export interface AutoscalingconfigurationArnParameters {
@@ -32,7 +32,7 @@ export interface AutoscalingconfigurationArnParameters {
 }
 export type AutoscalingconfigurationArn = `arn:${string}:apprunner:${string}:${string}:autoscalingconfiguration/${string}/${string}/${string}`
 export function autoscalingconfigurationArn(parameters: AutoscalingconfigurationArnParameters): AutoscalingconfigurationArn {
-  return `arn:${parameters.partition ?? ''}:apprunner:${parameters.region}:${parameters.account}:autoscalingconfiguration/${parameters.autoscalingConfigurationName}/${parameters.autoscalingConfigurationVersion}/${parameters.autoscalingConfigurationId}`
+  return `arn:${parameters.partition ?? 'aws'}:apprunner:${parameters.region}:${parameters.account}:autoscalingconfiguration/${parameters.autoscalingConfigurationName}/${parameters.autoscalingConfigurationVersion}/${parameters.autoscalingConfigurationId}`
 }
 
 export interface ObservabilityconfigurationArnParameters {
@@ -45,7 +45,7 @@ export interface ObservabilityconfigurationArnParameters {
 }
 export type ObservabilityconfigurationArn = `arn:${string}:apprunner:${string}:${string}:observabilityconfiguration/${string}/${string}/${string}`
 export function observabilityconfigurationArn(parameters: ObservabilityconfigurationArnParameters): ObservabilityconfigurationArn {
-  return `arn:${parameters.partition ?? ''}:apprunner:${parameters.region}:${parameters.account}:observabilityconfiguration/${parameters.observabilityConfigurationName}/${parameters.observabilityConfigurationVersion}/${parameters.observabilityConfigurationId}`
+  return `arn:${parameters.partition ?? 'aws'}:apprunner:${parameters.region}:${parameters.account}:observabilityconfiguration/${parameters.observabilityConfigurationName}/${parameters.observabilityConfigurationVersion}/${parameters.observabilityConfigurationId}`
 }
 
 export interface VpcconnectorArnParameters {
@@ -58,7 +58,7 @@ export interface VpcconnectorArnParameters {
 }
 export type VpcconnectorArn = `arn:${string}:apprunner:${string}:${string}:vpcconnector/${string}/${string}/${string}`
 export function vpcconnectorArn(parameters: VpcconnectorArnParameters): VpcconnectorArn {
-  return `arn:${parameters.partition ?? ''}:apprunner:${parameters.region}:${parameters.account}:vpcconnector/${parameters.vpcConnectorName}/${parameters.vpcConnectorVersion}/${parameters.vpcConnectorId}`
+  return `arn:${parameters.partition ?? 'aws'}:apprunner:${parameters.region}:${parameters.account}:vpcconnector/${parameters.vpcConnectorName}/${parameters.vpcConnectorVersion}/${parameters.vpcConnectorId}`
 }
 
 export interface VpcingressconnectionArnParameters {
@@ -70,7 +70,7 @@ export interface VpcingressconnectionArnParameters {
 }
 export type VpcingressconnectionArn = `arn:${string}:apprunner:${string}:${string}:vpcingressconnection/${string}/${string}`
 export function vpcingressconnectionArn(parameters: VpcingressconnectionArnParameters): VpcingressconnectionArn {
-  return `arn:${parameters.partition ?? ''}:apprunner:${parameters.region}:${parameters.account}:vpcingressconnection/${parameters.vpcIngressConnectionName}/${parameters.vpcIngressConnectionId}`
+  return `arn:${parameters.partition ?? 'aws'}:apprunner:${parameters.region}:${parameters.account}:vpcingressconnection/${parameters.vpcIngressConnectionName}/${parameters.vpcIngressConnectionId}`
 }
 
 export interface WebaclArnParameters {
@@ -83,5 +83,5 @@ export interface WebaclArnParameters {
 }
 export type WebaclArn = `arn:${string}:wafv2:${string}:${string}:${string}/webacl/${string}/${string}`
 export function webaclArn(parameters: WebaclArnParameters): WebaclArn {
-  return `arn:${parameters.partition ?? ''}:wafv2:${parameters.region}:${parameters.account}:${parameters.scope}/webacl/${parameters.name}/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:wafv2:${parameters.region}:${parameters.account}:${parameters.scope}/webacl/${parameters.name}/${parameters.id}`
 }

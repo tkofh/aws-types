@@ -6,7 +6,7 @@ export interface AppbundleArnParameters {
 }
 export type AppbundleArn = `arn:${string}:appfabric:${string}:${string}:appbundle/${string}`
 export function appbundleArn(parameters: AppbundleArnParameters): AppbundleArn {
-  return `arn:${parameters.partition ?? ''}:appfabric:${parameters.region}:${parameters.account}:appbundle/${parameters.appBundleIdentifier}`
+  return `arn:${parameters.partition ?? 'aws'}:appfabric:${parameters.region}:${parameters.account}:appbundle/${parameters.appBundleIdentifier}`
 }
 
 export interface AppauthorizationArnParameters {
@@ -18,7 +18,7 @@ export interface AppauthorizationArnParameters {
 }
 export type AppauthorizationArn = `arn:${string}:appfabric:${string}:${string}:appbundle/${string}/appauthorization/${string}`
 export function appauthorizationArn(parameters: AppauthorizationArnParameters): AppauthorizationArn {
-  return `arn:${parameters.partition ?? ''}:appfabric:${parameters.region}:${parameters.account}:appbundle/${parameters.appbundleId}/appauthorization/${parameters.appAuthorizationIdentifier}`
+  return `arn:${parameters.partition ?? 'aws'}:appfabric:${parameters.region}:${parameters.account}:appbundle/${parameters.appbundleId}/appauthorization/${parameters.appAuthorizationIdentifier}`
 }
 
 export interface IngestionArnParameters {
@@ -30,7 +30,7 @@ export interface IngestionArnParameters {
 }
 export type IngestionArn = `arn:${string}:appfabric:${string}:${string}:appbundle/${string}/ingestion/${string}`
 export function ingestionArn(parameters: IngestionArnParameters): IngestionArn {
-  return `arn:${parameters.partition ?? ''}:appfabric:${parameters.region}:${parameters.account}:appbundle/${parameters.appbundleId}/ingestion/${parameters.ingestionIdentifier}`
+  return `arn:${parameters.partition ?? 'aws'}:appfabric:${parameters.region}:${parameters.account}:appbundle/${parameters.appbundleId}/ingestion/${parameters.ingestionIdentifier}`
 }
 
 export interface IngestiondestinationArnParameters {
@@ -43,5 +43,5 @@ export interface IngestiondestinationArnParameters {
 }
 export type IngestiondestinationArn = `arn:${string}:appfabric:${string}:${string}:appbundle/${string}/ingestion/${string}/ingestiondestination/${string}`
 export function ingestiondestinationArn(parameters: IngestiondestinationArnParameters): IngestiondestinationArn {
-  return `arn:${parameters.partition ?? ''}:appfabric:${parameters.region}:${parameters.account}:appbundle/${parameters.appbundleId}/ingestion/${parameters.ingestionIdentifier}/ingestiondestination/${parameters.ingestionDestinationIdentifier}`
+  return `arn:${parameters.partition ?? 'aws'}:appfabric:${parameters.region}:${parameters.account}:appbundle/${parameters.appbundleId}/ingestion/${parameters.ingestionIdentifier}/ingestiondestination/${parameters.ingestionDestinationIdentifier}`
 }

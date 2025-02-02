@@ -6,7 +6,7 @@ export interface InstanceArnParameters {
 }
 export type InstanceArn = `arn:${string}:ec2:${string}:${string}:instance/${string}`
 export function instanceArn(parameters: InstanceArnParameters): InstanceArn {
-  return `arn:${parameters.partition ?? ''}:ec2:${parameters.region}:${parameters.account}:instance/${parameters.instanceId}`
+  return `arn:${parameters.partition ?? 'aws'}:ec2:${parameters.region}:${parameters.account}:instance/${parameters.instanceId}`
 }
 
 export interface InstanceConnectEndpointArnParameters {
@@ -17,5 +17,5 @@ export interface InstanceConnectEndpointArnParameters {
 }
 export type InstanceConnectEndpointArn = `arn:${string}:ec2:${string}:${string}:instance-connect-endpoint/${string}`
 export function instanceConnectEndpointArn(parameters: InstanceConnectEndpointArnParameters): InstanceConnectEndpointArn {
-  return `arn:${parameters.partition ?? ''}:ec2:${parameters.region}:${parameters.account}:instance-connect-endpoint/${parameters.instanceConnectEndpointId}`
+  return `arn:${parameters.partition ?? 'aws'}:ec2:${parameters.region}:${parameters.account}:instance-connect-endpoint/${parameters.instanceConnectEndpointId}`
 }

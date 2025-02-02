@@ -6,5 +6,5 @@ export interface RoutingcontrolArnParameters {
 }
 export type RoutingcontrolArn = `arn:${string}:route53-recovery-control::${string}:controlpanel/${string}/routingcontrol/${string}`
 export function routingcontrolArn(parameters: RoutingcontrolArnParameters): RoutingcontrolArn {
-  return `arn:${parameters.partition ?? ''}:route53-recovery-control::${parameters.account}:controlpanel/${parameters.controlPanelId}/routingcontrol/${parameters.routingControlId}`
+  return `arn:${parameters.partition ?? 'aws'}:route53-recovery-control::${parameters.account}:controlpanel/${parameters.controlPanelId}/routingcontrol/${parameters.routingControlId}`
 }

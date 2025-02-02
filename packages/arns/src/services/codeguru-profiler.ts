@@ -6,5 +6,5 @@ export interface ProfilingGroupArnParameters {
 }
 export type ProfilingGroupArn = `arn:${string}:codeguru-profiler:${string}:${string}:profilingGroup/${string}`
 export function profilingGroupArn(parameters: ProfilingGroupArnParameters): ProfilingGroupArn {
-  return `arn:${parameters.partition ?? ''}:codeguru-profiler:${parameters.region}:${parameters.account}:profilingGroup/${parameters.profilingGroupName}`
+  return `arn:${parameters.partition ?? 'aws'}:codeguru-profiler:${parameters.region}:${parameters.account}:profilingGroup/${parameters.profilingGroupName}`
 }

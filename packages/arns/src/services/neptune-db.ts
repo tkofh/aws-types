@@ -6,5 +6,5 @@ export interface DatabaseArnParameters {
 }
 export type DatabaseArn = `arn:${string}:neptune-db:${string}:${string}:${string}/*`
 export function databaseArn(parameters: DatabaseArnParameters): DatabaseArn {
-  return `arn:${parameters.partition ?? ''}:neptune-db:${parameters.region}:${parameters.account}:${parameters.clusterResourceId}/*`
+  return `arn:${parameters.partition ?? 'aws'}:neptune-db:${parameters.region}:${parameters.account}:${parameters.clusterResourceId}/*`
 }

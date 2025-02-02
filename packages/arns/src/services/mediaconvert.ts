@@ -6,7 +6,7 @@ export interface JobArnParameters {
 }
 export type JobArn = `arn:${string}:mediaconvert:${string}:${string}:jobs/${string}`
 export function jobArn(parameters: JobArnParameters): JobArn {
-  return `arn:${parameters.partition ?? ''}:mediaconvert:${parameters.region}:${parameters.account}:jobs/${parameters.jobId}`
+  return `arn:${parameters.partition ?? 'aws'}:mediaconvert:${parameters.region}:${parameters.account}:jobs/${parameters.jobId}`
 }
 
 export interface QueueArnParameters {
@@ -17,7 +17,7 @@ export interface QueueArnParameters {
 }
 export type QueueArn = `arn:${string}:mediaconvert:${string}:${string}:queues/${string}`
 export function queueArn(parameters: QueueArnParameters): QueueArn {
-  return `arn:${parameters.partition ?? ''}:mediaconvert:${parameters.region}:${parameters.account}:queues/${parameters.queueName}`
+  return `arn:${parameters.partition ?? 'aws'}:mediaconvert:${parameters.region}:${parameters.account}:queues/${parameters.queueName}`
 }
 
 export interface PresetArnParameters {
@@ -28,7 +28,7 @@ export interface PresetArnParameters {
 }
 export type PresetArn = `arn:${string}:mediaconvert:${string}:${string}:presets/${string}`
 export function presetArn(parameters: PresetArnParameters): PresetArn {
-  return `arn:${parameters.partition ?? ''}:mediaconvert:${parameters.region}:${parameters.account}:presets/${parameters.presetName}`
+  return `arn:${parameters.partition ?? 'aws'}:mediaconvert:${parameters.region}:${parameters.account}:presets/${parameters.presetName}`
 }
 
 export interface JobTemplateArnParameters {
@@ -39,7 +39,7 @@ export interface JobTemplateArnParameters {
 }
 export type JobTemplateArn = `arn:${string}:mediaconvert:${string}:${string}:jobTemplates/${string}`
 export function jobTemplateArn(parameters: JobTemplateArnParameters): JobTemplateArn {
-  return `arn:${parameters.partition ?? ''}:mediaconvert:${parameters.region}:${parameters.account}:jobTemplates/${parameters.jobTemplateName}`
+  return `arn:${parameters.partition ?? 'aws'}:mediaconvert:${parameters.region}:${parameters.account}:jobTemplates/${parameters.jobTemplateName}`
 }
 
 export interface CertificateAssociationArnParameters {
@@ -50,5 +50,5 @@ export interface CertificateAssociationArnParameters {
 }
 export type CertificateAssociationArn = `arn:${string}:mediaconvert:${string}:${string}:certificates/${string}`
 export function certificateAssociationArn(parameters: CertificateAssociationArnParameters): CertificateAssociationArn {
-  return `arn:${parameters.partition ?? ''}:mediaconvert:${parameters.region}:${parameters.account}:certificates/${parameters.certificateArn}`
+  return `arn:${parameters.partition ?? 'aws'}:mediaconvert:${parameters.region}:${parameters.account}:certificates/${parameters.certificateArn}`
 }

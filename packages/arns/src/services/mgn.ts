@@ -6,7 +6,7 @@ export interface JobResourceArnParameters {
 }
 export type JobResourceArn = `arn:${string}:mgn:${string}:${string}:job/${string}`
 export function jobResourceArn(parameters: JobResourceArnParameters): JobResourceArn {
-  return `arn:${parameters.partition ?? ''}:mgn:${parameters.region}:${parameters.account}:job/${parameters.jobId}`
+  return `arn:${parameters.partition ?? 'aws'}:mgn:${parameters.region}:${parameters.account}:job/${parameters.jobId}`
 }
 
 export interface ReplicationConfigurationTemplateResourceArnParameters {
@@ -17,7 +17,7 @@ export interface ReplicationConfigurationTemplateResourceArnParameters {
 }
 export type ReplicationConfigurationTemplateResourceArn = `arn:${string}:mgn:${string}:${string}:replication-configuration-template/${string}`
 export function replicationConfigurationTemplateResourceArn(parameters: ReplicationConfigurationTemplateResourceArnParameters): ReplicationConfigurationTemplateResourceArn {
-  return `arn:${parameters.partition ?? ''}:mgn:${parameters.region}:${parameters.account}:replication-configuration-template/${parameters.replicationConfigurationTemplateId}`
+  return `arn:${parameters.partition ?? 'aws'}:mgn:${parameters.region}:${parameters.account}:replication-configuration-template/${parameters.replicationConfigurationTemplateId}`
 }
 
 export interface LaunchConfigurationTemplateResourceArnParameters {
@@ -28,7 +28,7 @@ export interface LaunchConfigurationTemplateResourceArnParameters {
 }
 export type LaunchConfigurationTemplateResourceArn = `arn:${string}:mgn:${string}:${string}:launch-configuration-template/${string}`
 export function launchConfigurationTemplateResourceArn(parameters: LaunchConfigurationTemplateResourceArnParameters): LaunchConfigurationTemplateResourceArn {
-  return `arn:${parameters.partition ?? ''}:mgn:${parameters.region}:${parameters.account}:launch-configuration-template/${parameters.launchConfigurationTemplateId}`
+  return `arn:${parameters.partition ?? 'aws'}:mgn:${parameters.region}:${parameters.account}:launch-configuration-template/${parameters.launchConfigurationTemplateId}`
 }
 
 export interface VcenterClientResourceArnParameters {
@@ -39,7 +39,7 @@ export interface VcenterClientResourceArnParameters {
 }
 export type VcenterClientResourceArn = `arn:${string}:mgn:${string}:${string}:vcenter-client/${string}`
 export function vcenterClientResourceArn(parameters: VcenterClientResourceArnParameters): VcenterClientResourceArn {
-  return `arn:${parameters.partition ?? ''}:mgn:${parameters.region}:${parameters.account}:vcenter-client/${parameters.vcenterClientId}`
+  return `arn:${parameters.partition ?? 'aws'}:mgn:${parameters.region}:${parameters.account}:vcenter-client/${parameters.vcenterClientId}`
 }
 
 export interface SourceServerResourceArnParameters {
@@ -50,7 +50,7 @@ export interface SourceServerResourceArnParameters {
 }
 export type SourceServerResourceArn = `arn:${string}:mgn:${string}:${string}:source-server/${string}`
 export function sourceServerResourceArn(parameters: SourceServerResourceArnParameters): SourceServerResourceArn {
-  return `arn:${parameters.partition ?? ''}:mgn:${parameters.region}:${parameters.account}:source-server/${parameters.sourceServerId}`
+  return `arn:${parameters.partition ?? 'aws'}:mgn:${parameters.region}:${parameters.account}:source-server/${parameters.sourceServerId}`
 }
 
 export interface ApplicationResourceArnParameters {
@@ -61,7 +61,7 @@ export interface ApplicationResourceArnParameters {
 }
 export type ApplicationResourceArn = `arn:${string}:mgn:${string}:${string}:application/${string}`
 export function applicationResourceArn(parameters: ApplicationResourceArnParameters): ApplicationResourceArn {
-  return `arn:${parameters.partition ?? ''}:mgn:${parameters.region}:${parameters.account}:application/${parameters.applicationId}`
+  return `arn:${parameters.partition ?? 'aws'}:mgn:${parameters.region}:${parameters.account}:application/${parameters.applicationId}`
 }
 
 export interface WaveResourceArnParameters {
@@ -72,7 +72,7 @@ export interface WaveResourceArnParameters {
 }
 export type WaveResourceArn = `arn:${string}:mgn:${string}:${string}:wave/${string}`
 export function waveResourceArn(parameters: WaveResourceArnParameters): WaveResourceArn {
-  return `arn:${parameters.partition ?? ''}:mgn:${parameters.region}:${parameters.account}:wave/${parameters.waveId}`
+  return `arn:${parameters.partition ?? 'aws'}:mgn:${parameters.region}:${parameters.account}:wave/${parameters.waveId}`
 }
 
 export interface ImportResourceArnParameters {
@@ -83,7 +83,7 @@ export interface ImportResourceArnParameters {
 }
 export type ImportResourceArn = `arn:${string}:mgn:${string}:${string}:import/${string}`
 export function importResourceArn(parameters: ImportResourceArnParameters): ImportResourceArn {
-  return `arn:${parameters.partition ?? ''}:mgn:${parameters.region}:${parameters.account}:import/${parameters.importId}`
+  return `arn:${parameters.partition ?? 'aws'}:mgn:${parameters.region}:${parameters.account}:import/${parameters.importId}`
 }
 
 export interface ExportResourceArnParameters {
@@ -94,7 +94,7 @@ export interface ExportResourceArnParameters {
 }
 export type ExportResourceArn = `arn:${string}:mgn:${string}:${string}:export/${string}`
 export function exportResourceArn(parameters: ExportResourceArnParameters): ExportResourceArn {
-  return `arn:${parameters.partition ?? ''}:mgn:${parameters.region}:${parameters.account}:export/${parameters.exportId}`
+  return `arn:${parameters.partition ?? 'aws'}:mgn:${parameters.region}:${parameters.account}:export/${parameters.exportId}`
 }
 
 export interface ConnectorResourceArnParameters {
@@ -105,5 +105,5 @@ export interface ConnectorResourceArnParameters {
 }
 export type ConnectorResourceArn = `arn:${string}:mgn:${string}:${string}:connector/${string}`
 export function connectorResourceArn(parameters: ConnectorResourceArnParameters): ConnectorResourceArn {
-  return `arn:${parameters.partition ?? ''}:mgn:${parameters.region}:${parameters.account}:connector/${parameters.connectorId}`
+  return `arn:${parameters.partition ?? 'aws'}:mgn:${parameters.region}:${parameters.account}:connector/${parameters.connectorId}`
 }

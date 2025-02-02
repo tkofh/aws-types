@@ -6,5 +6,5 @@ export interface CurArnParameters {
 }
 export type CurArn = `arn:${string}:cur:${string}:${string}:definition/${string}`
 export function curArn(parameters: CurArnParameters): CurArn {
-  return `arn:${parameters.partition ?? ''}:cur:${parameters.region}:${parameters.account}:definition/${parameters.reportName}`
+  return `arn:${parameters.partition ?? 'aws'}:cur:${parameters.region}:${parameters.account}:definition/${parameters.reportName}`
 }

@@ -6,7 +6,7 @@ export interface ScheduleGroupArnParameters {
 }
 export type ScheduleGroupArn = `arn:${string}:scheduler:${string}:${string}:schedule-group/${string}`
 export function scheduleGroupArn(parameters: ScheduleGroupArnParameters): ScheduleGroupArn {
-  return `arn:${parameters.partition ?? ''}:scheduler:${parameters.region}:${parameters.account}:schedule-group/${parameters.groupName}`
+  return `arn:${parameters.partition ?? 'aws'}:scheduler:${parameters.region}:${parameters.account}:schedule-group/${parameters.groupName}`
 }
 
 export interface ScheduleArnParameters {
@@ -18,5 +18,5 @@ export interface ScheduleArnParameters {
 }
 export type ScheduleArn = `arn:${string}:scheduler:${string}:${string}:schedule/${string}/${string}`
 export function scheduleArn(parameters: ScheduleArnParameters): ScheduleArn {
-  return `arn:${parameters.partition ?? ''}:scheduler:${parameters.region}:${parameters.account}:schedule/${parameters.groupName}/${parameters.scheduleName}`
+  return `arn:${parameters.partition ?? 'aws'}:scheduler:${parameters.region}:${parameters.account}:schedule/${parameters.groupName}/${parameters.scheduleName}`
 }

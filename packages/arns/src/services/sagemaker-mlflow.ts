@@ -6,5 +6,5 @@ export interface MlflowTrackingServerArnParameters {
 }
 export type MlflowTrackingServerArn = `arn:${string}:sagemaker:${string}:${string}:mlflow-tracking-server/${string}`
 export function mlflowTrackingServerArn(parameters: MlflowTrackingServerArnParameters): MlflowTrackingServerArn {
-  return `arn:${parameters.partition ?? ''}:sagemaker:${parameters.region}:${parameters.account}:mlflow-tracking-server/${parameters.mlflowTrackingServerName}`
+  return `arn:${parameters.partition ?? 'aws'}:sagemaker:${parameters.region}:${parameters.account}:mlflow-tracking-server/${parameters.mlflowTrackingServerName}`
 }

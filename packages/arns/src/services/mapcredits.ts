@@ -5,5 +5,5 @@ export interface AgreementArnParameters {
 }
 export type AgreementArn = `arn:${string}:mapcredits:::${string}/${string}`
 export function agreementArn(parameters: AgreementArnParameters): AgreementArn {
-  return `arn:${parameters.partition ?? ''}:mapcredits:::${parameters.agreement}/${parameters.agreementId}`
+  return `arn:${parameters.partition ?? 'aws'}:mapcredits:::${parameters.agreement}/${parameters.agreementId}`
 }

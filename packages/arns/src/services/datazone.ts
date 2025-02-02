@@ -6,5 +6,5 @@ export interface DomainArnParameters {
 }
 export type DomainArn = `arn:${string}:datazone:${string}:${string}:domain/${string}`
 export function domainArn(parameters: DomainArnParameters): DomainArn {
-  return `arn:${parameters.partition ?? ''}:datazone:${parameters.region}:${parameters.account}:domain/${parameters.domainId}`
+  return `arn:${parameters.partition ?? 'aws'}:datazone:${parameters.region}:${parameters.account}:domain/${parameters.domainId}`
 }

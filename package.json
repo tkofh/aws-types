@@ -3,17 +3,19 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
-    "check": "biome check --write ."
+    "check": "biome check --write .",
+    "check:report": "biome check .",
+    "deps:update": "pnpm -r update --latest && pnpm dedupe",
+    "publish-packages": "pnpm check:report && turbo run build && changeset version && changeset publish && pnpm check"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.3",
-    "@changesets/cli": "^2.27.9",
+    "@biomejs/biome": "1.9.4",
+    "@changesets/cli": "^2.27.12",
     "@repo/typescript-config": "workspace:*",
-    "prettier": "^3.2.5",
-    "turbo": "^2.1.3",
-    "typescript": "^5.4.5"
+    "turbo": "^2.4.0",
+    "typescript": "^5.7.3"
   },
-  "packageManager": "pnpm@9.12.1",
+  "packageManager": "pnpm@9.15.4",
   "engines": {
     "node": ">=22"
   }

@@ -6,7 +6,7 @@ export interface CollectionArnParameters {
 }
 export type CollectionArn = `arn:${string}:rekognition:${string}:${string}:collection/${string}`
 export function collectionArn(parameters: CollectionArnParameters): CollectionArn {
-  return `arn:${parameters.partition ?? ''}:rekognition:${parameters.region}:${parameters.account}:collection/${parameters.collectionId}`
+  return `arn:${parameters.partition ?? 'aws'}:rekognition:${parameters.region}:${parameters.account}:collection/${parameters.collectionId}`
 }
 
 export interface StreamprocessorArnParameters {
@@ -17,7 +17,7 @@ export interface StreamprocessorArnParameters {
 }
 export type StreamprocessorArn = `arn:${string}:rekognition:${string}:${string}:streamprocessor/${string}`
 export function streamprocessorArn(parameters: StreamprocessorArnParameters): StreamprocessorArn {
-  return `arn:${parameters.partition ?? ''}:rekognition:${parameters.region}:${parameters.account}:streamprocessor/${parameters.streamprocessorId}`
+  return `arn:${parameters.partition ?? 'aws'}:rekognition:${parameters.region}:${parameters.account}:streamprocessor/${parameters.streamprocessorId}`
 }
 
 export interface ProjectArnParameters {
@@ -29,7 +29,7 @@ export interface ProjectArnParameters {
 }
 export type ProjectArn = `arn:${string}:rekognition:${string}:${string}:project/${string}/${string}`
 export function projectArn(parameters: ProjectArnParameters): ProjectArn {
-  return `arn:${parameters.partition ?? ''}:rekognition:${parameters.region}:${parameters.account}:project/${parameters.projectName}/${parameters.creationTimestamp}`
+  return `arn:${parameters.partition ?? 'aws'}:rekognition:${parameters.region}:${parameters.account}:project/${parameters.projectName}/${parameters.creationTimestamp}`
 }
 
 export interface ProjectversionArnParameters {
@@ -42,7 +42,7 @@ export interface ProjectversionArnParameters {
 }
 export type ProjectversionArn = `arn:${string}:rekognition:${string}:${string}:project/${string}/version/${string}/${string}`
 export function projectversionArn(parameters: ProjectversionArnParameters): ProjectversionArn {
-  return `arn:${parameters.partition ?? ''}:rekognition:${parameters.region}:${parameters.account}:project/${parameters.projectName}/version/${parameters.versionName}/${parameters.creationTimestamp}`
+  return `arn:${parameters.partition ?? 'aws'}:rekognition:${parameters.region}:${parameters.account}:project/${parameters.projectName}/version/${parameters.versionName}/${parameters.creationTimestamp}`
 }
 
 export interface DatasetArnParameters {
@@ -55,5 +55,5 @@ export interface DatasetArnParameters {
 }
 export type DatasetArn = `arn:${string}:rekognition:${string}:${string}:project/${string}/dataset/${string}/${string}`
 export function datasetArn(parameters: DatasetArnParameters): DatasetArn {
-  return `arn:${parameters.partition ?? ''}:rekognition:${parameters.region}:${parameters.account}:project/${parameters.projectName}/dataset/${parameters.datasetType}/${parameters.creationTimestamp}`
+  return `arn:${parameters.partition ?? 'aws'}:rekognition:${parameters.region}:${parameters.account}:project/${parameters.projectName}/dataset/${parameters.datasetType}/${parameters.creationTimestamp}`
 }

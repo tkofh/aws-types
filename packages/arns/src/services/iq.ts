@@ -5,7 +5,7 @@ export interface ConversationArnParameters {
 }
 export type ConversationArn = `arn:${string}:iq:${string}::conversation/${string}`
 export function conversationArn(parameters: ConversationArnParameters): ConversationArn {
-  return `arn:${parameters.partition ?? ''}:iq:${parameters.region}::conversation/${parameters.conversationId}`
+  return `arn:${parameters.partition ?? 'aws'}:iq:${parameters.region}::conversation/${parameters.conversationId}`
 }
 
 export interface BuyerArnParameters {
@@ -15,7 +15,7 @@ export interface BuyerArnParameters {
 }
 export type BuyerArn = `arn:${string}:iq:${string}::buyer/${string}`
 export function buyerArn(parameters: BuyerArnParameters): BuyerArn {
-  return `arn:${parameters.partition ?? ''}:iq:${parameters.region}::buyer/${parameters.buyerId}`
+  return `arn:${parameters.partition ?? 'aws'}:iq:${parameters.region}::buyer/${parameters.buyerId}`
 }
 
 export interface ExpertArnParameters {
@@ -25,7 +25,7 @@ export interface ExpertArnParameters {
 }
 export type ExpertArn = `arn:${string}:iq:${string}::expert/${string}`
 export function expertArn(parameters: ExpertArnParameters): ExpertArn {
-  return `arn:${parameters.partition ?? ''}:iq:${parameters.region}::expert/${parameters.expertId}`
+  return `arn:${parameters.partition ?? 'aws'}:iq:${parameters.region}::expert/${parameters.expertId}`
 }
 
 export interface CallArnParameters {
@@ -35,7 +35,7 @@ export interface CallArnParameters {
 }
 export type CallArn = `arn:${string}:iq:${string}::call/${string}`
 export function callArn(parameters: CallArnParameters): CallArn {
-  return `arn:${parameters.partition ?? ''}:iq:${parameters.region}::call/${parameters.callId}`
+  return `arn:${parameters.partition ?? 'aws'}:iq:${parameters.region}::call/${parameters.callId}`
 }
 
 export interface TokenArnParameters {
@@ -45,7 +45,7 @@ export interface TokenArnParameters {
 }
 export type TokenArn = `arn:${string}:iq:${string}::token/${string}`
 export function tokenArn(parameters: TokenArnParameters): TokenArn {
-  return `arn:${parameters.partition ?? ''}:iq:${parameters.region}::token/${parameters.tokenId}`
+  return `arn:${parameters.partition ?? 'aws'}:iq:${parameters.region}::token/${parameters.tokenId}`
 }
 
 export interface ProposalArnParameters {
@@ -56,7 +56,7 @@ export interface ProposalArnParameters {
 }
 export type ProposalArn = `arn:${string}:iq:${string}::proposal/${string}/${string}`
 export function proposalArn(parameters: ProposalArnParameters): ProposalArn {
-  return `arn:${parameters.partition ?? ''}:iq:${parameters.region}::proposal/${parameters.conversationId}/${parameters.proposalId}`
+  return `arn:${parameters.partition ?? 'aws'}:iq:${parameters.region}::proposal/${parameters.conversationId}/${parameters.proposalId}`
 }
 
 export interface PaymentRequestArnParameters {
@@ -68,7 +68,7 @@ export interface PaymentRequestArnParameters {
 }
 export type PaymentRequestArn = `arn:${string}:iq:${string}::paymentRequest/${string}/${string}/${string}`
 export function paymentRequestArn(parameters: PaymentRequestArnParameters): PaymentRequestArn {
-  return `arn:${parameters.partition ?? ''}:iq:${parameters.region}::paymentRequest/${parameters.conversationId}/${parameters.proposalId}/${parameters.paymentRequestId}`
+  return `arn:${parameters.partition ?? 'aws'}:iq:${parameters.region}::paymentRequest/${parameters.conversationId}/${parameters.proposalId}/${parameters.paymentRequestId}`
 }
 
 export interface PaymentScheduleArnParameters {
@@ -80,7 +80,7 @@ export interface PaymentScheduleArnParameters {
 }
 export type PaymentScheduleArn = `arn:${string}:iq:${string}::paymentSchedule/${string}/${string}/${string}`
 export function paymentScheduleArn(parameters: PaymentScheduleArnParameters): PaymentScheduleArn {
-  return `arn:${parameters.partition ?? ''}:iq:${parameters.region}::paymentSchedule/${parameters.conversationId}/${parameters.proposalId}/${parameters.versionId}`
+  return `arn:${parameters.partition ?? 'aws'}:iq:${parameters.region}::paymentSchedule/${parameters.conversationId}/${parameters.proposalId}/${parameters.versionId}`
 }
 
 export interface SellerArnParameters {
@@ -90,7 +90,7 @@ export interface SellerArnParameters {
 }
 export type SellerArn = `arn:${string}:iq:${string}::seller/${string}`
 export function sellerArn(parameters: SellerArnParameters): SellerArn {
-  return `arn:${parameters.partition ?? ''}:iq:${parameters.region}::seller/${parameters.sellerAwsAccountId}`
+  return `arn:${parameters.partition ?? 'aws'}:iq:${parameters.region}::seller/${parameters.sellerAwsAccountId}`
 }
 
 export interface CompanyArnParameters {
@@ -100,7 +100,7 @@ export interface CompanyArnParameters {
 }
 export type CompanyArn = `arn:${string}:iq:${string}::company/${string}`
 export function companyArn(parameters: CompanyArnParameters): CompanyArn {
-  return `arn:${parameters.partition ?? ''}:iq:${parameters.region}::company/${parameters.companyId}`
+  return `arn:${parameters.partition ?? 'aws'}:iq:${parameters.region}::company/${parameters.companyId}`
 }
 
 export interface RequestArnParameters {
@@ -110,7 +110,7 @@ export interface RequestArnParameters {
 }
 export type RequestArn = `arn:${string}:iq:${string}::request/${string}`
 export function requestArn(parameters: RequestArnParameters): RequestArn {
-  return `arn:${parameters.partition ?? ''}:iq:${parameters.region}::request/${parameters.requestId}`
+  return `arn:${parameters.partition ?? 'aws'}:iq:${parameters.region}::request/${parameters.requestId}`
 }
 
 export interface ListingArnParameters {
@@ -120,7 +120,7 @@ export interface ListingArnParameters {
 }
 export type ListingArn = `arn:${string}:iq:${string}::listing/${string}`
 export function listingArn(parameters: ListingArnParameters): ListingArn {
-  return `arn:${parameters.partition ?? ''}:iq:${parameters.region}::listing/${parameters.listingId}`
+  return `arn:${parameters.partition ?? 'aws'}:iq:${parameters.region}::listing/${parameters.listingId}`
 }
 
 export interface AttachmentArnParameters {
@@ -130,7 +130,7 @@ export interface AttachmentArnParameters {
 }
 export type AttachmentArn = `arn:${string}:iq:${string}::attachment/${string}`
 export function attachmentArn(parameters: AttachmentArnParameters): AttachmentArn {
-  return `arn:${parameters.partition ?? ''}:iq:${parameters.region}::attachment/${parameters.attachmentId}`
+  return `arn:${parameters.partition ?? 'aws'}:iq:${parameters.region}::attachment/${parameters.attachmentId}`
 }
 
 export interface PermissionArnParameters {
@@ -140,5 +140,5 @@ export interface PermissionArnParameters {
 }
 export type PermissionArn = `arn:${string}:iq-permission:${string}::permission/${string}`
 export function permissionArn(parameters: PermissionArnParameters): PermissionArn {
-  return `arn:${parameters.partition ?? ''}:iq-permission:${parameters.region}::permission/${parameters.permissionRequestId}`
+  return `arn:${parameters.partition ?? 'aws'}:iq-permission:${parameters.region}::permission/${parameters.permissionRequestId}`
 }

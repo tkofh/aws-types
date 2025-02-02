@@ -6,7 +6,7 @@ export interface FileSystemArnParameters {
 }
 export type FileSystemArn = `arn:${string}:fsx:${string}:${string}:file-system/${string}`
 export function fileSystemArn(parameters: FileSystemArnParameters): FileSystemArn {
-  return `arn:${parameters.partition ?? ''}:fsx:${parameters.region}:${parameters.account}:file-system/${parameters.fileSystemId}`
+  return `arn:${parameters.partition ?? 'aws'}:fsx:${parameters.region}:${parameters.account}:file-system/${parameters.fileSystemId}`
 }
 
 export interface FileCacheArnParameters {
@@ -17,7 +17,7 @@ export interface FileCacheArnParameters {
 }
 export type FileCacheArn = `arn:${string}:fsx:${string}:${string}:file-cache/${string}`
 export function fileCacheArn(parameters: FileCacheArnParameters): FileCacheArn {
-  return `arn:${parameters.partition ?? ''}:fsx:${parameters.region}:${parameters.account}:file-cache/${parameters.fileCacheId}`
+  return `arn:${parameters.partition ?? 'aws'}:fsx:${parameters.region}:${parameters.account}:file-cache/${parameters.fileCacheId}`
 }
 
 export interface BackupArnParameters {
@@ -28,7 +28,7 @@ export interface BackupArnParameters {
 }
 export type BackupArn = `arn:${string}:fsx:${string}:${string}:backup/${string}`
 export function backupArn(parameters: BackupArnParameters): BackupArn {
-  return `arn:${parameters.partition ?? ''}:fsx:${parameters.region}:${parameters.account}:backup/${parameters.backupId}`
+  return `arn:${parameters.partition ?? 'aws'}:fsx:${parameters.region}:${parameters.account}:backup/${parameters.backupId}`
 }
 
 export interface StorageVirtualMachineArnParameters {
@@ -40,7 +40,7 @@ export interface StorageVirtualMachineArnParameters {
 }
 export type StorageVirtualMachineArn = `arn:${string}:fsx:${string}:${string}:storage-virtual-machine/${string}/${string}`
 export function storageVirtualMachineArn(parameters: StorageVirtualMachineArnParameters): StorageVirtualMachineArn {
-  return `arn:${parameters.partition ?? ''}:fsx:${parameters.region}:${parameters.account}:storage-virtual-machine/${parameters.fileSystemId}/${parameters.storageVirtualMachineId}`
+  return `arn:${parameters.partition ?? 'aws'}:fsx:${parameters.region}:${parameters.account}:storage-virtual-machine/${parameters.fileSystemId}/${parameters.storageVirtualMachineId}`
 }
 
 export interface TaskArnParameters {
@@ -51,7 +51,7 @@ export interface TaskArnParameters {
 }
 export type TaskArn = `arn:${string}:fsx:${string}:${string}:task/${string}`
 export function taskArn(parameters: TaskArnParameters): TaskArn {
-  return `arn:${parameters.partition ?? ''}:fsx:${parameters.region}:${parameters.account}:task/${parameters.taskId}`
+  return `arn:${parameters.partition ?? 'aws'}:fsx:${parameters.region}:${parameters.account}:task/${parameters.taskId}`
 }
 
 export interface AssociationArnParameters {
@@ -63,7 +63,7 @@ export interface AssociationArnParameters {
 }
 export type AssociationArn = `arn:${string}:fsx:${string}:${string}:association/${string}/${string}`
 export function associationArn(parameters: AssociationArnParameters): AssociationArn {
-  return `arn:${parameters.partition ?? ''}:fsx:${parameters.region}:${parameters.account}:association/${parameters.fileSystemIdOrFileCacheId}/${parameters.dataRepositoryAssociationId}`
+  return `arn:${parameters.partition ?? 'aws'}:fsx:${parameters.region}:${parameters.account}:association/${parameters.fileSystemIdOrFileCacheId}/${parameters.dataRepositoryAssociationId}`
 }
 
 export interface VolumeArnParameters {
@@ -75,7 +75,7 @@ export interface VolumeArnParameters {
 }
 export type VolumeArn = `arn:${string}:fsx:${string}:${string}:volume/${string}/${string}`
 export function volumeArn(parameters: VolumeArnParameters): VolumeArn {
-  return `arn:${parameters.partition ?? ''}:fsx:${parameters.region}:${parameters.account}:volume/${parameters.fileSystemId}/${parameters.volumeId}`
+  return `arn:${parameters.partition ?? 'aws'}:fsx:${parameters.region}:${parameters.account}:volume/${parameters.fileSystemId}/${parameters.volumeId}`
 }
 
 export interface SnapshotArnParameters {
@@ -87,5 +87,5 @@ export interface SnapshotArnParameters {
 }
 export type SnapshotArn = `arn:${string}:fsx:${string}:${string}:snapshot/${string}/${string}`
 export function snapshotArn(parameters: SnapshotArnParameters): SnapshotArn {
-  return `arn:${parameters.partition ?? ''}:fsx:${parameters.region}:${parameters.account}:snapshot/${parameters.volumeId}/${parameters.snapshotId}`
+  return `arn:${parameters.partition ?? 'aws'}:fsx:${parameters.region}:${parameters.account}:snapshot/${parameters.volumeId}/${parameters.snapshotId}`
 }

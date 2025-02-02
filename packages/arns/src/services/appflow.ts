@@ -6,7 +6,7 @@ export interface ConnectorprofileArnParameters {
 }
 export type ConnectorprofileArn = `arn:${string}:appflow:${string}:${string}:connectorprofile/${string}`
 export function connectorprofileArn(parameters: ConnectorprofileArnParameters): ConnectorprofileArn {
-  return `arn:${parameters.partition ?? ''}:appflow:${parameters.region}:${parameters.account}:connectorprofile/${parameters.profileName}`
+  return `arn:${parameters.partition ?? 'aws'}:appflow:${parameters.region}:${parameters.account}:connectorprofile/${parameters.profileName}`
 }
 
 export interface FlowArnParameters {
@@ -17,7 +17,7 @@ export interface FlowArnParameters {
 }
 export type FlowArn = `arn:${string}:appflow:${string}:${string}:flow/${string}`
 export function flowArn(parameters: FlowArnParameters): FlowArn {
-  return `arn:${parameters.partition ?? ''}:appflow:${parameters.region}:${parameters.account}:flow/${parameters.flowName}`
+  return `arn:${parameters.partition ?? 'aws'}:appflow:${parameters.region}:${parameters.account}:flow/${parameters.flowName}`
 }
 
 export interface ConnectorArnParameters {
@@ -28,5 +28,5 @@ export interface ConnectorArnParameters {
 }
 export type ConnectorArn = `arn:${string}:appflow:${string}:${string}:connector/${string}`
 export function connectorArn(parameters: ConnectorArnParameters): ConnectorArn {
-  return `arn:${parameters.partition ?? ''}:appflow:${parameters.region}:${parameters.account}:connector/${parameters.connectorLabel}`
+  return `arn:${parameters.partition ?? 'aws'}:appflow:${parameters.region}:${parameters.account}:connector/${parameters.connectorLabel}`
 }

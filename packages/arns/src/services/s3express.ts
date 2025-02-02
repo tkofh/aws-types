@@ -6,5 +6,5 @@ export interface BucketArnParameters {
 }
 export type BucketArn = `arn:${string}:s3express:${string}:${string}:bucket/${string}`
 export function bucketArn(parameters: BucketArnParameters): BucketArn {
-  return `arn:${parameters.partition ?? ''}:s3express:${parameters.region}:${parameters.account}:bucket/${parameters.bucketName}`
+  return `arn:${parameters.partition ?? 'aws'}:s3express:${parameters.region}:${parameters.account}:bucket/${parameters.bucketName}`
 }

@@ -5,7 +5,7 @@ export interface CatalogArnParameters {
 }
 export type CatalogArn = `arn:${string}:glue:${string}:${string}:catalog`
 export function catalogArn(parameters: CatalogArnParameters): CatalogArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:catalog`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:catalog`
 }
 
 export interface DatabaseArnParameters {
@@ -16,7 +16,7 @@ export interface DatabaseArnParameters {
 }
 export type DatabaseArn = `arn:${string}:glue:${string}:${string}:database/${string}`
 export function databaseArn(parameters: DatabaseArnParameters): DatabaseArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:database/${parameters.databaseName}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:database/${parameters.databaseName}`
 }
 
 export interface TableArnParameters {
@@ -28,7 +28,7 @@ export interface TableArnParameters {
 }
 export type TableArn = `arn:${string}:glue:${string}:${string}:table/${string}/${string}`
 export function tableArn(parameters: TableArnParameters): TableArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:table/${parameters.databaseName}/${parameters.tableName}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:table/${parameters.databaseName}/${parameters.tableName}`
 }
 
 export interface TableversionArnParameters {
@@ -41,7 +41,7 @@ export interface TableversionArnParameters {
 }
 export type TableversionArn = `arn:${string}:glue:${string}:${string}:tableVersion/${string}/${string}/${string}`
 export function tableversionArn(parameters: TableversionArnParameters): TableversionArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:tableVersion/${parameters.databaseName}/${parameters.tableName}/${parameters.tableVersionName}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:tableVersion/${parameters.databaseName}/${parameters.tableName}/${parameters.tableVersionName}`
 }
 
 export interface ConnectionArnParameters {
@@ -52,7 +52,7 @@ export interface ConnectionArnParameters {
 }
 export type ConnectionArn = `arn:${string}:glue:${string}:${string}:connection/${string}`
 export function connectionArn(parameters: ConnectionArnParameters): ConnectionArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:connection/${parameters.connectionName}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:connection/${parameters.connectionName}`
 }
 
 export interface UserdefinedfunctionArnParameters {
@@ -64,7 +64,7 @@ export interface UserdefinedfunctionArnParameters {
 }
 export type UserdefinedfunctionArn = `arn:${string}:glue:${string}:${string}:userDefinedFunction/${string}/${string}`
 export function userdefinedfunctionArn(parameters: UserdefinedfunctionArnParameters): UserdefinedfunctionArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:userDefinedFunction/${parameters.databaseName}/${parameters.userDefinedFunctionName}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:userDefinedFunction/${parameters.databaseName}/${parameters.userDefinedFunctionName}`
 }
 
 export interface DevendpointArnParameters {
@@ -75,7 +75,7 @@ export interface DevendpointArnParameters {
 }
 export type DevendpointArn = `arn:${string}:glue:${string}:${string}:devEndpoint/${string}`
 export function devendpointArn(parameters: DevendpointArnParameters): DevendpointArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:devEndpoint/${parameters.devEndpointName}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:devEndpoint/${parameters.devEndpointName}`
 }
 
 export interface JobArnParameters {
@@ -86,7 +86,7 @@ export interface JobArnParameters {
 }
 export type JobArn = `arn:${string}:glue:${string}:${string}:job/${string}`
 export function jobArn(parameters: JobArnParameters): JobArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:job/${parameters.jobName}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:job/${parameters.jobName}`
 }
 
 export interface TriggerArnParameters {
@@ -97,7 +97,7 @@ export interface TriggerArnParameters {
 }
 export type TriggerArn = `arn:${string}:glue:${string}:${string}:trigger/${string}`
 export function triggerArn(parameters: TriggerArnParameters): TriggerArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:trigger/${parameters.triggerName}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:trigger/${parameters.triggerName}`
 }
 
 export interface CrawlerArnParameters {
@@ -108,7 +108,7 @@ export interface CrawlerArnParameters {
 }
 export type CrawlerArn = `arn:${string}:glue:${string}:${string}:crawler/${string}`
 export function crawlerArn(parameters: CrawlerArnParameters): CrawlerArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:crawler/${parameters.crawlerName}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:crawler/${parameters.crawlerName}`
 }
 
 export interface WorkflowArnParameters {
@@ -119,7 +119,7 @@ export interface WorkflowArnParameters {
 }
 export type WorkflowArn = `arn:${string}:glue:${string}:${string}:workflow/${string}`
 export function workflowArn(parameters: WorkflowArnParameters): WorkflowArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:workflow/${parameters.workflowName}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:workflow/${parameters.workflowName}`
 }
 
 export interface BlueprintArnParameters {
@@ -130,7 +130,7 @@ export interface BlueprintArnParameters {
 }
 export type BlueprintArn = `arn:${string}:glue:${string}:${string}:blueprint/${string}`
 export function blueprintArn(parameters: BlueprintArnParameters): BlueprintArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:blueprint/${parameters.blueprintName}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:blueprint/${parameters.blueprintName}`
 }
 
 export interface MlTransformArnParameters {
@@ -141,7 +141,7 @@ export interface MlTransformArnParameters {
 }
 export type MlTransformArn = `arn:${string}:glue:${string}:${string}:mlTransform/${string}`
 export function mlTransformArn(parameters: MlTransformArnParameters): MlTransformArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:mlTransform/${parameters.transformId}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:mlTransform/${parameters.transformId}`
 }
 
 export interface RegistryArnParameters {
@@ -152,7 +152,7 @@ export interface RegistryArnParameters {
 }
 export type RegistryArn = `arn:${string}:glue:${string}:${string}:registry/${string}`
 export function registryArn(parameters: RegistryArnParameters): RegistryArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:registry/${parameters.registryName}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:registry/${parameters.registryName}`
 }
 
 export interface SchemaArnParameters {
@@ -163,7 +163,7 @@ export interface SchemaArnParameters {
 }
 export type SchemaArn = `arn:${string}:glue:${string}:${string}:schema/${string}`
 export function schemaArn(parameters: SchemaArnParameters): SchemaArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:schema/${parameters.schemaName}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:schema/${parameters.schemaName}`
 }
 
 export interface SessionArnParameters {
@@ -174,7 +174,7 @@ export interface SessionArnParameters {
 }
 export type SessionArn = `arn:${string}:glue:${string}:${string}:session/${string}`
 export function sessionArn(parameters: SessionArnParameters): SessionArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:session/${parameters.sessionId}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:session/${parameters.sessionId}`
 }
 
 export interface UsageProfileArnParameters {
@@ -185,7 +185,7 @@ export interface UsageProfileArnParameters {
 }
 export type UsageProfileArn = `arn:${string}:glue:${string}:${string}:usageProfile/${string}`
 export function usageProfileArn(parameters: UsageProfileArnParameters): UsageProfileArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:usageProfile/${parameters.usageProfileId}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:usageProfile/${parameters.usageProfileId}`
 }
 
 export interface DataQualityRulesetArnParameters {
@@ -196,7 +196,7 @@ export interface DataQualityRulesetArnParameters {
 }
 export type DataQualityRulesetArn = `arn:${string}:glue:${string}:${string}:dataQualityRuleset/${string}`
 export function dataQualityRulesetArn(parameters: DataQualityRulesetArnParameters): DataQualityRulesetArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:dataQualityRuleset/${parameters.rulesetName}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:dataQualityRuleset/${parameters.rulesetName}`
 }
 
 export interface CustomEntityTypeArnParameters {
@@ -207,7 +207,7 @@ export interface CustomEntityTypeArnParameters {
 }
 export type CustomEntityTypeArn = `arn:${string}:glue:${string}:${string}:customEntityType/${string}`
 export function customEntityTypeArn(parameters: CustomEntityTypeArnParameters): CustomEntityTypeArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:customEntityType/${parameters.customEntityTypeId}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:customEntityType/${parameters.customEntityTypeId}`
 }
 
 export interface CompletionArnParameters {
@@ -218,5 +218,5 @@ export interface CompletionArnParameters {
 }
 export type CompletionArn = `arn:${string}:glue:${string}:${string}:completion/${string}`
 export function completionArn(parameters: CompletionArnParameters): CompletionArn {
-  return `arn:${parameters.partition ?? ''}:glue:${parameters.region}:${parameters.account}:completion/${parameters.completionId}`
+  return `arn:${parameters.partition ?? 'aws'}:glue:${parameters.region}:${parameters.account}:completion/${parameters.completionId}`
 }

@@ -6,7 +6,7 @@ export interface ContainerArnParameters {
 }
 export type ContainerArn = `arn:${string}:mediastore:${string}:${string}:container/${string}`
 export function containerArn(parameters: ContainerArnParameters): ContainerArn {
-  return `arn:${parameters.partition ?? ''}:mediastore:${parameters.region}:${parameters.account}:container/${parameters.containerName}`
+  return `arn:${parameters.partition ?? 'aws'}:mediastore:${parameters.region}:${parameters.account}:container/${parameters.containerName}`
 }
 
 export interface ObjectArnParameters {
@@ -18,7 +18,7 @@ export interface ObjectArnParameters {
 }
 export type ObjectArn = `arn:${string}:mediastore:${string}:${string}:container/${string}/${string}`
 export function objectArn(parameters: ObjectArnParameters): ObjectArn {
-  return `arn:${parameters.partition ?? ''}:mediastore:${parameters.region}:${parameters.account}:container/${parameters.containerName}/${parameters.objectPath}`
+  return `arn:${parameters.partition ?? 'aws'}:mediastore:${parameters.region}:${parameters.account}:container/${parameters.containerName}/${parameters.objectPath}`
 }
 
 export interface FolderArnParameters {
@@ -30,5 +30,5 @@ export interface FolderArnParameters {
 }
 export type FolderArn = `arn:${string}:mediastore:${string}:${string}:container/${string}/${string}`
 export function folderArn(parameters: FolderArnParameters): FolderArn {
-  return `arn:${parameters.partition ?? ''}:mediastore:${parameters.region}:${parameters.account}:container/${parameters.containerName}/${parameters.folderPath}`
+  return `arn:${parameters.partition ?? 'aws'}:mediastore:${parameters.region}:${parameters.account}:container/${parameters.containerName}/${parameters.folderPath}`
 }

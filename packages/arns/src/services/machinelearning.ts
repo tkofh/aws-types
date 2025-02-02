@@ -6,7 +6,7 @@ export interface BatchpredictionArnParameters {
 }
 export type BatchpredictionArn = `arn:${string}:machinelearning:${string}:${string}:batchprediction/${string}`
 export function batchpredictionArn(parameters: BatchpredictionArnParameters): BatchpredictionArn {
-  return `arn:${parameters.partition ?? ''}:machinelearning:${parameters.region}:${parameters.account}:batchprediction/${parameters.batchPredictionId}`
+  return `arn:${parameters.partition ?? 'aws'}:machinelearning:${parameters.region}:${parameters.account}:batchprediction/${parameters.batchPredictionId}`
 }
 
 export interface DatasourceArnParameters {
@@ -17,7 +17,7 @@ export interface DatasourceArnParameters {
 }
 export type DatasourceArn = `arn:${string}:machinelearning:${string}:${string}:datasource/${string}`
 export function datasourceArn(parameters: DatasourceArnParameters): DatasourceArn {
-  return `arn:${parameters.partition ?? ''}:machinelearning:${parameters.region}:${parameters.account}:datasource/${parameters.datasourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:machinelearning:${parameters.region}:${parameters.account}:datasource/${parameters.datasourceId}`
 }
 
 export interface EvaluationArnParameters {
@@ -28,7 +28,7 @@ export interface EvaluationArnParameters {
 }
 export type EvaluationArn = `arn:${string}:machinelearning:${string}:${string}:evaluation/${string}`
 export function evaluationArn(parameters: EvaluationArnParameters): EvaluationArn {
-  return `arn:${parameters.partition ?? ''}:machinelearning:${parameters.region}:${parameters.account}:evaluation/${parameters.evaluationId}`
+  return `arn:${parameters.partition ?? 'aws'}:machinelearning:${parameters.region}:${parameters.account}:evaluation/${parameters.evaluationId}`
 }
 
 export interface MlmodelArnParameters {
@@ -39,5 +39,5 @@ export interface MlmodelArnParameters {
 }
 export type MlmodelArn = `arn:${string}:machinelearning:${string}:${string}:mlmodel/${string}`
 export function mlmodelArn(parameters: MlmodelArnParameters): MlmodelArn {
-  return `arn:${parameters.partition ?? ''}:machinelearning:${parameters.region}:${parameters.account}:mlmodel/${parameters.mlModelId}`
+  return `arn:${parameters.partition ?? 'aws'}:machinelearning:${parameters.region}:${parameters.account}:mlmodel/${parameters.mlModelId}`
 }

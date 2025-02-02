@@ -6,5 +6,5 @@ export interface RescoreExecutionPlanArnParameters {
 }
 export type RescoreExecutionPlanArn = `arn:${string}:kendra-ranking:${string}:${string}:rescore-execution-plan/${string}`
 export function rescoreExecutionPlanArn(parameters: RescoreExecutionPlanArnParameters): RescoreExecutionPlanArn {
-  return `arn:${parameters.partition ?? ''}:kendra-ranking:${parameters.region}:${parameters.account}:rescore-execution-plan/${parameters.rescoreExecutionPlanId}`
+  return `arn:${parameters.partition ?? 'aws'}:kendra-ranking:${parameters.region}:${parameters.account}:rescore-execution-plan/${parameters.rescoreExecutionPlanId}`
 }

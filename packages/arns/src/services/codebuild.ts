@@ -6,7 +6,7 @@ export interface BuildArnParameters {
 }
 export type BuildArn = `arn:${string}:codebuild:${string}:${string}:build/${string}`
 export function buildArn(parameters: BuildArnParameters): BuildArn {
-  return `arn:${parameters.partition ?? ''}:codebuild:${parameters.region}:${parameters.account}:build/${parameters.buildId}`
+  return `arn:${parameters.partition ?? 'aws'}:codebuild:${parameters.region}:${parameters.account}:build/${parameters.buildId}`
 }
 
 export interface BuildBatchArnParameters {
@@ -17,7 +17,7 @@ export interface BuildBatchArnParameters {
 }
 export type BuildBatchArn = `arn:${string}:codebuild:${string}:${string}:build-batch/${string}`
 export function buildBatchArn(parameters: BuildBatchArnParameters): BuildBatchArn {
-  return `arn:${parameters.partition ?? ''}:codebuild:${parameters.region}:${parameters.account}:build-batch/${parameters.buildBatchId}`
+  return `arn:${parameters.partition ?? 'aws'}:codebuild:${parameters.region}:${parameters.account}:build-batch/${parameters.buildBatchId}`
 }
 
 export interface ProjectArnParameters {
@@ -28,7 +28,7 @@ export interface ProjectArnParameters {
 }
 export type ProjectArn = `arn:${string}:codebuild:${string}:${string}:project/${string}`
 export function projectArn(parameters: ProjectArnParameters): ProjectArn {
-  return `arn:${parameters.partition ?? ''}:codebuild:${parameters.region}:${parameters.account}:project/${parameters.projectName}`
+  return `arn:${parameters.partition ?? 'aws'}:codebuild:${parameters.region}:${parameters.account}:project/${parameters.projectName}`
 }
 
 export interface ReportGroupArnParameters {
@@ -39,7 +39,7 @@ export interface ReportGroupArnParameters {
 }
 export type ReportGroupArn = `arn:${string}:codebuild:${string}:${string}:report-group/${string}`
 export function reportGroupArn(parameters: ReportGroupArnParameters): ReportGroupArn {
-  return `arn:${parameters.partition ?? ''}:codebuild:${parameters.region}:${parameters.account}:report-group/${parameters.reportGroupName}`
+  return `arn:${parameters.partition ?? 'aws'}:codebuild:${parameters.region}:${parameters.account}:report-group/${parameters.reportGroupName}`
 }
 
 export interface ReportArnParameters {
@@ -51,7 +51,7 @@ export interface ReportArnParameters {
 }
 export type ReportArn = `arn:${string}:codebuild:${string}:${string}:report/${string}:${string}`
 export function reportArn(parameters: ReportArnParameters): ReportArn {
-  return `arn:${parameters.partition ?? ''}:codebuild:${parameters.region}:${parameters.account}:report/${parameters.reportGroupName}:${parameters.reportId}`
+  return `arn:${parameters.partition ?? 'aws'}:codebuild:${parameters.region}:${parameters.account}:report/${parameters.reportGroupName}:${parameters.reportId}`
 }
 
 export interface FleetArnParameters {
@@ -63,5 +63,5 @@ export interface FleetArnParameters {
 }
 export type FleetArn = `arn:${string}:codebuild:${string}:${string}:fleet/${string}:${string}`
 export function fleetArn(parameters: FleetArnParameters): FleetArn {
-  return `arn:${parameters.partition ?? ''}:codebuild:${parameters.region}:${parameters.account}:fleet/${parameters.fleetName}:${parameters.fleetId}`
+  return `arn:${parameters.partition ?? 'aws'}:codebuild:${parameters.region}:${parameters.account}:fleet/${parameters.fleetName}:${parameters.fleetId}`
 }

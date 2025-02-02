@@ -7,7 +7,7 @@ export interface ConfigArnParameters {
 }
 export type ConfigArn = `arn:${string}:groundstation:${string}:${string}:config/${string}/${string}`
 export function configArn(parameters: ConfigArnParameters): ConfigArn {
-  return `arn:${parameters.partition ?? ''}:groundstation:${parameters.region}:${parameters.account}:config/${parameters.configType}/${parameters.configId}`
+  return `arn:${parameters.partition ?? 'aws'}:groundstation:${parameters.region}:${parameters.account}:config/${parameters.configType}/${parameters.configId}`
 }
 
 export interface ContactArnParameters {
@@ -18,7 +18,7 @@ export interface ContactArnParameters {
 }
 export type ContactArn = `arn:${string}:groundstation:${string}:${string}:contact/${string}`
 export function contactArn(parameters: ContactArnParameters): ContactArn {
-  return `arn:${parameters.partition ?? ''}:groundstation:${parameters.region}:${parameters.account}:contact/${parameters.contactId}`
+  return `arn:${parameters.partition ?? 'aws'}:groundstation:${parameters.region}:${parameters.account}:contact/${parameters.contactId}`
 }
 
 export interface DataflowEndpointGroupArnParameters {
@@ -29,7 +29,7 @@ export interface DataflowEndpointGroupArnParameters {
 }
 export type DataflowEndpointGroupArn = `arn:${string}:groundstation:${string}:${string}:dataflow-endpoint-group/${string}`
 export function dataflowEndpointGroupArn(parameters: DataflowEndpointGroupArnParameters): DataflowEndpointGroupArn {
-  return `arn:${parameters.partition ?? ''}:groundstation:${parameters.region}:${parameters.account}:dataflow-endpoint-group/${parameters.dataflowEndpointGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:groundstation:${parameters.region}:${parameters.account}:dataflow-endpoint-group/${parameters.dataflowEndpointGroupId}`
 }
 
 export interface EphemerisItemArnParameters {
@@ -40,7 +40,7 @@ export interface EphemerisItemArnParameters {
 }
 export type EphemerisItemArn = `arn:${string}:groundstation:${string}:${string}:ephemeris/${string}`
 export function ephemerisItemArn(parameters: EphemerisItemArnParameters): EphemerisItemArn {
-  return `arn:${parameters.partition ?? ''}:groundstation:${parameters.region}:${parameters.account}:ephemeris/${parameters.ephemerisId}`
+  return `arn:${parameters.partition ?? 'aws'}:groundstation:${parameters.region}:${parameters.account}:ephemeris/${parameters.ephemerisId}`
 }
 
 export interface GroundStationResourceArnParameters {
@@ -51,7 +51,7 @@ export interface GroundStationResourceArnParameters {
 }
 export type GroundStationResourceArn = `arn:${string}:groundstation:${string}:${string}:groundstation:${string}`
 export function groundStationResourceArn(parameters: GroundStationResourceArnParameters): GroundStationResourceArn {
-  return `arn:${parameters.partition ?? ''}:groundstation:${parameters.region}:${parameters.account}:groundstation:${parameters.groundStationId}`
+  return `arn:${parameters.partition ?? 'aws'}:groundstation:${parameters.region}:${parameters.account}:groundstation:${parameters.groundStationId}`
 }
 
 export interface MissionProfileArnParameters {
@@ -62,7 +62,7 @@ export interface MissionProfileArnParameters {
 }
 export type MissionProfileArn = `arn:${string}:groundstation:${string}:${string}:mission-profile/${string}`
 export function missionProfileArn(parameters: MissionProfileArnParameters): MissionProfileArn {
-  return `arn:${parameters.partition ?? ''}:groundstation:${parameters.region}:${parameters.account}:mission-profile/${parameters.missionProfileId}`
+  return `arn:${parameters.partition ?? 'aws'}:groundstation:${parameters.region}:${parameters.account}:mission-profile/${parameters.missionProfileId}`
 }
 
 export interface SatelliteArnParameters {
@@ -73,7 +73,7 @@ export interface SatelliteArnParameters {
 }
 export type SatelliteArn = `arn:${string}:groundstation:${string}:${string}:satellite/${string}`
 export function satelliteArn(parameters: SatelliteArnParameters): SatelliteArn {
-  return `arn:${parameters.partition ?? ''}:groundstation:${parameters.region}:${parameters.account}:satellite/${parameters.satelliteId}`
+  return `arn:${parameters.partition ?? 'aws'}:groundstation:${parameters.region}:${parameters.account}:satellite/${parameters.satelliteId}`
 }
 
 export interface AgentArnParameters {
@@ -84,5 +84,5 @@ export interface AgentArnParameters {
 }
 export type AgentArn = `arn:${string}:groundstation:${string}:${string}:agent/${string}`
 export function agentArn(parameters: AgentArnParameters): AgentArn {
-  return `arn:${parameters.partition ?? ''}:groundstation:${parameters.region}:${parameters.account}:agent/${parameters.agentId}`
+  return `arn:${parameters.partition ?? 'aws'}:groundstation:${parameters.region}:${parameters.account}:agent/${parameters.agentId}`
 }

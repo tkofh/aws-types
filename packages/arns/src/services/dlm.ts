@@ -6,5 +6,5 @@ export interface PolicyArnParameters {
 }
 export type PolicyArn = `arn:${string}:dlm:${string}:${string}:policy/${string}`
 export function policyArn(parameters: PolicyArnParameters): PolicyArn {
-  return `arn:${parameters.partition ?? ''}:dlm:${parameters.region}:${parameters.account}:policy/${parameters.resourceName}`
+  return `arn:${parameters.partition ?? 'aws'}:dlm:${parameters.region}:${parameters.account}:policy/${parameters.resourceName}`
 }

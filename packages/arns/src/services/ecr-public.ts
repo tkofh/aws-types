@@ -5,7 +5,7 @@ export interface RepositoryArnParameters {
 }
 export type RepositoryArn = `arn:${string}:ecr-public::${string}:repository/${string}`
 export function repositoryArn(parameters: RepositoryArnParameters): RepositoryArn {
-  return `arn:${parameters.partition ?? ''}:ecr-public::${parameters.account}:repository/${parameters.repositoryName}`
+  return `arn:${parameters.partition ?? 'aws'}:ecr-public::${parameters.account}:repository/${parameters.repositoryName}`
 }
 
 export interface RegistryArnParameters {
@@ -15,5 +15,5 @@ export interface RegistryArnParameters {
 }
 export type RegistryArn = `arn:${string}:ecr-public::${string}:registry/${string}`
 export function registryArn(parameters: RegistryArnParameters): RegistryArn {
-  return `arn:${parameters.partition ?? ''}:ecr-public::${parameters.account}:registry/${parameters.registryId}`
+  return `arn:${parameters.partition ?? 'aws'}:ecr-public::${parameters.account}:registry/${parameters.registryId}`
 }

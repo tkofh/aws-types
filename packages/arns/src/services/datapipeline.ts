@@ -6,5 +6,5 @@ export interface PipelineArnParameters {
 }
 export type PipelineArn = `arn:${string}:datapipeline:${string}:${string}:pipeline/${string}`
 export function pipelineArn(parameters: PipelineArnParameters): PipelineArn {
-  return `arn:${parameters.partition ?? ''}:datapipeline:${parameters.region}:${parameters.account}:pipeline/${parameters.pipelineId}`
+  return `arn:${parameters.partition ?? 'aws'}:datapipeline:${parameters.region}:${parameters.account}:pipeline/${parameters.pipelineId}`
 }

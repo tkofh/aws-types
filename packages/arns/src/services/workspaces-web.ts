@@ -6,7 +6,7 @@ export interface BrowserSettingsArnParameters {
 }
 export type BrowserSettingsArn = `arn:${string}:workspaces-web:${string}:${string}:browserSettings/${string}`
 export function browserSettingsArn(parameters: BrowserSettingsArnParameters): BrowserSettingsArn {
-  return `arn:${parameters.partition ?? ''}:workspaces-web:${parameters.region}:${parameters.account}:browserSettings/${parameters.browserSettingsId}`
+  return `arn:${parameters.partition ?? 'aws'}:workspaces-web:${parameters.region}:${parameters.account}:browserSettings/${parameters.browserSettingsId}`
 }
 
 export interface IdentityProviderArnParameters {
@@ -18,7 +18,7 @@ export interface IdentityProviderArnParameters {
 }
 export type IdentityProviderArn = `arn:${string}:workspaces-web:${string}:${string}:identityProvider/${string}/${string}`
 export function identityProviderArn(parameters: IdentityProviderArnParameters): IdentityProviderArn {
-  return `arn:${parameters.partition ?? ''}:workspaces-web:${parameters.region}:${parameters.account}:identityProvider/${parameters.portalId}/${parameters.identityProviderId}`
+  return `arn:${parameters.partition ?? 'aws'}:workspaces-web:${parameters.region}:${parameters.account}:identityProvider/${parameters.portalId}/${parameters.identityProviderId}`
 }
 
 export interface NetworkSettingsArnParameters {
@@ -29,7 +29,7 @@ export interface NetworkSettingsArnParameters {
 }
 export type NetworkSettingsArn = `arn:${string}:workspaces-web:${string}:${string}:networkSettings/${string}`
 export function networkSettingsArn(parameters: NetworkSettingsArnParameters): NetworkSettingsArn {
-  return `arn:${parameters.partition ?? ''}:workspaces-web:${parameters.region}:${parameters.account}:networkSettings/${parameters.networkSettingsId}`
+  return `arn:${parameters.partition ?? 'aws'}:workspaces-web:${parameters.region}:${parameters.account}:networkSettings/${parameters.networkSettingsId}`
 }
 
 export interface PortalArnParameters {
@@ -40,7 +40,7 @@ export interface PortalArnParameters {
 }
 export type PortalArn = `arn:${string}:workspaces-web:${string}:${string}:portal/${string}`
 export function portalArn(parameters: PortalArnParameters): PortalArn {
-  return `arn:${parameters.partition ?? ''}:workspaces-web:${parameters.region}:${parameters.account}:portal/${parameters.portalId}`
+  return `arn:${parameters.partition ?? 'aws'}:workspaces-web:${parameters.region}:${parameters.account}:portal/${parameters.portalId}`
 }
 
 export interface TrustStoreArnParameters {
@@ -51,7 +51,7 @@ export interface TrustStoreArnParameters {
 }
 export type TrustStoreArn = `arn:${string}:workspaces-web:${string}:${string}:trustStore/${string}`
 export function trustStoreArn(parameters: TrustStoreArnParameters): TrustStoreArn {
-  return `arn:${parameters.partition ?? ''}:workspaces-web:${parameters.region}:${parameters.account}:trustStore/${parameters.trustStoreId}`
+  return `arn:${parameters.partition ?? 'aws'}:workspaces-web:${parameters.region}:${parameters.account}:trustStore/${parameters.trustStoreId}`
 }
 
 export interface UserSettingsArnParameters {
@@ -62,7 +62,7 @@ export interface UserSettingsArnParameters {
 }
 export type UserSettingsArn = `arn:${string}:workspaces-web:${string}:${string}:userSettings/${string}`
 export function userSettingsArn(parameters: UserSettingsArnParameters): UserSettingsArn {
-  return `arn:${parameters.partition ?? ''}:workspaces-web:${parameters.region}:${parameters.account}:userSettings/${parameters.userSettingsId}`
+  return `arn:${parameters.partition ?? 'aws'}:workspaces-web:${parameters.region}:${parameters.account}:userSettings/${parameters.userSettingsId}`
 }
 
 export interface UserAccessLoggingSettingsArnParameters {
@@ -73,7 +73,7 @@ export interface UserAccessLoggingSettingsArnParameters {
 }
 export type UserAccessLoggingSettingsArn = `arn:${string}:workspaces-web:${string}:${string}:userAccessLoggingSettings/${string}`
 export function userAccessLoggingSettingsArn(parameters: UserAccessLoggingSettingsArnParameters): UserAccessLoggingSettingsArn {
-  return `arn:${parameters.partition ?? ''}:workspaces-web:${parameters.region}:${parameters.account}:userAccessLoggingSettings/${parameters.userAccessLoggingSettingsId}`
+  return `arn:${parameters.partition ?? 'aws'}:workspaces-web:${parameters.region}:${parameters.account}:userAccessLoggingSettings/${parameters.userAccessLoggingSettingsId}`
 }
 
 export interface IpAccessSettingsArnParameters {
@@ -84,5 +84,5 @@ export interface IpAccessSettingsArnParameters {
 }
 export type IpAccessSettingsArn = `arn:${string}:workspaces-web:${string}:${string}:ipAccessSettings/${string}`
 export function ipAccessSettingsArn(parameters: IpAccessSettingsArnParameters): IpAccessSettingsArn {
-  return `arn:${parameters.partition ?? ''}:workspaces-web:${parameters.region}:${parameters.account}:ipAccessSettings/${parameters.ipAccessSettingsId}`
+  return `arn:${parameters.partition ?? 'aws'}:workspaces-web:${parameters.region}:${parameters.account}:ipAccessSettings/${parameters.ipAccessSettingsId}`
 }

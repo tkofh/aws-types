@@ -6,5 +6,5 @@ export interface WorkspaceArnParameters {
 }
 export type WorkspaceArn = `arn:${string}:grafana:${string}:${string}:/workspaces/${string}`
 export function workspaceArn(parameters: WorkspaceArnParameters): WorkspaceArn {
-  return `arn:${parameters.partition ?? ''}:grafana:${parameters.region}:${parameters.account}:/workspaces/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:grafana:${parameters.region}:${parameters.account}:/workspaces/${parameters.resourceId}`
 }

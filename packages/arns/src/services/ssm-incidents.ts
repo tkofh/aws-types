@@ -5,7 +5,7 @@ export interface ResponsePlanArnParameters {
 }
 export type ResponsePlanArn = `arn:${string}:ssm-incidents::${string}:response-plan/${string}`
 export function responsePlanArn(parameters: ResponsePlanArnParameters): ResponsePlanArn {
-  return `arn:${parameters.partition ?? ''}:ssm-incidents::${parameters.account}:response-plan/${parameters.responsePlan}`
+  return `arn:${parameters.partition ?? 'aws'}:ssm-incidents::${parameters.account}:response-plan/${parameters.responsePlan}`
 }
 
 export interface IncidentRecordArnParameters {
@@ -16,7 +16,7 @@ export interface IncidentRecordArnParameters {
 }
 export type IncidentRecordArn = `arn:${string}:ssm-incidents::${string}:incident-record/${string}/${string}`
 export function incidentRecordArn(parameters: IncidentRecordArnParameters): IncidentRecordArn {
-  return `arn:${parameters.partition ?? ''}:ssm-incidents::${parameters.account}:incident-record/${parameters.responsePlan}/${parameters.incidentRecord}`
+  return `arn:${parameters.partition ?? 'aws'}:ssm-incidents::${parameters.account}:incident-record/${parameters.responsePlan}/${parameters.incidentRecord}`
 }
 
 export interface ReplicationSetArnParameters {
@@ -26,5 +26,5 @@ export interface ReplicationSetArnParameters {
 }
 export type ReplicationSetArn = `arn:${string}:ssm-incidents::${string}:replication-set/${string}`
 export function replicationSetArn(parameters: ReplicationSetArnParameters): ReplicationSetArn {
-  return `arn:${parameters.partition ?? ''}:ssm-incidents::${parameters.account}:replication-set/${parameters.replicationSet}`
+  return `arn:${parameters.partition ?? 'aws'}:ssm-incidents::${parameters.account}:replication-set/${parameters.replicationSet}`
 }

@@ -7,7 +7,7 @@ export interface EntitlementArnParameters {
 }
 export type EntitlementArn = `arn:${string}:mediaconnect:${string}:${string}:entitlement:${string}:${string}`
 export function entitlementArn(parameters: EntitlementArnParameters): EntitlementArn {
-  return `arn:${parameters.partition ?? ''}:mediaconnect:${parameters.region}:${parameters.account}:entitlement:${parameters.flowId}:${parameters.entitlementName}`
+  return `arn:${parameters.partition ?? 'aws'}:mediaconnect:${parameters.region}:${parameters.account}:entitlement:${parameters.flowId}:${parameters.entitlementName}`
 }
 
 export interface FlowArnParameters {
@@ -19,7 +19,7 @@ export interface FlowArnParameters {
 }
 export type FlowArn = `arn:${string}:mediaconnect:${string}:${string}:flow:${string}:${string}`
 export function flowArn(parameters: FlowArnParameters): FlowArn {
-  return `arn:${parameters.partition ?? ''}:mediaconnect:${parameters.region}:${parameters.account}:flow:${parameters.flowId}:${parameters.flowName}`
+  return `arn:${parameters.partition ?? 'aws'}:mediaconnect:${parameters.region}:${parameters.account}:flow:${parameters.flowId}:${parameters.flowName}`
 }
 
 export interface OutputArnParameters {
@@ -31,7 +31,7 @@ export interface OutputArnParameters {
 }
 export type OutputArn = `arn:${string}:mediaconnect:${string}:${string}:output:${string}:${string}`
 export function outputArn(parameters: OutputArnParameters): OutputArn {
-  return `arn:${parameters.partition ?? ''}:mediaconnect:${parameters.region}:${parameters.account}:output:${parameters.outputId}:${parameters.outputName}`
+  return `arn:${parameters.partition ?? 'aws'}:mediaconnect:${parameters.region}:${parameters.account}:output:${parameters.outputId}:${parameters.outputName}`
 }
 
 export interface SourceArnParameters {
@@ -43,7 +43,7 @@ export interface SourceArnParameters {
 }
 export type SourceArn = `arn:${string}:mediaconnect:${string}:${string}:source:${string}:${string}`
 export function sourceArn(parameters: SourceArnParameters): SourceArn {
-  return `arn:${parameters.partition ?? ''}:mediaconnect:${parameters.region}:${parameters.account}:source:${parameters.sourceId}:${parameters.sourceName}`
+  return `arn:${parameters.partition ?? 'aws'}:mediaconnect:${parameters.region}:${parameters.account}:source:${parameters.sourceId}:${parameters.sourceName}`
 }
 
 export interface GatewayArnParameters {
@@ -55,7 +55,7 @@ export interface GatewayArnParameters {
 }
 export type GatewayArn = `arn:${string}:mediaconnect:${string}:${string}:gateway:${string}:${string}`
 export function gatewayArn(parameters: GatewayArnParameters): GatewayArn {
-  return `arn:${parameters.partition ?? ''}:mediaconnect:${parameters.region}:${parameters.account}:gateway:${parameters.gatewayId}:${parameters.gatewayName}`
+  return `arn:${parameters.partition ?? 'aws'}:mediaconnect:${parameters.region}:${parameters.account}:gateway:${parameters.gatewayId}:${parameters.gatewayName}`
 }
 
 export interface BridgeArnParameters {
@@ -67,7 +67,7 @@ export interface BridgeArnParameters {
 }
 export type BridgeArn = `arn:${string}:mediaconnect:${string}:${string}:bridge:${string}:${string}`
 export function bridgeArn(parameters: BridgeArnParameters): BridgeArn {
-  return `arn:${parameters.partition ?? ''}:mediaconnect:${parameters.region}:${parameters.account}:bridge:${parameters.flowId}:${parameters.flowName}`
+  return `arn:${parameters.partition ?? 'aws'}:mediaconnect:${parameters.region}:${parameters.account}:bridge:${parameters.flowId}:${parameters.flowName}`
 }
 
 export interface GatewayInstanceArnParameters {
@@ -80,5 +80,5 @@ export interface GatewayInstanceArnParameters {
 }
 export type GatewayInstanceArn = `arn:${string}:mediaconnect:${string}:${string}:gateway:${string}:${string}:instance:${string}`
 export function gatewayInstanceArn(parameters: GatewayInstanceArnParameters): GatewayInstanceArn {
-  return `arn:${parameters.partition ?? ''}:mediaconnect:${parameters.region}:${parameters.account}:gateway:${parameters.gatewayId}:${parameters.gatewayName}:instance:${parameters.instanceId}`
+  return `arn:${parameters.partition ?? 'aws'}:mediaconnect:${parameters.region}:${parameters.account}:gateway:${parameters.gatewayId}:${parameters.gatewayName}:instance:${parameters.instanceId}`
 }

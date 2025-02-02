@@ -6,7 +6,7 @@ export interface TrustAnchorArnParameters {
 }
 export type TrustAnchorArn = `arn:${string}:rolesanywhere:${string}:${string}:trust-anchor/${string}`
 export function trustAnchorArn(parameters: TrustAnchorArnParameters): TrustAnchorArn {
-  return `arn:${parameters.partition ?? ''}:rolesanywhere:${parameters.region}:${parameters.account}:trust-anchor/${parameters.trustAnchorId}`
+  return `arn:${parameters.partition ?? 'aws'}:rolesanywhere:${parameters.region}:${parameters.account}:trust-anchor/${parameters.trustAnchorId}`
 }
 
 export interface ProfileArnParameters {
@@ -17,7 +17,7 @@ export interface ProfileArnParameters {
 }
 export type ProfileArn = `arn:${string}:rolesanywhere:${string}:${string}:profile/${string}`
 export function profileArn(parameters: ProfileArnParameters): ProfileArn {
-  return `arn:${parameters.partition ?? ''}:rolesanywhere:${parameters.region}:${parameters.account}:profile/${parameters.profileId}`
+  return `arn:${parameters.partition ?? 'aws'}:rolesanywhere:${parameters.region}:${parameters.account}:profile/${parameters.profileId}`
 }
 
 export interface SubjectArnParameters {
@@ -28,7 +28,7 @@ export interface SubjectArnParameters {
 }
 export type SubjectArn = `arn:${string}:rolesanywhere:${string}:${string}:subject/${string}`
 export function subjectArn(parameters: SubjectArnParameters): SubjectArn {
-  return `arn:${parameters.partition ?? ''}:rolesanywhere:${parameters.region}:${parameters.account}:subject/${parameters.subjectId}`
+  return `arn:${parameters.partition ?? 'aws'}:rolesanywhere:${parameters.region}:${parameters.account}:subject/${parameters.subjectId}`
 }
 
 export interface CrlArnParameters {
@@ -39,5 +39,5 @@ export interface CrlArnParameters {
 }
 export type CrlArn = `arn:${string}:rolesanywhere:${string}:${string}:crl/${string}`
 export function crlArn(parameters: CrlArnParameters): CrlArn {
-  return `arn:${parameters.partition ?? ''}:rolesanywhere:${parameters.region}:${parameters.account}:crl/${parameters.crlId}`
+  return `arn:${parameters.partition ?? 'aws'}:rolesanywhere:${parameters.region}:${parameters.account}:crl/${parameters.crlId}`
 }

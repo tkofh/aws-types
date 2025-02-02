@@ -6,7 +6,7 @@ export interface ResourceShareArnParameters {
 }
 export type ResourceShareArn = `arn:${string}:ram:${string}:${string}:resource-share/${string}`
 export function resourceShareArn(parameters: ResourceShareArnParameters): ResourceShareArn {
-  return `arn:${parameters.partition ?? ''}:ram:${parameters.region}:${parameters.account}:resource-share/${parameters.resourcePath}`
+  return `arn:${parameters.partition ?? 'aws'}:ram:${parameters.region}:${parameters.account}:resource-share/${parameters.resourcePath}`
 }
 
 export interface ResourceShareInvitationArnParameters {
@@ -17,7 +17,7 @@ export interface ResourceShareInvitationArnParameters {
 }
 export type ResourceShareInvitationArn = `arn:${string}:ram:${string}:${string}:resource-share-invitation/${string}`
 export function resourceShareInvitationArn(parameters: ResourceShareInvitationArnParameters): ResourceShareInvitationArn {
-  return `arn:${parameters.partition ?? ''}:ram:${parameters.region}:${parameters.account}:resource-share-invitation/${parameters.resourcePath}`
+  return `arn:${parameters.partition ?? 'aws'}:ram:${parameters.region}:${parameters.account}:resource-share-invitation/${parameters.resourcePath}`
 }
 
 export interface PermissionArnParameters {
@@ -27,7 +27,7 @@ export interface PermissionArnParameters {
 }
 export type PermissionArn = `arn:${string}:ram::${string}:permission/${string}`
 export function permissionArn(parameters: PermissionArnParameters): PermissionArn {
-  return `arn:${parameters.partition ?? ''}:ram::${parameters.account}:permission/${parameters.resourcePath}`
+  return `arn:${parameters.partition ?? 'aws'}:ram::${parameters.account}:permission/${parameters.resourcePath}`
 }
 
 export interface CustomerManagedPermissionArnParameters {
@@ -38,5 +38,5 @@ export interface CustomerManagedPermissionArnParameters {
 }
 export type CustomerManagedPermissionArn = `arn:${string}:ram:${string}:${string}:permission/${string}`
 export function customerManagedPermissionArn(parameters: CustomerManagedPermissionArnParameters): CustomerManagedPermissionArn {
-  return `arn:${parameters.partition ?? ''}:ram:${parameters.region}:${parameters.account}:permission/${parameters.resourcePath}`
+  return `arn:${parameters.partition ?? 'aws'}:ram:${parameters.region}:${parameters.account}:permission/${parameters.resourcePath}`
 }

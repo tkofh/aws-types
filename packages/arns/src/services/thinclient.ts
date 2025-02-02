@@ -6,7 +6,7 @@ export interface EnvironmentArnParameters {
 }
 export type EnvironmentArn = `arn:${string}:thinclient:${string}:${string}:environment/${string}`
 export function environmentArn(parameters: EnvironmentArnParameters): EnvironmentArn {
-  return `arn:${parameters.partition ?? ''}:thinclient:${parameters.region}:${parameters.account}:environment/${parameters.environmentId}`
+  return `arn:${parameters.partition ?? 'aws'}:thinclient:${parameters.region}:${parameters.account}:environment/${parameters.environmentId}`
 }
 
 export interface DeviceArnParameters {
@@ -17,7 +17,7 @@ export interface DeviceArnParameters {
 }
 export type DeviceArn = `arn:${string}:thinclient:${string}:${string}:device/${string}`
 export function deviceArn(parameters: DeviceArnParameters): DeviceArn {
-  return `arn:${parameters.partition ?? ''}:thinclient:${parameters.region}:${parameters.account}:device/${parameters.deviceId}`
+  return `arn:${parameters.partition ?? 'aws'}:thinclient:${parameters.region}:${parameters.account}:device/${parameters.deviceId}`
 }
 
 export interface SoftwaresetArnParameters {
@@ -28,5 +28,5 @@ export interface SoftwaresetArnParameters {
 }
 export type SoftwaresetArn = `arn:${string}:thinclient:${string}:${string}:softwareset/${string}`
 export function softwaresetArn(parameters: SoftwaresetArnParameters): SoftwaresetArn {
-  return `arn:${parameters.partition ?? ''}:thinclient:${parameters.region}:${parameters.account}:softwareset/${parameters.softwareSetId}`
+  return `arn:${parameters.partition ?? 'aws'}:thinclient:${parameters.region}:${parameters.account}:softwareset/${parameters.softwareSetId}`
 }

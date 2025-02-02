@@ -6,5 +6,5 @@ export interface ScanNameArnParameters {
 }
 export type ScanNameArn = `arn:${string}:codeguru-security:${string}:${string}:scans/${string}`
 export function scanNameArn(parameters: ScanNameArnParameters): ScanNameArn {
-  return `arn:${parameters.partition ?? ''}:codeguru-security:${parameters.region}:${parameters.account}:scans/${parameters.scanName}`
+  return `arn:${parameters.partition ?? 'aws'}:codeguru-security:${parameters.region}:${parameters.account}:scans/${parameters.scanName}`
 }

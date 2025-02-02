@@ -7,7 +7,7 @@ export interface ModelArnParameters {
 }
 export type ModelArn = `arn:${string}:lookoutvision:${string}:${string}:model/${string}/${string}`
 export function modelArn(parameters: ModelArnParameters): ModelArn {
-  return `arn:${parameters.partition ?? ''}:lookoutvision:${parameters.region}:${parameters.account}:model/${parameters.projectName}/${parameters.modelVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:lookoutvision:${parameters.region}:${parameters.account}:model/${parameters.projectName}/${parameters.modelVersion}`
 }
 
 export interface ProjectArnParameters {
@@ -18,5 +18,5 @@ export interface ProjectArnParameters {
 }
 export type ProjectArn = `arn:${string}:lookoutvision:${string}:${string}:project/${string}`
 export function projectArn(parameters: ProjectArnParameters): ProjectArn {
-  return `arn:${parameters.partition ?? ''}:lookoutvision:${parameters.region}:${parameters.account}:project/${parameters.projectName}`
+  return `arn:${parameters.partition ?? 'aws'}:lookoutvision:${parameters.region}:${parameters.account}:project/${parameters.projectName}`
 }

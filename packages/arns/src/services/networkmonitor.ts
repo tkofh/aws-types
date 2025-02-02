@@ -6,7 +6,7 @@ export interface MonitorArnParameters {
 }
 export type MonitorArn = `arn:${string}:networkmonitor:${string}:${string}:monitor/${string}`
 export function monitorArn(parameters: MonitorArnParameters): MonitorArn {
-  return `arn:${parameters.partition ?? ''}:networkmonitor:${parameters.region}:${parameters.account}:monitor/${parameters.monitorName}`
+  return `arn:${parameters.partition ?? 'aws'}:networkmonitor:${parameters.region}:${parameters.account}:monitor/${parameters.monitorName}`
 }
 
 export interface ProbeArnParameters {
@@ -17,5 +17,5 @@ export interface ProbeArnParameters {
 }
 export type ProbeArn = `arn:${string}:networkmonitor:${string}:${string}:probe/${string}`
 export function probeArn(parameters: ProbeArnParameters): ProbeArn {
-  return `arn:${parameters.partition ?? ''}:networkmonitor:${parameters.region}:${parameters.account}:probe/${parameters.probeId}`
+  return `arn:${parameters.partition ?? 'aws'}:networkmonitor:${parameters.region}:${parameters.account}:probe/${parameters.probeId}`
 }

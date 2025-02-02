@@ -6,7 +6,7 @@ export interface AccountArnParameters {
 }
 export type AccountArn = `arn:${string}:organizations::${string}:account/o-${string}/${string}`
 export function accountArn(parameters: AccountArnParameters): AccountArn {
-  return `arn:${parameters.partition ?? ''}:organizations::${parameters.account}:account/o-${parameters.organizationId}/${parameters.accountId}`
+  return `arn:${parameters.partition ?? 'aws'}:organizations::${parameters.account}:account/o-${parameters.organizationId}/${parameters.accountId}`
 }
 
 export interface HandshakeArnParameters {
@@ -18,7 +18,7 @@ export interface HandshakeArnParameters {
 }
 export type HandshakeArn = `arn:${string}:organizations::${string}:handshake/o-${string}/${string}/h-${string}`
 export function handshakeArn(parameters: HandshakeArnParameters): HandshakeArn {
-  return `arn:${parameters.partition ?? ''}:organizations::${parameters.account}:handshake/o-${parameters.organizationId}/${parameters.handshakeType}/h-${parameters.handshakeId}`
+  return `arn:${parameters.partition ?? 'aws'}:organizations::${parameters.account}:handshake/o-${parameters.organizationId}/${parameters.handshakeType}/h-${parameters.handshakeId}`
 }
 
 export interface OrganizationArnParameters {
@@ -28,7 +28,7 @@ export interface OrganizationArnParameters {
 }
 export type OrganizationArn = `arn:${string}:organizations::${string}:organization/o-${string}`
 export function organizationArn(parameters: OrganizationArnParameters): OrganizationArn {
-  return `arn:${parameters.partition ?? ''}:organizations::${parameters.account}:organization/o-${parameters.organizationId}`
+  return `arn:${parameters.partition ?? 'aws'}:organizations::${parameters.account}:organization/o-${parameters.organizationId}`
 }
 
 export interface OrganizationalunitArnParameters {
@@ -39,7 +39,7 @@ export interface OrganizationalunitArnParameters {
 }
 export type OrganizationalunitArn = `arn:${string}:organizations::${string}:ou/o-${string}/ou-${string}`
 export function organizationalunitArn(parameters: OrganizationalunitArnParameters): OrganizationalunitArn {
-  return `arn:${parameters.partition ?? ''}:organizations::${parameters.account}:ou/o-${parameters.organizationId}/ou-${parameters.organizationalUnitId}`
+  return `arn:${parameters.partition ?? 'aws'}:organizations::${parameters.account}:ou/o-${parameters.organizationId}/ou-${parameters.organizationalUnitId}`
 }
 
 export interface PolicyArnParameters {
@@ -51,7 +51,7 @@ export interface PolicyArnParameters {
 }
 export type PolicyArn = `arn:${string}:organizations::${string}:policy/o-${string}/${string}/p-${string}`
 export function policyArn(parameters: PolicyArnParameters): PolicyArn {
-  return `arn:${parameters.partition ?? ''}:organizations::${parameters.account}:policy/o-${parameters.organizationId}/${parameters.policyType}/p-${parameters.policyId}`
+  return `arn:${parameters.partition ?? 'aws'}:organizations::${parameters.account}:policy/o-${parameters.organizationId}/${parameters.policyType}/p-${parameters.policyId}`
 }
 
 export interface ResourcepolicyArnParameters {
@@ -62,7 +62,7 @@ export interface ResourcepolicyArnParameters {
 }
 export type ResourcepolicyArn = `arn:${string}:organizations::${string}:resourcepolicy/o-${string}/rp-${string}`
 export function resourcepolicyArn(parameters: ResourcepolicyArnParameters): ResourcepolicyArn {
-  return `arn:${parameters.partition ?? ''}:organizations::${parameters.account}:resourcepolicy/o-${parameters.organizationId}/rp-${parameters.resourcePolicyId}`
+  return `arn:${parameters.partition ?? 'aws'}:organizations::${parameters.account}:resourcepolicy/o-${parameters.organizationId}/rp-${parameters.resourcePolicyId}`
 }
 
 export interface AwspolicyArnParameters {
@@ -72,7 +72,7 @@ export interface AwspolicyArnParameters {
 }
 export type AwspolicyArn = `arn:${string}:organizations::aws:policy/${string}/p-${string}`
 export function awspolicyArn(parameters: AwspolicyArnParameters): AwspolicyArn {
-  return `arn:${parameters.partition ?? ''}:organizations::aws:policy/${parameters.policyType}/p-${parameters.policyId}`
+  return `arn:${parameters.partition ?? 'aws'}:organizations::aws:policy/${parameters.policyType}/p-${parameters.policyId}`
 }
 
 export interface RootArnParameters {
@@ -83,5 +83,5 @@ export interface RootArnParameters {
 }
 export type RootArn = `arn:${string}:organizations::${string}:root/o-${string}/r-${string}`
 export function rootArn(parameters: RootArnParameters): RootArn {
-  return `arn:${parameters.partition ?? ''}:organizations::${parameters.account}:root/o-${parameters.organizationId}/r-${parameters.rootId}`
+  return `arn:${parameters.partition ?? 'aws'}:organizations::${parameters.account}:root/o-${parameters.organizationId}/r-${parameters.rootId}`
 }

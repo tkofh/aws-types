@@ -6,5 +6,5 @@ export interface ApplicationArnParameters {
 }
 export type ApplicationArn = `arn:${string}:kinesisanalytics:${string}:${string}:application/${string}`
 export function applicationArn(parameters: ApplicationArnParameters): ApplicationArn {
-  return `arn:${parameters.partition ?? ''}:kinesisanalytics:${parameters.region}:${parameters.account}:application/${parameters.applicationName}`
+  return `arn:${parameters.partition ?? 'aws'}:kinesisanalytics:${parameters.region}:${parameters.account}:application/${parameters.applicationName}`
 }

@@ -6,7 +6,7 @@ export interface AgentArnParameters {
 }
 export type AgentArn = `arn:${string}:datasync:${string}:${string}:agent/${string}`
 export function agentArn(parameters: AgentArnParameters): AgentArn {
-  return `arn:${parameters.partition ?? ''}:datasync:${parameters.region}:${parameters.accountId}:agent/${parameters.agentId}`
+  return `arn:${parameters.partition ?? 'aws'}:datasync:${parameters.region}:${parameters.accountId}:agent/${parameters.agentId}`
 }
 
 export interface LocationArnParameters {
@@ -17,7 +17,7 @@ export interface LocationArnParameters {
 }
 export type LocationArn = `arn:${string}:datasync:${string}:${string}:location/${string}`
 export function locationArn(parameters: LocationArnParameters): LocationArn {
-  return `arn:${parameters.partition ?? ''}:datasync:${parameters.region}:${parameters.accountId}:location/${parameters.locationId}`
+  return `arn:${parameters.partition ?? 'aws'}:datasync:${parameters.region}:${parameters.accountId}:location/${parameters.locationId}`
 }
 
 export interface TaskArnParameters {
@@ -28,7 +28,7 @@ export interface TaskArnParameters {
 }
 export type TaskArn = `arn:${string}:datasync:${string}:${string}:task/${string}`
 export function taskArn(parameters: TaskArnParameters): TaskArn {
-  return `arn:${parameters.partition ?? ''}:datasync:${parameters.region}:${parameters.accountId}:task/${parameters.taskId}`
+  return `arn:${parameters.partition ?? 'aws'}:datasync:${parameters.region}:${parameters.accountId}:task/${parameters.taskId}`
 }
 
 export interface TaskexecutionArnParameters {
@@ -40,7 +40,7 @@ export interface TaskexecutionArnParameters {
 }
 export type TaskexecutionArn = `arn:${string}:datasync:${string}:${string}:task/${string}/execution/${string}`
 export function taskexecutionArn(parameters: TaskexecutionArnParameters): TaskexecutionArn {
-  return `arn:${parameters.partition ?? ''}:datasync:${parameters.region}:${parameters.accountId}:task/${parameters.taskId}/execution/${parameters.executionId}`
+  return `arn:${parameters.partition ?? 'aws'}:datasync:${parameters.region}:${parameters.accountId}:task/${parameters.taskId}/execution/${parameters.executionId}`
 }
 
 export interface StoragesystemArnParameters {
@@ -51,7 +51,7 @@ export interface StoragesystemArnParameters {
 }
 export type StoragesystemArn = `arn:${string}:datasync:${string}:${string}:system/${string}`
 export function storagesystemArn(parameters: StoragesystemArnParameters): StoragesystemArn {
-  return `arn:${parameters.partition ?? ''}:datasync:${parameters.region}:${parameters.accountId}:system/${parameters.storageSystemId}`
+  return `arn:${parameters.partition ?? 'aws'}:datasync:${parameters.region}:${parameters.accountId}:system/${parameters.storageSystemId}`
 }
 
 export interface DiscoveryjobArnParameters {
@@ -63,5 +63,5 @@ export interface DiscoveryjobArnParameters {
 }
 export type DiscoveryjobArn = `arn:${string}:datasync:${string}:${string}:system/${string}/job/${string}`
 export function discoveryjobArn(parameters: DiscoveryjobArnParameters): DiscoveryjobArn {
-  return `arn:${parameters.partition ?? ''}:datasync:${parameters.region}:${parameters.accountId}:system/${parameters.storageSystemId}/job/${parameters.discoveryJobId}`
+  return `arn:${parameters.partition ?? 'aws'}:datasync:${parameters.region}:${parameters.accountId}:system/${parameters.storageSystemId}/job/${parameters.discoveryJobId}`
 }

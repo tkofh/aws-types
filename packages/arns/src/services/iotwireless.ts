@@ -6,7 +6,7 @@ export interface WirelessDeviceArnParameters {
 }
 export type WirelessDeviceArn = `arn:${string}:iotwireless:${string}:${string}:WirelessDevice/${string}`
 export function wirelessDeviceArn(parameters: WirelessDeviceArnParameters): WirelessDeviceArn {
-  return `arn:${parameters.partition ?? ''}:iotwireless:${parameters.region}:${parameters.account}:WirelessDevice/${parameters.wirelessDeviceId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotwireless:${parameters.region}:${parameters.account}:WirelessDevice/${parameters.wirelessDeviceId}`
 }
 
 export interface WirelessGatewayArnParameters {
@@ -17,7 +17,7 @@ export interface WirelessGatewayArnParameters {
 }
 export type WirelessGatewayArn = `arn:${string}:iotwireless:${string}:${string}:WirelessGateway/${string}`
 export function wirelessGatewayArn(parameters: WirelessGatewayArnParameters): WirelessGatewayArn {
-  return `arn:${parameters.partition ?? ''}:iotwireless:${parameters.region}:${parameters.account}:WirelessGateway/${parameters.wirelessGatewayId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotwireless:${parameters.region}:${parameters.account}:WirelessGateway/${parameters.wirelessGatewayId}`
 }
 
 export interface DeviceProfileArnParameters {
@@ -28,7 +28,7 @@ export interface DeviceProfileArnParameters {
 }
 export type DeviceProfileArn = `arn:${string}:iotwireless:${string}:${string}:DeviceProfile/${string}`
 export function deviceProfileArn(parameters: DeviceProfileArnParameters): DeviceProfileArn {
-  return `arn:${parameters.partition ?? ''}:iotwireless:${parameters.region}:${parameters.account}:DeviceProfile/${parameters.deviceProfileId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotwireless:${parameters.region}:${parameters.account}:DeviceProfile/${parameters.deviceProfileId}`
 }
 
 export interface ServiceProfileArnParameters {
@@ -39,7 +39,7 @@ export interface ServiceProfileArnParameters {
 }
 export type ServiceProfileArn = `arn:${string}:iotwireless:${string}:${string}:ServiceProfile/${string}`
 export function serviceProfileArn(parameters: ServiceProfileArnParameters): ServiceProfileArn {
-  return `arn:${parameters.partition ?? ''}:iotwireless:${parameters.region}:${parameters.account}:ServiceProfile/${parameters.serviceProfileId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotwireless:${parameters.region}:${parameters.account}:ServiceProfile/${parameters.serviceProfileId}`
 }
 
 export interface DestinationArnParameters {
@@ -50,7 +50,7 @@ export interface DestinationArnParameters {
 }
 export type DestinationArn = `arn:${string}:iotwireless:${string}:${string}:Destination/${string}`
 export function destinationArn(parameters: DestinationArnParameters): DestinationArn {
-  return `arn:${parameters.partition ?? ''}:iotwireless:${parameters.region}:${parameters.account}:Destination/${parameters.destinationName}`
+  return `arn:${parameters.partition ?? 'aws'}:iotwireless:${parameters.region}:${parameters.account}:Destination/${parameters.destinationName}`
 }
 
 export interface SidewalkAccountArnParameters {
@@ -61,7 +61,7 @@ export interface SidewalkAccountArnParameters {
 }
 export type SidewalkAccountArn = `arn:${string}:iotwireless:${string}:${string}:SidewalkAccount/${string}`
 export function sidewalkAccountArn(parameters: SidewalkAccountArnParameters): SidewalkAccountArn {
-  return `arn:${parameters.partition ?? ''}:iotwireless:${parameters.region}:${parameters.account}:SidewalkAccount/${parameters.sidewalkAccountId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotwireless:${parameters.region}:${parameters.account}:SidewalkAccount/${parameters.sidewalkAccountId}`
 }
 
 export interface WirelessGatewayTaskDefinitionArnParameters {
@@ -72,7 +72,7 @@ export interface WirelessGatewayTaskDefinitionArnParameters {
 }
 export type WirelessGatewayTaskDefinitionArn = `arn:${string}:iotwireless:${string}:${string}:WirelessGatewayTaskDefinition/${string}`
 export function wirelessGatewayTaskDefinitionArn(parameters: WirelessGatewayTaskDefinitionArnParameters): WirelessGatewayTaskDefinitionArn {
-  return `arn:${parameters.partition ?? ''}:iotwireless:${parameters.region}:${parameters.account}:WirelessGatewayTaskDefinition/${parameters.wirelessGatewayTaskDefinitionId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotwireless:${parameters.region}:${parameters.account}:WirelessGatewayTaskDefinition/${parameters.wirelessGatewayTaskDefinitionId}`
 }
 
 export interface FuotaTaskArnParameters {
@@ -83,7 +83,7 @@ export interface FuotaTaskArnParameters {
 }
 export type FuotaTaskArn = `arn:${string}:iotwireless:${string}:${string}:FuotaTask/${string}`
 export function fuotaTaskArn(parameters: FuotaTaskArnParameters): FuotaTaskArn {
-  return `arn:${parameters.partition ?? ''}:iotwireless:${parameters.region}:${parameters.account}:FuotaTask/${parameters.fuotaTaskId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotwireless:${parameters.region}:${parameters.account}:FuotaTask/${parameters.fuotaTaskId}`
 }
 
 export interface MulticastGroupArnParameters {
@@ -94,7 +94,7 @@ export interface MulticastGroupArnParameters {
 }
 export type MulticastGroupArn = `arn:${string}:iotwireless:${string}:${string}:MulticastGroup/${string}`
 export function multicastGroupArn(parameters: MulticastGroupArnParameters): MulticastGroupArn {
-  return `arn:${parameters.partition ?? ''}:iotwireless:${parameters.region}:${parameters.account}:MulticastGroup/${parameters.multicastGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotwireless:${parameters.region}:${parameters.account}:MulticastGroup/${parameters.multicastGroupId}`
 }
 
 export interface NetworkAnalyzerConfigurationArnParameters {
@@ -105,7 +105,7 @@ export interface NetworkAnalyzerConfigurationArnParameters {
 }
 export type NetworkAnalyzerConfigurationArn = `arn:${string}:iotwireless:${string}:${string}:NetworkAnalyzerConfiguration/${string}`
 export function networkAnalyzerConfigurationArn(parameters: NetworkAnalyzerConfigurationArnParameters): NetworkAnalyzerConfigurationArn {
-  return `arn:${parameters.partition ?? ''}:iotwireless:${parameters.region}:${parameters.account}:NetworkAnalyzerConfiguration/${parameters.networkAnalyzerConfigurationName}`
+  return `arn:${parameters.partition ?? 'aws'}:iotwireless:${parameters.region}:${parameters.account}:NetworkAnalyzerConfiguration/${parameters.networkAnalyzerConfigurationName}`
 }
 
 export interface ThingArnParameters {
@@ -116,7 +116,7 @@ export interface ThingArnParameters {
 }
 export type ThingArn = `arn:${string}:iot:${string}:${string}:thing/${string}`
 export function thingArn(parameters: ThingArnParameters): ThingArn {
-  return `arn:${parameters.partition ?? ''}:iot:${parameters.region}:${parameters.account}:thing/${parameters.thingName}`
+  return `arn:${parameters.partition ?? 'aws'}:iot:${parameters.region}:${parameters.account}:thing/${parameters.thingName}`
 }
 
 export interface CertArnParameters {
@@ -127,7 +127,7 @@ export interface CertArnParameters {
 }
 export type CertArn = `arn:${string}:iot:${string}:${string}:cert/${string}`
 export function certArn(parameters: CertArnParameters): CertArn {
-  return `arn:${parameters.partition ?? ''}:iot:${parameters.region}:${parameters.account}:cert/${parameters.certificate}`
+  return `arn:${parameters.partition ?? 'aws'}:iot:${parameters.region}:${parameters.account}:cert/${parameters.certificate}`
 }
 
 export interface ImportTaskArnParameters {
@@ -138,5 +138,5 @@ export interface ImportTaskArnParameters {
 }
 export type ImportTaskArn = `arn:${string}:iotwireless:${string}:${string}:ImportTask/${string}`
 export function importTaskArn(parameters: ImportTaskArnParameters): ImportTaskArn {
-  return `arn:${parameters.partition ?? ''}:iotwireless:${parameters.region}:${parameters.account}:ImportTask/${parameters.importTaskId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotwireless:${parameters.region}:${parameters.account}:ImportTask/${parameters.importTaskId}`
 }

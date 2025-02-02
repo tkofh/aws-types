@@ -6,7 +6,7 @@ export interface AssetsArnParameters {
 }
 export type AssetsArn = `arn:${string}:mediapackage-vod:${string}:${string}:assets/${string}`
 export function assetsArn(parameters: AssetsArnParameters): AssetsArn {
-  return `arn:${parameters.partition ?? ''}:mediapackage-vod:${parameters.region}:${parameters.account}:assets/${parameters.assetIdentifier}`
+  return `arn:${parameters.partition ?? 'aws'}:mediapackage-vod:${parameters.region}:${parameters.account}:assets/${parameters.assetIdentifier}`
 }
 
 export interface PackagingConfigurationsArnParameters {
@@ -17,7 +17,7 @@ export interface PackagingConfigurationsArnParameters {
 }
 export type PackagingConfigurationsArn = `arn:${string}:mediapackage-vod:${string}:${string}:packaging-configurations/${string}`
 export function packagingConfigurationsArn(parameters: PackagingConfigurationsArnParameters): PackagingConfigurationsArn {
-  return `arn:${parameters.partition ?? ''}:mediapackage-vod:${parameters.region}:${parameters.account}:packaging-configurations/${parameters.packagingConfigurationIdentifier}`
+  return `arn:${parameters.partition ?? 'aws'}:mediapackage-vod:${parameters.region}:${parameters.account}:packaging-configurations/${parameters.packagingConfigurationIdentifier}`
 }
 
 export interface PackagingGroupsArnParameters {
@@ -28,5 +28,5 @@ export interface PackagingGroupsArnParameters {
 }
 export type PackagingGroupsArn = `arn:${string}:mediapackage-vod:${string}:${string}:packaging-groups/${string}`
 export function packagingGroupsArn(parameters: PackagingGroupsArnParameters): PackagingGroupsArn {
-  return `arn:${parameters.partition ?? ''}:mediapackage-vod:${parameters.region}:${parameters.account}:packaging-groups/${parameters.packagingGroupIdentifier}`
+  return `arn:${parameters.partition ?? 'aws'}:mediapackage-vod:${parameters.region}:${parameters.account}:packaging-groups/${parameters.packagingGroupIdentifier}`
 }

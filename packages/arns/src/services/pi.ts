@@ -7,7 +7,7 @@ export interface MetricResourceArnParameters {
 }
 export type MetricResourceArn = `arn:${string}:pi:${string}:${string}:metrics/${string}/${string}`
 export function metricResourceArn(parameters: MetricResourceArnParameters): MetricResourceArn {
-  return `arn:${parameters.partition ?? ''}:pi:${parameters.region}:${parameters.account}:metrics/${parameters.serviceType}/${parameters.identifier}`
+  return `arn:${parameters.partition ?? 'aws'}:pi:${parameters.region}:${parameters.account}:metrics/${parameters.serviceType}/${parameters.identifier}`
 }
 
 export interface PerfReportsResourceArnParameters {
@@ -20,5 +20,5 @@ export interface PerfReportsResourceArnParameters {
 }
 export type PerfReportsResourceArn = `arn:${string}:pi:${string}:${string}:perf-reports/${string}/${string}/${string}`
 export function perfReportsResourceArn(parameters: PerfReportsResourceArnParameters): PerfReportsResourceArn {
-  return `arn:${parameters.partition ?? ''}:pi:${parameters.region}:${parameters.account}:perf-reports/${parameters.serviceType}/${parameters.identifier}/${parameters.reportId}`
+  return `arn:${parameters.partition ?? 'aws'}:pi:${parameters.region}:${parameters.account}:perf-reports/${parameters.serviceType}/${parameters.identifier}/${parameters.reportId}`
 }

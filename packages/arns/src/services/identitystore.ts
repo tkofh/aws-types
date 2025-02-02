@@ -5,7 +5,7 @@ export interface IdentitystoreArnParameters {
 }
 export type IdentitystoreArn = `arn:${string}:identitystore::${string}:identitystore/${string}`
 export function identitystoreArn(parameters: IdentitystoreArnParameters): IdentitystoreArn {
-  return `arn:${parameters.partition ?? ''}:identitystore::${parameters.account}:identitystore/${parameters.identityStoreId}`
+  return `arn:${parameters.partition ?? 'aws'}:identitystore::${parameters.account}:identitystore/${parameters.identityStoreId}`
 }
 
 export interface UserArnParameters {
@@ -14,7 +14,7 @@ export interface UserArnParameters {
 }
 export type UserArn = `arn:${string}:identitystore:::user/${string}`
 export function userArn(parameters: UserArnParameters): UserArn {
-  return `arn:${parameters.partition ?? ''}:identitystore:::user/${parameters.userId}`
+  return `arn:${parameters.partition ?? 'aws'}:identitystore:::user/${parameters.userId}`
 }
 
 export interface GroupArnParameters {
@@ -23,7 +23,7 @@ export interface GroupArnParameters {
 }
 export type GroupArn = `arn:${string}:identitystore:::group/${string}`
 export function groupArn(parameters: GroupArnParameters): GroupArn {
-  return `arn:${parameters.partition ?? ''}:identitystore:::group/${parameters.groupId}`
+  return `arn:${parameters.partition ?? 'aws'}:identitystore:::group/${parameters.groupId}`
 }
 
 export interface GroupMembershipArnParameters {
@@ -32,7 +32,7 @@ export interface GroupMembershipArnParameters {
 }
 export type GroupMembershipArn = `arn:${string}:identitystore:::membership/${string}`
 export function groupMembershipArn(parameters: GroupMembershipArnParameters): GroupMembershipArn {
-  return `arn:${parameters.partition ?? ''}:identitystore:::membership/${parameters.membershipId}`
+  return `arn:${parameters.partition ?? 'aws'}:identitystore:::membership/${parameters.membershipId}`
 }
 
 export interface AllUsersArnParameters {
@@ -40,7 +40,7 @@ export interface AllUsersArnParameters {
 }
 export type AllUsersArn = `arn:${string}:identitystore:::user/*`
 export function allUsersArn(parameters: AllUsersArnParameters): AllUsersArn {
-  return `arn:${parameters.partition ?? ''}:identitystore:::user/*`
+  return `arn:${parameters.partition ?? 'aws'}:identitystore:::user/*`
 }
 
 export interface AllGroupsArnParameters {
@@ -48,7 +48,7 @@ export interface AllGroupsArnParameters {
 }
 export type AllGroupsArn = `arn:${string}:identitystore:::group/*`
 export function allGroupsArn(parameters: AllGroupsArnParameters): AllGroupsArn {
-  return `arn:${parameters.partition ?? ''}:identitystore:::group/*`
+  return `arn:${parameters.partition ?? 'aws'}:identitystore:::group/*`
 }
 
 export interface AllGroupMembershipsArnParameters {
@@ -56,5 +56,5 @@ export interface AllGroupMembershipsArnParameters {
 }
 export type AllGroupMembershipsArn = `arn:${string}:identitystore:::membership/*`
 export function allGroupMembershipsArn(parameters: AllGroupMembershipsArnParameters): AllGroupMembershipsArn {
-  return `arn:${parameters.partition ?? ''}:identitystore:::membership/*`
+  return `arn:${parameters.partition ?? 'aws'}:identitystore:::membership/*`
 }

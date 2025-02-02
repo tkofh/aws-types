@@ -6,7 +6,7 @@ export interface ComputeEnvironmentArnParameters {
 }
 export type ComputeEnvironmentArn = `arn:${string}:batch:${string}:${string}:compute-environment/${string}`
 export function computeEnvironmentArn(parameters: ComputeEnvironmentArnParameters): ComputeEnvironmentArn {
-  return `arn:${parameters.partition ?? ''}:batch:${parameters.region}:${parameters.account}:compute-environment/${parameters.computeEnvironmentName}`
+  return `arn:${parameters.partition ?? 'aws'}:batch:${parameters.region}:${parameters.account}:compute-environment/${parameters.computeEnvironmentName}`
 }
 
 export interface JobQueueArnParameters {
@@ -17,7 +17,7 @@ export interface JobQueueArnParameters {
 }
 export type JobQueueArn = `arn:${string}:batch:${string}:${string}:job-queue/${string}`
 export function jobQueueArn(parameters: JobQueueArnParameters): JobQueueArn {
-  return `arn:${parameters.partition ?? ''}:batch:${parameters.region}:${parameters.account}:job-queue/${parameters.jobQueueName}`
+  return `arn:${parameters.partition ?? 'aws'}:batch:${parameters.region}:${parameters.account}:job-queue/${parameters.jobQueueName}`
 }
 
 export interface JobDefinitionArnParameters {
@@ -28,7 +28,7 @@ export interface JobDefinitionArnParameters {
 }
 export type JobDefinitionArn = `arn:${string}:batch:${string}:${string}:job-definition/${string}`
 export function jobDefinitionArn(parameters: JobDefinitionArnParameters): JobDefinitionArn {
-  return `arn:${parameters.partition ?? ''}:batch:${parameters.region}:${parameters.account}:job-definition/${parameters.jobDefinitionName}`
+  return `arn:${parameters.partition ?? 'aws'}:batch:${parameters.region}:${parameters.account}:job-definition/${parameters.jobDefinitionName}`
 }
 
 export interface JobDefinitionRevisionArnParameters {
@@ -40,7 +40,7 @@ export interface JobDefinitionRevisionArnParameters {
 }
 export type JobDefinitionRevisionArn = `arn:${string}:batch:${string}:${string}:job-definition/${string}:${string}`
 export function jobDefinitionRevisionArn(parameters: JobDefinitionRevisionArnParameters): JobDefinitionRevisionArn {
-  return `arn:${parameters.partition ?? ''}:batch:${parameters.region}:${parameters.account}:job-definition/${parameters.jobDefinitionName}:${parameters.revision}`
+  return `arn:${parameters.partition ?? 'aws'}:batch:${parameters.region}:${parameters.account}:job-definition/${parameters.jobDefinitionName}:${parameters.revision}`
 }
 
 export interface JobArnParameters {
@@ -51,7 +51,7 @@ export interface JobArnParameters {
 }
 export type JobArn = `arn:${string}:batch:${string}:${string}:job/${string}`
 export function jobArn(parameters: JobArnParameters): JobArn {
-  return `arn:${parameters.partition ?? ''}:batch:${parameters.region}:${parameters.account}:job/${parameters.jobId}`
+  return `arn:${parameters.partition ?? 'aws'}:batch:${parameters.region}:${parameters.account}:job/${parameters.jobId}`
 }
 
 export interface SchedulingPolicyArnParameters {
@@ -62,5 +62,5 @@ export interface SchedulingPolicyArnParameters {
 }
 export type SchedulingPolicyArn = `arn:${string}:batch:${string}:${string}:scheduling-policy/${string}`
 export function schedulingPolicyArn(parameters: SchedulingPolicyArnParameters): SchedulingPolicyArn {
-  return `arn:${parameters.partition ?? ''}:batch:${parameters.region}:${parameters.account}:scheduling-policy/${parameters.schedulingPolicyName}`
+  return `arn:${parameters.partition ?? 'aws'}:batch:${parameters.region}:${parameters.account}:scheduling-policy/${parameters.schedulingPolicyName}`
 }

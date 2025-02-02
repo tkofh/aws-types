@@ -6,5 +6,5 @@ export interface ChannelArnParameters {
 }
 export type ChannelArn = `arn:${string}:cloudtrail:${string}:${string}:channel/${string}`
 export function channelArn(parameters: ChannelArnParameters): ChannelArn {
-  return `arn:${parameters.partition ?? ''}:cloudtrail:${parameters.region}:${parameters.account}:channel/${parameters.channelId}`
+  return `arn:${parameters.partition ?? 'aws'}:cloudtrail:${parameters.region}:${parameters.account}:channel/${parameters.channelId}`
 }

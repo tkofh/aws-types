@@ -6,7 +6,7 @@ export interface AllowListArnParameters {
 }
 export type AllowListArn = `arn:${string}:macie2:${string}:${string}:allow-list/${string}`
 export function allowListArn(parameters: AllowListArnParameters): AllowListArn {
-  return `arn:${parameters.partition ?? ''}:macie2:${parameters.region}:${parameters.account}:allow-list/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:macie2:${parameters.region}:${parameters.account}:allow-list/${parameters.resourceId}`
 }
 
 export interface ClassificationJobArnParameters {
@@ -17,7 +17,7 @@ export interface ClassificationJobArnParameters {
 }
 export type ClassificationJobArn = `arn:${string}:macie2:${string}:${string}:classification-job/${string}`
 export function classificationJobArn(parameters: ClassificationJobArnParameters): ClassificationJobArn {
-  return `arn:${parameters.partition ?? ''}:macie2:${parameters.region}:${parameters.account}:classification-job/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:macie2:${parameters.region}:${parameters.account}:classification-job/${parameters.resourceId}`
 }
 
 export interface CustomDataIdentifierArnParameters {
@@ -28,7 +28,7 @@ export interface CustomDataIdentifierArnParameters {
 }
 export type CustomDataIdentifierArn = `arn:${string}:macie2:${string}:${string}:custom-data-identifier/${string}`
 export function customDataIdentifierArn(parameters: CustomDataIdentifierArnParameters): CustomDataIdentifierArn {
-  return `arn:${parameters.partition ?? ''}:macie2:${parameters.region}:${parameters.account}:custom-data-identifier/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:macie2:${parameters.region}:${parameters.account}:custom-data-identifier/${parameters.resourceId}`
 }
 
 export interface FindingsFilterArnParameters {
@@ -39,7 +39,7 @@ export interface FindingsFilterArnParameters {
 }
 export type FindingsFilterArn = `arn:${string}:macie2:${string}:${string}:findings-filter/${string}`
 export function findingsFilterArn(parameters: FindingsFilterArnParameters): FindingsFilterArn {
-  return `arn:${parameters.partition ?? ''}:macie2:${parameters.region}:${parameters.account}:findings-filter/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:macie2:${parameters.region}:${parameters.account}:findings-filter/${parameters.resourceId}`
 }
 
 export interface MemberArnParameters {
@@ -50,5 +50,5 @@ export interface MemberArnParameters {
 }
 export type MemberArn = `arn:${string}:macie2:${string}:${string}:member/${string}`
 export function memberArn(parameters: MemberArnParameters): MemberArn {
-  return `arn:${parameters.partition ?? ''}:macie2:${parameters.region}:${parameters.account}:member/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:macie2:${parameters.region}:${parameters.account}:member/${parameters.resourceId}`
 }

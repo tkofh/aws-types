@@ -6,7 +6,7 @@ export interface ApplicationArnParameters {
 }
 export type ApplicationArn = `arn:${string}:servicecatalog:${string}:${string}:/applications/${string}`
 export function applicationArn(parameters: ApplicationArnParameters): ApplicationArn {
-  return `arn:${parameters.partition ?? ''}:servicecatalog:${parameters.region}:${parameters.account}:/applications/${parameters.applicationId}`
+  return `arn:${parameters.partition ?? 'aws'}:servicecatalog:${parameters.region}:${parameters.account}:/applications/${parameters.applicationId}`
 }
 
 export interface AttributeGroupArnParameters {
@@ -17,7 +17,7 @@ export interface AttributeGroupArnParameters {
 }
 export type AttributeGroupArn = `arn:${string}:servicecatalog:${string}:${string}:/attribute-groups/${string}`
 export function attributeGroupArn(parameters: AttributeGroupArnParameters): AttributeGroupArn {
-  return `arn:${parameters.partition ?? ''}:servicecatalog:${parameters.region}:${parameters.account}:/attribute-groups/${parameters.attributeGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:servicecatalog:${parameters.region}:${parameters.account}:/attribute-groups/${parameters.attributeGroupId}`
 }
 
 export interface PortfolioArnParameters {
@@ -28,7 +28,7 @@ export interface PortfolioArnParameters {
 }
 export type PortfolioArn = `arn:${string}:catalog:${string}:${string}:portfolio/${string}`
 export function portfolioArn(parameters: PortfolioArnParameters): PortfolioArn {
-  return `arn:${parameters.partition ?? ''}:catalog:${parameters.region}:${parameters.account}:portfolio/${parameters.portfolioId}`
+  return `arn:${parameters.partition ?? 'aws'}:catalog:${parameters.region}:${parameters.account}:portfolio/${parameters.portfolioId}`
 }
 
 export interface ProductArnParameters {
@@ -39,5 +39,5 @@ export interface ProductArnParameters {
 }
 export type ProductArn = `arn:${string}:catalog:${string}:${string}:product/${string}`
 export function productArn(parameters: ProductArnParameters): ProductArn {
-  return `arn:${parameters.partition ?? ''}:catalog:${parameters.region}:${parameters.account}:product/${parameters.productId}`
+  return `arn:${parameters.partition ?? 'aws'}:catalog:${parameters.region}:${parameters.account}:product/${parameters.productId}`
 }

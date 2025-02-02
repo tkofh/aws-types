@@ -7,5 +7,5 @@ export interface ChecksArnParameters {
 }
 export type ChecksArn = `arn:${string}:trustedadvisor:${string}:${string}:checks/${string}/${string}`
 export function checksArn(parameters: ChecksArnParameters): ChecksArn {
-  return `arn:${parameters.partition ?? ''}:trustedadvisor:${parameters.region}:${parameters.account}:checks/${parameters.categoryCode}/${parameters.checkId}`
+  return `arn:${parameters.partition ?? 'aws'}:trustedadvisor:${parameters.region}:${parameters.account}:checks/${parameters.categoryCode}/${parameters.checkId}`
 }

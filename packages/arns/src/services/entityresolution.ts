@@ -6,7 +6,7 @@ export interface MatchingWorkflowArnParameters {
 }
 export type MatchingWorkflowArn = `arn:${string}:entityresolution:${string}:${string}:matchingworkflow/${string}`
 export function matchingWorkflowArn(parameters: MatchingWorkflowArnParameters): MatchingWorkflowArn {
-  return `arn:${parameters.partition ?? ''}:entityresolution:${parameters.region}:${parameters.account}:matchingworkflow/${parameters.workflowName}`
+  return `arn:${parameters.partition ?? 'aws'}:entityresolution:${parameters.region}:${parameters.account}:matchingworkflow/${parameters.workflowName}`
 }
 
 export interface SchemaMappingArnParameters {
@@ -17,7 +17,7 @@ export interface SchemaMappingArnParameters {
 }
 export type SchemaMappingArn = `arn:${string}:entityresolution:${string}:${string}:schemamapping/${string}`
 export function schemaMappingArn(parameters: SchemaMappingArnParameters): SchemaMappingArn {
-  return `arn:${parameters.partition ?? ''}:entityresolution:${parameters.region}:${parameters.account}:schemamapping/${parameters.schemaName}`
+  return `arn:${parameters.partition ?? 'aws'}:entityresolution:${parameters.region}:${parameters.account}:schemamapping/${parameters.schemaName}`
 }
 
 export interface IdMappingWorkflowArnParameters {
@@ -28,7 +28,7 @@ export interface IdMappingWorkflowArnParameters {
 }
 export type IdMappingWorkflowArn = `arn:${string}:entityresolution:${string}:${string}:idmappingworkflow/${string}`
 export function idMappingWorkflowArn(parameters: IdMappingWorkflowArnParameters): IdMappingWorkflowArn {
-  return `arn:${parameters.partition ?? ''}:entityresolution:${parameters.region}:${parameters.account}:idmappingworkflow/${parameters.workflowName}`
+  return `arn:${parameters.partition ?? 'aws'}:entityresolution:${parameters.region}:${parameters.account}:idmappingworkflow/${parameters.workflowName}`
 }
 
 export interface ProviderServiceArnParameters {
@@ -40,7 +40,7 @@ export interface ProviderServiceArnParameters {
 }
 export type ProviderServiceArn = `arn:${string}:entityresolution:${string}:${string}:providerservice/${string}/${string}`
 export function providerServiceArn(parameters: ProviderServiceArnParameters): ProviderServiceArn {
-  return `arn:${parameters.partition ?? ''}:entityresolution:${parameters.region}:${parameters.account}:providerservice/${parameters.providerName}/${parameters.providerServiceName}`
+  return `arn:${parameters.partition ?? 'aws'}:entityresolution:${parameters.region}:${parameters.account}:providerservice/${parameters.providerName}/${parameters.providerServiceName}`
 }
 
 export interface IdNamespaceArnParameters {
@@ -51,5 +51,5 @@ export interface IdNamespaceArnParameters {
 }
 export type IdNamespaceArn = `arn:${string}:entityresolution:${string}:${string}:idnamespace/${string}`
 export function idNamespaceArn(parameters: IdNamespaceArnParameters): IdNamespaceArn {
-  return `arn:${parameters.partition ?? ''}:entityresolution:${parameters.region}:${parameters.account}:idnamespace/${parameters.idNamespaceName}`
+  return `arn:${parameters.partition ?? 'aws'}:entityresolution:${parameters.region}:${parameters.account}:idnamespace/${parameters.idNamespaceName}`
 }

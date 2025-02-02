@@ -6,7 +6,7 @@ export interface ParametergroupArnParameters {
 }
 export type ParametergroupArn = `arn:${string}:elasticache:${string}:${string}:parametergroup:${string}`
 export function parametergroupArn(parameters: ParametergroupArnParameters): ParametergroupArn {
-  return `arn:${parameters.partition ?? ''}:elasticache:${parameters.region}:${parameters.account}:parametergroup:${parameters.cacheParameterGroupName}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticache:${parameters.region}:${parameters.account}:parametergroup:${parameters.cacheParameterGroupName}`
 }
 
 export interface SecuritygroupArnParameters {
@@ -17,7 +17,7 @@ export interface SecuritygroupArnParameters {
 }
 export type SecuritygroupArn = `arn:${string}:elasticache:${string}:${string}:securitygroup:${string}`
 export function securitygroupArn(parameters: SecuritygroupArnParameters): SecuritygroupArn {
-  return `arn:${parameters.partition ?? ''}:elasticache:${parameters.region}:${parameters.account}:securitygroup:${parameters.cacheSecurityGroupName}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticache:${parameters.region}:${parameters.account}:securitygroup:${parameters.cacheSecurityGroupName}`
 }
 
 export interface SubnetgroupArnParameters {
@@ -28,7 +28,7 @@ export interface SubnetgroupArnParameters {
 }
 export type SubnetgroupArn = `arn:${string}:elasticache:${string}:${string}:subnetgroup:${string}`
 export function subnetgroupArn(parameters: SubnetgroupArnParameters): SubnetgroupArn {
-  return `arn:${parameters.partition ?? ''}:elasticache:${parameters.region}:${parameters.account}:subnetgroup:${parameters.cacheSubnetGroupName}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticache:${parameters.region}:${parameters.account}:subnetgroup:${parameters.cacheSubnetGroupName}`
 }
 
 export interface ReplicationgroupArnParameters {
@@ -39,7 +39,7 @@ export interface ReplicationgroupArnParameters {
 }
 export type ReplicationgroupArn = `arn:${string}:elasticache:${string}:${string}:replicationgroup:${string}`
 export function replicationgroupArn(parameters: ReplicationgroupArnParameters): ReplicationgroupArn {
-  return `arn:${parameters.partition ?? ''}:elasticache:${parameters.region}:${parameters.account}:replicationgroup:${parameters.replicationGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticache:${parameters.region}:${parameters.account}:replicationgroup:${parameters.replicationGroupId}`
 }
 
 export interface ClusterArnParameters {
@@ -50,7 +50,7 @@ export interface ClusterArnParameters {
 }
 export type ClusterArn = `arn:${string}:elasticache:${string}:${string}:cluster:${string}`
 export function clusterArn(parameters: ClusterArnParameters): ClusterArn {
-  return `arn:${parameters.partition ?? ''}:elasticache:${parameters.region}:${parameters.account}:cluster:${parameters.cacheClusterId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticache:${parameters.region}:${parameters.account}:cluster:${parameters.cacheClusterId}`
 }
 
 export interface ReservedInstanceArnParameters {
@@ -61,7 +61,7 @@ export interface ReservedInstanceArnParameters {
 }
 export type ReservedInstanceArn = `arn:${string}:elasticache:${string}:${string}:reserved-instance:${string}`
 export function reservedInstanceArn(parameters: ReservedInstanceArnParameters): ReservedInstanceArn {
-  return `arn:${parameters.partition ?? ''}:elasticache:${parameters.region}:${parameters.account}:reserved-instance:${parameters.reservedCacheNodeId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticache:${parameters.region}:${parameters.account}:reserved-instance:${parameters.reservedCacheNodeId}`
 }
 
 export interface SnapshotArnParameters {
@@ -72,7 +72,7 @@ export interface SnapshotArnParameters {
 }
 export type SnapshotArn = `arn:${string}:elasticache:${string}:${string}:snapshot:${string}`
 export function snapshotArn(parameters: SnapshotArnParameters): SnapshotArn {
-  return `arn:${parameters.partition ?? ''}:elasticache:${parameters.region}:${parameters.account}:snapshot:${parameters.snapshotName}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticache:${parameters.region}:${parameters.account}:snapshot:${parameters.snapshotName}`
 }
 
 export interface GlobalreplicationgroupArnParameters {
@@ -82,7 +82,7 @@ export interface GlobalreplicationgroupArnParameters {
 }
 export type GlobalreplicationgroupArn = `arn:${string}:elasticache::${string}:globalreplicationgroup:${string}`
 export function globalreplicationgroupArn(parameters: GlobalreplicationgroupArnParameters): GlobalreplicationgroupArn {
-  return `arn:${parameters.partition ?? ''}:elasticache::${parameters.account}:globalreplicationgroup:${parameters.globalReplicationGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticache::${parameters.account}:globalreplicationgroup:${parameters.globalReplicationGroupId}`
 }
 
 export interface UserArnParameters {
@@ -93,7 +93,7 @@ export interface UserArnParameters {
 }
 export type UserArn = `arn:${string}:elasticache:${string}:${string}:user:${string}`
 export function userArn(parameters: UserArnParameters): UserArn {
-  return `arn:${parameters.partition ?? ''}:elasticache:${parameters.region}:${parameters.account}:user:${parameters.userId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticache:${parameters.region}:${parameters.account}:user:${parameters.userId}`
 }
 
 export interface UsergroupArnParameters {
@@ -104,7 +104,7 @@ export interface UsergroupArnParameters {
 }
 export type UsergroupArn = `arn:${string}:elasticache:${string}:${string}:usergroup:${string}`
 export function usergroupArn(parameters: UsergroupArnParameters): UsergroupArn {
-  return `arn:${parameters.partition ?? ''}:elasticache:${parameters.region}:${parameters.account}:usergroup:${parameters.userGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticache:${parameters.region}:${parameters.account}:usergroup:${parameters.userGroupId}`
 }
 
 export interface ServerlesscacheArnParameters {
@@ -115,7 +115,7 @@ export interface ServerlesscacheArnParameters {
 }
 export type ServerlesscacheArn = `arn:${string}:elasticache:${string}:${string}:serverlesscache:${string}`
 export function serverlesscacheArn(parameters: ServerlesscacheArnParameters): ServerlesscacheArn {
-  return `arn:${parameters.partition ?? ''}:elasticache:${parameters.region}:${parameters.account}:serverlesscache:${parameters.serverlessCacheName}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticache:${parameters.region}:${parameters.account}:serverlesscache:${parameters.serverlessCacheName}`
 }
 
 export interface ServerlesscachesnapshotArnParameters {
@@ -126,5 +126,5 @@ export interface ServerlesscachesnapshotArnParameters {
 }
 export type ServerlesscachesnapshotArn = `arn:${string}:elasticache:${string}:${string}:serverlesscachesnapshot:${string}`
 export function serverlesscachesnapshotArn(parameters: ServerlesscachesnapshotArnParameters): ServerlesscachesnapshotArn {
-  return `arn:${parameters.partition ?? ''}:elasticache:${parameters.region}:${parameters.account}:serverlesscachesnapshot:${parameters.serverlessCacheSnapshotName}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticache:${parameters.region}:${parameters.account}:serverlesscachesnapshot:${parameters.serverlessCacheSnapshotName}`
 }

@@ -7,7 +7,7 @@ export interface AccesspointArnParameters {
 }
 export type AccesspointArn = `arn:${string}:s3-outposts:${string}:${string}:outpost/${string}/accesspoint/${string}`
 export function accesspointArn(parameters: AccesspointArnParameters): AccesspointArn {
-  return `arn:${parameters.partition ?? ''}:s3-outposts:${parameters.region}:${parameters.account}:outpost/${parameters.outpostId}/accesspoint/${parameters.accessPointName}`
+  return `arn:${parameters.partition ?? 'aws'}:s3-outposts:${parameters.region}:${parameters.account}:outpost/${parameters.outpostId}/accesspoint/${parameters.accessPointName}`
 }
 
 export interface BucketArnParameters {
@@ -19,7 +19,7 @@ export interface BucketArnParameters {
 }
 export type BucketArn = `arn:${string}:s3-outposts:${string}:${string}:outpost/${string}/bucket/${string}`
 export function bucketArn(parameters: BucketArnParameters): BucketArn {
-  return `arn:${parameters.partition ?? ''}:s3-outposts:${parameters.region}:${parameters.account}:outpost/${parameters.outpostId}/bucket/${parameters.bucketName}`
+  return `arn:${parameters.partition ?? 'aws'}:s3-outposts:${parameters.region}:${parameters.account}:outpost/${parameters.outpostId}/bucket/${parameters.bucketName}`
 }
 
 export interface EndpointArnParameters {
@@ -31,7 +31,7 @@ export interface EndpointArnParameters {
 }
 export type EndpointArn = `arn:${string}:s3-outposts:${string}:${string}:outpost/${string}/endpoint/${string}`
 export function endpointArn(parameters: EndpointArnParameters): EndpointArn {
-  return `arn:${parameters.partition ?? ''}:s3-outposts:${parameters.region}:${parameters.account}:outpost/${parameters.outpostId}/endpoint/${parameters.endpointId}`
+  return `arn:${parameters.partition ?? 'aws'}:s3-outposts:${parameters.region}:${parameters.account}:outpost/${parameters.outpostId}/endpoint/${parameters.endpointId}`
 }
 
 export interface ObjectArnParameters {
@@ -44,5 +44,5 @@ export interface ObjectArnParameters {
 }
 export type ObjectArn = `arn:${string}:s3-outposts:${string}:${string}:outpost/${string}/bucket/${string}/object/${string}`
 export function objectArn(parameters: ObjectArnParameters): ObjectArn {
-  return `arn:${parameters.partition ?? ''}:s3-outposts:${parameters.region}:${parameters.account}:outpost/${parameters.outpostId}/bucket/${parameters.bucketName}/object/${parameters.objectName}`
+  return `arn:${parameters.partition ?? 'aws'}:s3-outposts:${parameters.region}:${parameters.account}:outpost/${parameters.outpostId}/bucket/${parameters.bucketName}/object/${parameters.objectName}`
 }

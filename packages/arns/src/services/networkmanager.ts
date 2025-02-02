@@ -5,7 +5,7 @@ export interface GlobalNetworkArnParameters {
 }
 export type GlobalNetworkArn = `arn:${string}:networkmanager::${string}:global-network/${string}`
 export function globalNetworkArn(parameters: GlobalNetworkArnParameters): GlobalNetworkArn {
-  return `arn:${parameters.partition ?? ''}:networkmanager::${parameters.account}:global-network/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:networkmanager::${parameters.account}:global-network/${parameters.resourceId}`
 }
 
 export interface SiteArnParameters {
@@ -16,7 +16,7 @@ export interface SiteArnParameters {
 }
 export type SiteArn = `arn:${string}:networkmanager::${string}:site/${string}/${string}`
 export function siteArn(parameters: SiteArnParameters): SiteArn {
-  return `arn:${parameters.partition ?? ''}:networkmanager::${parameters.account}:site/${parameters.globalNetworkId}/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:networkmanager::${parameters.account}:site/${parameters.globalNetworkId}/${parameters.resourceId}`
 }
 
 export interface LinkArnParameters {
@@ -27,7 +27,7 @@ export interface LinkArnParameters {
 }
 export type LinkArn = `arn:${string}:networkmanager::${string}:link/${string}/${string}`
 export function linkArn(parameters: LinkArnParameters): LinkArn {
-  return `arn:${parameters.partition ?? ''}:networkmanager::${parameters.account}:link/${parameters.globalNetworkId}/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:networkmanager::${parameters.account}:link/${parameters.globalNetworkId}/${parameters.resourceId}`
 }
 
 export interface DeviceArnParameters {
@@ -38,7 +38,7 @@ export interface DeviceArnParameters {
 }
 export type DeviceArn = `arn:${string}:networkmanager::${string}:device/${string}/${string}`
 export function deviceArn(parameters: DeviceArnParameters): DeviceArn {
-  return `arn:${parameters.partition ?? ''}:networkmanager::${parameters.account}:device/${parameters.globalNetworkId}/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:networkmanager::${parameters.account}:device/${parameters.globalNetworkId}/${parameters.resourceId}`
 }
 
 export interface ConnectionArnParameters {
@@ -49,7 +49,7 @@ export interface ConnectionArnParameters {
 }
 export type ConnectionArn = `arn:${string}:networkmanager::${string}:connection/${string}/${string}`
 export function connectionArn(parameters: ConnectionArnParameters): ConnectionArn {
-  return `arn:${parameters.partition ?? ''}:networkmanager::${parameters.account}:connection/${parameters.globalNetworkId}/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:networkmanager::${parameters.account}:connection/${parameters.globalNetworkId}/${parameters.resourceId}`
 }
 
 export interface CoreNetworkArnParameters {
@@ -59,7 +59,7 @@ export interface CoreNetworkArnParameters {
 }
 export type CoreNetworkArn = `arn:${string}:networkmanager::${string}:core-network/${string}`
 export function coreNetworkArn(parameters: CoreNetworkArnParameters): CoreNetworkArn {
-  return `arn:${parameters.partition ?? ''}:networkmanager::${parameters.account}:core-network/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:networkmanager::${parameters.account}:core-network/${parameters.resourceId}`
 }
 
 export interface AttachmentArnParameters {
@@ -69,7 +69,7 @@ export interface AttachmentArnParameters {
 }
 export type AttachmentArn = `arn:${string}:networkmanager::${string}:attachment/${string}`
 export function attachmentArn(parameters: AttachmentArnParameters): AttachmentArn {
-  return `arn:${parameters.partition ?? ''}:networkmanager::${parameters.account}:attachment/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:networkmanager::${parameters.account}:attachment/${parameters.resourceId}`
 }
 
 export interface ConnectPeerArnParameters {
@@ -79,7 +79,7 @@ export interface ConnectPeerArnParameters {
 }
 export type ConnectPeerArn = `arn:${string}:networkmanager::${string}:connect-peer/${string}`
 export function connectPeerArn(parameters: ConnectPeerArnParameters): ConnectPeerArn {
-  return `arn:${parameters.partition ?? ''}:networkmanager::${parameters.account}:connect-peer/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:networkmanager::${parameters.account}:connect-peer/${parameters.resourceId}`
 }
 
 export interface PeeringArnParameters {
@@ -89,5 +89,5 @@ export interface PeeringArnParameters {
 }
 export type PeeringArn = `arn:${string}:networkmanager::${string}:peering/${string}`
 export function peeringArn(parameters: PeeringArnParameters): PeeringArn {
-  return `arn:${parameters.partition ?? ''}:networkmanager::${parameters.account}:peering/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:networkmanager::${parameters.account}:peering/${parameters.resourceId}`
 }

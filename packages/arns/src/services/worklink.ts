@@ -5,5 +5,5 @@ export interface FleetArnParameters {
 }
 export type FleetArn = `arn:${string}:worklink::${string}:fleet/${string}`
 export function fleetArn(parameters: FleetArnParameters): FleetArn {
-  return `arn:${parameters.partition ?? ''}:worklink::${parameters.account}:fleet/${parameters.fleetName}`
+  return `arn:${parameters.partition ?? 'aws'}:worklink::${parameters.account}:fleet/${parameters.fleetName}`
 }

@@ -7,5 +7,5 @@ export interface QuotaArnParameters {
 }
 export type QuotaArn = `arn:${string}:servicequotas:${string}:${string}:${string}/${string}`
 export function quotaArn(parameters: QuotaArnParameters): QuotaArn {
-  return `arn:${parameters.partition ?? ''}:servicequotas:${parameters.region}:${parameters.account}:${parameters.serviceCode}/${parameters.quotaCode}`
+  return `arn:${parameters.partition ?? 'aws'}:servicequotas:${parameters.region}:${parameters.account}:${parameters.serviceCode}/${parameters.quotaCode}`
 }

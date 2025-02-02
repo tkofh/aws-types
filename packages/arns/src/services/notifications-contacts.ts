@@ -5,5 +5,5 @@ export interface EmailContactResourceArnParameters {
 }
 export type EmailContactResourceArn = `arn:${string}:notifications-contacts::${string}:emailcontact/${string}`
 export function emailContactResourceArn(parameters: EmailContactResourceArnParameters): EmailContactResourceArn {
-  return `arn:${parameters.partition ?? ''}:notifications-contacts::${parameters.account}:emailcontact/${parameters.emailContactId}`
+  return `arn:${parameters.partition ?? 'aws'}:notifications-contacts::${parameters.account}:emailcontact/${parameters.emailContactId}`
 }

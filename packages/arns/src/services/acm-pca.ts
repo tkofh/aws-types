@@ -6,5 +6,5 @@ export interface CertificateAuthorityArnParameters {
 }
 export type CertificateAuthorityArn = `arn:${string}:acm-pca:${string}:${string}:certificate-authority/${string}`
 export function certificateAuthorityArn(parameters: CertificateAuthorityArnParameters): CertificateAuthorityArn {
-  return `arn:${parameters.partition ?? ''}:acm-pca:${parameters.region}:${parameters.account}:certificate-authority/${parameters.certificateAuthorityId}`
+  return `arn:${parameters.partition ?? 'aws'}:acm-pca:${parameters.region}:${parameters.account}:certificate-authority/${parameters.certificateAuthorityId}`
 }

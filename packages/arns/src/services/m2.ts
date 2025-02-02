@@ -6,7 +6,7 @@ export interface ApplicationArnParameters {
 }
 export type ApplicationArn = `arn:${string}:m2:${string}:${string}:app/${string}`
 export function applicationArn(parameters: ApplicationArnParameters): ApplicationArn {
-  return `arn:${parameters.partition ?? ''}:m2:${parameters.region}:${parameters.account}:app/${parameters.applicationId}`
+  return `arn:${parameters.partition ?? 'aws'}:m2:${parameters.region}:${parameters.account}:app/${parameters.applicationId}`
 }
 
 export interface EnvironmentArnParameters {
@@ -17,5 +17,5 @@ export interface EnvironmentArnParameters {
 }
 export type EnvironmentArn = `arn:${string}:m2:${string}:${string}:env/${string}`
 export function environmentArn(parameters: EnvironmentArnParameters): EnvironmentArn {
-  return `arn:${parameters.partition ?? ''}:m2:${parameters.region}:${parameters.account}:env/${parameters.environmentId}`
+  return `arn:${parameters.partition ?? 'aws'}:m2:${parameters.region}:${parameters.account}:env/${parameters.environmentId}`
 }

@@ -6,5 +6,5 @@ export interface PipeArnParameters {
 }
 export type PipeArn = `arn:${string}:pipes:${string}:${string}:pipe/${string}`
 export function pipeArn(parameters: PipeArnParameters): PipeArn {
-  return `arn:${parameters.partition ?? ''}:pipes:${parameters.region}:${parameters.account}:pipe/${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:pipes:${parameters.region}:${parameters.account}:pipe/${parameters.name}`
 }

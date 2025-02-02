@@ -6,7 +6,7 @@ export interface IndexArnParameters {
 }
 export type IndexArn = `arn:${string}:kendra:${string}:${string}:index/${string}`
 export function indexArn(parameters: IndexArnParameters): IndexArn {
-  return `arn:${parameters.partition ?? ''}:kendra:${parameters.region}:${parameters.account}:index/${parameters.indexId}`
+  return `arn:${parameters.partition ?? 'aws'}:kendra:${parameters.region}:${parameters.account}:index/${parameters.indexId}`
 }
 
 export interface DataSourceArnParameters {
@@ -18,7 +18,7 @@ export interface DataSourceArnParameters {
 }
 export type DataSourceArn = `arn:${string}:kendra:${string}:${string}:index/${string}/data-source/${string}`
 export function dataSourceArn(parameters: DataSourceArnParameters): DataSourceArn {
-  return `arn:${parameters.partition ?? ''}:kendra:${parameters.region}:${parameters.account}:index/${parameters.indexId}/data-source/${parameters.dataSourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:kendra:${parameters.region}:${parameters.account}:index/${parameters.indexId}/data-source/${parameters.dataSourceId}`
 }
 
 export interface FaqArnParameters {
@@ -30,7 +30,7 @@ export interface FaqArnParameters {
 }
 export type FaqArn = `arn:${string}:kendra:${string}:${string}:index/${string}/faq/${string}`
 export function faqArn(parameters: FaqArnParameters): FaqArn {
-  return `arn:${parameters.partition ?? ''}:kendra:${parameters.region}:${parameters.account}:index/${parameters.indexId}/faq/${parameters.faqId}`
+  return `arn:${parameters.partition ?? 'aws'}:kendra:${parameters.region}:${parameters.account}:index/${parameters.indexId}/faq/${parameters.faqId}`
 }
 
 export interface ExperienceArnParameters {
@@ -42,7 +42,7 @@ export interface ExperienceArnParameters {
 }
 export type ExperienceArn = `arn:${string}:kendra:${string}:${string}:index/${string}/experience/${string}`
 export function experienceArn(parameters: ExperienceArnParameters): ExperienceArn {
-  return `arn:${parameters.partition ?? ''}:kendra:${parameters.region}:${parameters.account}:index/${parameters.indexId}/experience/${parameters.experienceId}`
+  return `arn:${parameters.partition ?? 'aws'}:kendra:${parameters.region}:${parameters.account}:index/${parameters.indexId}/experience/${parameters.experienceId}`
 }
 
 export interface ThesaurusArnParameters {
@@ -54,7 +54,7 @@ export interface ThesaurusArnParameters {
 }
 export type ThesaurusArn = `arn:${string}:kendra:${string}:${string}:index/${string}/thesaurus/${string}`
 export function thesaurusArn(parameters: ThesaurusArnParameters): ThesaurusArn {
-  return `arn:${parameters.partition ?? ''}:kendra:${parameters.region}:${parameters.account}:index/${parameters.indexId}/thesaurus/${parameters.thesaurusId}`
+  return `arn:${parameters.partition ?? 'aws'}:kendra:${parameters.region}:${parameters.account}:index/${parameters.indexId}/thesaurus/${parameters.thesaurusId}`
 }
 
 export interface QuerySuggestionsBlockListArnParameters {
@@ -66,7 +66,7 @@ export interface QuerySuggestionsBlockListArnParameters {
 }
 export type QuerySuggestionsBlockListArn = `arn:${string}:kendra:${string}:${string}:index/${string}/query-suggestions-block-list/${string}`
 export function querySuggestionsBlockListArn(parameters: QuerySuggestionsBlockListArnParameters): QuerySuggestionsBlockListArn {
-  return `arn:${parameters.partition ?? ''}:kendra:${parameters.region}:${parameters.account}:index/${parameters.indexId}/query-suggestions-block-list/${parameters.querySuggestionsBlockListId}`
+  return `arn:${parameters.partition ?? 'aws'}:kendra:${parameters.region}:${parameters.account}:index/${parameters.indexId}/query-suggestions-block-list/${parameters.querySuggestionsBlockListId}`
 }
 
 export interface FeaturedResultsSetArnParameters {
@@ -78,7 +78,7 @@ export interface FeaturedResultsSetArnParameters {
 }
 export type FeaturedResultsSetArn = `arn:${string}:kendra:${string}:${string}:index/${string}/featured-results-set/${string}`
 export function featuredResultsSetArn(parameters: FeaturedResultsSetArnParameters): FeaturedResultsSetArn {
-  return `arn:${parameters.partition ?? ''}:kendra:${parameters.region}:${parameters.account}:index/${parameters.indexId}/featured-results-set/${parameters.featuredResultsSetId}`
+  return `arn:${parameters.partition ?? 'aws'}:kendra:${parameters.region}:${parameters.account}:index/${parameters.indexId}/featured-results-set/${parameters.featuredResultsSetId}`
 }
 
 export interface AccessControlConfigurationArnParameters {
@@ -90,5 +90,5 @@ export interface AccessControlConfigurationArnParameters {
 }
 export type AccessControlConfigurationArn = `arn:${string}:kendra:${string}:${string}:index/${string}/access-control-configuration/${string}`
 export function accessControlConfigurationArn(parameters: AccessControlConfigurationArnParameters): AccessControlConfigurationArn {
-  return `arn:${parameters.partition ?? ''}:kendra:${parameters.region}:${parameters.account}:index/${parameters.indexId}/access-control-configuration/${parameters.accessControlConfigurationId}`
+  return `arn:${parameters.partition ?? 'aws'}:kendra:${parameters.region}:${parameters.account}:index/${parameters.indexId}/access-control-configuration/${parameters.accessControlConfigurationId}`
 }

@@ -8,7 +8,7 @@ export interface WebaclArnParameters {
 }
 export type WebaclArn = `arn:${string}:wafv2:${string}:${string}:${string}/webacl/${string}/${string}`
 export function webaclArn(parameters: WebaclArnParameters): WebaclArn {
-  return `arn:${parameters.partition ?? ''}:wafv2:${parameters.region}:${parameters.account}:${parameters.scope}/webacl/${parameters.name}/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:wafv2:${parameters.region}:${parameters.account}:${parameters.scope}/webacl/${parameters.name}/${parameters.id}`
 }
 
 export interface IpsetArnParameters {
@@ -21,7 +21,7 @@ export interface IpsetArnParameters {
 }
 export type IpsetArn = `arn:${string}:wafv2:${string}:${string}:${string}/ipset/${string}/${string}`
 export function ipsetArn(parameters: IpsetArnParameters): IpsetArn {
-  return `arn:${parameters.partition ?? ''}:wafv2:${parameters.region}:${parameters.account}:${parameters.scope}/ipset/${parameters.name}/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:wafv2:${parameters.region}:${parameters.account}:${parameters.scope}/ipset/${parameters.name}/${parameters.id}`
 }
 
 export interface ManagedrulesetArnParameters {
@@ -34,7 +34,7 @@ export interface ManagedrulesetArnParameters {
 }
 export type ManagedrulesetArn = `arn:${string}:wafv2:${string}:${string}:${string}/managedruleset/${string}/${string}`
 export function managedrulesetArn(parameters: ManagedrulesetArnParameters): ManagedrulesetArn {
-  return `arn:${parameters.partition ?? ''}:wafv2:${parameters.region}:${parameters.account}:${parameters.scope}/managedruleset/${parameters.name}/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:wafv2:${parameters.region}:${parameters.account}:${parameters.scope}/managedruleset/${parameters.name}/${parameters.id}`
 }
 
 export interface RulegroupArnParameters {
@@ -47,7 +47,7 @@ export interface RulegroupArnParameters {
 }
 export type RulegroupArn = `arn:${string}:wafv2:${string}:${string}:${string}/rulegroup/${string}/${string}`
 export function rulegroupArn(parameters: RulegroupArnParameters): RulegroupArn {
-  return `arn:${parameters.partition ?? ''}:wafv2:${parameters.region}:${parameters.account}:${parameters.scope}/rulegroup/${parameters.name}/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:wafv2:${parameters.region}:${parameters.account}:${parameters.scope}/rulegroup/${parameters.name}/${parameters.id}`
 }
 
 export interface RegexpatternsetArnParameters {
@@ -60,7 +60,7 @@ export interface RegexpatternsetArnParameters {
 }
 export type RegexpatternsetArn = `arn:${string}:wafv2:${string}:${string}:${string}/regexpatternset/${string}/${string}`
 export function regexpatternsetArn(parameters: RegexpatternsetArnParameters): RegexpatternsetArn {
-  return `arn:${parameters.partition ?? ''}:wafv2:${parameters.region}:${parameters.account}:${parameters.scope}/regexpatternset/${parameters.name}/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:wafv2:${parameters.region}:${parameters.account}:${parameters.scope}/regexpatternset/${parameters.name}/${parameters.id}`
 }
 
 export interface LoadbalancerAppArnParameters {
@@ -72,7 +72,7 @@ export interface LoadbalancerAppArnParameters {
 }
 export type LoadbalancerAppArn = `arn:${string}:elasticloadbalancing:${string}:${string}:loadbalancer/app/${string}/${string}`
 export function loadbalancerAppArn(parameters: LoadbalancerAppArnParameters): LoadbalancerAppArn {
-  return `arn:${parameters.partition ?? ''}:elasticloadbalancing:${parameters.region}:${parameters.account}:loadbalancer/app/${parameters.loadBalancerName}/${parameters.loadBalancerId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticloadbalancing:${parameters.region}:${parameters.account}:loadbalancer/app/${parameters.loadBalancerName}/${parameters.loadBalancerId}`
 }
 
 export interface ApigatewayArnParameters {
@@ -83,7 +83,7 @@ export interface ApigatewayArnParameters {
 }
 export type ApigatewayArn = `arn:${string}:apigateway:${string}::/restapis/${string}/stages/${string}`
 export function apigatewayArn(parameters: ApigatewayArnParameters): ApigatewayArn {
-  return `arn:${parameters.partition ?? ''}:apigateway:${parameters.region}::/restapis/${parameters.apiId}/stages/${parameters.stageName}`
+  return `arn:${parameters.partition ?? 'aws'}:apigateway:${parameters.region}::/restapis/${parameters.apiId}/stages/${parameters.stageName}`
 }
 
 export interface AppsyncArnParameters {
@@ -94,7 +94,7 @@ export interface AppsyncArnParameters {
 }
 export type AppsyncArn = `arn:${string}:appsync:${string}:${string}:apis/${string}`
 export function appsyncArn(parameters: AppsyncArnParameters): AppsyncArn {
-  return `arn:${parameters.partition ?? ''}:appsync:${parameters.region}:${parameters.account}:apis/${parameters.graphQlapiId}`
+  return `arn:${parameters.partition ?? 'aws'}:appsync:${parameters.region}:${parameters.account}:apis/${parameters.graphQlapiId}`
 }
 
 export interface UserpoolArnParameters {
@@ -105,7 +105,7 @@ export interface UserpoolArnParameters {
 }
 export type UserpoolArn = `arn:${string}:cognito-idp:${string}:${string}:userpool/${string}`
 export function userpoolArn(parameters: UserpoolArnParameters): UserpoolArn {
-  return `arn:${parameters.partition ?? ''}:cognito-idp:${parameters.region}:${parameters.account}:userpool/${parameters.userPoolId}`
+  return `arn:${parameters.partition ?? 'aws'}:cognito-idp:${parameters.region}:${parameters.account}:userpool/${parameters.userPoolId}`
 }
 
 export interface ApprunnerArnParameters {
@@ -117,7 +117,7 @@ export interface ApprunnerArnParameters {
 }
 export type ApprunnerArn = `arn:${string}:apprunner:${string}:${string}:service/${string}/${string}`
 export function apprunnerArn(parameters: ApprunnerArnParameters): ApprunnerArn {
-  return `arn:${parameters.partition ?? ''}:apprunner:${parameters.region}:${parameters.account}:service/${parameters.serviceName}/${parameters.serviceId}`
+  return `arn:${parameters.partition ?? 'aws'}:apprunner:${parameters.region}:${parameters.account}:service/${parameters.serviceName}/${parameters.serviceId}`
 }
 
 export interface VerifiedAccessInstanceArnParameters {
@@ -128,5 +128,5 @@ export interface VerifiedAccessInstanceArnParameters {
 }
 export type VerifiedAccessInstanceArn = `arn:${string}:ec2:${string}:${string}:verified-access-instance/${string}`
 export function verifiedAccessInstanceArn(parameters: VerifiedAccessInstanceArnParameters): VerifiedAccessInstanceArn {
-  return `arn:${parameters.partition ?? ''}:ec2:${parameters.region}:${parameters.account}:verified-access-instance/${parameters.verifiedAccessInstanceId}`
+  return `arn:${parameters.partition ?? 'aws'}:ec2:${parameters.region}:${parameters.account}:verified-access-instance/${parameters.verifiedAccessInstanceId}`
 }

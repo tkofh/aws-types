@@ -7,7 +7,7 @@ export interface DatasetArnParameters {
 }
 export type DatasetArn = `arn:${string}:lookoutequipment:${string}:${string}:dataset/${string}/${string}`
 export function datasetArn(parameters: DatasetArnParameters): DatasetArn {
-  return `arn:${parameters.partition ?? ''}:lookoutequipment:${parameters.region}:${parameters.account}:dataset/${parameters.datasetName}/${parameters.datasetId}`
+  return `arn:${parameters.partition ?? 'aws'}:lookoutequipment:${parameters.region}:${parameters.account}:dataset/${parameters.datasetName}/${parameters.datasetId}`
 }
 
 export interface ModelArnParameters {
@@ -19,7 +19,7 @@ export interface ModelArnParameters {
 }
 export type ModelArn = `arn:${string}:lookoutequipment:${string}:${string}:model/${string}/${string}`
 export function modelArn(parameters: ModelArnParameters): ModelArn {
-  return `arn:${parameters.partition ?? ''}:lookoutequipment:${parameters.region}:${parameters.account}:model/${parameters.modelName}/${parameters.modelId}`
+  return `arn:${parameters.partition ?? 'aws'}:lookoutequipment:${parameters.region}:${parameters.account}:model/${parameters.modelName}/${parameters.modelId}`
 }
 
 export interface ModelVersionArnParameters {
@@ -32,7 +32,7 @@ export interface ModelVersionArnParameters {
 }
 export type ModelVersionArn = `arn:${string}:lookoutequipment:${string}:${string}:model/${string}/${string}/model-version/${string}`
 export function modelVersionArn(parameters: ModelVersionArnParameters): ModelVersionArn {
-  return `arn:${parameters.partition ?? ''}:lookoutequipment:${parameters.region}:${parameters.account}:model/${parameters.modelName}/${parameters.modelId}/model-version/${parameters.modelVersionNumber}`
+  return `arn:${parameters.partition ?? 'aws'}:lookoutequipment:${parameters.region}:${parameters.account}:model/${parameters.modelName}/${parameters.modelId}/model-version/${parameters.modelVersionNumber}`
 }
 
 export interface InferenceSchedulerArnParameters {
@@ -44,7 +44,7 @@ export interface InferenceSchedulerArnParameters {
 }
 export type InferenceSchedulerArn = `arn:${string}:lookoutequipment:${string}:${string}:inference-scheduler/${string}/${string}`
 export function inferenceSchedulerArn(parameters: InferenceSchedulerArnParameters): InferenceSchedulerArn {
-  return `arn:${parameters.partition ?? ''}:lookoutequipment:${parameters.region}:${parameters.account}:inference-scheduler/${parameters.inferenceSchedulerName}/${parameters.inferenceSchedulerId}`
+  return `arn:${parameters.partition ?? 'aws'}:lookoutequipment:${parameters.region}:${parameters.account}:inference-scheduler/${parameters.inferenceSchedulerName}/${parameters.inferenceSchedulerId}`
 }
 
 export interface LabelGroupArnParameters {
@@ -56,5 +56,5 @@ export interface LabelGroupArnParameters {
 }
 export type LabelGroupArn = `arn:${string}:lookoutequipment:${string}:${string}:label-group/${string}/${string}`
 export function labelGroupArn(parameters: LabelGroupArnParameters): LabelGroupArn {
-  return `arn:${parameters.partition ?? ''}:lookoutequipment:${parameters.region}:${parameters.account}:label-group/${parameters.labelGroupName}/${parameters.labelGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:lookoutequipment:${parameters.region}:${parameters.account}:label-group/${parameters.labelGroupName}/${parameters.labelGroupId}`
 }

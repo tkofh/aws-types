@@ -6,7 +6,7 @@ export interface ActionArnParameters {
 }
 export type ActionArn = `arn:${string}:fis:${string}:${string}:action/${string}`
 export function actionArn(parameters: ActionArnParameters): ActionArn {
-  return `arn:${parameters.partition ?? ''}:fis:${parameters.region}:${parameters.account}:action/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:fis:${parameters.region}:${parameters.account}:action/${parameters.id}`
 }
 
 export interface ExperimentArnParameters {
@@ -17,7 +17,7 @@ export interface ExperimentArnParameters {
 }
 export type ExperimentArn = `arn:${string}:fis:${string}:${string}:experiment/${string}`
 export function experimentArn(parameters: ExperimentArnParameters): ExperimentArn {
-  return `arn:${parameters.partition ?? ''}:fis:${parameters.region}:${parameters.account}:experiment/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:fis:${parameters.region}:${parameters.account}:experiment/${parameters.id}`
 }
 
 export interface ExperimentTemplateArnParameters {
@@ -28,7 +28,7 @@ export interface ExperimentTemplateArnParameters {
 }
 export type ExperimentTemplateArn = `arn:${string}:fis:${string}:${string}:experiment-template/${string}`
 export function experimentTemplateArn(parameters: ExperimentTemplateArnParameters): ExperimentTemplateArn {
-  return `arn:${parameters.partition ?? ''}:fis:${parameters.region}:${parameters.account}:experiment-template/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:fis:${parameters.region}:${parameters.account}:experiment-template/${parameters.id}`
 }
 
 export interface SafetyLeverArnParameters {
@@ -39,5 +39,5 @@ export interface SafetyLeverArnParameters {
 }
 export type SafetyLeverArn = `arn:${string}:fis:${string}:${string}:safety-lever/${string}`
 export function safetyLeverArn(parameters: SafetyLeverArnParameters): SafetyLeverArn {
-  return `arn:${parameters.partition ?? ''}:fis:${parameters.region}:${parameters.account}:safety-lever/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:fis:${parameters.region}:${parameters.account}:safety-lever/${parameters.id}`
 }

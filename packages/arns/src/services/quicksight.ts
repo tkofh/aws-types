@@ -6,7 +6,7 @@ export interface AccountArnParameters {
 }
 export type AccountArn = `arn:${string}:quicksight:${string}:${string}:account/${string}`
 export function accountArn(parameters: AccountArnParameters): AccountArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:account/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:account/${parameters.resourceId}`
 }
 
 export interface UserArnParameters {
@@ -17,7 +17,7 @@ export interface UserArnParameters {
 }
 export type UserArn = `arn:${string}:quicksight:${string}:${string}:user/${string}`
 export function userArn(parameters: UserArnParameters): UserArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:user/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:user/${parameters.resourceId}`
 }
 
 export interface GroupArnParameters {
@@ -28,7 +28,7 @@ export interface GroupArnParameters {
 }
 export type GroupArn = `arn:${string}:quicksight:${string}:${string}:group/${string}`
 export function groupArn(parameters: GroupArnParameters): GroupArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:group/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:group/${parameters.resourceId}`
 }
 
 export interface AnalysisArnParameters {
@@ -39,7 +39,7 @@ export interface AnalysisArnParameters {
 }
 export type AnalysisArn = `arn:${string}:quicksight:${string}:${string}:analysis/${string}`
 export function analysisArn(parameters: AnalysisArnParameters): AnalysisArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:analysis/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:analysis/${parameters.resourceId}`
 }
 
 export interface DashboardArnParameters {
@@ -50,7 +50,7 @@ export interface DashboardArnParameters {
 }
 export type DashboardArn = `arn:${string}:quicksight:${string}:${string}:dashboard/${string}`
 export function dashboardArn(parameters: DashboardArnParameters): DashboardArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:dashboard/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:dashboard/${parameters.resourceId}`
 }
 
 export interface TemplateArnParameters {
@@ -61,7 +61,7 @@ export interface TemplateArnParameters {
 }
 export type TemplateArn = `arn:${string}:quicksight:${string}:${string}:template/${string}`
 export function templateArn(parameters: TemplateArnParameters): TemplateArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:template/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:template/${parameters.resourceId}`
 }
 
 export interface VpcconnectionArnParameters {
@@ -72,7 +72,7 @@ export interface VpcconnectionArnParameters {
 }
 export type VpcconnectionArn = `arn:${string}:quicksight:${string}:${string}:vpcConnection/${string}`
 export function vpcconnectionArn(parameters: VpcconnectionArnParameters): VpcconnectionArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:vpcConnection/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:vpcConnection/${parameters.resourceId}`
 }
 
 export interface AssetBundleExportJobArnParameters {
@@ -83,7 +83,7 @@ export interface AssetBundleExportJobArnParameters {
 }
 export type AssetBundleExportJobArn = `arn:${string}:quicksight:${string}:${string}:asset-bundle-export-job/${string}`
 export function assetBundleExportJobArn(parameters: AssetBundleExportJobArnParameters): AssetBundleExportJobArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:asset-bundle-export-job/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:asset-bundle-export-job/${parameters.resourceId}`
 }
 
 export interface AssetBundleImportJobArnParameters {
@@ -94,7 +94,7 @@ export interface AssetBundleImportJobArnParameters {
 }
 export type AssetBundleImportJobArn = `arn:${string}:quicksight:${string}:${string}:asset-bundle-import-job/${string}`
 export function assetBundleImportJobArn(parameters: AssetBundleImportJobArnParameters): AssetBundleImportJobArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:asset-bundle-import-job/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:asset-bundle-import-job/${parameters.resourceId}`
 }
 
 export interface DatasourceArnParameters {
@@ -105,7 +105,7 @@ export interface DatasourceArnParameters {
 }
 export type DatasourceArn = `arn:${string}:quicksight:${string}:${string}:datasource/${string}`
 export function datasourceArn(parameters: DatasourceArnParameters): DatasourceArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:datasource/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:datasource/${parameters.resourceId}`
 }
 
 export interface DatasetArnParameters {
@@ -116,7 +116,7 @@ export interface DatasetArnParameters {
 }
 export type DatasetArn = `arn:${string}:quicksight:${string}:${string}:dataset/${string}`
 export function datasetArn(parameters: DatasetArnParameters): DatasetArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:dataset/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:dataset/${parameters.resourceId}`
 }
 
 export interface IngestionArnParameters {
@@ -128,7 +128,7 @@ export interface IngestionArnParameters {
 }
 export type IngestionArn = `arn:${string}:quicksight:${string}:${string}:dataset/${string}/ingestion/${string}`
 export function ingestionArn(parameters: IngestionArnParameters): IngestionArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:dataset/${parameters.datasetId}/ingestion/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:dataset/${parameters.datasetId}/ingestion/${parameters.resourceId}`
 }
 
 export interface RefreshscheduleArnParameters {
@@ -140,7 +140,7 @@ export interface RefreshscheduleArnParameters {
 }
 export type RefreshscheduleArn = `arn:${string}:quicksight:${string}:${string}:dataset/${string}/refresh-schedule/${string}`
 export function refreshscheduleArn(parameters: RefreshscheduleArnParameters): RefreshscheduleArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:dataset/${parameters.datasetId}/refresh-schedule/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:dataset/${parameters.datasetId}/refresh-schedule/${parameters.resourceId}`
 }
 
 export interface ThemeArnParameters {
@@ -151,7 +151,7 @@ export interface ThemeArnParameters {
 }
 export type ThemeArn = `arn:${string}:quicksight:${string}:${string}:theme/${string}`
 export function themeArn(parameters: ThemeArnParameters): ThemeArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:theme/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:theme/${parameters.resourceId}`
 }
 
 export interface AssignmentArnParameters {
@@ -161,7 +161,7 @@ export interface AssignmentArnParameters {
 }
 export type AssignmentArn = `arn:${string}:quicksight::${string}:assignment/${string}`
 export function assignmentArn(parameters: AssignmentArnParameters): AssignmentArn {
-  return `arn:${parameters.partition ?? ''}:quicksight::${parameters.account}:assignment/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight::${parameters.account}:assignment/${parameters.resourceId}`
 }
 
 export interface CustomizationArnParameters {
@@ -172,7 +172,7 @@ export interface CustomizationArnParameters {
 }
 export type CustomizationArn = `arn:${string}:quicksight:${string}:${string}:customization/${string}`
 export function customizationArn(parameters: CustomizationArnParameters): CustomizationArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:customization/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:customization/${parameters.resourceId}`
 }
 
 export interface NamespaceArnParameters {
@@ -183,7 +183,7 @@ export interface NamespaceArnParameters {
 }
 export type NamespaceArn = `arn:${string}:quicksight:${string}:${string}:namespace/${string}`
 export function namespaceArn(parameters: NamespaceArnParameters): NamespaceArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:namespace/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:namespace/${parameters.resourceId}`
 }
 
 export interface FolderArnParameters {
@@ -194,7 +194,7 @@ export interface FolderArnParameters {
 }
 export type FolderArn = `arn:${string}:quicksight:${string}:${string}:folder/${string}`
 export function folderArn(parameters: FolderArnParameters): FolderArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:folder/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:folder/${parameters.resourceId}`
 }
 
 export interface EmailCustomizationTemplateArnParameters {
@@ -205,7 +205,7 @@ export interface EmailCustomizationTemplateArnParameters {
 }
 export type EmailCustomizationTemplateArn = `arn:${string}:quicksight:${string}:${string}:email-customization-template/${string}`
 export function emailCustomizationTemplateArn(parameters: EmailCustomizationTemplateArnParameters): EmailCustomizationTemplateArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:email-customization-template/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:email-customization-template/${parameters.resourceId}`
 }
 
 export interface TopicArnParameters {
@@ -216,7 +216,7 @@ export interface TopicArnParameters {
 }
 export type TopicArn = `arn:${string}:quicksight:${string}:${string}:topic/${string}`
 export function topicArn(parameters: TopicArnParameters): TopicArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:topic/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:topic/${parameters.resourceId}`
 }
 
 export interface DashboardSnapshotJobArnParameters {
@@ -228,5 +228,5 @@ export interface DashboardSnapshotJobArnParameters {
 }
 export type DashboardSnapshotJobArn = `arn:${string}:quicksight:${string}:${string}:dashboard/${string}/snapshot-job/${string}`
 export function dashboardSnapshotJobArn(parameters: DashboardSnapshotJobArnParameters): DashboardSnapshotJobArn {
-  return `arn:${parameters.partition ?? ''}:quicksight:${parameters.region}:${parameters.account}:dashboard/${parameters.dashboardId}/snapshot-job/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:quicksight:${parameters.region}:${parameters.account}:dashboard/${parameters.dashboardId}/snapshot-job/${parameters.resourceId}`
 }

@@ -6,5 +6,5 @@ export interface SimulationArnParameters {
 }
 export type SimulationArn = `arn:${string}:simspaceweaver:${string}:${string}:simulation/${string}`
 export function simulationArn(parameters: SimulationArnParameters): SimulationArn {
-  return `arn:${parameters.partition ?? ''}:simspaceweaver:${parameters.region}:${parameters.account}:simulation/${parameters.simulationName}`
+  return `arn:${parameters.partition ?? 'aws'}:simspaceweaver:${parameters.region}:${parameters.account}:simulation/${parameters.simulationName}`
 }

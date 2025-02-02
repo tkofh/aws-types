@@ -6,7 +6,7 @@ export interface DeviceArnParameters {
 }
 export type DeviceArn = `arn:${string}:iot1click:${string}:${string}:devices/${string}`
 export function deviceArn(parameters: DeviceArnParameters): DeviceArn {
-  return `arn:${parameters.partition ?? ''}:iot1click:${parameters.region}:${parameters.account}:devices/${parameters.deviceId}`
+  return `arn:${parameters.partition ?? 'aws'}:iot1click:${parameters.region}:${parameters.account}:devices/${parameters.deviceId}`
 }
 
 export interface ProjectArnParameters {
@@ -17,5 +17,5 @@ export interface ProjectArnParameters {
 }
 export type ProjectArn = `arn:${string}:iot1click:${string}:${string}:projects/${string}`
 export function projectArn(parameters: ProjectArnParameters): ProjectArn {
-  return `arn:${parameters.partition ?? ''}:iot1click:${parameters.region}:${parameters.account}:projects/${parameters.projectName}`
+  return `arn:${parameters.partition ?? 'aws'}:iot1click:${parameters.region}:${parameters.account}:projects/${parameters.projectName}`
 }

@@ -6,5 +6,5 @@ export interface ProfileArnParameters {
 }
 export type ProfileArn = `arn:${string}:codewhisperer:${string}:${string}:profile/${string}`
 export function profileArn(parameters: ProfileArnParameters): ProfileArn {
-  return `arn:${parameters.partition ?? ''}:codewhisperer:${parameters.region}:${parameters.account}:profile/${parameters.identifier}`
+  return `arn:${parameters.partition ?? 'aws'}:codewhisperer:${parameters.region}:${parameters.account}:profile/${parameters.identifier}`
 }

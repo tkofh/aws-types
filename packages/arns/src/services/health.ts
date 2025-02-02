@@ -5,5 +5,5 @@ export interface EventArnParameters {
 }
 export type EventArn = `arn:${string}:health:*::event/${string}/${string}/*`
 export function eventArn(parameters: EventArnParameters): EventArn {
-  return `arn:${parameters.partition ?? ''}:health:*::event/${parameters.service}/${parameters.eventTypeCode}/*`
+  return `arn:${parameters.partition ?? 'aws'}:health:*::event/${parameters.service}/${parameters.eventTypeCode}/*`
 }

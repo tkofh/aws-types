@@ -6,5 +6,5 @@ export interface CertificateArnParameters {
 }
 export type CertificateArn = `arn:${string}:acm:${string}:${string}:certificate/${string}`
 export function certificateArn(parameters: CertificateArnParameters): CertificateArn {
-  return `arn:${parameters.partition ?? ''}:acm:${parameters.region}:${parameters.account}:certificate/${parameters.certificateId}`
+  return `arn:${parameters.partition ?? 'aws'}:acm:${parameters.region}:${parameters.account}:certificate/${parameters.certificateId}`
 }

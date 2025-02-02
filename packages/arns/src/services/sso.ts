@@ -5,7 +5,7 @@ export interface PermissionSetArnParameters {
 }
 export type PermissionSetArn = `arn:${string}:sso:::permissionSet/${string}/${string}`
 export function permissionSetArn(parameters: PermissionSetArnParameters): PermissionSetArn {
-  return `arn:${parameters.partition ?? ''}:sso:::permissionSet/${parameters.instanceId}/${parameters.permissionSetId}`
+  return `arn:${parameters.partition ?? 'aws'}:sso:::permissionSet/${parameters.instanceId}/${parameters.permissionSetId}`
 }
 
 export interface AccountArnParameters {
@@ -14,7 +14,7 @@ export interface AccountArnParameters {
 }
 export type AccountArn = `arn:${string}:sso:::account/${string}`
 export function accountArn(parameters: AccountArnParameters): AccountArn {
-  return `arn:${parameters.partition ?? ''}:sso:::account/${parameters.accountId}`
+  return `arn:${parameters.partition ?? 'aws'}:sso:::account/${parameters.accountId}`
 }
 
 export interface InstanceArnParameters {
@@ -23,7 +23,7 @@ export interface InstanceArnParameters {
 }
 export type InstanceArn = `arn:${string}:sso:::instance/${string}`
 export function instanceArn(parameters: InstanceArnParameters): InstanceArn {
-  return `arn:${parameters.partition ?? ''}:sso:::instance/${parameters.instanceId}`
+  return `arn:${parameters.partition ?? 'aws'}:sso:::instance/${parameters.instanceId}`
 }
 
 export interface ApplicationArnParameters {
@@ -34,7 +34,7 @@ export interface ApplicationArnParameters {
 }
 export type ApplicationArn = `arn:${string}:sso::${string}:application/${string}/${string}`
 export function applicationArn(parameters: ApplicationArnParameters): ApplicationArn {
-  return `arn:${parameters.partition ?? ''}:sso::${parameters.accountId}:application/${parameters.instanceId}/${parameters.applicationId}`
+  return `arn:${parameters.partition ?? 'aws'}:sso::${parameters.accountId}:application/${parameters.instanceId}/${parameters.applicationId}`
 }
 
 export interface TrustedTokenIssuerArnParameters {
@@ -45,7 +45,7 @@ export interface TrustedTokenIssuerArnParameters {
 }
 export type TrustedTokenIssuerArn = `arn:${string}:sso::${string}:trustedTokenIssuer/${string}/${string}`
 export function trustedTokenIssuerArn(parameters: TrustedTokenIssuerArnParameters): TrustedTokenIssuerArn {
-  return `arn:${parameters.partition ?? ''}:sso::${parameters.accountId}:trustedTokenIssuer/${parameters.instanceId}/${parameters.trustedTokenIssuerId}`
+  return `arn:${parameters.partition ?? 'aws'}:sso::${parameters.accountId}:trustedTokenIssuer/${parameters.instanceId}/${parameters.trustedTokenIssuerId}`
 }
 
 export interface ApplicationProviderArnParameters {
@@ -54,5 +54,5 @@ export interface ApplicationProviderArnParameters {
 }
 export type ApplicationProviderArn = `arn:${string}:sso::aws:applicationProvider/${string}`
 export function applicationProviderArn(parameters: ApplicationProviderArnParameters): ApplicationProviderArn {
-  return `arn:${parameters.partition ?? ''}:sso::aws:applicationProvider/${parameters.applicationProviderId}`
+  return `arn:${parameters.partition ?? 'aws'}:sso::aws:applicationProvider/${parameters.applicationProviderId}`
 }

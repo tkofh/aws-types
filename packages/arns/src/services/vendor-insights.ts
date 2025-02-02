@@ -4,7 +4,7 @@ export interface DataSourceArnParameters {
 }
 export type DataSourceArn = `arn:${string}:vendor-insights:::data-source:${string}`
 export function dataSourceArn(parameters: DataSourceArnParameters): DataSourceArn {
-  return `arn:${parameters.partition ?? ''}:vendor-insights:::data-source:${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:vendor-insights:::data-source:${parameters.resourceId}`
 }
 
 export interface SecurityProfileArnParameters {
@@ -13,5 +13,5 @@ export interface SecurityProfileArnParameters {
 }
 export type SecurityProfileArn = `arn:${string}:vendor-insights:::security-profile:${string}`
 export function securityProfileArn(parameters: SecurityProfileArnParameters): SecurityProfileArn {
-  return `arn:${parameters.partition ?? ''}:vendor-insights:::security-profile:${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:vendor-insights:::security-profile:${parameters.resourceId}`
 }

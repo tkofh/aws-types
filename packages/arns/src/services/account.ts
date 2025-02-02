@@ -4,7 +4,7 @@ export interface AccountArnParameters {
 }
 export type AccountArn = `arn:${string}:account::${string}:account`
 export function accountArn(parameters: AccountArnParameters): AccountArn {
-  return `arn:${parameters.partition ?? ''}:account::${parameters.account}:account`
+  return `arn:${parameters.partition ?? 'aws'}:account::${parameters.account}:account`
 }
 
 export interface AccountInOrganizationArnParameters {
@@ -15,5 +15,5 @@ export interface AccountInOrganizationArnParameters {
 }
 export type AccountInOrganizationArn = `arn:${string}:account::${string}:account/o-${string}/${string}`
 export function accountInOrganizationArn(parameters: AccountInOrganizationArnParameters): AccountInOrganizationArn {
-  return `arn:${parameters.partition ?? ''}:account::${parameters.managementAccountId}:account/o-${parameters.organizationId}/${parameters.memberAccountId}`
+  return `arn:${parameters.partition ?? 'aws'}:account::${parameters.managementAccountId}:account/o-${parameters.organizationId}/${parameters.memberAccountId}`
 }

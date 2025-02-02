@@ -5,7 +5,7 @@ export interface AccessReportArnParameters {
 }
 export type AccessReportArn = `arn:${string}:iam::${string}:access-report/${string}`
 export function accessReportArn(parameters: AccessReportArnParameters): AccessReportArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:access-report/${parameters.entityPath}`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:access-report/${parameters.entityPath}`
 }
 
 export interface AssumedRoleArnParameters {
@@ -16,7 +16,7 @@ export interface AssumedRoleArnParameters {
 }
 export type AssumedRoleArn = `arn:${string}:iam::${string}:assumed-role/${string}/${string}`
 export function assumedRoleArn(parameters: AssumedRoleArnParameters): AssumedRoleArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:assumed-role/${parameters.roleName}/${parameters.roleSessionName}`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:assumed-role/${parameters.roleName}/${parameters.roleSessionName}`
 }
 
 export interface FederatedUserArnParameters {
@@ -26,7 +26,7 @@ export interface FederatedUserArnParameters {
 }
 export type FederatedUserArn = `arn:${string}:iam::${string}:federated-user/${string}`
 export function federatedUserArn(parameters: FederatedUserArnParameters): FederatedUserArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:federated-user/${parameters.userName}`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:federated-user/${parameters.userName}`
 }
 
 export interface GroupArnParameters {
@@ -36,7 +36,7 @@ export interface GroupArnParameters {
 }
 export type GroupArn = `arn:${string}:iam::${string}:group/${string}`
 export function groupArn(parameters: GroupArnParameters): GroupArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:group/${parameters.groupNameWithPath}`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:group/${parameters.groupNameWithPath}`
 }
 
 export interface InstanceProfileArnParameters {
@@ -46,7 +46,7 @@ export interface InstanceProfileArnParameters {
 }
 export type InstanceProfileArn = `arn:${string}:iam::${string}:instance-profile/${string}`
 export function instanceProfileArn(parameters: InstanceProfileArnParameters): InstanceProfileArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:instance-profile/${parameters.instanceProfileNameWithPath}`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:instance-profile/${parameters.instanceProfileNameWithPath}`
 }
 
 export interface MfaArnParameters {
@@ -56,7 +56,7 @@ export interface MfaArnParameters {
 }
 export type MfaArn = `arn:${string}:iam::${string}:mfa/${string}`
 export function mfaArn(parameters: MfaArnParameters): MfaArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:mfa/${parameters.mfaTokenIdWithPath}`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:mfa/${parameters.mfaTokenIdWithPath}`
 }
 
 export interface OidcProviderArnParameters {
@@ -66,7 +66,7 @@ export interface OidcProviderArnParameters {
 }
 export type OidcProviderArn = `arn:${string}:iam::${string}:oidc-provider/${string}`
 export function oidcProviderArn(parameters: OidcProviderArnParameters): OidcProviderArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:oidc-provider/${parameters.oidcProviderName}`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:oidc-provider/${parameters.oidcProviderName}`
 }
 
 export interface PolicyArnParameters {
@@ -76,7 +76,7 @@ export interface PolicyArnParameters {
 }
 export type PolicyArn = `arn:${string}:iam::${string}:policy/${string}`
 export function policyArn(parameters: PolicyArnParameters): PolicyArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:policy/${parameters.policyNameWithPath}`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:policy/${parameters.policyNameWithPath}`
 }
 
 export interface RoleArnParameters {
@@ -86,7 +86,7 @@ export interface RoleArnParameters {
 }
 export type RoleArn = `arn:${string}:iam::${string}:role/${string}`
 export function roleArn(parameters: RoleArnParameters): RoleArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:role/${parameters.roleNameWithPath}`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:role/${parameters.roleNameWithPath}`
 }
 
 export interface SamlProviderArnParameters {
@@ -96,7 +96,7 @@ export interface SamlProviderArnParameters {
 }
 export type SamlProviderArn = `arn:${string}:iam::${string}:saml-provider/${string}`
 export function samlProviderArn(parameters: SamlProviderArnParameters): SamlProviderArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:saml-provider/${parameters.samlProviderName}`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:saml-provider/${parameters.samlProviderName}`
 }
 
 export interface ServerCertificateArnParameters {
@@ -106,7 +106,7 @@ export interface ServerCertificateArnParameters {
 }
 export type ServerCertificateArn = `arn:${string}:iam::${string}:server-certificate/${string}`
 export function serverCertificateArn(parameters: ServerCertificateArnParameters): ServerCertificateArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:server-certificate/${parameters.certificateNameWithPath}`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:server-certificate/${parameters.certificateNameWithPath}`
 }
 
 export interface SmsMfaArnParameters {
@@ -116,7 +116,7 @@ export interface SmsMfaArnParameters {
 }
 export type SmsMfaArn = `arn:${string}:iam::${string}:sms-mfa/${string}`
 export function smsMfaArn(parameters: SmsMfaArnParameters): SmsMfaArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:sms-mfa/${parameters.mfaTokenIdWithPath}`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:sms-mfa/${parameters.mfaTokenIdWithPath}`
 }
 
 export interface UserArnParameters {
@@ -126,5 +126,5 @@ export interface UserArnParameters {
 }
 export type UserArn = `arn:${string}:iam::${string}:user/${string}`
 export function userArn(parameters: UserArnParameters): UserArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:user/${parameters.userNameWithPath}`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:user/${parameters.userNameWithPath}`
 }

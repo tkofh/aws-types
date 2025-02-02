@@ -5,5 +5,5 @@ export interface CredentialArnParameters {
 }
 export type CredentialArn = `arn:${string}:finspace-api:${string}:${string}:/credentials/programmatic`
 export function credentialArn(parameters: CredentialArnParameters): CredentialArn {
-  return `arn:${parameters.partition ?? ''}:finspace-api:${parameters.region}:${parameters.account}:/credentials/programmatic`
+  return `arn:${parameters.partition ?? 'aws'}:finspace-api:${parameters.region}:${parameters.account}:/credentials/programmatic`
 }

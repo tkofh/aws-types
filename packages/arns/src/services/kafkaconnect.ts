@@ -7,7 +7,7 @@ export interface ConnectorArnParameters {
 }
 export type ConnectorArn = `arn:${string}:kafkaconnect:${string}:${string}:connector/${string}/${string}`
 export function connectorArn(parameters: ConnectorArnParameters): ConnectorArn {
-  return `arn:${parameters.partition ?? ''}:kafkaconnect:${parameters.region}:${parameters.account}:connector/${parameters.connectorName}/${parameters.uuid}`
+  return `arn:${parameters.partition ?? 'aws'}:kafkaconnect:${parameters.region}:${parameters.account}:connector/${parameters.connectorName}/${parameters.uuid}`
 }
 
 export interface CustomPluginArnParameters {
@@ -19,7 +19,7 @@ export interface CustomPluginArnParameters {
 }
 export type CustomPluginArn = `arn:${string}:kafkaconnect:${string}:${string}:custom-plugin/${string}/${string}`
 export function customPluginArn(parameters: CustomPluginArnParameters): CustomPluginArn {
-  return `arn:${parameters.partition ?? ''}:kafkaconnect:${parameters.region}:${parameters.account}:custom-plugin/${parameters.customPluginName}/${parameters.uuid}`
+  return `arn:${parameters.partition ?? 'aws'}:kafkaconnect:${parameters.region}:${parameters.account}:custom-plugin/${parameters.customPluginName}/${parameters.uuid}`
 }
 
 export interface WorkerConfigurationArnParameters {
@@ -31,5 +31,5 @@ export interface WorkerConfigurationArnParameters {
 }
 export type WorkerConfigurationArn = `arn:${string}:kafkaconnect:${string}:${string}:worker-configuration/${string}/${string}`
 export function workerConfigurationArn(parameters: WorkerConfigurationArnParameters): WorkerConfigurationArn {
-  return `arn:${parameters.partition ?? ''}:kafkaconnect:${parameters.region}:${parameters.account}:worker-configuration/${parameters.workerConfigurationName}/${parameters.uuid}`
+  return `arn:${parameters.partition ?? 'aws'}:kafkaconnect:${parameters.region}:${parameters.account}:worker-configuration/${parameters.workerConfigurationName}/${parameters.uuid}`
 }

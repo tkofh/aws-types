@@ -7,16 +7,18 @@
     "run": "tsx ./src/index.ts"
   },
   "dependencies": {
-    "@effect/cli": "^0.46.1",
-    "@effect/platform": "^0.67.1",
-    "@effect/platform-node": "^0.62.1",
-    "@effect/schema": "^0.75.1",
+    "@effect/cli": "^0.54.1",
+    "@effect/platform": "^0.75.1",
+    "@effect/platform-node": "^0.71.1",
     "change-case": "^5.4.4",
-    "effect": "^3.9.1"
+    "effect": "^3.12.7"
   },
   "devDependencies": {
+    "@effect/printer": "^0.40.7",
+    "@effect/printer-ansi": "^0.40.7",
+    "@effect/typeclass": "^0.31.7",
     "@repo/typescript-config": "workspace:*",
-    "@types/node": "^22.7.5",
-    "tsx": "^4.19.1"
+    "@types/node": "^22.13.0",
+    "tsx": "^4.19.2"
   }
 }

@@ -6,5 +6,5 @@ export interface SpaceArnParameters {
 }
 export type SpaceArn = `arn:${string}:repostspace:${string}:${string}:space/${string}`
 export function spaceArn(parameters: SpaceArnParameters): SpaceArn {
-  return `arn:${parameters.partition ?? ''}:repostspace:${parameters.region}:${parameters.account}:space/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:repostspace:${parameters.region}:${parameters.account}:space/${parameters.resourceId}`
 }

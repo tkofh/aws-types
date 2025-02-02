@@ -6,7 +6,7 @@ export interface AssessmentArnParameters {
 }
 export type AssessmentArn = `arn:${string}:auditmanager:${string}:${string}:assessment/${string}`
 export function assessmentArn(parameters: AssessmentArnParameters): AssessmentArn {
-  return `arn:${parameters.partition ?? ''}:auditmanager:${parameters.region}:${parameters.account}:assessment/${parameters.assessmentId}`
+  return `arn:${parameters.partition ?? 'aws'}:auditmanager:${parameters.region}:${parameters.account}:assessment/${parameters.assessmentId}`
 }
 
 export interface AssessmentFrameworkArnParameters {
@@ -17,7 +17,7 @@ export interface AssessmentFrameworkArnParameters {
 }
 export type AssessmentFrameworkArn = `arn:${string}:auditmanager:${string}:${string}:assessmentFramework/${string}`
 export function assessmentFrameworkArn(parameters: AssessmentFrameworkArnParameters): AssessmentFrameworkArn {
-  return `arn:${parameters.partition ?? ''}:auditmanager:${parameters.region}:${parameters.account}:assessmentFramework/${parameters.assessmentFrameworkId}`
+  return `arn:${parameters.partition ?? 'aws'}:auditmanager:${parameters.region}:${parameters.account}:assessmentFramework/${parameters.assessmentFrameworkId}`
 }
 
 export interface AssessmentControlSetArnParameters {
@@ -29,7 +29,7 @@ export interface AssessmentControlSetArnParameters {
 }
 export type AssessmentControlSetArn = `arn:${string}:auditmanager:${string}:${string}:assessment/${string}/controlSet/${string}`
 export function assessmentControlSetArn(parameters: AssessmentControlSetArnParameters): AssessmentControlSetArn {
-  return `arn:${parameters.partition ?? ''}:auditmanager:${parameters.region}:${parameters.account}:assessment/${parameters.assessmentId}/controlSet/${parameters.controlSetId}`
+  return `arn:${parameters.partition ?? 'aws'}:auditmanager:${parameters.region}:${parameters.account}:assessment/${parameters.assessmentId}/controlSet/${parameters.controlSetId}`
 }
 
 export interface ControlArnParameters {
@@ -40,5 +40,5 @@ export interface ControlArnParameters {
 }
 export type ControlArn = `arn:${string}:auditmanager:${string}:${string}:control/${string}`
 export function controlArn(parameters: ControlArnParameters): ControlArn {
-  return `arn:${parameters.partition ?? ''}:auditmanager:${parameters.region}:${parameters.account}:control/${parameters.controlId}`
+  return `arn:${parameters.partition ?? 'aws'}:auditmanager:${parameters.region}:${parameters.account}:control/${parameters.controlId}`
 }

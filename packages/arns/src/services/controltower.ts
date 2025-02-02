@@ -6,7 +6,7 @@ export interface EnabledControlArnParameters {
 }
 export type EnabledControlArn = `arn:${string}:controltower:${string}:${string}:enabledcontrol/${string}`
 export function enabledControlArn(parameters: EnabledControlArnParameters): EnabledControlArn {
-  return `arn:${parameters.partition ?? ''}:controltower:${parameters.region}:${parameters.account}:enabledcontrol/${parameters.enabledControlId}`
+  return `arn:${parameters.partition ?? 'aws'}:controltower:${parameters.region}:${parameters.account}:enabledcontrol/${parameters.enabledControlId}`
 }
 
 export interface BaselineArnParameters {
@@ -16,7 +16,7 @@ export interface BaselineArnParameters {
 }
 export type BaselineArn = `arn:${string}:controltower:${string}::baseline/${string}`
 export function baselineArn(parameters: BaselineArnParameters): BaselineArn {
-  return `arn:${parameters.partition ?? ''}:controltower:${parameters.region}::baseline/${parameters.baselineId}`
+  return `arn:${parameters.partition ?? 'aws'}:controltower:${parameters.region}::baseline/${parameters.baselineId}`
 }
 
 export interface EnabledBaselineArnParameters {
@@ -27,7 +27,7 @@ export interface EnabledBaselineArnParameters {
 }
 export type EnabledBaselineArn = `arn:${string}:controltower:${string}:${string}:enabledbaseline/${string}`
 export function enabledBaselineArn(parameters: EnabledBaselineArnParameters): EnabledBaselineArn {
-  return `arn:${parameters.partition ?? ''}:controltower:${parameters.region}:${parameters.account}:enabledbaseline/${parameters.enabledBaselineId}`
+  return `arn:${parameters.partition ?? 'aws'}:controltower:${parameters.region}:${parameters.account}:enabledbaseline/${parameters.enabledBaselineId}`
 }
 
 export interface LandingZoneArnParameters {
@@ -38,5 +38,5 @@ export interface LandingZoneArnParameters {
 }
 export type LandingZoneArn = `arn:${string}:controltower:${string}:${string}:landingzone/${string}`
 export function landingZoneArn(parameters: LandingZoneArnParameters): LandingZoneArn {
-  return `arn:${parameters.partition ?? ''}:controltower:${parameters.region}:${parameters.account}:landingzone/${parameters.landingZoneId}`
+  return `arn:${parameters.partition ?? 'aws'}:controltower:${parameters.region}:${parameters.account}:landingzone/${parameters.landingZoneId}`
 }

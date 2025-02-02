@@ -7,7 +7,7 @@ export interface FilterArnParameters {
 }
 export type FilterArn = `arn:${string}:inspector2:${string}:${string}:owner/${string}/filter/${string}`
 export function filterArn(parameters: FilterArnParameters): FilterArn {
-  return `arn:${parameters.partition ?? ''}:inspector2:${parameters.region}:${parameters.account}:owner/${parameters.ownerId}/filter/${parameters.filterId}`
+  return `arn:${parameters.partition ?? 'aws'}:inspector2:${parameters.region}:${parameters.account}:owner/${parameters.ownerId}/filter/${parameters.filterId}`
 }
 
 export interface FindingArnParameters {
@@ -18,7 +18,7 @@ export interface FindingArnParameters {
 }
 export type FindingArn = `arn:${string}:inspector2:${string}:${string}:finding/${string}`
 export function findingArn(parameters: FindingArnParameters): FindingArn {
-  return `arn:${parameters.partition ?? ''}:inspector2:${parameters.region}:${parameters.account}:finding/${parameters.findingId}`
+  return `arn:${parameters.partition ?? 'aws'}:inspector2:${parameters.region}:${parameters.account}:finding/${parameters.findingId}`
 }
 
 export interface CisScanConfigurationArnParameters {
@@ -30,5 +30,5 @@ export interface CisScanConfigurationArnParameters {
 }
 export type CisScanConfigurationArn = `arn:${string}:inspector2:${string}:${string}:owner/${string}/cis-configuration/${string}`
 export function cisScanConfigurationArn(parameters: CisScanConfigurationArnParameters): CisScanConfigurationArn {
-  return `arn:${parameters.partition ?? ''}:inspector2:${parameters.region}:${parameters.account}:owner/${parameters.ownerId}/cis-configuration/${parameters.cisScanConfigurationId}`
+  return `arn:${parameters.partition ?? 'aws'}:inspector2:${parameters.region}:${parameters.account}:owner/${parameters.ownerId}/cis-configuration/${parameters.cisScanConfigurationId}`
 }

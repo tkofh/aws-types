@@ -5,7 +5,7 @@ export interface ClusterArnParameters {
 }
 export type ClusterArn = `arn:${string}:route53-recovery-control::${string}:cluster/${string}`
 export function clusterArn(parameters: ClusterArnParameters): ClusterArn {
-  return `arn:${parameters.partition ?? ''}:route53-recovery-control::${parameters.account}:cluster/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:route53-recovery-control::${parameters.account}:cluster/${parameters.resourceId}`
 }
 
 export interface ControlpanelArnParameters {
@@ -15,7 +15,7 @@ export interface ControlpanelArnParameters {
 }
 export type ControlpanelArn = `arn:${string}:route53-recovery-control::${string}:controlpanel/${string}`
 export function controlpanelArn(parameters: ControlpanelArnParameters): ControlpanelArn {
-  return `arn:${parameters.partition ?? ''}:route53-recovery-control::${parameters.account}:controlpanel/${parameters.controlPanelId}`
+  return `arn:${parameters.partition ?? 'aws'}:route53-recovery-control::${parameters.account}:controlpanel/${parameters.controlPanelId}`
 }
 
 export interface RoutingcontrolArnParameters {
@@ -26,7 +26,7 @@ export interface RoutingcontrolArnParameters {
 }
 export type RoutingcontrolArn = `arn:${string}:route53-recovery-control::${string}:controlpanel/${string}/routingcontrol/${string}`
 export function routingcontrolArn(parameters: RoutingcontrolArnParameters): RoutingcontrolArn {
-  return `arn:${parameters.partition ?? ''}:route53-recovery-control::${parameters.account}:controlpanel/${parameters.controlPanelId}/routingcontrol/${parameters.routingControlId}`
+  return `arn:${parameters.partition ?? 'aws'}:route53-recovery-control::${parameters.account}:controlpanel/${parameters.controlPanelId}/routingcontrol/${parameters.routingControlId}`
 }
 
 export interface SafetyruleArnParameters {
@@ -37,5 +37,5 @@ export interface SafetyruleArnParameters {
 }
 export type SafetyruleArn = `arn:${string}:route53-recovery-control::${string}:controlpanel/${string}/safetyrule/${string}`
 export function safetyruleArn(parameters: SafetyruleArnParameters): SafetyruleArn {
-  return `arn:${parameters.partition ?? ''}:route53-recovery-control::${parameters.account}:controlpanel/${parameters.controlPanelId}/safetyrule/${parameters.safetyRuleId}`
+  return `arn:${parameters.partition ?? 'aws'}:route53-recovery-control::${parameters.account}:controlpanel/${parameters.controlPanelId}/safetyrule/${parameters.safetyRuleId}`
 }

@@ -6,7 +6,7 @@ export interface SuitedefinitionArnParameters {
 }
 export type SuitedefinitionArn = `arn:${string}:iotdeviceadvisor:${string}:${string}:suitedefinition/${string}`
 export function suitedefinitionArn(parameters: SuitedefinitionArnParameters): SuitedefinitionArn {
-  return `arn:${parameters.partition ?? ''}:iotdeviceadvisor:${parameters.region}:${parameters.account}:suitedefinition/${parameters.suiteDefinitionId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotdeviceadvisor:${parameters.region}:${parameters.account}:suitedefinition/${parameters.suiteDefinitionId}`
 }
 
 export interface SuiterunArnParameters {
@@ -18,5 +18,5 @@ export interface SuiterunArnParameters {
 }
 export type SuiterunArn = `arn:${string}:iotdeviceadvisor:${string}:${string}:suiterun/${string}/${string}`
 export function suiterunArn(parameters: SuiterunArnParameters): SuiterunArn {
-  return `arn:${parameters.partition ?? ''}:iotdeviceadvisor:${parameters.region}:${parameters.account}:suiterun/${parameters.suiteDefinitionId}/${parameters.suiteRunId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotdeviceadvisor:${parameters.region}:${parameters.account}:suiterun/${parameters.suiteDefinitionId}/${parameters.suiteRunId}`
 }

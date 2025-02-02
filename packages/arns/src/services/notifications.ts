@@ -6,7 +6,7 @@ export interface EventRuleArnParameters {
 }
 export type EventRuleArn = `arn:${string}:notifications::${string}:configuration/${string}/rule/${string}`
 export function eventRuleArn(parameters: EventRuleArnParameters): EventRuleArn {
-  return `arn:${parameters.partition ?? ''}:notifications::${parameters.account}:configuration/${parameters.notificationConfigurationId}/rule/${parameters.eventRuleId}`
+  return `arn:${parameters.partition ?? 'aws'}:notifications::${parameters.account}:configuration/${parameters.notificationConfigurationId}/rule/${parameters.eventRuleId}`
 }
 
 export interface NotificationConfigurationArnParameters {
@@ -16,7 +16,7 @@ export interface NotificationConfigurationArnParameters {
 }
 export type NotificationConfigurationArn = `arn:${string}:notifications::${string}:configuration/${string}`
 export function notificationConfigurationArn(parameters: NotificationConfigurationArnParameters): NotificationConfigurationArn {
-  return `arn:${parameters.partition ?? ''}:notifications::${parameters.account}:configuration/${parameters.notificationConfigurationId}`
+  return `arn:${parameters.partition ?? 'aws'}:notifications::${parameters.account}:configuration/${parameters.notificationConfigurationId}`
 }
 
 export interface NotificationEventArnParameters {
@@ -28,5 +28,5 @@ export interface NotificationEventArnParameters {
 }
 export type NotificationEventArn = `arn:${string}:notifications:${string}:${string}:configuration/${string}/event/${string}`
 export function notificationEventArn(parameters: NotificationEventArnParameters): NotificationEventArn {
-  return `arn:${parameters.partition ?? ''}:notifications:${parameters.region}:${parameters.account}:configuration/${parameters.notificationConfigurationId}/event/${parameters.notificationEventId}`
+  return `arn:${parameters.partition ?? 'aws'}:notifications:${parameters.region}:${parameters.account}:configuration/${parameters.notificationConfigurationId}/event/${parameters.notificationEventId}`
 }

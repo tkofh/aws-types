@@ -6,7 +6,7 @@ export interface AliasArnParameters {
 }
 export type AliasArn = `arn:${string}:kms:${string}:${string}:alias/${string}`
 export function aliasArn(parameters: AliasArnParameters): AliasArn {
-  return `arn:${parameters.partition ?? ''}:kms:${parameters.region}:${parameters.account}:alias/${parameters.alias}`
+  return `arn:${parameters.partition ?? 'aws'}:kms:${parameters.region}:${parameters.account}:alias/${parameters.alias}`
 }
 
 export interface KeyArnParameters {
@@ -17,5 +17,5 @@ export interface KeyArnParameters {
 }
 export type KeyArn = `arn:${string}:kms:${string}:${string}:key/${string}`
 export function keyArn(parameters: KeyArnParameters): KeyArn {
-  return `arn:${parameters.partition ?? ''}:kms:${parameters.region}:${parameters.account}:key/${parameters.keyId}`
+  return `arn:${parameters.partition ?? 'aws'}:kms:${parameters.region}:${parameters.account}:key/${parameters.keyId}`
 }

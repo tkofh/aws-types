@@ -5,7 +5,7 @@ export interface AcceleratorArnParameters {
 }
 export type AcceleratorArn = `arn:${string}:globalaccelerator::${string}:accelerator/${string}`
 export function acceleratorArn(parameters: AcceleratorArnParameters): AcceleratorArn {
-  return `arn:${parameters.partition ?? ''}:globalaccelerator::${parameters.account}:accelerator/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:globalaccelerator::${parameters.account}:accelerator/${parameters.resourceId}`
 }
 
 export interface ListenerArnParameters {
@@ -16,7 +16,7 @@ export interface ListenerArnParameters {
 }
 export type ListenerArn = `arn:${string}:globalaccelerator::${string}:accelerator/${string}/listener/${string}`
 export function listenerArn(parameters: ListenerArnParameters): ListenerArn {
-  return `arn:${parameters.partition ?? ''}:globalaccelerator::${parameters.account}:accelerator/${parameters.resourceId}/listener/${parameters.listenerId}`
+  return `arn:${parameters.partition ?? 'aws'}:globalaccelerator::${parameters.account}:accelerator/${parameters.resourceId}/listener/${parameters.listenerId}`
 }
 
 export interface EndpointgroupArnParameters {
@@ -28,7 +28,7 @@ export interface EndpointgroupArnParameters {
 }
 export type EndpointgroupArn = `arn:${string}:globalaccelerator::${string}:accelerator/${string}/listener/${string}/endpoint-group/${string}`
 export function endpointgroupArn(parameters: EndpointgroupArnParameters): EndpointgroupArn {
-  return `arn:${parameters.partition ?? ''}:globalaccelerator::${parameters.account}:accelerator/${parameters.resourceId}/listener/${parameters.listenerId}/endpoint-group/${parameters.endpointGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:globalaccelerator::${parameters.account}:accelerator/${parameters.resourceId}/listener/${parameters.listenerId}/endpoint-group/${parameters.endpointGroupId}`
 }
 
 export interface AttachmentArnParameters {
@@ -38,5 +38,5 @@ export interface AttachmentArnParameters {
 }
 export type AttachmentArn = `arn:${string}:globalaccelerator::${string}:attachment/${string}`
 export function attachmentArn(parameters: AttachmentArnParameters): AttachmentArn {
-  return `arn:${parameters.partition ?? ''}:globalaccelerator::${parameters.account}:attachment/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:globalaccelerator::${parameters.account}:attachment/${parameters.resourceId}`
 }

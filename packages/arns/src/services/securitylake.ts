@@ -5,7 +5,7 @@ export interface DataLakeArnParameters {
 }
 export type DataLakeArn = `arn:${string}:securitylake:${string}:${string}:data-lake/default`
 export function dataLakeArn(parameters: DataLakeArnParameters): DataLakeArn {
-  return `arn:${parameters.partition ?? ''}:securitylake:${parameters.region}:${parameters.account}:data-lake/default`
+  return `arn:${parameters.partition ?? 'aws'}:securitylake:${parameters.region}:${parameters.account}:data-lake/default`
 }
 
 export interface SubscriberArnParameters {
@@ -16,5 +16,5 @@ export interface SubscriberArnParameters {
 }
 export type SubscriberArn = `arn:${string}:securitylake:${string}:${string}:subscriber/${string}`
 export function subscriberArn(parameters: SubscriberArnParameters): SubscriberArn {
-  return `arn:${parameters.partition ?? ''}:securitylake:${parameters.region}:${parameters.account}:subscriber/${parameters.subscriberId}`
+  return `arn:${parameters.partition ?? 'aws'}:securitylake:${parameters.region}:${parameters.account}:subscriber/${parameters.subscriberId}`
 }

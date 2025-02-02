@@ -5,7 +5,7 @@ export interface MeetingArnParameters {
 }
 export type MeetingArn = `arn:${string}:chime::${string}:meeting/${string}`
 export function meetingArn(parameters: MeetingArnParameters): MeetingArn {
-  return `arn:${parameters.partition ?? ''}:chime::${parameters.accountId}:meeting/${parameters.meetingId}`
+  return `arn:${parameters.partition ?? 'aws'}:chime::${parameters.accountId}:meeting/${parameters.meetingId}`
 }
 
 export interface AppInstanceArnParameters {
@@ -16,7 +16,7 @@ export interface AppInstanceArnParameters {
 }
 export type AppInstanceArn = `arn:${string}:chime:${string}:${string}:app-instance/${string}`
 export function appInstanceArn(parameters: AppInstanceArnParameters): AppInstanceArn {
-  return `arn:${parameters.partition ?? ''}:chime:${parameters.region}:${parameters.accountId}:app-instance/${parameters.appInstanceId}`
+  return `arn:${parameters.partition ?? 'aws'}:chime:${parameters.region}:${parameters.accountId}:app-instance/${parameters.appInstanceId}`
 }
 
 export interface AppInstanceUserArnParameters {
@@ -28,7 +28,7 @@ export interface AppInstanceUserArnParameters {
 }
 export type AppInstanceUserArn = `arn:${string}:chime:${string}:${string}:app-instance/${string}/user/${string}`
 export function appInstanceUserArn(parameters: AppInstanceUserArnParameters): AppInstanceUserArn {
-  return `arn:${parameters.partition ?? ''}:chime:${parameters.region}:${parameters.accountId}:app-instance/${parameters.appInstanceId}/user/${parameters.appInstanceUserId}`
+  return `arn:${parameters.partition ?? 'aws'}:chime:${parameters.region}:${parameters.accountId}:app-instance/${parameters.appInstanceId}/user/${parameters.appInstanceUserId}`
 }
 
 export interface AppInstanceBotArnParameters {
@@ -40,7 +40,7 @@ export interface AppInstanceBotArnParameters {
 }
 export type AppInstanceBotArn = `arn:${string}:chime:${string}:${string}:app-instance/${string}/bot/${string}`
 export function appInstanceBotArn(parameters: AppInstanceBotArnParameters): AppInstanceBotArn {
-  return `arn:${parameters.partition ?? ''}:chime:${parameters.region}:${parameters.accountId}:app-instance/${parameters.appInstanceId}/bot/${parameters.appInstanceBotId}`
+  return `arn:${parameters.partition ?? 'aws'}:chime:${parameters.region}:${parameters.accountId}:app-instance/${parameters.appInstanceId}/bot/${parameters.appInstanceBotId}`
 }
 
 export interface ChannelArnParameters {
@@ -52,7 +52,7 @@ export interface ChannelArnParameters {
 }
 export type ChannelArn = `arn:${string}:chime:${string}:${string}:app-instance/${string}/channel/${string}`
 export function channelArn(parameters: ChannelArnParameters): ChannelArn {
-  return `arn:${parameters.partition ?? ''}:chime:${parameters.region}:${parameters.accountId}:app-instance/${parameters.appInstanceId}/channel/${parameters.channelId}`
+  return `arn:${parameters.partition ?? 'aws'}:chime:${parameters.region}:${parameters.accountId}:app-instance/${parameters.appInstanceId}/channel/${parameters.channelId}`
 }
 
 export interface ChannelFlowArnParameters {
@@ -64,7 +64,7 @@ export interface ChannelFlowArnParameters {
 }
 export type ChannelFlowArn = `arn:${string}:chime:${string}:${string}:app-instance/${string}/channel-flow/${string}`
 export function channelFlowArn(parameters: ChannelFlowArnParameters): ChannelFlowArn {
-  return `arn:${parameters.partition ?? ''}:chime:${parameters.region}:${parameters.accountId}:app-instance/${parameters.appInstanceId}/channel-flow/${parameters.channelFlowId}`
+  return `arn:${parameters.partition ?? 'aws'}:chime:${parameters.region}:${parameters.accountId}:app-instance/${parameters.appInstanceId}/channel-flow/${parameters.channelFlowId}`
 }
 
 export interface MediaPipelineArnParameters {
@@ -75,7 +75,7 @@ export interface MediaPipelineArnParameters {
 }
 export type MediaPipelineArn = `arn:${string}:chime:${string}:${string}:media-pipeline/${string}`
 export function mediaPipelineArn(parameters: MediaPipelineArnParameters): MediaPipelineArn {
-  return `arn:${parameters.partition ?? ''}:chime:${parameters.region}:${parameters.accountId}:media-pipeline/${parameters.mediaPipelineId}`
+  return `arn:${parameters.partition ?? 'aws'}:chime:${parameters.region}:${parameters.accountId}:media-pipeline/${parameters.mediaPipelineId}`
 }
 
 export interface MediaInsightsPipelineConfigurationArnParameters {
@@ -86,7 +86,7 @@ export interface MediaInsightsPipelineConfigurationArnParameters {
 }
 export type MediaInsightsPipelineConfigurationArn = `arn:${string}:chime:${string}:${string}:media-insights-pipeline-configuration/${string}`
 export function mediaInsightsPipelineConfigurationArn(parameters: MediaInsightsPipelineConfigurationArnParameters): MediaInsightsPipelineConfigurationArn {
-  return `arn:${parameters.partition ?? ''}:chime:${parameters.region}:${parameters.accountId}:media-insights-pipeline-configuration/${parameters.configurationName}`
+  return `arn:${parameters.partition ?? 'aws'}:chime:${parameters.region}:${parameters.accountId}:media-insights-pipeline-configuration/${parameters.configurationName}`
 }
 
 export interface MediaPipelineKinesisVideoStreamPoolArnParameters {
@@ -97,7 +97,7 @@ export interface MediaPipelineKinesisVideoStreamPoolArnParameters {
 }
 export type MediaPipelineKinesisVideoStreamPoolArn = `arn:${string}:chime:${string}:${string}:media-pipeline-kinesis-video-stream-pool/${string}`
 export function mediaPipelineKinesisVideoStreamPoolArn(parameters: MediaPipelineKinesisVideoStreamPoolArnParameters): MediaPipelineKinesisVideoStreamPoolArn {
-  return `arn:${parameters.partition ?? ''}:chime:${parameters.region}:${parameters.accountId}:media-pipeline-kinesis-video-stream-pool/${parameters.poolName}`
+  return `arn:${parameters.partition ?? 'aws'}:chime:${parameters.region}:${parameters.accountId}:media-pipeline-kinesis-video-stream-pool/${parameters.poolName}`
 }
 
 export interface VoiceProfileDomainArnParameters {
@@ -108,7 +108,7 @@ export interface VoiceProfileDomainArnParameters {
 }
 export type VoiceProfileDomainArn = `arn:${string}:chime:${string}:${string}:voice-profile-domain/${string}`
 export function voiceProfileDomainArn(parameters: VoiceProfileDomainArnParameters): VoiceProfileDomainArn {
-  return `arn:${parameters.partition ?? ''}:chime:${parameters.region}:${parameters.accountId}:voice-profile-domain/${parameters.voiceProfileDomainId}`
+  return `arn:${parameters.partition ?? 'aws'}:chime:${parameters.region}:${parameters.accountId}:voice-profile-domain/${parameters.voiceProfileDomainId}`
 }
 
 export interface VoiceProfileArnParameters {
@@ -119,7 +119,7 @@ export interface VoiceProfileArnParameters {
 }
 export type VoiceProfileArn = `arn:${string}:chime:${string}:${string}:voice-profile/${string}`
 export function voiceProfileArn(parameters: VoiceProfileArnParameters): VoiceProfileArn {
-  return `arn:${parameters.partition ?? ''}:chime:${parameters.region}:${parameters.accountId}:voice-profile/${parameters.voiceProfileId}`
+  return `arn:${parameters.partition ?? 'aws'}:chime:${parameters.region}:${parameters.accountId}:voice-profile/${parameters.voiceProfileId}`
 }
 
 export interface VoiceConnectorArnParameters {
@@ -130,7 +130,7 @@ export interface VoiceConnectorArnParameters {
 }
 export type VoiceConnectorArn = `arn:${string}:chime:${string}:${string}:vc/${string}`
 export function voiceConnectorArn(parameters: VoiceConnectorArnParameters): VoiceConnectorArn {
-  return `arn:${parameters.partition ?? ''}:chime:${parameters.region}:${parameters.accountId}:vc/${parameters.voiceConnectorId}`
+  return `arn:${parameters.partition ?? 'aws'}:chime:${parameters.region}:${parameters.accountId}:vc/${parameters.voiceConnectorId}`
 }
 
 export interface SipMediaApplicationArnParameters {
@@ -141,5 +141,5 @@ export interface SipMediaApplicationArnParameters {
 }
 export type SipMediaApplicationArn = `arn:${string}:chime:${string}:${string}:sma/${string}`
 export function sipMediaApplicationArn(parameters: SipMediaApplicationArnParameters): SipMediaApplicationArn {
-  return `arn:${parameters.partition ?? ''}:chime:${parameters.region}:${parameters.accountId}:sma/${parameters.sipMediaApplicationId}`
+  return `arn:${parameters.partition ?? 'aws'}:chime:${parameters.region}:${parameters.accountId}:sma/${parameters.sipMediaApplicationId}`
 }

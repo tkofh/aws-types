@@ -6,7 +6,7 @@ export interface GraphArnParameters {
 }
 export type GraphArn = `arn:${string}:neptune-graph:${string}:${string}:graph/${string}`
 export function graphArn(parameters: GraphArnParameters): GraphArn {
-  return `arn:${parameters.partition ?? ''}:neptune-graph:${parameters.region}:${parameters.account}:graph/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:neptune-graph:${parameters.region}:${parameters.account}:graph/${parameters.resourceId}`
 }
 
 export interface GraphSnapshotArnParameters {
@@ -17,7 +17,7 @@ export interface GraphSnapshotArnParameters {
 }
 export type GraphSnapshotArn = `arn:${string}:neptune-graph:${string}:${string}:graph-snapshot/${string}`
 export function graphSnapshotArn(parameters: GraphSnapshotArnParameters): GraphSnapshotArn {
-  return `arn:${parameters.partition ?? ''}:neptune-graph:${parameters.region}:${parameters.account}:graph-snapshot/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:neptune-graph:${parameters.region}:${parameters.account}:graph-snapshot/${parameters.resourceId}`
 }
 
 export interface ImportTaskArnParameters {
@@ -28,5 +28,5 @@ export interface ImportTaskArnParameters {
 }
 export type ImportTaskArn = `arn:${string}:neptune-graph:${string}:${string}:import-task/${string}`
 export function importTaskArn(parameters: ImportTaskArnParameters): ImportTaskArn {
-  return `arn:${parameters.partition ?? ''}:neptune-graph:${parameters.region}:${parameters.account}:import-task/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:neptune-graph:${parameters.region}:${parameters.account}:import-task/${parameters.resourceId}`
 }

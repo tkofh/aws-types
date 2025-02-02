@@ -6,5 +6,5 @@ export interface AcceleratorArnParameters {
 }
 export type AcceleratorArn = `arn:${string}:elastic-inference:${string}:${string}:elastic-inference-accelerator/${string}`
 export function acceleratorArn(parameters: AcceleratorArnParameters): AcceleratorArn {
-  return `arn:${parameters.partition ?? ''}:elastic-inference:${parameters.region}:${parameters.account}:elastic-inference-accelerator/${parameters.acceleratorId}`
+  return `arn:${parameters.partition ?? 'aws'}:elastic-inference:${parameters.region}:${parameters.account}:elastic-inference-accelerator/${parameters.acceleratorId}`
 }

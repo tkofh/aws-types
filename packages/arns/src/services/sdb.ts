@@ -6,5 +6,5 @@ export interface DomainArnParameters {
 }
 export type DomainArn = `arn:${string}:sdb:${string}:${string}:domain/${string}`
 export function domainArn(parameters: DomainArnParameters): DomainArn {
-  return `arn:${parameters.partition ?? ''}:sdb:${parameters.region}:${parameters.account}:domain/${parameters.domainName}`
+  return `arn:${parameters.partition ?? 'aws'}:sdb:${parameters.region}:${parameters.account}:domain/${parameters.domainName}`
 }

@@ -5,5 +5,5 @@ export interface PolicyStoreArnParameters {
 }
 export type PolicyStoreArn = `arn:${string}:verifiedpermissions::${string}:policy-store/${string}`
 export function policyStoreArn(parameters: PolicyStoreArnParameters): PolicyStoreArn {
-  return `arn:${parameters.partition ?? ''}:verifiedpermissions::${parameters.account}:policy-store/${parameters.policyStoreId}`
+  return `arn:${parameters.partition ?? 'aws'}:verifiedpermissions::${parameters.account}:policy-store/${parameters.policyStoreId}`
 }

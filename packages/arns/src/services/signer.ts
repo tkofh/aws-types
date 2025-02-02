@@ -6,7 +6,7 @@ export interface SigningProfileArnParameters {
 }
 export type SigningProfileArn = `arn:${string}:signer:${string}:${string}:/signing-profiles/${string}`
 export function signingProfileArn(parameters: SigningProfileArnParameters): SigningProfileArn {
-  return `arn:${parameters.partition ?? ''}:signer:${parameters.region}:${parameters.account}:/signing-profiles/${parameters.profileName}`
+  return `arn:${parameters.partition ?? 'aws'}:signer:${parameters.region}:${parameters.account}:/signing-profiles/${parameters.profileName}`
 }
 
 export interface SigningJobArnParameters {
@@ -17,5 +17,5 @@ export interface SigningJobArnParameters {
 }
 export type SigningJobArn = `arn:${string}:signer:${string}:${string}:/signing-jobs/${string}`
 export function signingJobArn(parameters: SigningJobArnParameters): SigningJobArn {
-  return `arn:${parameters.partition ?? ''}:signer:${parameters.region}:${parameters.account}:/signing-jobs/${parameters.jobId}`
+  return `arn:${parameters.partition ?? 'aws'}:signer:${parameters.region}:${parameters.account}:/signing-jobs/${parameters.jobId}`
 }

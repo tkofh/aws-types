@@ -5,5 +5,5 @@ export interface DomainArnParameters {
 }
 export type DomainArn = `arn:${string}:swf::${string}:/domain/${string}`
 export function domainArn(parameters: DomainArnParameters): DomainArn {
-  return `arn:${parameters.partition ?? ''}:swf::${parameters.account}:/domain/${parameters.domainName}`
+  return `arn:${parameters.partition ?? 'aws'}:swf::${parameters.account}:/domain/${parameters.domainName}`
 }

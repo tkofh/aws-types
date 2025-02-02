@@ -6,5 +6,5 @@ export interface DeviceIdentityArnParameters {
 }
 export type DeviceIdentityArn = `arn:${string}:consoleapp::${string}:device/${string}/identity/${string}`
 export function deviceIdentityArn(parameters: DeviceIdentityArnParameters): DeviceIdentityArn {
-  return `arn:${parameters.partition ?? ''}:consoleapp::${parameters.account}:device/${parameters.deviceId}/identity/${parameters.identityId}`
+  return `arn:${parameters.partition ?? 'aws'}:consoleapp::${parameters.account}:device/${parameters.deviceId}/identity/${parameters.identityId}`
 }

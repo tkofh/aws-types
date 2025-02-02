@@ -6,7 +6,7 @@ export interface ClusterArnParameters {
 }
 export type ClusterArn = `arn:${string}:docdb-elastic:${string}:${string}:cluster/${string}`
 export function clusterArn(parameters: ClusterArnParameters): ClusterArn {
-  return `arn:${parameters.partition ?? ''}:docdb-elastic:${parameters.region}:${parameters.account}:cluster/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:docdb-elastic:${parameters.region}:${parameters.account}:cluster/${parameters.resourceId}`
 }
 
 export interface ClusterSnapshotArnParameters {
@@ -17,5 +17,5 @@ export interface ClusterSnapshotArnParameters {
 }
 export type ClusterSnapshotArn = `arn:${string}:docdb-elastic:${string}:${string}:cluster-snapshot/${string}`
 export function clusterSnapshotArn(parameters: ClusterSnapshotArnParameters): ClusterSnapshotArn {
-  return `arn:${parameters.partition ?? ''}:docdb-elastic:${parameters.region}:${parameters.account}:cluster-snapshot/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:docdb-elastic:${parameters.region}:${parameters.account}:cluster-snapshot/${parameters.resourceId}`
 }

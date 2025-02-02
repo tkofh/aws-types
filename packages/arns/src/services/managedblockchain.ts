@@ -5,7 +5,7 @@ export interface NetworkArnParameters {
 }
 export type NetworkArn = `arn:${string}:managedblockchain:${string}::networks/${string}`
 export function networkArn(parameters: NetworkArnParameters): NetworkArn {
-  return `arn:${parameters.partition ?? ''}:managedblockchain:${parameters.region}::networks/${parameters.networkId}`
+  return `arn:${parameters.partition ?? 'aws'}:managedblockchain:${parameters.region}::networks/${parameters.networkId}`
 }
 
 export interface MemberArnParameters {
@@ -16,7 +16,7 @@ export interface MemberArnParameters {
 }
 export type MemberArn = `arn:${string}:managedblockchain:${string}:${string}:members/${string}`
 export function memberArn(parameters: MemberArnParameters): MemberArn {
-  return `arn:${parameters.partition ?? ''}:managedblockchain:${parameters.region}:${parameters.account}:members/${parameters.memberId}`
+  return `arn:${parameters.partition ?? 'aws'}:managedblockchain:${parameters.region}:${parameters.account}:members/${parameters.memberId}`
 }
 
 export interface NodeArnParameters {
@@ -27,7 +27,7 @@ export interface NodeArnParameters {
 }
 export type NodeArn = `arn:${string}:managedblockchain:${string}:${string}:nodes/${string}`
 export function nodeArn(parameters: NodeArnParameters): NodeArn {
-  return `arn:${parameters.partition ?? ''}:managedblockchain:${parameters.region}:${parameters.account}:nodes/${parameters.nodeId}`
+  return `arn:${parameters.partition ?? 'aws'}:managedblockchain:${parameters.region}:${parameters.account}:nodes/${parameters.nodeId}`
 }
 
 export interface ProposalArnParameters {
@@ -37,7 +37,7 @@ export interface ProposalArnParameters {
 }
 export type ProposalArn = `arn:${string}:managedblockchain:${string}::proposals/${string}`
 export function proposalArn(parameters: ProposalArnParameters): ProposalArn {
-  return `arn:${parameters.partition ?? ''}:managedblockchain:${parameters.region}::proposals/${parameters.proposalId}`
+  return `arn:${parameters.partition ?? 'aws'}:managedblockchain:${parameters.region}::proposals/${parameters.proposalId}`
 }
 
 export interface InvitationArnParameters {
@@ -48,7 +48,7 @@ export interface InvitationArnParameters {
 }
 export type InvitationArn = `arn:${string}:managedblockchain:${string}:${string}:invitations/${string}`
 export function invitationArn(parameters: InvitationArnParameters): InvitationArn {
-  return `arn:${parameters.partition ?? ''}:managedblockchain:${parameters.region}:${parameters.account}:invitations/${parameters.invitationId}`
+  return `arn:${parameters.partition ?? 'aws'}:managedblockchain:${parameters.region}:${parameters.account}:invitations/${parameters.invitationId}`
 }
 
 export interface AccessorArnParameters {
@@ -59,5 +59,5 @@ export interface AccessorArnParameters {
 }
 export type AccessorArn = `arn:${string}:managedblockchain:${string}:${string}:accessors/${string}`
 export function accessorArn(parameters: AccessorArnParameters): AccessorArn {
-  return `arn:${parameters.partition ?? ''}:managedblockchain:${parameters.region}:${parameters.account}:accessors/${parameters.accessorId}`
+  return `arn:${parameters.partition ?? 'aws'}:managedblockchain:${parameters.region}:${parameters.account}:accessors/${parameters.accessorId}`
 }

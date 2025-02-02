@@ -6,7 +6,7 @@ export interface AnnotationImportJobArnParameters {
 }
 export type AnnotationImportJobArn = `arn:${string}:omics:${string}:${string}:annotationImportJob/${string}`
 export function annotationImportJobArn(parameters: AnnotationImportJobArnParameters): AnnotationImportJobArn {
-  return `arn:${parameters.partition ?? ''}:omics:${parameters.region}:${parameters.account}:annotationImportJob/${parameters.annotationImportJobId}`
+  return `arn:${parameters.partition ?? 'aws'}:omics:${parameters.region}:${parameters.account}:annotationImportJob/${parameters.annotationImportJobId}`
 }
 
 export interface AnnotationStoreArnParameters {
@@ -17,7 +17,7 @@ export interface AnnotationStoreArnParameters {
 }
 export type AnnotationStoreArn = `arn:${string}:omics:${string}:${string}:annotationStore/${string}`
 export function annotationStoreArn(parameters: AnnotationStoreArnParameters): AnnotationStoreArn {
-  return `arn:${parameters.partition ?? ''}:omics:${parameters.region}:${parameters.account}:annotationStore/${parameters.annotationStoreId}`
+  return `arn:${parameters.partition ?? 'aws'}:omics:${parameters.region}:${parameters.account}:annotationStore/${parameters.annotationStoreId}`
 }
 
 export interface AnnotationStoreVersionArnParameters {
@@ -29,7 +29,7 @@ export interface AnnotationStoreVersionArnParameters {
 }
 export type AnnotationStoreVersionArn = `arn:${string}:omics:${string}:${string}:annotationStore/${string}/version/${string}`
 export function annotationStoreVersionArn(parameters: AnnotationStoreVersionArnParameters): AnnotationStoreVersionArn {
-  return `arn:${parameters.partition ?? ''}:omics:${parameters.region}:${parameters.account}:annotationStore/${parameters.annotationStoreName}/version/${parameters.annotationStoreVersionName}`
+  return `arn:${parameters.partition ?? 'aws'}:omics:${parameters.region}:${parameters.account}:annotationStore/${parameters.annotationStoreName}/version/${parameters.annotationStoreVersionName}`
 }
 
 export interface ReadSetArnParameters {
@@ -41,7 +41,7 @@ export interface ReadSetArnParameters {
 }
 export type ReadSetArn = `arn:${string}:omics:${string}:${string}:sequenceStore/${string}/readSet/${string}`
 export function readSetArn(parameters: ReadSetArnParameters): ReadSetArn {
-  return `arn:${parameters.partition ?? ''}:omics:${parameters.region}:${parameters.account}:sequenceStore/${parameters.sequenceStoreId}/readSet/${parameters.readSetId}`
+  return `arn:${parameters.partition ?? 'aws'}:omics:${parameters.region}:${parameters.account}:sequenceStore/${parameters.sequenceStoreId}/readSet/${parameters.readSetId}`
 }
 
 export interface ReferenceArnParameters {
@@ -53,7 +53,7 @@ export interface ReferenceArnParameters {
 }
 export type ReferenceArn = `arn:${string}:omics:${string}:${string}:referenceStore/${string}/reference/${string}`
 export function referenceArn(parameters: ReferenceArnParameters): ReferenceArn {
-  return `arn:${parameters.partition ?? ''}:omics:${parameters.region}:${parameters.account}:referenceStore/${parameters.referenceStoreId}/reference/${parameters.referenceId}`
+  return `arn:${parameters.partition ?? 'aws'}:omics:${parameters.region}:${parameters.account}:referenceStore/${parameters.referenceStoreId}/reference/${parameters.referenceId}`
 }
 
 export interface ReferenceStoreArnParameters {
@@ -64,7 +64,7 @@ export interface ReferenceStoreArnParameters {
 }
 export type ReferenceStoreArn = `arn:${string}:omics:${string}:${string}:referenceStore/${string}`
 export function referenceStoreArn(parameters: ReferenceStoreArnParameters): ReferenceStoreArn {
-  return `arn:${parameters.partition ?? ''}:omics:${parameters.region}:${parameters.account}:referenceStore/${parameters.referenceStoreId}`
+  return `arn:${parameters.partition ?? 'aws'}:omics:${parameters.region}:${parameters.account}:referenceStore/${parameters.referenceStoreId}`
 }
 
 export interface RunArnParameters {
@@ -75,7 +75,7 @@ export interface RunArnParameters {
 }
 export type RunArn = `arn:${string}:omics:${string}:${string}:run/${string}`
 export function runArn(parameters: RunArnParameters): RunArn {
-  return `arn:${parameters.partition ?? ''}:omics:${parameters.region}:${parameters.account}:run/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:omics:${parameters.region}:${parameters.account}:run/${parameters.id}`
 }
 
 export interface RunGroupArnParameters {
@@ -86,7 +86,7 @@ export interface RunGroupArnParameters {
 }
 export type RunGroupArn = `arn:${string}:omics:${string}:${string}:runGroup/${string}`
 export function runGroupArn(parameters: RunGroupArnParameters): RunGroupArn {
-  return `arn:${parameters.partition ?? ''}:omics:${parameters.region}:${parameters.account}:runGroup/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:omics:${parameters.region}:${parameters.account}:runGroup/${parameters.id}`
 }
 
 export interface SequenceStoreArnParameters {
@@ -97,7 +97,7 @@ export interface SequenceStoreArnParameters {
 }
 export type SequenceStoreArn = `arn:${string}:omics:${string}:${string}:sequenceStore/${string}`
 export function sequenceStoreArn(parameters: SequenceStoreArnParameters): SequenceStoreArn {
-  return `arn:${parameters.partition ?? ''}:omics:${parameters.region}:${parameters.account}:sequenceStore/${parameters.sequenceStoreId}`
+  return `arn:${parameters.partition ?? 'aws'}:omics:${parameters.region}:${parameters.account}:sequenceStore/${parameters.sequenceStoreId}`
 }
 
 export interface TaggingResourceArnParameters {
@@ -108,7 +108,7 @@ export interface TaggingResourceArnParameters {
 }
 export type TaggingResourceArn = `arn:${string}:omics:${string}:${string}:tag/${string}`
 export function taggingResourceArn(parameters: TaggingResourceArnParameters): TaggingResourceArn {
-  return `arn:${parameters.partition ?? ''}:omics:${parameters.region}:${parameters.account}:tag/${parameters.tagKey}`
+  return `arn:${parameters.partition ?? 'aws'}:omics:${parameters.region}:${parameters.account}:tag/${parameters.tagKey}`
 }
 
 export interface TaskResourceArnParameters {
@@ -119,7 +119,7 @@ export interface TaskResourceArnParameters {
 }
 export type TaskResourceArn = `arn:${string}:omics:${string}:${string}:task/${string}`
 export function taskResourceArn(parameters: TaskResourceArnParameters): TaskResourceArn {
-  return `arn:${parameters.partition ?? ''}:omics:${parameters.region}:${parameters.account}:task/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:omics:${parameters.region}:${parameters.account}:task/${parameters.id}`
 }
 
 export interface VariantImportJobArnParameters {
@@ -130,7 +130,7 @@ export interface VariantImportJobArnParameters {
 }
 export type VariantImportJobArn = `arn:${string}:omics:${string}:${string}:variantImportJob/${string}`
 export function variantImportJobArn(parameters: VariantImportJobArnParameters): VariantImportJobArn {
-  return `arn:${parameters.partition ?? ''}:omics:${parameters.region}:${parameters.account}:variantImportJob/${parameters.variantImportJobId}`
+  return `arn:${parameters.partition ?? 'aws'}:omics:${parameters.region}:${parameters.account}:variantImportJob/${parameters.variantImportJobId}`
 }
 
 export interface VariantStoreArnParameters {
@@ -141,7 +141,7 @@ export interface VariantStoreArnParameters {
 }
 export type VariantStoreArn = `arn:${string}:omics:${string}:${string}:variantStore/${string}`
 export function variantStoreArn(parameters: VariantStoreArnParameters): VariantStoreArn {
-  return `arn:${parameters.partition ?? ''}:omics:${parameters.region}:${parameters.account}:variantStore/${parameters.variantStoreId}`
+  return `arn:${parameters.partition ?? 'aws'}:omics:${parameters.region}:${parameters.account}:variantStore/${parameters.variantStoreId}`
 }
 
 export interface WorkflowArnParameters {
@@ -152,5 +152,5 @@ export interface WorkflowArnParameters {
 }
 export type WorkflowArn = `arn:${string}:omics:${string}:${string}:workflow/${string}`
 export function workflowArn(parameters: WorkflowArnParameters): WorkflowArn {
-  return `arn:${parameters.partition ?? ''}:omics:${parameters.region}:${parameters.account}:workflow/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:omics:${parameters.region}:${parameters.account}:workflow/${parameters.id}`
 }

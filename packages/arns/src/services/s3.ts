@@ -6,7 +6,7 @@ export interface AccesspointArnParameters {
 }
 export type AccesspointArn = `arn:${string}:s3:${string}:${string}:accesspoint/${string}`
 export function accesspointArn(parameters: AccesspointArnParameters): AccesspointArn {
-  return `arn:${parameters.partition ?? ''}:s3:${parameters.region}:${parameters.account}:accesspoint/${parameters.accessPointName}`
+  return `arn:${parameters.partition ?? 'aws'}:s3:${parameters.region}:${parameters.account}:accesspoint/${parameters.accessPointName}`
 }
 
 export interface BucketArnParameters {
@@ -15,7 +15,7 @@ export interface BucketArnParameters {
 }
 export type BucketArn = `arn:${string}:s3:::${string}`
 export function bucketArn(parameters: BucketArnParameters): BucketArn {
-  return `arn:${parameters.partition ?? ''}:s3:::${parameters.bucketName}`
+  return `arn:${parameters.partition ?? 'aws'}:s3:::${parameters.bucketName}`
 }
 
 export interface ObjectArnParameters {
@@ -25,7 +25,7 @@ export interface ObjectArnParameters {
 }
 export type ObjectArn = `arn:${string}:s3:::${string}/${string}`
 export function objectArn(parameters: ObjectArnParameters): ObjectArn {
-  return `arn:${parameters.partition ?? ''}:s3:::${parameters.bucketName}/${parameters.objectName}`
+  return `arn:${parameters.partition ?? 'aws'}:s3:::${parameters.bucketName}/${parameters.objectName}`
 }
 
 export interface JobArnParameters {
@@ -36,7 +36,7 @@ export interface JobArnParameters {
 }
 export type JobArn = `arn:${string}:s3:${string}:${string}:job/${string}`
 export function jobArn(parameters: JobArnParameters): JobArn {
-  return `arn:${parameters.partition ?? ''}:s3:${parameters.region}:${parameters.account}:job/${parameters.jobId}`
+  return `arn:${parameters.partition ?? 'aws'}:s3:${parameters.region}:${parameters.account}:job/${parameters.jobId}`
 }
 
 export interface StoragelensconfigurationArnParameters {
@@ -47,7 +47,7 @@ export interface StoragelensconfigurationArnParameters {
 }
 export type StoragelensconfigurationArn = `arn:${string}:s3:${string}:${string}:storage-lens/${string}`
 export function storagelensconfigurationArn(parameters: StoragelensconfigurationArnParameters): StoragelensconfigurationArn {
-  return `arn:${parameters.partition ?? ''}:s3:${parameters.region}:${parameters.account}:storage-lens/${parameters.configId}`
+  return `arn:${parameters.partition ?? 'aws'}:s3:${parameters.region}:${parameters.account}:storage-lens/${parameters.configId}`
 }
 
 export interface StoragelensgroupArnParameters {
@@ -58,7 +58,7 @@ export interface StoragelensgroupArnParameters {
 }
 export type StoragelensgroupArn = `arn:${string}:s3:${string}:${string}:storage-lens-group/${string}`
 export function storagelensgroupArn(parameters: StoragelensgroupArnParameters): StoragelensgroupArn {
-  return `arn:${parameters.partition ?? ''}:s3:${parameters.region}:${parameters.account}:storage-lens-group/${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:s3:${parameters.region}:${parameters.account}:storage-lens-group/${parameters.name}`
 }
 
 export interface ObjectlambdaaccesspointArnParameters {
@@ -69,7 +69,7 @@ export interface ObjectlambdaaccesspointArnParameters {
 }
 export type ObjectlambdaaccesspointArn = `arn:${string}:s3-object-lambda:${string}:${string}:accesspoint/${string}`
 export function objectlambdaaccesspointArn(parameters: ObjectlambdaaccesspointArnParameters): ObjectlambdaaccesspointArn {
-  return `arn:${parameters.partition ?? ''}:s3-object-lambda:${parameters.region}:${parameters.account}:accesspoint/${parameters.accessPointName}`
+  return `arn:${parameters.partition ?? 'aws'}:s3-object-lambda:${parameters.region}:${parameters.account}:accesspoint/${parameters.accessPointName}`
 }
 
 export interface MultiregionaccesspointArnParameters {
@@ -79,7 +79,7 @@ export interface MultiregionaccesspointArnParameters {
 }
 export type MultiregionaccesspointArn = `arn:${string}:s3::${string}:accesspoint/${string}`
 export function multiregionaccesspointArn(parameters: MultiregionaccesspointArnParameters): MultiregionaccesspointArn {
-  return `arn:${parameters.partition ?? ''}:s3::${parameters.account}:accesspoint/${parameters.accessPointAlias}`
+  return `arn:${parameters.partition ?? 'aws'}:s3::${parameters.account}:accesspoint/${parameters.accessPointAlias}`
 }
 
 export interface MultiregionaccesspointrequestarnArnParameters {
@@ -90,7 +90,7 @@ export interface MultiregionaccesspointrequestarnArnParameters {
 }
 export type MultiregionaccesspointrequestarnArn = `arn:${string}:s3:us-west-2:${string}:async-request/mrap/${string}/${string}`
 export function multiregionaccesspointrequestarnArn(parameters: MultiregionaccesspointrequestarnArnParameters): MultiregionaccesspointrequestarnArn {
-  return `arn:${parameters.partition ?? ''}:s3:us-west-2:${parameters.account}:async-request/mrap/${parameters.operation}/${parameters.token}`
+  return `arn:${parameters.partition ?? 'aws'}:s3:us-west-2:${parameters.account}:async-request/mrap/${parameters.operation}/${parameters.token}`
 }
 
 export interface AccessgrantsinstanceArnParameters {
@@ -100,7 +100,7 @@ export interface AccessgrantsinstanceArnParameters {
 }
 export type AccessgrantsinstanceArn = `arn:${string}:s3:${string}:${string}:access-grants/default`
 export function accessgrantsinstanceArn(parameters: AccessgrantsinstanceArnParameters): AccessgrantsinstanceArn {
-  return `arn:${parameters.partition ?? ''}:s3:${parameters.region}:${parameters.account}:access-grants/default`
+  return `arn:${parameters.partition ?? 'aws'}:s3:${parameters.region}:${parameters.account}:access-grants/default`
 }
 
 export interface AccessgrantslocationArnParameters {
@@ -111,7 +111,7 @@ export interface AccessgrantslocationArnParameters {
 }
 export type AccessgrantslocationArn = `arn:${string}:s3:${string}:${string}:access-grants/default/location/${string}`
 export function accessgrantslocationArn(parameters: AccessgrantslocationArnParameters): AccessgrantslocationArn {
-  return `arn:${parameters.partition ?? ''}:s3:${parameters.region}:${parameters.account}:access-grants/default/location/${parameters.token}`
+  return `arn:${parameters.partition ?? 'aws'}:s3:${parameters.region}:${parameters.account}:access-grants/default/location/${parameters.token}`
 }
 
 export interface AccessgrantArnParameters {
@@ -122,5 +122,5 @@ export interface AccessgrantArnParameters {
 }
 export type AccessgrantArn = `arn:${string}:s3:${string}:${string}:access-grants/default/grant/${string}`
 export function accessgrantArn(parameters: AccessgrantArnParameters): AccessgrantArn {
-  return `arn:${parameters.partition ?? ''}:s3:${parameters.region}:${parameters.account}:access-grants/default/grant/${parameters.token}`
+  return `arn:${parameters.partition ?? 'aws'}:s3:${parameters.region}:${parameters.account}:access-grants/default/grant/${parameters.token}`
 }

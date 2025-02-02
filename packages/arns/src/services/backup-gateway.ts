@@ -5,7 +5,7 @@ export interface GatewayArnParameters {
 }
 export type GatewayArn = `arn:${string}:backup-gateway::${string}:gateway/${string}`
 export function gatewayArn(parameters: GatewayArnParameters): GatewayArn {
-  return `arn:${parameters.partition ?? ''}:backup-gateway::${parameters.account}:gateway/${parameters.gatewayId}`
+  return `arn:${parameters.partition ?? 'aws'}:backup-gateway::${parameters.account}:gateway/${parameters.gatewayId}`
 }
 
 export interface HypervisorArnParameters {
@@ -15,7 +15,7 @@ export interface HypervisorArnParameters {
 }
 export type HypervisorArn = `arn:${string}:backup-gateway::${string}:hypervisor/${string}`
 export function hypervisorArn(parameters: HypervisorArnParameters): HypervisorArn {
-  return `arn:${parameters.partition ?? ''}:backup-gateway::${parameters.account}:hypervisor/${parameters.hypervisorId}`
+  return `arn:${parameters.partition ?? 'aws'}:backup-gateway::${parameters.account}:hypervisor/${parameters.hypervisorId}`
 }
 
 export interface VirtualmachineArnParameters {
@@ -25,5 +25,5 @@ export interface VirtualmachineArnParameters {
 }
 export type VirtualmachineArn = `arn:${string}:backup-gateway::${string}:vm/${string}`
 export function virtualmachineArn(parameters: VirtualmachineArnParameters): VirtualmachineArn {
-  return `arn:${parameters.partition ?? ''}:backup-gateway::${parameters.account}:vm/${parameters.virtualmachineId}`
+  return `arn:${parameters.partition ?? 'aws'}:backup-gateway::${parameters.account}:vm/${parameters.virtualmachineId}`
 }

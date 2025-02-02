@@ -6,7 +6,7 @@ export interface JobResourceArnParameters {
 }
 export type JobResourceArn = `arn:${string}:drs:${string}:${string}:job/${string}`
 export function jobResourceArn(parameters: JobResourceArnParameters): JobResourceArn {
-  return `arn:${parameters.partition ?? ''}:drs:${parameters.region}:${parameters.account}:job/${parameters.jobId}`
+  return `arn:${parameters.partition ?? 'aws'}:drs:${parameters.region}:${parameters.account}:job/${parameters.jobId}`
 }
 
 export interface RecoveryInstanceResourceArnParameters {
@@ -17,7 +17,7 @@ export interface RecoveryInstanceResourceArnParameters {
 }
 export type RecoveryInstanceResourceArn = `arn:${string}:drs:${string}:${string}:recovery-instance/${string}`
 export function recoveryInstanceResourceArn(parameters: RecoveryInstanceResourceArnParameters): RecoveryInstanceResourceArn {
-  return `arn:${parameters.partition ?? ''}:drs:${parameters.region}:${parameters.account}:recovery-instance/${parameters.recoveryInstanceId}`
+  return `arn:${parameters.partition ?? 'aws'}:drs:${parameters.region}:${parameters.account}:recovery-instance/${parameters.recoveryInstanceId}`
 }
 
 export interface ReplicationConfigurationTemplateResourceArnParameters {
@@ -28,7 +28,7 @@ export interface ReplicationConfigurationTemplateResourceArnParameters {
 }
 export type ReplicationConfigurationTemplateResourceArn = `arn:${string}:drs:${string}:${string}:replication-configuration-template/${string}`
 export function replicationConfigurationTemplateResourceArn(parameters: ReplicationConfigurationTemplateResourceArnParameters): ReplicationConfigurationTemplateResourceArn {
-  return `arn:${parameters.partition ?? ''}:drs:${parameters.region}:${parameters.account}:replication-configuration-template/${parameters.replicationConfigurationTemplateId}`
+  return `arn:${parameters.partition ?? 'aws'}:drs:${parameters.region}:${parameters.account}:replication-configuration-template/${parameters.replicationConfigurationTemplateId}`
 }
 
 export interface LaunchConfigurationTemplateResourceArnParameters {
@@ -39,7 +39,7 @@ export interface LaunchConfigurationTemplateResourceArnParameters {
 }
 export type LaunchConfigurationTemplateResourceArn = `arn:${string}:drs:${string}:${string}:launch-configuration-template/${string}`
 export function launchConfigurationTemplateResourceArn(parameters: LaunchConfigurationTemplateResourceArnParameters): LaunchConfigurationTemplateResourceArn {
-  return `arn:${parameters.partition ?? ''}:drs:${parameters.region}:${parameters.account}:launch-configuration-template/${parameters.launchConfigurationTemplateId}`
+  return `arn:${parameters.partition ?? 'aws'}:drs:${parameters.region}:${parameters.account}:launch-configuration-template/${parameters.launchConfigurationTemplateId}`
 }
 
 export interface SourceServerResourceArnParameters {
@@ -50,7 +50,7 @@ export interface SourceServerResourceArnParameters {
 }
 export type SourceServerResourceArn = `arn:${string}:drs:${string}:${string}:source-server/${string}`
 export function sourceServerResourceArn(parameters: SourceServerResourceArnParameters): SourceServerResourceArn {
-  return `arn:${parameters.partition ?? ''}:drs:${parameters.region}:${parameters.account}:source-server/${parameters.sourceServerId}`
+  return `arn:${parameters.partition ?? 'aws'}:drs:${parameters.region}:${parameters.account}:source-server/${parameters.sourceServerId}`
 }
 
 export interface SourceNetworkResourceArnParameters {
@@ -61,5 +61,5 @@ export interface SourceNetworkResourceArnParameters {
 }
 export type SourceNetworkResourceArn = `arn:${string}:drs:${string}:${string}:source-network/${string}`
 export function sourceNetworkResourceArn(parameters: SourceNetworkResourceArnParameters): SourceNetworkResourceArn {
-  return `arn:${parameters.partition ?? ''}:drs:${parameters.region}:${parameters.account}:source-network/${parameters.sourceNetworkId}`
+  return `arn:${parameters.partition ?? 'aws'}:drs:${parameters.region}:${parameters.account}:source-network/${parameters.sourceNetworkId}`
 }

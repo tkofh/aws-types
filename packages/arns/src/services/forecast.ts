@@ -6,7 +6,7 @@ export interface DatasetArnParameters {
 }
 export type DatasetArn = `arn:${string}:forecast:${string}:${string}:dataset/${string}`
 export function datasetArn(parameters: DatasetArnParameters): DatasetArn {
-  return `arn:${parameters.partition ?? ''}:forecast:${parameters.region}:${parameters.account}:dataset/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:forecast:${parameters.region}:${parameters.account}:dataset/${parameters.resourceId}`
 }
 
 export interface DatasetGroupArnParameters {
@@ -17,7 +17,7 @@ export interface DatasetGroupArnParameters {
 }
 export type DatasetGroupArn = `arn:${string}:forecast:${string}:${string}:dataset-group/${string}`
 export function datasetGroupArn(parameters: DatasetGroupArnParameters): DatasetGroupArn {
-  return `arn:${parameters.partition ?? ''}:forecast:${parameters.region}:${parameters.account}:dataset-group/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:forecast:${parameters.region}:${parameters.account}:dataset-group/${parameters.resourceId}`
 }
 
 export interface DatasetImportJobArnParameters {
@@ -28,7 +28,7 @@ export interface DatasetImportJobArnParameters {
 }
 export type DatasetImportJobArn = `arn:${string}:forecast:${string}:${string}:dataset-import-job/${string}`
 export function datasetImportJobArn(parameters: DatasetImportJobArnParameters): DatasetImportJobArn {
-  return `arn:${parameters.partition ?? ''}:forecast:${parameters.region}:${parameters.account}:dataset-import-job/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:forecast:${parameters.region}:${parameters.account}:dataset-import-job/${parameters.resourceId}`
 }
 
 export interface AlgorithmArnParameters {
@@ -37,7 +37,7 @@ export interface AlgorithmArnParameters {
 }
 export type AlgorithmArn = `arn:${string}:forecast:::algorithm/${string}`
 export function algorithmArn(parameters: AlgorithmArnParameters): AlgorithmArn {
-  return `arn:${parameters.partition ?? ''}:forecast:::algorithm/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:forecast:::algorithm/${parameters.resourceId}`
 }
 
 export interface PredictorArnParameters {
@@ -48,7 +48,7 @@ export interface PredictorArnParameters {
 }
 export type PredictorArn = `arn:${string}:forecast:${string}:${string}:predictor/${string}`
 export function predictorArn(parameters: PredictorArnParameters): PredictorArn {
-  return `arn:${parameters.partition ?? ''}:forecast:${parameters.region}:${parameters.account}:predictor/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:forecast:${parameters.region}:${parameters.account}:predictor/${parameters.resourceId}`
 }
 
 export interface PredictorBacktestExportJobArnParameters {
@@ -59,7 +59,7 @@ export interface PredictorBacktestExportJobArnParameters {
 }
 export type PredictorBacktestExportJobArn = `arn:${string}:forecast:${string}:${string}:predictor-backtest-export-job/${string}`
 export function predictorBacktestExportJobArn(parameters: PredictorBacktestExportJobArnParameters): PredictorBacktestExportJobArn {
-  return `arn:${parameters.partition ?? ''}:forecast:${parameters.region}:${parameters.account}:predictor-backtest-export-job/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:forecast:${parameters.region}:${parameters.account}:predictor-backtest-export-job/${parameters.resourceId}`
 }
 
 export interface ForecastArnParameters {
@@ -70,7 +70,7 @@ export interface ForecastArnParameters {
 }
 export type ForecastArn = `arn:${string}:forecast:${string}:${string}:forecast/${string}`
 export function forecastArn(parameters: ForecastArnParameters): ForecastArn {
-  return `arn:${parameters.partition ?? ''}:forecast:${parameters.region}:${parameters.account}:forecast/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:forecast:${parameters.region}:${parameters.account}:forecast/${parameters.resourceId}`
 }
 
 export interface ForecastExportArnParameters {
@@ -81,7 +81,7 @@ export interface ForecastExportArnParameters {
 }
 export type ForecastExportArn = `arn:${string}:forecast:${string}:${string}:forecast-export-job/${string}`
 export function forecastExportArn(parameters: ForecastExportArnParameters): ForecastExportArn {
-  return `arn:${parameters.partition ?? ''}:forecast:${parameters.region}:${parameters.account}:forecast-export-job/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:forecast:${parameters.region}:${parameters.account}:forecast-export-job/${parameters.resourceId}`
 }
 
 export interface ExplainabilityArnParameters {
@@ -92,7 +92,7 @@ export interface ExplainabilityArnParameters {
 }
 export type ExplainabilityArn = `arn:${string}:forecast:${string}:${string}:explainability/${string}`
 export function explainabilityArn(parameters: ExplainabilityArnParameters): ExplainabilityArn {
-  return `arn:${parameters.partition ?? ''}:forecast:${parameters.region}:${parameters.account}:explainability/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:forecast:${parameters.region}:${parameters.account}:explainability/${parameters.resourceId}`
 }
 
 export interface ExplainabilityExportArnParameters {
@@ -103,7 +103,7 @@ export interface ExplainabilityExportArnParameters {
 }
 export type ExplainabilityExportArn = `arn:${string}:forecast:${string}:${string}:explainability-export/${string}`
 export function explainabilityExportArn(parameters: ExplainabilityExportArnParameters): ExplainabilityExportArn {
-  return `arn:${parameters.partition ?? ''}:forecast:${parameters.region}:${parameters.account}:explainability-export/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:forecast:${parameters.region}:${parameters.account}:explainability-export/${parameters.resourceId}`
 }
 
 export interface MonitorArnParameters {
@@ -114,7 +114,7 @@ export interface MonitorArnParameters {
 }
 export type MonitorArn = `arn:${string}:forecast:${string}:${string}:monitor/${string}`
 export function monitorArn(parameters: MonitorArnParameters): MonitorArn {
-  return `arn:${parameters.partition ?? ''}:forecast:${parameters.region}:${parameters.account}:monitor/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:forecast:${parameters.region}:${parameters.account}:monitor/${parameters.resourceId}`
 }
 
 export interface WhatIfAnalysisArnParameters {
@@ -125,7 +125,7 @@ export interface WhatIfAnalysisArnParameters {
 }
 export type WhatIfAnalysisArn = `arn:${string}:forecast:${string}:${string}:what-if-analysis/${string}`
 export function whatIfAnalysisArn(parameters: WhatIfAnalysisArnParameters): WhatIfAnalysisArn {
-  return `arn:${parameters.partition ?? ''}:forecast:${parameters.region}:${parameters.account}:what-if-analysis/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:forecast:${parameters.region}:${parameters.account}:what-if-analysis/${parameters.resourceId}`
 }
 
 export interface WhatIfForecastArnParameters {
@@ -136,7 +136,7 @@ export interface WhatIfForecastArnParameters {
 }
 export type WhatIfForecastArn = `arn:${string}:forecast:${string}:${string}:what-if-forecast/${string}`
 export function whatIfForecastArn(parameters: WhatIfForecastArnParameters): WhatIfForecastArn {
-  return `arn:${parameters.partition ?? ''}:forecast:${parameters.region}:${parameters.account}:what-if-forecast/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:forecast:${parameters.region}:${parameters.account}:what-if-forecast/${parameters.resourceId}`
 }
 
 export interface WhatIfForecastExportArnParameters {
@@ -147,7 +147,7 @@ export interface WhatIfForecastExportArnParameters {
 }
 export type WhatIfForecastExportArn = `arn:${string}:forecast:${string}:${string}:what-if-forecast-export/${string}`
 export function whatIfForecastExportArn(parameters: WhatIfForecastExportArnParameters): WhatIfForecastExportArn {
-  return `arn:${parameters.partition ?? ''}:forecast:${parameters.region}:${parameters.account}:what-if-forecast-export/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:forecast:${parameters.region}:${parameters.account}:what-if-forecast-export/${parameters.resourceId}`
 }
 
 export interface EndpointArnParameters {
@@ -158,5 +158,5 @@ export interface EndpointArnParameters {
 }
 export type EndpointArn = `arn:${string}:forecast:${string}:${string}:forecast-endpoint/${string}`
 export function endpointArn(parameters: EndpointArnParameters): EndpointArn {
-  return `arn:${parameters.partition ?? ''}:forecast:${parameters.region}:${parameters.account}:forecast-endpoint/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:forecast:${parameters.region}:${parameters.account}:forecast-endpoint/${parameters.resourceId}`
 }

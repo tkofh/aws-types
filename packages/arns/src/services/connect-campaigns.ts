@@ -6,5 +6,5 @@ export interface CampaignArnParameters {
 }
 export type CampaignArn = `arn:${string}:connect-campaigns:${string}:${string}:campaign/${string}`
 export function campaignArn(parameters: CampaignArnParameters): CampaignArn {
-  return `arn:${parameters.partition ?? ''}:connect-campaigns:${parameters.region}:${parameters.account}:campaign/${parameters.campaignId}`
+  return `arn:${parameters.partition ?? 'aws'}:connect-campaigns:${parameters.region}:${parameters.account}:campaign/${parameters.campaignId}`
 }

@@ -6,7 +6,7 @@ export interface ManagedDeviceArnParameters {
 }
 export type ManagedDeviceArn = `arn:${string}:snow-device-management:${string}:${string}:managed-device/${string}`
 export function managedDeviceArn(parameters: ManagedDeviceArnParameters): ManagedDeviceArn {
-  return `arn:${parameters.partition ?? ''}:snow-device-management:${parameters.region}:${parameters.account}:managed-device/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:snow-device-management:${parameters.region}:${parameters.account}:managed-device/${parameters.resourceId}`
 }
 
 export interface TaskArnParameters {
@@ -17,5 +17,5 @@ export interface TaskArnParameters {
 }
 export type TaskArn = `arn:${string}:snow-device-management:${string}:${string}:task/${string}`
 export function taskArn(parameters: TaskArnParameters): TaskArn {
-  return `arn:${parameters.partition ?? ''}:snow-device-management:${parameters.region}:${parameters.account}:task/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:snow-device-management:${parameters.region}:${parameters.account}:task/${parameters.resourceId}`
 }

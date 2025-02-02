@@ -8,7 +8,7 @@ export interface ActionArnParameters {
 }
 export type ActionArn = `arn:${string}:codepipeline:${string}:${string}:${string}/${string}/${string}`
 export function actionArn(parameters: ActionArnParameters): ActionArn {
-  return `arn:${parameters.partition ?? ''}:codepipeline:${parameters.region}:${parameters.account}:${parameters.pipelineName}/${parameters.stageName}/${parameters.actionName}`
+  return `arn:${parameters.partition ?? 'aws'}:codepipeline:${parameters.region}:${parameters.account}:${parameters.pipelineName}/${parameters.stageName}/${parameters.actionName}`
 }
 
 export interface ActiontypeArnParameters {
@@ -22,7 +22,7 @@ export interface ActiontypeArnParameters {
 }
 export type ActiontypeArn = `arn:${string}:codepipeline:${string}:${string}:actiontype:${string}/${string}/${string}/${string}`
 export function actiontypeArn(parameters: ActiontypeArnParameters): ActiontypeArn {
-  return `arn:${parameters.partition ?? ''}:codepipeline:${parameters.region}:${parameters.account}:actiontype:${parameters.owner}/${parameters.category}/${parameters.provider}/${parameters.version}`
+  return `arn:${parameters.partition ?? 'aws'}:codepipeline:${parameters.region}:${parameters.account}:actiontype:${parameters.owner}/${parameters.category}/${parameters.provider}/${parameters.version}`
 }
 
 export interface PipelineArnParameters {
@@ -33,7 +33,7 @@ export interface PipelineArnParameters {
 }
 export type PipelineArn = `arn:${string}:codepipeline:${string}:${string}:${string}`
 export function pipelineArn(parameters: PipelineArnParameters): PipelineArn {
-  return `arn:${parameters.partition ?? ''}:codepipeline:${parameters.region}:${parameters.account}:${parameters.pipelineName}`
+  return `arn:${parameters.partition ?? 'aws'}:codepipeline:${parameters.region}:${parameters.account}:${parameters.pipelineName}`
 }
 
 export interface StageArnParameters {
@@ -45,7 +45,7 @@ export interface StageArnParameters {
 }
 export type StageArn = `arn:${string}:codepipeline:${string}:${string}:${string}/${string}`
 export function stageArn(parameters: StageArnParameters): StageArn {
-  return `arn:${parameters.partition ?? ''}:codepipeline:${parameters.region}:${parameters.account}:${parameters.pipelineName}/${parameters.stageName}`
+  return `arn:${parameters.partition ?? 'aws'}:codepipeline:${parameters.region}:${parameters.account}:${parameters.pipelineName}/${parameters.stageName}`
 }
 
 export interface WebhookArnParameters {
@@ -56,5 +56,5 @@ export interface WebhookArnParameters {
 }
 export type WebhookArn = `arn:${string}:codepipeline:${string}:${string}:webhook:${string}`
 export function webhookArn(parameters: WebhookArnParameters): WebhookArn {
-  return `arn:${parameters.partition ?? ''}:codepipeline:${parameters.region}:${parameters.account}:webhook:${parameters.webhookName}`
+  return `arn:${parameters.partition ?? 'aws'}:codepipeline:${parameters.region}:${parameters.account}:webhook:${parameters.webhookName}`
 }

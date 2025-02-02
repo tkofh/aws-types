@@ -6,7 +6,7 @@ export interface EnvironmentTemplateArnParameters {
 }
 export type EnvironmentTemplateArn = `arn:${string}:proton:${string}:${string}:environment-template/${string}`
 export function environmentTemplateArn(parameters: EnvironmentTemplateArnParameters): EnvironmentTemplateArn {
-  return `arn:${parameters.partition ?? ''}:proton:${parameters.region}:${parameters.account}:environment-template/${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:proton:${parameters.region}:${parameters.account}:environment-template/${parameters.name}`
 }
 
 export interface EnvironmentTemplateVersionArnParameters {
@@ -19,7 +19,7 @@ export interface EnvironmentTemplateVersionArnParameters {
 }
 export type EnvironmentTemplateVersionArn = `arn:${string}:proton:${string}:${string}:environment-template/${string}:${string}.${string}`
 export function environmentTemplateVersionArn(parameters: EnvironmentTemplateVersionArnParameters): EnvironmentTemplateVersionArn {
-  return `arn:${parameters.partition ?? ''}:proton:${parameters.region}:${parameters.account}:environment-template/${parameters.templateName}:${parameters.majorVersion}.${parameters.minorVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:proton:${parameters.region}:${parameters.account}:environment-template/${parameters.templateName}:${parameters.majorVersion}.${parameters.minorVersion}`
 }
 
 export interface EnvironmentTemplateMajorVersionArnParameters {
@@ -31,7 +31,7 @@ export interface EnvironmentTemplateMajorVersionArnParameters {
 }
 export type EnvironmentTemplateMajorVersionArn = `arn:${string}:proton:${string}:${string}:environment-template/${string}:${string}`
 export function environmentTemplateMajorVersionArn(parameters: EnvironmentTemplateMajorVersionArnParameters): EnvironmentTemplateMajorVersionArn {
-  return `arn:${parameters.partition ?? ''}:proton:${parameters.region}:${parameters.account}:environment-template/${parameters.templateName}:${parameters.majorVersionId}`
+  return `arn:${parameters.partition ?? 'aws'}:proton:${parameters.region}:${parameters.account}:environment-template/${parameters.templateName}:${parameters.majorVersionId}`
 }
 
 export interface EnvironmentTemplateMinorVersionArnParameters {
@@ -44,7 +44,7 @@ export interface EnvironmentTemplateMinorVersionArnParameters {
 }
 export type EnvironmentTemplateMinorVersionArn = `arn:${string}:proton:${string}:${string}:environment-template/${string}:${string}.${string}`
 export function environmentTemplateMinorVersionArn(parameters: EnvironmentTemplateMinorVersionArnParameters): EnvironmentTemplateMinorVersionArn {
-  return `arn:${parameters.partition ?? ''}:proton:${parameters.region}:${parameters.account}:environment-template/${parameters.templateName}:${parameters.majorVersionId}.${parameters.minorVersionId}`
+  return `arn:${parameters.partition ?? 'aws'}:proton:${parameters.region}:${parameters.account}:environment-template/${parameters.templateName}:${parameters.majorVersionId}.${parameters.minorVersionId}`
 }
 
 export interface ServiceTemplateArnParameters {
@@ -55,7 +55,7 @@ export interface ServiceTemplateArnParameters {
 }
 export type ServiceTemplateArn = `arn:${string}:proton:${string}:${string}:service-template/${string}`
 export function serviceTemplateArn(parameters: ServiceTemplateArnParameters): ServiceTemplateArn {
-  return `arn:${parameters.partition ?? ''}:proton:${parameters.region}:${parameters.account}:service-template/${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:proton:${parameters.region}:${parameters.account}:service-template/${parameters.name}`
 }
 
 export interface ServiceTemplateVersionArnParameters {
@@ -68,7 +68,7 @@ export interface ServiceTemplateVersionArnParameters {
 }
 export type ServiceTemplateVersionArn = `arn:${string}:proton:${string}:${string}:service-template/${string}:${string}.${string}`
 export function serviceTemplateVersionArn(parameters: ServiceTemplateVersionArnParameters): ServiceTemplateVersionArn {
-  return `arn:${parameters.partition ?? ''}:proton:${parameters.region}:${parameters.account}:service-template/${parameters.templateName}:${parameters.majorVersion}.${parameters.minorVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:proton:${parameters.region}:${parameters.account}:service-template/${parameters.templateName}:${parameters.majorVersion}.${parameters.minorVersion}`
 }
 
 export interface ServiceTemplateMajorVersionArnParameters {
@@ -80,7 +80,7 @@ export interface ServiceTemplateMajorVersionArnParameters {
 }
 export type ServiceTemplateMajorVersionArn = `arn:${string}:proton:${string}:${string}:service-template/${string}:${string}`
 export function serviceTemplateMajorVersionArn(parameters: ServiceTemplateMajorVersionArnParameters): ServiceTemplateMajorVersionArn {
-  return `arn:${parameters.partition ?? ''}:proton:${parameters.region}:${parameters.account}:service-template/${parameters.templateName}:${parameters.majorVersionId}`
+  return `arn:${parameters.partition ?? 'aws'}:proton:${parameters.region}:${parameters.account}:service-template/${parameters.templateName}:${parameters.majorVersionId}`
 }
 
 export interface ServiceTemplateMinorVersionArnParameters {
@@ -93,7 +93,7 @@ export interface ServiceTemplateMinorVersionArnParameters {
 }
 export type ServiceTemplateMinorVersionArn = `arn:${string}:proton:${string}:${string}:service-template/${string}:${string}.${string}`
 export function serviceTemplateMinorVersionArn(parameters: ServiceTemplateMinorVersionArnParameters): ServiceTemplateMinorVersionArn {
-  return `arn:${parameters.partition ?? ''}:proton:${parameters.region}:${parameters.account}:service-template/${parameters.templateName}:${parameters.majorVersionId}.${parameters.minorVersionId}`
+  return `arn:${parameters.partition ?? 'aws'}:proton:${parameters.region}:${parameters.account}:service-template/${parameters.templateName}:${parameters.majorVersionId}.${parameters.minorVersionId}`
 }
 
 export interface EnvironmentArnParameters {
@@ -104,7 +104,7 @@ export interface EnvironmentArnParameters {
 }
 export type EnvironmentArn = `arn:${string}:proton:${string}:${string}:environment/${string}`
 export function environmentArn(parameters: EnvironmentArnParameters): EnvironmentArn {
-  return `arn:${parameters.partition ?? ''}:proton:${parameters.region}:${parameters.account}:environment/${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:proton:${parameters.region}:${parameters.account}:environment/${parameters.name}`
 }
 
 export interface ServiceArnParameters {
@@ -115,7 +115,7 @@ export interface ServiceArnParameters {
 }
 export type ServiceArn = `arn:${string}:proton:${string}:${string}:service/${string}`
 export function serviceArn(parameters: ServiceArnParameters): ServiceArn {
-  return `arn:${parameters.partition ?? ''}:proton:${parameters.region}:${parameters.account}:service/${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:proton:${parameters.region}:${parameters.account}:service/${parameters.name}`
 }
 
 export interface ServiceInstanceArnParameters {
@@ -127,7 +127,7 @@ export interface ServiceInstanceArnParameters {
 }
 export type ServiceInstanceArn = `arn:${string}:proton:${string}:${string}:service/${string}/service-instance/${string}`
 export function serviceInstanceArn(parameters: ServiceInstanceArnParameters): ServiceInstanceArn {
-  return `arn:${parameters.partition ?? ''}:proton:${parameters.region}:${parameters.account}:service/${parameters.serviceName}/service-instance/${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:proton:${parameters.region}:${parameters.account}:service/${parameters.serviceName}/service-instance/${parameters.name}`
 }
 
 export interface EnvironmentAccountConnectionArnParameters {
@@ -138,7 +138,7 @@ export interface EnvironmentAccountConnectionArnParameters {
 }
 export type EnvironmentAccountConnectionArn = `arn:${string}:proton:${string}:${string}:environment-account-connection/${string}`
 export function environmentAccountConnectionArn(parameters: EnvironmentAccountConnectionArnParameters): EnvironmentAccountConnectionArn {
-  return `arn:${parameters.partition ?? ''}:proton:${parameters.region}:${parameters.account}:environment-account-connection/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:proton:${parameters.region}:${parameters.account}:environment-account-connection/${parameters.id}`
 }
 
 export interface RepositoryArnParameters {
@@ -150,7 +150,7 @@ export interface RepositoryArnParameters {
 }
 export type RepositoryArn = `arn:${string}:proton:${string}:${string}:repository/${string}:${string}`
 export function repositoryArn(parameters: RepositoryArnParameters): RepositoryArn {
-  return `arn:${parameters.partition ?? ''}:proton:${parameters.region}:${parameters.account}:repository/${parameters.provider}:${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:proton:${parameters.region}:${parameters.account}:repository/${parameters.provider}:${parameters.name}`
 }
 
 export interface ComponentArnParameters {
@@ -161,7 +161,7 @@ export interface ComponentArnParameters {
 }
 export type ComponentArn = `arn:${string}:proton:${string}:${string}:component/${string}`
 export function componentArn(parameters: ComponentArnParameters): ComponentArn {
-  return `arn:${parameters.partition ?? ''}:proton:${parameters.region}:${parameters.account}:component/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:proton:${parameters.region}:${parameters.account}:component/${parameters.id}`
 }
 
 export interface DeploymentArnParameters {
@@ -172,5 +172,5 @@ export interface DeploymentArnParameters {
 }
 export type DeploymentArn = `arn:${string}:proton:${string}:${string}:deployment/${string}`
 export function deploymentArn(parameters: DeploymentArnParameters): DeploymentArn {
-  return `arn:${parameters.partition ?? ''}:proton:${parameters.region}:${parameters.account}:deployment/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:proton:${parameters.region}:${parameters.account}:deployment/${parameters.id}`
 }

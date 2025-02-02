@@ -6,7 +6,7 @@ export interface ClusterArnParameters {
 }
 export type ClusterArn = `arn:${string}:pcs:${string}:${string}:cluster/${string}`
 export function clusterArn(parameters: ClusterArnParameters): ClusterArn {
-  return `arn:${parameters.partition ?? ''}:pcs:${parameters.region}:${parameters.account}:cluster/${parameters.clusterIdentifier}`
+  return `arn:${parameters.partition ?? 'aws'}:pcs:${parameters.region}:${parameters.account}:cluster/${parameters.clusterIdentifier}`
 }
 
 export interface ComputenodegroupArnParameters {
@@ -18,7 +18,7 @@ export interface ComputenodegroupArnParameters {
 }
 export type ComputenodegroupArn = `arn:${string}:pcs:${string}:${string}:cluster/${string}/computenodegroup/${string}`
 export function computenodegroupArn(parameters: ComputenodegroupArnParameters): ComputenodegroupArn {
-  return `arn:${parameters.partition ?? ''}:pcs:${parameters.region}:${parameters.account}:cluster/${parameters.clusterIdentifier}/computenodegroup/${parameters.computeNodeGroupIdentifier}`
+  return `arn:${parameters.partition ?? 'aws'}:pcs:${parameters.region}:${parameters.account}:cluster/${parameters.clusterIdentifier}/computenodegroup/${parameters.computeNodeGroupIdentifier}`
 }
 
 export interface QueueArnParameters {
@@ -30,5 +30,5 @@ export interface QueueArnParameters {
 }
 export type QueueArn = `arn:${string}:pcs:${string}:${string}:cluster/${string}/queue/${string}`
 export function queueArn(parameters: QueueArnParameters): QueueArn {
-  return `arn:${parameters.partition ?? ''}:pcs:${parameters.region}:${parameters.account}:cluster/${parameters.clusterIdentifier}/queue/${parameters.queueIdentifier}`
+  return `arn:${parameters.partition ?? 'aws'}:pcs:${parameters.region}:${parameters.account}:cluster/${parameters.clusterIdentifier}/queue/${parameters.queueIdentifier}`
 }

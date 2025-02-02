@@ -7,7 +7,7 @@ export interface AnalysistemplateArnParameters {
 }
 export type AnalysistemplateArn = `arn:${string}:cleanrooms:${string}:${string}:membership/${string}/analysistemplate/${string}`
 export function analysistemplateArn(parameters: AnalysistemplateArnParameters): AnalysistemplateArn {
-  return `arn:${parameters.partition ?? ''}:cleanrooms:${parameters.region}:${parameters.account}:membership/${parameters.membershipId}/analysistemplate/${parameters.analysisTemplateId}`
+  return `arn:${parameters.partition ?? 'aws'}:cleanrooms:${parameters.region}:${parameters.account}:membership/${parameters.membershipId}/analysistemplate/${parameters.analysisTemplateId}`
 }
 
 export interface CollaborationArnParameters {
@@ -18,7 +18,7 @@ export interface CollaborationArnParameters {
 }
 export type CollaborationArn = `arn:${string}:cleanrooms:${string}:${string}:collaboration/${string}`
 export function collaborationArn(parameters: CollaborationArnParameters): CollaborationArn {
-  return `arn:${parameters.partition ?? ''}:cleanrooms:${parameters.region}:${parameters.account}:collaboration/${parameters.collaborationId}`
+  return `arn:${parameters.partition ?? 'aws'}:cleanrooms:${parameters.region}:${parameters.account}:collaboration/${parameters.collaborationId}`
 }
 
 export interface ConfiguredaudiencemodelassociationArnParameters {
@@ -30,7 +30,7 @@ export interface ConfiguredaudiencemodelassociationArnParameters {
 }
 export type ConfiguredaudiencemodelassociationArn = `arn:${string}:cleanrooms:${string}:${string}:membership/${string}/configuredaudiencemodelassociation/${string}`
 export function configuredaudiencemodelassociationArn(parameters: ConfiguredaudiencemodelassociationArnParameters): ConfiguredaudiencemodelassociationArn {
-  return `arn:${parameters.partition ?? ''}:cleanrooms:${parameters.region}:${parameters.account}:membership/${parameters.membershipId}/configuredaudiencemodelassociation/${parameters.configuredAudienceModelAssociationId}`
+  return `arn:${parameters.partition ?? 'aws'}:cleanrooms:${parameters.region}:${parameters.account}:membership/${parameters.membershipId}/configuredaudiencemodelassociation/${parameters.configuredAudienceModelAssociationId}`
 }
 
 export interface ConfiguredtableArnParameters {
@@ -41,7 +41,7 @@ export interface ConfiguredtableArnParameters {
 }
 export type ConfiguredtableArn = `arn:${string}:cleanrooms:${string}:${string}:configuredtable/${string}`
 export function configuredtableArn(parameters: ConfiguredtableArnParameters): ConfiguredtableArn {
-  return `arn:${parameters.partition ?? ''}:cleanrooms:${parameters.region}:${parameters.account}:configuredtable/${parameters.configuredTableId}`
+  return `arn:${parameters.partition ?? 'aws'}:cleanrooms:${parameters.region}:${parameters.account}:configuredtable/${parameters.configuredTableId}`
 }
 
 export interface ConfiguredtableassociationArnParameters {
@@ -53,7 +53,7 @@ export interface ConfiguredtableassociationArnParameters {
 }
 export type ConfiguredtableassociationArn = `arn:${string}:cleanrooms:${string}:${string}:membership/${string}/configuredtableassociation/${string}`
 export function configuredtableassociationArn(parameters: ConfiguredtableassociationArnParameters): ConfiguredtableassociationArn {
-  return `arn:${parameters.partition ?? ''}:cleanrooms:${parameters.region}:${parameters.account}:membership/${parameters.membershipId}/configuredtableassociation/${parameters.configuredTableAssociationId}`
+  return `arn:${parameters.partition ?? 'aws'}:cleanrooms:${parameters.region}:${parameters.account}:membership/${parameters.membershipId}/configuredtableassociation/${parameters.configuredTableAssociationId}`
 }
 
 export interface IdmappingtableArnParameters {
@@ -65,7 +65,7 @@ export interface IdmappingtableArnParameters {
 }
 export type IdmappingtableArn = `arn:${string}:cleanrooms:${string}:${string}:membership/${string}/idmappingtable/${string}`
 export function idmappingtableArn(parameters: IdmappingtableArnParameters): IdmappingtableArn {
-  return `arn:${parameters.partition ?? ''}:cleanrooms:${parameters.region}:${parameters.account}:membership/${parameters.membershipId}/idmappingtable/${parameters.idMappingTableId}`
+  return `arn:${parameters.partition ?? 'aws'}:cleanrooms:${parameters.region}:${parameters.account}:membership/${parameters.membershipId}/idmappingtable/${parameters.idMappingTableId}`
 }
 
 export interface IdnamespaceassociationArnParameters {
@@ -77,7 +77,7 @@ export interface IdnamespaceassociationArnParameters {
 }
 export type IdnamespaceassociationArn = `arn:${string}:cleanrooms:${string}:${string}:membership/${string}/idnamespaceassociation/${string}`
 export function idnamespaceassociationArn(parameters: IdnamespaceassociationArnParameters): IdnamespaceassociationArn {
-  return `arn:${parameters.partition ?? ''}:cleanrooms:${parameters.region}:${parameters.account}:membership/${parameters.membershipId}/idnamespaceassociation/${parameters.idNamespaceAssociationId}`
+  return `arn:${parameters.partition ?? 'aws'}:cleanrooms:${parameters.region}:${parameters.account}:membership/${parameters.membershipId}/idnamespaceassociation/${parameters.idNamespaceAssociationId}`
 }
 
 export interface MembershipArnParameters {
@@ -88,7 +88,7 @@ export interface MembershipArnParameters {
 }
 export type MembershipArn = `arn:${string}:cleanrooms:${string}:${string}:membership/${string}`
 export function membershipArn(parameters: MembershipArnParameters): MembershipArn {
-  return `arn:${parameters.partition ?? ''}:cleanrooms:${parameters.region}:${parameters.account}:membership/${parameters.membershipId}`
+  return `arn:${parameters.partition ?? 'aws'}:cleanrooms:${parameters.region}:${parameters.account}:membership/${parameters.membershipId}`
 }
 
 export interface PrivacybudgettemplateArnParameters {
@@ -100,5 +100,5 @@ export interface PrivacybudgettemplateArnParameters {
 }
 export type PrivacybudgettemplateArn = `arn:${string}:cleanrooms:${string}:${string}:membership/${string}/privacybudgettemplate/${string}`
 export function privacybudgettemplateArn(parameters: PrivacybudgettemplateArnParameters): PrivacybudgettemplateArn {
-  return `arn:${parameters.partition ?? ''}:cleanrooms:${parameters.region}:${parameters.account}:membership/${parameters.membershipId}/privacybudgettemplate/${parameters.privacyBudgetTemplateId}`
+  return `arn:${parameters.partition ?? 'aws'}:cleanrooms:${parameters.region}:${parameters.account}:membership/${parameters.membershipId}/privacybudgettemplate/${parameters.privacyBudgetTemplateId}`
 }

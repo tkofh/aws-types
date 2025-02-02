@@ -6,5 +6,5 @@ export interface VaultArnParameters {
 }
 export type VaultArn = `arn:${string}:glacier:${string}:${string}:vaults/${string}`
 export function vaultArn(parameters: VaultArnParameters): VaultArn {
-  return `arn:${parameters.partition ?? ''}:glacier:${parameters.region}:${parameters.account}:vaults/${parameters.vaultName}`
+  return `arn:${parameters.partition ?? 'aws'}:glacier:${parameters.region}:${parameters.account}:vaults/${parameters.vaultName}`
 }

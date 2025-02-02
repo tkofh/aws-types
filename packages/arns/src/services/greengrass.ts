@@ -6,7 +6,7 @@ export interface ConnectivityInfoArnParameters {
 }
 export type ConnectivityInfoArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/things/${string}/connectivityInfo`
 export function connectivityInfoArn(parameters: ConnectivityInfoArnParameters): ConnectivityInfoArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/things/${parameters.thingName}/connectivityInfo`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/things/${parameters.thingName}/connectivityInfo`
 }
 
 export interface ComponentArnParameters {
@@ -17,7 +17,7 @@ export interface ComponentArnParameters {
 }
 export type ComponentArn = `arn:${string}:greengrass:${string}:${string}:components:${string}`
 export function componentArn(parameters: ComponentArnParameters): ComponentArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:components:${parameters.componentName}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:components:${parameters.componentName}`
 }
 
 export interface ComponentVersionArnParameters {
@@ -29,7 +29,7 @@ export interface ComponentVersionArnParameters {
 }
 export type ComponentVersionArn = `arn:${string}:greengrass:${string}:${string}:components:${string}:versions:${string}`
 export function componentVersionArn(parameters: ComponentVersionArnParameters): ComponentVersionArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:components:${parameters.componentName}:versions:${parameters.componentVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:components:${parameters.componentName}:versions:${parameters.componentVersion}`
 }
 
 export interface CoreDeviceArnParameters {
@@ -40,7 +40,7 @@ export interface CoreDeviceArnParameters {
 }
 export type CoreDeviceArn = `arn:${string}:greengrass:${string}:${string}:coreDevices:${string}`
 export function coreDeviceArn(parameters: CoreDeviceArnParameters): CoreDeviceArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:coreDevices:${parameters.coreDeviceThingName}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:coreDevices:${parameters.coreDeviceThingName}`
 }
 
 export interface DeploymentArnParameters {
@@ -51,7 +51,7 @@ export interface DeploymentArnParameters {
 }
 export type DeploymentArn = `arn:${string}:greengrass:${string}:${string}:deployments:${string}`
 export function deploymentArn(parameters: DeploymentArnParameters): DeploymentArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:deployments:${parameters.deploymentId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:deployments:${parameters.deploymentId}`
 }
 
 export interface CertificateAuthorityArnParameters {
@@ -63,7 +63,7 @@ export interface CertificateAuthorityArnParameters {
 }
 export type CertificateAuthorityArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/groups/${string}/certificateauthorities/${string}`
 export function certificateAuthorityArn(parameters: CertificateAuthorityArnParameters): CertificateAuthorityArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/groups/${parameters.groupId}/certificateauthorities/${parameters.certificateAuthorityId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/groups/${parameters.groupId}/certificateauthorities/${parameters.certificateAuthorityId}`
 }
 
 export interface BulkDeploymentArnParameters {
@@ -74,7 +74,7 @@ export interface BulkDeploymentArnParameters {
 }
 export type BulkDeploymentArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/bulk/deployments/${string}`
 export function bulkDeploymentArn(parameters: BulkDeploymentArnParameters): BulkDeploymentArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/bulk/deployments/${parameters.bulkDeploymentId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/bulk/deployments/${parameters.bulkDeploymentId}`
 }
 
 export interface GroupArnParameters {
@@ -85,7 +85,7 @@ export interface GroupArnParameters {
 }
 export type GroupArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/groups/${string}`
 export function groupArn(parameters: GroupArnParameters): GroupArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/groups/${parameters.groupId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/groups/${parameters.groupId}`
 }
 
 export interface GroupVersionArnParameters {
@@ -97,7 +97,7 @@ export interface GroupVersionArnParameters {
 }
 export type GroupVersionArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/groups/${string}/versions/${string}`
 export function groupVersionArn(parameters: GroupVersionArnParameters): GroupVersionArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/groups/${parameters.groupId}/versions/${parameters.versionId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/groups/${parameters.groupId}/versions/${parameters.versionId}`
 }
 
 export interface CoreDefinitionArnParameters {
@@ -108,7 +108,7 @@ export interface CoreDefinitionArnParameters {
 }
 export type CoreDefinitionArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/cores/${string}`
 export function coreDefinitionArn(parameters: CoreDefinitionArnParameters): CoreDefinitionArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/cores/${parameters.coreDefinitionId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/cores/${parameters.coreDefinitionId}`
 }
 
 export interface CoreDefinitionVersionArnParameters {
@@ -120,7 +120,7 @@ export interface CoreDefinitionVersionArnParameters {
 }
 export type CoreDefinitionVersionArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/cores/${string}/versions/${string}`
 export function coreDefinitionVersionArn(parameters: CoreDefinitionVersionArnParameters): CoreDefinitionVersionArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/cores/${parameters.coreDefinitionId}/versions/${parameters.versionId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/cores/${parameters.coreDefinitionId}/versions/${parameters.versionId}`
 }
 
 export interface DeviceDefinitionArnParameters {
@@ -131,7 +131,7 @@ export interface DeviceDefinitionArnParameters {
 }
 export type DeviceDefinitionArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/devices/${string}`
 export function deviceDefinitionArn(parameters: DeviceDefinitionArnParameters): DeviceDefinitionArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/devices/${parameters.deviceDefinitionId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/devices/${parameters.deviceDefinitionId}`
 }
 
 export interface DeviceDefinitionVersionArnParameters {
@@ -143,7 +143,7 @@ export interface DeviceDefinitionVersionArnParameters {
 }
 export type DeviceDefinitionVersionArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/devices/${string}/versions/${string}`
 export function deviceDefinitionVersionArn(parameters: DeviceDefinitionVersionArnParameters): DeviceDefinitionVersionArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/devices/${parameters.deviceDefinitionId}/versions/${parameters.versionId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/devices/${parameters.deviceDefinitionId}/versions/${parameters.versionId}`
 }
 
 export interface FunctionDefinitionArnParameters {
@@ -154,7 +154,7 @@ export interface FunctionDefinitionArnParameters {
 }
 export type FunctionDefinitionArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/functions/${string}`
 export function functionDefinitionArn(parameters: FunctionDefinitionArnParameters): FunctionDefinitionArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/functions/${parameters.functionDefinitionId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/functions/${parameters.functionDefinitionId}`
 }
 
 export interface FunctionDefinitionVersionArnParameters {
@@ -166,7 +166,7 @@ export interface FunctionDefinitionVersionArnParameters {
 }
 export type FunctionDefinitionVersionArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/functions/${string}/versions/${string}`
 export function functionDefinitionVersionArn(parameters: FunctionDefinitionVersionArnParameters): FunctionDefinitionVersionArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/functions/${parameters.functionDefinitionId}/versions/${parameters.versionId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/functions/${parameters.functionDefinitionId}/versions/${parameters.versionId}`
 }
 
 export interface SubscriptionDefinitionArnParameters {
@@ -177,7 +177,7 @@ export interface SubscriptionDefinitionArnParameters {
 }
 export type SubscriptionDefinitionArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/subscriptions/${string}`
 export function subscriptionDefinitionArn(parameters: SubscriptionDefinitionArnParameters): SubscriptionDefinitionArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/subscriptions/${parameters.subscriptionDefinitionId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/subscriptions/${parameters.subscriptionDefinitionId}`
 }
 
 export interface SubscriptionDefinitionVersionArnParameters {
@@ -189,7 +189,7 @@ export interface SubscriptionDefinitionVersionArnParameters {
 }
 export type SubscriptionDefinitionVersionArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/subscriptions/${string}/versions/${string}`
 export function subscriptionDefinitionVersionArn(parameters: SubscriptionDefinitionVersionArnParameters): SubscriptionDefinitionVersionArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/subscriptions/${parameters.subscriptionDefinitionId}/versions/${parameters.versionId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/subscriptions/${parameters.subscriptionDefinitionId}/versions/${parameters.versionId}`
 }
 
 export interface LoggerDefinitionArnParameters {
@@ -200,7 +200,7 @@ export interface LoggerDefinitionArnParameters {
 }
 export type LoggerDefinitionArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/loggers/${string}`
 export function loggerDefinitionArn(parameters: LoggerDefinitionArnParameters): LoggerDefinitionArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/loggers/${parameters.loggerDefinitionId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/loggers/${parameters.loggerDefinitionId}`
 }
 
 export interface LoggerDefinitionVersionArnParameters {
@@ -212,7 +212,7 @@ export interface LoggerDefinitionVersionArnParameters {
 }
 export type LoggerDefinitionVersionArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/loggers/${string}/versions/${string}`
 export function loggerDefinitionVersionArn(parameters: LoggerDefinitionVersionArnParameters): LoggerDefinitionVersionArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/loggers/${parameters.loggerDefinitionId}/versions/${parameters.versionId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/loggers/${parameters.loggerDefinitionId}/versions/${parameters.versionId}`
 }
 
 export interface ResourceDefinitionArnParameters {
@@ -223,7 +223,7 @@ export interface ResourceDefinitionArnParameters {
 }
 export type ResourceDefinitionArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/resources/${string}`
 export function resourceDefinitionArn(parameters: ResourceDefinitionArnParameters): ResourceDefinitionArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/resources/${parameters.resourceDefinitionId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/resources/${parameters.resourceDefinitionId}`
 }
 
 export interface ResourceDefinitionVersionArnParameters {
@@ -235,7 +235,7 @@ export interface ResourceDefinitionVersionArnParameters {
 }
 export type ResourceDefinitionVersionArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/resources/${string}/versions/${string}`
 export function resourceDefinitionVersionArn(parameters: ResourceDefinitionVersionArnParameters): ResourceDefinitionVersionArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/resources/${parameters.resourceDefinitionId}/versions/${parameters.versionId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/resources/${parameters.resourceDefinitionId}/versions/${parameters.versionId}`
 }
 
 export interface ConnectorDefinitionArnParameters {
@@ -246,7 +246,7 @@ export interface ConnectorDefinitionArnParameters {
 }
 export type ConnectorDefinitionArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/connectors/${string}`
 export function connectorDefinitionArn(parameters: ConnectorDefinitionArnParameters): ConnectorDefinitionArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/connectors/${parameters.connectorDefinitionId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/connectors/${parameters.connectorDefinitionId}`
 }
 
 export interface ConnectorDefinitionVersionArnParameters {
@@ -258,7 +258,7 @@ export interface ConnectorDefinitionVersionArnParameters {
 }
 export type ConnectorDefinitionVersionArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/connectors/${string}/versions/${string}`
 export function connectorDefinitionVersionArn(parameters: ConnectorDefinitionVersionArnParameters): ConnectorDefinitionVersionArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/connectors/${parameters.connectorDefinitionId}/versions/${parameters.versionId}`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/definition/connectors/${parameters.connectorDefinitionId}/versions/${parameters.versionId}`
 }
 
 export interface ThingArnParameters {
@@ -269,7 +269,7 @@ export interface ThingArnParameters {
 }
 export type ThingArn = `arn:${string}:iot:${string}:${string}:thing/${string}`
 export function thingArn(parameters: ThingArnParameters): ThingArn {
-  return `arn:${parameters.partition ?? ''}:iot:${parameters.region}:${parameters.account}:thing/${parameters.thingName}`
+  return `arn:${parameters.partition ?? 'aws'}:iot:${parameters.region}:${parameters.account}:thing/${parameters.thingName}`
 }
 
 export interface ThingRuntimeConfigArnParameters {
@@ -280,5 +280,5 @@ export interface ThingRuntimeConfigArnParameters {
 }
 export type ThingRuntimeConfigArn = `arn:${string}:greengrass:${string}:${string}:/greengrass/things/${string}/runtimeconfig`
 export function thingRuntimeConfigArn(parameters: ThingRuntimeConfigArnParameters): ThingRuntimeConfigArn {
-  return `arn:${parameters.partition ?? ''}:greengrass:${parameters.region}:${parameters.account}:/greengrass/things/${parameters.thingName}/runtimeconfig`
+  return `arn:${parameters.partition ?? 'aws'}:greengrass:${parameters.region}:${parameters.account}:/greengrass/things/${parameters.thingName}/runtimeconfig`
 }

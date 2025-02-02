@@ -7,7 +7,7 @@ export interface CaseArnParameters {
 }
 export type CaseArn = `arn:${string}:cases:${string}:${string}:domain/${string}/case/${string}`
 export function caseArn(parameters: CaseArnParameters): CaseArn {
-  return `arn:${parameters.partition ?? ''}:cases:${parameters.region}:${parameters.account}:domain/${parameters.domainId}/case/${parameters.caseId}`
+  return `arn:${parameters.partition ?? 'aws'}:cases:${parameters.region}:${parameters.account}:domain/${parameters.domainId}/case/${parameters.caseId}`
 }
 
 export interface DomainArnParameters {
@@ -18,7 +18,7 @@ export interface DomainArnParameters {
 }
 export type DomainArn = `arn:${string}:cases:${string}:${string}:domain/${string}`
 export function domainArn(parameters: DomainArnParameters): DomainArn {
-  return `arn:${parameters.partition ?? ''}:cases:${parameters.region}:${parameters.account}:domain/${parameters.domainId}`
+  return `arn:${parameters.partition ?? 'aws'}:cases:${parameters.region}:${parameters.account}:domain/${parameters.domainId}`
 }
 
 export interface FieldArnParameters {
@@ -30,7 +30,7 @@ export interface FieldArnParameters {
 }
 export type FieldArn = `arn:${string}:cases:${string}:${string}:domain/${string}/field/${string}`
 export function fieldArn(parameters: FieldArnParameters): FieldArn {
-  return `arn:${parameters.partition ?? ''}:cases:${parameters.region}:${parameters.account}:domain/${parameters.domainId}/field/${parameters.fieldId}`
+  return `arn:${parameters.partition ?? 'aws'}:cases:${parameters.region}:${parameters.account}:domain/${parameters.domainId}/field/${parameters.fieldId}`
 }
 
 export interface LayoutArnParameters {
@@ -42,7 +42,7 @@ export interface LayoutArnParameters {
 }
 export type LayoutArn = `arn:${string}:cases:${string}:${string}:domain/${string}/layout/${string}`
 export function layoutArn(parameters: LayoutArnParameters): LayoutArn {
-  return `arn:${parameters.partition ?? ''}:cases:${parameters.region}:${parameters.account}:domain/${parameters.domainId}/layout/${parameters.layoutId}`
+  return `arn:${parameters.partition ?? 'aws'}:cases:${parameters.region}:${parameters.account}:domain/${parameters.domainId}/layout/${parameters.layoutId}`
 }
 
 export interface RelatedItemArnParameters {
@@ -55,7 +55,7 @@ export interface RelatedItemArnParameters {
 }
 export type RelatedItemArn = `arn:${string}:cases:${string}:${string}:domain/${string}/case/${string}/related-item/${string}`
 export function relatedItemArn(parameters: RelatedItemArnParameters): RelatedItemArn {
-  return `arn:${parameters.partition ?? ''}:cases:${parameters.region}:${parameters.account}:domain/${parameters.domainId}/case/${parameters.caseId}/related-item/${parameters.relatedItemId}`
+  return `arn:${parameters.partition ?? 'aws'}:cases:${parameters.region}:${parameters.account}:domain/${parameters.domainId}/case/${parameters.caseId}/related-item/${parameters.relatedItemId}`
 }
 
 export interface TemplateArnParameters {
@@ -67,5 +67,5 @@ export interface TemplateArnParameters {
 }
 export type TemplateArn = `arn:${string}:cases:${string}:${string}:domain/${string}/template/${string}`
 export function templateArn(parameters: TemplateArnParameters): TemplateArn {
-  return `arn:${parameters.partition ?? ''}:cases:${parameters.region}:${parameters.account}:domain/${parameters.domainId}/template/${parameters.templateId}`
+  return `arn:${parameters.partition ?? 'aws'}:cases:${parameters.region}:${parameters.account}:domain/${parameters.domainId}/template/${parameters.templateId}`
 }

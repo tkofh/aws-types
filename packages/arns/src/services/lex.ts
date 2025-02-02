@@ -6,7 +6,7 @@ export interface BotArnParameters {
 }
 export type BotArn = `arn:${string}:lex:${string}:${string}:bot:${string}`
 export function botArn(parameters: BotArnParameters): BotArn {
-  return `arn:${parameters.partition ?? ''}:lex:${parameters.region}:${parameters.account}:bot:${parameters.botName}`
+  return `arn:${parameters.partition ?? 'aws'}:lex:${parameters.region}:${parameters.account}:bot:${parameters.botName}`
 }
 
 export interface BotVersionArnParameters {
@@ -18,7 +18,7 @@ export interface BotVersionArnParameters {
 }
 export type BotVersionArn = `arn:${string}:lex:${string}:${string}:bot:${string}:${string}`
 export function botVersionArn(parameters: BotVersionArnParameters): BotVersionArn {
-  return `arn:${parameters.partition ?? ''}:lex:${parameters.region}:${parameters.account}:bot:${parameters.botName}:${parameters.botVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:lex:${parameters.region}:${parameters.account}:bot:${parameters.botName}:${parameters.botVersion}`
 }
 
 export interface BotAliasArnParameters {
@@ -30,7 +30,7 @@ export interface BotAliasArnParameters {
 }
 export type BotAliasArn = `arn:${string}:lex:${string}:${string}:bot:${string}:${string}`
 export function botAliasArn(parameters: BotAliasArnParameters): BotAliasArn {
-  return `arn:${parameters.partition ?? ''}:lex:${parameters.region}:${parameters.account}:bot:${parameters.botName}:${parameters.botAlias}`
+  return `arn:${parameters.partition ?? 'aws'}:lex:${parameters.region}:${parameters.account}:bot:${parameters.botName}:${parameters.botAlias}`
 }
 
 export interface ChannelArnParameters {
@@ -43,7 +43,7 @@ export interface ChannelArnParameters {
 }
 export type ChannelArn = `arn:${string}:lex:${string}:${string}:bot-channel:${string}:${string}:${string}`
 export function channelArn(parameters: ChannelArnParameters): ChannelArn {
-  return `arn:${parameters.partition ?? ''}:lex:${parameters.region}:${parameters.account}:bot-channel:${parameters.botName}:${parameters.botAlias}:${parameters.channelName}`
+  return `arn:${parameters.partition ?? 'aws'}:lex:${parameters.region}:${parameters.account}:bot-channel:${parameters.botName}:${parameters.botAlias}:${parameters.channelName}`
 }
 
 export interface IntentVersionArnParameters {
@@ -55,7 +55,7 @@ export interface IntentVersionArnParameters {
 }
 export type IntentVersionArn = `arn:${string}:lex:${string}:${string}:intent:${string}:${string}`
 export function intentVersionArn(parameters: IntentVersionArnParameters): IntentVersionArn {
-  return `arn:${parameters.partition ?? ''}:lex:${parameters.region}:${parameters.account}:intent:${parameters.intentName}:${parameters.intentVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:lex:${parameters.region}:${parameters.account}:intent:${parameters.intentName}:${parameters.intentVersion}`
 }
 
 export interface SlottypeVersionArnParameters {
@@ -67,7 +67,7 @@ export interface SlottypeVersionArnParameters {
 }
 export type SlottypeVersionArn = `arn:${string}:lex:${string}:${string}:slottype:${string}:${string}`
 export function slottypeVersionArn(parameters: SlottypeVersionArnParameters): SlottypeVersionArn {
-  return `arn:${parameters.partition ?? ''}:lex:${parameters.region}:${parameters.account}:slottype:${parameters.slotName}:${parameters.slotVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:lex:${parameters.region}:${parameters.account}:slottype:${parameters.slotName}:${parameters.slotVersion}`
 }
 
 export interface TestSetArnParameters {
@@ -78,5 +78,5 @@ export interface TestSetArnParameters {
 }
 export type TestSetArn = `arn:${string}:lex:${string}:${string}:test-set/${string}`
 export function testSetArn(parameters: TestSetArnParameters): TestSetArn {
-  return `arn:${parameters.partition ?? ''}:lex:${parameters.region}:${parameters.account}:test-set/${parameters.testSetId}`
+  return `arn:${parameters.partition ?? 'aws'}:lex:${parameters.region}:${parameters.account}:test-set/${parameters.testSetId}`
 }

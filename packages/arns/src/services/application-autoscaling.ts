@@ -6,5 +6,5 @@ export interface ScalableTargetArnParameters {
 }
 export type ScalableTargetArn = `arn:${string}:application-autoscaling:${string}:${string}:scalable-target/${string}`
 export function scalableTargetArn(parameters: ScalableTargetArnParameters): ScalableTargetArn {
-  return `arn:${parameters.partition ?? ''}:application-autoscaling:${parameters.region}:${parameters.account}:scalable-target/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:application-autoscaling:${parameters.region}:${parameters.account}:scalable-target/${parameters.resourceId}`
 }

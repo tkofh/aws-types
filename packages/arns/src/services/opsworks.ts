@@ -6,5 +6,5 @@ export interface StackArnParameters {
 }
 export type StackArn = `arn:${string}:opsworks:${string}:${string}:stack/${string}/`
 export function stackArn(parameters: StackArnParameters): StackArn {
-  return `arn:${parameters.partition ?? ''}:opsworks:${parameters.region}:${parameters.account}:stack/${parameters.stackId}/`
+  return `arn:${parameters.partition ?? 'aws'}:opsworks:${parameters.region}:${parameters.account}:stack/${parameters.stackId}/`
 }

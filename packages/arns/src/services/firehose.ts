@@ -6,5 +6,5 @@ export interface DeliverystreamArnParameters {
 }
 export type DeliverystreamArn = `arn:${string}:firehose:${string}:${string}:deliverystream/${string}`
 export function deliverystreamArn(parameters: DeliverystreamArnParameters): DeliverystreamArn {
-  return `arn:${parameters.partition ?? ''}:firehose:${parameters.region}:${parameters.account}:deliverystream/${parameters.deliveryStreamName}`
+  return `arn:${parameters.partition ?? 'aws'}:firehose:${parameters.region}:${parameters.account}:deliverystream/${parameters.deliveryStreamName}`
 }

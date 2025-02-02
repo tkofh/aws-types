@@ -6,7 +6,7 @@ export interface ProgressUpdateStreamArnParameters {
 }
 export type ProgressUpdateStreamArn = `arn:${string}:mgh:${string}:${string}:progressUpdateStream/${string}`
 export function progressUpdateStreamArn(parameters: ProgressUpdateStreamArnParameters): ProgressUpdateStreamArn {
-  return `arn:${parameters.partition ?? ''}:mgh:${parameters.region}:${parameters.account}:progressUpdateStream/${parameters.stream}`
+  return `arn:${parameters.partition ?? 'aws'}:mgh:${parameters.region}:${parameters.account}:progressUpdateStream/${parameters.stream}`
 }
 
 export interface MigrationTaskArnParameters {
@@ -18,5 +18,5 @@ export interface MigrationTaskArnParameters {
 }
 export type MigrationTaskArn = `arn:${string}:mgh:${string}:${string}:progressUpdateStream/${string}/migrationTask/${string}`
 export function migrationTaskArn(parameters: MigrationTaskArnParameters): MigrationTaskArn {
-  return `arn:${parameters.partition ?? ''}:mgh:${parameters.region}:${parameters.account}:progressUpdateStream/${parameters.stream}/migrationTask/${parameters.task}`
+  return `arn:${parameters.partition ?? 'aws'}:mgh:${parameters.region}:${parameters.account}:progressUpdateStream/${parameters.stream}/migrationTask/${parameters.task}`
 }

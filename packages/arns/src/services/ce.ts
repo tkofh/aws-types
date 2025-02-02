@@ -5,7 +5,7 @@ export interface AnomalysubscriptionArnParameters {
 }
 export type AnomalysubscriptionArn = `arn:${string}:ce::${string}:anomalysubscription/${string}`
 export function anomalysubscriptionArn(parameters: AnomalysubscriptionArnParameters): AnomalysubscriptionArn {
-  return `arn:${parameters.partition ?? ''}:ce::${parameters.account}:anomalysubscription/${parameters.identifier}`
+  return `arn:${parameters.partition ?? 'aws'}:ce::${parameters.account}:anomalysubscription/${parameters.identifier}`
 }
 
 export interface AnomalymonitorArnParameters {
@@ -15,7 +15,7 @@ export interface AnomalymonitorArnParameters {
 }
 export type AnomalymonitorArn = `arn:${string}:ce::${string}:anomalymonitor/${string}`
 export function anomalymonitorArn(parameters: AnomalymonitorArnParameters): AnomalymonitorArn {
-  return `arn:${parameters.partition ?? ''}:ce::${parameters.account}:anomalymonitor/${parameters.identifier}`
+  return `arn:${parameters.partition ?? 'aws'}:ce::${parameters.account}:anomalymonitor/${parameters.identifier}`
 }
 
 export interface CostcategoryArnParameters {
@@ -25,5 +25,5 @@ export interface CostcategoryArnParameters {
 }
 export type CostcategoryArn = `arn:${string}:ce::${string}:costcategory/${string}`
 export function costcategoryArn(parameters: CostcategoryArnParameters): CostcategoryArn {
-  return `arn:${parameters.partition ?? ''}:ce::${parameters.account}:costcategory/${parameters.identifier}`
+  return `arn:${parameters.partition ?? 'aws'}:ce::${parameters.account}:costcategory/${parameters.identifier}`
 }

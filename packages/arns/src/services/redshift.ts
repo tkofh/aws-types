@@ -6,7 +6,7 @@ export interface ClusterArnParameters {
 }
 export type ClusterArn = `arn:${string}:redshift:${string}:${string}:cluster:${string}`
 export function clusterArn(parameters: ClusterArnParameters): ClusterArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:cluster:${parameters.clusterName}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:cluster:${parameters.clusterName}`
 }
 
 export interface DatashareArnParameters {
@@ -18,7 +18,7 @@ export interface DatashareArnParameters {
 }
 export type DatashareArn = `arn:${string}:redshift:${string}:${string}:datashare:${string}/${string}`
 export function datashareArn(parameters: DatashareArnParameters): DatashareArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:datashare:${parameters.producerClusterNamespace}/${parameters.dataShareName}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:datashare:${parameters.producerClusterNamespace}/${parameters.dataShareName}`
 }
 
 export interface DbgroupArnParameters {
@@ -30,7 +30,7 @@ export interface DbgroupArnParameters {
 }
 export type DbgroupArn = `arn:${string}:redshift:${string}:${string}:dbgroup:${string}/${string}`
 export function dbgroupArn(parameters: DbgroupArnParameters): DbgroupArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:dbgroup:${parameters.clusterName}/${parameters.dbGroup}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:dbgroup:${parameters.clusterName}/${parameters.dbGroup}`
 }
 
 export interface DbnameArnParameters {
@@ -42,7 +42,7 @@ export interface DbnameArnParameters {
 }
 export type DbnameArn = `arn:${string}:redshift:${string}:${string}:dbname:${string}/${string}`
 export function dbnameArn(parameters: DbnameArnParameters): DbnameArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:dbname:${parameters.clusterName}/${parameters.dbName}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:dbname:${parameters.clusterName}/${parameters.dbName}`
 }
 
 export interface DbuserArnParameters {
@@ -54,7 +54,7 @@ export interface DbuserArnParameters {
 }
 export type DbuserArn = `arn:${string}:redshift:${string}:${string}:dbuser:${string}/${string}`
 export function dbuserArn(parameters: DbuserArnParameters): DbuserArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:dbuser:${parameters.clusterName}/${parameters.dbUser}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:dbuser:${parameters.clusterName}/${parameters.dbUser}`
 }
 
 export interface EventsubscriptionArnParameters {
@@ -65,7 +65,7 @@ export interface EventsubscriptionArnParameters {
 }
 export type EventsubscriptionArn = `arn:${string}:redshift:${string}:${string}:eventsubscription:${string}`
 export function eventsubscriptionArn(parameters: EventsubscriptionArnParameters): EventsubscriptionArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:eventsubscription:${parameters.eventSubscriptionName}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:eventsubscription:${parameters.eventSubscriptionName}`
 }
 
 export interface HsmclientcertificateArnParameters {
@@ -76,7 +76,7 @@ export interface HsmclientcertificateArnParameters {
 }
 export type HsmclientcertificateArn = `arn:${string}:redshift:${string}:${string}:hsmclientcertificate:${string}`
 export function hsmclientcertificateArn(parameters: HsmclientcertificateArnParameters): HsmclientcertificateArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:hsmclientcertificate:${parameters.hsmClientCertificateId}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:hsmclientcertificate:${parameters.hsmClientCertificateId}`
 }
 
 export interface HsmconfigurationArnParameters {
@@ -87,7 +87,7 @@ export interface HsmconfigurationArnParameters {
 }
 export type HsmconfigurationArn = `arn:${string}:redshift:${string}:${string}:hsmconfiguration:${string}`
 export function hsmconfigurationArn(parameters: HsmconfigurationArnParameters): HsmconfigurationArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:hsmconfiguration:${parameters.hsmConfigurationId}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:hsmconfiguration:${parameters.hsmConfigurationId}`
 }
 
 export interface NamespaceArnParameters {
@@ -98,7 +98,7 @@ export interface NamespaceArnParameters {
 }
 export type NamespaceArn = `arn:${string}:redshift:${string}:${string}:namespace:${string}`
 export function namespaceArn(parameters: NamespaceArnParameters): NamespaceArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:namespace:${parameters.clusterNamespace}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:namespace:${parameters.clusterNamespace}`
 }
 
 export interface ParametergroupArnParameters {
@@ -109,7 +109,7 @@ export interface ParametergroupArnParameters {
 }
 export type ParametergroupArn = `arn:${string}:redshift:${string}:${string}:parametergroup:${string}`
 export function parametergroupArn(parameters: ParametergroupArnParameters): ParametergroupArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:parametergroup:${parameters.parameterGroupName}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:parametergroup:${parameters.parameterGroupName}`
 }
 
 export interface SecuritygroupArnParameters {
@@ -122,7 +122,7 @@ export interface SecuritygroupArnParameters {
 }
 export type SecuritygroupArn = `arn:${string}:redshift:${string}:${string}:securitygroup:${string}/ec2securitygroup/${string}/${string}`
 export function securitygroupArn(parameters: SecuritygroupArnParameters): SecuritygroupArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:securitygroup:${parameters.securityGroupName}/ec2securitygroup/${parameters.owner}/${parameters.ec2SecurityGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:securitygroup:${parameters.securityGroupName}/ec2securitygroup/${parameters.owner}/${parameters.ec2SecurityGroupId}`
 }
 
 export interface SecuritygroupingressCidrArnParameters {
@@ -134,7 +134,7 @@ export interface SecuritygroupingressCidrArnParameters {
 }
 export type SecuritygroupingressCidrArn = `arn:${string}:redshift:${string}:${string}:securitygroupingress:${string}/cidrip/${string}`
 export function securitygroupingressCidrArn(parameters: SecuritygroupingressCidrArnParameters): SecuritygroupingressCidrArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:securitygroupingress:${parameters.securityGroupName}/cidrip/${parameters.ipRange}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:securitygroupingress:${parameters.securityGroupName}/cidrip/${parameters.ipRange}`
 }
 
 export interface SecuritygroupingressEc2securitygroupArnParameters {
@@ -147,7 +147,7 @@ export interface SecuritygroupingressEc2securitygroupArnParameters {
 }
 export type SecuritygroupingressEc2securitygroupArn = `arn:${string}:redshift:${string}:${string}:securitygroupingress:${string}/ec2securitygroup/${string}/${string}`
 export function securitygroupingressEc2securitygroupArn(parameters: SecuritygroupingressEc2securitygroupArnParameters): SecuritygroupingressEc2securitygroupArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:securitygroupingress:${parameters.securityGroupName}/ec2securitygroup/${parameters.owner}/${parameters.ece2SecuritygroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:securitygroupingress:${parameters.securityGroupName}/ec2securitygroup/${parameters.owner}/${parameters.ece2SecuritygroupId}`
 }
 
 export interface SnapshotArnParameters {
@@ -159,7 +159,7 @@ export interface SnapshotArnParameters {
 }
 export type SnapshotArn = `arn:${string}:redshift:${string}:${string}:snapshot:${string}/${string}`
 export function snapshotArn(parameters: SnapshotArnParameters): SnapshotArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:snapshot:${parameters.clusterName}/${parameters.snapshotName}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:snapshot:${parameters.clusterName}/${parameters.snapshotName}`
 }
 
 export interface SnapshotcopygrantArnParameters {
@@ -170,7 +170,7 @@ export interface SnapshotcopygrantArnParameters {
 }
 export type SnapshotcopygrantArn = `arn:${string}:redshift:${string}:${string}:snapshotcopygrant:${string}`
 export function snapshotcopygrantArn(parameters: SnapshotcopygrantArnParameters): SnapshotcopygrantArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:snapshotcopygrant:${parameters.snapshotCopyGrantName}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:snapshotcopygrant:${parameters.snapshotCopyGrantName}`
 }
 
 export interface SnapshotscheduleArnParameters {
@@ -181,7 +181,7 @@ export interface SnapshotscheduleArnParameters {
 }
 export type SnapshotscheduleArn = `arn:${string}:redshift:${string}:${string}:snapshotschedule:${string}`
 export function snapshotscheduleArn(parameters: SnapshotscheduleArnParameters): SnapshotscheduleArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:snapshotschedule:${parameters.scheduleIdentifier}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:snapshotschedule:${parameters.scheduleIdentifier}`
 }
 
 export interface SubnetgroupArnParameters {
@@ -192,7 +192,7 @@ export interface SubnetgroupArnParameters {
 }
 export type SubnetgroupArn = `arn:${string}:redshift:${string}:${string}:subnetgroup:${string}`
 export function subnetgroupArn(parameters: SubnetgroupArnParameters): SubnetgroupArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:subnetgroup:${parameters.subnetGroupName}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:subnetgroup:${parameters.subnetGroupName}`
 }
 
 export interface UsagelimitArnParameters {
@@ -203,7 +203,7 @@ export interface UsagelimitArnParameters {
 }
 export type UsagelimitArn = `arn:${string}:redshift:${string}:${string}:usagelimit:${string}`
 export function usagelimitArn(parameters: UsagelimitArnParameters): UsagelimitArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:usagelimit:${parameters.usageLimitId}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:usagelimit:${parameters.usageLimitId}`
 }
 
 export interface RedshiftidcapplicationArnParameters {
@@ -214,7 +214,7 @@ export interface RedshiftidcapplicationArnParameters {
 }
 export type RedshiftidcapplicationArn = `arn:${string}:redshift:${string}:${string}:redshiftidcapplication:${string}`
 export function redshiftidcapplicationArn(parameters: RedshiftidcapplicationArnParameters): RedshiftidcapplicationArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:redshiftidcapplication:${parameters.redshiftIdcApplicationId}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:redshiftidcapplication:${parameters.redshiftIdcApplicationId}`
 }
 
 export interface Qev2idcapplicationArnParameters {
@@ -225,5 +225,5 @@ export interface Qev2idcapplicationArnParameters {
 }
 export type Qev2idcapplicationArn = `arn:${string}:redshift:${string}:${string}:qev2idcapplication:${string}`
 export function qev2idcapplicationArn(parameters: Qev2idcapplicationArnParameters): Qev2idcapplicationArn {
-  return `arn:${parameters.partition ?? ''}:redshift:${parameters.region}:${parameters.account}:qev2idcapplication:${parameters.qev2IdcApplicationId}`
+  return `arn:${parameters.partition ?? 'aws'}:redshift:${parameters.region}:${parameters.account}:qev2idcapplication:${parameters.qev2IdcApplicationId}`
 }

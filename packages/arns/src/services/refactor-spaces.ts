@@ -6,7 +6,7 @@ export interface EnvironmentArnParameters {
 }
 export type EnvironmentArn = `arn:${string}:refactor-spaces:${string}:${string}:environment/${string}`
 export function environmentArn(parameters: EnvironmentArnParameters): EnvironmentArn {
-  return `arn:${parameters.partition ?? ''}:refactor-spaces:${parameters.region}:${parameters.account}:environment/${parameters.environmentId}`
+  return `arn:${parameters.partition ?? 'aws'}:refactor-spaces:${parameters.region}:${parameters.account}:environment/${parameters.environmentId}`
 }
 
 export interface ApplicationArnParameters {
@@ -18,7 +18,7 @@ export interface ApplicationArnParameters {
 }
 export type ApplicationArn = `arn:${string}:refactor-spaces:${string}:${string}:environment/${string}/application/${string}`
 export function applicationArn(parameters: ApplicationArnParameters): ApplicationArn {
-  return `arn:${parameters.partition ?? ''}:refactor-spaces:${parameters.region}:${parameters.account}:environment/${parameters.environmentId}/application/${parameters.applicationId}`
+  return `arn:${parameters.partition ?? 'aws'}:refactor-spaces:${parameters.region}:${parameters.account}:environment/${parameters.environmentId}/application/${parameters.applicationId}`
 }
 
 export interface ServiceArnParameters {
@@ -31,7 +31,7 @@ export interface ServiceArnParameters {
 }
 export type ServiceArn = `arn:${string}:refactor-spaces:${string}:${string}:environment/${string}/application/${string}/service/${string}`
 export function serviceArn(parameters: ServiceArnParameters): ServiceArn {
-  return `arn:${parameters.partition ?? ''}:refactor-spaces:${parameters.region}:${parameters.account}:environment/${parameters.environmentId}/application/${parameters.applicationId}/service/${parameters.serviceId}`
+  return `arn:${parameters.partition ?? 'aws'}:refactor-spaces:${parameters.region}:${parameters.account}:environment/${parameters.environmentId}/application/${parameters.applicationId}/service/${parameters.serviceId}`
 }
 
 export interface RouteArnParameters {
@@ -44,5 +44,5 @@ export interface RouteArnParameters {
 }
 export type RouteArn = `arn:${string}:refactor-spaces:${string}:${string}:environment/${string}/application/${string}/route/${string}`
 export function routeArn(parameters: RouteArnParameters): RouteArn {
-  return `arn:${parameters.partition ?? ''}:refactor-spaces:${parameters.region}:${parameters.account}:environment/${parameters.environmentId}/application/${parameters.applicationId}/route/${parameters.routeId}`
+  return `arn:${parameters.partition ?? 'aws'}:refactor-spaces:${parameters.region}:${parameters.account}:environment/${parameters.environmentId}/application/${parameters.applicationId}/route/${parameters.routeId}`
 }

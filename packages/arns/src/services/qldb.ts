@@ -6,7 +6,7 @@ export interface LedgerArnParameters {
 }
 export type LedgerArn = `arn:${string}:qldb:${string}:${string}:ledger/${string}`
 export function ledgerArn(parameters: LedgerArnParameters): LedgerArn {
-  return `arn:${parameters.partition ?? ''}:qldb:${parameters.region}:${parameters.account}:ledger/${parameters.ledgerName}`
+  return `arn:${parameters.partition ?? 'aws'}:qldb:${parameters.region}:${parameters.account}:ledger/${parameters.ledgerName}`
 }
 
 export interface StreamArnParameters {
@@ -18,7 +18,7 @@ export interface StreamArnParameters {
 }
 export type StreamArn = `arn:${string}:qldb:${string}:${string}:stream/${string}/${string}`
 export function streamArn(parameters: StreamArnParameters): StreamArn {
-  return `arn:${parameters.partition ?? ''}:qldb:${parameters.region}:${parameters.account}:stream/${parameters.ledgerName}/${parameters.streamId}`
+  return `arn:${parameters.partition ?? 'aws'}:qldb:${parameters.region}:${parameters.account}:stream/${parameters.ledgerName}/${parameters.streamId}`
 }
 
 export interface TableArnParameters {
@@ -30,7 +30,7 @@ export interface TableArnParameters {
 }
 export type TableArn = `arn:${string}:qldb:${string}:${string}:ledger/${string}/table/${string}`
 export function tableArn(parameters: TableArnParameters): TableArn {
-  return `arn:${parameters.partition ?? ''}:qldb:${parameters.region}:${parameters.account}:ledger/${parameters.ledgerName}/table/${parameters.tableId}`
+  return `arn:${parameters.partition ?? 'aws'}:qldb:${parameters.region}:${parameters.account}:ledger/${parameters.ledgerName}/table/${parameters.tableId}`
 }
 
 export interface CatalogArnParameters {
@@ -41,5 +41,5 @@ export interface CatalogArnParameters {
 }
 export type CatalogArn = `arn:${string}:qldb:${string}:${string}:ledger/${string}/information_schema/user_tables`
 export function catalogArn(parameters: CatalogArnParameters): CatalogArn {
-  return `arn:${parameters.partition ?? ''}:qldb:${parameters.region}:${parameters.account}:ledger/${parameters.ledgerName}/information_schema/user_tables`
+  return `arn:${parameters.partition ?? 'aws'}:qldb:${parameters.region}:${parameters.account}:ledger/${parameters.ledgerName}/information_schema/user_tables`
 }

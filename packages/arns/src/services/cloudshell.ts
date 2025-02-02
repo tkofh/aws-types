@@ -6,5 +6,5 @@ export interface EnvironmentArnParameters {
 }
 export type EnvironmentArn = `arn:${string}:cloudshell:${string}:${string}:environment/${string}`
 export function environmentArn(parameters: EnvironmentArnParameters): EnvironmentArn {
-  return `arn:${parameters.partition ?? ''}:cloudshell:${parameters.region}:${parameters.account}:environment/${parameters.environmentId}`
+  return `arn:${parameters.partition ?? 'aws'}:cloudshell:${parameters.region}:${parameters.account}:environment/${parameters.environmentId}`
 }

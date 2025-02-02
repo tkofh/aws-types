@@ -1,7 +1,6 @@
 import { fileURLToPath } from 'node:url'
 import { FileSystem, Path } from '@effect/platform'
-import { Schema } from '@effect/schema'
-import { Effect, Stream } from 'effect'
+import { Effect, Schema, Stream } from 'effect'
 
 export const Resource = Schema.Struct({
   arn: Schema.String,

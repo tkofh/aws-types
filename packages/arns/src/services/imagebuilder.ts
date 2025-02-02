@@ -8,7 +8,7 @@ export interface ComponentArnParameters {
 }
 export type ComponentArn = `arn:${string}:imagebuilder:${string}:${string}:component/${string}/${string}/${string}`
 export function componentArn(parameters: ComponentArnParameters): ComponentArn {
-  return `arn:${parameters.partition ?? ''}:imagebuilder:${parameters.region}:${parameters.account}:component/${parameters.componentName}/${parameters.componentVersion}/${parameters.componentBuildVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:imagebuilder:${parameters.region}:${parameters.account}:component/${parameters.componentName}/${parameters.componentVersion}/${parameters.componentBuildVersion}`
 }
 
 export interface ComponentVersionArnParameters {
@@ -20,7 +20,7 @@ export interface ComponentVersionArnParameters {
 }
 export type ComponentVersionArn = `arn:${string}:imagebuilder:${string}:${string}:component/${string}/${string}`
 export function componentVersionArn(parameters: ComponentVersionArnParameters): ComponentVersionArn {
-  return `arn:${parameters.partition ?? ''}:imagebuilder:${parameters.region}:${parameters.account}:component/${parameters.componentName}/${parameters.componentVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:imagebuilder:${parameters.region}:${parameters.account}:component/${parameters.componentName}/${parameters.componentVersion}`
 }
 
 export interface DistributionConfigurationArnParameters {
@@ -31,7 +31,7 @@ export interface DistributionConfigurationArnParameters {
 }
 export type DistributionConfigurationArn = `arn:${string}:imagebuilder:${string}:${string}:distribution-configuration/${string}`
 export function distributionConfigurationArn(parameters: DistributionConfigurationArnParameters): DistributionConfigurationArn {
-  return `arn:${parameters.partition ?? ''}:imagebuilder:${parameters.region}:${parameters.account}:distribution-configuration/${parameters.distributionConfigurationName}`
+  return `arn:${parameters.partition ?? 'aws'}:imagebuilder:${parameters.region}:${parameters.account}:distribution-configuration/${parameters.distributionConfigurationName}`
 }
 
 export interface ImageArnParameters {
@@ -44,7 +44,7 @@ export interface ImageArnParameters {
 }
 export type ImageArn = `arn:${string}:imagebuilder:${string}:${string}:image/${string}/${string}/${string}`
 export function imageArn(parameters: ImageArnParameters): ImageArn {
-  return `arn:${parameters.partition ?? ''}:imagebuilder:${parameters.region}:${parameters.account}:image/${parameters.imageName}/${parameters.imageVersion}/${parameters.imageBuildVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:imagebuilder:${parameters.region}:${parameters.account}:image/${parameters.imageName}/${parameters.imageVersion}/${parameters.imageBuildVersion}`
 }
 
 export interface ImageVersionArnParameters {
@@ -56,7 +56,7 @@ export interface ImageVersionArnParameters {
 }
 export type ImageVersionArn = `arn:${string}:imagebuilder:${string}:${string}:image/${string}/${string}`
 export function imageVersionArn(parameters: ImageVersionArnParameters): ImageVersionArn {
-  return `arn:${parameters.partition ?? ''}:imagebuilder:${parameters.region}:${parameters.account}:image/${parameters.imageName}/${parameters.imageVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:imagebuilder:${parameters.region}:${parameters.account}:image/${parameters.imageName}/${parameters.imageVersion}`
 }
 
 export interface ImageRecipeArnParameters {
@@ -68,7 +68,7 @@ export interface ImageRecipeArnParameters {
 }
 export type ImageRecipeArn = `arn:${string}:imagebuilder:${string}:${string}:image-recipe/${string}/${string}`
 export function imageRecipeArn(parameters: ImageRecipeArnParameters): ImageRecipeArn {
-  return `arn:${parameters.partition ?? ''}:imagebuilder:${parameters.region}:${parameters.account}:image-recipe/${parameters.imageRecipeName}/${parameters.imageRecipeVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:imagebuilder:${parameters.region}:${parameters.account}:image-recipe/${parameters.imageRecipeName}/${parameters.imageRecipeVersion}`
 }
 
 export interface ContainerRecipeArnParameters {
@@ -80,7 +80,7 @@ export interface ContainerRecipeArnParameters {
 }
 export type ContainerRecipeArn = `arn:${string}:imagebuilder:${string}:${string}:container-recipe/${string}/${string}`
 export function containerRecipeArn(parameters: ContainerRecipeArnParameters): ContainerRecipeArn {
-  return `arn:${parameters.partition ?? ''}:imagebuilder:${parameters.region}:${parameters.account}:container-recipe/${parameters.containerRecipeName}/${parameters.containerRecipeVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:imagebuilder:${parameters.region}:${parameters.account}:container-recipe/${parameters.containerRecipeName}/${parameters.containerRecipeVersion}`
 }
 
 export interface ImagePipelineArnParameters {
@@ -91,7 +91,7 @@ export interface ImagePipelineArnParameters {
 }
 export type ImagePipelineArn = `arn:${string}:imagebuilder:${string}:${string}:image-pipeline/${string}`
 export function imagePipelineArn(parameters: ImagePipelineArnParameters): ImagePipelineArn {
-  return `arn:${parameters.partition ?? ''}:imagebuilder:${parameters.region}:${parameters.account}:image-pipeline/${parameters.imagePipelineName}`
+  return `arn:${parameters.partition ?? 'aws'}:imagebuilder:${parameters.region}:${parameters.account}:image-pipeline/${parameters.imagePipelineName}`
 }
 
 export interface InfrastructureConfigurationArnParameters {
@@ -102,7 +102,7 @@ export interface InfrastructureConfigurationArnParameters {
 }
 export type InfrastructureConfigurationArn = `arn:${string}:imagebuilder:${string}:${string}:infrastructure-configuration/${string}`
 export function infrastructureConfigurationArn(parameters: InfrastructureConfigurationArnParameters): InfrastructureConfigurationArn {
-  return `arn:${parameters.partition ?? ''}:imagebuilder:${parameters.region}:${parameters.account}:infrastructure-configuration/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:imagebuilder:${parameters.region}:${parameters.account}:infrastructure-configuration/${parameters.resourceId}`
 }
 
 export interface KmsKeyArnParameters {
@@ -113,7 +113,7 @@ export interface KmsKeyArnParameters {
 }
 export type KmsKeyArn = `arn:${string}:kms:${string}:${string}:key/${string}`
 export function kmsKeyArn(parameters: KmsKeyArnParameters): KmsKeyArn {
-  return `arn:${parameters.partition ?? ''}:kms:${parameters.region}:${parameters.account}:key/${parameters.keyId}`
+  return `arn:${parameters.partition ?? 'aws'}:kms:${parameters.region}:${parameters.account}:key/${parameters.keyId}`
 }
 
 export interface LifecycleExecutionArnParameters {
@@ -124,7 +124,7 @@ export interface LifecycleExecutionArnParameters {
 }
 export type LifecycleExecutionArn = `arn:${string}:imagebuilder:${string}:${string}:lifecycle-execution/${string}`
 export function lifecycleExecutionArn(parameters: LifecycleExecutionArnParameters): LifecycleExecutionArn {
-  return `arn:${parameters.partition ?? ''}:imagebuilder:${parameters.region}:${parameters.account}:lifecycle-execution/${parameters.lifecycleExecutionId}`
+  return `arn:${parameters.partition ?? 'aws'}:imagebuilder:${parameters.region}:${parameters.account}:lifecycle-execution/${parameters.lifecycleExecutionId}`
 }
 
 export interface LifecyclePolicyArnParameters {
@@ -135,7 +135,7 @@ export interface LifecyclePolicyArnParameters {
 }
 export type LifecyclePolicyArn = `arn:${string}:imagebuilder:${string}:${string}:lifecycle-policy/${string}`
 export function lifecyclePolicyArn(parameters: LifecyclePolicyArnParameters): LifecyclePolicyArn {
-  return `arn:${parameters.partition ?? ''}:imagebuilder:${parameters.region}:${parameters.account}:lifecycle-policy/${parameters.lifecyclePolicyName}`
+  return `arn:${parameters.partition ?? 'aws'}:imagebuilder:${parameters.region}:${parameters.account}:lifecycle-policy/${parameters.lifecyclePolicyName}`
 }
 
 export interface WorkflowArnParameters {
@@ -149,7 +149,7 @@ export interface WorkflowArnParameters {
 }
 export type WorkflowArn = `arn:${string}:imagebuilder:${string}:${string}:workflow/${string}/${string}/${string}/${string}`
 export function workflowArn(parameters: WorkflowArnParameters): WorkflowArn {
-  return `arn:${parameters.partition ?? ''}:imagebuilder:${parameters.region}:${parameters.account}:workflow/${parameters.workflowType}/${parameters.workflowName}/${parameters.workflowVersion}/${parameters.workflowBuildVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:imagebuilder:${parameters.region}:${parameters.account}:workflow/${parameters.workflowType}/${parameters.workflowName}/${parameters.workflowVersion}/${parameters.workflowBuildVersion}`
 }
 
 export interface WorkflowVersionArnParameters {
@@ -162,7 +162,7 @@ export interface WorkflowVersionArnParameters {
 }
 export type WorkflowVersionArn = `arn:${string}:imagebuilder:${string}:${string}:workflow/${string}/${string}/${string}`
 export function workflowVersionArn(parameters: WorkflowVersionArnParameters): WorkflowVersionArn {
-  return `arn:${parameters.partition ?? ''}:imagebuilder:${parameters.region}:${parameters.account}:workflow/${parameters.workflowType}/${parameters.workflowName}/${parameters.workflowVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:imagebuilder:${parameters.region}:${parameters.account}:workflow/${parameters.workflowType}/${parameters.workflowName}/${parameters.workflowVersion}`
 }
 
 export interface WorkflowExecutionArnParameters {
@@ -173,7 +173,7 @@ export interface WorkflowExecutionArnParameters {
 }
 export type WorkflowExecutionArn = `arn:${string}:imagebuilder:${string}:${string}:workflow-execution/${string}`
 export function workflowExecutionArn(parameters: WorkflowExecutionArnParameters): WorkflowExecutionArn {
-  return `arn:${parameters.partition ?? ''}:imagebuilder:${parameters.region}:${parameters.account}:workflow-execution/${parameters.workflowExecutionId}`
+  return `arn:${parameters.partition ?? 'aws'}:imagebuilder:${parameters.region}:${parameters.account}:workflow-execution/${parameters.workflowExecutionId}`
 }
 
 export interface WorkflowStepExecutionArnParameters {
@@ -184,5 +184,5 @@ export interface WorkflowStepExecutionArnParameters {
 }
 export type WorkflowStepExecutionArn = `arn:${string}:imagebuilder:${string}:${string}:workflow-step-execution/${string}`
 export function workflowStepExecutionArn(parameters: WorkflowStepExecutionArnParameters): WorkflowStepExecutionArn {
-  return `arn:${parameters.partition ?? ''}:imagebuilder:${parameters.region}:${parameters.account}:workflow-step-execution/${parameters.workflowStepExecutionId}`
+  return `arn:${parameters.partition ?? 'aws'}:imagebuilder:${parameters.region}:${parameters.account}:workflow-step-execution/${parameters.workflowStepExecutionId}`
 }

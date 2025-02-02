@@ -5,5 +5,5 @@ export interface PermissionArnParameters {
 }
 export type PermissionArn = `arn:${string}:iq-permission:${string}::permission/${string}`
 export function permissionArn(parameters: PermissionArnParameters): PermissionArn {
-  return `arn:${parameters.partition ?? ''}:iq-permission:${parameters.region}::permission/${parameters.permissionRequestId}`
+  return `arn:${parameters.partition ?? 'aws'}:iq-permission:${parameters.region}::permission/${parameters.permissionRequestId}`
 }

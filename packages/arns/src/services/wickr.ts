@@ -6,5 +6,5 @@ export interface NetworkArnParameters {
 }
 export type NetworkArn = `arn:${string}:wickr:${string}:${string}:network/${string}`
 export function networkArn(parameters: NetworkArnParameters): NetworkArn {
-  return `arn:${parameters.partition ?? ''}:wickr:${parameters.region}:${parameters.account}:network/${parameters.networkId}`
+  return `arn:${parameters.partition ?? 'aws'}:wickr:${parameters.region}:${parameters.account}:network/${parameters.networkId}`
 }

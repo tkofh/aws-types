@@ -6,7 +6,7 @@ export interface AppArnParameters {
 }
 export type AppArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}`
 export function appArn(parameters: AppArnParameters): AppArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}`
 }
 
 export interface AppsArnParameters {
@@ -16,7 +16,7 @@ export interface AppsArnParameters {
 }
 export type AppsArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/*`
 export function appsArn(parameters: AppsArnParameters): AppsArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/*`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/*`
 }
 
 export interface CampaignArnParameters {
@@ -28,7 +28,7 @@ export interface CampaignArnParameters {
 }
 export type CampaignArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/campaigns/${string}`
 export function campaignArn(parameters: CampaignArnParameters): CampaignArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/campaigns/${parameters.campaignId}`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/campaigns/${parameters.campaignId}`
 }
 
 export interface JourneyArnParameters {
@@ -40,7 +40,7 @@ export interface JourneyArnParameters {
 }
 export type JourneyArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/journeys/${string}`
 export function journeyArn(parameters: JourneyArnParameters): JourneyArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/journeys/${parameters.journeyId}`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/journeys/${parameters.journeyId}`
 }
 
 export interface JourneysArnParameters {
@@ -51,7 +51,7 @@ export interface JourneysArnParameters {
 }
 export type JourneysArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/journeys`
 export function journeysArn(parameters: JourneysArnParameters): JourneysArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/journeys`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/journeys`
 }
 
 export interface SegmentArnParameters {
@@ -63,7 +63,7 @@ export interface SegmentArnParameters {
 }
 export type SegmentArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/segments/${string}`
 export function segmentArn(parameters: SegmentArnParameters): SegmentArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/segments/${parameters.segmentId}`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/segments/${parameters.segmentId}`
 }
 
 export interface TemplateArnParameters {
@@ -75,7 +75,7 @@ export interface TemplateArnParameters {
 }
 export type TemplateArn = `arn:${string}:mobiletargeting:${string}:${string}:templates/${string}/${string}`
 export function templateArn(parameters: TemplateArnParameters): TemplateArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:templates/${parameters.templateName}/${parameters.templateType}`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:templates/${parameters.templateName}/${parameters.templateType}`
 }
 
 export interface TemplatesArnParameters {
@@ -85,7 +85,7 @@ export interface TemplatesArnParameters {
 }
 export type TemplatesArn = `arn:${string}:mobiletargeting:${string}:${string}:templates`
 export function templatesArn(parameters: TemplatesArnParameters): TemplatesArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:templates`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:templates`
 }
 
 export interface RecommenderArnParameters {
@@ -96,7 +96,7 @@ export interface RecommenderArnParameters {
 }
 export type RecommenderArn = `arn:${string}:mobiletargeting:${string}:${string}:recommenders/${string}`
 export function recommenderArn(parameters: RecommenderArnParameters): RecommenderArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:recommenders/${parameters.recommenderId}`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:recommenders/${parameters.recommenderId}`
 }
 
 export interface RecommendersArnParameters {
@@ -106,7 +106,7 @@ export interface RecommendersArnParameters {
 }
 export type RecommendersArn = `arn:${string}:mobiletargeting:${string}:${string}:recommenders/*`
 export function recommendersArn(parameters: RecommendersArnParameters): RecommendersArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:recommenders/*`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:recommenders/*`
 }
 
 export interface PhoneNumberValidateArnParameters {
@@ -116,7 +116,7 @@ export interface PhoneNumberValidateArnParameters {
 }
 export type PhoneNumberValidateArn = `arn:${string}:mobiletargeting:${string}:${string}:phone/number/validate`
 export function phoneNumberValidateArn(parameters: PhoneNumberValidateArnParameters): PhoneNumberValidateArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:phone/number/validate`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:phone/number/validate`
 }
 
 export interface ChannelsArnParameters {
@@ -127,7 +127,7 @@ export interface ChannelsArnParameters {
 }
 export type ChannelsArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/channels`
 export function channelsArn(parameters: ChannelsArnParameters): ChannelsArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/channels`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/channels`
 }
 
 export interface ChannelArnParameters {
@@ -139,7 +139,7 @@ export interface ChannelArnParameters {
 }
 export type ChannelArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/channels/${string}`
 export function channelArn(parameters: ChannelArnParameters): ChannelArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/channels/${parameters.channelType}`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/channels/${parameters.channelType}`
 }
 
 export interface EventStreamArnParameters {
@@ -150,7 +150,7 @@ export interface EventStreamArnParameters {
 }
 export type EventStreamArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/eventstream`
 export function eventStreamArn(parameters: EventStreamArnParameters): EventStreamArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/eventstream`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/eventstream`
 }
 
 export interface EventsArnParameters {
@@ -161,7 +161,7 @@ export interface EventsArnParameters {
 }
 export type EventsArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/events`
 export function eventsArn(parameters: EventsArnParameters): EventsArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/events`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/events`
 }
 
 export interface MessagesArnParameters {
@@ -172,7 +172,7 @@ export interface MessagesArnParameters {
 }
 export type MessagesArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/messages`
 export function messagesArn(parameters: MessagesArnParameters): MessagesArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/messages`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/messages`
 }
 
 export interface VerifyOtpArnParameters {
@@ -183,7 +183,7 @@ export interface VerifyOtpArnParameters {
 }
 export type VerifyOtpArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/verify-otp`
 export function verifyOtpArn(parameters: VerifyOtpArnParameters): VerifyOtpArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/verify-otp`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/verify-otp`
 }
 
 export interface OtpArnParameters {
@@ -194,7 +194,7 @@ export interface OtpArnParameters {
 }
 export type OtpArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/otp`
 export function otpArn(parameters: OtpArnParameters): OtpArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/otp`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/otp`
 }
 
 export interface AttributeArnParameters {
@@ -206,7 +206,7 @@ export interface AttributeArnParameters {
 }
 export type AttributeArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/attributes/${string}`
 export function attributeArn(parameters: AttributeArnParameters): AttributeArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/attributes/${parameters.attributeType}`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/attributes/${parameters.attributeType}`
 }
 
 export interface UserArnParameters {
@@ -218,7 +218,7 @@ export interface UserArnParameters {
 }
 export type UserArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/users/${string}`
 export function userArn(parameters: UserArnParameters): UserArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/users/${parameters.userId}`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/users/${parameters.userId}`
 }
 
 export interface EndpointArnParameters {
@@ -230,7 +230,7 @@ export interface EndpointArnParameters {
 }
 export type EndpointArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/endpoints/${string}`
 export function endpointArn(parameters: EndpointArnParameters): EndpointArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/endpoints/${parameters.endpointId}`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/endpoints/${parameters.endpointId}`
 }
 
 export interface ImportJobArnParameters {
@@ -242,7 +242,7 @@ export interface ImportJobArnParameters {
 }
 export type ImportJobArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/jobs/import/${string}`
 export function importJobArn(parameters: ImportJobArnParameters): ImportJobArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/jobs/import/${parameters.jobId}`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/jobs/import/${parameters.jobId}`
 }
 
 export interface ExportJobArnParameters {
@@ -254,7 +254,7 @@ export interface ExportJobArnParameters {
 }
 export type ExportJobArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/jobs/export/${string}`
 export function exportJobArn(parameters: ExportJobArnParameters): ExportJobArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/jobs/export/${parameters.jobId}`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/jobs/export/${parameters.jobId}`
 }
 
 export interface ApplicationMetricsArnParameters {
@@ -266,7 +266,7 @@ export interface ApplicationMetricsArnParameters {
 }
 export type ApplicationMetricsArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/kpis/daterange/${string}`
 export function applicationMetricsArn(parameters: ApplicationMetricsArnParameters): ApplicationMetricsArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/kpis/daterange/${parameters.kpiName}`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/kpis/daterange/${parameters.kpiName}`
 }
 
 export interface CampaignMetricsArnParameters {
@@ -279,7 +279,7 @@ export interface CampaignMetricsArnParameters {
 }
 export type CampaignMetricsArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/campaigns/${string}/kpis/daterange/${string}`
 export function campaignMetricsArn(parameters: CampaignMetricsArnParameters): CampaignMetricsArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/campaigns/${parameters.campaignId}/kpis/daterange/${parameters.kpiName}`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/campaigns/${parameters.campaignId}/kpis/daterange/${parameters.kpiName}`
 }
 
 export interface JourneyMetricsArnParameters {
@@ -292,7 +292,7 @@ export interface JourneyMetricsArnParameters {
 }
 export type JourneyMetricsArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/journeys/${string}/kpis/daterange/${string}`
 export function journeyMetricsArn(parameters: JourneyMetricsArnParameters): JourneyMetricsArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/journeys/${parameters.journeyId}/kpis/daterange/${parameters.kpiName}`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/journeys/${parameters.journeyId}/kpis/daterange/${parameters.kpiName}`
 }
 
 export interface JourneyExecutionMetricsArnParameters {
@@ -304,7 +304,7 @@ export interface JourneyExecutionMetricsArnParameters {
 }
 export type JourneyExecutionMetricsArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/journeys/${string}/execution-metrics`
 export function journeyExecutionMetricsArn(parameters: JourneyExecutionMetricsArnParameters): JourneyExecutionMetricsArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/journeys/${parameters.journeyId}/execution-metrics`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/journeys/${parameters.journeyId}/execution-metrics`
 }
 
 export interface JourneyExecutionActivityMetricsArnParameters {
@@ -317,7 +317,7 @@ export interface JourneyExecutionActivityMetricsArnParameters {
 }
 export type JourneyExecutionActivityMetricsArn = `arn:${string}:mobiletargeting:${string}:${string}:apps/${string}/journeys/${string}/activities/${string}/execution-metrics`
 export function journeyExecutionActivityMetricsArn(parameters: JourneyExecutionActivityMetricsArnParameters): JourneyExecutionActivityMetricsArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/journeys/${parameters.journeyId}/activities/${parameters.journeyActivityId}/execution-metrics`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:apps/${parameters.appId}/journeys/${parameters.journeyId}/activities/${parameters.journeyActivityId}/execution-metrics`
 }
 
 export interface ReportsArnParameters {
@@ -327,5 +327,5 @@ export interface ReportsArnParameters {
 }
 export type ReportsArn = `arn:${string}:mobiletargeting:${string}:${string}:reports`
 export function reportsArn(parameters: ReportsArnParameters): ReportsArn {
-  return `arn:${parameters.partition ?? ''}:mobiletargeting:${parameters.region}:${parameters.account}:reports`
+  return `arn:${parameters.partition ?? 'aws'}:mobiletargeting:${parameters.region}:${parameters.account}:reports`
 }

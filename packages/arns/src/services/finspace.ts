@@ -6,7 +6,7 @@ export interface EnvironmentArnParameters {
 }
 export type EnvironmentArn = `arn:${string}:finspace:${string}:${string}:environment/${string}`
 export function environmentArn(parameters: EnvironmentArnParameters): EnvironmentArn {
-  return `arn:${parameters.partition ?? ''}:finspace:${parameters.region}:${parameters.account}:environment/${parameters.environmentId}`
+  return `arn:${parameters.partition ?? 'aws'}:finspace:${parameters.region}:${parameters.account}:environment/${parameters.environmentId}`
 }
 
 export interface UserArnParameters {
@@ -17,7 +17,7 @@ export interface UserArnParameters {
 }
 export type UserArn = `arn:${string}:finspace:${string}:${string}:user/${string}`
 export function userArn(parameters: UserArnParameters): UserArn {
-  return `arn:${parameters.partition ?? ''}:finspace:${parameters.region}:${parameters.account}:user/${parameters.userId}`
+  return `arn:${parameters.partition ?? 'aws'}:finspace:${parameters.region}:${parameters.account}:user/${parameters.userId}`
 }
 
 export interface KxEnvironmentArnParameters {
@@ -28,7 +28,7 @@ export interface KxEnvironmentArnParameters {
 }
 export type KxEnvironmentArn = `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}`
 export function kxEnvironmentArn(parameters: KxEnvironmentArnParameters): KxEnvironmentArn {
-  return `arn:${parameters.partition ?? ''}:finspace:${parameters.region}:${parameters.account}:kxEnvironment/${parameters.environmentId}`
+  return `arn:${parameters.partition ?? 'aws'}:finspace:${parameters.region}:${parameters.account}:kxEnvironment/${parameters.environmentId}`
 }
 
 export interface KxUserArnParameters {
@@ -40,7 +40,7 @@ export interface KxUserArnParameters {
 }
 export type KxUserArn = `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxUser/${string}`
 export function kxUserArn(parameters: KxUserArnParameters): KxUserArn {
-  return `arn:${parameters.partition ?? ''}:finspace:${parameters.region}:${parameters.account}:kxEnvironment/${parameters.environmentId}/kxUser/${parameters.userName}`
+  return `arn:${parameters.partition ?? 'aws'}:finspace:${parameters.region}:${parameters.account}:kxEnvironment/${parameters.environmentId}/kxUser/${parameters.userName}`
 }
 
 export interface KxClusterArnParameters {
@@ -52,7 +52,7 @@ export interface KxClusterArnParameters {
 }
 export type KxClusterArn = `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxCluster/${string}`
 export function kxClusterArn(parameters: KxClusterArnParameters): KxClusterArn {
-  return `arn:${parameters.partition ?? ''}:finspace:${parameters.region}:${parameters.account}:kxEnvironment/${parameters.environmentId}/kxCluster/${parameters.kxCluster}`
+  return `arn:${parameters.partition ?? 'aws'}:finspace:${parameters.region}:${parameters.account}:kxEnvironment/${parameters.environmentId}/kxCluster/${parameters.kxCluster}`
 }
 
 export interface KxDatabaseArnParameters {
@@ -64,7 +64,7 @@ export interface KxDatabaseArnParameters {
 }
 export type KxDatabaseArn = `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxDatabase/${string}`
 export function kxDatabaseArn(parameters: KxDatabaseArnParameters): KxDatabaseArn {
-  return `arn:${parameters.partition ?? ''}:finspace:${parameters.region}:${parameters.account}:kxEnvironment/${parameters.environmentId}/kxDatabase/${parameters.kxDatabase}`
+  return `arn:${parameters.partition ?? 'aws'}:finspace:${parameters.region}:${parameters.account}:kxEnvironment/${parameters.environmentId}/kxDatabase/${parameters.kxDatabase}`
 }
 
 export interface KxScalingGroupArnParameters {
@@ -76,7 +76,7 @@ export interface KxScalingGroupArnParameters {
 }
 export type KxScalingGroupArn = `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxScalingGroup/${string}`
 export function kxScalingGroupArn(parameters: KxScalingGroupArnParameters): KxScalingGroupArn {
-  return `arn:${parameters.partition ?? ''}:finspace:${parameters.region}:${parameters.account}:kxEnvironment/${parameters.environmentId}/kxScalingGroup/${parameters.kxScalingGroup}`
+  return `arn:${parameters.partition ?? 'aws'}:finspace:${parameters.region}:${parameters.account}:kxEnvironment/${parameters.environmentId}/kxScalingGroup/${parameters.kxScalingGroup}`
 }
 
 export interface KxDataviewArnParameters {
@@ -89,7 +89,7 @@ export interface KxDataviewArnParameters {
 }
 export type KxDataviewArn = `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxDatabase/${string}/kxDataview/${string}`
 export function kxDataviewArn(parameters: KxDataviewArnParameters): KxDataviewArn {
-  return `arn:${parameters.partition ?? ''}:finspace:${parameters.region}:${parameters.account}:kxEnvironment/${parameters.environmentId}/kxDatabase/${parameters.kxDatabase}/kxDataview/${parameters.kxDataview}`
+  return `arn:${parameters.partition ?? 'aws'}:finspace:${parameters.region}:${parameters.account}:kxEnvironment/${parameters.environmentId}/kxDatabase/${parameters.kxDatabase}/kxDataview/${parameters.kxDataview}`
 }
 
 export interface KxVolumeArnParameters {
@@ -101,5 +101,5 @@ export interface KxVolumeArnParameters {
 }
 export type KxVolumeArn = `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxVolume/${string}`
 export function kxVolumeArn(parameters: KxVolumeArnParameters): KxVolumeArn {
-  return `arn:${parameters.partition ?? ''}:finspace:${parameters.region}:${parameters.account}:kxEnvironment/${parameters.environmentId}/kxVolume/${parameters.kxVolume}`
+  return `arn:${parameters.partition ?? 'aws'}:finspace:${parameters.region}:${parameters.account}:kxEnvironment/${parameters.environmentId}/kxVolume/${parameters.kxVolume}`
 }

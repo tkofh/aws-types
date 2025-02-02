@@ -6,5 +6,5 @@ export interface ObjectlambdaaccesspointArnParameters {
 }
 export type ObjectlambdaaccesspointArn = `arn:${string}:s3-object-lambda:${string}:${string}:accesspoint/${string}`
 export function objectlambdaaccesspointArn(parameters: ObjectlambdaaccesspointArnParameters): ObjectlambdaaccesspointArn {
-  return `arn:${parameters.partition ?? ''}:s3-object-lambda:${parameters.region}:${parameters.account}:accesspoint/${parameters.accessPointName}`
+  return `arn:${parameters.partition ?? 'aws'}:s3-object-lambda:${parameters.region}:${parameters.account}:accesspoint/${parameters.accessPointName}`
 }

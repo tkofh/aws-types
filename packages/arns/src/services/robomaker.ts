@@ -7,7 +7,7 @@ export interface RobotApplicationArnParameters {
 }
 export type RobotApplicationArn = `arn:${string}:robomaker:${string}:${string}:robot-application/${string}/${string}`
 export function robotApplicationArn(parameters: RobotApplicationArnParameters): RobotApplicationArn {
-  return `arn:${parameters.partition ?? ''}:robomaker:${parameters.region}:${parameters.account}:robot-application/${parameters.applicationName}/${parameters.createdOnEpoch}`
+  return `arn:${parameters.partition ?? 'aws'}:robomaker:${parameters.region}:${parameters.account}:robot-application/${parameters.applicationName}/${parameters.createdOnEpoch}`
 }
 
 export interface SimulationApplicationArnParameters {
@@ -19,7 +19,7 @@ export interface SimulationApplicationArnParameters {
 }
 export type SimulationApplicationArn = `arn:${string}:robomaker:${string}:${string}:simulation-application/${string}/${string}`
 export function simulationApplicationArn(parameters: SimulationApplicationArnParameters): SimulationApplicationArn {
-  return `arn:${parameters.partition ?? ''}:robomaker:${parameters.region}:${parameters.account}:simulation-application/${parameters.applicationName}/${parameters.createdOnEpoch}`
+  return `arn:${parameters.partition ?? 'aws'}:robomaker:${parameters.region}:${parameters.account}:simulation-application/${parameters.applicationName}/${parameters.createdOnEpoch}`
 }
 
 export interface SimulationJobArnParameters {
@@ -30,7 +30,7 @@ export interface SimulationJobArnParameters {
 }
 export type SimulationJobArn = `arn:${string}:robomaker:${string}:${string}:simulation-job/${string}`
 export function simulationJobArn(parameters: SimulationJobArnParameters): SimulationJobArn {
-  return `arn:${parameters.partition ?? ''}:robomaker:${parameters.region}:${parameters.account}:simulation-job/${parameters.simulationJobId}`
+  return `arn:${parameters.partition ?? 'aws'}:robomaker:${parameters.region}:${parameters.account}:simulation-job/${parameters.simulationJobId}`
 }
 
 export interface SimulationJobBatchArnParameters {
@@ -41,7 +41,7 @@ export interface SimulationJobBatchArnParameters {
 }
 export type SimulationJobBatchArn = `arn:${string}:robomaker:${string}:${string}:simulation-job-batch/${string}`
 export function simulationJobBatchArn(parameters: SimulationJobBatchArnParameters): SimulationJobBatchArn {
-  return `arn:${parameters.partition ?? ''}:robomaker:${parameters.region}:${parameters.account}:simulation-job-batch/${parameters.simulationJobBatchId}`
+  return `arn:${parameters.partition ?? 'aws'}:robomaker:${parameters.region}:${parameters.account}:simulation-job-batch/${parameters.simulationJobBatchId}`
 }
 
 export interface DeploymentJobArnParameters {
@@ -52,7 +52,7 @@ export interface DeploymentJobArnParameters {
 }
 export type DeploymentJobArn = `arn:${string}:robomaker:${string}:${string}:deployment-job/${string}`
 export function deploymentJobArn(parameters: DeploymentJobArnParameters): DeploymentJobArn {
-  return `arn:${parameters.partition ?? ''}:robomaker:${parameters.region}:${parameters.account}:deployment-job/${parameters.deploymentJobId}`
+  return `arn:${parameters.partition ?? 'aws'}:robomaker:${parameters.region}:${parameters.account}:deployment-job/${parameters.deploymentJobId}`
 }
 
 export interface RobotArnParameters {
@@ -64,7 +64,7 @@ export interface RobotArnParameters {
 }
 export type RobotArn = `arn:${string}:robomaker:${string}:${string}:robot/${string}/${string}`
 export function robotArn(parameters: RobotArnParameters): RobotArn {
-  return `arn:${parameters.partition ?? ''}:robomaker:${parameters.region}:${parameters.account}:robot/${parameters.robotName}/${parameters.createdOnEpoch}`
+  return `arn:${parameters.partition ?? 'aws'}:robomaker:${parameters.region}:${parameters.account}:robot/${parameters.robotName}/${parameters.createdOnEpoch}`
 }
 
 export interface DeploymentFleetArnParameters {
@@ -76,7 +76,7 @@ export interface DeploymentFleetArnParameters {
 }
 export type DeploymentFleetArn = `arn:${string}:robomaker:${string}:${string}:deployment-fleet/${string}/${string}`
 export function deploymentFleetArn(parameters: DeploymentFleetArnParameters): DeploymentFleetArn {
-  return `arn:${parameters.partition ?? ''}:robomaker:${parameters.region}:${parameters.account}:deployment-fleet/${parameters.fleetName}/${parameters.createdOnEpoch}`
+  return `arn:${parameters.partition ?? 'aws'}:robomaker:${parameters.region}:${parameters.account}:deployment-fleet/${parameters.fleetName}/${parameters.createdOnEpoch}`
 }
 
 export interface WorldGenerationJobArnParameters {
@@ -87,7 +87,7 @@ export interface WorldGenerationJobArnParameters {
 }
 export type WorldGenerationJobArn = `arn:${string}:robomaker:${string}:${string}:world-generation-job/${string}`
 export function worldGenerationJobArn(parameters: WorldGenerationJobArnParameters): WorldGenerationJobArn {
-  return `arn:${parameters.partition ?? ''}:robomaker:${parameters.region}:${parameters.account}:world-generation-job/${parameters.worldGenerationJobId}`
+  return `arn:${parameters.partition ?? 'aws'}:robomaker:${parameters.region}:${parameters.account}:world-generation-job/${parameters.worldGenerationJobId}`
 }
 
 export interface WorldExportJobArnParameters {
@@ -98,7 +98,7 @@ export interface WorldExportJobArnParameters {
 }
 export type WorldExportJobArn = `arn:${string}:robomaker:${string}:${string}:world-export-job/${string}`
 export function worldExportJobArn(parameters: WorldExportJobArnParameters): WorldExportJobArn {
-  return `arn:${parameters.partition ?? ''}:robomaker:${parameters.region}:${parameters.account}:world-export-job/${parameters.worldExportJobId}`
+  return `arn:${parameters.partition ?? 'aws'}:robomaker:${parameters.region}:${parameters.account}:world-export-job/${parameters.worldExportJobId}`
 }
 
 export interface WorldTemplateArnParameters {
@@ -109,7 +109,7 @@ export interface WorldTemplateArnParameters {
 }
 export type WorldTemplateArn = `arn:${string}:robomaker:${string}:${string}:world-template/${string}`
 export function worldTemplateArn(parameters: WorldTemplateArnParameters): WorldTemplateArn {
-  return `arn:${parameters.partition ?? ''}:robomaker:${parameters.region}:${parameters.account}:world-template/${parameters.worldTemplateJobId}`
+  return `arn:${parameters.partition ?? 'aws'}:robomaker:${parameters.region}:${parameters.account}:world-template/${parameters.worldTemplateJobId}`
 }
 
 export interface WorldArnParameters {
@@ -120,5 +120,5 @@ export interface WorldArnParameters {
 }
 export type WorldArn = `arn:${string}:robomaker:${string}:${string}:world/${string}`
 export function worldArn(parameters: WorldArnParameters): WorldArn {
-  return `arn:${parameters.partition ?? ''}:robomaker:${parameters.region}:${parameters.account}:world/${parameters.worldId}`
+  return `arn:${parameters.partition ?? 'aws'}:robomaker:${parameters.region}:${parameters.account}:world/${parameters.worldId}`
 }

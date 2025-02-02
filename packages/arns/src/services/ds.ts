@@ -6,5 +6,5 @@ export interface DirectoryArnParameters {
 }
 export type DirectoryArn = `arn:${string}:ds:${string}:${string}:directory/${string}`
 export function directoryArn(parameters: DirectoryArnParameters): DirectoryArn {
-  return `arn:${parameters.partition ?? ''}:ds:${parameters.region}:${parameters.account}:directory/${parameters.directoryId}`
+  return `arn:${parameters.partition ?? 'aws'}:ds:${parameters.region}:${parameters.account}:directory/${parameters.directoryId}`
 }

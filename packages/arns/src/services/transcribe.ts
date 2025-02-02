@@ -6,7 +6,7 @@ export interface TranscriptionjobArnParameters {
 }
 export type TranscriptionjobArn = `arn:${string}:transcribe:${string}:${string}:transcription-job/${string}`
 export function transcriptionjobArn(parameters: TranscriptionjobArnParameters): TranscriptionjobArn {
-  return `arn:${parameters.partition ?? ''}:transcribe:${parameters.region}:${parameters.account}:transcription-job/${parameters.jobName}`
+  return `arn:${parameters.partition ?? 'aws'}:transcribe:${parameters.region}:${parameters.account}:transcription-job/${parameters.jobName}`
 }
 
 export interface VocabularyArnParameters {
@@ -17,7 +17,7 @@ export interface VocabularyArnParameters {
 }
 export type VocabularyArn = `arn:${string}:transcribe:${string}:${string}:vocabulary/${string}`
 export function vocabularyArn(parameters: VocabularyArnParameters): VocabularyArn {
-  return `arn:${parameters.partition ?? ''}:transcribe:${parameters.region}:${parameters.account}:vocabulary/${parameters.vocabularyName}`
+  return `arn:${parameters.partition ?? 'aws'}:transcribe:${parameters.region}:${parameters.account}:vocabulary/${parameters.vocabularyName}`
 }
 
 export interface VocabularyfilterArnParameters {
@@ -28,7 +28,7 @@ export interface VocabularyfilterArnParameters {
 }
 export type VocabularyfilterArn = `arn:${string}:transcribe:${string}:${string}:vocabulary-filter/${string}`
 export function vocabularyfilterArn(parameters: VocabularyfilterArnParameters): VocabularyfilterArn {
-  return `arn:${parameters.partition ?? ''}:transcribe:${parameters.region}:${parameters.account}:vocabulary-filter/${parameters.vocabularyFilterName}`
+  return `arn:${parameters.partition ?? 'aws'}:transcribe:${parameters.region}:${parameters.account}:vocabulary-filter/${parameters.vocabularyFilterName}`
 }
 
 export interface LanguagemodelArnParameters {
@@ -39,7 +39,7 @@ export interface LanguagemodelArnParameters {
 }
 export type LanguagemodelArn = `arn:${string}:transcribe:${string}:${string}:language-model/${string}`
 export function languagemodelArn(parameters: LanguagemodelArnParameters): LanguagemodelArn {
-  return `arn:${parameters.partition ?? ''}:transcribe:${parameters.region}:${parameters.account}:language-model/${parameters.modelName}`
+  return `arn:${parameters.partition ?? 'aws'}:transcribe:${parameters.region}:${parameters.account}:language-model/${parameters.modelName}`
 }
 
 export interface MedicaltranscriptionjobArnParameters {
@@ -50,7 +50,7 @@ export interface MedicaltranscriptionjobArnParameters {
 }
 export type MedicaltranscriptionjobArn = `arn:${string}:transcribe:${string}:${string}:medical-transcription-job/${string}`
 export function medicaltranscriptionjobArn(parameters: MedicaltranscriptionjobArnParameters): MedicaltranscriptionjobArn {
-  return `arn:${parameters.partition ?? ''}:transcribe:${parameters.region}:${parameters.account}:medical-transcription-job/${parameters.jobName}`
+  return `arn:${parameters.partition ?? 'aws'}:transcribe:${parameters.region}:${parameters.account}:medical-transcription-job/${parameters.jobName}`
 }
 
 export interface MedicalvocabularyArnParameters {
@@ -61,7 +61,7 @@ export interface MedicalvocabularyArnParameters {
 }
 export type MedicalvocabularyArn = `arn:${string}:transcribe:${string}:${string}:medical-vocabulary/${string}`
 export function medicalvocabularyArn(parameters: MedicalvocabularyArnParameters): MedicalvocabularyArn {
-  return `arn:${parameters.partition ?? ''}:transcribe:${parameters.region}:${parameters.account}:medical-vocabulary/${parameters.vocabularyName}`
+  return `arn:${parameters.partition ?? 'aws'}:transcribe:${parameters.region}:${parameters.account}:medical-vocabulary/${parameters.vocabularyName}`
 }
 
 export interface CallanalyticsjobArnParameters {
@@ -72,7 +72,7 @@ export interface CallanalyticsjobArnParameters {
 }
 export type CallanalyticsjobArn = `arn:${string}:transcribe:${string}:${string}:analytics-job/${string}`
 export function callanalyticsjobArn(parameters: CallanalyticsjobArnParameters): CallanalyticsjobArn {
-  return `arn:${parameters.partition ?? ''}:transcribe:${parameters.region}:${parameters.account}:analytics-job/${parameters.jobName}`
+  return `arn:${parameters.partition ?? 'aws'}:transcribe:${parameters.region}:${parameters.account}:analytics-job/${parameters.jobName}`
 }
 
 export interface CallanalyticscategoryArnParameters {
@@ -83,7 +83,7 @@ export interface CallanalyticscategoryArnParameters {
 }
 export type CallanalyticscategoryArn = `arn:${string}:transcribe:${string}:${string}:analytics-category/${string}`
 export function callanalyticscategoryArn(parameters: CallanalyticscategoryArnParameters): CallanalyticscategoryArn {
-  return `arn:${parameters.partition ?? ''}:transcribe:${parameters.region}:${parameters.account}:analytics-category/${parameters.categoryName}`
+  return `arn:${parameters.partition ?? 'aws'}:transcribe:${parameters.region}:${parameters.account}:analytics-category/${parameters.categoryName}`
 }
 
 export interface MedicalscribejobArnParameters {
@@ -94,5 +94,5 @@ export interface MedicalscribejobArnParameters {
 }
 export type MedicalscribejobArn = `arn:${string}:transcribe:${string}:${string}:medical-scribe-job/${string}`
 export function medicalscribejobArn(parameters: MedicalscribejobArnParameters): MedicalscribejobArn {
-  return `arn:${parameters.partition ?? ''}:transcribe:${parameters.region}:${parameters.account}:medical-scribe-job/${parameters.jobName}`
+  return `arn:${parameters.partition ?? 'aws'}:transcribe:${parameters.region}:${parameters.account}:medical-scribe-job/${parameters.jobName}`
 }

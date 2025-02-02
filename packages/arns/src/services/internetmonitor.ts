@@ -7,7 +7,7 @@ export interface HealthEventArnParameters {
 }
 export type HealthEventArn = `arn:${string}:internetmonitor:${string}:${string}:monitor/${string}/health-event/${string}`
 export function healthEventArn(parameters: HealthEventArnParameters): HealthEventArn {
-  return `arn:${parameters.partition ?? ''}:internetmonitor:${parameters.region}:${parameters.account}:monitor/${parameters.monitorName}/health-event/${parameters.eventId}`
+  return `arn:${parameters.partition ?? 'aws'}:internetmonitor:${parameters.region}:${parameters.account}:monitor/${parameters.monitorName}/health-event/${parameters.eventId}`
 }
 
 export interface MonitorArnParameters {
@@ -18,7 +18,7 @@ export interface MonitorArnParameters {
 }
 export type MonitorArn = `arn:${string}:internetmonitor:${string}:${string}:monitor/${string}`
 export function monitorArn(parameters: MonitorArnParameters): MonitorArn {
-  return `arn:${parameters.partition ?? ''}:internetmonitor:${parameters.region}:${parameters.account}:monitor/${parameters.monitorName}`
+  return `arn:${parameters.partition ?? 'aws'}:internetmonitor:${parameters.region}:${parameters.account}:monitor/${parameters.monitorName}`
 }
 
 export interface InternetEventArnParameters {
@@ -28,5 +28,5 @@ export interface InternetEventArnParameters {
 }
 export type InternetEventArn = `arn:${string}:internetmonitor::${string}:internet-event/${string}`
 export function internetEventArn(parameters: InternetEventArnParameters): InternetEventArn {
-  return `arn:${parameters.partition ?? ''}:internetmonitor::${parameters.account}:internet-event/${parameters.internetEventId}`
+  return `arn:${parameters.partition ?? 'aws'}:internetmonitor::${parameters.account}:internet-event/${parameters.internetEventId}`
 }

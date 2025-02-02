@@ -6,7 +6,7 @@ export interface WorkspaceArnParameters {
 }
 export type WorkspaceArn = `arn:${string}:aps:${string}:${string}:workspace/${string}`
 export function workspaceArn(parameters: WorkspaceArnParameters): WorkspaceArn {
-  return `arn:${parameters.partition ?? ''}:aps:${parameters.region}:${parameters.account}:workspace/${parameters.workspaceId}`
+  return `arn:${parameters.partition ?? 'aws'}:aps:${parameters.region}:${parameters.account}:workspace/${parameters.workspaceId}`
 }
 
 export interface RulegroupsnamespaceArnParameters {
@@ -18,7 +18,7 @@ export interface RulegroupsnamespaceArnParameters {
 }
 export type RulegroupsnamespaceArn = `arn:${string}:aps:${string}:${string}:rulegroupsnamespace/${string}/${string}`
 export function rulegroupsnamespaceArn(parameters: RulegroupsnamespaceArnParameters): RulegroupsnamespaceArn {
-  return `arn:${parameters.partition ?? ''}:aps:${parameters.region}:${parameters.account}:rulegroupsnamespace/${parameters.workspaceId}/${parameters.namespace}`
+  return `arn:${parameters.partition ?? 'aws'}:aps:${parameters.region}:${parameters.account}:rulegroupsnamespace/${parameters.workspaceId}/${parameters.namespace}`
 }
 
 export interface ScraperArnParameters {
@@ -29,7 +29,7 @@ export interface ScraperArnParameters {
 }
 export type ScraperArn = `arn:${string}:aps:${string}:${string}:scraper/${string}`
 export function scraperArn(parameters: ScraperArnParameters): ScraperArn {
-  return `arn:${parameters.partition ?? ''}:aps:${parameters.region}:${parameters.account}:scraper/${parameters.scraperId}`
+  return `arn:${parameters.partition ?? 'aws'}:aps:${parameters.region}:${parameters.account}:scraper/${parameters.scraperId}`
 }
 
 export interface ClusterArnParameters {
@@ -40,5 +40,5 @@ export interface ClusterArnParameters {
 }
 export type ClusterArn = `arn:${string}:eks:${string}:${string}:cluster/${string}`
 export function clusterArn(parameters: ClusterArnParameters): ClusterArn {
-  return `arn:${parameters.partition ?? ''}:eks:${parameters.region}:${parameters.account}:cluster/${parameters.clusterName}`
+  return `arn:${parameters.partition ?? 'aws'}:eks:${parameters.region}:${parameters.account}:cluster/${parameters.clusterName}`
 }

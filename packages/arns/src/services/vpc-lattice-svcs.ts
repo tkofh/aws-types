@@ -7,7 +7,7 @@ export interface ServiceArnParameters {
 }
 export type ServiceArn = `arn:${string}:vpc-lattice:${string}:${string}:service/${string}/${string}`
 export function serviceArn(parameters: ServiceArnParameters): ServiceArn {
-  return `arn:${parameters.partition ?? ''}:vpc-lattice:${parameters.region}:${parameters.account}:service/${parameters.serviceId}/${parameters.requestPath}`
+  return `arn:${parameters.partition ?? 'aws'}:vpc-lattice:${parameters.region}:${parameters.account}:service/${parameters.serviceId}/${parameters.requestPath}`
 }
 
 export interface TcpServiceArnParameters {
@@ -18,5 +18,5 @@ export interface TcpServiceArnParameters {
 }
 export type TcpServiceArn = `arn:${string}:vpc-lattice:${string}:${string}:service/${string}`
 export function tcpServiceArn(parameters: TcpServiceArnParameters): TcpServiceArn {
-  return `arn:${parameters.partition ?? ''}:vpc-lattice:${parameters.region}:${parameters.account}:service/${parameters.serviceId}`
+  return `arn:${parameters.partition ?? 'aws'}:vpc-lattice:${parameters.region}:${parameters.account}:service/${parameters.serviceId}`
 }

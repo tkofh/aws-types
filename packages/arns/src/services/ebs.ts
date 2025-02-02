@@ -5,5 +5,5 @@ export interface SnapshotArnParameters {
 }
 export type SnapshotArn = `arn:${string}:ec2:${string}::snapshot/${string}`
 export function snapshotArn(parameters: SnapshotArnParameters): SnapshotArn {
-  return `arn:${parameters.partition ?? ''}:ec2:${parameters.region}::snapshot/${parameters.snapshotId}`
+  return `arn:${parameters.partition ?? 'aws'}:ec2:${parameters.region}::snapshot/${parameters.snapshotId}`
 }

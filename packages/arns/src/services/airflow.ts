@@ -6,7 +6,7 @@ export interface EnvironmentArnParameters {
 }
 export type EnvironmentArn = `arn:${string}:airflow:${string}:${string}:environment/${string}`
 export function environmentArn(parameters: EnvironmentArnParameters): EnvironmentArn {
-  return `arn:${parameters.partition ?? ''}:airflow:${parameters.region}:${parameters.account}:environment/${parameters.environmentName}`
+  return `arn:${parameters.partition ?? 'aws'}:airflow:${parameters.region}:${parameters.account}:environment/${parameters.environmentName}`
 }
 
 export interface RbacRoleArnParameters {
@@ -18,5 +18,5 @@ export interface RbacRoleArnParameters {
 }
 export type RbacRoleArn = `arn:${string}:airflow:${string}:${string}:role/${string}/${string}`
 export function rbacRoleArn(parameters: RbacRoleArnParameters): RbacRoleArn {
-  return `arn:${parameters.partition ?? ''}:airflow:${parameters.region}:${parameters.account}:role/${parameters.environmentName}/${parameters.roleName}`
+  return `arn:${parameters.partition ?? 'aws'}:airflow:${parameters.region}:${parameters.account}:role/${parameters.environmentName}/${parameters.roleName}`
 }

@@ -5,7 +5,7 @@ export interface HubArnParameters {
 }
 export type HubArn = `arn:${string}:securityhub:${string}:${string}:hub/default`
 export function hubArn(parameters: HubArnParameters): HubArn {
-  return `arn:${parameters.partition ?? ''}:securityhub:${parameters.region}:${parameters.account}:hub/default`
+  return `arn:${parameters.partition ?? 'aws'}:securityhub:${parameters.region}:${parameters.account}:hub/default`
 }
 
 export interface ProductArnParameters {
@@ -17,7 +17,7 @@ export interface ProductArnParameters {
 }
 export type ProductArn = `arn:${string}:securityhub:${string}:${string}:product/${string}/${string}`
 export function productArn(parameters: ProductArnParameters): ProductArn {
-  return `arn:${parameters.partition ?? ''}:securityhub:${parameters.region}:${parameters.account}:product/${parameters.company}/${parameters.productId}`
+  return `arn:${parameters.partition ?? 'aws'}:securityhub:${parameters.region}:${parameters.account}:product/${parameters.company}/${parameters.productId}`
 }
 
 export interface FindingAggregatorArnParameters {
@@ -28,7 +28,7 @@ export interface FindingAggregatorArnParameters {
 }
 export type FindingAggregatorArn = `arn:${string}:securityhub:${string}:${string}:finding-aggregator/${string}`
 export function findingAggregatorArn(parameters: FindingAggregatorArnParameters): FindingAggregatorArn {
-  return `arn:${parameters.partition ?? ''}:securityhub:${parameters.region}:${parameters.account}:finding-aggregator/${parameters.findingAggregatorId}`
+  return `arn:${parameters.partition ?? 'aws'}:securityhub:${parameters.region}:${parameters.account}:finding-aggregator/${parameters.findingAggregatorId}`
 }
 
 export interface AutomationRuleArnParameters {
@@ -39,7 +39,7 @@ export interface AutomationRuleArnParameters {
 }
 export type AutomationRuleArn = `arn:${string}:securityhub:${string}:${string}:automation-rule/${string}`
 export function automationRuleArn(parameters: AutomationRuleArnParameters): AutomationRuleArn {
-  return `arn:${parameters.partition ?? ''}:securityhub:${parameters.region}:${parameters.account}:automation-rule/${parameters.automationRuleId}`
+  return `arn:${parameters.partition ?? 'aws'}:securityhub:${parameters.region}:${parameters.account}:automation-rule/${parameters.automationRuleId}`
 }
 
 export interface ConfigurationPolicyArnParameters {
@@ -50,5 +50,5 @@ export interface ConfigurationPolicyArnParameters {
 }
 export type ConfigurationPolicyArn = `arn:${string}:securityhub:${string}:${string}:configuration-policy/${string}`
 export function configurationPolicyArn(parameters: ConfigurationPolicyArnParameters): ConfigurationPolicyArn {
-  return `arn:${parameters.partition ?? ''}:securityhub:${parameters.region}:${parameters.account}:configuration-policy/${parameters.configurationPolicyId}`
+  return `arn:${parameters.partition ?? 'aws'}:securityhub:${parameters.region}:${parameters.account}:configuration-policy/${parameters.configurationPolicyId}`
 }

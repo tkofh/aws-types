@@ -6,7 +6,7 @@ export interface KeyArnParameters {
 }
 export type KeyArn = `arn:${string}:payment-cryptography:${string}:${string}:key/${string}`
 export function keyArn(parameters: KeyArnParameters): KeyArn {
-  return `arn:${parameters.partition ?? ''}:payment-cryptography:${parameters.region}:${parameters.account}:key/${parameters.keyId}`
+  return `arn:${parameters.partition ?? 'aws'}:payment-cryptography:${parameters.region}:${parameters.account}:key/${parameters.keyId}`
 }
 
 export interface AliasArnParameters {
@@ -17,5 +17,5 @@ export interface AliasArnParameters {
 }
 export type AliasArn = `arn:${string}:payment-cryptography:${string}:${string}:alias/${string}`
 export function aliasArn(parameters: AliasArnParameters): AliasArn {
-  return `arn:${parameters.partition ?? ''}:payment-cryptography:${parameters.region}:${parameters.account}:alias/${parameters.alias}`
+  return `arn:${parameters.partition ?? 'aws'}:payment-cryptography:${parameters.region}:${parameters.account}:alias/${parameters.alias}`
 }

@@ -6,7 +6,7 @@ export interface ProjectArnParameters {
 }
 export type ProjectArn = `arn:${string}:codestar:${string}:${string}:project/${string}`
 export function projectArn(parameters: ProjectArnParameters): ProjectArn {
-  return `arn:${parameters.partition ?? ''}:codestar:${parameters.region}:${parameters.account}:project/${parameters.projectId}`
+  return `arn:${parameters.partition ?? 'aws'}:codestar:${parameters.region}:${parameters.account}:project/${parameters.projectId}`
 }
 
 export interface UserArnParameters {
@@ -16,5 +16,5 @@ export interface UserArnParameters {
 }
 export type UserArn = `arn:${string}:iam::${string}:user/${string}`
 export function userArn(parameters: UserArnParameters): UserArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:user/${parameters.awsUserName}`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:user/${parameters.awsUserName}`
 }

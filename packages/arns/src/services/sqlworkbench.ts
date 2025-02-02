@@ -6,7 +6,7 @@ export interface ConnectionArnParameters {
 }
 export type ConnectionArn = `arn:${string}:sqlworkbench:${string}:${string}:connection/${string}`
 export function connectionArn(parameters: ConnectionArnParameters): ConnectionArn {
-  return `arn:${parameters.partition ?? ''}:sqlworkbench:${parameters.region}:${parameters.account}:connection/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:sqlworkbench:${parameters.region}:${parameters.account}:connection/${parameters.resourceId}`
 }
 
 export interface QueryArnParameters {
@@ -17,7 +17,7 @@ export interface QueryArnParameters {
 }
 export type QueryArn = `arn:${string}:sqlworkbench:${string}:${string}:query/${string}`
 export function queryArn(parameters: QueryArnParameters): QueryArn {
-  return `arn:${parameters.partition ?? ''}:sqlworkbench:${parameters.region}:${parameters.account}:query/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:sqlworkbench:${parameters.region}:${parameters.account}:query/${parameters.resourceId}`
 }
 
 export interface ChartArnParameters {
@@ -28,7 +28,7 @@ export interface ChartArnParameters {
 }
 export type ChartArn = `arn:${string}:sqlworkbench:${string}:${string}:chart/${string}`
 export function chartArn(parameters: ChartArnParameters): ChartArn {
-  return `arn:${parameters.partition ?? ''}:sqlworkbench:${parameters.region}:${parameters.account}:chart/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:sqlworkbench:${parameters.region}:${parameters.account}:chart/${parameters.resourceId}`
 }
 
 export interface NotebookArnParameters {
@@ -39,5 +39,5 @@ export interface NotebookArnParameters {
 }
 export type NotebookArn = `arn:${string}:sqlworkbench:${string}:${string}:notebook/${string}`
 export function notebookArn(parameters: NotebookArnParameters): NotebookArn {
-  return `arn:${parameters.partition ?? ''}:sqlworkbench:${parameters.region}:${parameters.account}:notebook/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:sqlworkbench:${parameters.region}:${parameters.account}:notebook/${parameters.resourceId}`
 }

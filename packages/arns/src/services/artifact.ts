@@ -3,7 +3,7 @@ export interface ReportPackageArnParameters {
 }
 export type ReportPackageArn = `arn:${string}:artifact:::report-package/*`
 export function reportPackageArn(parameters: ReportPackageArnParameters): ReportPackageArn {
-  return `arn:${parameters.partition ?? ''}:artifact:::report-package/*`
+  return `arn:${parameters.partition ?? 'aws'}:artifact:::report-package/*`
 }
 
 export interface CustomerAgreementArnParameters {
@@ -12,7 +12,7 @@ export interface CustomerAgreementArnParameters {
 }
 export type CustomerAgreementArn = `arn:${string}:artifact::${string}:customer-agreement/*`
 export function customerAgreementArn(parameters: CustomerAgreementArnParameters): CustomerAgreementArn {
-  return `arn:${parameters.partition ?? ''}:artifact::${parameters.account}:customer-agreement/*`
+  return `arn:${parameters.partition ?? 'aws'}:artifact::${parameters.account}:customer-agreement/*`
 }
 
 export interface AgreementArnParameters {
@@ -20,7 +20,7 @@ export interface AgreementArnParameters {
 }
 export type AgreementArn = `arn:${string}:artifact:::agreement/*`
 export function agreementArn(parameters: AgreementArnParameters): AgreementArn {
-  return `arn:${parameters.partition ?? ''}:artifact:::agreement/*`
+  return `arn:${parameters.partition ?? 'aws'}:artifact:::agreement/*`
 }
 
 export interface ReportArnParameters {
@@ -31,5 +31,5 @@ export interface ReportArnParameters {
 }
 export type ReportArn = `arn:${string}:artifact:${string}::report/${string}:${string}`
 export function reportArn(parameters: ReportArnParameters): ReportArn {
-  return `arn:${parameters.partition ?? ''}:artifact:${parameters.region}::report/${parameters.reportId}:${parameters.version}`
+  return `arn:${parameters.partition ?? 'aws'}:artifact:${parameters.region}::report/${parameters.reportId}:${parameters.version}`
 }

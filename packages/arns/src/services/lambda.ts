@@ -6,7 +6,7 @@ export interface CodeSigningConfigArnParameters {
 }
 export type CodeSigningConfigArn = `arn:${string}:lambda:${string}:${string}:code-signing-config:${string}`
 export function codeSigningConfigArn(parameters: CodeSigningConfigArnParameters): CodeSigningConfigArn {
-  return `arn:${parameters.partition ?? ''}:lambda:${parameters.region}:${parameters.account}:code-signing-config:${parameters.codeSigningConfigId}`
+  return `arn:${parameters.partition ?? 'aws'}:lambda:${parameters.region}:${parameters.account}:code-signing-config:${parameters.codeSigningConfigId}`
 }
 
 export interface EventSourceMappingArnParameters {
@@ -17,7 +17,7 @@ export interface EventSourceMappingArnParameters {
 }
 export type EventSourceMappingArn = `arn:${string}:lambda:${string}:${string}:event-source-mapping:${string}`
 export function eventSourceMappingArn(parameters: EventSourceMappingArnParameters): EventSourceMappingArn {
-  return `arn:${parameters.partition ?? ''}:lambda:${parameters.region}:${parameters.account}:event-source-mapping:${parameters.uuid}`
+  return `arn:${parameters.partition ?? 'aws'}:lambda:${parameters.region}:${parameters.account}:event-source-mapping:${parameters.uuid}`
 }
 
 export interface FunctionArnParameters {
@@ -28,7 +28,7 @@ export interface FunctionArnParameters {
 }
 export type FunctionArn = `arn:${string}:lambda:${string}:${string}:function:${string}`
 export function functionArn(parameters: FunctionArnParameters): FunctionArn {
-  return `arn:${parameters.partition ?? ''}:lambda:${parameters.region}:${parameters.account}:function:${parameters.functionName}`
+  return `arn:${parameters.partition ?? 'aws'}:lambda:${parameters.region}:${parameters.account}:function:${parameters.functionName}`
 }
 
 export interface FunctionAliasArnParameters {
@@ -40,7 +40,7 @@ export interface FunctionAliasArnParameters {
 }
 export type FunctionAliasArn = `arn:${string}:lambda:${string}:${string}:function:${string}:${string}`
 export function functionAliasArn(parameters: FunctionAliasArnParameters): FunctionAliasArn {
-  return `arn:${parameters.partition ?? ''}:lambda:${parameters.region}:${parameters.account}:function:${parameters.functionName}:${parameters.alias}`
+  return `arn:${parameters.partition ?? 'aws'}:lambda:${parameters.region}:${parameters.account}:function:${parameters.functionName}:${parameters.alias}`
 }
 
 export interface FunctionVersionArnParameters {
@@ -52,7 +52,7 @@ export interface FunctionVersionArnParameters {
 }
 export type FunctionVersionArn = `arn:${string}:lambda:${string}:${string}:function:${string}:${string}`
 export function functionVersionArn(parameters: FunctionVersionArnParameters): FunctionVersionArn {
-  return `arn:${parameters.partition ?? ''}:lambda:${parameters.region}:${parameters.account}:function:${parameters.functionName}:${parameters.version}`
+  return `arn:${parameters.partition ?? 'aws'}:lambda:${parameters.region}:${parameters.account}:function:${parameters.functionName}:${parameters.version}`
 }
 
 export interface LayerArnParameters {
@@ -63,7 +63,7 @@ export interface LayerArnParameters {
 }
 export type LayerArn = `arn:${string}:lambda:${string}:${string}:layer:${string}`
 export function layerArn(parameters: LayerArnParameters): LayerArn {
-  return `arn:${parameters.partition ?? ''}:lambda:${parameters.region}:${parameters.account}:layer:${parameters.layerName}`
+  return `arn:${parameters.partition ?? 'aws'}:lambda:${parameters.region}:${parameters.account}:layer:${parameters.layerName}`
 }
 
 export interface LayerVersionArnParameters {
@@ -75,5 +75,5 @@ export interface LayerVersionArnParameters {
 }
 export type LayerVersionArn = `arn:${string}:lambda:${string}:${string}:layer:${string}:${string}`
 export function layerVersionArn(parameters: LayerVersionArnParameters): LayerVersionArn {
-  return `arn:${parameters.partition ?? ''}:lambda:${parameters.region}:${parameters.account}:layer:${parameters.layerName}:${parameters.layerVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:lambda:${parameters.region}:${parameters.account}:layer:${parameters.layerName}:${parameters.layerVersion}`
 }

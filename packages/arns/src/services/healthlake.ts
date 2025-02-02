@@ -6,5 +6,5 @@ export interface DatastoreArnParameters {
 }
 export type DatastoreArn = `arn:${string}:healthlake:${string}:${string}:datastore/fhir/${string}`
 export function datastoreArn(parameters: DatastoreArnParameters): DatastoreArn {
-  return `arn:${parameters.partition ?? ''}:healthlake:${parameters.region}:${parameters.account}:datastore/fhir/${parameters.datastoreId}`
+  return `arn:${parameters.partition ?? 'aws'}:healthlake:${parameters.region}:${parameters.account}:datastore/fhir/${parameters.datastoreId}`
 }

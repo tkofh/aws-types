@@ -6,7 +6,7 @@ export interface ClusterArnParameters {
 }
 export type ClusterArn = `arn:${string}:rds:${string}:${string}:cluster:${string}`
 export function clusterArn(parameters: ClusterArnParameters): ClusterArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:cluster:${parameters.dbClusterInstanceName}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:cluster:${parameters.dbClusterInstanceName}`
 }
 
 export interface ShardgrpArnParameters {
@@ -17,7 +17,7 @@ export interface ShardgrpArnParameters {
 }
 export type ShardgrpArn = `arn:${string}:rds:${string}:${string}:shard-group:${string}`
 export function shardgrpArn(parameters: ShardgrpArnParameters): ShardgrpArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:shard-group:${parameters.dbShardGroupResourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:shard-group:${parameters.dbShardGroupResourceId}`
 }
 
 export interface ClusterAutoBackupArnParameters {
@@ -28,7 +28,7 @@ export interface ClusterAutoBackupArnParameters {
 }
 export type ClusterAutoBackupArn = `arn:${string}:rds:${string}:${string}:cluster-auto-backup:${string}`
 export function clusterAutoBackupArn(parameters: ClusterAutoBackupArnParameters): ClusterAutoBackupArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:cluster-auto-backup:${parameters.dbClusterAutomatedBackupId}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:cluster-auto-backup:${parameters.dbClusterAutomatedBackupId}`
 }
 
 export interface AutoBackupArnParameters {
@@ -39,7 +39,7 @@ export interface AutoBackupArnParameters {
 }
 export type AutoBackupArn = `arn:${string}:rds:${string}:${string}:auto-backup:${string}`
 export function autoBackupArn(parameters: AutoBackupArnParameters): AutoBackupArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:auto-backup:${parameters.dbInstanceAutomatedBackupId}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:auto-backup:${parameters.dbInstanceAutomatedBackupId}`
 }
 
 export interface ClusterEndpointArnParameters {
@@ -50,7 +50,7 @@ export interface ClusterEndpointArnParameters {
 }
 export type ClusterEndpointArn = `arn:${string}:rds:${string}:${string}:cluster-endpoint:${string}`
 export function clusterEndpointArn(parameters: ClusterEndpointArnParameters): ClusterEndpointArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:cluster-endpoint:${parameters.dbClusterEndpoint}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:cluster-endpoint:${parameters.dbClusterEndpoint}`
 }
 
 export interface ClusterPgArnParameters {
@@ -61,7 +61,7 @@ export interface ClusterPgArnParameters {
 }
 export type ClusterPgArn = `arn:${string}:rds:${string}:${string}:cluster-pg:${string}`
 export function clusterPgArn(parameters: ClusterPgArnParameters): ClusterPgArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:cluster-pg:${parameters.clusterParameterGroupName}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:cluster-pg:${parameters.clusterParameterGroupName}`
 }
 
 export interface ClusterSnapshotArnParameters {
@@ -72,7 +72,7 @@ export interface ClusterSnapshotArnParameters {
 }
 export type ClusterSnapshotArn = `arn:${string}:rds:${string}:${string}:cluster-snapshot:${string}`
 export function clusterSnapshotArn(parameters: ClusterSnapshotArnParameters): ClusterSnapshotArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:cluster-snapshot:${parameters.clusterSnapshotName}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:cluster-snapshot:${parameters.clusterSnapshotName}`
 }
 
 export interface DbArnParameters {
@@ -83,7 +83,7 @@ export interface DbArnParameters {
 }
 export type DbArn = `arn:${string}:rds:${string}:${string}:db:${string}`
 export function dbArn(parameters: DbArnParameters): DbArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:db:${parameters.dbInstanceName}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:db:${parameters.dbInstanceName}`
 }
 
 export interface EsArnParameters {
@@ -94,7 +94,7 @@ export interface EsArnParameters {
 }
 export type EsArn = `arn:${string}:rds:${string}:${string}:es:${string}`
 export function esArn(parameters: EsArnParameters): EsArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:es:${parameters.subscriptionName}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:es:${parameters.subscriptionName}`
 }
 
 export interface GlobalClusterArnParameters {
@@ -104,7 +104,7 @@ export interface GlobalClusterArnParameters {
 }
 export type GlobalClusterArn = `arn:${string}:rds::${string}:global-cluster:${string}`
 export function globalClusterArn(parameters: GlobalClusterArnParameters): GlobalClusterArn {
-  return `arn:${parameters.partition ?? ''}:rds::${parameters.account}:global-cluster:${parameters.globalCluster}`
+  return `arn:${parameters.partition ?? 'aws'}:rds::${parameters.account}:global-cluster:${parameters.globalCluster}`
 }
 
 export interface OgArnParameters {
@@ -115,7 +115,7 @@ export interface OgArnParameters {
 }
 export type OgArn = `arn:${string}:rds:${string}:${string}:og:${string}`
 export function ogArn(parameters: OgArnParameters): OgArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:og:${parameters.optionGroupName}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:og:${parameters.optionGroupName}`
 }
 
 export interface PgArnParameters {
@@ -126,7 +126,7 @@ export interface PgArnParameters {
 }
 export type PgArn = `arn:${string}:rds:${string}:${string}:pg:${string}`
 export function pgArn(parameters: PgArnParameters): PgArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:pg:${parameters.parameterGroupName}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:pg:${parameters.parameterGroupName}`
 }
 
 export interface ProxyArnParameters {
@@ -137,7 +137,7 @@ export interface ProxyArnParameters {
 }
 export type ProxyArn = `arn:${string}:rds:${string}:${string}:db-proxy:${string}`
 export function proxyArn(parameters: ProxyArnParameters): ProxyArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:db-proxy:${parameters.dbProxyId}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:db-proxy:${parameters.dbProxyId}`
 }
 
 export interface ProxyEndpointArnParameters {
@@ -148,7 +148,7 @@ export interface ProxyEndpointArnParameters {
 }
 export type ProxyEndpointArn = `arn:${string}:rds:${string}:${string}:db-proxy-endpoint:${string}`
 export function proxyEndpointArn(parameters: ProxyEndpointArnParameters): ProxyEndpointArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:db-proxy-endpoint:${parameters.dbProxyEndpointId}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:db-proxy-endpoint:${parameters.dbProxyEndpointId}`
 }
 
 export interface RiArnParameters {
@@ -159,7 +159,7 @@ export interface RiArnParameters {
 }
 export type RiArn = `arn:${string}:rds:${string}:${string}:ri:${string}`
 export function riArn(parameters: RiArnParameters): RiArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:ri:${parameters.reservedDbInstanceName}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:ri:${parameters.reservedDbInstanceName}`
 }
 
 export interface SecgrpArnParameters {
@@ -170,7 +170,7 @@ export interface SecgrpArnParameters {
 }
 export type SecgrpArn = `arn:${string}:rds:${string}:${string}:secgrp:${string}`
 export function secgrpArn(parameters: SecgrpArnParameters): SecgrpArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:secgrp:${parameters.securityGroupName}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:secgrp:${parameters.securityGroupName}`
 }
 
 export interface SnapshotArnParameters {
@@ -181,7 +181,7 @@ export interface SnapshotArnParameters {
 }
 export type SnapshotArn = `arn:${string}:rds:${string}:${string}:snapshot:${string}`
 export function snapshotArn(parameters: SnapshotArnParameters): SnapshotArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:snapshot:${parameters.snapshotName}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:snapshot:${parameters.snapshotName}`
 }
 
 export interface SubgrpArnParameters {
@@ -192,7 +192,7 @@ export interface SubgrpArnParameters {
 }
 export type SubgrpArn = `arn:${string}:rds:${string}:${string}:subgrp:${string}`
 export function subgrpArn(parameters: SubgrpArnParameters): SubgrpArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:subgrp:${parameters.subnetGroupName}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:subgrp:${parameters.subnetGroupName}`
 }
 
 export interface TargetGroupArnParameters {
@@ -203,7 +203,7 @@ export interface TargetGroupArnParameters {
 }
 export type TargetGroupArn = `arn:${string}:rds:${string}:${string}:target-group:${string}`
 export function targetGroupArn(parameters: TargetGroupArnParameters): TargetGroupArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:target-group:${parameters.targetGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:target-group:${parameters.targetGroupId}`
 }
 
 export interface CevArnParameters {
@@ -216,7 +216,7 @@ export interface CevArnParameters {
 }
 export type CevArn = `arn:${string}:rds:${string}:${string}:cev:${string}/${string}/${string}`
 export function cevArn(parameters: CevArnParameters): CevArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:cev:${parameters.engine}/${parameters.engineVersion}/${parameters.customDbEngineVersionId}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:cev:${parameters.engine}/${parameters.engineVersion}/${parameters.customDbEngineVersionId}`
 }
 
 export interface DeploymentArnParameters {
@@ -227,7 +227,7 @@ export interface DeploymentArnParameters {
 }
 export type DeploymentArn = `arn:${string}:rds:${string}:${string}:deployment:${string}`
 export function deploymentArn(parameters: DeploymentArnParameters): DeploymentArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:deployment:${parameters.blueGreenDeploymentIdentifier}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:deployment:${parameters.blueGreenDeploymentIdentifier}`
 }
 
 export interface IntegrationArnParameters {
@@ -238,7 +238,7 @@ export interface IntegrationArnParameters {
 }
 export type IntegrationArn = `arn:${string}:rds:${string}:${string}:integration:${string}`
 export function integrationArn(parameters: IntegrationArnParameters): IntegrationArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:integration:${parameters.integrationIdentifier}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:integration:${parameters.integrationIdentifier}`
 }
 
 export interface SnapshotTenantDatabaseArnParameters {
@@ -250,7 +250,7 @@ export interface SnapshotTenantDatabaseArnParameters {
 }
 export type SnapshotTenantDatabaseArn = `arn:${string}:rds:${string}:${string}:snapshot-tenant-database:${string}:${string}`
 export function snapshotTenantDatabaseArn(parameters: SnapshotTenantDatabaseArnParameters): SnapshotTenantDatabaseArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:snapshot-tenant-database:${parameters.snapshotName}:${parameters.tenantResourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:snapshot-tenant-database:${parameters.snapshotName}:${parameters.tenantResourceId}`
 }
 
 export interface TenantDatabaseArnParameters {
@@ -261,5 +261,5 @@ export interface TenantDatabaseArnParameters {
 }
 export type TenantDatabaseArn = `arn:${string}:rds:${string}:${string}:tenant-database:${string}`
 export function tenantDatabaseArn(parameters: TenantDatabaseArnParameters): TenantDatabaseArn {
-  return `arn:${parameters.partition ?? ''}:rds:${parameters.region}:${parameters.account}:tenant-database:${parameters.tenantResourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:tenant-database:${parameters.tenantResourceId}`
 }

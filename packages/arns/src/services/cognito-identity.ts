@@ -6,5 +6,5 @@ export interface IdentitypoolArnParameters {
 }
 export type IdentitypoolArn = `arn:${string}:cognito-identity:${string}:${string}:identitypool/${string}`
 export function identitypoolArn(parameters: IdentitypoolArnParameters): IdentitypoolArn {
-  return `arn:${parameters.partition ?? ''}:cognito-identity:${parameters.region}:${parameters.account}:identitypool/${parameters.identityPoolId}`
+  return `arn:${parameters.partition ?? 'aws'}:cognito-identity:${parameters.region}:${parameters.account}:identitypool/${parameters.identityPoolId}`
 }

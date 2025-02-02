@@ -6,7 +6,7 @@ export interface GroupArnParameters {
 }
 export type GroupArn = `arn:${string}:resource-groups:${string}:${string}:group/${string}`
 export function groupArn(parameters: GroupArnParameters): GroupArn {
-  return `arn:${parameters.partition ?? ''}:resource-groups:${parameters.region}:${parameters.account}:group/${parameters.groupName}`
+  return `arn:${parameters.partition ?? 'aws'}:resource-groups:${parameters.region}:${parameters.account}:group/${parameters.groupName}`
 }
 
 export interface TagSyncTaskArnParameters {
@@ -18,5 +18,5 @@ export interface TagSyncTaskArnParameters {
 }
 export type TagSyncTaskArn = `arn:${string}:resource-groups:${string}:${string}:group/${string}/tag-sync-task/${string}`
 export function tagSyncTaskArn(parameters: TagSyncTaskArnParameters): TagSyncTaskArn {
-  return `arn:${parameters.partition ?? ''}:resource-groups:${parameters.region}:${parameters.account}:group/${parameters.groupName}/tag-sync-task/${parameters.taskId}`
+  return `arn:${parameters.partition ?? 'aws'}:resource-groups:${parameters.region}:${parameters.account}:group/${parameters.groupName}/tag-sync-task/${parameters.taskId}`
 }

@@ -6,7 +6,7 @@ export interface ClusterArnParameters {
 }
 export type ClusterArn = `arn:${string}:elasticmapreduce:${string}:${string}:cluster/${string}`
 export function clusterArn(parameters: ClusterArnParameters): ClusterArn {
-  return `arn:${parameters.partition ?? ''}:elasticmapreduce:${parameters.region}:${parameters.account}:cluster/${parameters.clusterId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticmapreduce:${parameters.region}:${parameters.account}:cluster/${parameters.clusterId}`
 }
 
 export interface EditorArnParameters {
@@ -17,7 +17,7 @@ export interface EditorArnParameters {
 }
 export type EditorArn = `arn:${string}:elasticmapreduce:${string}:${string}:editor/${string}`
 export function editorArn(parameters: EditorArnParameters): EditorArn {
-  return `arn:${parameters.partition ?? ''}:elasticmapreduce:${parameters.region}:${parameters.account}:editor/${parameters.editorId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticmapreduce:${parameters.region}:${parameters.account}:editor/${parameters.editorId}`
 }
 
 export interface NotebookExecutionArnParameters {
@@ -28,7 +28,7 @@ export interface NotebookExecutionArnParameters {
 }
 export type NotebookExecutionArn = `arn:${string}:elasticmapreduce:${string}:${string}:notebook-execution/${string}`
 export function notebookExecutionArn(parameters: NotebookExecutionArnParameters): NotebookExecutionArn {
-  return `arn:${parameters.partition ?? ''}:elasticmapreduce:${parameters.region}:${parameters.account}:notebook-execution/${parameters.notebookExecutionId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticmapreduce:${parameters.region}:${parameters.account}:notebook-execution/${parameters.notebookExecutionId}`
 }
 
 export interface StudioArnParameters {
@@ -39,5 +39,5 @@ export interface StudioArnParameters {
 }
 export type StudioArn = `arn:${string}:elasticmapreduce:${string}:${string}:studio/${string}`
 export function studioArn(parameters: StudioArnParameters): StudioArn {
-  return `arn:${parameters.partition ?? ''}:elasticmapreduce:${parameters.region}:${parameters.account}:studio/${parameters.studioId}`
+  return `arn:${parameters.partition ?? 'aws'}:elasticmapreduce:${parameters.region}:${parameters.account}:studio/${parameters.studioId}`
 }

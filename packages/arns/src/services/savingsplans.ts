@@ -5,5 +5,5 @@ export interface SavingsplanArnParameters {
 }
 export type SavingsplanArn = `arn:${string}:savingsplans::${string}:savingsplan/${string}`
 export function savingsplanArn(parameters: SavingsplanArnParameters): SavingsplanArn {
-  return `arn:${parameters.partition ?? ''}:savingsplans::${parameters.account}:savingsplan/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:savingsplans::${parameters.account}:savingsplan/${parameters.resourceId}`
 }

@@ -6,5 +6,5 @@ export interface RuleArnParameters {
 }
 export type RuleArn = `arn:${string}:rbin:${string}:${string}:rule/${string}`
 export function ruleArn(parameters: RuleArnParameters): RuleArn {
-  return `arn:${parameters.partition ?? ''}:rbin:${parameters.region}:${parameters.account}:rule/${parameters.resourceName}`
+  return `arn:${parameters.partition ?? 'aws'}:rbin:${parameters.region}:${parameters.account}:rule/${parameters.resourceName}`
 }

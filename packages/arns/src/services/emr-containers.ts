@@ -6,7 +6,7 @@ export interface VirtualClusterArnParameters {
 }
 export type VirtualClusterArn = `arn:${string}:emr-containers:${string}:${string}:/virtualclusters/${string}`
 export function virtualClusterArn(parameters: VirtualClusterArnParameters): VirtualClusterArn {
-  return `arn:${parameters.partition ?? ''}:emr-containers:${parameters.region}:${parameters.account}:/virtualclusters/${parameters.virtualClusterId}`
+  return `arn:${parameters.partition ?? 'aws'}:emr-containers:${parameters.region}:${parameters.account}:/virtualclusters/${parameters.virtualClusterId}`
 }
 
 export interface JobRunArnParameters {
@@ -18,7 +18,7 @@ export interface JobRunArnParameters {
 }
 export type JobRunArn = `arn:${string}:emr-containers:${string}:${string}:/virtualclusters/${string}/jobruns/${string}`
 export function jobRunArn(parameters: JobRunArnParameters): JobRunArn {
-  return `arn:${parameters.partition ?? ''}:emr-containers:${parameters.region}:${parameters.account}:/virtualclusters/${parameters.virtualClusterId}/jobruns/${parameters.jobRunId}`
+  return `arn:${parameters.partition ?? 'aws'}:emr-containers:${parameters.region}:${parameters.account}:/virtualclusters/${parameters.virtualClusterId}/jobruns/${parameters.jobRunId}`
 }
 
 export interface JobTemplateArnParameters {
@@ -29,7 +29,7 @@ export interface JobTemplateArnParameters {
 }
 export type JobTemplateArn = `arn:${string}:emr-containers:${string}:${string}:/jobtemplates/${string}`
 export function jobTemplateArn(parameters: JobTemplateArnParameters): JobTemplateArn {
-  return `arn:${parameters.partition ?? ''}:emr-containers:${parameters.region}:${parameters.account}:/jobtemplates/${parameters.jobTemplateId}`
+  return `arn:${parameters.partition ?? 'aws'}:emr-containers:${parameters.region}:${parameters.account}:/jobtemplates/${parameters.jobTemplateId}`
 }
 
 export interface ManagedEndpointArnParameters {
@@ -41,7 +41,7 @@ export interface ManagedEndpointArnParameters {
 }
 export type ManagedEndpointArn = `arn:${string}:emr-containers:${string}:${string}:/virtualclusters/${string}/endpoints/${string}`
 export function managedEndpointArn(parameters: ManagedEndpointArnParameters): ManagedEndpointArn {
-  return `arn:${parameters.partition ?? ''}:emr-containers:${parameters.region}:${parameters.account}:/virtualclusters/${parameters.virtualClusterId}/endpoints/${parameters.endpointId}`
+  return `arn:${parameters.partition ?? 'aws'}:emr-containers:${parameters.region}:${parameters.account}:/virtualclusters/${parameters.virtualClusterId}/endpoints/${parameters.endpointId}`
 }
 
 export interface SecurityConfigurationArnParameters {
@@ -52,5 +52,5 @@ export interface SecurityConfigurationArnParameters {
 }
 export type SecurityConfigurationArn = `arn:${string}:emr-containers:${string}:${string}:/securityconfigurations/${string}`
 export function securityConfigurationArn(parameters: SecurityConfigurationArnParameters): SecurityConfigurationArn {
-  return `arn:${parameters.partition ?? ''}:emr-containers:${parameters.region}:${parameters.account}:/securityconfigurations/${parameters.securityConfigurationId}`
+  return `arn:${parameters.partition ?? 'aws'}:emr-containers:${parameters.region}:${parameters.account}:/securityconfigurations/${parameters.securityConfigurationId}`
 }

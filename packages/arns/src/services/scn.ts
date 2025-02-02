@@ -6,7 +6,7 @@ export interface InstanceArnParameters {
 }
 export type InstanceArn = `arn:${string}:scn:${string}:${string}:instance/${string}`
 export function instanceArn(parameters: InstanceArnParameters): InstanceArn {
-  return `arn:${parameters.partition ?? ''}:scn:${parameters.region}:${parameters.account}:instance/${parameters.instanceId}`
+  return `arn:${parameters.partition ?? 'aws'}:scn:${parameters.region}:${parameters.account}:instance/${parameters.instanceId}`
 }
 
 export interface BillOfMaterialsImportJobArnParameters {
@@ -18,7 +18,7 @@ export interface BillOfMaterialsImportJobArnParameters {
 }
 export type BillOfMaterialsImportJobArn = `arn:${string}:scn:${string}:${string}:instance/${string}/bill-of-materials-import-job/${string}`
 export function billOfMaterialsImportJobArn(parameters: BillOfMaterialsImportJobArnParameters): BillOfMaterialsImportJobArn {
-  return `arn:${parameters.partition ?? ''}:scn:${parameters.region}:${parameters.account}:instance/${parameters.instanceId}/bill-of-materials-import-job/${parameters.jobId}`
+  return `arn:${parameters.partition ?? 'aws'}:scn:${parameters.region}:${parameters.account}:instance/${parameters.instanceId}/bill-of-materials-import-job/${parameters.jobId}`
 }
 
 export interface DataIntegrationFlowArnParameters {
@@ -30,7 +30,7 @@ export interface DataIntegrationFlowArnParameters {
 }
 export type DataIntegrationFlowArn = `arn:${string}:scn:${string}:${string}:instance/${string}/data-integration-flows/${string}`
 export function dataIntegrationFlowArn(parameters: DataIntegrationFlowArnParameters): DataIntegrationFlowArn {
-  return `arn:${parameters.partition ?? ''}:scn:${parameters.region}:${parameters.account}:instance/${parameters.instanceId}/data-integration-flows/${parameters.flowName}`
+  return `arn:${parameters.partition ?? 'aws'}:scn:${parameters.region}:${parameters.account}:instance/${parameters.instanceId}/data-integration-flows/${parameters.flowName}`
 }
 
 export interface DatasetArnParameters {
@@ -43,5 +43,5 @@ export interface DatasetArnParameters {
 }
 export type DatasetArn = `arn:${string}:scn:${string}:${string}:instance/${string}/namespaces/${string}/datasets/${string}`
 export function datasetArn(parameters: DatasetArnParameters): DatasetArn {
-  return `arn:${parameters.partition ?? ''}:scn:${parameters.region}:${parameters.account}:instance/${parameters.instanceId}/namespaces/${parameters.namespace}/datasets/${parameters.datasetName}`
+  return `arn:${parameters.partition ?? 'aws'}:scn:${parameters.region}:${parameters.account}:instance/${parameters.instanceId}/namespaces/${parameters.namespace}/datasets/${parameters.datasetName}`
 }

@@ -6,5 +6,5 @@ export interface ProjectArnParameters {
 }
 export type ProjectArn = `arn:${string}:monitron:${string}:${string}:project/${string}`
 export function projectArn(parameters: ProjectArnParameters): ProjectArn {
-  return `arn:${parameters.partition ?? ''}:monitron:${parameters.region}:${parameters.account}:project/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:monitron:${parameters.region}:${parameters.account}:project/${parameters.resourceId}`
 }

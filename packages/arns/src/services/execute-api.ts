@@ -9,5 +9,5 @@ export interface ExecuteApiGeneralArnParameters {
 }
 export type ExecuteApiGeneralArn = `arn:${string}:execute-api:${string}:${string}:${string}/${string}/${string}/${string}`
 export function executeApiGeneralArn(parameters: ExecuteApiGeneralArnParameters): ExecuteApiGeneralArn {
-  return `arn:${parameters.partition ?? ''}:execute-api:${parameters.region}:${parameters.account}:${parameters.apiId}/${parameters.stage}/${parameters.method}/${parameters.apiSpecificResourcePath}`
+  return `arn:${parameters.partition ?? 'aws'}:execute-api:${parameters.region}:${parameters.account}:${parameters.apiId}/${parameters.stage}/${parameters.method}/${parameters.apiSpecificResourcePath}`
 }

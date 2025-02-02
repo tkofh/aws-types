@@ -6,7 +6,7 @@ export interface AnomalyDetectorArnParameters {
 }
 export type AnomalyDetectorArn = `arn:${string}:lookoutmetrics:${string}:${string}:AnomalyDetector:${string}`
 export function anomalyDetectorArn(parameters: AnomalyDetectorArnParameters): AnomalyDetectorArn {
-  return `arn:${parameters.partition ?? ''}:lookoutmetrics:${parameters.region}:${parameters.account}:AnomalyDetector:${parameters.anomalyDetectorName}`
+  return `arn:${parameters.partition ?? 'aws'}:lookoutmetrics:${parameters.region}:${parameters.account}:AnomalyDetector:${parameters.anomalyDetectorName}`
 }
 
 export interface MetricSetArnParameters {
@@ -18,7 +18,7 @@ export interface MetricSetArnParameters {
 }
 export type MetricSetArn = `arn:${string}:lookoutmetrics:${string}:${string}:MetricSet/${string}/${string}`
 export function metricSetArn(parameters: MetricSetArnParameters): MetricSetArn {
-  return `arn:${parameters.partition ?? ''}:lookoutmetrics:${parameters.region}:${parameters.account}:MetricSet/${parameters.anomalyDetectorName}/${parameters.metricSetName}`
+  return `arn:${parameters.partition ?? 'aws'}:lookoutmetrics:${parameters.region}:${parameters.account}:MetricSet/${parameters.anomalyDetectorName}/${parameters.metricSetName}`
 }
 
 export interface AlertArnParameters {
@@ -29,5 +29,5 @@ export interface AlertArnParameters {
 }
 export type AlertArn = `arn:${string}:lookoutmetrics:${string}:${string}:Alert:${string}`
 export function alertArn(parameters: AlertArnParameters): AlertArn {
-  return `arn:${parameters.partition ?? ''}:lookoutmetrics:${parameters.region}:${parameters.account}:Alert:${parameters.alertName}`
+  return `arn:${parameters.partition ?? 'aws'}:lookoutmetrics:${parameters.region}:${parameters.account}:Alert:${parameters.alertName}`
 }

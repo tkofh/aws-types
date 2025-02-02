@@ -6,7 +6,7 @@ export interface WorkspaceArnParameters {
 }
 export type WorkspaceArn = `arn:${string}:iottwinmaker:${string}:${string}:workspace/${string}`
 export function workspaceArn(parameters: WorkspaceArnParameters): WorkspaceArn {
-  return `arn:${parameters.partition ?? ''}:iottwinmaker:${parameters.region}:${parameters.account}:workspace/${parameters.workspaceId}`
+  return `arn:${parameters.partition ?? 'aws'}:iottwinmaker:${parameters.region}:${parameters.account}:workspace/${parameters.workspaceId}`
 }
 
 export interface EntityArnParameters {
@@ -18,7 +18,7 @@ export interface EntityArnParameters {
 }
 export type EntityArn = `arn:${string}:iottwinmaker:${string}:${string}:workspace/${string}/entity/${string}`
 export function entityArn(parameters: EntityArnParameters): EntityArn {
-  return `arn:${parameters.partition ?? ''}:iottwinmaker:${parameters.region}:${parameters.account}:workspace/${parameters.workspaceId}/entity/${parameters.entityId}`
+  return `arn:${parameters.partition ?? 'aws'}:iottwinmaker:${parameters.region}:${parameters.account}:workspace/${parameters.workspaceId}/entity/${parameters.entityId}`
 }
 
 export interface ComponentTypeArnParameters {
@@ -30,7 +30,7 @@ export interface ComponentTypeArnParameters {
 }
 export type ComponentTypeArn = `arn:${string}:iottwinmaker:${string}:${string}:workspace/${string}/component-type/${string}`
 export function componentTypeArn(parameters: ComponentTypeArnParameters): ComponentTypeArn {
-  return `arn:${parameters.partition ?? ''}:iottwinmaker:${parameters.region}:${parameters.account}:workspace/${parameters.workspaceId}/component-type/${parameters.componentTypeId}`
+  return `arn:${parameters.partition ?? 'aws'}:iottwinmaker:${parameters.region}:${parameters.account}:workspace/${parameters.workspaceId}/component-type/${parameters.componentTypeId}`
 }
 
 export interface SceneArnParameters {
@@ -42,7 +42,7 @@ export interface SceneArnParameters {
 }
 export type SceneArn = `arn:${string}:iottwinmaker:${string}:${string}:workspace/${string}/scene/${string}`
 export function sceneArn(parameters: SceneArnParameters): SceneArn {
-  return `arn:${parameters.partition ?? ''}:iottwinmaker:${parameters.region}:${parameters.account}:workspace/${parameters.workspaceId}/scene/${parameters.sceneId}`
+  return `arn:${parameters.partition ?? 'aws'}:iottwinmaker:${parameters.region}:${parameters.account}:workspace/${parameters.workspaceId}/scene/${parameters.sceneId}`
 }
 
 export interface SyncJobArnParameters {
@@ -54,7 +54,7 @@ export interface SyncJobArnParameters {
 }
 export type SyncJobArn = `arn:${string}:iottwinmaker:${string}:${string}:workspace/${string}/sync-job/${string}`
 export function syncJobArn(parameters: SyncJobArnParameters): SyncJobArn {
-  return `arn:${parameters.partition ?? ''}:iottwinmaker:${parameters.region}:${parameters.account}:workspace/${parameters.workspaceId}/sync-job/${parameters.syncJobId}`
+  return `arn:${parameters.partition ?? 'aws'}:iottwinmaker:${parameters.region}:${parameters.account}:workspace/${parameters.workspaceId}/sync-job/${parameters.syncJobId}`
 }
 
 export interface MetadataTransferJobArnParameters {
@@ -65,5 +65,5 @@ export interface MetadataTransferJobArnParameters {
 }
 export type MetadataTransferJobArn = `arn:${string}:iottwinmaker:${string}:${string}:metadata-transfer-job/${string}`
 export function metadataTransferJobArn(parameters: MetadataTransferJobArnParameters): MetadataTransferJobArn {
-  return `arn:${parameters.partition ?? ''}:iottwinmaker:${parameters.region}:${parameters.account}:metadata-transfer-job/${parameters.metadataTransferJobId}`
+  return `arn:${parameters.partition ?? 'aws'}:iottwinmaker:${parameters.region}:${parameters.account}:metadata-transfer-job/${parameters.metadataTransferJobId}`
 }

@@ -5,5 +5,5 @@ export interface ConfigurationManagerArnParameters {
 }
 export type ConfigurationManagerArn = `arn:${string}:ssm-quicksetup::${string}:configuration-manager/${string}`
 export function configurationManagerArn(parameters: ConfigurationManagerArnParameters): ConfigurationManagerArn {
-  return `arn:${parameters.partition ?? ''}:ssm-quicksetup::${parameters.account}:configuration-manager/${parameters.configurationManagerId}`
+  return `arn:${parameters.partition ?? 'aws'}:ssm-quicksetup::${parameters.account}:configuration-manager/${parameters.configurationManagerId}`
 }

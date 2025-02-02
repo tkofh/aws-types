@@ -6,7 +6,7 @@ export interface ServiceNetworkArnParameters {
 }
 export type ServiceNetworkArn = `arn:${string}:vpc-lattice:${string}:${string}:servicenetwork/${string}`
 export function serviceNetworkArn(parameters: ServiceNetworkArnParameters): ServiceNetworkArn {
-  return `arn:${parameters.partition ?? ''}:vpc-lattice:${parameters.region}:${parameters.account}:servicenetwork/${parameters.serviceNetworkId}`
+  return `arn:${parameters.partition ?? 'aws'}:vpc-lattice:${parameters.region}:${parameters.account}:servicenetwork/${parameters.serviceNetworkId}`
 }
 
 export interface ServiceArnParameters {
@@ -17,7 +17,7 @@ export interface ServiceArnParameters {
 }
 export type ServiceArn = `arn:${string}:vpc-lattice:${string}:${string}:service/${string}`
 export function serviceArn(parameters: ServiceArnParameters): ServiceArn {
-  return `arn:${parameters.partition ?? ''}:vpc-lattice:${parameters.region}:${parameters.account}:service/${parameters.serviceId}`
+  return `arn:${parameters.partition ?? 'aws'}:vpc-lattice:${parameters.region}:${parameters.account}:service/${parameters.serviceId}`
 }
 
 export interface ServiceNetworkVpcAssociationArnParameters {
@@ -28,7 +28,7 @@ export interface ServiceNetworkVpcAssociationArnParameters {
 }
 export type ServiceNetworkVpcAssociationArn = `arn:${string}:vpc-lattice:${string}:${string}:servicenetworkvpcassociation/${string}`
 export function serviceNetworkVpcAssociationArn(parameters: ServiceNetworkVpcAssociationArnParameters): ServiceNetworkVpcAssociationArn {
-  return `arn:${parameters.partition ?? ''}:vpc-lattice:${parameters.region}:${parameters.account}:servicenetworkvpcassociation/${parameters.serviceNetworkVpcAssociationId}`
+  return `arn:${parameters.partition ?? 'aws'}:vpc-lattice:${parameters.region}:${parameters.account}:servicenetworkvpcassociation/${parameters.serviceNetworkVpcAssociationId}`
 }
 
 export interface ServiceNetworkServiceAssociationArnParameters {
@@ -39,7 +39,7 @@ export interface ServiceNetworkServiceAssociationArnParameters {
 }
 export type ServiceNetworkServiceAssociationArn = `arn:${string}:vpc-lattice:${string}:${string}:servicenetworkserviceassociation/${string}`
 export function serviceNetworkServiceAssociationArn(parameters: ServiceNetworkServiceAssociationArnParameters): ServiceNetworkServiceAssociationArn {
-  return `arn:${parameters.partition ?? ''}:vpc-lattice:${parameters.region}:${parameters.account}:servicenetworkserviceassociation/${parameters.serviceNetworkServiceAssociationId}`
+  return `arn:${parameters.partition ?? 'aws'}:vpc-lattice:${parameters.region}:${parameters.account}:servicenetworkserviceassociation/${parameters.serviceNetworkServiceAssociationId}`
 }
 
 export interface TargetGroupArnParameters {
@@ -50,7 +50,7 @@ export interface TargetGroupArnParameters {
 }
 export type TargetGroupArn = `arn:${string}:vpc-lattice:${string}:${string}:targetgroup/${string}`
 export function targetGroupArn(parameters: TargetGroupArnParameters): TargetGroupArn {
-  return `arn:${parameters.partition ?? ''}:vpc-lattice:${parameters.region}:${parameters.account}:targetgroup/${parameters.targetGroupId}`
+  return `arn:${parameters.partition ?? 'aws'}:vpc-lattice:${parameters.region}:${parameters.account}:targetgroup/${parameters.targetGroupId}`
 }
 
 export interface ListenerArnParameters {
@@ -62,7 +62,7 @@ export interface ListenerArnParameters {
 }
 export type ListenerArn = `arn:${string}:vpc-lattice:${string}:${string}:service/${string}/listener/${string}`
 export function listenerArn(parameters: ListenerArnParameters): ListenerArn {
-  return `arn:${parameters.partition ?? ''}:vpc-lattice:${parameters.region}:${parameters.account}:service/${parameters.serviceId}/listener/${parameters.listenerId}`
+  return `arn:${parameters.partition ?? 'aws'}:vpc-lattice:${parameters.region}:${parameters.account}:service/${parameters.serviceId}/listener/${parameters.listenerId}`
 }
 
 export interface RuleArnParameters {
@@ -75,7 +75,7 @@ export interface RuleArnParameters {
 }
 export type RuleArn = `arn:${string}:vpc-lattice:${string}:${string}:service/${string}/listener/${string}/rule/${string}`
 export function ruleArn(parameters: RuleArnParameters): RuleArn {
-  return `arn:${parameters.partition ?? ''}:vpc-lattice:${parameters.region}:${parameters.account}:service/${parameters.serviceId}/listener/${parameters.listenerId}/rule/${parameters.ruleId}`
+  return `arn:${parameters.partition ?? 'aws'}:vpc-lattice:${parameters.region}:${parameters.account}:service/${parameters.serviceId}/listener/${parameters.listenerId}/rule/${parameters.ruleId}`
 }
 
 export interface AccessLogSubscriptionArnParameters {
@@ -86,5 +86,5 @@ export interface AccessLogSubscriptionArnParameters {
 }
 export type AccessLogSubscriptionArn = `arn:${string}:vpc-lattice:${string}:${string}:accesslogsubscription/${string}`
 export function accessLogSubscriptionArn(parameters: AccessLogSubscriptionArnParameters): AccessLogSubscriptionArn {
-  return `arn:${parameters.partition ?? ''}:vpc-lattice:${parameters.region}:${parameters.account}:accesslogsubscription/${parameters.accessLogSubscriptionId}`
+  return `arn:${parameters.partition ?? 'aws'}:vpc-lattice:${parameters.region}:${parameters.account}:accesslogsubscription/${parameters.accessLogSubscriptionId}`
 }

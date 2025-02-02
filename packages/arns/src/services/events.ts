@@ -5,7 +5,7 @@ export interface EventSourceArnParameters {
 }
 export type EventSourceArn = `arn:${string}:events:${string}::event-source/${string}`
 export function eventSourceArn(parameters: EventSourceArnParameters): EventSourceArn {
-  return `arn:${parameters.partition ?? ''}:events:${parameters.region}::event-source/${parameters.eventSourceName}`
+  return `arn:${parameters.partition ?? 'aws'}:events:${parameters.region}::event-source/${parameters.eventSourceName}`
 }
 
 export interface EventBusArnParameters {
@@ -16,7 +16,7 @@ export interface EventBusArnParameters {
 }
 export type EventBusArn = `arn:${string}:events:${string}:${string}:event-bus/${string}`
 export function eventBusArn(parameters: EventBusArnParameters): EventBusArn {
-  return `arn:${parameters.partition ?? ''}:events:${parameters.region}:${parameters.account}:event-bus/${parameters.eventBusName}`
+  return `arn:${parameters.partition ?? 'aws'}:events:${parameters.region}:${parameters.account}:event-bus/${parameters.eventBusName}`
 }
 
 export interface RuleOnDefaultEventBusArnParameters {
@@ -27,7 +27,7 @@ export interface RuleOnDefaultEventBusArnParameters {
 }
 export type RuleOnDefaultEventBusArn = `arn:${string}:events:${string}:${string}:rule/${string}`
 export function ruleOnDefaultEventBusArn(parameters: RuleOnDefaultEventBusArnParameters): RuleOnDefaultEventBusArn {
-  return `arn:${parameters.partition ?? ''}:events:${parameters.region}:${parameters.account}:rule/${parameters.ruleName}`
+  return `arn:${parameters.partition ?? 'aws'}:events:${parameters.region}:${parameters.account}:rule/${parameters.ruleName}`
 }
 
 export interface RuleOnCustomEventBusArnParameters {
@@ -39,7 +39,7 @@ export interface RuleOnCustomEventBusArnParameters {
 }
 export type RuleOnCustomEventBusArn = `arn:${string}:events:${string}:${string}:rule/${string}/${string}`
 export function ruleOnCustomEventBusArn(parameters: RuleOnCustomEventBusArnParameters): RuleOnCustomEventBusArn {
-  return `arn:${parameters.partition ?? ''}:events:${parameters.region}:${parameters.account}:rule/${parameters.eventBusName}/${parameters.ruleName}`
+  return `arn:${parameters.partition ?? 'aws'}:events:${parameters.region}:${parameters.account}:rule/${parameters.eventBusName}/${parameters.ruleName}`
 }
 
 export interface ArchiveArnParameters {
@@ -50,7 +50,7 @@ export interface ArchiveArnParameters {
 }
 export type ArchiveArn = `arn:${string}:events:${string}:${string}:archive/${string}`
 export function archiveArn(parameters: ArchiveArnParameters): ArchiveArn {
-  return `arn:${parameters.partition ?? ''}:events:${parameters.region}:${parameters.account}:archive/${parameters.archiveName}`
+  return `arn:${parameters.partition ?? 'aws'}:events:${parameters.region}:${parameters.account}:archive/${parameters.archiveName}`
 }
 
 export interface ReplayArnParameters {
@@ -61,7 +61,7 @@ export interface ReplayArnParameters {
 }
 export type ReplayArn = `arn:${string}:events:${string}:${string}:replay/${string}`
 export function replayArn(parameters: ReplayArnParameters): ReplayArn {
-  return `arn:${parameters.partition ?? ''}:events:${parameters.region}:${parameters.account}:replay/${parameters.replayName}`
+  return `arn:${parameters.partition ?? 'aws'}:events:${parameters.region}:${parameters.account}:replay/${parameters.replayName}`
 }
 
 export interface ConnectionArnParameters {
@@ -72,7 +72,7 @@ export interface ConnectionArnParameters {
 }
 export type ConnectionArn = `arn:${string}:events:${string}:${string}:connection/${string}`
 export function connectionArn(parameters: ConnectionArnParameters): ConnectionArn {
-  return `arn:${parameters.partition ?? ''}:events:${parameters.region}:${parameters.account}:connection/${parameters.connectionName}`
+  return `arn:${parameters.partition ?? 'aws'}:events:${parameters.region}:${parameters.account}:connection/${parameters.connectionName}`
 }
 
 export interface ApiDestinationArnParameters {
@@ -83,7 +83,7 @@ export interface ApiDestinationArnParameters {
 }
 export type ApiDestinationArn = `arn:${string}:events:${string}:${string}:api-destination/${string}`
 export function apiDestinationArn(parameters: ApiDestinationArnParameters): ApiDestinationArn {
-  return `arn:${parameters.partition ?? ''}:events:${parameters.region}:${parameters.account}:api-destination/${parameters.apiDestinationName}`
+  return `arn:${parameters.partition ?? 'aws'}:events:${parameters.region}:${parameters.account}:api-destination/${parameters.apiDestinationName}`
 }
 
 export interface EndpointArnParameters {
@@ -94,7 +94,7 @@ export interface EndpointArnParameters {
 }
 export type EndpointArn = `arn:${string}:events:${string}:${string}:endpoint/${string}`
 export function endpointArn(parameters: EndpointArnParameters): EndpointArn {
-  return `arn:${parameters.partition ?? ''}:events:${parameters.region}:${parameters.account}:endpoint/${parameters.endpointName}`
+  return `arn:${parameters.partition ?? 'aws'}:events:${parameters.region}:${parameters.account}:endpoint/${parameters.endpointName}`
 }
 
 export interface CreateSnapshotArnParameters {
@@ -104,7 +104,7 @@ export interface CreateSnapshotArnParameters {
 }
 export type CreateSnapshotArn = `arn:${string}:events:${string}:${string}:target/create-snapshot`
 export function createSnapshotArn(parameters: CreateSnapshotArnParameters): CreateSnapshotArn {
-  return `arn:${parameters.partition ?? ''}:events:${parameters.region}:${parameters.account}:target/create-snapshot`
+  return `arn:${parameters.partition ?? 'aws'}:events:${parameters.region}:${parameters.account}:target/create-snapshot`
 }
 
 export interface RebootInstanceArnParameters {
@@ -114,7 +114,7 @@ export interface RebootInstanceArnParameters {
 }
 export type RebootInstanceArn = `arn:${string}:events:${string}:${string}:target/reboot-instance`
 export function rebootInstanceArn(parameters: RebootInstanceArnParameters): RebootInstanceArn {
-  return `arn:${parameters.partition ?? ''}:events:${parameters.region}:${parameters.account}:target/reboot-instance`
+  return `arn:${parameters.partition ?? 'aws'}:events:${parameters.region}:${parameters.account}:target/reboot-instance`
 }
 
 export interface StopInstanceArnParameters {
@@ -124,7 +124,7 @@ export interface StopInstanceArnParameters {
 }
 export type StopInstanceArn = `arn:${string}:events:${string}:${string}:target/stop-instance`
 export function stopInstanceArn(parameters: StopInstanceArnParameters): StopInstanceArn {
-  return `arn:${parameters.partition ?? ''}:events:${parameters.region}:${parameters.account}:target/stop-instance`
+  return `arn:${parameters.partition ?? 'aws'}:events:${parameters.region}:${parameters.account}:target/stop-instance`
 }
 
 export interface TerminateInstanceArnParameters {
@@ -134,5 +134,5 @@ export interface TerminateInstanceArnParameters {
 }
 export type TerminateInstanceArn = `arn:${string}:events:${string}:${string}:target/terminate-instance`
 export function terminateInstanceArn(parameters: TerminateInstanceArnParameters): TerminateInstanceArn {
-  return `arn:${parameters.partition ?? ''}:events:${parameters.region}:${parameters.account}:target/terminate-instance`
+  return `arn:${parameters.partition ?? 'aws'}:events:${parameters.region}:${parameters.account}:target/terminate-instance`
 }

@@ -5,5 +5,5 @@ export interface KeyValueStoreArnParameters {
 }
 export type KeyValueStoreArn = `arn:${string}:cloudfront::${string}:key-value-store/${string}`
 export function keyValueStoreArn(parameters: KeyValueStoreArnParameters): KeyValueStoreArn {
-  return `arn:${parameters.partition ?? ''}:cloudfront::${parameters.account}:key-value-store/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:cloudfront::${parameters.account}:key-value-store/${parameters.resourceId}`
 }

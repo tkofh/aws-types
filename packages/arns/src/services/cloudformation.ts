@@ -7,7 +7,7 @@ export interface ChangesetArnParameters {
 }
 export type ChangesetArn = `arn:${string}:cloudformation:${string}:${string}:changeSet/${string}/${string}`
 export function changesetArn(parameters: ChangesetArnParameters): ChangesetArn {
-  return `arn:${parameters.partition ?? ''}:cloudformation:${parameters.region}:${parameters.account}:changeSet/${parameters.changeSetName}/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:cloudformation:${parameters.region}:${parameters.account}:changeSet/${parameters.changeSetName}/${parameters.id}`
 }
 
 export interface StackArnParameters {
@@ -19,7 +19,7 @@ export interface StackArnParameters {
 }
 export type StackArn = `arn:${string}:cloudformation:${string}:${string}:stack/${string}/${string}`
 export function stackArn(parameters: StackArnParameters): StackArn {
-  return `arn:${parameters.partition ?? ''}:cloudformation:${parameters.region}:${parameters.account}:stack/${parameters.stackName}/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:cloudformation:${parameters.region}:${parameters.account}:stack/${parameters.stackName}/${parameters.id}`
 }
 
 export interface StacksetArnParameters {
@@ -31,7 +31,7 @@ export interface StacksetArnParameters {
 }
 export type StacksetArn = `arn:${string}:cloudformation:${string}:${string}:stackset/${string}:${string}`
 export function stacksetArn(parameters: StacksetArnParameters): StacksetArn {
-  return `arn:${parameters.partition ?? ''}:cloudformation:${parameters.region}:${parameters.account}:stackset/${parameters.stackSetName}:${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:cloudformation:${parameters.region}:${parameters.account}:stackset/${parameters.stackSetName}:${parameters.id}`
 }
 
 export interface StacksetTargetArnParameters {
@@ -42,7 +42,7 @@ export interface StacksetTargetArnParameters {
 }
 export type StacksetTargetArn = `arn:${string}:cloudformation:${string}:${string}:stackset-target/${string}`
 export function stacksetTargetArn(parameters: StacksetTargetArnParameters): StacksetTargetArn {
-  return `arn:${parameters.partition ?? ''}:cloudformation:${parameters.region}:${parameters.account}:stackset-target/${parameters.stackSetTarget}`
+  return `arn:${parameters.partition ?? 'aws'}:cloudformation:${parameters.region}:${parameters.account}:stackset-target/${parameters.stackSetTarget}`
 }
 
 export interface TypeArnParameters {
@@ -53,7 +53,7 @@ export interface TypeArnParameters {
 }
 export type TypeArn = `arn:${string}:cloudformation:${string}:${string}:type/resource/${string}`
 export function typeArn(parameters: TypeArnParameters): TypeArn {
-  return `arn:${parameters.partition ?? ''}:cloudformation:${parameters.region}:${parameters.account}:type/resource/${parameters.type}`
+  return `arn:${parameters.partition ?? 'aws'}:cloudformation:${parameters.region}:${parameters.account}:type/resource/${parameters.type}`
 }
 
 export interface GeneratedtemplateArnParameters {
@@ -64,7 +64,7 @@ export interface GeneratedtemplateArnParameters {
 }
 export type GeneratedtemplateArn = `arn:${string}:cloudformation:${string}:${string}:generatedTemplate/${string}`
 export function generatedtemplateArn(parameters: GeneratedtemplateArnParameters): GeneratedtemplateArn {
-  return `arn:${parameters.partition ?? ''}:cloudformation:${parameters.region}:${parameters.account}:generatedTemplate/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:cloudformation:${parameters.region}:${parameters.account}:generatedTemplate/${parameters.id}`
 }
 
 export interface ResourcescanArnParameters {
@@ -75,5 +75,5 @@ export interface ResourcescanArnParameters {
 }
 export type ResourcescanArn = `arn:${string}:cloudformation:${string}:${string}:resourceScan/${string}`
 export function resourcescanArn(parameters: ResourcescanArnParameters): ResourcescanArn {
-  return `arn:${parameters.partition ?? ''}:cloudformation:${parameters.region}:${parameters.account}:resourceScan/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:cloudformation:${parameters.region}:${parameters.account}:resourceScan/${parameters.id}`
 }

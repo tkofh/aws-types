@@ -6,7 +6,7 @@ export interface StreamArnParameters {
 }
 export type StreamArn = `arn:${string}:kinesis:${string}:${string}:stream/${string}`
 export function streamArn(parameters: StreamArnParameters): StreamArn {
-  return `arn:${parameters.partition ?? ''}:kinesis:${parameters.region}:${parameters.account}:stream/${parameters.streamName}`
+  return `arn:${parameters.partition ?? 'aws'}:kinesis:${parameters.region}:${parameters.account}:stream/${parameters.streamName}`
 }
 
 export interface ConsumerArnParameters {
@@ -20,7 +20,7 @@ export interface ConsumerArnParameters {
 }
 export type ConsumerArn = `arn:${string}:kinesis:${string}:${string}:${string}/${string}/consumer/${string}:${string}`
 export function consumerArn(parameters: ConsumerArnParameters): ConsumerArn {
-  return `arn:${parameters.partition ?? ''}:kinesis:${parameters.region}:${parameters.account}:${parameters.streamType}/${parameters.streamName}/consumer/${parameters.consumerName}:${parameters.consumerCreationTimpstamp}`
+  return `arn:${parameters.partition ?? 'aws'}:kinesis:${parameters.region}:${parameters.account}:${parameters.streamType}/${parameters.streamName}/consumer/${parameters.consumerName}:${parameters.consumerCreationTimpstamp}`
 }
 
 export interface KmsKeyArnParameters {
@@ -31,5 +31,5 @@ export interface KmsKeyArnParameters {
 }
 export type KmsKeyArn = `arn:${string}:kms:${string}:${string}:key/${string}`
 export function kmsKeyArn(parameters: KmsKeyArnParameters): KmsKeyArn {
-  return `arn:${parameters.partition ?? ''}:kms:${parameters.region}:${parameters.account}:key/${parameters.keyId}`
+  return `arn:${parameters.partition ?? 'aws'}:kms:${parameters.region}:${parameters.account}:key/${parameters.keyId}`
 }

@@ -7,7 +7,7 @@ export interface StreamArnParameters {
 }
 export type StreamArn = `arn:${string}:kinesisvideo:${string}:${string}:stream/${string}/${string}`
 export function streamArn(parameters: StreamArnParameters): StreamArn {
-  return `arn:${parameters.partition ?? ''}:kinesisvideo:${parameters.region}:${parameters.account}:stream/${parameters.streamName}/${parameters.creationTime}`
+  return `arn:${parameters.partition ?? 'aws'}:kinesisvideo:${parameters.region}:${parameters.account}:stream/${parameters.streamName}/${parameters.creationTime}`
 }
 
 export interface ChannelArnParameters {
@@ -19,5 +19,5 @@ export interface ChannelArnParameters {
 }
 export type ChannelArn = `arn:${string}:kinesisvideo:${string}:${string}:channel/${string}/${string}`
 export function channelArn(parameters: ChannelArnParameters): ChannelArn {
-  return `arn:${parameters.partition ?? ''}:kinesisvideo:${parameters.region}:${parameters.account}:channel/${parameters.channelName}/${parameters.creationTime}`
+  return `arn:${parameters.partition ?? 'aws'}:kinesisvideo:${parameters.region}:${parameters.account}:channel/${parameters.channelName}/${parameters.creationTime}`
 }

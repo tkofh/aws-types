@@ -6,5 +6,5 @@ export interface ApplicationArnParameters {
 }
 export type ApplicationArn = `arn:${string}:iotfleethub:${string}:${string}:application/${string}`
 export function applicationArn(parameters: ApplicationArnParameters): ApplicationArn {
-  return `arn:${parameters.partition ?? ''}:iotfleethub:${parameters.region}:${parameters.account}:application/${parameters.applicationId}`
+  return `arn:${parameters.partition ?? 'aws'}:iotfleethub:${parameters.region}:${parameters.account}:application/${parameters.applicationId}`
 }

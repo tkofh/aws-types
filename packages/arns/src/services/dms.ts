@@ -5,7 +5,7 @@ export interface CertificateArnParameters {
 }
 export type CertificateArn = `arn:${string}:dms:${string}:${string}:cert:*`
 export function certificateArn(parameters: CertificateArnParameters): CertificateArn {
-  return `arn:${parameters.partition ?? ''}:dms:${parameters.region}:${parameters.account}:cert:*`
+  return `arn:${parameters.partition ?? 'aws'}:dms:${parameters.region}:${parameters.account}:cert:*`
 }
 
 export interface DataProviderArnParameters {
@@ -15,7 +15,7 @@ export interface DataProviderArnParameters {
 }
 export type DataProviderArn = `arn:${string}:dms:${string}:${string}:data-provider:*`
 export function dataProviderArn(parameters: DataProviderArnParameters): DataProviderArn {
-  return `arn:${parameters.partition ?? ''}:dms:${parameters.region}:${parameters.account}:data-provider:*`
+  return `arn:${parameters.partition ?? 'aws'}:dms:${parameters.region}:${parameters.account}:data-provider:*`
 }
 
 export interface DataMigrationArnParameters {
@@ -25,7 +25,7 @@ export interface DataMigrationArnParameters {
 }
 export type DataMigrationArn = `arn:${string}:dms:${string}:${string}:data-migration:*`
 export function dataMigrationArn(parameters: DataMigrationArnParameters): DataMigrationArn {
-  return `arn:${parameters.partition ?? ''}:dms:${parameters.region}:${parameters.account}:data-migration:*`
+  return `arn:${parameters.partition ?? 'aws'}:dms:${parameters.region}:${parameters.account}:data-migration:*`
 }
 
 export interface EndpointArnParameters {
@@ -35,7 +35,7 @@ export interface EndpointArnParameters {
 }
 export type EndpointArn = `arn:${string}:dms:${string}:${string}:endpoint:*`
 export function endpointArn(parameters: EndpointArnParameters): EndpointArn {
-  return `arn:${parameters.partition ?? ''}:dms:${parameters.region}:${parameters.account}:endpoint:*`
+  return `arn:${parameters.partition ?? 'aws'}:dms:${parameters.region}:${parameters.account}:endpoint:*`
 }
 
 export interface EventSubscriptionArnParameters {
@@ -45,7 +45,7 @@ export interface EventSubscriptionArnParameters {
 }
 export type EventSubscriptionArn = `arn:${string}:dms:${string}:${string}:es:*`
 export function eventSubscriptionArn(parameters: EventSubscriptionArnParameters): EventSubscriptionArn {
-  return `arn:${parameters.partition ?? ''}:dms:${parameters.region}:${parameters.account}:es:*`
+  return `arn:${parameters.partition ?? 'aws'}:dms:${parameters.region}:${parameters.account}:es:*`
 }
 
 export interface InstanceProfileArnParameters {
@@ -55,7 +55,7 @@ export interface InstanceProfileArnParameters {
 }
 export type InstanceProfileArn = `arn:${string}:dms:${string}:${string}:instance-profile:*`
 export function instanceProfileArn(parameters: InstanceProfileArnParameters): InstanceProfileArn {
-  return `arn:${parameters.partition ?? ''}:dms:${parameters.region}:${parameters.account}:instance-profile:*`
+  return `arn:${parameters.partition ?? 'aws'}:dms:${parameters.region}:${parameters.account}:instance-profile:*`
 }
 
 export interface MigrationProjectArnParameters {
@@ -65,7 +65,7 @@ export interface MigrationProjectArnParameters {
 }
 export type MigrationProjectArn = `arn:${string}:dms:${string}:${string}:migration-project:*`
 export function migrationProjectArn(parameters: MigrationProjectArnParameters): MigrationProjectArn {
-  return `arn:${parameters.partition ?? ''}:dms:${parameters.region}:${parameters.account}:migration-project:*`
+  return `arn:${parameters.partition ?? 'aws'}:dms:${parameters.region}:${parameters.account}:migration-project:*`
 }
 
 export interface ReplicationConfigArnParameters {
@@ -75,7 +75,7 @@ export interface ReplicationConfigArnParameters {
 }
 export type ReplicationConfigArn = `arn:${string}:dms:${string}:${string}:replication-config:*`
 export function replicationConfigArn(parameters: ReplicationConfigArnParameters): ReplicationConfigArn {
-  return `arn:${parameters.partition ?? ''}:dms:${parameters.region}:${parameters.account}:replication-config:*`
+  return `arn:${parameters.partition ?? 'aws'}:dms:${parameters.region}:${parameters.account}:replication-config:*`
 }
 
 export interface ReplicationInstanceArnParameters {
@@ -85,7 +85,7 @@ export interface ReplicationInstanceArnParameters {
 }
 export type ReplicationInstanceArn = `arn:${string}:dms:${string}:${string}:rep:*`
 export function replicationInstanceArn(parameters: ReplicationInstanceArnParameters): ReplicationInstanceArn {
-  return `arn:${parameters.partition ?? ''}:dms:${parameters.region}:${parameters.account}:rep:*`
+  return `arn:${parameters.partition ?? 'aws'}:dms:${parameters.region}:${parameters.account}:rep:*`
 }
 
 export interface ReplicationSubnetGroupArnParameters {
@@ -95,7 +95,7 @@ export interface ReplicationSubnetGroupArnParameters {
 }
 export type ReplicationSubnetGroupArn = `arn:${string}:dms:${string}:${string}:subgrp:*`
 export function replicationSubnetGroupArn(parameters: ReplicationSubnetGroupArnParameters): ReplicationSubnetGroupArn {
-  return `arn:${parameters.partition ?? ''}:dms:${parameters.region}:${parameters.account}:subgrp:*`
+  return `arn:${parameters.partition ?? 'aws'}:dms:${parameters.region}:${parameters.account}:subgrp:*`
 }
 
 export interface ReplicationTaskArnParameters {
@@ -105,7 +105,7 @@ export interface ReplicationTaskArnParameters {
 }
 export type ReplicationTaskArn = `arn:${string}:dms:${string}:${string}:task:*`
 export function replicationTaskArn(parameters: ReplicationTaskArnParameters): ReplicationTaskArn {
-  return `arn:${parameters.partition ?? ''}:dms:${parameters.region}:${parameters.account}:task:*`
+  return `arn:${parameters.partition ?? 'aws'}:dms:${parameters.region}:${parameters.account}:task:*`
 }
 
 export interface ReplicationTaskAssessmentRunArnParameters {
@@ -115,7 +115,7 @@ export interface ReplicationTaskAssessmentRunArnParameters {
 }
 export type ReplicationTaskAssessmentRunArn = `arn:${string}:dms:${string}:${string}:assessment-run:*`
 export function replicationTaskAssessmentRunArn(parameters: ReplicationTaskAssessmentRunArnParameters): ReplicationTaskAssessmentRunArn {
-  return `arn:${parameters.partition ?? ''}:dms:${parameters.region}:${parameters.account}:assessment-run:*`
+  return `arn:${parameters.partition ?? 'aws'}:dms:${parameters.region}:${parameters.account}:assessment-run:*`
 }
 
 export interface ReplicationTaskIndividualAssessmentArnParameters {
@@ -125,5 +125,5 @@ export interface ReplicationTaskIndividualAssessmentArnParameters {
 }
 export type ReplicationTaskIndividualAssessmentArn = `arn:${string}:dms:${string}:${string}:individual-assessment:*`
 export function replicationTaskIndividualAssessmentArn(parameters: ReplicationTaskIndividualAssessmentArnParameters): ReplicationTaskIndividualAssessmentArn {
-  return `arn:${parameters.partition ?? ''}:dms:${parameters.region}:${parameters.account}:individual-assessment:*`
+  return `arn:${parameters.partition ?? 'aws'}:dms:${parameters.region}:${parameters.account}:individual-assessment:*`
 }

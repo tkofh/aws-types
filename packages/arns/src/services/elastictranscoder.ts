@@ -6,7 +6,7 @@ export interface JobArnParameters {
 }
 export type JobArn = `arn:${string}:elastictranscoder:${string}:${string}:job/${string}`
 export function jobArn(parameters: JobArnParameters): JobArn {
-  return `arn:${parameters.partition ?? ''}:elastictranscoder:${parameters.region}:${parameters.account}:job/${parameters.jobId}`
+  return `arn:${parameters.partition ?? 'aws'}:elastictranscoder:${parameters.region}:${parameters.account}:job/${parameters.jobId}`
 }
 
 export interface PipelineArnParameters {
@@ -17,7 +17,7 @@ export interface PipelineArnParameters {
 }
 export type PipelineArn = `arn:${string}:elastictranscoder:${string}:${string}:pipeline/${string}`
 export function pipelineArn(parameters: PipelineArnParameters): PipelineArn {
-  return `arn:${parameters.partition ?? ''}:elastictranscoder:${parameters.region}:${parameters.account}:pipeline/${parameters.pipelineId}`
+  return `arn:${parameters.partition ?? 'aws'}:elastictranscoder:${parameters.region}:${parameters.account}:pipeline/${parameters.pipelineId}`
 }
 
 export interface PresetArnParameters {
@@ -28,5 +28,5 @@ export interface PresetArnParameters {
 }
 export type PresetArn = `arn:${string}:elastictranscoder:${string}:${string}:preset/${string}`
 export function presetArn(parameters: PresetArnParameters): PresetArn {
-  return `arn:${parameters.partition ?? ''}:elastictranscoder:${parameters.region}:${parameters.account}:preset/${parameters.presetId}`
+  return `arn:${parameters.partition ?? 'aws'}:elastictranscoder:${parameters.region}:${parameters.account}:preset/${parameters.presetId}`
 }

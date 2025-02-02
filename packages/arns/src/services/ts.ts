@@ -7,7 +7,7 @@ export interface ExecutionArnParameters {
 }
 export type ExecutionArn = `arn:${string}:ts::${string}:execution/${string}/${string}/${string}`
 export function executionArn(parameters: ExecutionArnParameters): ExecutionArn {
-  return `arn:${parameters.partition ?? ''}:ts::${parameters.account}:execution/${parameters.userId}/${parameters.toolId}/${parameters.executionId}`
+  return `arn:${parameters.partition ?? 'aws'}:ts::${parameters.account}:execution/${parameters.userId}/${parameters.toolId}/${parameters.executionId}`
 }
 
 export interface ToolArnParameters {
@@ -16,5 +16,5 @@ export interface ToolArnParameters {
 }
 export type ToolArn = `arn:${string}:ts::aws:tool/${string}`
 export function toolArn(parameters: ToolArnParameters): ToolArn {
-  return `arn:${parameters.partition ?? ''}:ts::aws:tool/${parameters.toolId}`
+  return `arn:${parameters.partition ?? 'aws'}:ts::aws:tool/${parameters.toolId}`
 }

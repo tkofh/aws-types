@@ -6,7 +6,7 @@ export interface EventIntegrationArnParameters {
 }
 export type EventIntegrationArn = `arn:${string}:app-integrations:${string}:${string}:event-integration/${string}`
 export function eventIntegrationArn(parameters: EventIntegrationArnParameters): EventIntegrationArn {
-  return `arn:${parameters.partition ?? ''}:app-integrations:${parameters.region}:${parameters.account}:event-integration/${parameters.eventIntegrationName}`
+  return `arn:${parameters.partition ?? 'aws'}:app-integrations:${parameters.region}:${parameters.account}:event-integration/${parameters.eventIntegrationName}`
 }
 
 export interface EventIntegrationAssociationArnParameters {
@@ -18,7 +18,7 @@ export interface EventIntegrationAssociationArnParameters {
 }
 export type EventIntegrationAssociationArn = `arn:${string}:app-integrations:${string}:${string}:event-integration-association/${string}/${string}`
 export function eventIntegrationAssociationArn(parameters: EventIntegrationAssociationArnParameters): EventIntegrationAssociationArn {
-  return `arn:${parameters.partition ?? ''}:app-integrations:${parameters.region}:${parameters.account}:event-integration-association/${parameters.eventIntegrationName}/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:app-integrations:${parameters.region}:${parameters.account}:event-integration-association/${parameters.eventIntegrationName}/${parameters.resourceId}`
 }
 
 export interface DataIntegrationArnParameters {
@@ -29,7 +29,7 @@ export interface DataIntegrationArnParameters {
 }
 export type DataIntegrationArn = `arn:${string}:app-integrations:${string}:${string}:data-integration/${string}`
 export function dataIntegrationArn(parameters: DataIntegrationArnParameters): DataIntegrationArn {
-  return `arn:${parameters.partition ?? ''}:app-integrations:${parameters.region}:${parameters.account}:data-integration/${parameters.dataIntegrationId}`
+  return `arn:${parameters.partition ?? 'aws'}:app-integrations:${parameters.region}:${parameters.account}:data-integration/${parameters.dataIntegrationId}`
 }
 
 export interface DataIntegrationAssociationArnParameters {
@@ -41,7 +41,7 @@ export interface DataIntegrationAssociationArnParameters {
 }
 export type DataIntegrationAssociationArn = `arn:${string}:app-integrations:${string}:${string}:data-integration-association/${string}/${string}`
 export function dataIntegrationAssociationArn(parameters: DataIntegrationAssociationArnParameters): DataIntegrationAssociationArn {
-  return `arn:${parameters.partition ?? ''}:app-integrations:${parameters.region}:${parameters.account}:data-integration-association/${parameters.dataIntegrationId}/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:app-integrations:${parameters.region}:${parameters.account}:data-integration-association/${parameters.dataIntegrationId}/${parameters.resourceId}`
 }
 
 export interface ApplicationArnParameters {
@@ -52,7 +52,7 @@ export interface ApplicationArnParameters {
 }
 export type ApplicationArn = `arn:${string}:app-integrations:${string}:${string}:application/${string}`
 export function applicationArn(parameters: ApplicationArnParameters): ApplicationArn {
-  return `arn:${parameters.partition ?? ''}:app-integrations:${parameters.region}:${parameters.account}:application/${parameters.applicationId}`
+  return `arn:${parameters.partition ?? 'aws'}:app-integrations:${parameters.region}:${parameters.account}:application/${parameters.applicationId}`
 }
 
 export interface ApplicationAssociationArnParameters {
@@ -64,5 +64,5 @@ export interface ApplicationAssociationArnParameters {
 }
 export type ApplicationAssociationArn = `arn:${string}:app-integrations:${string}:${string}:application-association/${string}/${string}`
 export function applicationAssociationArn(parameters: ApplicationAssociationArnParameters): ApplicationAssociationArn {
-  return `arn:${parameters.partition ?? ''}:app-integrations:${parameters.region}:${parameters.account}:application-association/${parameters.applicationId}/${parameters.applicationAssociationId}`
+  return `arn:${parameters.partition ?? 'aws'}:app-integrations:${parameters.region}:${parameters.account}:application-association/${parameters.applicationId}/${parameters.applicationAssociationId}`
 }

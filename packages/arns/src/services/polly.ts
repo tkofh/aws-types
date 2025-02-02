@@ -6,5 +6,5 @@ export interface LexiconArnParameters {
 }
 export type LexiconArn = `arn:${string}:polly:${string}:${string}:lexicon/${string}`
 export function lexiconArn(parameters: LexiconArnParameters): LexiconArn {
-  return `arn:${parameters.partition ?? ''}:polly:${parameters.region}:${parameters.account}:lexicon/${parameters.lexiconName}`
+  return `arn:${parameters.partition ?? 'aws'}:polly:${parameters.region}:${parameters.account}:lexicon/${parameters.lexiconName}`
 }

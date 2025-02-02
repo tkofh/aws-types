@@ -7,7 +7,7 @@ export interface DeviceArnParameters {
 }
 export type DeviceArn = `arn:${string}:storagegateway:${string}:${string}:gateway/${string}/device/${string}`
 export function deviceArn(parameters: DeviceArnParameters): DeviceArn {
-  return `arn:${parameters.partition ?? ''}:storagegateway:${parameters.region}:${parameters.account}:gateway/${parameters.gatewayId}/device/${parameters.vtldevice}`
+  return `arn:${parameters.partition ?? 'aws'}:storagegateway:${parameters.region}:${parameters.account}:gateway/${parameters.gatewayId}/device/${parameters.vtldevice}`
 }
 
 export interface FsAssociationArnParameters {
@@ -18,7 +18,7 @@ export interface FsAssociationArnParameters {
 }
 export type FsAssociationArn = `arn:${string}:storagegateway:${string}:${string}:fs-association/${string}`
 export function fsAssociationArn(parameters: FsAssociationArnParameters): FsAssociationArn {
-  return `arn:${parameters.partition ?? ''}:storagegateway:${parameters.region}:${parameters.account}:fs-association/${parameters.fsaId}`
+  return `arn:${parameters.partition ?? 'aws'}:storagegateway:${parameters.region}:${parameters.account}:fs-association/${parameters.fsaId}`
 }
 
 export interface GatewayArnParameters {
@@ -29,7 +29,7 @@ export interface GatewayArnParameters {
 }
 export type GatewayArn = `arn:${string}:storagegateway:${string}:${string}:gateway/${string}`
 export function gatewayArn(parameters: GatewayArnParameters): GatewayArn {
-  return `arn:${parameters.partition ?? ''}:storagegateway:${parameters.region}:${parameters.account}:gateway/${parameters.gatewayId}`
+  return `arn:${parameters.partition ?? 'aws'}:storagegateway:${parameters.region}:${parameters.account}:gateway/${parameters.gatewayId}`
 }
 
 export interface ShareArnParameters {
@@ -40,7 +40,7 @@ export interface ShareArnParameters {
 }
 export type ShareArn = `arn:${string}:storagegateway:${string}:${string}:share/${string}`
 export function shareArn(parameters: ShareArnParameters): ShareArn {
-  return `arn:${parameters.partition ?? ''}:storagegateway:${parameters.region}:${parameters.account}:share/${parameters.shareId}`
+  return `arn:${parameters.partition ?? 'aws'}:storagegateway:${parameters.region}:${parameters.account}:share/${parameters.shareId}`
 }
 
 export interface TapeArnParameters {
@@ -51,7 +51,7 @@ export interface TapeArnParameters {
 }
 export type TapeArn = `arn:${string}:storagegateway:${string}:${string}:tape/${string}`
 export function tapeArn(parameters: TapeArnParameters): TapeArn {
-  return `arn:${parameters.partition ?? ''}:storagegateway:${parameters.region}:${parameters.account}:tape/${parameters.tapeBarcode}`
+  return `arn:${parameters.partition ?? 'aws'}:storagegateway:${parameters.region}:${parameters.account}:tape/${parameters.tapeBarcode}`
 }
 
 export interface TapepoolArnParameters {
@@ -62,7 +62,7 @@ export interface TapepoolArnParameters {
 }
 export type TapepoolArn = `arn:${string}:storagegateway:${string}:${string}:tapepool/${string}`
 export function tapepoolArn(parameters: TapepoolArnParameters): TapepoolArn {
-  return `arn:${parameters.partition ?? ''}:storagegateway:${parameters.region}:${parameters.account}:tapepool/${parameters.poolId}`
+  return `arn:${parameters.partition ?? 'aws'}:storagegateway:${parameters.region}:${parameters.account}:tapepool/${parameters.poolId}`
 }
 
 export interface TargetArnParameters {
@@ -74,7 +74,7 @@ export interface TargetArnParameters {
 }
 export type TargetArn = `arn:${string}:storagegateway:${string}:${string}:gateway/${string}/target/${string}`
 export function targetArn(parameters: TargetArnParameters): TargetArn {
-  return `arn:${parameters.partition ?? ''}:storagegateway:${parameters.region}:${parameters.account}:gateway/${parameters.gatewayId}/target/${parameters.iscsiTarget}`
+  return `arn:${parameters.partition ?? 'aws'}:storagegateway:${parameters.region}:${parameters.account}:gateway/${parameters.gatewayId}/target/${parameters.iscsiTarget}`
 }
 
 export interface VolumeArnParameters {
@@ -86,5 +86,5 @@ export interface VolumeArnParameters {
 }
 export type VolumeArn = `arn:${string}:storagegateway:${string}:${string}:gateway/${string}/volume/${string}`
 export function volumeArn(parameters: VolumeArnParameters): VolumeArn {
-  return `arn:${parameters.partition ?? ''}:storagegateway:${parameters.region}:${parameters.account}:gateway/${parameters.gatewayId}/volume/${parameters.volumeId}`
+  return `arn:${parameters.partition ?? 'aws'}:storagegateway:${parameters.region}:${parameters.account}:gateway/${parameters.gatewayId}/volume/${parameters.volumeId}`
 }

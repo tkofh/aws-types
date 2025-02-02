@@ -6,7 +6,7 @@ export interface ParametergroupArnParameters {
 }
 export type ParametergroupArn = `arn:${string}:memorydb:${string}:${string}:parametergroup/${string}`
 export function parametergroupArn(parameters: ParametergroupArnParameters): ParametergroupArn {
-  return `arn:${parameters.partition ?? ''}:memorydb:${parameters.region}:${parameters.account}:parametergroup/${parameters.parameterGroupName}`
+  return `arn:${parameters.partition ?? 'aws'}:memorydb:${parameters.region}:${parameters.account}:parametergroup/${parameters.parameterGroupName}`
 }
 
 export interface SubnetgroupArnParameters {
@@ -17,7 +17,7 @@ export interface SubnetgroupArnParameters {
 }
 export type SubnetgroupArn = `arn:${string}:memorydb:${string}:${string}:subnetgroup/${string}`
 export function subnetgroupArn(parameters: SubnetgroupArnParameters): SubnetgroupArn {
-  return `arn:${parameters.partition ?? ''}:memorydb:${parameters.region}:${parameters.account}:subnetgroup/${parameters.subnetGroupName}`
+  return `arn:${parameters.partition ?? 'aws'}:memorydb:${parameters.region}:${parameters.account}:subnetgroup/${parameters.subnetGroupName}`
 }
 
 export interface ClusterArnParameters {
@@ -28,7 +28,7 @@ export interface ClusterArnParameters {
 }
 export type ClusterArn = `arn:${string}:memorydb:${string}:${string}:cluster/${string}`
 export function clusterArn(parameters: ClusterArnParameters): ClusterArn {
-  return `arn:${parameters.partition ?? ''}:memorydb:${parameters.region}:${parameters.account}:cluster/${parameters.clusterName}`
+  return `arn:${parameters.partition ?? 'aws'}:memorydb:${parameters.region}:${parameters.account}:cluster/${parameters.clusterName}`
 }
 
 export interface SnapshotArnParameters {
@@ -39,7 +39,7 @@ export interface SnapshotArnParameters {
 }
 export type SnapshotArn = `arn:${string}:memorydb:${string}:${string}:snapshot/${string}`
 export function snapshotArn(parameters: SnapshotArnParameters): SnapshotArn {
-  return `arn:${parameters.partition ?? ''}:memorydb:${parameters.region}:${parameters.account}:snapshot/${parameters.snapshotName}`
+  return `arn:${parameters.partition ?? 'aws'}:memorydb:${parameters.region}:${parameters.account}:snapshot/${parameters.snapshotName}`
 }
 
 export interface UserArnParameters {
@@ -50,7 +50,7 @@ export interface UserArnParameters {
 }
 export type UserArn = `arn:${string}:memorydb:${string}:${string}:user/${string}`
 export function userArn(parameters: UserArnParameters): UserArn {
-  return `arn:${parameters.partition ?? ''}:memorydb:${parameters.region}:${parameters.account}:user/${parameters.userName}`
+  return `arn:${parameters.partition ?? 'aws'}:memorydb:${parameters.region}:${parameters.account}:user/${parameters.userName}`
 }
 
 export interface AclArnParameters {
@@ -61,7 +61,7 @@ export interface AclArnParameters {
 }
 export type AclArn = `arn:${string}:memorydb:${string}:${string}:acl/${string}`
 export function aclArn(parameters: AclArnParameters): AclArn {
-  return `arn:${parameters.partition ?? ''}:memorydb:${parameters.region}:${parameters.account}:acl/${parameters.aclName}`
+  return `arn:${parameters.partition ?? 'aws'}:memorydb:${parameters.region}:${parameters.account}:acl/${parameters.aclName}`
 }
 
 export interface ReservednodeArnParameters {
@@ -72,5 +72,5 @@ export interface ReservednodeArnParameters {
 }
 export type ReservednodeArn = `arn:${string}:memorydb:${string}:${string}:reservednode/${string}`
 export function reservednodeArn(parameters: ReservednodeArnParameters): ReservednodeArn {
-  return `arn:${parameters.partition ?? ''}:memorydb:${parameters.region}:${parameters.account}:reservednode/${parameters.reservationId}`
+  return `arn:${parameters.partition ?? 'aws'}:memorydb:${parameters.region}:${parameters.account}:reservednode/${parameters.reservationId}`
 }

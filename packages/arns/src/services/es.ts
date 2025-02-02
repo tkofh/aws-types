@@ -6,7 +6,7 @@ export interface DomainArnParameters {
 }
 export type DomainArn = `arn:${string}:es:${string}:${string}:domain/${string}`
 export function domainArn(parameters: DomainArnParameters): DomainArn {
-  return `arn:${parameters.partition ?? ''}:es:${parameters.region}:${parameters.account}:domain/${parameters.domainName}`
+  return `arn:${parameters.partition ?? 'aws'}:es:${parameters.region}:${parameters.account}:domain/${parameters.domainName}`
 }
 
 export interface EsRoleArnParameters {
@@ -15,7 +15,7 @@ export interface EsRoleArnParameters {
 }
 export type EsRoleArn = `arn:${string}:iam::${string}:role/aws-service-role/es.amazonaws.com/AWSServiceRoleForAmazonOpenSearchService`
 export function esRoleArn(parameters: EsRoleArnParameters): EsRoleArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:role/aws-service-role/es.amazonaws.com/AWSServiceRoleForAmazonOpenSearchService`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:role/aws-service-role/es.amazonaws.com/AWSServiceRoleForAmazonOpenSearchService`
 }
 
 export interface OpensearchserviceRoleArnParameters {
@@ -24,5 +24,5 @@ export interface OpensearchserviceRoleArnParameters {
 }
 export type OpensearchserviceRoleArn = `arn:${string}:iam::${string}:role/aws-service-role/opensearchservice.amazonaws.com/AWSServiceRoleForAmazonOpenSearchService`
 export function opensearchserviceRoleArn(parameters: OpensearchserviceRoleArnParameters): OpensearchserviceRoleArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:role/aws-service-role/opensearchservice.amazonaws.com/AWSServiceRoleForAmazonOpenSearchService`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:role/aws-service-role/opensearchservice.amazonaws.com/AWSServiceRoleForAmazonOpenSearchService`
 }

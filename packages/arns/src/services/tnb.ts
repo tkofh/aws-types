@@ -6,7 +6,7 @@ export interface FunctionPackageArnParameters {
 }
 export type FunctionPackageArn = `arn:${string}:tnb:${string}:${string}:function-package/${string}`
 export function functionPackageArn(parameters: FunctionPackageArnParameters): FunctionPackageArn {
-  return `arn:${parameters.partition ?? ''}:tnb:${parameters.region}:${parameters.account}:function-package/${parameters.functionPackageId}`
+  return `arn:${parameters.partition ?? 'aws'}:tnb:${parameters.region}:${parameters.account}:function-package/${parameters.functionPackageId}`
 }
 
 export interface NetworkPackageArnParameters {
@@ -17,7 +17,7 @@ export interface NetworkPackageArnParameters {
 }
 export type NetworkPackageArn = `arn:${string}:tnb:${string}:${string}:network-package/${string}`
 export function networkPackageArn(parameters: NetworkPackageArnParameters): NetworkPackageArn {
-  return `arn:${parameters.partition ?? ''}:tnb:${parameters.region}:${parameters.account}:network-package/${parameters.networkPackageId}`
+  return `arn:${parameters.partition ?? 'aws'}:tnb:${parameters.region}:${parameters.account}:network-package/${parameters.networkPackageId}`
 }
 
 export interface NetworkInstanceArnParameters {
@@ -28,7 +28,7 @@ export interface NetworkInstanceArnParameters {
 }
 export type NetworkInstanceArn = `arn:${string}:tnb:${string}:${string}:network-instance/${string}`
 export function networkInstanceArn(parameters: NetworkInstanceArnParameters): NetworkInstanceArn {
-  return `arn:${parameters.partition ?? ''}:tnb:${parameters.region}:${parameters.account}:network-instance/${parameters.networkInstanceId}`
+  return `arn:${parameters.partition ?? 'aws'}:tnb:${parameters.region}:${parameters.account}:network-instance/${parameters.networkInstanceId}`
 }
 
 export interface FunctionInstanceArnParameters {
@@ -39,7 +39,7 @@ export interface FunctionInstanceArnParameters {
 }
 export type FunctionInstanceArn = `arn:${string}:tnb:${string}:${string}:function-instance/${string}`
 export function functionInstanceArn(parameters: FunctionInstanceArnParameters): FunctionInstanceArn {
-  return `arn:${parameters.partition ?? ''}:tnb:${parameters.region}:${parameters.account}:function-instance/${parameters.functionInstanceId}`
+  return `arn:${parameters.partition ?? 'aws'}:tnb:${parameters.region}:${parameters.account}:function-instance/${parameters.functionInstanceId}`
 }
 
 export interface NetworkOperationArnParameters {
@@ -50,5 +50,5 @@ export interface NetworkOperationArnParameters {
 }
 export type NetworkOperationArn = `arn:${string}:tnb:${string}:${string}:network-operation/${string}`
 export function networkOperationArn(parameters: NetworkOperationArnParameters): NetworkOperationArn {
-  return `arn:${parameters.partition ?? ''}:tnb:${parameters.region}:${parameters.account}:network-operation/${parameters.networkOperationId}`
+  return `arn:${parameters.partition ?? 'aws'}:tnb:${parameters.region}:${parameters.account}:network-operation/${parameters.networkOperationId}`
 }

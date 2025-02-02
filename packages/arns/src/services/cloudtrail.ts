@@ -6,7 +6,7 @@ export interface TrailArnParameters {
 }
 export type TrailArn = `arn:${string}:cloudtrail:${string}:${string}:trail/${string}`
 export function trailArn(parameters: TrailArnParameters): TrailArn {
-  return `arn:${parameters.partition ?? ''}:cloudtrail:${parameters.region}:${parameters.account}:trail/${parameters.trailName}`
+  return `arn:${parameters.partition ?? 'aws'}:cloudtrail:${parameters.region}:${parameters.account}:trail/${parameters.trailName}`
 }
 
 export interface EventdatastoreArnParameters {
@@ -17,7 +17,7 @@ export interface EventdatastoreArnParameters {
 }
 export type EventdatastoreArn = `arn:${string}:cloudtrail:${string}:${string}:eventdatastore/${string}`
 export function eventdatastoreArn(parameters: EventdatastoreArnParameters): EventdatastoreArn {
-  return `arn:${parameters.partition ?? ''}:cloudtrail:${parameters.region}:${parameters.account}:eventdatastore/${parameters.eventDataStoreId}`
+  return `arn:${parameters.partition ?? 'aws'}:cloudtrail:${parameters.region}:${parameters.account}:eventdatastore/${parameters.eventDataStoreId}`
 }
 
 export interface ChannelArnParameters {
@@ -28,5 +28,5 @@ export interface ChannelArnParameters {
 }
 export type ChannelArn = `arn:${string}:cloudtrail:${string}:${string}:channel/${string}`
 export function channelArn(parameters: ChannelArnParameters): ChannelArn {
-  return `arn:${parameters.partition ?? ''}:cloudtrail:${parameters.region}:${parameters.account}:channel/${parameters.channelId}`
+  return `arn:${parameters.partition ?? 'aws'}:cloudtrail:${parameters.region}:${parameters.account}:channel/${parameters.channelId}`
 }

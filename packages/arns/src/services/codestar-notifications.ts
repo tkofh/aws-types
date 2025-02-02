@@ -6,5 +6,5 @@ export interface NotificationruleArnParameters {
 }
 export type NotificationruleArn = `arn:${string}:codestar-notifications:${string}:${string}:notificationrule/${string}`
 export function notificationruleArn(parameters: NotificationruleArnParameters): NotificationruleArn {
-  return `arn:${parameters.partition ?? ''}:codestar-notifications:${parameters.region}:${parameters.account}:notificationrule/${parameters.notificationRuleId}`
+  return `arn:${parameters.partition ?? 'aws'}:codestar-notifications:${parameters.region}:${parameters.account}:notificationrule/${parameters.notificationRuleId}`
 }

@@ -5,7 +5,7 @@ export interface RoleArnParameters {
 }
 export type RoleArn = `arn:${string}:iam::${string}:role/${string}`
 export function roleArn(parameters: RoleArnParameters): RoleArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:role/${parameters.roleNameWithPath}`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:role/${parameters.roleNameWithPath}`
 }
 
 export interface UserArnParameters {
@@ -15,7 +15,7 @@ export interface UserArnParameters {
 }
 export type UserArn = `arn:${string}:iam::${string}:user/${string}`
 export function userArn(parameters: UserArnParameters): UserArn {
-  return `arn:${parameters.partition ?? ''}:iam::${parameters.account}:user/${parameters.userNameWithPath}`
+  return `arn:${parameters.partition ?? 'aws'}:iam::${parameters.account}:user/${parameters.userNameWithPath}`
 }
 
 export interface SelfSessionArnParameters {
@@ -24,5 +24,5 @@ export interface SelfSessionArnParameters {
 }
 export type SelfSessionArn = `arn:${string}:sts::${string}:self`
 export function selfSessionArn(parameters: SelfSessionArnParameters): SelfSessionArn {
-  return `arn:${parameters.partition ?? ''}:sts::${parameters.account}:self`
+  return `arn:${parameters.partition ?? 'aws'}:sts::${parameters.account}:self`
 }

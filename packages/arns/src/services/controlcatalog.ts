@@ -4,7 +4,7 @@ export interface CommonControlArnParameters {
 }
 export type CommonControlArn = `arn:${string}:controlcatalog:::common-control/${string}`
 export function commonControlArn(parameters: CommonControlArnParameters): CommonControlArn {
-  return `arn:${parameters.partition ?? ''}:controlcatalog:::common-control/${parameters.commonControlId}`
+  return `arn:${parameters.partition ?? 'aws'}:controlcatalog:::common-control/${parameters.commonControlId}`
 }
 
 export interface ControlArnParameters {
@@ -13,7 +13,7 @@ export interface ControlArnParameters {
 }
 export type ControlArn = `arn:${string}:controlcatalog:::control/${string}`
 export function controlArn(parameters: ControlArnParameters): ControlArn {
-  return `arn:${parameters.partition ?? ''}:controlcatalog:::control/${parameters.controlId}`
+  return `arn:${parameters.partition ?? 'aws'}:controlcatalog:::control/${parameters.controlId}`
 }
 
 export interface DomainArnParameters {
@@ -22,7 +22,7 @@ export interface DomainArnParameters {
 }
 export type DomainArn = `arn:${string}:controlcatalog:::domain/${string}`
 export function domainArn(parameters: DomainArnParameters): DomainArn {
-  return `arn:${parameters.partition ?? ''}:controlcatalog:::domain/${parameters.domainId}`
+  return `arn:${parameters.partition ?? 'aws'}:controlcatalog:::domain/${parameters.domainId}`
 }
 
 export interface ObjectiveArnParameters {
@@ -31,5 +31,5 @@ export interface ObjectiveArnParameters {
 }
 export type ObjectiveArn = `arn:${string}:controlcatalog:::objective/${string}`
 export function objectiveArn(parameters: ObjectiveArnParameters): ObjectiveArn {
-  return `arn:${parameters.partition ?? ''}:controlcatalog:::objective/${parameters.objectiveId}`
+  return `arn:${parameters.partition ?? 'aws'}:controlcatalog:::objective/${parameters.objectiveId}`
 }

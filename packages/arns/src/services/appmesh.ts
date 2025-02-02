@@ -6,7 +6,7 @@ export interface MeshArnParameters {
 }
 export type MeshArn = `arn:${string}:appmesh:${string}:${string}:mesh/${string}`
 export function meshArn(parameters: MeshArnParameters): MeshArn {
-  return `arn:${parameters.partition ?? ''}:appmesh:${parameters.region}:${parameters.account}:mesh/${parameters.meshName}`
+  return `arn:${parameters.partition ?? 'aws'}:appmesh:${parameters.region}:${parameters.account}:mesh/${parameters.meshName}`
 }
 
 export interface VirtualServiceArnParameters {
@@ -18,7 +18,7 @@ export interface VirtualServiceArnParameters {
 }
 export type VirtualServiceArn = `arn:${string}:appmesh:${string}:${string}:mesh/${string}/virtualService/${string}`
 export function virtualServiceArn(parameters: VirtualServiceArnParameters): VirtualServiceArn {
-  return `arn:${parameters.partition ?? ''}:appmesh:${parameters.region}:${parameters.account}:mesh/${parameters.meshName}/virtualService/${parameters.virtualServiceName}`
+  return `arn:${parameters.partition ?? 'aws'}:appmesh:${parameters.region}:${parameters.account}:mesh/${parameters.meshName}/virtualService/${parameters.virtualServiceName}`
 }
 
 export interface VirtualNodeArnParameters {
@@ -30,7 +30,7 @@ export interface VirtualNodeArnParameters {
 }
 export type VirtualNodeArn = `arn:${string}:appmesh:${string}:${string}:mesh/${string}/virtualNode/${string}`
 export function virtualNodeArn(parameters: VirtualNodeArnParameters): VirtualNodeArn {
-  return `arn:${parameters.partition ?? ''}:appmesh:${parameters.region}:${parameters.account}:mesh/${parameters.meshName}/virtualNode/${parameters.virtualNodeName}`
+  return `arn:${parameters.partition ?? 'aws'}:appmesh:${parameters.region}:${parameters.account}:mesh/${parameters.meshName}/virtualNode/${parameters.virtualNodeName}`
 }
 
 export interface VirtualRouterArnParameters {
@@ -42,7 +42,7 @@ export interface VirtualRouterArnParameters {
 }
 export type VirtualRouterArn = `arn:${string}:appmesh:${string}:${string}:mesh/${string}/virtualRouter/${string}`
 export function virtualRouterArn(parameters: VirtualRouterArnParameters): VirtualRouterArn {
-  return `arn:${parameters.partition ?? ''}:appmesh:${parameters.region}:${parameters.account}:mesh/${parameters.meshName}/virtualRouter/${parameters.virtualRouterName}`
+  return `arn:${parameters.partition ?? 'aws'}:appmesh:${parameters.region}:${parameters.account}:mesh/${parameters.meshName}/virtualRouter/${parameters.virtualRouterName}`
 }
 
 export interface RouteArnParameters {
@@ -55,7 +55,7 @@ export interface RouteArnParameters {
 }
 export type RouteArn = `arn:${string}:appmesh:${string}:${string}:mesh/${string}/virtualRouter/${string}/route/${string}`
 export function routeArn(parameters: RouteArnParameters): RouteArn {
-  return `arn:${parameters.partition ?? ''}:appmesh:${parameters.region}:${parameters.account}:mesh/${parameters.meshName}/virtualRouter/${parameters.virtualRouterName}/route/${parameters.routeName}`
+  return `arn:${parameters.partition ?? 'aws'}:appmesh:${parameters.region}:${parameters.account}:mesh/${parameters.meshName}/virtualRouter/${parameters.virtualRouterName}/route/${parameters.routeName}`
 }
 
 export interface VirtualGatewayArnParameters {
@@ -67,7 +67,7 @@ export interface VirtualGatewayArnParameters {
 }
 export type VirtualGatewayArn = `arn:${string}:appmesh:${string}:${string}:mesh/${string}/virtualGateway/${string}`
 export function virtualGatewayArn(parameters: VirtualGatewayArnParameters): VirtualGatewayArn {
-  return `arn:${parameters.partition ?? ''}:appmesh:${parameters.region}:${parameters.account}:mesh/${parameters.meshName}/virtualGateway/${parameters.virtualGatewayName}`
+  return `arn:${parameters.partition ?? 'aws'}:appmesh:${parameters.region}:${parameters.account}:mesh/${parameters.meshName}/virtualGateway/${parameters.virtualGatewayName}`
 }
 
 export interface GatewayRouteArnParameters {
@@ -80,5 +80,5 @@ export interface GatewayRouteArnParameters {
 }
 export type GatewayRouteArn = `arn:${string}:appmesh:${string}:${string}:mesh/${string}/virtualGateway/${string}/gatewayRoute/${string}`
 export function gatewayRouteArn(parameters: GatewayRouteArnParameters): GatewayRouteArn {
-  return `arn:${parameters.partition ?? ''}:appmesh:${parameters.region}:${parameters.account}:mesh/${parameters.meshName}/virtualGateway/${parameters.virtualGatewayName}/gatewayRoute/${parameters.gatewayRouteName}`
+  return `arn:${parameters.partition ?? 'aws'}:appmesh:${parameters.region}:${parameters.account}:mesh/${parameters.meshName}/virtualGateway/${parameters.virtualGatewayName}/gatewayRoute/${parameters.gatewayRouteName}`
 }

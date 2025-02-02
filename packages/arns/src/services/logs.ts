@@ -6,7 +6,7 @@ export interface LogGroupArnParameters {
 }
 export type LogGroupArn = `arn:${string}:logs:${string}:${string}:log-group:${string}`
 export function logGroupArn(parameters: LogGroupArnParameters): LogGroupArn {
-  return `arn:${parameters.partition ?? ''}:logs:${parameters.region}:${parameters.account}:log-group:${parameters.logGroupName}`
+  return `arn:${parameters.partition ?? 'aws'}:logs:${parameters.region}:${parameters.account}:log-group:${parameters.logGroupName}`
 }
 
 export interface LogStreamArnParameters {
@@ -18,7 +18,7 @@ export interface LogStreamArnParameters {
 }
 export type LogStreamArn = `arn:${string}:logs:${string}:${string}:log-group:${string}:log-stream:${string}`
 export function logStreamArn(parameters: LogStreamArnParameters): LogStreamArn {
-  return `arn:${parameters.partition ?? ''}:logs:${parameters.region}:${parameters.account}:log-group:${parameters.logGroupName}:log-stream:${parameters.logStreamName}`
+  return `arn:${parameters.partition ?? 'aws'}:logs:${parameters.region}:${parameters.account}:log-group:${parameters.logGroupName}:log-stream:${parameters.logStreamName}`
 }
 
 export interface DestinationArnParameters {
@@ -29,7 +29,7 @@ export interface DestinationArnParameters {
 }
 export type DestinationArn = `arn:${string}:logs:${string}:${string}:destination:${string}`
 export function destinationArn(parameters: DestinationArnParameters): DestinationArn {
-  return `arn:${parameters.partition ?? ''}:logs:${parameters.region}:${parameters.account}:destination:${parameters.destinationName}`
+  return `arn:${parameters.partition ?? 'aws'}:logs:${parameters.region}:${parameters.account}:destination:${parameters.destinationName}`
 }
 
 export interface DeliverySourceArnParameters {
@@ -40,7 +40,7 @@ export interface DeliverySourceArnParameters {
 }
 export type DeliverySourceArn = `arn:${string}:logs:${string}:${string}:delivery-source:${string}`
 export function deliverySourceArn(parameters: DeliverySourceArnParameters): DeliverySourceArn {
-  return `arn:${parameters.partition ?? ''}:logs:${parameters.region}:${parameters.account}:delivery-source:${parameters.deliverySourceName}`
+  return `arn:${parameters.partition ?? 'aws'}:logs:${parameters.region}:${parameters.account}:delivery-source:${parameters.deliverySourceName}`
 }
 
 export interface DeliveryArnParameters {
@@ -51,7 +51,7 @@ export interface DeliveryArnParameters {
 }
 export type DeliveryArn = `arn:${string}:logs:${string}:${string}:delivery:${string}`
 export function deliveryArn(parameters: DeliveryArnParameters): DeliveryArn {
-  return `arn:${parameters.partition ?? ''}:logs:${parameters.region}:${parameters.account}:delivery:${parameters.deliveryName}`
+  return `arn:${parameters.partition ?? 'aws'}:logs:${parameters.region}:${parameters.account}:delivery:${parameters.deliveryName}`
 }
 
 export interface DeliveryDestinationArnParameters {
@@ -62,7 +62,7 @@ export interface DeliveryDestinationArnParameters {
 }
 export type DeliveryDestinationArn = `arn:${string}:logs:${string}:${string}:delivery-destination:${string}`
 export function deliveryDestinationArn(parameters: DeliveryDestinationArnParameters): DeliveryDestinationArn {
-  return `arn:${parameters.partition ?? ''}:logs:${parameters.region}:${parameters.account}:delivery-destination:${parameters.deliveryDestinationName}`
+  return `arn:${parameters.partition ?? 'aws'}:logs:${parameters.region}:${parameters.account}:delivery-destination:${parameters.deliveryDestinationName}`
 }
 
 export interface AnomalyDetectorArnParameters {
@@ -73,5 +73,5 @@ export interface AnomalyDetectorArnParameters {
 }
 export type AnomalyDetectorArn = `arn:${string}:logs:${string}:${string}:anomaly-detector:${string}`
 export function anomalyDetectorArn(parameters: AnomalyDetectorArnParameters): AnomalyDetectorArn {
-  return `arn:${parameters.partition ?? ''}:logs:${parameters.region}:${parameters.account}:anomaly-detector:${parameters.detectorId}`
+  return `arn:${parameters.partition ?? 'aws'}:logs:${parameters.region}:${parameters.account}:anomaly-detector:${parameters.detectorId}`
 }

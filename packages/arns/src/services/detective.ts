@@ -6,5 +6,5 @@ export interface GraphArnParameters {
 }
 export type GraphArn = `arn:${string}:detective:${string}:${string}:graph:${string}`
 export function graphArn(parameters: GraphArnParameters): GraphArn {
-  return `arn:${parameters.partition ?? ''}:detective:${parameters.region}:${parameters.account}:graph:${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:detective:${parameters.region}:${parameters.account}:graph:${parameters.resourceId}`
 }

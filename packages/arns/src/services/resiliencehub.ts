@@ -6,7 +6,7 @@ export interface ResiliencyPolicyArnParameters {
 }
 export type ResiliencyPolicyArn = `arn:${string}:resiliencehub:${string}:${string}:resiliency-policy/${string}`
 export function resiliencyPolicyArn(parameters: ResiliencyPolicyArnParameters): ResiliencyPolicyArn {
-  return `arn:${parameters.partition ?? ''}:resiliencehub:${parameters.region}:${parameters.account}:resiliency-policy/${parameters.resiliencyPolicyId}`
+  return `arn:${parameters.partition ?? 'aws'}:resiliencehub:${parameters.region}:${parameters.account}:resiliency-policy/${parameters.resiliencyPolicyId}`
 }
 
 export interface ApplicationArnParameters {
@@ -17,7 +17,7 @@ export interface ApplicationArnParameters {
 }
 export type ApplicationArn = `arn:${string}:resiliencehub:${string}:${string}:app/${string}`
 export function applicationArn(parameters: ApplicationArnParameters): ApplicationArn {
-  return `arn:${parameters.partition ?? ''}:resiliencehub:${parameters.region}:${parameters.account}:app/${parameters.appId}`
+  return `arn:${parameters.partition ?? 'aws'}:resiliencehub:${parameters.region}:${parameters.account}:app/${parameters.appId}`
 }
 
 export interface AppAssessmentArnParameters {
@@ -28,7 +28,7 @@ export interface AppAssessmentArnParameters {
 }
 export type AppAssessmentArn = `arn:${string}:resiliencehub:${string}:${string}:app-assessment/${string}`
 export function appAssessmentArn(parameters: AppAssessmentArnParameters): AppAssessmentArn {
-  return `arn:${parameters.partition ?? ''}:resiliencehub:${parameters.region}:${parameters.account}:app-assessment/${parameters.appAssessmentId}`
+  return `arn:${parameters.partition ?? 'aws'}:resiliencehub:${parameters.region}:${parameters.account}:app-assessment/${parameters.appAssessmentId}`
 }
 
 export interface RecommendationTemplateArnParameters {
@@ -39,5 +39,5 @@ export interface RecommendationTemplateArnParameters {
 }
 export type RecommendationTemplateArn = `arn:${string}:resiliencehub:${string}:${string}:recommendation-template/${string}`
 export function recommendationTemplateArn(parameters: RecommendationTemplateArnParameters): RecommendationTemplateArn {
-  return `arn:${parameters.partition ?? ''}:resiliencehub:${parameters.region}:${parameters.account}:recommendation-template/${parameters.recommendationTemplateId}`
+  return `arn:${parameters.partition ?? 'aws'}:resiliencehub:${parameters.region}:${parameters.account}:recommendation-template/${parameters.recommendationTemplateId}`
 }

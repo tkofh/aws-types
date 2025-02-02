@@ -6,5 +6,5 @@ export interface AppMonitorResourceArnParameters {
 }
 export type AppMonitorResourceArn = `arn:${string}:rum:${string}:${string}:appmonitor/${string}`
 export function appMonitorResourceArn(parameters: AppMonitorResourceArnParameters): AppMonitorResourceArn {
-  return `arn:${parameters.partition ?? ''}:rum:${parameters.region}:${parameters.account}:appmonitor/${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:rum:${parameters.region}:${parameters.account}:appmonitor/${parameters.name}`
 }

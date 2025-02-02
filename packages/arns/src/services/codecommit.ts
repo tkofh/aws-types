@@ -6,5 +6,5 @@ export interface RepositoryArnParameters {
 }
 export type RepositoryArn = `arn:${string}:codecommit:${string}:${string}:${string}`
 export function repositoryArn(parameters: RepositoryArnParameters): RepositoryArn {
-  return `arn:${parameters.partition ?? ''}:codecommit:${parameters.region}:${parameters.account}:${parameters.repositoryName}`
+  return `arn:${parameters.partition ?? 'aws'}:codecommit:${parameters.region}:${parameters.account}:${parameters.repositoryName}`
 }

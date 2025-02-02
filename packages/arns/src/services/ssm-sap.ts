@@ -7,7 +7,7 @@ export interface ApplicationArnParameters {
 }
 export type ApplicationArn = `arn:${string}:ssm-sap:${string}:${string}:${string}/${string}`
 export function applicationArn(parameters: ApplicationArnParameters): ApplicationArn {
-  return `arn:${parameters.partition ?? ''}:ssm-sap:${parameters.region}:${parameters.account}:${parameters.applicationType}/${parameters.applicationId}`
+  return `arn:${parameters.partition ?? 'aws'}:ssm-sap:${parameters.region}:${parameters.account}:${parameters.applicationType}/${parameters.applicationId}`
 }
 
 export interface ComponentArnParameters {
@@ -20,7 +20,7 @@ export interface ComponentArnParameters {
 }
 export type ComponentArn = `arn:${string}:ssm-sap:${string}:${string}:${string}/${string}/COMPONENT/${string}`
 export function componentArn(parameters: ComponentArnParameters): ComponentArn {
-  return `arn:${parameters.partition ?? ''}:ssm-sap:${parameters.region}:${parameters.account}:${parameters.applicationType}/${parameters.applicationId}/COMPONENT/${parameters.componentId}`
+  return `arn:${parameters.partition ?? 'aws'}:ssm-sap:${parameters.region}:${parameters.account}:${parameters.applicationType}/${parameters.applicationId}/COMPONENT/${parameters.componentId}`
 }
 
 export interface DatabaseArnParameters {
@@ -33,5 +33,5 @@ export interface DatabaseArnParameters {
 }
 export type DatabaseArn = `arn:${string}:ssm-sap:${string}:${string}:${string}/${string}/DB/${string}`
 export function databaseArn(parameters: DatabaseArnParameters): DatabaseArn {
-  return `arn:${parameters.partition ?? ''}:ssm-sap:${parameters.region}:${parameters.account}:${parameters.applicationType}/${parameters.applicationId}/DB/${parameters.databaseId}`
+  return `arn:${parameters.partition ?? 'aws'}:ssm-sap:${parameters.region}:${parameters.account}:${parameters.applicationType}/${parameters.applicationId}/DB/${parameters.databaseId}`
 }

@@ -7,7 +7,7 @@ export interface ClusterArnParameters {
 }
 export type ClusterArn = `arn:${string}:kafka:${string}:${string}:cluster/${string}/${string}`
 export function clusterArn(parameters: ClusterArnParameters): ClusterArn {
-  return `arn:${parameters.partition ?? ''}:kafka:${parameters.region}:${parameters.account}:cluster/${parameters.clusterName}/${parameters.clusterUuid}`
+  return `arn:${parameters.partition ?? 'aws'}:kafka:${parameters.region}:${parameters.account}:cluster/${parameters.clusterName}/${parameters.clusterUuid}`
 }
 
 export interface TopicArnParameters {
@@ -20,7 +20,7 @@ export interface TopicArnParameters {
 }
 export type TopicArn = `arn:${string}:kafka:${string}:${string}:topic/${string}/${string}/${string}`
 export function topicArn(parameters: TopicArnParameters): TopicArn {
-  return `arn:${parameters.partition ?? ''}:kafka:${parameters.region}:${parameters.account}:topic/${parameters.clusterName}/${parameters.clusterUuid}/${parameters.topicName}`
+  return `arn:${parameters.partition ?? 'aws'}:kafka:${parameters.region}:${parameters.account}:topic/${parameters.clusterName}/${parameters.clusterUuid}/${parameters.topicName}`
 }
 
 export interface GroupArnParameters {
@@ -33,7 +33,7 @@ export interface GroupArnParameters {
 }
 export type GroupArn = `arn:${string}:kafka:${string}:${string}:group/${string}/${string}/${string}`
 export function groupArn(parameters: GroupArnParameters): GroupArn {
-  return `arn:${parameters.partition ?? ''}:kafka:${parameters.region}:${parameters.account}:group/${parameters.clusterName}/${parameters.clusterUuid}/${parameters.groupName}`
+  return `arn:${parameters.partition ?? 'aws'}:kafka:${parameters.region}:${parameters.account}:group/${parameters.clusterName}/${parameters.clusterUuid}/${parameters.groupName}`
 }
 
 export interface TransactionalIdArnParameters {
@@ -46,5 +46,5 @@ export interface TransactionalIdArnParameters {
 }
 export type TransactionalIdArn = `arn:${string}:kafka:${string}:${string}:transactional-id/${string}/${string}/${string}`
 export function transactionalIdArn(parameters: TransactionalIdArnParameters): TransactionalIdArn {
-  return `arn:${parameters.partition ?? ''}:kafka:${parameters.region}:${parameters.account}:transactional-id/${parameters.clusterName}/${parameters.clusterUuid}/${parameters.transactionalId}`
+  return `arn:${parameters.partition ?? 'aws'}:kafka:${parameters.region}:${parameters.account}:transactional-id/${parameters.clusterName}/${parameters.clusterUuid}/${parameters.transactionalId}`
 }

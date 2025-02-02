@@ -6,7 +6,7 @@ export interface ConfigurationSetArnParameters {
 }
 export type ConfigurationSetArn = `arn:${string}:sms-voice:${string}:${string}:configuration-set/${string}`
 export function configurationSetArn(parameters: ConfigurationSetArnParameters): ConfigurationSetArn {
-  return `arn:${parameters.partition ?? ''}:sms-voice:${parameters.region}:${parameters.account}:configuration-set/${parameters.configurationSetName}`
+  return `arn:${parameters.partition ?? 'aws'}:sms-voice:${parameters.region}:${parameters.account}:configuration-set/${parameters.configurationSetName}`
 }
 
 export interface OptOutListArnParameters {
@@ -17,7 +17,7 @@ export interface OptOutListArnParameters {
 }
 export type OptOutListArn = `arn:${string}:sms-voice:${string}:${string}:opt-out-list/${string}`
 export function optOutListArn(parameters: OptOutListArnParameters): OptOutListArn {
-  return `arn:${parameters.partition ?? ''}:sms-voice:${parameters.region}:${parameters.account}:opt-out-list/${parameters.optOutListName}`
+  return `arn:${parameters.partition ?? 'aws'}:sms-voice:${parameters.region}:${parameters.account}:opt-out-list/${parameters.optOutListName}`
 }
 
 export interface PhoneNumberArnParameters {
@@ -28,7 +28,7 @@ export interface PhoneNumberArnParameters {
 }
 export type PhoneNumberArn = `arn:${string}:sms-voice:${string}:${string}:phone-number/${string}`
 export function phoneNumberArn(parameters: PhoneNumberArnParameters): PhoneNumberArn {
-  return `arn:${parameters.partition ?? ''}:sms-voice:${parameters.region}:${parameters.account}:phone-number/${parameters.phoneNumberId}`
+  return `arn:${parameters.partition ?? 'aws'}:sms-voice:${parameters.region}:${parameters.account}:phone-number/${parameters.phoneNumberId}`
 }
 
 export interface PoolArnParameters {
@@ -39,7 +39,7 @@ export interface PoolArnParameters {
 }
 export type PoolArn = `arn:${string}:sms-voice:${string}:${string}:pool/${string}`
 export function poolArn(parameters: PoolArnParameters): PoolArn {
-  return `arn:${parameters.partition ?? ''}:sms-voice:${parameters.region}:${parameters.account}:pool/${parameters.poolId}`
+  return `arn:${parameters.partition ?? 'aws'}:sms-voice:${parameters.region}:${parameters.account}:pool/${parameters.poolId}`
 }
 
 export interface ProtectConfigurationArnParameters {
@@ -50,7 +50,7 @@ export interface ProtectConfigurationArnParameters {
 }
 export type ProtectConfigurationArn = `arn:${string}:sms-voice:${string}:${string}:protect-configuration/${string}`
 export function protectConfigurationArn(parameters: ProtectConfigurationArnParameters): ProtectConfigurationArn {
-  return `arn:${parameters.partition ?? ''}:sms-voice:${parameters.region}:${parameters.account}:protect-configuration/${parameters.protectConfigurationId}`
+  return `arn:${parameters.partition ?? 'aws'}:sms-voice:${parameters.region}:${parameters.account}:protect-configuration/${parameters.protectConfigurationId}`
 }
 
 export interface SenderIdArnParameters {
@@ -62,7 +62,7 @@ export interface SenderIdArnParameters {
 }
 export type SenderIdArn = `arn:${string}:sms-voice:${string}:${string}:sender-id/${string}/${string}`
 export function senderIdArn(parameters: SenderIdArnParameters): SenderIdArn {
-  return `arn:${parameters.partition ?? ''}:sms-voice:${parameters.region}:${parameters.account}:sender-id/${parameters.senderId}/${parameters.isoCountryCode}`
+  return `arn:${parameters.partition ?? 'aws'}:sms-voice:${parameters.region}:${parameters.account}:sender-id/${parameters.senderId}/${parameters.isoCountryCode}`
 }
 
 export interface RegistrationArnParameters {
@@ -73,7 +73,7 @@ export interface RegistrationArnParameters {
 }
 export type RegistrationArn = `arn:${string}:sms-voice:${string}:${string}:registration/${string}`
 export function registrationArn(parameters: RegistrationArnParameters): RegistrationArn {
-  return `arn:${parameters.partition ?? ''}:sms-voice:${parameters.region}:${parameters.account}:registration/${parameters.registrationId}`
+  return `arn:${parameters.partition ?? 'aws'}:sms-voice:${parameters.region}:${parameters.account}:registration/${parameters.registrationId}`
 }
 
 export interface RegistrationAttachmentArnParameters {
@@ -84,7 +84,7 @@ export interface RegistrationAttachmentArnParameters {
 }
 export type RegistrationAttachmentArn = `arn:${string}:sms-voice:${string}:${string}:registration-attachment/${string}`
 export function registrationAttachmentArn(parameters: RegistrationAttachmentArnParameters): RegistrationAttachmentArn {
-  return `arn:${parameters.partition ?? ''}:sms-voice:${parameters.region}:${parameters.account}:registration-attachment/${parameters.registrationAttachmentId}`
+  return `arn:${parameters.partition ?? 'aws'}:sms-voice:${parameters.region}:${parameters.account}:registration-attachment/${parameters.registrationAttachmentId}`
 }
 
 export interface VerifiedDestinationNumberArnParameters {
@@ -95,5 +95,5 @@ export interface VerifiedDestinationNumberArnParameters {
 }
 export type VerifiedDestinationNumberArn = `arn:${string}:sms-voice:${string}:${string}:verified-destination-number/${string}`
 export function verifiedDestinationNumberArn(parameters: VerifiedDestinationNumberArnParameters): VerifiedDestinationNumberArn {
-  return `arn:${parameters.partition ?? ''}:sms-voice:${parameters.region}:${parameters.account}:verified-destination-number/${parameters.verifiedDestinationNumberId}`
+  return `arn:${parameters.partition ?? 'aws'}:sms-voice:${parameters.region}:${parameters.account}:verified-destination-number/${parameters.verifiedDestinationNumberId}`
 }

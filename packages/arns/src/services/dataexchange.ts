@@ -6,7 +6,7 @@ export interface JobsArnParameters {
 }
 export type JobsArn = `arn:${string}:dataexchange:${string}:${string}:jobs/${string}`
 export function jobsArn(parameters: JobsArnParameters): JobsArn {
-  return `arn:${parameters.partition ?? ''}:dataexchange:${parameters.region}:${parameters.account}:jobs/${parameters.jobId}`
+  return `arn:${parameters.partition ?? 'aws'}:dataexchange:${parameters.region}:${parameters.account}:jobs/${parameters.jobId}`
 }
 
 export interface DataSetsArnParameters {
@@ -17,7 +17,7 @@ export interface DataSetsArnParameters {
 }
 export type DataSetsArn = `arn:${string}:dataexchange:${string}:${string}:data-sets/${string}`
 export function dataSetsArn(parameters: DataSetsArnParameters): DataSetsArn {
-  return `arn:${parameters.partition ?? ''}:dataexchange:${parameters.region}:${parameters.account}:data-sets/${parameters.dataSetId}`
+  return `arn:${parameters.partition ?? 'aws'}:dataexchange:${parameters.region}:${parameters.account}:data-sets/${parameters.dataSetId}`
 }
 
 export interface EntitledDataSetsArnParameters {
@@ -27,7 +27,7 @@ export interface EntitledDataSetsArnParameters {
 }
 export type EntitledDataSetsArn = `arn:${string}:dataexchange:${string}::data-sets/${string}`
 export function entitledDataSetsArn(parameters: EntitledDataSetsArnParameters): EntitledDataSetsArn {
-  return `arn:${parameters.partition ?? ''}:dataexchange:${parameters.region}::data-sets/${parameters.dataSetId}`
+  return `arn:${parameters.partition ?? 'aws'}:dataexchange:${parameters.region}::data-sets/${parameters.dataSetId}`
 }
 
 export interface RevisionsArnParameters {
@@ -39,7 +39,7 @@ export interface RevisionsArnParameters {
 }
 export type RevisionsArn = `arn:${string}:dataexchange:${string}:${string}:data-sets/${string}/revisions/${string}`
 export function revisionsArn(parameters: RevisionsArnParameters): RevisionsArn {
-  return `arn:${parameters.partition ?? ''}:dataexchange:${parameters.region}:${parameters.account}:data-sets/${parameters.dataSetId}/revisions/${parameters.revisionId}`
+  return `arn:${parameters.partition ?? 'aws'}:dataexchange:${parameters.region}:${parameters.account}:data-sets/${parameters.dataSetId}/revisions/${parameters.revisionId}`
 }
 
 export interface EntitledRevisionsArnParameters {
@@ -50,7 +50,7 @@ export interface EntitledRevisionsArnParameters {
 }
 export type EntitledRevisionsArn = `arn:${string}:dataexchange:${string}::data-sets/${string}/revisions/${string}`
 export function entitledRevisionsArn(parameters: EntitledRevisionsArnParameters): EntitledRevisionsArn {
-  return `arn:${parameters.partition ?? ''}:dataexchange:${parameters.region}::data-sets/${parameters.dataSetId}/revisions/${parameters.revisionId}`
+  return `arn:${parameters.partition ?? 'aws'}:dataexchange:${parameters.region}::data-sets/${parameters.dataSetId}/revisions/${parameters.revisionId}`
 }
 
 export interface AssetsArnParameters {
@@ -63,7 +63,7 @@ export interface AssetsArnParameters {
 }
 export type AssetsArn = `arn:${string}:dataexchange:${string}:${string}:data-sets/${string}/revisions/${string}/assets/${string}`
 export function assetsArn(parameters: AssetsArnParameters): AssetsArn {
-  return `arn:${parameters.partition ?? ''}:dataexchange:${parameters.region}:${parameters.account}:data-sets/${parameters.dataSetId}/revisions/${parameters.revisionId}/assets/${parameters.assetId}`
+  return `arn:${parameters.partition ?? 'aws'}:dataexchange:${parameters.region}:${parameters.account}:data-sets/${parameters.dataSetId}/revisions/${parameters.revisionId}/assets/${parameters.assetId}`
 }
 
 export interface EntitledAssetsArnParameters {
@@ -75,7 +75,7 @@ export interface EntitledAssetsArnParameters {
 }
 export type EntitledAssetsArn = `arn:${string}:dataexchange:${string}::data-sets/${string}/revisions/${string}/assets/${string}`
 export function entitledAssetsArn(parameters: EntitledAssetsArnParameters): EntitledAssetsArn {
-  return `arn:${parameters.partition ?? ''}:dataexchange:${parameters.region}::data-sets/${parameters.dataSetId}/revisions/${parameters.revisionId}/assets/${parameters.assetId}`
+  return `arn:${parameters.partition ?? 'aws'}:dataexchange:${parameters.region}::data-sets/${parameters.dataSetId}/revisions/${parameters.revisionId}/assets/${parameters.assetId}`
 }
 
 export interface EventActionsArnParameters {
@@ -86,5 +86,5 @@ export interface EventActionsArnParameters {
 }
 export type EventActionsArn = `arn:${string}:dataexchange:${string}:${string}:event-actions/${string}`
 export function eventActionsArn(parameters: EventActionsArnParameters): EventActionsArn {
-  return `arn:${parameters.partition ?? ''}:dataexchange:${parameters.region}:${parameters.account}:event-actions/${parameters.eventActionId}`
+  return `arn:${parameters.partition ?? 'aws'}:dataexchange:${parameters.region}:${parameters.account}:event-actions/${parameters.eventActionId}`
 }

@@ -6,7 +6,7 @@ export interface ApplicationArnParameters {
 }
 export type ApplicationArn = `arn:${string}:codedeploy:${string}:${string}:application:${string}`
 export function applicationArn(parameters: ApplicationArnParameters): ApplicationArn {
-  return `arn:${parameters.partition ?? ''}:codedeploy:${parameters.region}:${parameters.account}:application:${parameters.applicationName}`
+  return `arn:${parameters.partition ?? 'aws'}:codedeploy:${parameters.region}:${parameters.account}:application:${parameters.applicationName}`
 }
 
 export interface DeploymentconfigArnParameters {
@@ -17,7 +17,7 @@ export interface DeploymentconfigArnParameters {
 }
 export type DeploymentconfigArn = `arn:${string}:codedeploy:${string}:${string}:deploymentconfig:${string}`
 export function deploymentconfigArn(parameters: DeploymentconfigArnParameters): DeploymentconfigArn {
-  return `arn:${parameters.partition ?? ''}:codedeploy:${parameters.region}:${parameters.account}:deploymentconfig:${parameters.deploymentConfigurationName}`
+  return `arn:${parameters.partition ?? 'aws'}:codedeploy:${parameters.region}:${parameters.account}:deploymentconfig:${parameters.deploymentConfigurationName}`
 }
 
 export interface DeploymentgroupArnParameters {
@@ -29,7 +29,7 @@ export interface DeploymentgroupArnParameters {
 }
 export type DeploymentgroupArn = `arn:${string}:codedeploy:${string}:${string}:deploymentgroup:${string}/${string}`
 export function deploymentgroupArn(parameters: DeploymentgroupArnParameters): DeploymentgroupArn {
-  return `arn:${parameters.partition ?? ''}:codedeploy:${parameters.region}:${parameters.account}:deploymentgroup:${parameters.applicationName}/${parameters.deploymentGroupName}`
+  return `arn:${parameters.partition ?? 'aws'}:codedeploy:${parameters.region}:${parameters.account}:deploymentgroup:${parameters.applicationName}/${parameters.deploymentGroupName}`
 }
 
 export interface InstanceArnParameters {
@@ -40,5 +40,5 @@ export interface InstanceArnParameters {
 }
 export type InstanceArn = `arn:${string}:codedeploy:${string}:${string}:instance:${string}`
 export function instanceArn(parameters: InstanceArnParameters): InstanceArn {
-  return `arn:${parameters.partition ?? ''}:codedeploy:${parameters.region}:${parameters.account}:instance:${parameters.instanceName}`
+  return `arn:${parameters.partition ?? 'aws'}:codedeploy:${parameters.region}:${parameters.account}:instance:${parameters.instanceName}`
 }

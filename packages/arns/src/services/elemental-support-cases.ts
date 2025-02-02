@@ -5,5 +5,5 @@ export interface CaseArnParameters {
 }
 export type CaseArn = `arn:${string}:elemental-support-cases::${string}:case/${string}`
 export function caseArn(parameters: CaseArnParameters): CaseArn {
-  return `arn:${parameters.partition ?? ''}:elemental-support-cases::${parameters.account}:case/${parameters.resourceId}`
+  return `arn:${parameters.partition ?? 'aws'}:elemental-support-cases::${parameters.account}:case/${parameters.resourceId}`
 }

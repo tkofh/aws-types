@@ -5,5 +5,5 @@ export interface PurchaseOrderArnParameters {
 }
 export type PurchaseOrderArn = `arn:${string}:purchase-orders::${string}:purchase-order/${string}`
 export function purchaseOrderArn(parameters: PurchaseOrderArnParameters): PurchaseOrderArn {
-  return `arn:${parameters.partition ?? ''}:purchase-orders::${parameters.account}:purchase-order/${parameters.resourceName}`
+  return `arn:${parameters.partition ?? 'aws'}:purchase-orders::${parameters.account}:purchase-order/${parameters.resourceName}`
 }

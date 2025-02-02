@@ -6,7 +6,7 @@ export interface AdapterArnParameters {
 }
 export type AdapterArn = `arn:${string}:textract:${string}:${string}:/adapters/${string}`
 export function adapterArn(parameters: AdapterArnParameters): AdapterArn {
-  return `arn:${parameters.partition ?? ''}:textract:${parameters.region}:${parameters.account}:/adapters/${parameters.adapterId}`
+  return `arn:${parameters.partition ?? 'aws'}:textract:${parameters.region}:${parameters.account}:/adapters/${parameters.adapterId}`
 }
 
 export interface AdapterversionArnParameters {
@@ -18,5 +18,5 @@ export interface AdapterversionArnParameters {
 }
 export type AdapterversionArn = `arn:${string}:textract:${string}:${string}:/adapters/${string}/versions/${string}`
 export function adapterversionArn(parameters: AdapterversionArnParameters): AdapterversionArn {
-  return `arn:${parameters.partition ?? ''}:textract:${parameters.region}:${parameters.account}:/adapters/${parameters.adapterId}/versions/${parameters.adapterVersion}`
+  return `arn:${parameters.partition ?? 'aws'}:textract:${parameters.region}:${parameters.account}:/adapters/${parameters.adapterId}/versions/${parameters.adapterVersion}`
 }

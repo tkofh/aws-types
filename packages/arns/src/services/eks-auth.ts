@@ -6,5 +6,5 @@ export interface ClusterArnParameters {
 }
 export type ClusterArn = `arn:${string}:eks:${string}:${string}:cluster/${string}`
 export function clusterArn(parameters: ClusterArnParameters): ClusterArn {
-  return `arn:${parameters.partition ?? ''}:eks:${parameters.region}:${parameters.account}:cluster/${parameters.clusterName}`
+  return `arn:${parameters.partition ?? 'aws'}:eks:${parameters.region}:${parameters.account}:cluster/${parameters.clusterName}`
 }

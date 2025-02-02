@@ -6,7 +6,7 @@ export interface ApplicationArnParameters {
 }
 export type ApplicationArn = `arn:${string}:appconfig:${string}:${string}:application/${string}`
 export function applicationArn(parameters: ApplicationArnParameters): ApplicationArn {
-  return `arn:${parameters.partition ?? ''}:appconfig:${parameters.region}:${parameters.account}:application/${parameters.applicationId}`
+  return `arn:${parameters.partition ?? 'aws'}:appconfig:${parameters.region}:${parameters.account}:application/${parameters.applicationId}`
 }
 
 export interface EnvironmentArnParameters {
@@ -18,7 +18,7 @@ export interface EnvironmentArnParameters {
 }
 export type EnvironmentArn = `arn:${string}:appconfig:${string}:${string}:application/${string}/environment/${string}`
 export function environmentArn(parameters: EnvironmentArnParameters): EnvironmentArn {
-  return `arn:${parameters.partition ?? ''}:appconfig:${parameters.region}:${parameters.account}:application/${parameters.applicationId}/environment/${parameters.environmentId}`
+  return `arn:${parameters.partition ?? 'aws'}:appconfig:${parameters.region}:${parameters.account}:application/${parameters.applicationId}/environment/${parameters.environmentId}`
 }
 
 export interface ConfigurationprofileArnParameters {
@@ -30,7 +30,7 @@ export interface ConfigurationprofileArnParameters {
 }
 export type ConfigurationprofileArn = `arn:${string}:appconfig:${string}:${string}:application/${string}/configurationprofile/${string}`
 export function configurationprofileArn(parameters: ConfigurationprofileArnParameters): ConfigurationprofileArn {
-  return `arn:${parameters.partition ?? ''}:appconfig:${parameters.region}:${parameters.account}:application/${parameters.applicationId}/configurationprofile/${parameters.configurationProfileId}`
+  return `arn:${parameters.partition ?? 'aws'}:appconfig:${parameters.region}:${parameters.account}:application/${parameters.applicationId}/configurationprofile/${parameters.configurationProfileId}`
 }
 
 export interface DeploymentstrategyArnParameters {
@@ -41,7 +41,7 @@ export interface DeploymentstrategyArnParameters {
 }
 export type DeploymentstrategyArn = `arn:${string}:appconfig:${string}:${string}:deploymentstrategy/${string}`
 export function deploymentstrategyArn(parameters: DeploymentstrategyArnParameters): DeploymentstrategyArn {
-  return `arn:${parameters.partition ?? ''}:appconfig:${parameters.region}:${parameters.account}:deploymentstrategy/${parameters.deploymentStrategyId}`
+  return `arn:${parameters.partition ?? 'aws'}:appconfig:${parameters.region}:${parameters.account}:deploymentstrategy/${parameters.deploymentStrategyId}`
 }
 
 export interface DeploymentArnParameters {
@@ -54,7 +54,7 @@ export interface DeploymentArnParameters {
 }
 export type DeploymentArn = `arn:${string}:appconfig:${string}:${string}:application/${string}/environment/${string}/deployment/${string}`
 export function deploymentArn(parameters: DeploymentArnParameters): DeploymentArn {
-  return `arn:${parameters.partition ?? ''}:appconfig:${parameters.region}:${parameters.account}:application/${parameters.applicationId}/environment/${parameters.environmentId}/deployment/${parameters.deploymentNumber}`
+  return `arn:${parameters.partition ?? 'aws'}:appconfig:${parameters.region}:${parameters.account}:application/${parameters.applicationId}/environment/${parameters.environmentId}/deployment/${parameters.deploymentNumber}`
 }
 
 export interface HostedconfigurationversionArnParameters {
@@ -67,7 +67,7 @@ export interface HostedconfigurationversionArnParameters {
 }
 export type HostedconfigurationversionArn = `arn:${string}:appconfig:${string}:${string}:application/${string}/configurationprofile/${string}/hostedconfigurationversion/${string}`
 export function hostedconfigurationversionArn(parameters: HostedconfigurationversionArnParameters): HostedconfigurationversionArn {
-  return `arn:${parameters.partition ?? ''}:appconfig:${parameters.region}:${parameters.account}:application/${parameters.applicationId}/configurationprofile/${parameters.configurationProfileId}/hostedconfigurationversion/${parameters.versionNumber}`
+  return `arn:${parameters.partition ?? 'aws'}:appconfig:${parameters.region}:${parameters.account}:application/${parameters.applicationId}/configurationprofile/${parameters.configurationProfileId}/hostedconfigurationversion/${parameters.versionNumber}`
 }
 
 export interface ConfigurationArnParameters {
@@ -80,7 +80,7 @@ export interface ConfigurationArnParameters {
 }
 export type ConfigurationArn = `arn:${string}:appconfig:${string}:${string}:application/${string}/environment/${string}/configuration/${string}`
 export function configurationArn(parameters: ConfigurationArnParameters): ConfigurationArn {
-  return `arn:${parameters.partition ?? ''}:appconfig:${parameters.region}:${parameters.account}:application/${parameters.applicationId}/environment/${parameters.environmentId}/configuration/${parameters.configurationProfileId}`
+  return `arn:${parameters.partition ?? 'aws'}:appconfig:${parameters.region}:${parameters.account}:application/${parameters.applicationId}/environment/${parameters.environmentId}/configuration/${parameters.configurationProfileId}`
 }
 
 export interface ExtensionArnParameters {
@@ -92,7 +92,7 @@ export interface ExtensionArnParameters {
 }
 export type ExtensionArn = `arn:${string}:appconfig:${string}:${string}:extension/${string}/${string}`
 export function extensionArn(parameters: ExtensionArnParameters): ExtensionArn {
-  return `arn:${parameters.partition ?? ''}:appconfig:${parameters.region}:${parameters.account}:extension/${parameters.extensionId}/${parameters.extensionVersionNumber}`
+  return `arn:${parameters.partition ?? 'aws'}:appconfig:${parameters.region}:${parameters.account}:extension/${parameters.extensionId}/${parameters.extensionVersionNumber}`
 }
 
 export interface ExtensionassociationArnParameters {
@@ -103,5 +103,5 @@ export interface ExtensionassociationArnParameters {
 }
 export type ExtensionassociationArn = `arn:${string}:appconfig:${string}:${string}:extensionassociation/${string}`
 export function extensionassociationArn(parameters: ExtensionassociationArnParameters): ExtensionassociationArn {
-  return `arn:${parameters.partition ?? ''}:appconfig:${parameters.region}:${parameters.account}:extensionassociation/${parameters.extensionAssociationId}`
+  return `arn:${parameters.partition ?? 'aws'}:appconfig:${parameters.region}:${parameters.account}:extensionassociation/${parameters.extensionAssociationId}`
 }

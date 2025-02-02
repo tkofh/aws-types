@@ -6,7 +6,7 @@ export interface DeviceArnParameters {
 }
 export type DeviceArn = `arn:${string}:panorama:${string}:${string}:device/${string}`
 export function deviceArn(parameters: DeviceArnParameters): DeviceArn {
-  return `arn:${parameters.partition ?? ''}:panorama:${parameters.region}:${parameters.account}:device/${parameters.deviceId}`
+  return `arn:${parameters.partition ?? 'aws'}:panorama:${parameters.region}:${parameters.account}:device/${parameters.deviceId}`
 }
 
 export interface PackageArnParameters {
@@ -17,7 +17,7 @@ export interface PackageArnParameters {
 }
 export type PackageArn = `arn:${string}:panorama:${string}:${string}:package/${string}`
 export function packageArn(parameters: PackageArnParameters): PackageArn {
-  return `arn:${parameters.partition ?? ''}:panorama:${parameters.region}:${parameters.account}:package/${parameters.packageId}`
+  return `arn:${parameters.partition ?? 'aws'}:panorama:${parameters.region}:${parameters.account}:package/${parameters.packageId}`
 }
 
 export interface ApplicationInstanceArnParameters {
@@ -28,5 +28,5 @@ export interface ApplicationInstanceArnParameters {
 }
 export type ApplicationInstanceArn = `arn:${string}:panorama:${string}:${string}:applicationInstance/${string}`
 export function applicationInstanceArn(parameters: ApplicationInstanceArnParameters): ApplicationInstanceArn {
-  return `arn:${parameters.partition ?? ''}:panorama:${parameters.region}:${parameters.account}:applicationInstance/${parameters.applicationInstanceId}`
+  return `arn:${parameters.partition ?? 'aws'}:panorama:${parameters.region}:${parameters.account}:applicationInstance/${parameters.applicationInstanceId}`
 }

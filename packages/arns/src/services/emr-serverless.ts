@@ -6,7 +6,7 @@ export interface ApplicationArnParameters {
 }
 export type ApplicationArn = `arn:${string}:emr-serverless:${string}:${string}:/applications/${string}`
 export function applicationArn(parameters: ApplicationArnParameters): ApplicationArn {
-  return `arn:${parameters.partition ?? ''}:emr-serverless:${parameters.region}:${parameters.account}:/applications/${parameters.applicationId}`
+  return `arn:${parameters.partition ?? 'aws'}:emr-serverless:${parameters.region}:${parameters.account}:/applications/${parameters.applicationId}`
 }
 
 export interface JobRunArnParameters {
@@ -18,5 +18,5 @@ export interface JobRunArnParameters {
 }
 export type JobRunArn = `arn:${string}:emr-serverless:${string}:${string}:/applications/${string}/jobruns/${string}`
 export function jobRunArn(parameters: JobRunArnParameters): JobRunArn {
-  return `arn:${parameters.partition ?? ''}:emr-serverless:${parameters.region}:${parameters.account}:/applications/${parameters.applicationId}/jobruns/${parameters.jobRunId}`
+  return `arn:${parameters.partition ?? 'aws'}:emr-serverless:${parameters.region}:${parameters.account}:/applications/${parameters.applicationId}/jobruns/${parameters.jobRunId}`
 }

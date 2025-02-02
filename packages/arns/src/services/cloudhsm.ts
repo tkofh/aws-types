@@ -6,7 +6,7 @@ export interface BackupArnParameters {
 }
 export type BackupArn = `arn:${string}:cloudhsm:${string}:${string}:backup/${string}`
 export function backupArn(parameters: BackupArnParameters): BackupArn {
-  return `arn:${parameters.partition ?? ''}:cloudhsm:${parameters.region}:${parameters.account}:backup/${parameters.cloudHsmBackupInstanceName}`
+  return `arn:${parameters.partition ?? 'aws'}:cloudhsm:${parameters.region}:${parameters.account}:backup/${parameters.cloudHsmBackupInstanceName}`
 }
 
 export interface ClusterArnParameters {
@@ -17,5 +17,5 @@ export interface ClusterArnParameters {
 }
 export type ClusterArn = `arn:${string}:cloudhsm:${string}:${string}:cluster/${string}`
 export function clusterArn(parameters: ClusterArnParameters): ClusterArn {
-  return `arn:${parameters.partition ?? ''}:cloudhsm:${parameters.region}:${parameters.account}:cluster/${parameters.cloudHsmClusterInstanceName}`
+  return `arn:${parameters.partition ?? 'aws'}:cloudhsm:${parameters.region}:${parameters.account}:cluster/${parameters.cloudHsmClusterInstanceName}`
 }

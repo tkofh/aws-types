@@ -6,7 +6,7 @@ export interface ChannelArnParameters {
 }
 export type ChannelArn = `arn:${string}:iotanalytics:${string}:${string}:channel/${string}`
 export function channelArn(parameters: ChannelArnParameters): ChannelArn {
-  return `arn:${parameters.partition ?? ''}:iotanalytics:${parameters.region}:${parameters.account}:channel/${parameters.channelName}`
+  return `arn:${parameters.partition ?? 'aws'}:iotanalytics:${parameters.region}:${parameters.account}:channel/${parameters.channelName}`
 }
 
 export interface DatasetArnParameters {
@@ -17,7 +17,7 @@ export interface DatasetArnParameters {
 }
 export type DatasetArn = `arn:${string}:iotanalytics:${string}:${string}:dataset/${string}`
 export function datasetArn(parameters: DatasetArnParameters): DatasetArn {
-  return `arn:${parameters.partition ?? ''}:iotanalytics:${parameters.region}:${parameters.account}:dataset/${parameters.datasetName}`
+  return `arn:${parameters.partition ?? 'aws'}:iotanalytics:${parameters.region}:${parameters.account}:dataset/${parameters.datasetName}`
 }
 
 export interface DatastoreArnParameters {
@@ -28,7 +28,7 @@ export interface DatastoreArnParameters {
 }
 export type DatastoreArn = `arn:${string}:iotanalytics:${string}:${string}:datastore/${string}`
 export function datastoreArn(parameters: DatastoreArnParameters): DatastoreArn {
-  return `arn:${parameters.partition ?? ''}:iotanalytics:${parameters.region}:${parameters.account}:datastore/${parameters.datastoreName}`
+  return `arn:${parameters.partition ?? 'aws'}:iotanalytics:${parameters.region}:${parameters.account}:datastore/${parameters.datastoreName}`
 }
 
 export interface PipelineArnParameters {
@@ -39,5 +39,5 @@ export interface PipelineArnParameters {
 }
 export type PipelineArn = `arn:${string}:iotanalytics:${string}:${string}:pipeline/${string}`
 export function pipelineArn(parameters: PipelineArnParameters): PipelineArn {
-  return `arn:${parameters.partition ?? ''}:iotanalytics:${parameters.region}:${parameters.account}:pipeline/${parameters.pipelineName}`
+  return `arn:${parameters.partition ?? 'aws'}:iotanalytics:${parameters.region}:${parameters.account}:pipeline/${parameters.pipelineName}`
 }

@@ -4,7 +4,7 @@ export interface CidrcollectionArnParameters {
 }
 export type CidrcollectionArn = `arn:${string}:route53:::cidrcollection/${string}`
 export function cidrcollectionArn(parameters: CidrcollectionArnParameters): CidrcollectionArn {
-  return `arn:${parameters.partition ?? ''}:route53:::cidrcollection/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:route53:::cidrcollection/${parameters.id}`
 }
 
 export interface ChangeArnParameters {
@@ -13,7 +13,7 @@ export interface ChangeArnParameters {
 }
 export type ChangeArn = `arn:${string}:route53:::change/${string}`
 export function changeArn(parameters: ChangeArnParameters): ChangeArn {
-  return `arn:${parameters.partition ?? ''}:route53:::change/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:route53:::change/${parameters.id}`
 }
 
 export interface DelegationsetArnParameters {
@@ -22,7 +22,7 @@ export interface DelegationsetArnParameters {
 }
 export type DelegationsetArn = `arn:${string}:route53:::delegationset/${string}`
 export function delegationsetArn(parameters: DelegationsetArnParameters): DelegationsetArn {
-  return `arn:${parameters.partition ?? ''}:route53:::delegationset/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:route53:::delegationset/${parameters.id}`
 }
 
 export interface HealthcheckArnParameters {
@@ -31,7 +31,7 @@ export interface HealthcheckArnParameters {
 }
 export type HealthcheckArn = `arn:${string}:route53:::healthcheck/${string}`
 export function healthcheckArn(parameters: HealthcheckArnParameters): HealthcheckArn {
-  return `arn:${parameters.partition ?? ''}:route53:::healthcheck/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:route53:::healthcheck/${parameters.id}`
 }
 
 export interface HostedzoneArnParameters {
@@ -40,7 +40,7 @@ export interface HostedzoneArnParameters {
 }
 export type HostedzoneArn = `arn:${string}:route53:::hostedzone/${string}`
 export function hostedzoneArn(parameters: HostedzoneArnParameters): HostedzoneArn {
-  return `arn:${parameters.partition ?? ''}:route53:::hostedzone/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:route53:::hostedzone/${parameters.id}`
 }
 
 export interface TrafficpolicyArnParameters {
@@ -49,7 +49,7 @@ export interface TrafficpolicyArnParameters {
 }
 export type TrafficpolicyArn = `arn:${string}:route53:::trafficpolicy/${string}`
 export function trafficpolicyArn(parameters: TrafficpolicyArnParameters): TrafficpolicyArn {
-  return `arn:${parameters.partition ?? ''}:route53:::trafficpolicy/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:route53:::trafficpolicy/${parameters.id}`
 }
 
 export interface TrafficpolicyinstanceArnParameters {
@@ -58,7 +58,7 @@ export interface TrafficpolicyinstanceArnParameters {
 }
 export type TrafficpolicyinstanceArn = `arn:${string}:route53:::trafficpolicyinstance/${string}`
 export function trafficpolicyinstanceArn(parameters: TrafficpolicyinstanceArnParameters): TrafficpolicyinstanceArn {
-  return `arn:${parameters.partition ?? ''}:route53:::trafficpolicyinstance/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:route53:::trafficpolicyinstance/${parameters.id}`
 }
 
 export interface QueryloggingconfigArnParameters {
@@ -67,7 +67,7 @@ export interface QueryloggingconfigArnParameters {
 }
 export type QueryloggingconfigArn = `arn:${string}:route53:::queryloggingconfig/${string}`
 export function queryloggingconfigArn(parameters: QueryloggingconfigArnParameters): QueryloggingconfigArn {
-  return `arn:${parameters.partition ?? ''}:route53:::queryloggingconfig/${parameters.id}`
+  return `arn:${parameters.partition ?? 'aws'}:route53:::queryloggingconfig/${parameters.id}`
 }
 
 export interface VpcArnParameters {
@@ -78,5 +78,5 @@ export interface VpcArnParameters {
 }
 export type VpcArn = `arn:${string}:ec2:${string}:${string}:vpc/${string}`
 export function vpcArn(parameters: VpcArnParameters): VpcArn {
-  return `arn:${parameters.partition ?? ''}:ec2:${parameters.region}:${parameters.account}:vpc/${parameters.vpcId}`
+  return `arn:${parameters.partition ?? 'aws'}:ec2:${parameters.region}:${parameters.account}:vpc/${parameters.vpcId}`
 }

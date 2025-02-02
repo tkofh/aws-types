@@ -6,7 +6,7 @@ export interface FirewallArnParameters {
 }
 export type FirewallArn = `arn:${string}:network-firewall:${string}:${string}:firewall/${string}`
 export function firewallArn(parameters: FirewallArnParameters): FirewallArn {
-  return `arn:${parameters.partition ?? ''}:network-firewall:${parameters.region}:${parameters.account}:firewall/${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:network-firewall:${parameters.region}:${parameters.account}:firewall/${parameters.name}`
 }
 
 export interface FirewallPolicyArnParameters {
@@ -17,7 +17,7 @@ export interface FirewallPolicyArnParameters {
 }
 export type FirewallPolicyArn = `arn:${string}:network-firewall:${string}:${string}:firewall-policy/${string}`
 export function firewallPolicyArn(parameters: FirewallPolicyArnParameters): FirewallPolicyArn {
-  return `arn:${parameters.partition ?? ''}:network-firewall:${parameters.region}:${parameters.account}:firewall-policy/${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:network-firewall:${parameters.region}:${parameters.account}:firewall-policy/${parameters.name}`
 }
 
 export interface StatefulRuleGroupArnParameters {
@@ -28,7 +28,7 @@ export interface StatefulRuleGroupArnParameters {
 }
 export type StatefulRuleGroupArn = `arn:${string}:network-firewall:${string}:${string}:stateful-rulegroup/${string}`
 export function statefulRuleGroupArn(parameters: StatefulRuleGroupArnParameters): StatefulRuleGroupArn {
-  return `arn:${parameters.partition ?? ''}:network-firewall:${parameters.region}:${parameters.account}:stateful-rulegroup/${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:network-firewall:${parameters.region}:${parameters.account}:stateful-rulegroup/${parameters.name}`
 }
 
 export interface StatelessRuleGroupArnParameters {
@@ -39,7 +39,7 @@ export interface StatelessRuleGroupArnParameters {
 }
 export type StatelessRuleGroupArn = `arn:${string}:network-firewall:${string}:${string}:stateless-rulegroup/${string}`
 export function statelessRuleGroupArn(parameters: StatelessRuleGroupArnParameters): StatelessRuleGroupArn {
-  return `arn:${parameters.partition ?? ''}:network-firewall:${parameters.region}:${parameters.account}:stateless-rulegroup/${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:network-firewall:${parameters.region}:${parameters.account}:stateless-rulegroup/${parameters.name}`
 }
 
 export interface TlsInspectionConfigurationArnParameters {
@@ -50,5 +50,5 @@ export interface TlsInspectionConfigurationArnParameters {
 }
 export type TlsInspectionConfigurationArn = `arn:${string}:network-firewall:${string}:${string}:tls-configuration/${string}`
 export function tlsInspectionConfigurationArn(parameters: TlsInspectionConfigurationArnParameters): TlsInspectionConfigurationArn {
-  return `arn:${parameters.partition ?? ''}:network-firewall:${parameters.region}:${parameters.account}:tls-configuration/${parameters.name}`
+  return `arn:${parameters.partition ?? 'aws'}:network-firewall:${parameters.region}:${parameters.account}:tls-configuration/${parameters.name}`
 }
