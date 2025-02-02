@@ -1,0 +1,10 @@
+export type AwsPortalPrivilege =
+  | 'GetConsoleActionSetEnforced'
+  | 'ModifyAccount'
+  | 'ModifyBilling'
+  | 'ModifyPaymentMethods'
+  | 'UpdateConsoleActionSetEnforced'
+  | 'ViewAccount'
+  | 'ViewBilling'
+  | 'ViewPaymentMethods'
+  | 'ViewUsage'

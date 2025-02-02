@@ -1,0 +1,10 @@
+export type S3expressPrivilege =
+  | 'CreateBucket'
+  | 'CreateSession'
+  | 'DeleteBucket'
+  | 'DeleteBucketPolicy'
+  | 'GetBucketPolicy'
+  | 'GetEncryptionConfiguration'
+  | 'ListAllMyDirectoryBuckets'
+  | 'PutBucketPolicy'
+  | 'PutEncryptionConfiguration'

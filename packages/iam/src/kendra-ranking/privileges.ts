@@ -1,0 +1,10 @@
+export type KendraRankingPrivilege =
+  | 'CreateRescoreExecutionPlan'
+  | 'DeleteRescoreExecutionPlan'
+  | 'DescribeRescoreExecutionPlan'
+  | 'ListRescoreExecutionPlans'
+  | 'ListTagsForResource'
+  | 'Rescore'
+  | 'TagResource'
+  | 'UntagResource'
+  | 'UpdateRescoreExecutionPlan'

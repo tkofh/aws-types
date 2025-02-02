@@ -1,0 +1,13 @@
+export type BcmDataExportsPrivilege =
+  | 'CreateExport'
+  | 'DeleteExport'
+  | 'GetExecution'
+  | 'GetExport'
+  | 'GetTable'
+  | 'ListExecutions'
+  | 'ListExports'
+  | 'ListTables'
+  | 'ListTagsForResource'
+  | 'TagResource'
+  | 'UntagResource'
+  | 'UpdateExport'

@@ -1,8 +1,9 @@
 {
   "name": "@aws-types/arn",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "typed helpers for constructing ARNs",
   "author": "Tim Morris <timthewebguy@gmail.com>",
+  "tags": [],
   "homepage": "https://github.com/tkofh/aws-types#readme",
   "license": "MIT",
   "sideEffects": false,
@@ -1704,7 +1705,7 @@
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
-    "unbuild": "^3.3.1"
+    "unbuild": "latest"
   },
   "scripts": {
     "build": "unbuild"

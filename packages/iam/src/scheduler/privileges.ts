@@ -1,0 +1,13 @@
+export type SchedulerPrivilege =
+  | 'CreateSchedule'
+  | 'CreateScheduleGroup'
+  | 'DeleteSchedule'
+  | 'DeleteScheduleGroup'
+  | 'GetSchedule'
+  | 'GetScheduleGroup'
+  | 'ListScheduleGroups'
+  | 'ListSchedules'
+  | 'ListTagsForResource'
+  | 'TagResource'
+  | 'UntagResource'
+  | 'UpdateSchedule'

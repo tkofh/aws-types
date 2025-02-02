@@ -1,0 +1,13 @@
+export type NetworkmonitorPrivilege =
+  | 'CreateMonitor'
+  | 'CreateProbe'
+  | 'DeleteMonitor'
+  | 'DeleteProbe'
+  | 'GetMonitor'
+  | 'GetProbe'
+  | 'ListMonitors'
+  | 'ListTagsForResource'
+  | 'TagResource'
+  | 'UntagResource'
+  | 'UpdateMonitor'
+  | 'UpdateProbe'

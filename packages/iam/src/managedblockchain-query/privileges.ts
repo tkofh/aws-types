@@ -1,0 +1,10 @@
+export type ManagedblockchainQueryPrivilege =
+  | 'BatchGetTokenBalance'
+  | 'GetAssetContract'
+  | 'GetTokenBalance'
+  | 'GetTransaction'
+  | 'ListAssetContracts'
+  | 'ListFilteredTransactionEvents'
+  | 'ListTokenBalances'
+  | 'ListTransactionEvents'
+  | 'ListTransactions'

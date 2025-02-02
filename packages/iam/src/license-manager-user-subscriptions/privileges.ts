@@ -1,0 +1,12 @@
+export type LicenseManagerUserSubscriptionsPrivilege =
+  | 'AssociateUser'
+  | 'DeregisterIdentityProvider'
+  | 'DisassociateUser'
+  | 'ListIdentityProviders'
+  | 'ListInstances'
+  | 'ListProductSubscriptions'
+  | 'ListUserAssociations'
+  | 'RegisterIdentityProvider'
+  | 'StartProductSubscription'
+  | 'StopProductSubscription'
+  | 'UpdateIdentityProviderSettings'

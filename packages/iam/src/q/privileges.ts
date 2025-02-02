@@ -1,0 +1,13 @@
+export type QPrivilege =
+  | 'CreateAssignment'
+  | 'DeleteAssignment'
+  | 'GetConversation'
+  | 'GetIdentityMetadata'
+  | 'GetTroubleshootingResults'
+  | 'ListConversations'
+  | 'PassRequest'
+  | 'SendMessage'
+  | 'StartConversation'
+  | 'StartTroubleshootingAnalysis'
+  | 'StartTroubleshootingResolutionExplanation'
+  | 'UpdateTroubleshootingCommandResult'

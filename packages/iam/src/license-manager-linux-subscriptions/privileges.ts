@@ -1,0 +1,12 @@
+export type LicenseManagerLinuxSubscriptionsPrivilege =
+  | 'DeregisterSubscriptionProvider'
+  | 'GetRegisteredSubscriptionProvider'
+  | 'GetServiceSettings'
+  | 'ListLinuxSubscriptionInstances'
+  | 'ListLinuxSubscriptions'
+  | 'ListRegisteredSubscriptionProviders'
+  | 'ListTagsForResource'
+  | 'RegisterSubscriptionProvider'
+  | 'TagResource'
+  | 'UntagResource'
+  | 'UpdateServiceSettings'

@@ -1,0 +1,12 @@
+export type RepostspacePrivilege =
+  | 'CreateSpace'
+  | 'DeleteSpace'
+  | 'DeregisterAdmin'
+  | 'GetSpace'
+  | 'ListSpaces'
+  | 'ListTagsForResource'
+  | 'RegisterAdmin'
+  | 'SendInvites'
+  | 'TagResource'
+  | 'UntagResource'
+  | 'UpdateSpace'

@@ -1,0 +1,11 @@
+export type PipesPrivilege =
+  | 'CreatePipe'
+  | 'DeletePipe'
+  | 'DescribePipe'
+  | 'ListPipes'
+  | 'ListTagsForResource'
+  | 'StartPipe'
+  | 'StopPipe'
+  | 'TagResource'
+  | 'UntagResource'
+  | 'UpdatePipe'

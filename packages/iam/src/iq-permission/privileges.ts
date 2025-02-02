@@ -1,0 +1,10 @@
+export type IqPermissionPrivilege =
+  | 'ApproveAccessGrant'
+  | 'ApprovePermissionRequest'
+  | 'AssumePermissionRole'
+  | 'CreatePermissionRequest'
+  | 'GetPermissionRequest'
+  | 'ListPermissionRequests'
+  | 'RejectPermissionRequest'
+  | 'RevokePermissionRequest'
+  | 'WithdrawPermissionRequest'

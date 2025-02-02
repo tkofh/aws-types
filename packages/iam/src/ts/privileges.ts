@@ -1,0 +1,10 @@
+export type TsPrivilege =
+  | 'GetExecution'
+  | 'GetExecutionOutput'
+  | 'GetTool'
+  | 'ListExecutions'
+  | 'ListTagsForResource'
+  | 'ListTools'
+  | 'StartExecution'
+  | 'TagResource'
+  | 'UntagResource'

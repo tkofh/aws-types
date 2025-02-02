@@ -1,0 +1,13 @@
+export type SsmQuicksetupPrivilege =
+  | 'CreateConfigurationManager'
+  | 'DeleteConfigurationManager'
+  | 'GetConfigurationManager'
+  | 'GetServiceSettings'
+  | 'ListConfigurationManagers'
+  | 'ListQuickSetupTypes'
+  | 'ListTagsForResource'
+  | 'TagResource'
+  | 'UntagResource'
+  | 'UpdateConfigurationDefinition'
+  | 'UpdateConfigurationManager'
+  | 'UpdateServiceSettings'

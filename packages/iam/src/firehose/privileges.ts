@@ -1,0 +1,13 @@
+export type FirehosePrivilege =
+  | 'CreateDeliveryStream'
+  | 'DeleteDeliveryStream'
+  | 'DescribeDeliveryStream'
+  | 'ListDeliveryStreams'
+  | 'ListTagsForDeliveryStream'
+  | 'PutRecord'
+  | 'PutRecordBatch'
+  | 'StartDeliveryStreamEncryption'
+  | 'StopDeliveryStreamEncryption'
+  | 'TagDeliveryStream'
+  | 'UntagDeliveryStream'
+  | 'UpdateDestination'

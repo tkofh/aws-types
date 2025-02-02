@@ -1,0 +1,13 @@
+export type PcaConnectorScepPrivilege =
+  | 'CreateChallenge'
+  | 'CreateConnector'
+  | 'DeleteChallenge'
+  | 'DeleteConnector'
+  | 'GetChallengeMetadata'
+  | 'GetChallengePassword'
+  | 'GetConnector'
+  | 'ListChallengeMetadata'
+  | 'ListConnectors'
+  | 'ListTagsForResource'
+  | 'TagResource'
+  | 'UntagResource'

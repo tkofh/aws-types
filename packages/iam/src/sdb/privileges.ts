@@ -1,0 +1,11 @@
+export type SdbPrivilege =
+  | 'BatchDeleteAttributes'
+  | 'BatchPutAttributes'
+  | 'CreateDomain'
+  | 'DeleteAttributes'
+  | 'DeleteDomain'
+  | 'DomainMetadata'
+  | 'GetAttributes'
+  | 'ListDomains'
+  | 'PutAttributes'
+  | 'Select'

@@ -1,0 +1,11 @@
+export type RbinPrivilege =
+  | 'CreateRule'
+  | 'DeleteRule'
+  | 'GetRule'
+  | 'ListRules'
+  | 'ListTagsForResource'
+  | 'LockRule'
+  | 'TagResource'
+  | 'UnlockRule'
+  | 'UntagResource'
+  | 'UpdateRule'

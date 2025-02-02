@@ -1,0 +1,13 @@
+export type CurPrivilege =
+  | 'DeleteReportDefinition'
+  | 'DescribeReportDefinitions'
+  | 'GetClassicReport'
+  | 'GetClassicReportPreferences'
+  | 'GetUsageReport'
+  | 'ListTagsForResource'
+  | 'ModifyReportDefinition'
+  | 'PutClassicReportPreferences'
+  | 'PutReportDefinition'
+  | 'TagResource'
+  | 'UntagResource'
+  | 'ValidateReportDestination'

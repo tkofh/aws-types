@@ -1,0 +1,13 @@
+export type SagemakerGroundtruthSyntheticPrivilege =
+  | 'CreateProject'
+  | 'DeleteProject'
+  | 'GetAccountDetails'
+  | 'GetBatch'
+  | 'GetProject'
+  | 'ListBatchDataTransfers'
+  | 'ListBatchSummaries'
+  | 'ListProjectDataTransfers'
+  | 'ListProjectSummaries'
+  | 'StartBatchDataTransfer'
+  | 'StartProjectDataTransfer'
+  | 'UpdateBatch'

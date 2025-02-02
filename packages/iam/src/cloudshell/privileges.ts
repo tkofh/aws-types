@@ -1,0 +1,11 @@
+export type CloudshellPrivilege =
+  | 'CreateEnvironment'
+  | 'CreateSession'
+  | 'DeleteEnvironment'
+  | 'DescribeEnvironments'
+  | 'GetEnvironmentStatus'
+  | 'GetFileDownloadUrls'
+  | 'GetFileUploadUrls'
+  | 'PutCredentials'
+  | 'StartEnvironment'
+  | 'StopEnvironment'

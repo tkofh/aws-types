@@ -1,0 +1,11 @@
+export type ArtifactPrivilege =
+  | 'AcceptAgreement'
+  | 'DownloadAgreement'
+  | 'Get'
+  | 'GetAccountSettings'
+  | 'GetReport'
+  | 'GetReportMetadata'
+  | 'GetTermForReport'
+  | 'ListReports'
+  | 'PutAccountSettings'
+  | 'TerminateAgreement'

@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'node:url'
 import { FileSystem, Path } from '@effect/platform'
-import { Effect, Schema, Stream } from 'effect'
+import type { PlatformError } from '@effect/platform/Error'
+import { Effect, type ParseResult, Schema, Stream } from 'effect'
 
 export const Resource = Schema.Struct({
   arn: Schema.String,
@@ -49,7 +50,11 @@ export type Service = Schema.Schema.Type<typeof Service>
 
 export const IamData = Schema.parseJson(Schema.Array(Service))
 
-export const data = Stream.fromIterableEffect(
+export const services: Stream.Stream<
+  Service,
+  PlatformError | ParseResult.ParseError,
+  FileSystem.FileSystem | Path.Path
+> = Stream.fromIterableEffect(
   Effect.all([FileSystem.FileSystem, Path.Path]).pipe(
     Effect.flatMap(([fs, path]) =>
       fs.readFileString(

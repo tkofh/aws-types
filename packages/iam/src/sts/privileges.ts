@@ -1,0 +1,13 @@
+export type StsPrivilege =
+  | 'AssumeRole'
+  | 'AssumeRoleWithSAML'
+  | 'AssumeRoleWithWebIdentity'
+  | 'DecodeAuthorizationMessage'
+  | 'GetAccessKeyInfo'
+  | 'GetCallerIdentity'
+  | 'GetFederationToken'
+  | 'GetServiceBearerToken'
+  | 'GetSessionToken'
+  | 'SetContext'
+  | 'SetSourceIdentity'
+  | 'TagSession'

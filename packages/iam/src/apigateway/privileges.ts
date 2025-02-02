@@ -1,0 +1,10 @@
+export type ApigatewayPrivilege =
+  | 'DELETE'
+  | 'GET'
+  | 'PATCH'
+  | 'POST'
+  | 'PUT'
+  | 'AddCertificateToDomain'
+  | 'RemoveCertificateFromDomain'
+  | 'SetWebACL'
+  | 'UpdateRestApiPolicy'

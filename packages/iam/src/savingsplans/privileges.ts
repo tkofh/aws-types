@@ -1,0 +1,11 @@
+export type SavingsplansPrivilege =
+  | 'CreateSavingsPlan'
+  | 'DeleteQueuedSavingsPlan'
+  | 'DescribeSavingsPlanRates'
+  | 'DescribeSavingsPlans'
+  | 'DescribeSavingsPlansOfferingRates'
+  | 'DescribeSavingsPlansOfferings'
+  | 'ListTagsForResource'
+  | 'ReturnSavingsPlan'
+  | 'TagResource'
+  | 'UntagResource'

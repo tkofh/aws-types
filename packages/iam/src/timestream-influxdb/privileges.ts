@@ -1,0 +1,12 @@
+export type TimestreamInfluxdbPrivilege =
+  | 'CreateDbInstance'
+  | 'CreateDbParameterGroup'
+  | 'DeleteDbInstance'
+  | 'GetDbInstance'
+  | 'GetDbParameterGroup'
+  | 'ListDbInstances'
+  | 'ListDbParameterGroups'
+  | 'ListTagsForResource'
+  | 'TagResource'
+  | 'UntagResource'
+  | 'UpdateDbInstance'

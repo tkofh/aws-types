@@ -1,0 +1,11 @@
+export type RedshiftDataPrivilege =
+  | 'BatchExecuteStatement'
+  | 'CancelStatement'
+  | 'DescribeStatement'
+  | 'DescribeTable'
+  | 'ExecuteStatement'
+  | 'GetStatementResult'
+  | 'ListDatabases'
+  | 'ListSchemas'
+  | 'ListStatements'
+  | 'ListTables'

@@ -1,0 +1,2 @@
+export type RdsDbPrivilege =
+  | 'connect'

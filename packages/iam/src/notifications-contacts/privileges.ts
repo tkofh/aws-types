@@ -1,0 +1,10 @@
+export type NotificationsContactsPrivilege =
+  | 'ActivateEmailContact'
+  | 'CreateEmailContact'
+  | 'DeleteEmailContact'
+  | 'GetEmailContact'
+  | 'ListEmailContacts'
+  | 'ListTagsForResource'
+  | 'SendActivationCode'
+  | 'TagResource'
+  | 'UntagResource'

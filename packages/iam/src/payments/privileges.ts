@@ -1,0 +1,13 @@
+export type PaymentsPrivilege =
+  | 'CreatePaymentInstrument'
+  | 'DeletePaymentInstrument'
+  | 'GetPaymentInstrument'
+  | 'GetPaymentStatus'
+  | 'ListPaymentInstruments'
+  | 'ListPaymentPreferences'
+  | 'ListTagsForResource'
+  | 'MakePayment'
+  | 'TagResource'
+  | 'UntagResource'
+  | 'UpdatePaymentInstrument'
+  | 'UpdatePaymentPreferences'

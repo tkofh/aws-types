@@ -5,6 +5,7 @@ import { Effect } from 'effect'
 import pkg from '../package.json' with { type: 'json' }
 import { writeArnPackage } from './arn.js'
 import { writeIamPackage } from './iam.js'
+import { PackagesBasePath } from './shared/fs.js'
 
 const cli = Command.run(
   Command.make('generate', {}, () =>
@@ -16,6 +17,7 @@ const cli = Command.run(
 )
 
 Effect.suspend(() => cli(process.argv)).pipe(
+  Effect.provide(PackagesBasePath.layer),
   Effect.provide(NodeContext.layer),
   Effect.provide(FetchHttpClient.layer),
   Effect.scoped,

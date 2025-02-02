@@ -1,0 +1,12 @@
+export type AirflowPrivilege =
+  | 'CreateCliToken'
+  | 'CreateEnvironment'
+  | 'CreateWebLoginToken'
+  | 'DeleteEnvironment'
+  | 'GetEnvironment'
+  | 'ListEnvironments'
+  | 'ListTagsForResource'
+  | 'PublishMetrics'
+  | 'TagResource'
+  | 'UntagResource'
+  | 'UpdateEnvironment'
