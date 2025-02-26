@@ -1,5 +1,5 @@
 import { camelCase, pascalCase } from 'change-case'
-import { Chunk, DateTime, Effect, Order, Stream } from 'effect'
+import { Chunk, DateTime, Effect, type Iterable, Order, Stream } from 'effect'
 import { type Resource, type Service, services } from './data/services.js'
 import { writeFile } from './shared/fs.js'
 import { packageJson } from './shared/package-json.js'
@@ -11,6 +11,52 @@ const writeIndexFile = DateTime.now.pipe(
       './arns/src/index.ts',
     ),
   ),
+)
+
+function brandExport(namespace: string, name: string): string {
+  return [
+    `export const ${name}Brand: unique symbol = Symbol.for('@aws-types/arns/${namespace}/${name}')`,
+    `export type ${name}Brand = typeof ${name}Brand`,
+  ].join('\n')
+}
+
+function dfn(declaration: string, body: Iterable<string>, spacing = 1): string {
+  return [
+    `${declaration} {`,
+    ...Array.from(body, (line) =>
+      line
+        .split('\n')
+        .map((line) => `  ${line}`)
+        .join('\n'),
+    ),
+    '}',
+  ].join('\n'.repeat(spacing))
+}
+
+const writeInternalFile = writeFile(
+  [
+    brandExport('~', 'StringifyArn'),
+    brandExport('~', 'ArnResourceType'),
+    dfn('export interface Arn<T extends string, P extends string>', [
+      'readonly [ArnResourceTypeBrand]: T',
+      '[Symbol.toPrimitive](): P',
+      'toString(): P',
+    ]),
+    dfn(
+      'export abstract class InternalArn<T extends string, P extends string> implements Arn<T, P>',
+      [
+        'abstract readonly [ArnResourceTypeBrand]: T',
+        'abstract [StringifyArnBrand](): P',
+        dfn('[Symbol.toPrimitive]()', ['return this[StringifyArnBrand]()']),
+        dfn('toString()', ['return this[StringifyArnBrand]()']),
+        dfn(`[Symbol.for('nodejs.util.inspect.custom')]()`, [
+          'return `${this[ArnResourceTypeBrand]}<${this[StringifyArnBrand]()}>`',
+        ]),
+      ],
+      2,
+    ),
+  ].join('\n\n'),
+  './arns/src/internal.ts',
 )
 
 const writeTsConfig = writeFile(
@@ -28,6 +74,8 @@ const writeTsConfig = writeFile(
 )
 
 const PARAMETER_PATTERN = /\${(?<parameter>[A-Za-z0-9]+)}/g
+
+export function writeResourceArnsFile(resource: Resource) {}
 
 function buildResourceStanza(resource: Resource) {
   const pascalCaseResource = pascalCase(resource.resource)
@@ -68,6 +116,7 @@ function writePackageJson(services: Chunk.Chunk<string>) {
 export const writeArnPackage = Effect.all([
   writeIndexFile,
   writeTsConfig,
+  writeInternalFile,
 
   services.pipe(
     Stream.filter((service) => service.resources.length > 0),
