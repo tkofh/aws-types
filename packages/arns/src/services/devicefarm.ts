@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'project', `arn:${string}:devicefarm:${string}:${string}:project:${string}`> {
+class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'project',
+  `arn:${string}:devicefarm:${string}:${string}:project:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'project' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pr
   }
 }
 export type { ProjectArn }
-export function projectArn<Partition extends ArnPartition = 'aws'>(parameters: ProjectArnParameters<Partition>) {
+export function projectArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProjectArnParameters<Partition>,
+) {
   return new ProjectArn<Partition>(parameters)
 }
 
@@ -34,7 +45,10 @@ export interface RunArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class RunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'run', `arn:${string}:devicefarm:${string}:${string}:run:${string}`> {
+class RunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'run',
+  `arn:${string}:devicefarm:${string}:${string}:run:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'run' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +66,9 @@ class RunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'run', 
   }
 }
 export type { RunArn }
-export function runArn<Partition extends ArnPartition = 'aws'>(parameters: RunArnParameters<Partition>) {
+export function runArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RunArnParameters<Partition>,
+) {
   return new RunArn<Partition>(parameters)
 }
 
@@ -62,7 +78,10 @@ export interface JobArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'job', `arn:${string}:devicefarm:${string}:${string}:job:${string}`> {
+class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'job',
+  `arn:${string}:devicefarm:${string}:${string}:job:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'job' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,7 +99,9 @@ class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'job', 
   }
 }
 export type { JobArn }
-export function jobArn<Partition extends ArnPartition = 'aws'>(parameters: JobArnParameters<Partition>) {
+export function jobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobArnParameters<Partition>,
+) {
   return new JobArn<Partition>(parameters)
 }
 
@@ -90,7 +111,10 @@ export interface SuiteArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class SuiteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'suite', `arn:${string}:devicefarm:${string}:${string}:suite:${string}`> {
+class SuiteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'suite',
+  `arn:${string}:devicefarm:${string}:${string}:suite:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'suite' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,7 +132,9 @@ class SuiteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'suit
   }
 }
 export type { SuiteArn }
-export function suiteArn<Partition extends ArnPartition = 'aws'>(parameters: SuiteArnParameters<Partition>) {
+export function suiteArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SuiteArnParameters<Partition>,
+) {
   return new SuiteArn<Partition>(parameters)
 }
 
@@ -118,7 +144,10 @@ export interface TestArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class TestArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'test', `arn:${string}:devicefarm:${string}:${string}:test:${string}`> {
+class TestArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'test',
+  `arn:${string}:devicefarm:${string}:${string}:test:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'test' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -136,7 +165,9 @@ class TestArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'test'
   }
 }
 export type { TestArn }
-export function testArn<Partition extends ArnPartition = 'aws'>(parameters: TestArnParameters<Partition>) {
+export function testArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TestArnParameters<Partition>,
+) {
   return new TestArn<Partition>(parameters)
 }
 
@@ -146,7 +177,10 @@ export interface UploadArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class UploadArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'upload', `arn:${string}:devicefarm:${string}:${string}:upload:${string}`> {
+class UploadArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'upload',
+  `arn:${string}:devicefarm:${string}:${string}:upload:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'upload' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -164,7 +198,9 @@ class UploadArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'upl
   }
 }
 export type { UploadArn }
-export function uploadArn<Partition extends ArnPartition = 'aws'>(parameters: UploadArnParameters<Partition>) {
+export function uploadArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UploadArnParameters<Partition>,
+) {
   return new UploadArn<Partition>(parameters)
 }
 
@@ -174,7 +210,10 @@ export interface ArtifactArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class ArtifactArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'artifact', `arn:${string}:devicefarm:${string}:${string}:artifact:${string}`> {
+class ArtifactArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'artifact',
+  `arn:${string}:devicefarm:${string}:${string}:artifact:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'artifact' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -192,7 +231,9 @@ class ArtifactArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'a
   }
 }
 export type { ArtifactArn }
-export function artifactArn<Partition extends ArnPartition = 'aws'>(parameters: ArtifactArnParameters<Partition>) {
+export function artifactArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ArtifactArnParameters<Partition>,
+) {
   return new ArtifactArn<Partition>(parameters)
 }
 
@@ -202,7 +243,10 @@ export interface SampleArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class SampleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'sample', `arn:${string}:devicefarm:${string}:${string}:sample:${string}`> {
+class SampleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'sample',
+  `arn:${string}:devicefarm:${string}:${string}:sample:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'sample' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -220,17 +264,26 @@ class SampleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'sam
   }
 }
 export type { SampleArn }
-export function sampleArn<Partition extends ArnPartition = 'aws'>(parameters: SampleArnParameters<Partition>) {
+export function sampleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SampleArnParameters<Partition>,
+) {
   return new SampleArn<Partition>(parameters)
 }
 
-export interface NetworkprofileArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface NetworkprofileArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class NetworkprofileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'networkprofile', `arn:${string}:devicefarm:${string}:${string}:networkprofile:${string}`> {
+class NetworkprofileArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'networkprofile',
+  `arn:${string}:devicefarm:${string}:${string}:networkprofile:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'networkprofile' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -248,16 +301,25 @@ class NetworkprofileArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { NetworkprofileArn }
-export function networkprofileArn<Partition extends ArnPartition = 'aws'>(parameters: NetworkprofileArnParameters<Partition>) {
+export function networkprofileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NetworkprofileArnParameters<Partition>,
+) {
   return new NetworkprofileArn<Partition>(parameters)
 }
 
-export interface DeviceinstanceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeviceinstanceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly resourceId: string
 }
-class DeviceinstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'deviceinstance', `arn:${string}:devicefarm:${string}::deviceinstance:${string}`> {
+class DeviceinstanceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'deviceinstance',
+  `arn:${string}:devicefarm:${string}::deviceinstance:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'deviceinstance' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -273,7 +335,9 @@ class DeviceinstanceArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { DeviceinstanceArn }
-export function deviceinstanceArn<Partition extends ArnPartition = 'aws'>(parameters: DeviceinstanceArnParameters<Partition>) {
+export function deviceinstanceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeviceinstanceArnParameters<Partition>,
+) {
   return new DeviceinstanceArn<Partition>(parameters)
 }
 
@@ -283,7 +347,10 @@ export interface SessionArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class SessionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'session', `arn:${string}:devicefarm:${string}:${string}:session:${string}`> {
+class SessionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'session',
+  `arn:${string}:devicefarm:${string}:${string}:session:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'session' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -301,17 +368,24 @@ class SessionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'se
   }
 }
 export type { SessionArn }
-export function sessionArn<Partition extends ArnPartition = 'aws'>(parameters: SessionArnParameters<Partition>) {
+export function sessionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SessionArnParameters<Partition>,
+) {
   return new SessionArn<Partition>(parameters)
 }
 
-export interface DevicepoolArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DevicepoolArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class DevicepoolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'devicepool', `arn:${string}:devicefarm:${string}:${string}:devicepool:${string}`> {
+class DevicepoolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'devicepool',
+  `arn:${string}:devicefarm:${string}:${string}:devicepool:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'devicepool' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -329,7 +403,9 @@ class DevicepoolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { DevicepoolArn }
-export function devicepoolArn<Partition extends ArnPartition = 'aws'>(parameters: DevicepoolArnParameters<Partition>) {
+export function devicepoolArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DevicepoolArnParameters<Partition>,
+) {
   return new DevicepoolArn<Partition>(parameters)
 }
 
@@ -338,7 +414,10 @@ export interface DeviceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly region: ArnRegion<Partition>
   readonly resourceId: string
 }
-class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'device', `arn:${string}:devicefarm:${string}::device:${string}`> {
+class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'device',
+  `arn:${string}:devicefarm:${string}::device:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'device' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -354,17 +433,26 @@ class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dev
   }
 }
 export type { DeviceArn }
-export function deviceArn<Partition extends ArnPartition = 'aws'>(parameters: DeviceArnParameters<Partition>) {
+export function deviceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeviceArnParameters<Partition>,
+) {
   return new DeviceArn<Partition>(parameters)
 }
 
-export interface InstanceprofileArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface InstanceprofileArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class InstanceprofileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'instanceprofile', `arn:${string}:devicefarm:${string}:${string}:instanceprofile:${string}`> {
+class InstanceprofileArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'instanceprofile',
+  `arn:${string}:devicefarm:${string}:${string}:instanceprofile:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'instanceprofile' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -382,17 +470,26 @@ class InstanceprofileArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { InstanceprofileArn }
-export function instanceprofileArn<Partition extends ArnPartition = 'aws'>(parameters: InstanceprofileArnParameters<Partition>) {
+export function instanceprofileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InstanceprofileArnParameters<Partition>,
+) {
   return new InstanceprofileArn<Partition>(parameters)
 }
 
-export interface VpceconfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface VpceconfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class VpceconfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'vpceconfiguration', `arn:${string}:devicefarm:${string}:${string}:vpceconfiguration:${string}`> {
+class VpceconfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'vpceconfiguration',
+  `arn:${string}:devicefarm:${string}:${string}:vpceconfiguration:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'vpceconfiguration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -410,17 +507,26 @@ class VpceconfigurationArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { VpceconfigurationArn }
-export function vpceconfigurationArn<Partition extends ArnPartition = 'aws'>(parameters: VpceconfigurationArnParameters<Partition>) {
+export function vpceconfigurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VpceconfigurationArnParameters<Partition>,
+) {
   return new VpceconfigurationArn<Partition>(parameters)
 }
 
-export interface TestgridProjectArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TestgridProjectArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class TestgridProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'testgrid-project', `arn:${string}:devicefarm:${string}:${string}:testgrid-project:${string}`> {
+class TestgridProjectArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'testgrid-project',
+  `arn:${string}:devicefarm:${string}:${string}:testgrid-project:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'testgrid-project' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -438,17 +544,26 @@ class TestgridProjectArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { TestgridProjectArn }
-export function testgridProjectArn<Partition extends ArnPartition = 'aws'>(parameters: TestgridProjectArnParameters<Partition>) {
+export function testgridProjectArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TestgridProjectArnParameters<Partition>,
+) {
   return new TestgridProjectArn<Partition>(parameters)
 }
 
-export interface TestgridSessionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TestgridSessionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class TestgridSessionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'testgrid-session', `arn:${string}:devicefarm:${string}:${string}:testgrid-session:${string}`> {
+class TestgridSessionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'testgrid-session',
+  `arn:${string}:devicefarm:${string}:${string}:testgrid-session:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'testgrid-session' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -466,6 +581,8 @@ class TestgridSessionArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { TestgridSessionArn }
-export function testgridSessionArn<Partition extends ArnPartition = 'aws'>(parameters: TestgridSessionArnParameters<Partition>) {
+export function testgridSessionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TestgridSessionArnParameters<Partition>,
+) {
   return new TestgridSessionArn<Partition>(parameters)
 }

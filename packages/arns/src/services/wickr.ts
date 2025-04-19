@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface NetworkArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface NetworkArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly networkId: string
 }
-class NetworkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'network', `arn:${string}:wickr:${string}:${string}:network/${string}`> {
+class NetworkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'network',
+  `arn:${string}:wickr:${string}:${string}:network/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'network' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +33,8 @@ class NetworkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ne
   }
 }
 export type { NetworkArn }
-export function networkArn<Partition extends ArnPartition = 'aws'>(parameters: NetworkArnParameters<Partition>) {
+export function networkArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NetworkArnParameters<Partition>,
+) {
   return new NetworkArn<Partition>(parameters)
 }

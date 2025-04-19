@@ -1,2 +1,1 @@
-export type SustainabilityPrivilege =
-  | 'GetCarbonFootprintSummary'
+export type SustainabilityPrivilege = 'GetCarbonFootprintSummary'

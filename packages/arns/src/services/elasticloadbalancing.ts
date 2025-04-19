@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface LoadbalancerArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface LoadbalancerArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly loadBalancerName: string
 }
-class LoadbalancerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'loadbalancer', `arn:${string}:elasticloadbalancing:${string}:${string}:loadbalancer/${string}`> {
+class LoadbalancerArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'loadbalancer',
+  `arn:${string}:elasticloadbalancing:${string}:${string}:loadbalancer/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'loadbalancer' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,11 +37,15 @@ class LoadbalancerArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { LoadbalancerArn }
-export function loadbalancerArn<Partition extends ArnPartition = 'aws'>(parameters: LoadbalancerArnParameters<Partition>) {
+export function loadbalancerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LoadbalancerArnParameters<Partition>,
+) {
   return new LoadbalancerArn<Partition>(parameters)
 }
 
-export interface ListenerAppArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ListenerAppArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -36,7 +53,12 @@ export interface ListenerAppArnParameters<Partition extends ArnPartition = 'aws'
   readonly loadBalancerId: string
   readonly listenerId: string
 }
-class ListenerAppArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'listener/app', `arn:${string}:elasticloadbalancing:${string}:${string}:listener/app/${string}/${string}/${string}`> {
+class ListenerAppArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'listener/app',
+  `arn:${string}:elasticloadbalancing:${string}:${string}:listener/app/${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'listener/app' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -58,11 +80,15 @@ class ListenerAppArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ListenerAppArn }
-export function listenerAppArn<Partition extends ArnPartition = 'aws'>(parameters: ListenerAppArnParameters<Partition>) {
+export function listenerAppArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ListenerAppArnParameters<Partition>,
+) {
   return new ListenerAppArn<Partition>(parameters)
 }
 
-export interface ListenerRuleAppArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ListenerRuleAppArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -71,7 +97,12 @@ export interface ListenerRuleAppArnParameters<Partition extends ArnPartition = '
   readonly listenerId: string
   readonly listenerRuleId: string
 }
-class ListenerRuleAppArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'listener-rule/app', `arn:${string}:elasticloadbalancing:${string}:${string}:listener-rule/app/${string}/${string}/${string}/${string}`> {
+class ListenerRuleAppArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'listener-rule/app',
+  `arn:${string}:elasticloadbalancing:${string}:${string}:listener-rule/app/${string}/${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'listener-rule/app' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -95,11 +126,15 @@ class ListenerRuleAppArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { ListenerRuleAppArn }
-export function listenerRuleAppArn<Partition extends ArnPartition = 'aws'>(parameters: ListenerRuleAppArnParameters<Partition>) {
+export function listenerRuleAppArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ListenerRuleAppArnParameters<Partition>,
+) {
   return new ListenerRuleAppArn<Partition>(parameters)
 }
 
-export interface ListenerNetArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ListenerNetArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -107,7 +142,12 @@ export interface ListenerNetArnParameters<Partition extends ArnPartition = 'aws'
   readonly loadBalancerId: string
   readonly listenerId: string
 }
-class ListenerNetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'listener/net', `arn:${string}:elasticloadbalancing:${string}:${string}:listener/net/${string}/${string}/${string}`> {
+class ListenerNetArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'listener/net',
+  `arn:${string}:elasticloadbalancing:${string}:${string}:listener/net/${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'listener/net' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -129,11 +169,15 @@ class ListenerNetArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ListenerNetArn }
-export function listenerNetArn<Partition extends ArnPartition = 'aws'>(parameters: ListenerNetArnParameters<Partition>) {
+export function listenerNetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ListenerNetArnParameters<Partition>,
+) {
   return new ListenerNetArn<Partition>(parameters)
 }
 
-export interface ListenerRuleNetArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ListenerRuleNetArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -142,7 +186,12 @@ export interface ListenerRuleNetArnParameters<Partition extends ArnPartition = '
   readonly listenerId: string
   readonly listenerRuleId: string
 }
-class ListenerRuleNetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'listener-rule/net', `arn:${string}:elasticloadbalancing:${string}:${string}:listener-rule/net/${string}/${string}/${string}/${string}`> {
+class ListenerRuleNetArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'listener-rule/net',
+  `arn:${string}:elasticloadbalancing:${string}:${string}:listener-rule/net/${string}/${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'listener-rule/net' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -166,18 +215,27 @@ class ListenerRuleNetArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { ListenerRuleNetArn }
-export function listenerRuleNetArn<Partition extends ArnPartition = 'aws'>(parameters: ListenerRuleNetArnParameters<Partition>) {
+export function listenerRuleNetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ListenerRuleNetArnParameters<Partition>,
+) {
   return new ListenerRuleNetArn<Partition>(parameters)
 }
 
-export interface LoadbalancerAppArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface LoadbalancerAppArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly loadBalancerName: string
   readonly loadBalancerId: string
 }
-class LoadbalancerAppArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'loadbalancer/app/', `arn:${string}:elasticloadbalancing:${string}:${string}:loadbalancer/app/${string}/${string}`> {
+class LoadbalancerAppArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'loadbalancer/app/',
+  `arn:${string}:elasticloadbalancing:${string}:${string}:loadbalancer/app/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'loadbalancer/app/' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -197,18 +255,27 @@ class LoadbalancerAppArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { LoadbalancerAppArn }
-export function loadbalancerAppArn<Partition extends ArnPartition = 'aws'>(parameters: LoadbalancerAppArnParameters<Partition>) {
+export function loadbalancerAppArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LoadbalancerAppArnParameters<Partition>,
+) {
   return new LoadbalancerAppArn<Partition>(parameters)
 }
 
-export interface LoadbalancerNetArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface LoadbalancerNetArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly loadBalancerName: string
   readonly loadBalancerId: string
 }
-class LoadbalancerNetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'loadbalancer/net/', `arn:${string}:elasticloadbalancing:${string}:${string}:loadbalancer/net/${string}/${string}`> {
+class LoadbalancerNetArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'loadbalancer/net/',
+  `arn:${string}:elasticloadbalancing:${string}:${string}:loadbalancer/net/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'loadbalancer/net/' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -228,18 +295,27 @@ class LoadbalancerNetArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { LoadbalancerNetArn }
-export function loadbalancerNetArn<Partition extends ArnPartition = 'aws'>(parameters: LoadbalancerNetArnParameters<Partition>) {
+export function loadbalancerNetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LoadbalancerNetArnParameters<Partition>,
+) {
   return new LoadbalancerNetArn<Partition>(parameters)
 }
 
-export interface TargetgroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TargetgroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly targetGroupName: string
   readonly targetGroupId: string
 }
-class TargetgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'targetgroup', `arn:${string}:elasticloadbalancing:${string}:${string}:targetgroup/${string}/${string}`> {
+class TargetgroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'targetgroup',
+  `arn:${string}:elasticloadbalancing:${string}:${string}:targetgroup/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'targetgroup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -259,18 +335,25 @@ class TargetgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { TargetgroupArn }
-export function targetgroupArn<Partition extends ArnPartition = 'aws'>(parameters: TargetgroupArnParameters<Partition>) {
+export function targetgroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TargetgroupArnParameters<Partition>,
+) {
   return new TargetgroupArn<Partition>(parameters)
 }
 
-export interface TruststoreArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TruststoreArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly trustStoreName: string
   readonly trustStoreId: string
 }
-class TruststoreArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'truststore', `arn:${string}:elasticloadbalancing:${string}:${string}:truststore/${string}/${string}`> {
+class TruststoreArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'truststore',
+  `arn:${string}:elasticloadbalancing:${string}:${string}:truststore/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'truststore' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -290,6 +373,8 @@ class TruststoreArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { TruststoreArn }
-export function truststoreArn<Partition extends ArnPartition = 'aws'>(parameters: TruststoreArnParameters<Partition>) {
+export function truststoreArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TruststoreArnParameters<Partition>,
+) {
   return new TruststoreArn<Partition>(parameters)
 }

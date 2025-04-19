@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface TrustAnchorArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TrustAnchorArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly trustAnchorId: string
 }
-class TrustAnchorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'trust-anchor', `arn:${string}:rolesanywhere:${string}:${string}:trust-anchor/${string}`> {
+class TrustAnchorArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'trust-anchor',
+  `arn:${string}:rolesanywhere:${string}:${string}:trust-anchor/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'trust-anchor' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +37,9 @@ class TrustAnchorArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { TrustAnchorArn }
-export function trustAnchorArn<Partition extends ArnPartition = 'aws'>(parameters: TrustAnchorArnParameters<Partition>) {
+export function trustAnchorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TrustAnchorArnParameters<Partition>,
+) {
   return new TrustAnchorArn<Partition>(parameters)
 }
 
@@ -34,7 +49,10 @@ export interface ProfileArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly profileId: string
 }
-class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'profile', `arn:${string}:rolesanywhere:${string}:${string}:profile/${string}`> {
+class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'profile',
+  `arn:${string}:rolesanywhere:${string}:${string}:profile/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'profile' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +70,9 @@ class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pr
   }
 }
 export type { ProfileArn }
-export function profileArn<Partition extends ArnPartition = 'aws'>(parameters: ProfileArnParameters<Partition>) {
+export function profileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProfileArnParameters<Partition>,
+) {
   return new ProfileArn<Partition>(parameters)
 }
 
@@ -62,7 +82,10 @@ export interface SubjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly subjectId: string
 }
-class SubjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'subject', `arn:${string}:rolesanywhere:${string}:${string}:subject/${string}`> {
+class SubjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'subject',
+  `arn:${string}:rolesanywhere:${string}:${string}:subject/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'subject' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,7 +103,9 @@ class SubjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'su
   }
 }
 export type { SubjectArn }
-export function subjectArn<Partition extends ArnPartition = 'aws'>(parameters: SubjectArnParameters<Partition>) {
+export function subjectArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SubjectArnParameters<Partition>,
+) {
   return new SubjectArn<Partition>(parameters)
 }
 
@@ -90,7 +115,10 @@ export interface CrlArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly crlId: string
 }
-class CrlArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'crl', `arn:${string}:rolesanywhere:${string}:${string}:crl/${string}`> {
+class CrlArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'crl',
+  `arn:${string}:rolesanywhere:${string}:${string}:crl/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'crl' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,6 +136,8 @@ class CrlArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'crl', 
   }
 }
 export type { CrlArn }
-export function crlArn<Partition extends ArnPartition = 'aws'>(parameters: CrlArnParameters<Partition>) {
+export function crlArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CrlArnParameters<Partition>,
+) {
   return new CrlArn<Partition>(parameters)
 }

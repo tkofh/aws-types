@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface TrainingdatasetArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TrainingdatasetArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class TrainingdatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'trainingdataset', `arn:${string}:cleanrooms-ml:${string}:${string}:training-dataset/${string}`> {
+class TrainingdatasetArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'trainingdataset',
+  `arn:${string}:cleanrooms-ml:${string}:${string}:training-dataset/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'trainingdataset' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +37,26 @@ class TrainingdatasetArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { TrainingdatasetArn }
-export function trainingdatasetArn<Partition extends ArnPartition = 'aws'>(parameters: TrainingdatasetArnParameters<Partition>) {
+export function trainingdatasetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TrainingdatasetArnParameters<Partition>,
+) {
   return new TrainingdatasetArn<Partition>(parameters)
 }
 
-export interface AudiencemodelArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AudiencemodelArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class AudiencemodelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'audiencemodel', `arn:${string}:cleanrooms-ml:${string}:${string}:audience-model/${string}`> {
+class AudiencemodelArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'audiencemodel',
+  `arn:${string}:cleanrooms-ml:${string}:${string}:audience-model/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'audiencemodel' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +74,26 @@ class AudiencemodelArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { AudiencemodelArn }
-export function audiencemodelArn<Partition extends ArnPartition = 'aws'>(parameters: AudiencemodelArnParameters<Partition>) {
+export function audiencemodelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AudiencemodelArnParameters<Partition>,
+) {
   return new AudiencemodelArn<Partition>(parameters)
 }
 
-export interface ConfiguredaudiencemodelArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConfiguredaudiencemodelArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class ConfiguredaudiencemodelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'configuredaudiencemodel', `arn:${string}:cleanrooms-ml:${string}:${string}:configured-audience-model/${string}`> {
+class ConfiguredaudiencemodelArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'configuredaudiencemodel',
+  `arn:${string}:cleanrooms-ml:${string}:${string}:configured-audience-model/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'configuredaudiencemodel' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,17 +111,26 @@ class ConfiguredaudiencemodelArn<Partition extends ArnPartition = 'aws'> extends
   }
 }
 export type { ConfiguredaudiencemodelArn }
-export function configuredaudiencemodelArn<Partition extends ArnPartition = 'aws'>(parameters: ConfiguredaudiencemodelArnParameters<Partition>) {
+export function configuredaudiencemodelArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: ConfiguredaudiencemodelArnParameters<Partition>) {
   return new ConfiguredaudiencemodelArn<Partition>(parameters)
 }
 
-export interface AudiencegenerationjobArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AudiencegenerationjobArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class AudiencegenerationjobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'audiencegenerationjob', `arn:${string}:cleanrooms-ml:${string}:${string}:audience-generation-job/${string}`> {
+class AudiencegenerationjobArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'audiencegenerationjob',
+  `arn:${string}:cleanrooms-ml:${string}:${string}:audience-generation-job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'audiencegenerationjob' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,6 +148,8 @@ class AudiencegenerationjobArn<Partition extends ArnPartition = 'aws'> extends I
   }
 }
 export type { AudiencegenerationjobArn }
-export function audiencegenerationjobArn<Partition extends ArnPartition = 'aws'>(parameters: AudiencegenerationjobArnParameters<Partition>) {
+export function audiencegenerationjobArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: AudiencegenerationjobArnParameters<Partition>) {
   return new AudiencegenerationjobArn<Partition>(parameters)
 }

@@ -1,11 +1,24 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface PaymentInstrumentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface PaymentInstrumentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly resourceId: string
 }
-class PaymentInstrumentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'payment-instrument', `arn:${string}:payments::${string}:payment-instrument:${string}`> {
+class PaymentInstrumentArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'payment-instrument',
+  `arn:${string}:payments::${string}:payment-instrument:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'payment-instrument' as const
   readonly partition: Partition
   readonly account: string
@@ -21,6 +34,8 @@ class PaymentInstrumentArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { PaymentInstrumentArn }
-export function paymentInstrumentArn<Partition extends ArnPartition = 'aws'>(parameters: PaymentInstrumentArnParameters<Partition>) {
+export function paymentInstrumentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PaymentInstrumentArnParameters<Partition>,
+) {
   return new PaymentInstrumentArn<Partition>(parameters)
 }

@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface LicenseConfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface LicenseConfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly licenseConfigurationId: string
 }
-class LicenseConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'license-configuration', `arn:${string}:license-manager:${string}:${string}:license-configuration:${string}`> {
+class LicenseConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'license-configuration',
+  `arn:${string}:license-manager:${string}:${string}:license-configuration:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'license-configuration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +37,9 @@ class LicenseConfigurationArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { LicenseConfigurationArn }
-export function licenseConfigurationArn<Partition extends ArnPartition = 'aws'>(parameters: LicenseConfigurationArnParameters<Partition>) {
+export function licenseConfigurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LicenseConfigurationArnParameters<Partition>,
+) {
   return new LicenseConfigurationArn<Partition>(parameters)
 }
 
@@ -33,7 +48,10 @@ export interface LicenseArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly licenseId: string
 }
-class LicenseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'license', `arn:${string}:license-manager::${string}:license:${string}`> {
+class LicenseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'license',
+  `arn:${string}:license-manager::${string}:license:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'license' as const
   readonly partition: Partition
   readonly account: string
@@ -49,7 +67,9 @@ class LicenseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'li
   }
 }
 export type { LicenseArn }
-export function licenseArn<Partition extends ArnPartition = 'aws'>(parameters: LicenseArnParameters<Partition>) {
+export function licenseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LicenseArnParameters<Partition>,
+) {
   return new LicenseArn<Partition>(parameters)
 }
 
@@ -58,7 +78,10 @@ export interface GrantArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly grantId: string
 }
-class GrantArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'grant', `arn:${string}:license-manager::${string}:grant:${string}`> {
+class GrantArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'grant',
+  `arn:${string}:license-manager::${string}:grant:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'grant' as const
   readonly partition: Partition
   readonly account: string
@@ -74,17 +97,26 @@ class GrantArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'gran
   }
 }
 export type { GrantArn }
-export function grantArn<Partition extends ArnPartition = 'aws'>(parameters: GrantArnParameters<Partition>) {
+export function grantArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GrantArnParameters<Partition>,
+) {
   return new GrantArn<Partition>(parameters)
 }
 
-export interface ReportGeneratorArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ReportGeneratorArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly reportGeneratorId: string
 }
-class ReportGeneratorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'report-generator', `arn:${string}:license-manager:${string}:${string}:report-generator:${string}`> {
+class ReportGeneratorArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'report-generator',
+  `arn:${string}:license-manager:${string}:${string}:report-generator:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'report-generator' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -102,6 +134,8 @@ class ReportGeneratorArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { ReportGeneratorArn }
-export function reportGeneratorArn<Partition extends ArnPartition = 'aws'>(parameters: ReportGeneratorArnParameters<Partition>) {
+export function reportGeneratorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ReportGeneratorArnParameters<Partition>,
+) {
   return new ReportGeneratorArn<Partition>(parameters)
 }

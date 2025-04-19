@@ -1,11 +1,24 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface SavingsplanArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SavingsplanArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly resourceId: string
 }
-class SavingsplanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'savingsplan', `arn:${string}:savingsplans::${string}:savingsplan/${string}`> {
+class SavingsplanArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'savingsplan',
+  `arn:${string}:savingsplans::${string}:savingsplan/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'savingsplan' as const
   readonly partition: Partition
   readonly account: string
@@ -21,6 +34,8 @@ class SavingsplanArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { SavingsplanArn }
-export function savingsplanArn<Partition extends ArnPartition = 'aws'>(parameters: SavingsplanArnParameters<Partition>) {
+export function savingsplanArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SavingsplanArnParameters<Partition>,
+) {
   return new SavingsplanArn<Partition>(parameters)
 }

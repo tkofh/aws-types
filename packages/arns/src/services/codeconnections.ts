@@ -1,12 +1,23 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ConnectionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConnectionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly connectionId: string
 }
-class ConnectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Connection', `arn:${string}:codeconnections:${string}:${string}:connection/${string}`> {
+class ConnectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Connection',
+  `arn:${string}:codeconnections:${string}:${string}:connection/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Connection' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +35,9 @@ class ConnectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { ConnectionArn }
-export function connectionArn<Partition extends ArnPartition = 'aws'>(parameters: ConnectionArnParameters<Partition>) {
+export function connectionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConnectionArnParameters<Partition>,
+) {
   return new ConnectionArn<Partition>(parameters)
 }
 
@@ -34,7 +47,10 @@ export interface HostArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly hostId: string
 }
-class HostArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Host', `arn:${string}:codeconnections:${string}:${string}:host/${string}`> {
+class HostArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Host',
+  `arn:${string}:codeconnections:${string}:${string}:host/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Host' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +68,26 @@ class HostArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Host'
   }
 }
 export type { HostArn }
-export function hostArn<Partition extends ArnPartition = 'aws'>(parameters: HostArnParameters<Partition>) {
+export function hostArn<Partition extends ArnPartition = 'aws'>(
+  parameters: HostArnParameters<Partition>,
+) {
   return new HostArn<Partition>(parameters)
 }
 
-export interface RepositoryLinkArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RepositoryLinkArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly repositoryLinkId: string
 }
-class RepositoryLinkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'RepositoryLink', `arn:${string}:codeconnections:${string}:${string}:repository-link/${string}`> {
+class RepositoryLinkArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'RepositoryLink',
+  `arn:${string}:codeconnections:${string}:${string}:repository-link/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'RepositoryLink' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,6 +105,8 @@ class RepositoryLinkArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { RepositoryLinkArn }
-export function repositoryLinkArn<Partition extends ArnPartition = 'aws'>(parameters: RepositoryLinkArnParameters<Partition>) {
+export function repositoryLinkArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RepositoryLinkArnParameters<Partition>,
+) {
   return new RepositoryLinkArn<Partition>(parameters)
 }

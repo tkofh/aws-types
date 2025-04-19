@@ -1,11 +1,24 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface FoundationModelArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FoundationModelArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly resourceId: string
 }
-class FoundationModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'foundation-model', `arn:${string}:bedrock:${string}::foundation-model/${string}`> {
+class FoundationModelArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'foundation-model',
+  `arn:${string}:bedrock:${string}::foundation-model/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'foundation-model' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -21,17 +34,26 @@ class FoundationModelArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { FoundationModelArn }
-export function foundationModelArn<Partition extends ArnPartition = 'aws'>(parameters: FoundationModelArnParameters<Partition>) {
+export function foundationModelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FoundationModelArnParameters<Partition>,
+) {
   return new FoundationModelArn<Partition>(parameters)
 }
 
-export interface InferenceProfileArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface InferenceProfileArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class InferenceProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'inference-profile', `arn:${string}:bedrock:${string}:${string}:inference-profile/${string}`> {
+class InferenceProfileArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'inference-profile',
+  `arn:${string}:bedrock:${string}:${string}:inference-profile/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'inference-profile' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -49,17 +71,26 @@ class InferenceProfileArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { InferenceProfileArn }
-export function inferenceProfileArn<Partition extends ArnPartition = 'aws'>(parameters: InferenceProfileArnParameters<Partition>) {
+export function inferenceProfileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InferenceProfileArnParameters<Partition>,
+) {
   return new InferenceProfileArn<Partition>(parameters)
 }
 
-export interface CustomModelArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CustomModelArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class CustomModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'custom-model', `arn:${string}:bedrock:${string}:${string}:custom-model/${string}`> {
+class CustomModelArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'custom-model',
+  `arn:${string}:bedrock:${string}:${string}:custom-model/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'custom-model' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -77,17 +108,26 @@ class CustomModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { CustomModelArn }
-export function customModelArn<Partition extends ArnPartition = 'aws'>(parameters: CustomModelArnParameters<Partition>) {
+export function customModelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CustomModelArnParameters<Partition>,
+) {
   return new CustomModelArn<Partition>(parameters)
 }
 
-export interface ProvisionedModelArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ProvisionedModelArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class ProvisionedModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'provisioned-model', `arn:${string}:bedrock:${string}:${string}:provisioned-model/${string}`> {
+class ProvisionedModelArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'provisioned-model',
+  `arn:${string}:bedrock:${string}:${string}:provisioned-model/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'provisioned-model' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -105,17 +145,26 @@ class ProvisionedModelArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { ProvisionedModelArn }
-export function provisionedModelArn<Partition extends ArnPartition = 'aws'>(parameters: ProvisionedModelArnParameters<Partition>) {
+export function provisionedModelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProvisionedModelArnParameters<Partition>,
+) {
   return new ProvisionedModelArn<Partition>(parameters)
 }
 
-export interface ModelCustomizationJobArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ModelCustomizationJobArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class ModelCustomizationJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'model-customization-job', `arn:${string}:bedrock:${string}:${string}:model-customization-job/${string}`> {
+class ModelCustomizationJobArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'model-customization-job',
+  `arn:${string}:bedrock:${string}:${string}:model-customization-job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'model-customization-job' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -133,7 +182,9 @@ class ModelCustomizationJobArn<Partition extends ArnPartition = 'aws'> extends I
   }
 }
 export type { ModelCustomizationJobArn }
-export function modelCustomizationJobArn<Partition extends ArnPartition = 'aws'>(parameters: ModelCustomizationJobArnParameters<Partition>) {
+export function modelCustomizationJobArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: ModelCustomizationJobArnParameters<Partition>) {
   return new ModelCustomizationJobArn<Partition>(parameters)
 }
 
@@ -143,7 +194,10 @@ export interface AgentArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly agentId: string
 }
-class AgentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'agent', `arn:${string}:bedrock:${string}:${string}:agent/${string}`> {
+class AgentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'agent',
+  `arn:${string}:bedrock:${string}:${string}:agent/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'agent' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -161,18 +215,25 @@ class AgentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'agen
   }
 }
 export type { AgentArn }
-export function agentArn<Partition extends ArnPartition = 'aws'>(parameters: AgentArnParameters<Partition>) {
+export function agentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AgentArnParameters<Partition>,
+) {
   return new AgentArn<Partition>(parameters)
 }
 
-export interface AgentAliasArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AgentAliasArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly agentId: string
   readonly agentAliasId: string
 }
-class AgentAliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'agent-alias', `arn:${string}:bedrock:${string}:${string}:agent-alias/${string}/${string}`> {
+class AgentAliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'agent-alias',
+  `arn:${string}:bedrock:${string}:${string}:agent-alias/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'agent-alias' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -192,17 +253,26 @@ class AgentAliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { AgentAliasArn }
-export function agentAliasArn<Partition extends ArnPartition = 'aws'>(parameters: AgentAliasArnParameters<Partition>) {
+export function agentAliasArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AgentAliasArnParameters<Partition>,
+) {
   return new AgentAliasArn<Partition>(parameters)
 }
 
-export interface KnowledgeBaseArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface KnowledgeBaseArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly knowledgeBaseId: string
 }
-class KnowledgeBaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'knowledge-base', `arn:${string}:bedrock:${string}:${string}:knowledge-base/${string}`> {
+class KnowledgeBaseArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'knowledge-base',
+  `arn:${string}:bedrock:${string}:${string}:knowledge-base/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'knowledge-base' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -220,17 +290,26 @@ class KnowledgeBaseArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { KnowledgeBaseArn }
-export function knowledgeBaseArn<Partition extends ArnPartition = 'aws'>(parameters: KnowledgeBaseArnParameters<Partition>) {
+export function knowledgeBaseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KnowledgeBaseArnParameters<Partition>,
+) {
   return new KnowledgeBaseArn<Partition>(parameters)
 }
 
-export interface ModelEvaluationJobArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ModelEvaluationJobArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class ModelEvaluationJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'model-evaluation-job', `arn:${string}:bedrock:${string}:${string}:model-evaluation-job/${string}`> {
+class ModelEvaluationJobArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'model-evaluation-job',
+  `arn:${string}:bedrock:${string}:${string}:model-evaluation-job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'model-evaluation-job' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -248,17 +327,26 @@ class ModelEvaluationJobArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { ModelEvaluationJobArn }
-export function modelEvaluationJobArn<Partition extends ArnPartition = 'aws'>(parameters: ModelEvaluationJobArnParameters<Partition>) {
+export function modelEvaluationJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelEvaluationJobArnParameters<Partition>,
+) {
   return new ModelEvaluationJobArn<Partition>(parameters)
 }
 
-export interface EvaluationJobArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface EvaluationJobArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class EvaluationJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'evaluation-job', `arn:${string}:bedrock:${string}:${string}:evaluation-job/${string}`> {
+class EvaluationJobArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'evaluation-job',
+  `arn:${string}:bedrock:${string}:${string}:evaluation-job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'evaluation-job' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -276,17 +364,26 @@ class EvaluationJobArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { EvaluationJobArn }
-export function evaluationJobArn<Partition extends ArnPartition = 'aws'>(parameters: EvaluationJobArnParameters<Partition>) {
+export function evaluationJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EvaluationJobArnParameters<Partition>,
+) {
   return new EvaluationJobArn<Partition>(parameters)
 }
 
-export interface ModelInvocationJobArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ModelInvocationJobArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly jobIdentifier: string
 }
-class ModelInvocationJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'model-invocation-job', `arn:${string}:bedrock:${string}:${string}:model-invocation-job/${string}`> {
+class ModelInvocationJobArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'model-invocation-job',
+  `arn:${string}:bedrock:${string}:${string}:model-invocation-job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'model-invocation-job' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -304,17 +401,24 @@ class ModelInvocationJobArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { ModelInvocationJobArn }
-export function modelInvocationJobArn<Partition extends ArnPartition = 'aws'>(parameters: ModelInvocationJobArnParameters<Partition>) {
+export function modelInvocationJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelInvocationJobArnParameters<Partition>,
+) {
   return new ModelInvocationJobArn<Partition>(parameters)
 }
 
-export interface GuardrailArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface GuardrailArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly guardrailId: string
 }
-class GuardrailArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'guardrail', `arn:${string}:bedrock:${string}:${string}:guardrail/${string}`> {
+class GuardrailArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'guardrail',
+  `arn:${string}:bedrock:${string}:${string}:guardrail/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'guardrail' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -332,7 +436,9 @@ class GuardrailArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { GuardrailArn }
-export function guardrailArn<Partition extends ArnPartition = 'aws'>(parameters: GuardrailArnParameters<Partition>) {
+export function guardrailArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GuardrailArnParameters<Partition>,
+) {
   return new GuardrailArn<Partition>(parameters)
 }
 
@@ -342,7 +448,10 @@ export interface FlowArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly flowId: string
 }
-class FlowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'flow', `arn:${string}:bedrock:${string}:${string}:flow/${string}`> {
+class FlowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'flow',
+  `arn:${string}:bedrock:${string}:${string}:flow/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'flow' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -360,18 +469,25 @@ class FlowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'flow'
   }
 }
 export type { FlowArn }
-export function flowArn<Partition extends ArnPartition = 'aws'>(parameters: FlowArnParameters<Partition>) {
+export function flowArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FlowArnParameters<Partition>,
+) {
   return new FlowArn<Partition>(parameters)
 }
 
-export interface FlowAliasArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FlowAliasArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly flowId: string
   readonly flowAliasId: string
 }
-class FlowAliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'flow-alias', `arn:${string}:bedrock:${string}:${string}:flow/${string}/alias/${string}`> {
+class FlowAliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'flow-alias',
+  `arn:${string}:bedrock:${string}:${string}:flow/${string}/alias/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'flow-alias' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -391,17 +507,26 @@ class FlowAliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { FlowAliasArn }
-export function flowAliasArn<Partition extends ArnPartition = 'aws'>(parameters: FlowAliasArnParameters<Partition>) {
+export function flowAliasArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FlowAliasArnParameters<Partition>,
+) {
   return new FlowAliasArn<Partition>(parameters)
 }
 
-export interface ModelCopyJobArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ModelCopyJobArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class ModelCopyJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'model-copy-job', `arn:${string}:bedrock:${string}:${string}:model-copy-job/${string}`> {
+class ModelCopyJobArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'model-copy-job',
+  `arn:${string}:bedrock:${string}:${string}:model-copy-job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'model-copy-job' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -419,7 +544,9 @@ class ModelCopyJobArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { ModelCopyJobArn }
-export function modelCopyJobArn<Partition extends ArnPartition = 'aws'>(parameters: ModelCopyJobArnParameters<Partition>) {
+export function modelCopyJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelCopyJobArnParameters<Partition>,
+) {
   return new ModelCopyJobArn<Partition>(parameters)
 }
 
@@ -429,7 +556,10 @@ export interface PromptArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly promptId: string
 }
-class PromptArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'prompt', `arn:${string}:bedrock:${string}:${string}:prompt/${string}`> {
+class PromptArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'prompt',
+  `arn:${string}:bedrock:${string}:${string}:prompt/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'prompt' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -447,18 +577,27 @@ class PromptArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pro
   }
 }
 export type { PromptArn }
-export function promptArn<Partition extends ArnPartition = 'aws'>(parameters: PromptArnParameters<Partition>) {
+export function promptArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PromptArnParameters<Partition>,
+) {
   return new PromptArn<Partition>(parameters)
 }
 
-export interface PromptVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface PromptVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly promptId: string
   readonly promptVersion: string
 }
-class PromptVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'prompt-version', `arn:${string}:bedrock:${string}:${string}:prompt/${string}:${string}`> {
+class PromptVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'prompt-version',
+  `arn:${string}:bedrock:${string}:${string}:prompt/${string}:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'prompt-version' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -478,17 +617,26 @@ class PromptVersionArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { PromptVersionArn }
-export function promptVersionArn<Partition extends ArnPartition = 'aws'>(parameters: PromptVersionArnParameters<Partition>) {
+export function promptVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PromptVersionArnParameters<Partition>,
+) {
   return new PromptVersionArn<Partition>(parameters)
 }
 
-export interface ModelImportJobArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ModelImportJobArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class ModelImportJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'model-import-job', `arn:${string}:bedrock:${string}:${string}:model-import-job/${string}`> {
+class ModelImportJobArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'model-import-job',
+  `arn:${string}:bedrock:${string}:${string}:model-import-job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'model-import-job' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -506,17 +654,26 @@ class ModelImportJobArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { ModelImportJobArn }
-export function modelImportJobArn<Partition extends ArnPartition = 'aws'>(parameters: ModelImportJobArnParameters<Partition>) {
+export function modelImportJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelImportJobArnParameters<Partition>,
+) {
   return new ModelImportJobArn<Partition>(parameters)
 }
 
-export interface ImportedModelArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ImportedModelArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class ImportedModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'imported-model', `arn:${string}:bedrock:${string}:${string}:imported-model/${string}`> {
+class ImportedModelArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'imported-model',
+  `arn:${string}:bedrock:${string}:${string}:imported-model/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'imported-model' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -534,6 +691,8 @@ class ImportedModelArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { ImportedModelArn }
-export function importedModelArn<Partition extends ArnPartition = 'aws'>(parameters: ImportedModelArnParameters<Partition>) {
+export function importedModelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ImportedModelArnParameters<Partition>,
+) {
   return new ImportedModelArn<Partition>(parameters)
 }

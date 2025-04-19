@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface DomainArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface DomainArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly domainName: string
 }
-class DomainArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'domain', `arn:${string}:codeartifact:${string}:${string}:domain/${string}`> {
+class DomainArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'domain',
+  `arn:${string}:codeartifact:${string}:${string}:domain/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'domain' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,18 +33,25 @@ class DomainArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dom
   }
 }
 export type { DomainArn }
-export function domainArn<Partition extends ArnPartition = 'aws'>(parameters: DomainArnParameters<Partition>) {
+export function domainArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DomainArnParameters<Partition>,
+) {
   return new DomainArn<Partition>(parameters)
 }
 
-export interface RepositoryArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RepositoryArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly domainName: string
   readonly repositoryName: string
 }
-class RepositoryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'repository', `arn:${string}:codeartifact:${string}:${string}:repository/${string}/${string}`> {
+class RepositoryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'repository',
+  `arn:${string}:codeartifact:${string}:${string}:repository/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'repository' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,18 +71,27 @@ class RepositoryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { RepositoryArn }
-export function repositoryArn<Partition extends ArnPartition = 'aws'>(parameters: RepositoryArnParameters<Partition>) {
+export function repositoryArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RepositoryArnParameters<Partition>,
+) {
   return new RepositoryArn<Partition>(parameters)
 }
 
-export interface PackageGroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface PackageGroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly domainName: string
   readonly encodedPackageGroupPattern: string
 }
-class PackageGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'package-group', `arn:${string}:codeartifact:${string}:${string}:package-group/${string}${string}`> {
+class PackageGroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'package-group',
+  `arn:${string}:codeartifact:${string}:${string}:package-group/${string}${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'package-group' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,7 +111,9 @@ class PackageGroupArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { PackageGroupArn }
-export function packageGroupArn<Partition extends ArnPartition = 'aws'>(parameters: PackageGroupArnParameters<Partition>) {
+export function packageGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PackageGroupArnParameters<Partition>,
+) {
   return new PackageGroupArn<Partition>(parameters)
 }
 
@@ -100,7 +127,10 @@ export interface PackageArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly packageNamespace: string
   readonly packageName: string
 }
-class PackageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'package', `arn:${string}:codeartifact:${string}:${string}:package/${string}/${string}/${string}/${string}/${string}`> {
+class PackageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'package',
+  `arn:${string}:codeartifact:${string}:${string}:package/${string}/${string}/${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'package' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -126,6 +156,8 @@ class PackageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pa
   }
 }
 export type { PackageArn }
-export function packageArn<Partition extends ArnPartition = 'aws'>(parameters: PackageArnParameters<Partition>) {
+export function packageArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PackageArnParameters<Partition>,
+) {
   return new PackageArn<Partition>(parameters)
 }

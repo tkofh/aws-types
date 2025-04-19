@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface DatasetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -7,7 +13,10 @@ export interface DatasetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly datasetName: string
   readonly datasetId: string
 }
-class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dataset', `arn:${string}:lookoutequipment:${string}:${string}:dataset/${string}/${string}`> {
+class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'dataset',
+  `arn:${string}:lookoutequipment:${string}:${string}:dataset/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'dataset' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,7 +36,9 @@ class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'da
   }
 }
 export type { DatasetArn }
-export function datasetArn<Partition extends ArnPartition = 'aws'>(parameters: DatasetArnParameters<Partition>) {
+export function datasetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DatasetArnParameters<Partition>,
+) {
   return new DatasetArn<Partition>(parameters)
 }
 
@@ -38,7 +49,10 @@ export interface ModelArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly modelName: string
   readonly modelId: string
 }
-class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'model', `arn:${string}:lookoutequipment:${string}:${string}:model/${string}/${string}`> {
+class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'model',
+  `arn:${string}:lookoutequipment:${string}:${string}:model/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'model' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -58,11 +72,15 @@ class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'mode
   }
 }
 export type { ModelArn }
-export function modelArn<Partition extends ArnPartition = 'aws'>(parameters: ModelArnParameters<Partition>) {
+export function modelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelArnParameters<Partition>,
+) {
   return new ModelArn<Partition>(parameters)
 }
 
-export interface ModelVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ModelVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -70,7 +88,12 @@ export interface ModelVersionArnParameters<Partition extends ArnPartition = 'aws
   readonly modelId: string
   readonly modelVersionNumber: string
 }
-class ModelVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'model-version', `arn:${string}:lookoutequipment:${string}:${string}:model/${string}/${string}/model-version/${string}`> {
+class ModelVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'model-version',
+  `arn:${string}:lookoutequipment:${string}:${string}:model/${string}/${string}/model-version/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'model-version' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -92,18 +115,27 @@ class ModelVersionArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { ModelVersionArn }
-export function modelVersionArn<Partition extends ArnPartition = 'aws'>(parameters: ModelVersionArnParameters<Partition>) {
+export function modelVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelVersionArnParameters<Partition>,
+) {
   return new ModelVersionArn<Partition>(parameters)
 }
 
-export interface InferenceSchedulerArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface InferenceSchedulerArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly inferenceSchedulerName: string
   readonly inferenceSchedulerId: string
 }
-class InferenceSchedulerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'inference-scheduler', `arn:${string}:lookoutequipment:${string}:${string}:inference-scheduler/${string}/${string}`> {
+class InferenceSchedulerArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'inference-scheduler',
+  `arn:${string}:lookoutequipment:${string}:${string}:inference-scheduler/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'inference-scheduler' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -123,18 +155,25 @@ class InferenceSchedulerArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { InferenceSchedulerArn }
-export function inferenceSchedulerArn<Partition extends ArnPartition = 'aws'>(parameters: InferenceSchedulerArnParameters<Partition>) {
+export function inferenceSchedulerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InferenceSchedulerArnParameters<Partition>,
+) {
   return new InferenceSchedulerArn<Partition>(parameters)
 }
 
-export interface LabelGroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface LabelGroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly labelGroupName: string
   readonly labelGroupId: string
 }
-class LabelGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'label-group', `arn:${string}:lookoutequipment:${string}:${string}:label-group/${string}/${string}`> {
+class LabelGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'label-group',
+  `arn:${string}:lookoutequipment:${string}:${string}:label-group/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'label-group' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -154,6 +193,8 @@ class LabelGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { LabelGroupArn }
-export function labelGroupArn<Partition extends ArnPartition = 'aws'>(parameters: LabelGroupArnParameters<Partition>) {
+export function labelGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LabelGroupArnParameters<Partition>,
+) {
   return new LabelGroupArn<Partition>(parameters)
 }

@@ -1,2 +1,1 @@
-export type SsoOauthPrivilege =
-  | 'CreateTokenWithIAM'
+export type SsoOauthPrivilege = 'CreateTokenWithIAM'

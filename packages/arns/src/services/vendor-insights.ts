@@ -1,10 +1,21 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface DataSourceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DataSourceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly resourceId: string
 }
-class DataSourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'DataSource', `arn:${string}:vendor-insights:::data-source:${string}`> {
+class DataSourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'DataSource',
+  `arn:${string}:vendor-insights:::data-source:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'DataSource' as const
   readonly partition: Partition
   readonly resourceId: string
@@ -18,15 +29,24 @@ class DataSourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { DataSourceArn }
-export function dataSourceArn<Partition extends ArnPartition = 'aws'>(parameters: DataSourceArnParameters<Partition>) {
+export function dataSourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DataSourceArnParameters<Partition>,
+) {
   return new DataSourceArn<Partition>(parameters)
 }
 
-export interface SecurityProfileArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SecurityProfileArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly resourceId: string
 }
-class SecurityProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'SecurityProfile', `arn:${string}:vendor-insights:::security-profile:${string}`> {
+class SecurityProfileArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'SecurityProfile',
+  `arn:${string}:vendor-insights:::security-profile:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'SecurityProfile' as const
   readonly partition: Partition
   readonly resourceId: string
@@ -40,6 +60,8 @@ class SecurityProfileArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { SecurityProfileArn }
-export function securityProfileArn<Partition extends ArnPartition = 'aws'>(parameters: SecurityProfileArnParameters<Partition>) {
+export function securityProfileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SecurityProfileArnParameters<Partition>,
+) {
   return new SecurityProfileArn<Partition>(parameters)
 }

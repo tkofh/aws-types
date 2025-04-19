@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface SecretArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface SecretArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly secretId: string
 }
-class SecretArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Secret', `arn:${string}:secretsmanager:${string}:${string}:secret:${string}`> {
+class SecretArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Secret',
+  `arn:${string}:secretsmanager:${string}:${string}:secret:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Secret' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +33,8 @@ class SecretArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Sec
   }
 }
 export type { SecretArn }
-export function secretArn<Partition extends ArnPartition = 'aws'>(parameters: SecretArnParameters<Partition>) {
+export function secretArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SecretArnParameters<Partition>,
+) {
   return new SecretArn<Partition>(parameters)
 }

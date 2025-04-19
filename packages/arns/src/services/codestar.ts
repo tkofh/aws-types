@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly projectId: string
 }
-class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'project', `arn:${string}:codestar:${string}:${string}:project/${string}`> {
+class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'project',
+  `arn:${string}:codestar:${string}:${string}:project/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'project' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pr
   }
 }
 export type { ProjectArn }
-export function projectArn<Partition extends ArnPartition = 'aws'>(parameters: ProjectArnParameters<Partition>) {
+export function projectArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProjectArnParameters<Partition>,
+) {
   return new ProjectArn<Partition>(parameters)
 }
 
@@ -33,7 +44,10 @@ export interface UserArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly awsUserName: string
 }
-class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'user', `arn:${string}:iam::${string}:user/${string}`> {
+class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'user',
+  `arn:${string}:iam::${string}:user/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'user' as const
   readonly partition: Partition
   readonly account: string
@@ -49,6 +63,8 @@ class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'user'
   }
 }
 export type { UserArn }
-export function userArn<Partition extends ArnPartition = 'aws'>(parameters: UserArnParameters<Partition>) {
+export function userArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UserArnParameters<Partition>,
+) {
   return new UserArn<Partition>(parameters)
 }

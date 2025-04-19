@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ViewArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -7,7 +13,10 @@ export interface ViewArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly viewName: string
   readonly viewUuid: string
 }
-class ViewArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'view', `arn:${string}:resource-explorer-2:${string}:${string}:view/${string}/${string}`> {
+class ViewArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'view',
+  `arn:${string}:resource-explorer-2:${string}:${string}:view/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'view' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,7 +36,9 @@ class ViewArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'view'
   }
 }
 export type { ViewArn }
-export function viewArn<Partition extends ArnPartition = 'aws'>(parameters: ViewArnParameters<Partition>) {
+export function viewArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ViewArnParameters<Partition>,
+) {
   return new ViewArn<Partition>(parameters)
 }
 
@@ -37,7 +48,10 @@ export interface IndexArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly indexUuid: string
 }
-class IndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'index', `arn:${string}:resource-explorer-2:${string}:${string}:index/${string}`> {
+class IndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'index',
+  `arn:${string}:resource-explorer-2:${string}:${string}:index/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'index' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,6 +69,8 @@ class IndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'inde
   }
 }
 export type { IndexArn }
-export function indexArn<Partition extends ArnPartition = 'aws'>(parameters: IndexArnParameters<Partition>) {
+export function indexArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IndexArnParameters<Partition>,
+) {
   return new IndexArn<Partition>(parameters)
 }

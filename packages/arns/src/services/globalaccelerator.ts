@@ -1,11 +1,24 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface AcceleratorArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AcceleratorArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly resourceId: string
 }
-class AcceleratorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'accelerator', `arn:${string}:globalaccelerator::${string}:accelerator/${string}`> {
+class AcceleratorArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'accelerator',
+  `arn:${string}:globalaccelerator::${string}:accelerator/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'accelerator' as const
   readonly partition: Partition
   readonly account: string
@@ -21,7 +34,9 @@ class AcceleratorArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { AcceleratorArn }
-export function acceleratorArn<Partition extends ArnPartition = 'aws'>(parameters: AcceleratorArnParameters<Partition>) {
+export function acceleratorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AcceleratorArnParameters<Partition>,
+) {
   return new AcceleratorArn<Partition>(parameters)
 }
 
@@ -31,7 +46,10 @@ export interface ListenerArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly resourceId: string
   readonly listenerId: string
 }
-class ListenerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'listener', `arn:${string}:globalaccelerator::${string}:accelerator/${string}/listener/${string}`> {
+class ListenerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'listener',
+  `arn:${string}:globalaccelerator::${string}:accelerator/${string}/listener/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'listener' as const
   readonly partition: Partition
   readonly account: string
@@ -49,18 +67,27 @@ class ListenerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'l
   }
 }
 export type { ListenerArn }
-export function listenerArn<Partition extends ArnPartition = 'aws'>(parameters: ListenerArnParameters<Partition>) {
+export function listenerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ListenerArnParameters<Partition>,
+) {
   return new ListenerArn<Partition>(parameters)
 }
 
-export interface EndpointgroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface EndpointgroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly resourceId: string
   readonly listenerId: string
   readonly endpointGroupId: string
 }
-class EndpointgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'endpointgroup', `arn:${string}:globalaccelerator::${string}:accelerator/${string}/listener/${string}/endpoint-group/${string}`> {
+class EndpointgroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'endpointgroup',
+  `arn:${string}:globalaccelerator::${string}:accelerator/${string}/listener/${string}/endpoint-group/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'endpointgroup' as const
   readonly partition: Partition
   readonly account: string
@@ -80,16 +107,23 @@ class EndpointgroupArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { EndpointgroupArn }
-export function endpointgroupArn<Partition extends ArnPartition = 'aws'>(parameters: EndpointgroupArnParameters<Partition>) {
+export function endpointgroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EndpointgroupArnParameters<Partition>,
+) {
   return new EndpointgroupArn<Partition>(parameters)
 }
 
-export interface AttachmentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AttachmentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly resourceId: string
 }
-class AttachmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'attachment', `arn:${string}:globalaccelerator::${string}:attachment/${string}`> {
+class AttachmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'attachment',
+  `arn:${string}:globalaccelerator::${string}:attachment/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'attachment' as const
   readonly partition: Partition
   readonly account: string
@@ -105,6 +139,8 @@ class AttachmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { AttachmentArn }
-export function attachmentArn<Partition extends ArnPartition = 'aws'>(parameters: AttachmentArnParameters<Partition>) {
+export function attachmentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AttachmentArnParameters<Partition>,
+) {
   return new AttachmentArn<Partition>(parameters)
 }

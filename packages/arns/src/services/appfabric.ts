@@ -1,12 +1,23 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface AppbundleArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AppbundleArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly appBundleIdentifier: string
 }
-class AppbundleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'appbundle', `arn:${string}:appfabric:${string}:${string}:appbundle/${string}`> {
+class AppbundleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'appbundle',
+  `arn:${string}:appfabric:${string}:${string}:appbundle/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'appbundle' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,18 +35,27 @@ class AppbundleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { AppbundleArn }
-export function appbundleArn<Partition extends ArnPartition = 'aws'>(parameters: AppbundleArnParameters<Partition>) {
+export function appbundleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppbundleArnParameters<Partition>,
+) {
   return new AppbundleArn<Partition>(parameters)
 }
 
-export interface AppauthorizationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AppauthorizationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly appbundleId: string
   readonly appAuthorizationIdentifier: string
 }
-class AppauthorizationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'appauthorization', `arn:${string}:appfabric:${string}:${string}:appbundle/${string}/appauthorization/${string}`> {
+class AppauthorizationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'appauthorization',
+  `arn:${string}:appfabric:${string}:${string}:appbundle/${string}/appauthorization/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'appauthorization' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,18 +75,25 @@ class AppauthorizationArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { AppauthorizationArn }
-export function appauthorizationArn<Partition extends ArnPartition = 'aws'>(parameters: AppauthorizationArnParameters<Partition>) {
+export function appauthorizationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppauthorizationArnParameters<Partition>,
+) {
   return new AppauthorizationArn<Partition>(parameters)
 }
 
-export interface IngestionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface IngestionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly appbundleId: string
   readonly ingestionIdentifier: string
 }
-class IngestionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ingestion', `arn:${string}:appfabric:${string}:${string}:appbundle/${string}/ingestion/${string}`> {
+class IngestionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'ingestion',
+  `arn:${string}:appfabric:${string}:${string}:appbundle/${string}/ingestion/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ingestion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,11 +113,15 @@ class IngestionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { IngestionArn }
-export function ingestionArn<Partition extends ArnPartition = 'aws'>(parameters: IngestionArnParameters<Partition>) {
+export function ingestionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IngestionArnParameters<Partition>,
+) {
   return new IngestionArn<Partition>(parameters)
 }
 
-export interface IngestiondestinationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface IngestiondestinationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -98,7 +129,12 @@ export interface IngestiondestinationArnParameters<Partition extends ArnPartitio
   readonly ingestionIdentifier: string
   readonly ingestionDestinationIdentifier: string
 }
-class IngestiondestinationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ingestiondestination', `arn:${string}:appfabric:${string}:${string}:appbundle/${string}/ingestion/${string}/ingestiondestination/${string}`> {
+class IngestiondestinationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'ingestiondestination',
+  `arn:${string}:appfabric:${string}:${string}:appbundle/${string}/ingestion/${string}/ingestiondestination/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ingestiondestination' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -113,13 +149,16 @@ class IngestiondestinationArn<Partition extends ArnPartition = 'aws'> extends In
     this.account = parameters.account
     this.appbundleId = parameters.appbundleId
     this.ingestionIdentifier = parameters.ingestionIdentifier
-    this.ingestionDestinationIdentifier = parameters.ingestionDestinationIdentifier
+    this.ingestionDestinationIdentifier =
+      parameters.ingestionDestinationIdentifier
   }
   [StringifyArnBrand]() {
     return `arn:${this.partition}:appfabric:${this.region}:${this.account}:appbundle/${this.appbundleId}/ingestion/${this.ingestionIdentifier}/ingestiondestination/${this.ingestionDestinationIdentifier}` as const
   }
 }
 export type { IngestiondestinationArn }
-export function ingestiondestinationArn<Partition extends ArnPartition = 'aws'>(parameters: IngestiondestinationArnParameters<Partition>) {
+export function ingestiondestinationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IngestiondestinationArnParameters<Partition>,
+) {
   return new IngestiondestinationArn<Partition>(parameters)
 }

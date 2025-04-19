@@ -1,11 +1,20 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface AliasArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly aliasId: string
 }
-class AliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'alias', `arn:${string}:gamelift:${string}::alias/${string}`> {
+class AliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'alias',
+  `arn:${string}:gamelift:${string}::alias/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'alias' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -21,7 +30,9 @@ class AliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'alia
   }
 }
 export type { AliasArn }
-export function aliasArn<Partition extends ArnPartition = 'aws'>(parameters: AliasArnParameters<Partition>) {
+export function aliasArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AliasArnParameters<Partition>,
+) {
   return new AliasArn<Partition>(parameters)
 }
 
@@ -31,7 +42,10 @@ export interface BuildArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly buildId: string
 }
-class BuildArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'build', `arn:${string}:gamelift:${string}:${string}:build/${string}`> {
+class BuildArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'build',
+  `arn:${string}:gamelift:${string}:${string}:build/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'build' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -49,17 +63,26 @@ class BuildArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'buil
   }
 }
 export type { BuildArn }
-export function buildArn<Partition extends ArnPartition = 'aws'>(parameters: BuildArnParameters<Partition>) {
+export function buildArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BuildArnParameters<Partition>,
+) {
   return new BuildArn<Partition>(parameters)
 }
 
-export interface ContainerGroupDefinitionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ContainerGroupDefinitionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly name: string
 }
-class ContainerGroupDefinitionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'containerGroupDefinition', `arn:${string}:gamelift:${string}:${string}:containergroupdefinition/${string}`> {
+class ContainerGroupDefinitionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'containerGroupDefinition',
+  `arn:${string}:gamelift:${string}:${string}:containergroupdefinition/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'containerGroupDefinition' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -77,7 +100,9 @@ class ContainerGroupDefinitionArn<Partition extends ArnPartition = 'aws'> extend
   }
 }
 export type { ContainerGroupDefinitionArn }
-export function containerGroupDefinitionArn<Partition extends ArnPartition = 'aws'>(parameters: ContainerGroupDefinitionArnParameters<Partition>) {
+export function containerGroupDefinitionArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: ContainerGroupDefinitionArnParameters<Partition>) {
   return new ContainerGroupDefinitionArn<Partition>(parameters)
 }
 
@@ -87,7 +112,10 @@ export interface FleetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly fleetId: string
 }
-class FleetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'fleet', `arn:${string}:gamelift:${string}:${string}:fleet/${string}`> {
+class FleetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'fleet',
+  `arn:${string}:gamelift:${string}:${string}:fleet/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'fleet' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -105,17 +133,26 @@ class FleetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'flee
   }
 }
 export type { FleetArn }
-export function fleetArn<Partition extends ArnPartition = 'aws'>(parameters: FleetArnParameters<Partition>) {
+export function fleetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FleetArnParameters<Partition>,
+) {
   return new FleetArn<Partition>(parameters)
 }
 
-export interface GameServerGroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface GameServerGroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly gameServerGroupName: string
 }
-class GameServerGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'gameServerGroup', `arn:${string}:gamelift:${string}:${string}:gameservergroup/${string}`> {
+class GameServerGroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'gameServerGroup',
+  `arn:${string}:gamelift:${string}:${string}:gameservergroup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'gameServerGroup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -133,17 +170,26 @@ class GameServerGroupArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { GameServerGroupArn }
-export function gameServerGroupArn<Partition extends ArnPartition = 'aws'>(parameters: GameServerGroupArnParameters<Partition>) {
+export function gameServerGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GameServerGroupArnParameters<Partition>,
+) {
   return new GameServerGroupArn<Partition>(parameters)
 }
 
-export interface GameSessionQueueArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface GameSessionQueueArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly gameSessionQueueName: string
 }
-class GameSessionQueueArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'gameSessionQueue', `arn:${string}:gamelift:${string}:${string}:gamesessionqueue/${string}`> {
+class GameSessionQueueArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'gameSessionQueue',
+  `arn:${string}:gamelift:${string}:${string}:gamesessionqueue/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'gameSessionQueue' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -161,7 +207,9 @@ class GameSessionQueueArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { GameSessionQueueArn }
-export function gameSessionQueueArn<Partition extends ArnPartition = 'aws'>(parameters: GameSessionQueueArnParameters<Partition>) {
+export function gameSessionQueueArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GameSessionQueueArnParameters<Partition>,
+) {
   return new GameSessionQueueArn<Partition>(parameters)
 }
 
@@ -171,7 +219,10 @@ export interface LocationArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly locationId: string
 }
-class LocationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'location', `arn:${string}:gamelift:${string}:${string}:location/${string}`> {
+class LocationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'location',
+  `arn:${string}:gamelift:${string}:${string}:location/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'location' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -189,17 +240,26 @@ class LocationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'l
   }
 }
 export type { LocationArn }
-export function locationArn<Partition extends ArnPartition = 'aws'>(parameters: LocationArnParameters<Partition>) {
+export function locationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LocationArnParameters<Partition>,
+) {
   return new LocationArn<Partition>(parameters)
 }
 
-export interface MatchmakingConfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MatchmakingConfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly matchmakingConfigurationName: string
 }
-class MatchmakingConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'matchmakingConfiguration', `arn:${string}:gamelift:${string}:${string}:matchmakingconfiguration/${string}`> {
+class MatchmakingConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'matchmakingConfiguration',
+  `arn:${string}:gamelift:${string}:${string}:matchmakingconfiguration/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'matchmakingConfiguration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -217,17 +277,26 @@ class MatchmakingConfigurationArn<Partition extends ArnPartition = 'aws'> extend
   }
 }
 export type { MatchmakingConfigurationArn }
-export function matchmakingConfigurationArn<Partition extends ArnPartition = 'aws'>(parameters: MatchmakingConfigurationArnParameters<Partition>) {
+export function matchmakingConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: MatchmakingConfigurationArnParameters<Partition>) {
   return new MatchmakingConfigurationArn<Partition>(parameters)
 }
 
-export interface MatchmakingRuleSetArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MatchmakingRuleSetArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly matchmakingRuleSetName: string
 }
-class MatchmakingRuleSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'matchmakingRuleSet', `arn:${string}:gamelift:${string}:${string}:matchmakingruleset/${string}`> {
+class MatchmakingRuleSetArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'matchmakingRuleSet',
+  `arn:${string}:gamelift:${string}:${string}:matchmakingruleset/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'matchmakingRuleSet' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -245,7 +314,9 @@ class MatchmakingRuleSetArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { MatchmakingRuleSetArn }
-export function matchmakingRuleSetArn<Partition extends ArnPartition = 'aws'>(parameters: MatchmakingRuleSetArnParameters<Partition>) {
+export function matchmakingRuleSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MatchmakingRuleSetArnParameters<Partition>,
+) {
   return new MatchmakingRuleSetArn<Partition>(parameters)
 }
 
@@ -255,7 +326,10 @@ export interface ScriptArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly scriptId: string
 }
-class ScriptArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'script', `arn:${string}:gamelift:${string}:${string}:script/${string}`> {
+class ScriptArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'script',
+  `arn:${string}:gamelift:${string}:${string}:script/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'script' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -273,6 +347,8 @@ class ScriptArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'scr
   }
 }
 export type { ScriptArn }
-export function scriptArn<Partition extends ArnPartition = 'aws'>(parameters: ScriptArnParameters<Partition>) {
+export function scriptArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ScriptArnParameters<Partition>,
+) {
   return new ScriptArn<Partition>(parameters)
 }

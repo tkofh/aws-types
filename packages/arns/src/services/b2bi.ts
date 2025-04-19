@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ProfileArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ProfileArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'profile', `arn:${string}:b2bi:${string}:${string}:profile/${string}`> {
+class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'profile',
+  `arn:${string}:b2bi:${string}:${string}:profile/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'profile' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +33,24 @@ class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pr
   }
 }
 export type { ProfileArn }
-export function profileArn<Partition extends ArnPartition = 'aws'>(parameters: ProfileArnParameters<Partition>) {
+export function profileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProfileArnParameters<Partition>,
+) {
   return new ProfileArn<Partition>(parameters)
 }
 
-export interface CapabilityArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CapabilityArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class CapabilityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'capability', `arn:${string}:b2bi:${string}:${string}:capability/${string}`> {
+class CapabilityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'capability',
+  `arn:${string}:b2bi:${string}:${string}:capability/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'capability' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +68,26 @@ class CapabilityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { CapabilityArn }
-export function capabilityArn<Partition extends ArnPartition = 'aws'>(parameters: CapabilityArnParameters<Partition>) {
+export function capabilityArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CapabilityArnParameters<Partition>,
+) {
   return new CapabilityArn<Partition>(parameters)
 }
 
-export interface PartnershipArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface PartnershipArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class PartnershipArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'partnership', `arn:${string}:b2bi:${string}:${string}:partnership/${string}`> {
+class PartnershipArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'partnership',
+  `arn:${string}:b2bi:${string}:${string}:partnership/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'partnership' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,17 +105,26 @@ class PartnershipArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { PartnershipArn }
-export function partnershipArn<Partition extends ArnPartition = 'aws'>(parameters: PartnershipArnParameters<Partition>) {
+export function partnershipArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PartnershipArnParameters<Partition>,
+) {
   return new PartnershipArn<Partition>(parameters)
 }
 
-export interface TransformerArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TransformerArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class TransformerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'transformer', `arn:${string}:b2bi:${string}:${string}:transformer/${string}`> {
+class TransformerArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'transformer',
+  `arn:${string}:b2bi:${string}:${string}:transformer/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'transformer' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,6 +142,8 @@ class TransformerArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { TransformerArn }
-export function transformerArn<Partition extends ArnPartition = 'aws'>(parameters: TransformerArnParameters<Partition>) {
+export function transformerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TransformerArnParameters<Partition>,
+) {
   return new TransformerArn<Partition>(parameters)
 }

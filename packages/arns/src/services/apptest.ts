@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface TestCaseArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface TestCaseArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly testCaseId: string
 }
-class TestCaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'TestCase', `arn:${string}:apptest:${string}:${string}:testcase/${string}`> {
+class TestCaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'TestCase',
+  `arn:${string}:apptest:${string}:${string}:testcase/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'TestCase' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +33,26 @@ class TestCaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'T
   }
 }
 export type { TestCaseArn }
-export function testCaseArn<Partition extends ArnPartition = 'aws'>(parameters: TestCaseArnParameters<Partition>) {
+export function testCaseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TestCaseArnParameters<Partition>,
+) {
   return new TestCaseArn<Partition>(parameters)
 }
 
-export interface TestConfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TestConfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly testConfigurationId: string
 }
-class TestConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'TestConfiguration', `arn:${string}:apptest:${string}:${string}:testconfiguration/${string}`> {
+class TestConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'TestConfiguration',
+  `arn:${string}:apptest:${string}:${string}:testconfiguration/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'TestConfiguration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +70,9 @@ class TestConfigurationArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { TestConfigurationArn }
-export function testConfigurationArn<Partition extends ArnPartition = 'aws'>(parameters: TestConfigurationArnParameters<Partition>) {
+export function testConfigurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TestConfigurationArnParameters<Partition>,
+) {
   return new TestConfigurationArn<Partition>(parameters)
 }
 
@@ -62,7 +82,10 @@ export interface TestRunArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly testRunId: string
 }
-class TestRunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'TestRun', `arn:${string}:apptest:${string}:${string}:testrun/${string}`> {
+class TestRunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'TestRun',
+  `arn:${string}:apptest:${string}:${string}:testrun/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'TestRun' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,17 +103,24 @@ class TestRunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Te
   }
 }
 export type { TestRunArn }
-export function testRunArn<Partition extends ArnPartition = 'aws'>(parameters: TestRunArnParameters<Partition>) {
+export function testRunArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TestRunArnParameters<Partition>,
+) {
   return new TestRunArn<Partition>(parameters)
 }
 
-export interface TestSuiteArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TestSuiteArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly testSuiteId: string
 }
-class TestSuiteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'TestSuite', `arn:${string}:apptest:${string}:${string}:testsuite/${string}`> {
+class TestSuiteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'TestSuite',
+  `arn:${string}:apptest:${string}:${string}:testsuite/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'TestSuite' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,6 +138,8 @@ class TestSuiteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { TestSuiteArn }
-export function testSuiteArn<Partition extends ArnPartition = 'aws'>(parameters: TestSuiteArnParameters<Partition>) {
+export function testSuiteArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TestSuiteArnParameters<Partition>,
+) {
   return new TestSuiteArn<Partition>(parameters)
 }

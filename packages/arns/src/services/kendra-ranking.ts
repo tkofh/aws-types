@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface RescoreExecutionPlanArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RescoreExecutionPlanArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly rescoreExecutionPlanId: string
 }
-class RescoreExecutionPlanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'rescore-execution-plan', `arn:${string}:kendra-ranking:${string}:${string}:rescore-execution-plan/${string}`> {
+class RescoreExecutionPlanArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'rescore-execution-plan',
+  `arn:${string}:kendra-ranking:${string}:${string}:rescore-execution-plan/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'rescore-execution-plan' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +37,8 @@ class RescoreExecutionPlanArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { RescoreExecutionPlanArn }
-export function rescoreExecutionPlanArn<Partition extends ArnPartition = 'aws'>(parameters: RescoreExecutionPlanArnParameters<Partition>) {
+export function rescoreExecutionPlanArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RescoreExecutionPlanArnParameters<Partition>,
+) {
   return new RescoreExecutionPlanArn<Partition>(parameters)
 }

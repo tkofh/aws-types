@@ -1,11 +1,22 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface PermissionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface PermissionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly permissionRequestId: string
 }
-class PermissionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'permission', `arn:${string}:iq-permission:${string}::permission/${string}`> {
+class PermissionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'permission',
+  `arn:${string}:iq-permission:${string}::permission/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'permission' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -21,6 +32,8 @@ class PermissionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { PermissionArn }
-export function permissionArn<Partition extends ArnPartition = 'aws'>(parameters: PermissionArnParameters<Partition>) {
+export function permissionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PermissionArnParameters<Partition>,
+) {
   return new PermissionArn<Partition>(parameters)
 }

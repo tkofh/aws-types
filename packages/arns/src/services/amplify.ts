@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface AppsArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface AppsArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly appId: string
 }
-class AppsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'apps', `arn:${string}:amplify:${string}:${string}:apps/${string}`> {
+class AppsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'apps',
+  `arn:${string}:amplify:${string}:${string}:apps/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'apps' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class AppsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'apps'
   }
 }
 export type { AppsArn }
-export function appsArn<Partition extends ArnPartition = 'aws'>(parameters: AppsArnParameters<Partition>) {
+export function appsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppsArnParameters<Partition>,
+) {
   return new AppsArn<Partition>(parameters)
 }
 
@@ -35,7 +46,10 @@ export interface BranchesArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly appId: string
   readonly branchName: string
 }
-class BranchesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'branches', `arn:${string}:amplify:${string}:${string}:apps/${string}/branches/${string}`> {
+class BranchesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'branches',
+  `arn:${string}:amplify:${string}:${string}:apps/${string}/branches/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'branches' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,7 +69,9 @@ class BranchesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'b
   }
 }
 export type { BranchesArn }
-export function branchesArn<Partition extends ArnPartition = 'aws'>(parameters: BranchesArnParameters<Partition>) {
+export function branchesArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BranchesArnParameters<Partition>,
+) {
   return new BranchesArn<Partition>(parameters)
 }
 
@@ -67,7 +83,10 @@ export interface JobsArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly branchName: string
   readonly jobId: string
 }
-class JobsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'jobs', `arn:${string}:amplify:${string}:${string}:apps/${string}/branches/${string}/jobs/${string}`> {
+class JobsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'jobs',
+  `arn:${string}:amplify:${string}:${string}:apps/${string}/branches/${string}/jobs/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'jobs' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -89,7 +108,9 @@ class JobsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'jobs'
   }
 }
 export type { JobsArn }
-export function jobsArn<Partition extends ArnPartition = 'aws'>(parameters: JobsArnParameters<Partition>) {
+export function jobsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobsArnParameters<Partition>,
+) {
   return new JobsArn<Partition>(parameters)
 }
 
@@ -100,7 +121,10 @@ export interface DomainsArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly appId: string
   readonly domainName: string
 }
-class DomainsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'domains', `arn:${string}:amplify:${string}:${string}:apps/${string}/domains/${string}`> {
+class DomainsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'domains',
+  `arn:${string}:amplify:${string}:${string}:apps/${string}/domains/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'domains' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -120,7 +144,9 @@ class DomainsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'do
   }
 }
 export type { DomainsArn }
-export function domainsArn<Partition extends ArnPartition = 'aws'>(parameters: DomainsArnParameters<Partition>) {
+export function domainsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DomainsArnParameters<Partition>,
+) {
   return new DomainsArn<Partition>(parameters)
 }
 
@@ -130,7 +156,10 @@ export interface WebhooksArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly webhookId: string
 }
-class WebhooksArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'webhooks', `arn:${string}:amplify:${string}:${string}:webhooks/${string}`> {
+class WebhooksArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'webhooks',
+  `arn:${string}:amplify:${string}:${string}:webhooks/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'webhooks' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -148,6 +177,8 @@ class WebhooksArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'w
   }
 }
 export type { WebhooksArn }
-export function webhooksArn<Partition extends ArnPartition = 'aws'>(parameters: WebhooksArnParameters<Partition>) {
+export function webhooksArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WebhooksArnParameters<Partition>,
+) {
   return new WebhooksArn<Partition>(parameters)
 }

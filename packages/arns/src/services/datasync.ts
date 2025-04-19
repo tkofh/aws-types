@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface AgentArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface AgentArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly accountId: string
   readonly agentId: string
 }
-class AgentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'agent', `arn:${string}:datasync:${string}:${string}:agent/${string}`> {
+class AgentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'agent',
+  `arn:${string}:datasync:${string}:${string}:agent/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'agent' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class AgentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'agen
   }
 }
 export type { AgentArn }
-export function agentArn<Partition extends ArnPartition = 'aws'>(parameters: AgentArnParameters<Partition>) {
+export function agentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AgentArnParameters<Partition>,
+) {
   return new AgentArn<Partition>(parameters)
 }
 
@@ -34,7 +45,10 @@ export interface LocationArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly accountId: string
   readonly locationId: string
 }
-class LocationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'location', `arn:${string}:datasync:${string}:${string}:location/${string}`> {
+class LocationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'location',
+  `arn:${string}:datasync:${string}:${string}:location/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'location' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +66,9 @@ class LocationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'l
   }
 }
 export type { LocationArn }
-export function locationArn<Partition extends ArnPartition = 'aws'>(parameters: LocationArnParameters<Partition>) {
+export function locationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LocationArnParameters<Partition>,
+) {
   return new LocationArn<Partition>(parameters)
 }
 
@@ -62,7 +78,10 @@ export interface TaskArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly accountId: string
   readonly taskId: string
 }
-class TaskArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'task', `arn:${string}:datasync:${string}:${string}:task/${string}`> {
+class TaskArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'task',
+  `arn:${string}:datasync:${string}:${string}:task/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'task' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,18 +99,27 @@ class TaskArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'task'
   }
 }
 export type { TaskArn }
-export function taskArn<Partition extends ArnPartition = 'aws'>(parameters: TaskArnParameters<Partition>) {
+export function taskArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TaskArnParameters<Partition>,
+) {
   return new TaskArn<Partition>(parameters)
 }
 
-export interface TaskexecutionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TaskexecutionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly accountId: string
   readonly taskId: string
   readonly executionId: string
 }
-class TaskexecutionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'taskexecution', `arn:${string}:datasync:${string}:${string}:task/${string}/execution/${string}`> {
+class TaskexecutionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'taskexecution',
+  `arn:${string}:datasync:${string}:${string}:task/${string}/execution/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'taskexecution' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -111,17 +139,26 @@ class TaskexecutionArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { TaskexecutionArn }
-export function taskexecutionArn<Partition extends ArnPartition = 'aws'>(parameters: TaskexecutionArnParameters<Partition>) {
+export function taskexecutionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TaskexecutionArnParameters<Partition>,
+) {
   return new TaskexecutionArn<Partition>(parameters)
 }
 
-export interface StoragesystemArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface StoragesystemArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly accountId: string
   readonly storageSystemId: string
 }
-class StoragesystemArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'storagesystem', `arn:${string}:datasync:${string}:${string}:system/${string}`> {
+class StoragesystemArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'storagesystem',
+  `arn:${string}:datasync:${string}:${string}:system/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'storagesystem' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -139,18 +176,27 @@ class StoragesystemArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { StoragesystemArn }
-export function storagesystemArn<Partition extends ArnPartition = 'aws'>(parameters: StoragesystemArnParameters<Partition>) {
+export function storagesystemArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StoragesystemArnParameters<Partition>,
+) {
   return new StoragesystemArn<Partition>(parameters)
 }
 
-export interface DiscoveryjobArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DiscoveryjobArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly accountId: string
   readonly storageSystemId: string
   readonly discoveryJobId: string
 }
-class DiscoveryjobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'discoveryjob', `arn:${string}:datasync:${string}:${string}:system/${string}/job/${string}`> {
+class DiscoveryjobArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'discoveryjob',
+  `arn:${string}:datasync:${string}:${string}:system/${string}/job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'discoveryjob' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -170,6 +216,8 @@ class DiscoveryjobArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { DiscoveryjobArn }
-export function discoveryjobArn<Partition extends ArnPartition = 'aws'>(parameters: DiscoveryjobArnParameters<Partition>) {
+export function discoveryjobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DiscoveryjobArnParameters<Partition>,
+) {
   return new DiscoveryjobArn<Partition>(parameters)
 }

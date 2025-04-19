@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface GroupArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface GroupArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly groupName: string
 }
-class GroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'group', `arn:${string}:resource-groups:${string}:${string}:group/${string}`> {
+class GroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'group',
+  `arn:${string}:resource-groups:${string}:${string}:group/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'group' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,18 +33,27 @@ class GroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'grou
   }
 }
 export type { GroupArn }
-export function groupArn<Partition extends ArnPartition = 'aws'>(parameters: GroupArnParameters<Partition>) {
+export function groupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupArnParameters<Partition>,
+) {
   return new GroupArn<Partition>(parameters)
 }
 
-export interface TagSyncTaskArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TagSyncTaskArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly groupName: string
   readonly taskId: string
 }
-class TagSyncTaskArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'tagSyncTask', `arn:${string}:resource-groups:${string}:${string}:group/${string}/tag-sync-task/${string}`> {
+class TagSyncTaskArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'tagSyncTask',
+  `arn:${string}:resource-groups:${string}:${string}:group/${string}/tag-sync-task/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'tagSyncTask' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,6 +73,8 @@ class TagSyncTaskArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { TagSyncTaskArn }
-export function tagSyncTaskArn<Partition extends ArnPartition = 'aws'>(parameters: TagSyncTaskArnParameters<Partition>) {
+export function tagSyncTaskArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TagSyncTaskArnParameters<Partition>,
+) {
   return new TagSyncTaskArn<Partition>(parameters)
 }

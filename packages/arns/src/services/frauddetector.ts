@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface BatchPredictionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface BatchPredictionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourcePath: string
 }
-class BatchPredictionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'batch-prediction', `arn:${string}:frauddetector:${string}:${string}:batch-prediction/${string}`> {
+class BatchPredictionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'batch-prediction',
+  `arn:${string}:frauddetector:${string}:${string}:batch-prediction/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'batch-prediction' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +37,9 @@ class BatchPredictionArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { BatchPredictionArn }
-export function batchPredictionArn<Partition extends ArnPartition = 'aws'>(parameters: BatchPredictionArnParameters<Partition>) {
+export function batchPredictionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BatchPredictionArnParameters<Partition>,
+) {
   return new BatchPredictionArn<Partition>(parameters)
 }
 
@@ -34,7 +49,10 @@ export interface DetectorArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourcePath: string
 }
-class DetectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'detector', `arn:${string}:frauddetector:${string}:${string}:detector/${string}`> {
+class DetectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'detector',
+  `arn:${string}:frauddetector:${string}:${string}:detector/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'detector' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +70,26 @@ class DetectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'d
   }
 }
 export type { DetectorArn }
-export function detectorArn<Partition extends ArnPartition = 'aws'>(parameters: DetectorArnParameters<Partition>) {
+export function detectorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DetectorArnParameters<Partition>,
+) {
   return new DetectorArn<Partition>(parameters)
 }
 
-export interface DetectorVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DetectorVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourcePath: string
 }
-class DetectorVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'detector-version', `arn:${string}:frauddetector:${string}:${string}:detector-version/${string}`> {
+class DetectorVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'detector-version',
+  `arn:${string}:frauddetector:${string}:${string}:detector-version/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'detector-version' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,17 +107,24 @@ class DetectorVersionArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { DetectorVersionArn }
-export function detectorVersionArn<Partition extends ArnPartition = 'aws'>(parameters: DetectorVersionArnParameters<Partition>) {
+export function detectorVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DetectorVersionArnParameters<Partition>,
+) {
   return new DetectorVersionArn<Partition>(parameters)
 }
 
-export interface EntityTypeArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface EntityTypeArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourcePath: string
 }
-class EntityTypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'entity-type', `arn:${string}:frauddetector:${string}:${string}:entity-type/${string}`> {
+class EntityTypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'entity-type',
+  `arn:${string}:frauddetector:${string}:${string}:entity-type/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'entity-type' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,17 +142,26 @@ class EntityTypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { EntityTypeArn }
-export function entityTypeArn<Partition extends ArnPartition = 'aws'>(parameters: EntityTypeArnParameters<Partition>) {
+export function entityTypeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EntityTypeArnParameters<Partition>,
+) {
   return new EntityTypeArn<Partition>(parameters)
 }
 
-export interface ExternalModelArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ExternalModelArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourcePath: string
 }
-class ExternalModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'external-model', `arn:${string}:frauddetector:${string}:${string}:external-model/${string}`> {
+class ExternalModelArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'external-model',
+  `arn:${string}:frauddetector:${string}:${string}:external-model/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'external-model' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -136,17 +179,24 @@ class ExternalModelArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { ExternalModelArn }
-export function externalModelArn<Partition extends ArnPartition = 'aws'>(parameters: ExternalModelArnParameters<Partition>) {
+export function externalModelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ExternalModelArnParameters<Partition>,
+) {
   return new ExternalModelArn<Partition>(parameters)
 }
 
-export interface EventTypeArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface EventTypeArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourcePath: string
 }
-class EventTypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'event-type', `arn:${string}:frauddetector:${string}:${string}:event-type/${string}`> {
+class EventTypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'event-type',
+  `arn:${string}:frauddetector:${string}:${string}:event-type/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'event-type' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -164,7 +214,9 @@ class EventTypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { EventTypeArn }
-export function eventTypeArn<Partition extends ArnPartition = 'aws'>(parameters: EventTypeArnParameters<Partition>) {
+export function eventTypeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EventTypeArnParameters<Partition>,
+) {
   return new EventTypeArn<Partition>(parameters)
 }
 
@@ -174,7 +226,10 @@ export interface LabelArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourcePath: string
 }
-class LabelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'label', `arn:${string}:frauddetector:${string}:${string}:label/${string}`> {
+class LabelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'label',
+  `arn:${string}:frauddetector:${string}:${string}:label/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'label' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -192,7 +247,9 @@ class LabelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'labe
   }
 }
 export type { LabelArn }
-export function labelArn<Partition extends ArnPartition = 'aws'>(parameters: LabelArnParameters<Partition>) {
+export function labelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LabelArnParameters<Partition>,
+) {
   return new LabelArn<Partition>(parameters)
 }
 
@@ -202,7 +259,10 @@ export interface ModelArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourcePath: string
 }
-class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'model', `arn:${string}:frauddetector:${string}:${string}:model/${string}`> {
+class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'model',
+  `arn:${string}:frauddetector:${string}:${string}:model/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'model' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -220,17 +280,26 @@ class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'mode
   }
 }
 export type { ModelArn }
-export function modelArn<Partition extends ArnPartition = 'aws'>(parameters: ModelArnParameters<Partition>) {
+export function modelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelArnParameters<Partition>,
+) {
   return new ModelArn<Partition>(parameters)
 }
 
-export interface ModelVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ModelVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourcePath: string
 }
-class ModelVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'model-version', `arn:${string}:frauddetector:${string}:${string}:model-version/${string}`> {
+class ModelVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'model-version',
+  `arn:${string}:frauddetector:${string}:${string}:model-version/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'model-version' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -248,7 +317,9 @@ class ModelVersionArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { ModelVersionArn }
-export function modelVersionArn<Partition extends ArnPartition = 'aws'>(parameters: ModelVersionArnParameters<Partition>) {
+export function modelVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelVersionArnParameters<Partition>,
+) {
   return new ModelVersionArn<Partition>(parameters)
 }
 
@@ -258,7 +329,10 @@ export interface OutcomeArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourcePath: string
 }
-class OutcomeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'outcome', `arn:${string}:frauddetector:${string}:${string}:outcome/${string}`> {
+class OutcomeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'outcome',
+  `arn:${string}:frauddetector:${string}:${string}:outcome/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'outcome' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -276,7 +350,9 @@ class OutcomeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ou
   }
 }
 export type { OutcomeArn }
-export function outcomeArn<Partition extends ArnPartition = 'aws'>(parameters: OutcomeArnParameters<Partition>) {
+export function outcomeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: OutcomeArnParameters<Partition>,
+) {
   return new OutcomeArn<Partition>(parameters)
 }
 
@@ -286,7 +362,10 @@ export interface RuleArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourcePath: string
 }
-class RuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'rule', `arn:${string}:frauddetector:${string}:${string}:rule/${string}`> {
+class RuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'rule',
+  `arn:${string}:frauddetector:${string}:${string}:rule/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'rule' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -304,7 +383,9 @@ class RuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'rule'
   }
 }
 export type { RuleArn }
-export function ruleArn<Partition extends ArnPartition = 'aws'>(parameters: RuleArnParameters<Partition>) {
+export function ruleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RuleArnParameters<Partition>,
+) {
   return new RuleArn<Partition>(parameters)
 }
 
@@ -314,7 +395,10 @@ export interface VariableArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourcePath: string
 }
-class VariableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'variable', `arn:${string}:frauddetector:${string}:${string}:variable/${string}`> {
+class VariableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'variable',
+  `arn:${string}:frauddetector:${string}:${string}:variable/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'variable' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -332,17 +416,26 @@ class VariableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'v
   }
 }
 export type { VariableArn }
-export function variableArn<Partition extends ArnPartition = 'aws'>(parameters: VariableArnParameters<Partition>) {
+export function variableArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VariableArnParameters<Partition>,
+) {
   return new VariableArn<Partition>(parameters)
 }
 
-export interface BatchImportArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface BatchImportArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourcePath: string
 }
-class BatchImportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'batch-import', `arn:${string}:frauddetector:${string}:${string}:batch-import/${string}`> {
+class BatchImportArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'batch-import',
+  `arn:${string}:frauddetector:${string}:${string}:batch-import/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'batch-import' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -360,7 +453,9 @@ class BatchImportArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { BatchImportArn }
-export function batchImportArn<Partition extends ArnPartition = 'aws'>(parameters: BatchImportArnParameters<Partition>) {
+export function batchImportArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BatchImportArnParameters<Partition>,
+) {
   return new BatchImportArn<Partition>(parameters)
 }
 
@@ -370,7 +465,10 @@ export interface ListArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourcePath: string
 }
-class ListArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'list', `arn:${string}:frauddetector:${string}:${string}:list/${string}`> {
+class ListArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'list',
+  `arn:${string}:frauddetector:${string}:${string}:list/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'list' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -388,6 +486,8 @@ class ListArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'list'
   }
 }
 export type { ListArn }
-export function listArn<Partition extends ArnPartition = 'aws'>(parameters: ListArnParameters<Partition>) {
+export function listArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ListArnParameters<Partition>,
+) {
   return new ListArn<Partition>(parameters)
 }

@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface QuotaArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -7,7 +13,10 @@ export interface QuotaArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly serviceCode: string
   readonly quotaCode: string
 }
-class QuotaArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'quota', `arn:${string}:servicequotas:${string}:${string}:${string}/${string}`> {
+class QuotaArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'quota',
+  `arn:${string}:servicequotas:${string}:${string}:${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'quota' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,6 +36,8 @@ class QuotaArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'quot
   }
 }
 export type { QuotaArn }
-export function quotaArn<Partition extends ArnPartition = 'aws'>(parameters: QuotaArnParameters<Partition>) {
+export function quotaArn<Partition extends ArnPartition = 'aws'>(
+  parameters: QuotaArnParameters<Partition>,
+) {
   return new QuotaArn<Partition>(parameters)
 }

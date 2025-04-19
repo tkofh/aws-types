@@ -8,9 +8,7 @@
   "license": "MIT",
   "sideEffects": false,
   "type": "module",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "publishConfig": {
     "access": "public"
   },

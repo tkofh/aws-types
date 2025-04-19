@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface BudgetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -7,7 +13,10 @@ export interface BudgetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly farmId: string
   readonly budgetId: string
 }
-class BudgetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'budget', `arn:${string}:deadline:${string}:${string}:farm/${string}/budget/${string}`> {
+class BudgetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'budget',
+  `arn:${string}:deadline:${string}:${string}:farm/${string}/budget/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'budget' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,7 +36,9 @@ class BudgetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'bud
   }
 }
 export type { BudgetArn }
-export function budgetArn<Partition extends ArnPartition = 'aws'>(parameters: BudgetArnParameters<Partition>) {
+export function budgetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BudgetArnParameters<Partition>,
+) {
   return new BudgetArn<Partition>(parameters)
 }
 
@@ -37,7 +48,10 @@ export interface FarmArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly farmId: string
 }
-class FarmArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'farm', `arn:${string}:deadline:${string}:${string}:farm/${string}`> {
+class FarmArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'farm',
+  `arn:${string}:deadline:${string}:${string}:farm/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'farm' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,7 +69,9 @@ class FarmArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'farm'
   }
 }
 export type { FarmArn }
-export function farmArn<Partition extends ArnPartition = 'aws'>(parameters: FarmArnParameters<Partition>) {
+export function farmArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FarmArnParameters<Partition>,
+) {
   return new FarmArn<Partition>(parameters)
 }
 
@@ -66,7 +82,10 @@ export interface FleetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly farmId: string
   readonly fleetId: string
 }
-class FleetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'fleet', `arn:${string}:deadline:${string}:${string}:farm/${string}/fleet/${string}`> {
+class FleetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'fleet',
+  `arn:${string}:deadline:${string}:${string}:farm/${string}/fleet/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'fleet' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,7 +105,9 @@ class FleetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'flee
   }
 }
 export type { FleetArn }
-export function fleetArn<Partition extends ArnPartition = 'aws'>(parameters: FleetArnParameters<Partition>) {
+export function fleetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FleetArnParameters<Partition>,
+) {
   return new FleetArn<Partition>(parameters)
 }
 
@@ -98,7 +119,10 @@ export interface JobArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly queueId: string
   readonly jobId: string
 }
-class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'job', `arn:${string}:deadline:${string}:${string}:farm/${string}/queue/${string}/job/${string}`> {
+class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'job',
+  `arn:${string}:deadline:${string}:${string}:farm/${string}/queue/${string}/job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'job' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -120,17 +144,26 @@ class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'job', 
   }
 }
 export type { JobArn }
-export function jobArn<Partition extends ArnPartition = 'aws'>(parameters: JobArnParameters<Partition>) {
+export function jobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobArnParameters<Partition>,
+) {
   return new JobArn<Partition>(parameters)
 }
 
-export interface LicenseEndpointArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface LicenseEndpointArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly licenseEndpointId: string
 }
-class LicenseEndpointArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'license-endpoint', `arn:${string}:deadline:${string}:${string}:license-endpoint/${string}`> {
+class LicenseEndpointArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'license-endpoint',
+  `arn:${string}:deadline:${string}:${string}:license-endpoint/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'license-endpoint' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -148,18 +181,27 @@ class LicenseEndpointArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { LicenseEndpointArn }
-export function licenseEndpointArn<Partition extends ArnPartition = 'aws'>(parameters: LicenseEndpointArnParameters<Partition>) {
+export function licenseEndpointArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LicenseEndpointArnParameters<Partition>,
+) {
   return new LicenseEndpointArn<Partition>(parameters)
 }
 
-export interface MeteredProductArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MeteredProductArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly licenseEndpointId: string
   readonly productId: string
 }
-class MeteredProductArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'metered-product', `arn:${string}:deadline:${string}:${string}:license-endpoint/${string}/metered-product/${string}`> {
+class MeteredProductArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'metered-product',
+  `arn:${string}:deadline:${string}:${string}:license-endpoint/${string}/metered-product/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'metered-product' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -179,7 +221,9 @@ class MeteredProductArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { MeteredProductArn }
-export function meteredProductArn<Partition extends ArnPartition = 'aws'>(parameters: MeteredProductArnParameters<Partition>) {
+export function meteredProductArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MeteredProductArnParameters<Partition>,
+) {
   return new MeteredProductArn<Partition>(parameters)
 }
 
@@ -189,7 +233,10 @@ export interface MonitorArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly monitorId: string
 }
-class MonitorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'monitor', `arn:${string}:deadline:${string}:${string}:monitor/${string}`> {
+class MonitorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'monitor',
+  `arn:${string}:deadline:${string}:${string}:monitor/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'monitor' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -207,7 +254,9 @@ class MonitorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'mo
   }
 }
 export type { MonitorArn }
-export function monitorArn<Partition extends ArnPartition = 'aws'>(parameters: MonitorArnParameters<Partition>) {
+export function monitorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MonitorArnParameters<Partition>,
+) {
   return new MonitorArn<Partition>(parameters)
 }
 
@@ -218,7 +267,10 @@ export interface QueueArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly farmId: string
   readonly queueId: string
 }
-class QueueArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'queue', `arn:${string}:deadline:${string}:${string}:farm/${string}/queue/${string}`> {
+class QueueArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'queue',
+  `arn:${string}:deadline:${string}:${string}:farm/${string}/queue/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'queue' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -238,7 +290,9 @@ class QueueArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'queu
   }
 }
 export type { QueueArn }
-export function queueArn<Partition extends ArnPartition = 'aws'>(parameters: QueueArnParameters<Partition>) {
+export function queueArn<Partition extends ArnPartition = 'aws'>(
+  parameters: QueueArnParameters<Partition>,
+) {
   return new QueueArn<Partition>(parameters)
 }
 
@@ -250,7 +304,10 @@ export interface WorkerArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly fleetId: string
   readonly workerId: string
 }
-class WorkerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'worker', `arn:${string}:deadline:${string}:${string}:farm/${string}/fleet/${string}/worker/${string}`> {
+class WorkerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'worker',
+  `arn:${string}:deadline:${string}:${string}:farm/${string}/fleet/${string}/worker/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'worker' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -272,6 +329,8 @@ class WorkerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'wor
   }
 }
 export type { WorkerArn }
-export function workerArn<Partition extends ArnPartition = 'aws'>(parameters: WorkerArnParameters<Partition>) {
+export function workerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkerArnParameters<Partition>,
+) {
   return new WorkerArn<Partition>(parameters)
 }

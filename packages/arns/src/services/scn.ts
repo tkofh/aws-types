@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface InstanceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface InstanceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly instanceId: string
 }
-class InstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'instance', `arn:${string}:scn:${string}:${string}:instance/${string}`> {
+class InstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'instance',
+  `arn:${string}:scn:${string}:${string}:instance/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'instance' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,18 +33,27 @@ class InstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'i
   }
 }
 export type { InstanceArn }
-export function instanceArn<Partition extends ArnPartition = 'aws'>(parameters: InstanceArnParameters<Partition>) {
+export function instanceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InstanceArnParameters<Partition>,
+) {
   return new InstanceArn<Partition>(parameters)
 }
 
-export interface BillOfMaterialsImportJobArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface BillOfMaterialsImportJobArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly instanceId: string
   readonly jobId: string
 }
-class BillOfMaterialsImportJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'bill-of-materials-import-job', `arn:${string}:scn:${string}:${string}:instance/${string}/bill-of-materials-import-job/${string}`> {
+class BillOfMaterialsImportJobArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'bill-of-materials-import-job',
+  `arn:${string}:scn:${string}:${string}:instance/${string}/bill-of-materials-import-job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'bill-of-materials-import-job' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,18 +73,27 @@ class BillOfMaterialsImportJobArn<Partition extends ArnPartition = 'aws'> extend
   }
 }
 export type { BillOfMaterialsImportJobArn }
-export function billOfMaterialsImportJobArn<Partition extends ArnPartition = 'aws'>(parameters: BillOfMaterialsImportJobArnParameters<Partition>) {
+export function billOfMaterialsImportJobArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: BillOfMaterialsImportJobArnParameters<Partition>) {
   return new BillOfMaterialsImportJobArn<Partition>(parameters)
 }
 
-export interface DataIntegrationFlowArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DataIntegrationFlowArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly instanceId: string
   readonly flowName: string
 }
-class DataIntegrationFlowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'data-integration-flow', `arn:${string}:scn:${string}:${string}:instance/${string}/data-integration-flows/${string}`> {
+class DataIntegrationFlowArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'data-integration-flow',
+  `arn:${string}:scn:${string}:${string}:instance/${string}/data-integration-flows/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'data-integration-flow' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,7 +113,9 @@ class DataIntegrationFlowArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { DataIntegrationFlowArn }
-export function dataIntegrationFlowArn<Partition extends ArnPartition = 'aws'>(parameters: DataIntegrationFlowArnParameters<Partition>) {
+export function dataIntegrationFlowArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DataIntegrationFlowArnParameters<Partition>,
+) {
   return new DataIntegrationFlowArn<Partition>(parameters)
 }
 
@@ -98,7 +127,10 @@ export interface DatasetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly namespace: string
   readonly datasetName: string
 }
-class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dataset', `arn:${string}:scn:${string}:${string}:instance/${string}/namespaces/${string}/datasets/${string}`> {
+class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'dataset',
+  `arn:${string}:scn:${string}:${string}:instance/${string}/namespaces/${string}/datasets/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'dataset' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -120,6 +152,8 @@ class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'da
   }
 }
 export type { DatasetArn }
-export function datasetArn<Partition extends ArnPartition = 'aws'>(parameters: DatasetArnParameters<Partition>) {
+export function datasetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DatasetArnParameters<Partition>,
+) {
   return new DatasetArn<Partition>(parameters)
 }

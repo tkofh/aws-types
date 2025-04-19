@@ -1,11 +1,22 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface CredentialArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CredentialArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
 }
-class CredentialArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'credential', `arn:${string}:finspace-api:${string}:${string}:/credentials/programmatic`> {
+class CredentialArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'credential',
+  `arn:${string}:finspace-api:${string}:${string}:/credentials/programmatic`
+> {
   readonly [ArnResourceTypeBrand] = 'credential' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -21,6 +32,8 @@ class CredentialArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { CredentialArn }
-export function credentialArn<Partition extends ArnPartition = 'aws'>(parameters: CredentialArnParameters<Partition>) {
+export function credentialArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CredentialArnParameters<Partition>,
+) {
   return new CredentialArn<Partition>(parameters)
 }

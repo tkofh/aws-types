@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ConfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly configurationName: string
 }
-class ConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'configuration', `arn:${string}:freertos:${string}:${string}:configuration/${string}`> {
+class ConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'configuration',
+  `arn:${string}:freertos:${string}:${string}:configuration/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'configuration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +37,26 @@ class ConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { ConfigurationArn }
-export function configurationArn<Partition extends ArnPartition = 'aws'>(parameters: ConfigurationArnParameters<Partition>) {
+export function configurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConfigurationArnParameters<Partition>,
+) {
   return new ConfigurationArn<Partition>(parameters)
 }
 
-export interface SubscriptionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SubscriptionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly subscriptionId: string
 }
-class SubscriptionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'subscription', `arn:${string}:freertos:${string}:${string}:subscription/${string}`> {
+class SubscriptionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'subscription',
+  `arn:${string}:freertos:${string}:${string}:subscription/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'subscription' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,6 +74,8 @@ class SubscriptionArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { SubscriptionArn }
-export function subscriptionArn<Partition extends ArnPartition = 'aws'>(parameters: SubscriptionArnParameters<Partition>) {
+export function subscriptionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SubscriptionArnParameters<Partition>,
+) {
   return new SubscriptionArn<Partition>(parameters)
 }

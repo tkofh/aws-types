@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface EnvironmentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface EnvironmentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly environmentId: string
 }
-class EnvironmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'environment', `arn:${string}:finspace:${string}:${string}:environment/${string}`> {
+class EnvironmentArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'environment',
+  `arn:${string}:finspace:${string}:${string}:environment/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'environment' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +37,9 @@ class EnvironmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { EnvironmentArn }
-export function environmentArn<Partition extends ArnPartition = 'aws'>(parameters: EnvironmentArnParameters<Partition>) {
+export function environmentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EnvironmentArnParameters<Partition>,
+) {
   return new EnvironmentArn<Partition>(parameters)
 }
 
@@ -34,7 +49,10 @@ export interface UserArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly userId: string
 }
-class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'user', `arn:${string}:finspace:${string}:${string}:user/${string}`> {
+class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'user',
+  `arn:${string}:finspace:${string}:${string}:user/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'user' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +70,26 @@ class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'user'
   }
 }
 export type { UserArn }
-export function userArn<Partition extends ArnPartition = 'aws'>(parameters: UserArnParameters<Partition>) {
+export function userArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UserArnParameters<Partition>,
+) {
   return new UserArn<Partition>(parameters)
 }
 
-export interface KxEnvironmentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface KxEnvironmentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly environmentId: string
 }
-class KxEnvironmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'kxEnvironment', `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}`> {
+class KxEnvironmentArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'kxEnvironment',
+  `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'kxEnvironment' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,7 +107,9 @@ class KxEnvironmentArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { KxEnvironmentArn }
-export function kxEnvironmentArn<Partition extends ArnPartition = 'aws'>(parameters: KxEnvironmentArnParameters<Partition>) {
+export function kxEnvironmentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KxEnvironmentArnParameters<Partition>,
+) {
   return new KxEnvironmentArn<Partition>(parameters)
 }
 
@@ -91,7 +120,10 @@ export interface KxUserArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly environmentId: string
   readonly userName: string
 }
-class KxUserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'kxUser', `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxUser/${string}`> {
+class KxUserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'kxUser',
+  `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxUser/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'kxUser' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -111,18 +143,25 @@ class KxUserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'kxU
   }
 }
 export type { KxUserArn }
-export function kxUserArn<Partition extends ArnPartition = 'aws'>(parameters: KxUserArnParameters<Partition>) {
+export function kxUserArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KxUserArnParameters<Partition>,
+) {
   return new KxUserArn<Partition>(parameters)
 }
 
-export interface KxClusterArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface KxClusterArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly environmentId: string
   readonly kxCluster: string
 }
-class KxClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'kxCluster', `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxCluster/${string}`> {
+class KxClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'kxCluster',
+  `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxCluster/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'kxCluster' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -142,18 +181,25 @@ class KxClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { KxClusterArn }
-export function kxClusterArn<Partition extends ArnPartition = 'aws'>(parameters: KxClusterArnParameters<Partition>) {
+export function kxClusterArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KxClusterArnParameters<Partition>,
+) {
   return new KxClusterArn<Partition>(parameters)
 }
 
-export interface KxDatabaseArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface KxDatabaseArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly environmentId: string
   readonly kxDatabase: string
 }
-class KxDatabaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'kxDatabase', `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxDatabase/${string}`> {
+class KxDatabaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'kxDatabase',
+  `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxDatabase/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'kxDatabase' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -173,18 +219,27 @@ class KxDatabaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { KxDatabaseArn }
-export function kxDatabaseArn<Partition extends ArnPartition = 'aws'>(parameters: KxDatabaseArnParameters<Partition>) {
+export function kxDatabaseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KxDatabaseArnParameters<Partition>,
+) {
   return new KxDatabaseArn<Partition>(parameters)
 }
 
-export interface KxScalingGroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface KxScalingGroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly environmentId: string
   readonly kxScalingGroup: string
 }
-class KxScalingGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'kxScalingGroup', `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxScalingGroup/${string}`> {
+class KxScalingGroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'kxScalingGroup',
+  `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxScalingGroup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'kxScalingGroup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -204,11 +259,15 @@ class KxScalingGroupArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { KxScalingGroupArn }
-export function kxScalingGroupArn<Partition extends ArnPartition = 'aws'>(parameters: KxScalingGroupArnParameters<Partition>) {
+export function kxScalingGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KxScalingGroupArnParameters<Partition>,
+) {
   return new KxScalingGroupArn<Partition>(parameters)
 }
 
-export interface KxDataviewArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface KxDataviewArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -216,7 +275,10 @@ export interface KxDataviewArnParameters<Partition extends ArnPartition = 'aws'>
   readonly kxDatabase: string
   readonly kxDataview: string
 }
-class KxDataviewArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'kxDataview', `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxDatabase/${string}/kxDataview/${string}`> {
+class KxDataviewArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'kxDataview',
+  `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxDatabase/${string}/kxDataview/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'kxDataview' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -238,7 +300,9 @@ class KxDataviewArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { KxDataviewArn }
-export function kxDataviewArn<Partition extends ArnPartition = 'aws'>(parameters: KxDataviewArnParameters<Partition>) {
+export function kxDataviewArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KxDataviewArnParameters<Partition>,
+) {
   return new KxDataviewArn<Partition>(parameters)
 }
 
@@ -249,7 +313,10 @@ export interface KxVolumeArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly environmentId: string
   readonly kxVolume: string
 }
-class KxVolumeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'kxVolume', `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxVolume/${string}`> {
+class KxVolumeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'kxVolume',
+  `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxVolume/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'kxVolume' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -269,6 +336,8 @@ class KxVolumeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'k
   }
 }
 export type { KxVolumeArn }
-export function kxVolumeArn<Partition extends ArnPartition = 'aws'>(parameters: KxVolumeArnParameters<Partition>) {
+export function kxVolumeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KxVolumeArnParameters<Partition>,
+) {
   return new KxVolumeArn<Partition>(parameters)
 }

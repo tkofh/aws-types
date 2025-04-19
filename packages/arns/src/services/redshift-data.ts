@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly clusterName: string
 }
-class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cluster', `arn:${string}:redshift:${string}:${string}:cluster:${string}`> {
+class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'cluster',
+  `arn:${string}:redshift:${string}:${string}:cluster:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'cluster' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +33,24 @@ class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cl
   }
 }
 export type { ClusterArn }
-export function clusterArn<Partition extends ArnPartition = 'aws'>(parameters: ClusterArnParameters<Partition>) {
+export function clusterArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ClusterArnParameters<Partition>,
+) {
   return new ClusterArn<Partition>(parameters)
 }
 
-export interface WorkgroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface WorkgroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly workgroupId: string
 }
-class WorkgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workgroup', `arn:${string}:redshift-serverless:${string}:${string}:workgroup/${string}`> {
+class WorkgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'workgroup',
+  `arn:${string}:redshift-serverless:${string}:${string}:workgroup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'workgroup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,6 +68,8 @@ class WorkgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { WorkgroupArn }
-export function workgroupArn<Partition extends ArnPartition = 'aws'>(parameters: WorkgroupArnParameters<Partition>) {
+export function workgroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkgroupArnParameters<Partition>,
+) {
   return new WorkgroupArn<Partition>(parameters)
 }

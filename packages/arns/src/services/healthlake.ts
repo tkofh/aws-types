@@ -1,12 +1,23 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface DatastoreArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DatastoreArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly datastoreId: string
 }
-class DatastoreArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'datastore', `arn:${string}:healthlake:${string}:${string}:datastore/fhir/${string}`> {
+class DatastoreArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'datastore',
+  `arn:${string}:healthlake:${string}:${string}:datastore/fhir/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'datastore' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +35,8 @@ class DatastoreArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { DatastoreArn }
-export function datastoreArn<Partition extends ArnPartition = 'aws'>(parameters: DatastoreArnParameters<Partition>) {
+export function datastoreArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DatastoreArnParameters<Partition>,
+) {
   return new DatastoreArn<Partition>(parameters)
 }

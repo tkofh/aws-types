@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface AccessLogSettingsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AccessLogSettingsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly apiId: string
   readonly stageName: string
 }
-class AccessLogSettingsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'AccessLogSettings', `arn:${string}:apigateway:${string}::/apis/${string}/stages/${string}/accesslogsettings`> {
+class AccessLogSettingsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'AccessLogSettings',
+  `arn:${string}:apigateway:${string}::/apis/${string}/stages/${string}/accesslogsettings`
+> {
   readonly [ArnResourceTypeBrand] = 'AccessLogSettings' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +37,9 @@ class AccessLogSettingsArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { AccessLogSettingsArn }
-export function accessLogSettingsArn<Partition extends ArnPartition = 'aws'>(parameters: AccessLogSettingsArnParameters<Partition>) {
+export function accessLogSettingsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AccessLogSettingsArnParameters<Partition>,
+) {
   return new AccessLogSettingsArn<Partition>(parameters)
 }
 
@@ -33,7 +48,10 @@ export interface ApiArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly region: ArnRegion<Partition>
   readonly apiId: string
 }
-class ApiArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Api', `arn:${string}:apigateway:${string}::/apis/${string}`> {
+class ApiArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Api',
+  `arn:${string}:apigateway:${string}::/apis/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Api' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -49,7 +67,9 @@ class ApiArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Api', 
   }
 }
 export type { ApiArn }
-export function apiArn<Partition extends ArnPartition = 'aws'>(parameters: ApiArnParameters<Partition>) {
+export function apiArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApiArnParameters<Partition>,
+) {
   return new ApiArn<Partition>(parameters)
 }
 
@@ -57,7 +77,10 @@ export interface ApisArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
 }
-class ApisArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Apis', `arn:${string}:apigateway:${string}::/apis`> {
+class ApisArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Apis',
+  `arn:${string}:apigateway:${string}::/apis`
+> {
   readonly [ArnResourceTypeBrand] = 'Apis' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -71,17 +94,24 @@ class ApisArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Apis'
   }
 }
 export type { ApisArn }
-export function apisArn<Partition extends ArnPartition = 'aws'>(parameters: ApisArnParameters<Partition>) {
+export function apisArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApisArnParameters<Partition>,
+) {
   return new ApisArn<Partition>(parameters)
 }
 
-export interface ApiMappingArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ApiMappingArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly domainName: string
   readonly apiMappingId: string
 }
-class ApiMappingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ApiMapping', `arn:${string}:apigateway:${string}::/domainnames/${string}/apimappings/${string}`> {
+class ApiMappingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'ApiMapping',
+  `arn:${string}:apigateway:${string}::/domainnames/${string}/apimappings/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ApiMapping' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -99,16 +129,25 @@ class ApiMappingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { ApiMappingArn }
-export function apiMappingArn<Partition extends ArnPartition = 'aws'>(parameters: ApiMappingArnParameters<Partition>) {
+export function apiMappingArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApiMappingArnParameters<Partition>,
+) {
   return new ApiMappingArn<Partition>(parameters)
 }
 
-export interface ApiMappingsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ApiMappingsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly domainName: string
 }
-class ApiMappingsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ApiMappings', `arn:${string}:apigateway:${string}::/domainnames/${string}/apimappings`> {
+class ApiMappingsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'ApiMappings',
+  `arn:${string}:apigateway:${string}::/domainnames/${string}/apimappings`
+> {
   readonly [ArnResourceTypeBrand] = 'ApiMappings' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -124,17 +163,24 @@ class ApiMappingsArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ApiMappingsArn }
-export function apiMappingsArn<Partition extends ArnPartition = 'aws'>(parameters: ApiMappingsArnParameters<Partition>) {
+export function apiMappingsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApiMappingsArnParameters<Partition>,
+) {
   return new ApiMappingsArn<Partition>(parameters)
 }
 
-export interface AuthorizerArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AuthorizerArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly apiId: string
   readonly authorizerId: string
 }
-class AuthorizerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Authorizer', `arn:${string}:apigateway:${string}::/apis/${string}/authorizers/${string}`> {
+class AuthorizerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Authorizer',
+  `arn:${string}:apigateway:${string}::/apis/${string}/authorizers/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Authorizer' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -152,16 +198,25 @@ class AuthorizerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { AuthorizerArn }
-export function authorizerArn<Partition extends ArnPartition = 'aws'>(parameters: AuthorizerArnParameters<Partition>) {
+export function authorizerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AuthorizerArnParameters<Partition>,
+) {
   return new AuthorizerArn<Partition>(parameters)
 }
 
-export interface AuthorizersArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AuthorizersArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly apiId: string
 }
-class AuthorizersArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Authorizers', `arn:${string}:apigateway:${string}::/apis/${string}/authorizers`> {
+class AuthorizersArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'Authorizers',
+  `arn:${string}:apigateway:${string}::/apis/${string}/authorizers`
+> {
   readonly [ArnResourceTypeBrand] = 'Authorizers' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -177,17 +232,26 @@ class AuthorizersArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { AuthorizersArn }
-export function authorizersArn<Partition extends ArnPartition = 'aws'>(parameters: AuthorizersArnParameters<Partition>) {
+export function authorizersArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AuthorizersArnParameters<Partition>,
+) {
   return new AuthorizersArn<Partition>(parameters)
 }
 
-export interface AuthorizersCacheArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AuthorizersCacheArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly apiId: string
   readonly stageName: string
 }
-class AuthorizersCacheArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'AuthorizersCache', `arn:${string}:apigateway:${string}::/apis/${string}/stages/${string}/cache/authorizers`> {
+class AuthorizersCacheArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'AuthorizersCache',
+  `arn:${string}:apigateway:${string}::/apis/${string}/stages/${string}/cache/authorizers`
+> {
   readonly [ArnResourceTypeBrand] = 'AuthorizersCache' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -205,7 +269,9 @@ class AuthorizersCacheArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { AuthorizersCacheArn }
-export function authorizersCacheArn<Partition extends ArnPartition = 'aws'>(parameters: AuthorizersCacheArnParameters<Partition>) {
+export function authorizersCacheArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AuthorizersCacheArnParameters<Partition>,
+) {
   return new AuthorizersCacheArn<Partition>(parameters)
 }
 
@@ -214,7 +280,10 @@ export interface CorsArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly region: ArnRegion<Partition>
   readonly apiId: string
 }
-class CorsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Cors', `arn:${string}:apigateway:${string}::/apis/${string}/cors`> {
+class CorsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Cors',
+  `arn:${string}:apigateway:${string}::/apis/${string}/cors`
+> {
   readonly [ArnResourceTypeBrand] = 'Cors' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -230,17 +299,24 @@ class CorsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Cors'
   }
 }
 export type { CorsArn }
-export function corsArn<Partition extends ArnPartition = 'aws'>(parameters: CorsArnParameters<Partition>) {
+export function corsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CorsArnParameters<Partition>,
+) {
   return new CorsArn<Partition>(parameters)
 }
 
-export interface DeploymentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeploymentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly apiId: string
   readonly deploymentId: string
 }
-class DeploymentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Deployment', `arn:${string}:apigateway:${string}::/apis/${string}/deployments/${string}`> {
+class DeploymentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Deployment',
+  `arn:${string}:apigateway:${string}::/apis/${string}/deployments/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Deployment' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -258,16 +334,25 @@ class DeploymentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { DeploymentArn }
-export function deploymentArn<Partition extends ArnPartition = 'aws'>(parameters: DeploymentArnParameters<Partition>) {
+export function deploymentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeploymentArnParameters<Partition>,
+) {
   return new DeploymentArn<Partition>(parameters)
 }
 
-export interface DeploymentsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeploymentsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly apiId: string
 }
-class DeploymentsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Deployments', `arn:${string}:apigateway:${string}::/apis/${string}/deployments`> {
+class DeploymentsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'Deployments',
+  `arn:${string}:apigateway:${string}::/apis/${string}/deployments`
+> {
   readonly [ArnResourceTypeBrand] = 'Deployments' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -283,17 +368,26 @@ class DeploymentsArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { DeploymentsArn }
-export function deploymentsArn<Partition extends ArnPartition = 'aws'>(parameters: DeploymentsArnParameters<Partition>) {
+export function deploymentsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeploymentsArnParameters<Partition>,
+) {
   return new DeploymentsArn<Partition>(parameters)
 }
 
-export interface ExportedApiArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ExportedApiArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly apiId: string
   readonly specification: string
 }
-class ExportedApiArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ExportedAPI', `arn:${string}:apigateway:${string}::/apis/${string}/exports/${string}`> {
+class ExportedApiArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'ExportedAPI',
+  `arn:${string}:apigateway:${string}::/apis/${string}/exports/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ExportedAPI' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -311,17 +405,26 @@ class ExportedApiArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ExportedApiArn }
-export function exportedApiArn<Partition extends ArnPartition = 'aws'>(parameters: ExportedApiArnParameters<Partition>) {
+export function exportedApiArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ExportedApiArnParameters<Partition>,
+) {
   return new ExportedApiArn<Partition>(parameters)
 }
 
-export interface IntegrationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface IntegrationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly apiId: string
   readonly integrationId: string
 }
-class IntegrationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Integration', `arn:${string}:apigateway:${string}::/apis/${string}/integrations/${string}`> {
+class IntegrationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'Integration',
+  `arn:${string}:apigateway:${string}::/apis/${string}/integrations/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Integration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -339,16 +442,25 @@ class IntegrationArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { IntegrationArn }
-export function integrationArn<Partition extends ArnPartition = 'aws'>(parameters: IntegrationArnParameters<Partition>) {
+export function integrationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IntegrationArnParameters<Partition>,
+) {
   return new IntegrationArn<Partition>(parameters)
 }
 
-export interface IntegrationsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface IntegrationsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly apiId: string
 }
-class IntegrationsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Integrations', `arn:${string}:apigateway:${string}::/apis/${string}/integrations`> {
+class IntegrationsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'Integrations',
+  `arn:${string}:apigateway:${string}::/apis/${string}/integrations`
+> {
   readonly [ArnResourceTypeBrand] = 'Integrations' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -364,18 +476,27 @@ class IntegrationsArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { IntegrationsArn }
-export function integrationsArn<Partition extends ArnPartition = 'aws'>(parameters: IntegrationsArnParameters<Partition>) {
+export function integrationsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IntegrationsArnParameters<Partition>,
+) {
   return new IntegrationsArn<Partition>(parameters)
 }
 
-export interface IntegrationResponseArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface IntegrationResponseArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly apiId: string
   readonly integrationId: string
   readonly integrationResponseId: string
 }
-class IntegrationResponseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'IntegrationResponse', `arn:${string}:apigateway:${string}::/apis/${string}/integrations/${string}/integrationresponses/${string}`> {
+class IntegrationResponseArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'IntegrationResponse',
+  `arn:${string}:apigateway:${string}::/apis/${string}/integrations/${string}/integrationresponses/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'IntegrationResponse' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -395,17 +516,26 @@ class IntegrationResponseArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { IntegrationResponseArn }
-export function integrationResponseArn<Partition extends ArnPartition = 'aws'>(parameters: IntegrationResponseArnParameters<Partition>) {
+export function integrationResponseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IntegrationResponseArnParameters<Partition>,
+) {
   return new IntegrationResponseArn<Partition>(parameters)
 }
 
-export interface IntegrationResponsesArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface IntegrationResponsesArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly apiId: string
   readonly integrationId: string
 }
-class IntegrationResponsesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'IntegrationResponses', `arn:${string}:apigateway:${string}::/apis/${string}/integrations/${string}/integrationresponses`> {
+class IntegrationResponsesArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'IntegrationResponses',
+  `arn:${string}:apigateway:${string}::/apis/${string}/integrations/${string}/integrationresponses`
+> {
   readonly [ArnResourceTypeBrand] = 'IntegrationResponses' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -423,7 +553,9 @@ class IntegrationResponsesArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { IntegrationResponsesArn }
-export function integrationResponsesArn<Partition extends ArnPartition = 'aws'>(parameters: IntegrationResponsesArnParameters<Partition>) {
+export function integrationResponsesArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IntegrationResponsesArnParameters<Partition>,
+) {
   return new IntegrationResponsesArn<Partition>(parameters)
 }
 
@@ -433,7 +565,10 @@ export interface ModelArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly apiId: string
   readonly modelId: string
 }
-class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Model', `arn:${string}:apigateway:${string}::/apis/${string}/models/${string}`> {
+class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Model',
+  `arn:${string}:apigateway:${string}::/apis/${string}/models/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Model' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -451,7 +586,9 @@ class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Mode
   }
 }
 export type { ModelArn }
-export function modelArn<Partition extends ArnPartition = 'aws'>(parameters: ModelArnParameters<Partition>) {
+export function modelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelArnParameters<Partition>,
+) {
   return new ModelArn<Partition>(parameters)
 }
 
@@ -460,7 +597,10 @@ export interface ModelsArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly region: ArnRegion<Partition>
   readonly apiId: string
 }
-class ModelsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Models', `arn:${string}:apigateway:${string}::/apis/${string}/models`> {
+class ModelsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Models',
+  `arn:${string}:apigateway:${string}::/apis/${string}/models`
+> {
   readonly [ArnResourceTypeBrand] = 'Models' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -476,17 +616,26 @@ class ModelsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Mod
   }
 }
 export type { ModelsArn }
-export function modelsArn<Partition extends ArnPartition = 'aws'>(parameters: ModelsArnParameters<Partition>) {
+export function modelsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelsArnParameters<Partition>,
+) {
   return new ModelsArn<Partition>(parameters)
 }
 
-export interface ModelTemplateArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ModelTemplateArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly apiId: string
   readonly modelId: string
 }
-class ModelTemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ModelTemplate', `arn:${string}:apigateway:${string}::/apis/${string}/models/${string}/template`> {
+class ModelTemplateArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'ModelTemplate',
+  `arn:${string}:apigateway:${string}::/apis/${string}/models/${string}/template`
+> {
   readonly [ArnResourceTypeBrand] = 'ModelTemplate' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -504,7 +653,9 @@ class ModelTemplateArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { ModelTemplateArn }
-export function modelTemplateArn<Partition extends ArnPartition = 'aws'>(parameters: ModelTemplateArnParameters<Partition>) {
+export function modelTemplateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelTemplateArnParameters<Partition>,
+) {
   return new ModelTemplateArn<Partition>(parameters)
 }
 
@@ -514,7 +665,10 @@ export interface RouteArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly apiId: string
   readonly routeId: string
 }
-class RouteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Route', `arn:${string}:apigateway:${string}::/apis/${string}/routes/${string}`> {
+class RouteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Route',
+  `arn:${string}:apigateway:${string}::/apis/${string}/routes/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Route' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -532,7 +686,9 @@ class RouteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Rout
   }
 }
 export type { RouteArn }
-export function routeArn<Partition extends ArnPartition = 'aws'>(parameters: RouteArnParameters<Partition>) {
+export function routeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RouteArnParameters<Partition>,
+) {
   return new RouteArn<Partition>(parameters)
 }
 
@@ -541,7 +697,10 @@ export interface RoutesArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly region: ArnRegion<Partition>
   readonly apiId: string
 }
-class RoutesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Routes', `arn:${string}:apigateway:${string}::/apis/${string}/routes`> {
+class RoutesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Routes',
+  `arn:${string}:apigateway:${string}::/apis/${string}/routes`
+> {
   readonly [ArnResourceTypeBrand] = 'Routes' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -557,18 +716,27 @@ class RoutesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Rou
   }
 }
 export type { RoutesArn }
-export function routesArn<Partition extends ArnPartition = 'aws'>(parameters: RoutesArnParameters<Partition>) {
+export function routesArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RoutesArnParameters<Partition>,
+) {
   return new RoutesArn<Partition>(parameters)
 }
 
-export interface RouteResponseArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RouteResponseArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly apiId: string
   readonly routeId: string
   readonly routeResponseId: string
 }
-class RouteResponseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'RouteResponse', `arn:${string}:apigateway:${string}::/apis/${string}/routes/${string}/routeresponses/${string}`> {
+class RouteResponseArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'RouteResponse',
+  `arn:${string}:apigateway:${string}::/apis/${string}/routes/${string}/routeresponses/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'RouteResponse' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -588,17 +756,26 @@ class RouteResponseArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { RouteResponseArn }
-export function routeResponseArn<Partition extends ArnPartition = 'aws'>(parameters: RouteResponseArnParameters<Partition>) {
+export function routeResponseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RouteResponseArnParameters<Partition>,
+) {
   return new RouteResponseArn<Partition>(parameters)
 }
 
-export interface RouteResponsesArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RouteResponsesArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly apiId: string
   readonly routeId: string
 }
-class RouteResponsesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'RouteResponses', `arn:${string}:apigateway:${string}::/apis/${string}/routes/${string}/routeresponses`> {
+class RouteResponsesArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'RouteResponses',
+  `arn:${string}:apigateway:${string}::/apis/${string}/routes/${string}/routeresponses`
+> {
   readonly [ArnResourceTypeBrand] = 'RouteResponses' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -616,18 +793,27 @@ class RouteResponsesArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { RouteResponsesArn }
-export function routeResponsesArn<Partition extends ArnPartition = 'aws'>(parameters: RouteResponsesArnParameters<Partition>) {
+export function routeResponsesArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RouteResponsesArnParameters<Partition>,
+) {
   return new RouteResponsesArn<Partition>(parameters)
 }
 
-export interface RouteRequestParameterArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RouteRequestParameterArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly apiId: string
   readonly routeId: string
   readonly requestParameterKey: string
 }
-class RouteRequestParameterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'RouteRequestParameter', `arn:${string}:apigateway:${string}::/apis/${string}/routes/${string}/requestparameters/${string}`> {
+class RouteRequestParameterArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'RouteRequestParameter',
+  `arn:${string}:apigateway:${string}::/apis/${string}/routes/${string}/requestparameters/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'RouteRequestParameter' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -647,18 +833,27 @@ class RouteRequestParameterArn<Partition extends ArnPartition = 'aws'> extends I
   }
 }
 export type { RouteRequestParameterArn }
-export function routeRequestParameterArn<Partition extends ArnPartition = 'aws'>(parameters: RouteRequestParameterArnParameters<Partition>) {
+export function routeRequestParameterArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: RouteRequestParameterArnParameters<Partition>) {
   return new RouteRequestParameterArn<Partition>(parameters)
 }
 
-export interface RouteSettingsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RouteSettingsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly apiId: string
   readonly stageName: string
   readonly routeKey: string
 }
-class RouteSettingsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'RouteSettings', `arn:${string}:apigateway:${string}::/apis/${string}/stages/${string}/routesettings/${string}`> {
+class RouteSettingsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'RouteSettings',
+  `arn:${string}:apigateway:${string}::/apis/${string}/stages/${string}/routesettings/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'RouteSettings' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -678,7 +873,9 @@ class RouteSettingsArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { RouteSettingsArn }
-export function routeSettingsArn<Partition extends ArnPartition = 'aws'>(parameters: RouteSettingsArnParameters<Partition>) {
+export function routeSettingsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RouteSettingsArnParameters<Partition>,
+) {
   return new RouteSettingsArn<Partition>(parameters)
 }
 
@@ -688,7 +885,10 @@ export interface StageArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly apiId: string
   readonly stageName: string
 }
-class StageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Stage', `arn:${string}:apigateway:${string}::/apis/${string}/stages/${string}`> {
+class StageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Stage',
+  `arn:${string}:apigateway:${string}::/apis/${string}/stages/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Stage' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -706,7 +906,9 @@ class StageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Stag
   }
 }
 export type { StageArn }
-export function stageArn<Partition extends ArnPartition = 'aws'>(parameters: StageArnParameters<Partition>) {
+export function stageArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StageArnParameters<Partition>,
+) {
   return new StageArn<Partition>(parameters)
 }
 
@@ -715,7 +917,10 @@ export interface StagesArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly region: ArnRegion<Partition>
   readonly apiId: string
 }
-class StagesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Stages', `arn:${string}:apigateway:${string}::/apis/${string}/stages`> {
+class StagesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Stages',
+  `arn:${string}:apigateway:${string}::/apis/${string}/stages`
+> {
   readonly [ArnResourceTypeBrand] = 'Stages' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -731,7 +936,9 @@ class StagesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Sta
   }
 }
 export type { StagesArn }
-export function stagesArn<Partition extends ArnPartition = 'aws'>(parameters: StagesArnParameters<Partition>) {
+export function stagesArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StagesArnParameters<Partition>,
+) {
   return new StagesArn<Partition>(parameters)
 }
 
@@ -740,7 +947,10 @@ export interface VpcLinkArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly region: ArnRegion<Partition>
   readonly vpcLinkId: string
 }
-class VpcLinkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'VpcLink', `arn:${string}:apigateway:${string}::/vpclinks/${string}`> {
+class VpcLinkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'VpcLink',
+  `arn:${string}:apigateway:${string}::/vpclinks/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'VpcLink' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -756,7 +966,9 @@ class VpcLinkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Vp
   }
 }
 export type { VpcLinkArn }
-export function vpcLinkArn<Partition extends ArnPartition = 'aws'>(parameters: VpcLinkArnParameters<Partition>) {
+export function vpcLinkArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VpcLinkArnParameters<Partition>,
+) {
   return new VpcLinkArn<Partition>(parameters)
 }
 
@@ -764,7 +976,10 @@ export interface VpcLinksArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
 }
-class VpcLinksArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'VpcLinks', `arn:${string}:apigateway:${string}::/vpclinks`> {
+class VpcLinksArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'VpcLinks',
+  `arn:${string}:apigateway:${string}::/vpclinks`
+> {
   readonly [ArnResourceTypeBrand] = 'VpcLinks' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -778,7 +993,9 @@ class VpcLinksArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'V
   }
 }
 export type { VpcLinksArn }
-export function vpcLinksArn<Partition extends ArnPartition = 'aws'>(parameters: VpcLinksArnParameters<Partition>) {
+export function vpcLinksArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VpcLinksArnParameters<Partition>,
+) {
   return new VpcLinksArn<Partition>(parameters)
 }
 
@@ -786,7 +1003,10 @@ export interface AccountArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
 }
-class AccountArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Account', `arn:${string}:apigateway:${string}::/account`> {
+class AccountArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Account',
+  `arn:${string}:apigateway:${string}::/account`
+> {
   readonly [ArnResourceTypeBrand] = 'Account' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -800,7 +1020,9 @@ class AccountArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Ac
   }
 }
 export type { AccountArn }
-export function accountArn<Partition extends ArnPartition = 'aws'>(parameters: AccountArnParameters<Partition>) {
+export function accountArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AccountArnParameters<Partition>,
+) {
   return new AccountArn<Partition>(parameters)
 }
 
@@ -809,7 +1031,10 @@ export interface ApiKeyArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly region: ArnRegion<Partition>
   readonly apiKeyId: string
 }
-class ApiKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ApiKey', `arn:${string}:apigateway:${string}::/apikeys/${string}`> {
+class ApiKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'ApiKey',
+  `arn:${string}:apigateway:${string}::/apikeys/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ApiKey' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -825,7 +1050,9 @@ class ApiKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Api
   }
 }
 export type { ApiKeyArn }
-export function apiKeyArn<Partition extends ArnPartition = 'aws'>(parameters: ApiKeyArnParameters<Partition>) {
+export function apiKeyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApiKeyArnParameters<Partition>,
+) {
   return new ApiKeyArn<Partition>(parameters)
 }
 
@@ -833,7 +1060,10 @@ export interface ApiKeysArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
 }
-class ApiKeysArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ApiKeys', `arn:${string}:apigateway:${string}::/apikeys`> {
+class ApiKeysArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'ApiKeys',
+  `arn:${string}:apigateway:${string}::/apikeys`
+> {
   readonly [ArnResourceTypeBrand] = 'ApiKeys' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -847,17 +1077,26 @@ class ApiKeysArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Ap
   }
 }
 export type { ApiKeysArn }
-export function apiKeysArn<Partition extends ArnPartition = 'aws'>(parameters: ApiKeysArnParameters<Partition>) {
+export function apiKeysArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApiKeysArnParameters<Partition>,
+) {
   return new ApiKeysArn<Partition>(parameters)
 }
 
-export interface BasePathMappingArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface BasePathMappingArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly domainName: string
   readonly basePath: string
 }
-class BasePathMappingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'BasePathMapping', `arn:${string}:apigateway:${string}::/domainnames/${string}/basepathmappings/${string}`> {
+class BasePathMappingArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'BasePathMapping',
+  `arn:${string}:apigateway:${string}::/domainnames/${string}/basepathmappings/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'BasePathMapping' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -875,16 +1114,25 @@ class BasePathMappingArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { BasePathMappingArn }
-export function basePathMappingArn<Partition extends ArnPartition = 'aws'>(parameters: BasePathMappingArnParameters<Partition>) {
+export function basePathMappingArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BasePathMappingArnParameters<Partition>,
+) {
   return new BasePathMappingArn<Partition>(parameters)
 }
 
-export interface BasePathMappingsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface BasePathMappingsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly domainName: string
 }
-class BasePathMappingsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'BasePathMappings', `arn:${string}:apigateway:${string}::/domainnames/${string}/basepathmappings`> {
+class BasePathMappingsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'BasePathMappings',
+  `arn:${string}:apigateway:${string}::/domainnames/${string}/basepathmappings`
+> {
   readonly [ArnResourceTypeBrand] = 'BasePathMappings' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -900,16 +1148,25 @@ class BasePathMappingsArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { BasePathMappingsArn }
-export function basePathMappingsArn<Partition extends ArnPartition = 'aws'>(parameters: BasePathMappingsArnParameters<Partition>) {
+export function basePathMappingsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BasePathMappingsArnParameters<Partition>,
+) {
   return new BasePathMappingsArn<Partition>(parameters)
 }
 
-export interface ClientCertificateArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ClientCertificateArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly clientCertificateId: string
 }
-class ClientCertificateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ClientCertificate', `arn:${string}:apigateway:${string}::/clientcertificates/${string}`> {
+class ClientCertificateArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'ClientCertificate',
+  `arn:${string}:apigateway:${string}::/clientcertificates/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ClientCertificate' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -925,15 +1182,24 @@ class ClientCertificateArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { ClientCertificateArn }
-export function clientCertificateArn<Partition extends ArnPartition = 'aws'>(parameters: ClientCertificateArnParameters<Partition>) {
+export function clientCertificateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ClientCertificateArnParameters<Partition>,
+) {
   return new ClientCertificateArn<Partition>(parameters)
 }
 
-export interface ClientCertificatesArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ClientCertificatesArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
 }
-class ClientCertificatesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ClientCertificates', `arn:${string}:apigateway:${string}::/clientcertificates`> {
+class ClientCertificatesArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'ClientCertificates',
+  `arn:${string}:apigateway:${string}::/clientcertificates`
+> {
   readonly [ArnResourceTypeBrand] = 'ClientCertificates' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -947,17 +1213,26 @@ class ClientCertificatesArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { ClientCertificatesArn }
-export function clientCertificatesArn<Partition extends ArnPartition = 'aws'>(parameters: ClientCertificatesArnParameters<Partition>) {
+export function clientCertificatesArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ClientCertificatesArnParameters<Partition>,
+) {
   return new ClientCertificatesArn<Partition>(parameters)
 }
 
-export interface DocumentationPartArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DocumentationPartArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly restApiId: string
   readonly documentationPartId: string
 }
-class DocumentationPartArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'DocumentationPart', `arn:${string}:apigateway:${string}::/restapis/${string}/documentation/parts/${string}`> {
+class DocumentationPartArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'DocumentationPart',
+  `arn:${string}:apigateway:${string}::/restapis/${string}/documentation/parts/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'DocumentationPart' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -975,16 +1250,25 @@ class DocumentationPartArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { DocumentationPartArn }
-export function documentationPartArn<Partition extends ArnPartition = 'aws'>(parameters: DocumentationPartArnParameters<Partition>) {
+export function documentationPartArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DocumentationPartArnParameters<Partition>,
+) {
   return new DocumentationPartArn<Partition>(parameters)
 }
 
-export interface DocumentationPartsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DocumentationPartsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly restApiId: string
 }
-class DocumentationPartsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'DocumentationParts', `arn:${string}:apigateway:${string}::/restapis/${string}/documentation/parts`> {
+class DocumentationPartsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'DocumentationParts',
+  `arn:${string}:apigateway:${string}::/restapis/${string}/documentation/parts`
+> {
   readonly [ArnResourceTypeBrand] = 'DocumentationParts' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1000,17 +1284,26 @@ class DocumentationPartsArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { DocumentationPartsArn }
-export function documentationPartsArn<Partition extends ArnPartition = 'aws'>(parameters: DocumentationPartsArnParameters<Partition>) {
+export function documentationPartsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DocumentationPartsArnParameters<Partition>,
+) {
   return new DocumentationPartsArn<Partition>(parameters)
 }
 
-export interface DocumentationVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DocumentationVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly restApiId: string
   readonly documentationVersionId: string
 }
-class DocumentationVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'DocumentationVersion', `arn:${string}:apigateway:${string}::/restapis/${string}/documentation/versions/${string}`> {
+class DocumentationVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'DocumentationVersion',
+  `arn:${string}:apigateway:${string}::/restapis/${string}/documentation/versions/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'DocumentationVersion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1028,16 +1321,25 @@ class DocumentationVersionArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { DocumentationVersionArn }
-export function documentationVersionArn<Partition extends ArnPartition = 'aws'>(parameters: DocumentationVersionArnParameters<Partition>) {
+export function documentationVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DocumentationVersionArnParameters<Partition>,
+) {
   return new DocumentationVersionArn<Partition>(parameters)
 }
 
-export interface DocumentationVersionsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DocumentationVersionsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly restApiId: string
 }
-class DocumentationVersionsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'DocumentationVersions', `arn:${string}:apigateway:${string}::/restapis/${string}/documentation/versions`> {
+class DocumentationVersionsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'DocumentationVersions',
+  `arn:${string}:apigateway:${string}::/restapis/${string}/documentation/versions`
+> {
   readonly [ArnResourceTypeBrand] = 'DocumentationVersions' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1053,16 +1355,23 @@ class DocumentationVersionsArn<Partition extends ArnPartition = 'aws'> extends I
   }
 }
 export type { DocumentationVersionsArn }
-export function documentationVersionsArn<Partition extends ArnPartition = 'aws'>(parameters: DocumentationVersionsArnParameters<Partition>) {
+export function documentationVersionsArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: DocumentationVersionsArnParameters<Partition>) {
   return new DocumentationVersionsArn<Partition>(parameters)
 }
 
-export interface DomainNameArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DomainNameArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly domainName: string
 }
-class DomainNameArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'DomainName', `arn:${string}:apigateway:${string}::/domainnames/${string}`> {
+class DomainNameArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'DomainName',
+  `arn:${string}:apigateway:${string}::/domainnames/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'DomainName' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1078,15 +1387,24 @@ class DomainNameArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { DomainNameArn }
-export function domainNameArn<Partition extends ArnPartition = 'aws'>(parameters: DomainNameArnParameters<Partition>) {
+export function domainNameArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DomainNameArnParameters<Partition>,
+) {
   return new DomainNameArn<Partition>(parameters)
 }
 
-export interface DomainNamesArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DomainNamesArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
 }
-class DomainNamesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'DomainNames', `arn:${string}:apigateway:${string}::/domainnames`> {
+class DomainNamesArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'DomainNames',
+  `arn:${string}:apigateway:${string}::/domainnames`
+> {
   readonly [ArnResourceTypeBrand] = 'DomainNames' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1100,17 +1418,26 @@ class DomainNamesArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { DomainNamesArn }
-export function domainNamesArn<Partition extends ArnPartition = 'aws'>(parameters: DomainNamesArnParameters<Partition>) {
+export function domainNamesArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DomainNamesArnParameters<Partition>,
+) {
   return new DomainNamesArn<Partition>(parameters)
 }
 
-export interface GatewayResponseArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface GatewayResponseArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly restApiId: string
   readonly responseType: string
 }
-class GatewayResponseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'GatewayResponse', `arn:${string}:apigateway:${string}::/restapis/${string}/gatewayresponses/${string}`> {
+class GatewayResponseArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'GatewayResponse',
+  `arn:${string}:apigateway:${string}::/restapis/${string}/gatewayresponses/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'GatewayResponse' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1128,16 +1455,25 @@ class GatewayResponseArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { GatewayResponseArn }
-export function gatewayResponseArn<Partition extends ArnPartition = 'aws'>(parameters: GatewayResponseArnParameters<Partition>) {
+export function gatewayResponseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GatewayResponseArnParameters<Partition>,
+) {
   return new GatewayResponseArn<Partition>(parameters)
 }
 
-export interface GatewayResponsesArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface GatewayResponsesArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly restApiId: string
 }
-class GatewayResponsesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'GatewayResponses', `arn:${string}:apigateway:${string}::/restapis/${string}/gatewayresponses`> {
+class GatewayResponsesArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'GatewayResponses',
+  `arn:${string}:apigateway:${string}::/restapis/${string}/gatewayresponses`
+> {
   readonly [ArnResourceTypeBrand] = 'GatewayResponses' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1153,7 +1489,9 @@ class GatewayResponsesArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { GatewayResponsesArn }
-export function gatewayResponsesArn<Partition extends ArnPartition = 'aws'>(parameters: GatewayResponsesArnParameters<Partition>) {
+export function gatewayResponsesArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GatewayResponsesArnParameters<Partition>,
+) {
   return new GatewayResponsesArn<Partition>(parameters)
 }
 
@@ -1164,7 +1502,10 @@ export interface MethodArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly resourceId: string
   readonly httpMethodType: string
 }
-class MethodArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Method', `arn:${string}:apigateway:${string}::/restapis/${string}/resources/${string}/methods/${string}`> {
+class MethodArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Method',
+  `arn:${string}:apigateway:${string}::/restapis/${string}/resources/${string}/methods/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Method' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1184,11 +1525,15 @@ class MethodArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Met
   }
 }
 export type { MethodArn }
-export function methodArn<Partition extends ArnPartition = 'aws'>(parameters: MethodArnParameters<Partition>) {
+export function methodArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MethodArnParameters<Partition>,
+) {
   return new MethodArn<Partition>(parameters)
 }
 
-export interface MethodResponseArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MethodResponseArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly restApiId: string
@@ -1196,7 +1541,12 @@ export interface MethodResponseArnParameters<Partition extends ArnPartition = 'a
   readonly httpMethodType: string
   readonly statusCode: string
 }
-class MethodResponseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'MethodResponse', `arn:${string}:apigateway:${string}::/restapis/${string}/resources/${string}/methods/${string}/responses/${string}`> {
+class MethodResponseArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'MethodResponse',
+  `arn:${string}:apigateway:${string}::/restapis/${string}/resources/${string}/methods/${string}/responses/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'MethodResponse' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1218,17 +1568,26 @@ class MethodResponseArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { MethodResponseArn }
-export function methodResponseArn<Partition extends ArnPartition = 'aws'>(parameters: MethodResponseArnParameters<Partition>) {
+export function methodResponseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MethodResponseArnParameters<Partition>,
+) {
   return new MethodResponseArn<Partition>(parameters)
 }
 
-export interface RequestValidatorArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RequestValidatorArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly restApiId: string
   readonly requestValidatorId: string
 }
-class RequestValidatorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'RequestValidator', `arn:${string}:apigateway:${string}::/restapis/${string}/requestvalidators/${string}`> {
+class RequestValidatorArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'RequestValidator',
+  `arn:${string}:apigateway:${string}::/restapis/${string}/requestvalidators/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'RequestValidator' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1246,16 +1605,25 @@ class RequestValidatorArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { RequestValidatorArn }
-export function requestValidatorArn<Partition extends ArnPartition = 'aws'>(parameters: RequestValidatorArnParameters<Partition>) {
+export function requestValidatorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RequestValidatorArnParameters<Partition>,
+) {
   return new RequestValidatorArn<Partition>(parameters)
 }
 
-export interface RequestValidatorsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RequestValidatorsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly restApiId: string
 }
-class RequestValidatorsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'RequestValidators', `arn:${string}:apigateway:${string}::/restapis/${string}/requestvalidators`> {
+class RequestValidatorsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'RequestValidators',
+  `arn:${string}:apigateway:${string}::/restapis/${string}/requestvalidators`
+> {
   readonly [ArnResourceTypeBrand] = 'RequestValidators' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1271,7 +1639,9 @@ class RequestValidatorsArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { RequestValidatorsArn }
-export function requestValidatorsArn<Partition extends ArnPartition = 'aws'>(parameters: RequestValidatorsArnParameters<Partition>) {
+export function requestValidatorsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RequestValidatorsArnParameters<Partition>,
+) {
   return new RequestValidatorsArn<Partition>(parameters)
 }
 
@@ -1281,7 +1651,10 @@ export interface ResourceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly restApiId: string
   readonly resourceId: string
 }
-class ResourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Resource', `arn:${string}:apigateway:${string}::/restapis/${string}/resources/${string}`> {
+class ResourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Resource',
+  `arn:${string}:apigateway:${string}::/restapis/${string}/resources/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Resource' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1299,16 +1672,23 @@ class ResourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'R
   }
 }
 export type { ResourceArn }
-export function resourceArn<Partition extends ArnPartition = 'aws'>(parameters: ResourceArnParameters<Partition>) {
+export function resourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResourceArnParameters<Partition>,
+) {
   return new ResourceArn<Partition>(parameters)
 }
 
-export interface ResourcesArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ResourcesArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly restApiId: string
 }
-class ResourcesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Resources', `arn:${string}:apigateway:${string}::/restapis/${string}/resources`> {
+class ResourcesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Resources',
+  `arn:${string}:apigateway:${string}::/restapis/${string}/resources`
+> {
   readonly [ArnResourceTypeBrand] = 'Resources' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1324,7 +1704,9 @@ class ResourcesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { ResourcesArn }
-export function resourcesArn<Partition extends ArnPartition = 'aws'>(parameters: ResourcesArnParameters<Partition>) {
+export function resourcesArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResourcesArnParameters<Partition>,
+) {
   return new ResourcesArn<Partition>(parameters)
 }
 
@@ -1333,7 +1715,10 @@ export interface RestApiArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly region: ArnRegion<Partition>
   readonly restApiId: string
 }
-class RestApiArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'RestApi', `arn:${string}:apigateway:${string}::/restapis/${string}`> {
+class RestApiArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'RestApi',
+  `arn:${string}:apigateway:${string}::/restapis/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'RestApi' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1349,7 +1734,9 @@ class RestApiArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Re
   }
 }
 export type { RestApiArn }
-export function restApiArn<Partition extends ArnPartition = 'aws'>(parameters: RestApiArnParameters<Partition>) {
+export function restApiArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RestApiArnParameters<Partition>,
+) {
   return new RestApiArn<Partition>(parameters)
 }
 
@@ -1357,7 +1744,10 @@ export interface RestApisArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
 }
-class RestApisArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'RestApis', `arn:${string}:apigateway:${string}::/restapis`> {
+class RestApisArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'RestApis',
+  `arn:${string}:apigateway:${string}::/restapis`
+> {
   readonly [ArnResourceTypeBrand] = 'RestApis' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1371,7 +1761,9 @@ class RestApisArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'R
   }
 }
 export type { RestApisArn }
-export function restApisArn<Partition extends ArnPartition = 'aws'>(parameters: RestApisArnParameters<Partition>) {
+export function restApisArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RestApisArnParameters<Partition>,
+) {
   return new RestApisArn<Partition>(parameters)
 }
 
@@ -1382,7 +1774,10 @@ export interface SdkArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly stageName: string
   readonly sdkType: string
 }
-class SdkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Sdk', `arn:${string}:apigateway:${string}::/restapis/${string}/stages/${string}/sdks/${string}`> {
+class SdkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Sdk',
+  `arn:${string}:apigateway:${string}::/restapis/${string}/stages/${string}/sdks/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Sdk' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1402,7 +1797,9 @@ class SdkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Sdk', 
   }
 }
 export type { SdkArn }
-export function sdkArn<Partition extends ArnPartition = 'aws'>(parameters: SdkArnParameters<Partition>) {
+export function sdkArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SdkArnParameters<Partition>,
+) {
   return new SdkArn<Partition>(parameters)
 }
 
@@ -1411,7 +1808,10 @@ export interface TemplateArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly region: ArnRegion<Partition>
   readonly modelName: string
 }
-class TemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Template', `arn:${string}:apigateway:${string}::/restapis/models/${string}/template`> {
+class TemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Template',
+  `arn:${string}:apigateway:${string}::/restapis/models/${string}/template`
+> {
   readonly [ArnResourceTypeBrand] = 'Template' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1427,16 +1827,23 @@ class TemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'T
   }
 }
 export type { TemplateArn }
-export function templateArn<Partition extends ArnPartition = 'aws'>(parameters: TemplateArnParameters<Partition>) {
+export function templateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TemplateArnParameters<Partition>,
+) {
   return new TemplateArn<Partition>(parameters)
 }
 
-export interface UsagePlanArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface UsagePlanArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly usagePlanId: string
 }
-class UsagePlanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'UsagePlan', `arn:${string}:apigateway:${string}::/usageplans/${string}`> {
+class UsagePlanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'UsagePlan',
+  `arn:${string}:apigateway:${string}::/usageplans/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'UsagePlan' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1452,15 +1859,22 @@ class UsagePlanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { UsagePlanArn }
-export function usagePlanArn<Partition extends ArnPartition = 'aws'>(parameters: UsagePlanArnParameters<Partition>) {
+export function usagePlanArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UsagePlanArnParameters<Partition>,
+) {
   return new UsagePlanArn<Partition>(parameters)
 }
 
-export interface UsagePlansArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface UsagePlansArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
 }
-class UsagePlansArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'UsagePlans', `arn:${string}:apigateway:${string}::/usageplans`> {
+class UsagePlansArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'UsagePlans',
+  `arn:${string}:apigateway:${string}::/usageplans`
+> {
   readonly [ArnResourceTypeBrand] = 'UsagePlans' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1474,17 +1888,26 @@ class UsagePlansArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { UsagePlansArn }
-export function usagePlansArn<Partition extends ArnPartition = 'aws'>(parameters: UsagePlansArnParameters<Partition>) {
+export function usagePlansArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UsagePlansArnParameters<Partition>,
+) {
   return new UsagePlansArn<Partition>(parameters)
 }
 
-export interface UsagePlanKeyArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface UsagePlanKeyArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly usagePlanId: string
   readonly id: string
 }
-class UsagePlanKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'UsagePlanKey', `arn:${string}:apigateway:${string}::/usageplans/${string}/keys/${string}`> {
+class UsagePlanKeyArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'UsagePlanKey',
+  `arn:${string}:apigateway:${string}::/usageplans/${string}/keys/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'UsagePlanKey' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1502,16 +1925,25 @@ class UsagePlanKeyArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { UsagePlanKeyArn }
-export function usagePlanKeyArn<Partition extends ArnPartition = 'aws'>(parameters: UsagePlanKeyArnParameters<Partition>) {
+export function usagePlanKeyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UsagePlanKeyArnParameters<Partition>,
+) {
   return new UsagePlanKeyArn<Partition>(parameters)
 }
 
-export interface UsagePlanKeysArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface UsagePlanKeysArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly usagePlanId: string
 }
-class UsagePlanKeysArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'UsagePlanKeys', `arn:${string}:apigateway:${string}::/usageplans/${string}/keys`> {
+class UsagePlanKeysArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'UsagePlanKeys',
+  `arn:${string}:apigateway:${string}::/usageplans/${string}/keys`
+> {
   readonly [ArnResourceTypeBrand] = 'UsagePlanKeys' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1527,7 +1959,9 @@ class UsagePlanKeysArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { UsagePlanKeysArn }
-export function usagePlanKeysArn<Partition extends ArnPartition = 'aws'>(parameters: UsagePlanKeysArnParameters<Partition>) {
+export function usagePlanKeysArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UsagePlanKeysArnParameters<Partition>,
+) {
   return new UsagePlanKeysArn<Partition>(parameters)
 }
 
@@ -1536,7 +1970,10 @@ export interface TagsArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly region: ArnRegion<Partition>
   readonly urlEncodedResourceArn: string
 }
-class TagsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Tags', `arn:${string}:apigateway:${string}::/tags/${string}`> {
+class TagsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Tags',
+  `arn:${string}:apigateway:${string}::/tags/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Tags' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -1552,6 +1989,8 @@ class TagsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Tags'
   }
 }
 export type { TagsArn }
-export function tagsArn<Partition extends ArnPartition = 'aws'>(parameters: TagsArnParameters<Partition>) {
+export function tagsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TagsArnParameters<Partition>,
+) {
   return new TagsArn<Partition>(parameters)
 }

@@ -1,12 +1,23 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface SimulationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SimulationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly simulationName: string
 }
-class SimulationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Simulation', `arn:${string}:simspaceweaver:${string}:${string}:simulation/${string}`> {
+class SimulationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Simulation',
+  `arn:${string}:simspaceweaver:${string}:${string}:simulation/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Simulation' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +35,8 @@ class SimulationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { SimulationArn }
-export function simulationArn<Partition extends ArnPartition = 'aws'>(parameters: SimulationArnParameters<Partition>) {
+export function simulationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SimulationArnParameters<Partition>,
+) {
   return new SimulationArn<Partition>(parameters)
 }

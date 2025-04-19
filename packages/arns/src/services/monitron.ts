@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'project', `arn:${string}:monitron:${string}:${string}:project/${string}`> {
+class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'project',
+  `arn:${string}:monitron:${string}:${string}:project/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'project' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +33,8 @@ class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pr
   }
 }
 export type { ProjectArn }
-export function projectArn<Partition extends ArnPartition = 'aws'>(parameters: ProjectArnParameters<Partition>) {
+export function projectArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProjectArnParameters<Partition>,
+) {
   return new ProjectArn<Partition>(parameters)
 }

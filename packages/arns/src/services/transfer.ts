@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface UserArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -7,7 +13,10 @@ export interface UserArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly serverId: string
   readonly userName: string
 }
-class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'user', `arn:${string}:transfer:${string}:${string}:user/${string}/${string}`> {
+class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'user',
+  `arn:${string}:transfer:${string}:${string}:user/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'user' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,7 +36,9 @@ class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'user'
   }
 }
 export type { UserArn }
-export function userArn<Partition extends ArnPartition = 'aws'>(parameters: UserArnParameters<Partition>) {
+export function userArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UserArnParameters<Partition>,
+) {
   return new UserArn<Partition>(parameters)
 }
 
@@ -37,7 +48,10 @@ export interface ServerArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly serverId: string
 }
-class ServerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'server', `arn:${string}:transfer:${string}:${string}:server/${string}`> {
+class ServerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'server',
+  `arn:${string}:transfer:${string}:${string}:server/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'server' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,7 +69,9 @@ class ServerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ser
   }
 }
 export type { ServerArn }
-export function serverArn<Partition extends ArnPartition = 'aws'>(parameters: ServerArnParameters<Partition>) {
+export function serverArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ServerArnParameters<Partition>,
+) {
   return new ServerArn<Partition>(parameters)
 }
 
@@ -65,7 +81,10 @@ export interface WorkflowArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly workflowId: string
 }
-class WorkflowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workflow', `arn:${string}:transfer:${string}:${string}:workflow/${string}`> {
+class WorkflowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'workflow',
+  `arn:${string}:transfer:${string}:${string}:workflow/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'workflow' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -83,17 +102,26 @@ class WorkflowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'w
   }
 }
 export type { WorkflowArn }
-export function workflowArn<Partition extends ArnPartition = 'aws'>(parameters: WorkflowArnParameters<Partition>) {
+export function workflowArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkflowArnParameters<Partition>,
+) {
   return new WorkflowArn<Partition>(parameters)
 }
 
-export interface CertificateArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CertificateArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly certificateId: string
 }
-class CertificateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'certificate', `arn:${string}:transfer:${string}:${string}:certificate/${string}`> {
+class CertificateArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'certificate',
+  `arn:${string}:transfer:${string}:${string}:certificate/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'certificate' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -111,17 +139,24 @@ class CertificateArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { CertificateArn }
-export function certificateArn<Partition extends ArnPartition = 'aws'>(parameters: CertificateArnParameters<Partition>) {
+export function certificateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CertificateArnParameters<Partition>,
+) {
   return new CertificateArn<Partition>(parameters)
 }
 
-export interface ConnectorArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConnectorArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly connectorId: string
 }
-class ConnectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'connector', `arn:${string}:transfer:${string}:${string}:connector/${string}`> {
+class ConnectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'connector',
+  `arn:${string}:transfer:${string}:${string}:connector/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'connector' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -139,7 +174,9 @@ class ConnectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { ConnectorArn }
-export function connectorArn<Partition extends ArnPartition = 'aws'>(parameters: ConnectorArnParameters<Partition>) {
+export function connectorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConnectorArnParameters<Partition>,
+) {
   return new ConnectorArn<Partition>(parameters)
 }
 
@@ -149,7 +186,10 @@ export interface ProfileArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly profileId: string
 }
-class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'profile', `arn:${string}:transfer:${string}:${string}:profile/${string}`> {
+class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'profile',
+  `arn:${string}:transfer:${string}:${string}:profile/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'profile' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -167,17 +207,24 @@ class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pr
   }
 }
 export type { ProfileArn }
-export function profileArn<Partition extends ArnPartition = 'aws'>(parameters: ProfileArnParameters<Partition>) {
+export function profileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProfileArnParameters<Partition>,
+) {
   return new ProfileArn<Partition>(parameters)
 }
 
-export interface AgreementArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AgreementArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly agreementId: string
 }
-class AgreementArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'agreement', `arn:${string}:transfer:${string}:${string}:agreement/${string}`> {
+class AgreementArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'agreement',
+  `arn:${string}:transfer:${string}:${string}:agreement/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'agreement' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -195,7 +242,9 @@ class AgreementArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { AgreementArn }
-export function agreementArn<Partition extends ArnPartition = 'aws'>(parameters: AgreementArnParameters<Partition>) {
+export function agreementArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AgreementArnParameters<Partition>,
+) {
   return new AgreementArn<Partition>(parameters)
 }
 
@@ -206,7 +255,10 @@ export interface HostKeyArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly serverId: string
   readonly hostKeyId: string
 }
-class HostKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'host-key', `arn:${string}:transfer:${string}:${string}:host-key/${string}/${string}`> {
+class HostKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'host-key',
+  `arn:${string}:transfer:${string}:${string}:host-key/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'host-key' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -226,6 +278,8 @@ class HostKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ho
   }
 }
 export type { HostKeyArn }
-export function hostKeyArn<Partition extends ArnPartition = 'aws'>(parameters: HostKeyArnParameters<Partition>) {
+export function hostKeyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: HostKeyArnParameters<Partition>,
+) {
   return new HostKeyArn<Partition>(parameters)
 }

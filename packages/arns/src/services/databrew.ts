@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Project', `arn:${string}:databrew:${string}:${string}:project/${string}`> {
+class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Project',
+  `arn:${string}:databrew:${string}:${string}:project/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Project' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Pr
   }
 }
 export type { ProjectArn }
-export function projectArn<Partition extends ArnPartition = 'aws'>(parameters: ProjectArnParameters<Partition>) {
+export function projectArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProjectArnParameters<Partition>,
+) {
   return new ProjectArn<Partition>(parameters)
 }
 
@@ -34,7 +45,10 @@ export interface DatasetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Dataset', `arn:${string}:databrew:${string}:${string}:dataset/${string}`> {
+class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Dataset',
+  `arn:${string}:databrew:${string}:${string}:dataset/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Dataset' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +66,9 @@ class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Da
   }
 }
 export type { DatasetArn }
-export function datasetArn<Partition extends ArnPartition = 'aws'>(parameters: DatasetArnParameters<Partition>) {
+export function datasetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DatasetArnParameters<Partition>,
+) {
   return new DatasetArn<Partition>(parameters)
 }
 
@@ -62,7 +78,10 @@ export interface RulesetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class RulesetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Ruleset', `arn:${string}:databrew:${string}:${string}:ruleset/${string}`> {
+class RulesetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Ruleset',
+  `arn:${string}:databrew:${string}:${string}:ruleset/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Ruleset' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,7 +99,9 @@ class RulesetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Ru
   }
 }
 export type { RulesetArn }
-export function rulesetArn<Partition extends ArnPartition = 'aws'>(parameters: RulesetArnParameters<Partition>) {
+export function rulesetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RulesetArnParameters<Partition>,
+) {
   return new RulesetArn<Partition>(parameters)
 }
 
@@ -90,7 +111,10 @@ export interface RecipeArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class RecipeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Recipe', `arn:${string}:databrew:${string}:${string}:recipe/${string}`> {
+class RecipeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Recipe',
+  `arn:${string}:databrew:${string}:${string}:recipe/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Recipe' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,7 +132,9 @@ class RecipeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Rec
   }
 }
 export type { RecipeArn }
-export function recipeArn<Partition extends ArnPartition = 'aws'>(parameters: RecipeArnParameters<Partition>) {
+export function recipeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RecipeArnParameters<Partition>,
+) {
   return new RecipeArn<Partition>(parameters)
 }
 
@@ -118,7 +144,10 @@ export interface JobArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Job', `arn:${string}:databrew:${string}:${string}:job/${string}`> {
+class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Job',
+  `arn:${string}:databrew:${string}:${string}:job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Job' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -136,7 +165,9 @@ class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Job', 
   }
 }
 export type { JobArn }
-export function jobArn<Partition extends ArnPartition = 'aws'>(parameters: JobArnParameters<Partition>) {
+export function jobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobArnParameters<Partition>,
+) {
   return new JobArn<Partition>(parameters)
 }
 
@@ -146,7 +177,10 @@ export interface ScheduleArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class ScheduleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Schedule', `arn:${string}:databrew:${string}:${string}:schedule/${string}`> {
+class ScheduleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Schedule',
+  `arn:${string}:databrew:${string}:${string}:schedule/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Schedule' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -164,6 +198,8 @@ class ScheduleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'S
   }
 }
 export type { ScheduleArn }
-export function scheduleArn<Partition extends ArnPartition = 'aws'>(parameters: ScheduleArnParameters<Partition>) {
+export function scheduleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ScheduleArnParameters<Partition>,
+) {
   return new ScheduleArn<Partition>(parameters)
 }

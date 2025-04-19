@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface BackupVaultArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface BackupVaultArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly backupVaultName: string
 }
-class BackupVaultArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'backupVault', `arn:${string}:backup:${string}:${string}:backup-vault:${string}`> {
+class BackupVaultArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'backupVault',
+  `arn:${string}:backup:${string}:${string}:backup-vault:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'backupVault' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +37,24 @@ class BackupVaultArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { BackupVaultArn }
-export function backupVaultArn<Partition extends ArnPartition = 'aws'>(parameters: BackupVaultArnParameters<Partition>) {
+export function backupVaultArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BackupVaultArnParameters<Partition>,
+) {
   return new BackupVaultArn<Partition>(parameters)
 }
 
-export interface BackupPlanArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface BackupPlanArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly backupPlanId: string
 }
-class BackupPlanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'backupPlan', `arn:${string}:backup:${string}:${string}:backup-plan:${string}`> {
+class BackupPlanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'backupPlan',
+  `arn:${string}:backup:${string}:${string}:backup-plan:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'backupPlan' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,18 +72,27 @@ class BackupPlanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { BackupPlanArn }
-export function backupPlanArn<Partition extends ArnPartition = 'aws'>(parameters: BackupPlanArnParameters<Partition>) {
+export function backupPlanArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BackupPlanArnParameters<Partition>,
+) {
   return new BackupPlanArn<Partition>(parameters)
 }
 
-export interface RecoveryPointArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RecoveryPointArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly vendor: string
   readonly region: ArnRegion<Partition>
   readonly resourceType: string
   readonly recoveryPointId: string
 }
-class RecoveryPointArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'recoveryPoint', `arn:${string}:${string}:${string}:*:${string}:${string}`> {
+class RecoveryPointArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'recoveryPoint',
+  `arn:${string}:${string}:${string}:*:${string}:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'recoveryPoint' as const
   readonly partition: Partition
   readonly vendor: string
@@ -83,18 +112,25 @@ class RecoveryPointArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { RecoveryPointArn }
-export function recoveryPointArn<Partition extends ArnPartition = 'aws'>(parameters: RecoveryPointArnParameters<Partition>) {
+export function recoveryPointArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RecoveryPointArnParameters<Partition>,
+) {
   return new RecoveryPointArn<Partition>(parameters)
 }
 
-export interface FrameworkArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FrameworkArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly frameworkName: string
   readonly frameworkId: string
 }
-class FrameworkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'framework', `arn:${string}:backup:${string}:${string}:framework:${string}-${string}`> {
+class FrameworkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'framework',
+  `arn:${string}:backup:${string}:${string}:framework:${string}-${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'framework' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -114,18 +150,25 @@ class FrameworkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { FrameworkArn }
-export function frameworkArn<Partition extends ArnPartition = 'aws'>(parameters: FrameworkArnParameters<Partition>) {
+export function frameworkArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FrameworkArnParameters<Partition>,
+) {
   return new FrameworkArn<Partition>(parameters)
 }
 
-export interface ReportPlanArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ReportPlanArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly reportPlanName: string
   readonly reportPlanId: string
 }
-class ReportPlanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'reportPlan', `arn:${string}:backup:${string}:${string}:report-plan:${string}-${string}`> {
+class ReportPlanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'reportPlan',
+  `arn:${string}:backup:${string}:${string}:report-plan:${string}-${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'reportPlan' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -145,17 +188,24 @@ class ReportPlanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { ReportPlanArn }
-export function reportPlanArn<Partition extends ArnPartition = 'aws'>(parameters: ReportPlanArnParameters<Partition>) {
+export function reportPlanArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ReportPlanArnParameters<Partition>,
+) {
   return new ReportPlanArn<Partition>(parameters)
 }
 
-export interface LegalHoldArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface LegalHoldArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly legalHoldId: string
 }
-class LegalHoldArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'legalHold', `arn:${string}:backup:${string}:${string}:legal-hold:${string}`> {
+class LegalHoldArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'legalHold',
+  `arn:${string}:backup:${string}:${string}:legal-hold:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'legalHold' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -173,18 +223,27 @@ class LegalHoldArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { LegalHoldArn }
-export function legalHoldArn<Partition extends ArnPartition = 'aws'>(parameters: LegalHoldArnParameters<Partition>) {
+export function legalHoldArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LegalHoldArnParameters<Partition>,
+) {
   return new LegalHoldArn<Partition>(parameters)
 }
 
-export interface RestoreTestingPlanArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RestoreTestingPlanArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly restoreTestingPlanName: string
   readonly restoreTestingPlanId: string
 }
-class RestoreTestingPlanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'restoreTestingPlan', `arn:${string}:backup:${string}:${string}:restore-testing-plan:${string}-${string}`> {
+class RestoreTestingPlanArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'restoreTestingPlan',
+  `arn:${string}:backup:${string}:${string}:restore-testing-plan:${string}-${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'restoreTestingPlan' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -204,6 +263,8 @@ class RestoreTestingPlanArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { RestoreTestingPlanArn }
-export function restoreTestingPlanArn<Partition extends ArnPartition = 'aws'>(parameters: RestoreTestingPlanArnParameters<Partition>) {
+export function restoreTestingPlanArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RestoreTestingPlanArnParameters<Partition>,
+) {
   return new RestoreTestingPlanArn<Partition>(parameters)
 }

@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ApplicationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ApplicationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly applicationId: string
 }
-class ApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'application', `arn:${string}:appconfig:${string}:${string}:application/${string}`> {
+class ApplicationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'application',
+  `arn:${string}:appconfig:${string}:${string}:application/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'application' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,18 +37,27 @@ class ApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ApplicationArn }
-export function applicationArn<Partition extends ArnPartition = 'aws'>(parameters: ApplicationArnParameters<Partition>) {
+export function applicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApplicationArnParameters<Partition>,
+) {
   return new ApplicationArn<Partition>(parameters)
 }
 
-export interface EnvironmentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface EnvironmentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly applicationId: string
   readonly environmentId: string
 }
-class EnvironmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'environment', `arn:${string}:appconfig:${string}:${string}:application/${string}/environment/${string}`> {
+class EnvironmentArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'environment',
+  `arn:${string}:appconfig:${string}:${string}:application/${string}/environment/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'environment' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,18 +77,27 @@ class EnvironmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { EnvironmentArn }
-export function environmentArn<Partition extends ArnPartition = 'aws'>(parameters: EnvironmentArnParameters<Partition>) {
+export function environmentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EnvironmentArnParameters<Partition>,
+) {
   return new EnvironmentArn<Partition>(parameters)
 }
 
-export interface ConfigurationprofileArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConfigurationprofileArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly applicationId: string
   readonly configurationProfileId: string
 }
-class ConfigurationprofileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'configurationprofile', `arn:${string}:appconfig:${string}:${string}:application/${string}/configurationprofile/${string}`> {
+class ConfigurationprofileArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'configurationprofile',
+  `arn:${string}:appconfig:${string}:${string}:application/${string}/configurationprofile/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'configurationprofile' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,17 +117,26 @@ class ConfigurationprofileArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { ConfigurationprofileArn }
-export function configurationprofileArn<Partition extends ArnPartition = 'aws'>(parameters: ConfigurationprofileArnParameters<Partition>) {
+export function configurationprofileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConfigurationprofileArnParameters<Partition>,
+) {
   return new ConfigurationprofileArn<Partition>(parameters)
 }
 
-export interface DeploymentstrategyArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeploymentstrategyArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly deploymentStrategyId: string
 }
-class DeploymentstrategyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'deploymentstrategy', `arn:${string}:appconfig:${string}:${string}:deploymentstrategy/${string}`> {
+class DeploymentstrategyArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'deploymentstrategy',
+  `arn:${string}:appconfig:${string}:${string}:deploymentstrategy/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'deploymentstrategy' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -114,11 +154,15 @@ class DeploymentstrategyArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { DeploymentstrategyArn }
-export function deploymentstrategyArn<Partition extends ArnPartition = 'aws'>(parameters: DeploymentstrategyArnParameters<Partition>) {
+export function deploymentstrategyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeploymentstrategyArnParameters<Partition>,
+) {
   return new DeploymentstrategyArn<Partition>(parameters)
 }
 
-export interface DeploymentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeploymentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -126,7 +170,10 @@ export interface DeploymentArnParameters<Partition extends ArnPartition = 'aws'>
   readonly environmentId: string
   readonly deploymentNumber: string
 }
-class DeploymentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'deployment', `arn:${string}:appconfig:${string}:${string}:application/${string}/environment/${string}/deployment/${string}`> {
+class DeploymentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'deployment',
+  `arn:${string}:appconfig:${string}:${string}:application/${string}/environment/${string}/deployment/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'deployment' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -148,11 +195,15 @@ class DeploymentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { DeploymentArn }
-export function deploymentArn<Partition extends ArnPartition = 'aws'>(parameters: DeploymentArnParameters<Partition>) {
+export function deploymentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeploymentArnParameters<Partition>,
+) {
   return new DeploymentArn<Partition>(parameters)
 }
 
-export interface HostedconfigurationversionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface HostedconfigurationversionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -160,7 +211,12 @@ export interface HostedconfigurationversionArnParameters<Partition extends ArnPa
   readonly configurationProfileId: string
   readonly versionNumber: string
 }
-class HostedconfigurationversionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'hostedconfigurationversion', `arn:${string}:appconfig:${string}:${string}:application/${string}/configurationprofile/${string}/hostedconfigurationversion/${string}`> {
+class HostedconfigurationversionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'hostedconfigurationversion',
+  `arn:${string}:appconfig:${string}:${string}:application/${string}/configurationprofile/${string}/hostedconfigurationversion/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'hostedconfigurationversion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -182,11 +238,15 @@ class HostedconfigurationversionArn<Partition extends ArnPartition = 'aws'> exte
   }
 }
 export type { HostedconfigurationversionArn }
-export function hostedconfigurationversionArn<Partition extends ArnPartition = 'aws'>(parameters: HostedconfigurationversionArnParameters<Partition>) {
+export function hostedconfigurationversionArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: HostedconfigurationversionArnParameters<Partition>) {
   return new HostedconfigurationversionArn<Partition>(parameters)
 }
 
-export interface ConfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -194,7 +254,12 @@ export interface ConfigurationArnParameters<Partition extends ArnPartition = 'aw
   readonly environmentId: string
   readonly configurationProfileId: string
 }
-class ConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'configuration', `arn:${string}:appconfig:${string}:${string}:application/${string}/environment/${string}/configuration/${string}`> {
+class ConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'configuration',
+  `arn:${string}:appconfig:${string}:${string}:application/${string}/environment/${string}/configuration/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'configuration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -216,18 +281,25 @@ class ConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { ConfigurationArn }
-export function configurationArn<Partition extends ArnPartition = 'aws'>(parameters: ConfigurationArnParameters<Partition>) {
+export function configurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConfigurationArnParameters<Partition>,
+) {
   return new ConfigurationArn<Partition>(parameters)
 }
 
-export interface ExtensionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ExtensionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly extensionId: string
   readonly extensionVersionNumber: string
 }
-class ExtensionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'extension', `arn:${string}:appconfig:${string}:${string}:extension/${string}/${string}`> {
+class ExtensionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'extension',
+  `arn:${string}:appconfig:${string}:${string}:extension/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'extension' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -247,17 +319,26 @@ class ExtensionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { ExtensionArn }
-export function extensionArn<Partition extends ArnPartition = 'aws'>(parameters: ExtensionArnParameters<Partition>) {
+export function extensionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ExtensionArnParameters<Partition>,
+) {
   return new ExtensionArn<Partition>(parameters)
 }
 
-export interface ExtensionassociationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ExtensionassociationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly extensionAssociationId: string
 }
-class ExtensionassociationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'extensionassociation', `arn:${string}:appconfig:${string}:${string}:extensionassociation/${string}`> {
+class ExtensionassociationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'extensionassociation',
+  `arn:${string}:appconfig:${string}:${string}:extensionassociation/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'extensionassociation' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -275,6 +356,8 @@ class ExtensionassociationArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { ExtensionassociationArn }
-export function extensionassociationArn<Partition extends ArnPartition = 'aws'>(parameters: ExtensionassociationArnParameters<Partition>) {
+export function extensionassociationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ExtensionassociationArnParameters<Partition>,
+) {
   return new ExtensionassociationArn<Partition>(parameters)
 }

@@ -1,2 +1,1 @@
-export type ArsenalPrivilege =
-  | 'RegisterOnPremisesAgent'
+export type ArsenalPrivilege = 'RegisterOnPremisesAgent'

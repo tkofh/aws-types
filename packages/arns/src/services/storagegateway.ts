@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface DeviceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -7,7 +13,10 @@ export interface DeviceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly gatewayId: string
   readonly vtldevice: string
 }
-class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'device', `arn:${string}:storagegateway:${string}:${string}:gateway/${string}/device/${string}`> {
+class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'device',
+  `arn:${string}:storagegateway:${string}:${string}:gateway/${string}/device/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'device' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,17 +36,26 @@ class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dev
   }
 }
 export type { DeviceArn }
-export function deviceArn<Partition extends ArnPartition = 'aws'>(parameters: DeviceArnParameters<Partition>) {
+export function deviceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeviceArnParameters<Partition>,
+) {
   return new DeviceArn<Partition>(parameters)
 }
 
-export interface FsAssociationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FsAssociationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly fsaId: string
 }
-class FsAssociationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'fs-association', `arn:${string}:storagegateway:${string}:${string}:fs-association/${string}`> {
+class FsAssociationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'fs-association',
+  `arn:${string}:storagegateway:${string}:${string}:fs-association/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'fs-association' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,7 +73,9 @@ class FsAssociationArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { FsAssociationArn }
-export function fsAssociationArn<Partition extends ArnPartition = 'aws'>(parameters: FsAssociationArnParameters<Partition>) {
+export function fsAssociationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FsAssociationArnParameters<Partition>,
+) {
   return new FsAssociationArn<Partition>(parameters)
 }
 
@@ -65,7 +85,10 @@ export interface GatewayArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly gatewayId: string
 }
-class GatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'gateway', `arn:${string}:storagegateway:${string}:${string}:gateway/${string}`> {
+class GatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'gateway',
+  `arn:${string}:storagegateway:${string}:${string}:gateway/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'gateway' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -83,7 +106,9 @@ class GatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ga
   }
 }
 export type { GatewayArn }
-export function gatewayArn<Partition extends ArnPartition = 'aws'>(parameters: GatewayArnParameters<Partition>) {
+export function gatewayArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GatewayArnParameters<Partition>,
+) {
   return new GatewayArn<Partition>(parameters)
 }
 
@@ -93,7 +118,10 @@ export interface ShareArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly shareId: string
 }
-class ShareArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'share', `arn:${string}:storagegateway:${string}:${string}:share/${string}`> {
+class ShareArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'share',
+  `arn:${string}:storagegateway:${string}:${string}:share/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'share' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -111,7 +139,9 @@ class ShareArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'shar
   }
 }
 export type { ShareArn }
-export function shareArn<Partition extends ArnPartition = 'aws'>(parameters: ShareArnParameters<Partition>) {
+export function shareArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ShareArnParameters<Partition>,
+) {
   return new ShareArn<Partition>(parameters)
 }
 
@@ -121,7 +151,10 @@ export interface TapeArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly tapeBarcode: string
 }
-class TapeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'tape', `arn:${string}:storagegateway:${string}:${string}:tape/${string}`> {
+class TapeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'tape',
+  `arn:${string}:storagegateway:${string}:${string}:tape/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'tape' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -139,7 +172,9 @@ class TapeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'tape'
   }
 }
 export type { TapeArn }
-export function tapeArn<Partition extends ArnPartition = 'aws'>(parameters: TapeArnParameters<Partition>) {
+export function tapeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TapeArnParameters<Partition>,
+) {
   return new TapeArn<Partition>(parameters)
 }
 
@@ -149,7 +184,10 @@ export interface TapepoolArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly poolId: string
 }
-class TapepoolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'tapepool', `arn:${string}:storagegateway:${string}:${string}:tapepool/${string}`> {
+class TapepoolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'tapepool',
+  `arn:${string}:storagegateway:${string}:${string}:tapepool/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'tapepool' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -167,7 +205,9 @@ class TapepoolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'t
   }
 }
 export type { TapepoolArn }
-export function tapepoolArn<Partition extends ArnPartition = 'aws'>(parameters: TapepoolArnParameters<Partition>) {
+export function tapepoolArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TapepoolArnParameters<Partition>,
+) {
   return new TapepoolArn<Partition>(parameters)
 }
 
@@ -178,7 +218,10 @@ export interface TargetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly gatewayId: string
   readonly iscsiTarget: string
 }
-class TargetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'target', `arn:${string}:storagegateway:${string}:${string}:gateway/${string}/target/${string}`> {
+class TargetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'target',
+  `arn:${string}:storagegateway:${string}:${string}:gateway/${string}/target/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'target' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -198,7 +241,9 @@ class TargetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'tar
   }
 }
 export type { TargetArn }
-export function targetArn<Partition extends ArnPartition = 'aws'>(parameters: TargetArnParameters<Partition>) {
+export function targetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TargetArnParameters<Partition>,
+) {
   return new TargetArn<Partition>(parameters)
 }
 
@@ -209,7 +254,10 @@ export interface VolumeArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly gatewayId: string
   readonly volumeId: string
 }
-class VolumeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'volume', `arn:${string}:storagegateway:${string}:${string}:gateway/${string}/volume/${string}`> {
+class VolumeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'volume',
+  `arn:${string}:storagegateway:${string}:${string}:gateway/${string}/volume/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'volume' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -229,6 +277,8 @@ class VolumeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'vol
   }
 }
 export type { VolumeArn }
-export function volumeArn<Partition extends ArnPartition = 'aws'>(parameters: VolumeArnParameters<Partition>) {
+export function volumeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VolumeArnParameters<Partition>,
+) {
   return new VolumeArn<Partition>(parameters)
 }

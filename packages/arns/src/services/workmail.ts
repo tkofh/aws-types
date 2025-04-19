@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface OrganizationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface OrganizationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class OrganizationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'organization', `arn:${string}:workmail:${string}:${string}:organization/${string}`> {
+class OrganizationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'organization',
+  `arn:${string}:workmail:${string}:${string}:organization/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'organization' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +37,8 @@ class OrganizationArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { OrganizationArn }
-export function organizationArn<Partition extends ArnPartition = 'aws'>(parameters: OrganizationArnParameters<Partition>) {
+export function organizationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: OrganizationArnParameters<Partition>,
+) {
   return new OrganizationArn<Partition>(parameters)
 }

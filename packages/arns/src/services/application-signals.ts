@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface SloArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface SloArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly sloName: string
 }
-class SloArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'slo', `arn:${string}:application-signals:${string}:${string}:slo/${string}`> {
+class SloArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'slo',
+  `arn:${string}:application-signals:${string}:${string}:slo/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'slo' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +33,8 @@ class SloArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'slo', 
   }
 }
 export type { SloArn }
-export function sloArn<Partition extends ArnPartition = 'aws'>(parameters: SloArnParameters<Partition>) {
+export function sloArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SloArnParameters<Partition>,
+) {
   return new SloArn<Partition>(parameters)
 }

@@ -1,12 +1,23 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface CollectionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CollectionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly collectionId: string
 }
-class CollectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Collection', `arn:${string}:aoss:${string}:${string}:collection/${string}`> {
+class CollectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Collection',
+  `arn:${string}:aoss:${string}:${string}:collection/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Collection' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,16 +35,23 @@ class CollectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { CollectionArn }
-export function collectionArn<Partition extends ArnPartition = 'aws'>(parameters: CollectionArnParameters<Partition>) {
+export function collectionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CollectionArnParameters<Partition>,
+) {
   return new CollectionArn<Partition>(parameters)
 }
 
-export interface DashboardsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DashboardsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
 }
-class DashboardsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Dashboards', `arn:${string}:aoss:${string}:${string}:dashboards/default`> {
+class DashboardsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Dashboards',
+  `arn:${string}:aoss:${string}:${string}:dashboards/default`
+> {
   readonly [ArnResourceTypeBrand] = 'Dashboards' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -49,6 +67,8 @@ class DashboardsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { DashboardsArn }
-export function dashboardsArn<Partition extends ArnPartition = 'aws'>(parameters: DashboardsArnParameters<Partition>) {
+export function dashboardsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DashboardsArnParameters<Partition>,
+) {
   return new DashboardsArn<Partition>(parameters)
 }

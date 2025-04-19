@@ -1,2 +1,1 @@
-export type WamPrivilege =
-  | 'AuthenticatePackager'
+export type WamPrivilege = 'AuthenticatePackager'

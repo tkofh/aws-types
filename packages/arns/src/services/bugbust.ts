@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface EventArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface EventArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly eventId: string
 }
-class EventArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Event', `arn:${string}:bugbust:${string}:${string}:events/${string}`> {
+class EventArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Event',
+  `arn:${string}:bugbust:${string}:${string}:events/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Event' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +33,8 @@ class EventArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Even
   }
 }
 export type { EventArn }
-export function eventArn<Partition extends ArnPartition = 'aws'>(parameters: EventArnParameters<Partition>) {
+export function eventArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EventArnParameters<Partition>,
+) {
   return new EventArn<Partition>(parameters)
 }

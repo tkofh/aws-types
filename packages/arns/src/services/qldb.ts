@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface LedgerArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface LedgerArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly ledgerName: string
 }
-class LedgerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ledger', `arn:${string}:qldb:${string}:${string}:ledger/${string}`> {
+class LedgerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'ledger',
+  `arn:${string}:qldb:${string}:${string}:ledger/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ledger' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class LedgerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'led
   }
 }
 export type { LedgerArn }
-export function ledgerArn<Partition extends ArnPartition = 'aws'>(parameters: LedgerArnParameters<Partition>) {
+export function ledgerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LedgerArnParameters<Partition>,
+) {
   return new LedgerArn<Partition>(parameters)
 }
 
@@ -35,7 +46,10 @@ export interface StreamArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly ledgerName: string
   readonly streamId: string
 }
-class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stream', `arn:${string}:qldb:${string}:${string}:stream/${string}/${string}`> {
+class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'stream',
+  `arn:${string}:qldb:${string}:${string}:stream/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'stream' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,7 +69,9 @@ class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'str
   }
 }
 export type { StreamArn }
-export function streamArn<Partition extends ArnPartition = 'aws'>(parameters: StreamArnParameters<Partition>) {
+export function streamArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StreamArnParameters<Partition>,
+) {
   return new StreamArn<Partition>(parameters)
 }
 
@@ -66,7 +82,10 @@ export interface TableArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly ledgerName: string
   readonly tableId: string
 }
-class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'table', `arn:${string}:qldb:${string}:${string}:ledger/${string}/table/${string}`> {
+class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'table',
+  `arn:${string}:qldb:${string}:${string}:ledger/${string}/table/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'table' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,7 +105,9 @@ class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'tabl
   }
 }
 export type { TableArn }
-export function tableArn<Partition extends ArnPartition = 'aws'>(parameters: TableArnParameters<Partition>) {
+export function tableArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TableArnParameters<Partition>,
+) {
   return new TableArn<Partition>(parameters)
 }
 
@@ -96,7 +117,10 @@ export interface CatalogArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly ledgerName: string
 }
-class CatalogArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'catalog', `arn:${string}:qldb:${string}:${string}:ledger/${string}/information_schema/user_tables`> {
+class CatalogArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'catalog',
+  `arn:${string}:qldb:${string}:${string}:ledger/${string}/information_schema/user_tables`
+> {
   readonly [ArnResourceTypeBrand] = 'catalog' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -114,6 +138,8 @@ class CatalogArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ca
   }
 }
 export type { CatalogArn }
-export function catalogArn<Partition extends ArnPartition = 'aws'>(parameters: CatalogArnParameters<Partition>) {
+export function catalogArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CatalogArnParameters<Partition>,
+) {
   return new CatalogArn<Partition>(parameters)
 }

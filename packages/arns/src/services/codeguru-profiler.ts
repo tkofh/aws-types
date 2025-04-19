@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ProfilingGroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ProfilingGroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly profilingGroupName: string
 }
-class ProfilingGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ProfilingGroup', `arn:${string}:codeguru-profiler:${string}:${string}:profilingGroup/${string}`> {
+class ProfilingGroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'ProfilingGroup',
+  `arn:${string}:codeguru-profiler:${string}:${string}:profilingGroup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ProfilingGroup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +37,8 @@ class ProfilingGroupArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { ProfilingGroupArn }
-export function profilingGroupArn<Partition extends ArnPartition = 'aws'>(parameters: ProfilingGroupArnParameters<Partition>) {
+export function profilingGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProfilingGroupArnParameters<Partition>,
+) {
   return new ProfilingGroupArn<Partition>(parameters)
 }

@@ -1,2 +1,1 @@
-export type EksAuthPrivilege =
-  | 'AssumeRoleForPodIdentity'
+export type EksAuthPrivilege = 'AssumeRoleForPodIdentity'

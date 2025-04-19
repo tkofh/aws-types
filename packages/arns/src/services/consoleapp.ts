@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface DeviceIdentityArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeviceIdentityArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly deviceId: string
   readonly identityId: string
 }
-class DeviceIdentityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'DeviceIdentity', `arn:${string}:consoleapp::${string}:device/${string}/identity/${string}`> {
+class DeviceIdentityArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'DeviceIdentity',
+  `arn:${string}:consoleapp::${string}:device/${string}/identity/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'DeviceIdentity' as const
   readonly partition: Partition
   readonly account: string
@@ -24,6 +37,8 @@ class DeviceIdentityArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { DeviceIdentityArn }
-export function deviceIdentityArn<Partition extends ArnPartition = 'aws'>(parameters: DeviceIdentityArnParameters<Partition>) {
+export function deviceIdentityArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeviceIdentityArnParameters<Partition>,
+) {
   return new DeviceIdentityArn<Partition>(parameters)
 }

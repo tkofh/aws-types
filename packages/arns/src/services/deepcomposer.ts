@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ModelArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ModelArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly modelId: string
 }
-class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'model', `arn:${string}:deepcomposer:${string}:${string}:model/${string}`> {
+class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'model',
+  `arn:${string}:deepcomposer:${string}:${string}:model/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'model' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +33,26 @@ class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'mode
   }
 }
 export type { ModelArn }
-export function modelArn<Partition extends ArnPartition = 'aws'>(parameters: ModelArnParameters<Partition>) {
+export function modelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelArnParameters<Partition>,
+) {
   return new ModelArn<Partition>(parameters)
 }
 
-export interface CompositionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CompositionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly compositionId: string
 }
-class CompositionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'composition', `arn:${string}:deepcomposer:${string}:${string}:composition/${string}`> {
+class CompositionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'composition',
+  `arn:${string}:deepcomposer:${string}:${string}:composition/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'composition' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +70,9 @@ class CompositionArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { CompositionArn }
-export function compositionArn<Partition extends ArnPartition = 'aws'>(parameters: CompositionArnParameters<Partition>) {
+export function compositionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CompositionArnParameters<Partition>,
+) {
   return new CompositionArn<Partition>(parameters)
 }
 
@@ -62,7 +82,10 @@ export interface AudioArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly audioId: string
 }
-class AudioArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'audio', `arn:${string}:deepcomposer:${string}:${string}:audio/${string}`> {
+class AudioArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'audio',
+  `arn:${string}:deepcomposer:${string}:${string}:audio/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'audio' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,6 +103,8 @@ class AudioArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'audi
   }
 }
 export type { AudioArn }
-export function audioArn<Partition extends ArnPartition = 'aws'>(parameters: AudioArnParameters<Partition>) {
+export function audioArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AudioArnParameters<Partition>,
+) {
   return new AudioArn<Partition>(parameters)
 }

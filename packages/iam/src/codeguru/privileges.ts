@@ -1,2 +1,1 @@
-export type CodeguruPrivilege =
-  | 'GetCodeGuruFreeTrialSummary'
+export type CodeguruPrivilege = 'GetCodeGuruFreeTrialSummary'

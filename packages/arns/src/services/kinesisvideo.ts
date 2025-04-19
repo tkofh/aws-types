@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface StreamArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -7,7 +13,10 @@ export interface StreamArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly streamName: string
   readonly creationTime: string
 }
-class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stream', `arn:${string}:kinesisvideo:${string}:${string}:stream/${string}/${string}`> {
+class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'stream',
+  `arn:${string}:kinesisvideo:${string}:${string}:stream/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'stream' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,7 +36,9 @@ class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'str
   }
 }
 export type { StreamArn }
-export function streamArn<Partition extends ArnPartition = 'aws'>(parameters: StreamArnParameters<Partition>) {
+export function streamArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StreamArnParameters<Partition>,
+) {
   return new StreamArn<Partition>(parameters)
 }
 
@@ -38,7 +49,10 @@ export interface ChannelArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly channelName: string
   readonly creationTime: string
 }
-class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'channel', `arn:${string}:kinesisvideo:${string}:${string}:channel/${string}/${string}`> {
+class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'channel',
+  `arn:${string}:kinesisvideo:${string}:${string}:channel/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'channel' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -58,6 +72,8 @@ class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ch
   }
 }
 export type { ChannelArn }
-export function channelArn<Partition extends ArnPartition = 'aws'>(parameters: ChannelArnParameters<Partition>) {
+export function channelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ChannelArnParameters<Partition>,
+) {
   return new ChannelArn<Partition>(parameters)
 }

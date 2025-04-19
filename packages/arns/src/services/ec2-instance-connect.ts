@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface InstanceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface InstanceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly instanceId: string
 }
-class InstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'instance', `arn:${string}:ec2:${string}:${string}:instance/${string}`> {
+class InstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'instance',
+  `arn:${string}:ec2:${string}:${string}:instance/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'instance' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +33,26 @@ class InstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'i
   }
 }
 export type { InstanceArn }
-export function instanceArn<Partition extends ArnPartition = 'aws'>(parameters: InstanceArnParameters<Partition>) {
+export function instanceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InstanceArnParameters<Partition>,
+) {
   return new InstanceArn<Partition>(parameters)
 }
 
-export interface InstanceConnectEndpointArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface InstanceConnectEndpointArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly instanceConnectEndpointId: string
 }
-class InstanceConnectEndpointArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'instance-connect-endpoint', `arn:${string}:ec2:${string}:${string}:instance-connect-endpoint/${string}`> {
+class InstanceConnectEndpointArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'instance-connect-endpoint',
+  `arn:${string}:ec2:${string}:${string}:instance-connect-endpoint/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'instance-connect-endpoint' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,6 +70,8 @@ class InstanceConnectEndpointArn<Partition extends ArnPartition = 'aws'> extends
   }
 }
 export type { InstanceConnectEndpointArn }
-export function instanceConnectEndpointArn<Partition extends ArnPartition = 'aws'>(parameters: InstanceConnectEndpointArnParameters<Partition>) {
+export function instanceConnectEndpointArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: InstanceConnectEndpointArnParameters<Partition>) {
   return new InstanceConnectEndpointArn<Partition>(parameters)
 }

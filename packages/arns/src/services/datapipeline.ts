@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface PipelineArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface PipelineArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly pipelineId: string
 }
-class PipelineArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pipeline', `arn:${string}:datapipeline:${string}:${string}:pipeline/${string}`> {
+class PipelineArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'pipeline',
+  `arn:${string}:datapipeline:${string}:${string}:pipeline/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'pipeline' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +33,8 @@ class PipelineArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'p
   }
 }
 export type { PipelineArn }
-export function pipelineArn<Partition extends ArnPartition = 'aws'>(parameters: PipelineArnParameters<Partition>) {
+export function pipelineArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PipelineArnParameters<Partition>,
+) {
   return new PipelineArn<Partition>(parameters)
 }

@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface DomainsArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface DomainsArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly domainName: string
 }
-class DomainsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'domains', `arn:${string}:profile:${string}:${string}:domains/${string}`> {
+class DomainsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'domains',
+  `arn:${string}:profile:${string}:${string}:domains/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'domains' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,18 +33,27 @@ class DomainsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'do
   }
 }
 export type { DomainsArn }
-export function domainsArn<Partition extends ArnPartition = 'aws'>(parameters: DomainsArnParameters<Partition>) {
+export function domainsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DomainsArnParameters<Partition>,
+) {
   return new DomainsArn<Partition>(parameters)
 }
 
-export interface ObjectTypesArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ObjectTypesArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly domainName: string
   readonly objectTypeName: string
 }
-class ObjectTypesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'object-types', `arn:${string}:profile:${string}:${string}:domains/${string}/object-types/${string}`> {
+class ObjectTypesArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'object-types',
+  `arn:${string}:profile:${string}:${string}:domains/${string}/object-types/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'object-types' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,18 +73,27 @@ class ObjectTypesArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ObjectTypesArn }
-export function objectTypesArn<Partition extends ArnPartition = 'aws'>(parameters: ObjectTypesArnParameters<Partition>) {
+export function objectTypesArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ObjectTypesArnParameters<Partition>,
+) {
   return new ObjectTypesArn<Partition>(parameters)
 }
 
-export interface IntegrationsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface IntegrationsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly domainName: string
   readonly uri: string
 }
-class IntegrationsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'integrations', `arn:${string}:profile:${string}:${string}:domains/${string}/integrations/${string}`> {
+class IntegrationsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'integrations',
+  `arn:${string}:profile:${string}:${string}:domains/${string}/integrations/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'integrations' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,18 +113,27 @@ class IntegrationsArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { IntegrationsArn }
-export function integrationsArn<Partition extends ArnPartition = 'aws'>(parameters: IntegrationsArnParameters<Partition>) {
+export function integrationsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IntegrationsArnParameters<Partition>,
+) {
   return new IntegrationsArn<Partition>(parameters)
 }
 
-export interface EventStreamsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface EventStreamsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly domainName: string
   readonly eventStreamName: string
 }
-class EventStreamsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'event-streams', `arn:${string}:profile:${string}:${string}:domains/${string}/event-streams/${string}`> {
+class EventStreamsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'event-streams',
+  `arn:${string}:profile:${string}:${string}:domains/${string}/event-streams/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'event-streams' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -117,18 +153,27 @@ class EventStreamsArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { EventStreamsArn }
-export function eventStreamsArn<Partition extends ArnPartition = 'aws'>(parameters: EventStreamsArnParameters<Partition>) {
+export function eventStreamsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EventStreamsArnParameters<Partition>,
+) {
   return new EventStreamsArn<Partition>(parameters)
 }
 
-export interface CalculatedAttributesArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CalculatedAttributesArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly domainName: string
   readonly calculatedAttributeName: string
 }
-class CalculatedAttributesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'calculated-attributes', `arn:${string}:profile:${string}:${string}:domains/${string}/calculated-attributes/${string}`> {
+class CalculatedAttributesArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'calculated-attributes',
+  `arn:${string}:profile:${string}:${string}:domains/${string}/calculated-attributes/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'calculated-attributes' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -148,18 +193,27 @@ class CalculatedAttributesArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { CalculatedAttributesArn }
-export function calculatedAttributesArn<Partition extends ArnPartition = 'aws'>(parameters: CalculatedAttributesArnParameters<Partition>) {
+export function calculatedAttributesArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CalculatedAttributesArnParameters<Partition>,
+) {
   return new CalculatedAttributesArn<Partition>(parameters)
 }
 
-export interface SegmentDefinitionsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SegmentDefinitionsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly domainName: string
   readonly segmentDefinitionName: string
 }
-class SegmentDefinitionsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'segment-definitions', `arn:${string}:profile:${string}:${string}:domains/${string}/segment-definitions/${string}`> {
+class SegmentDefinitionsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'segment-definitions',
+  `arn:${string}:profile:${string}:${string}:domains/${string}/segment-definitions/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'segment-definitions' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -179,6 +233,8 @@ class SegmentDefinitionsArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { SegmentDefinitionsArn }
-export function segmentDefinitionsArn<Partition extends ArnPartition = 'aws'>(parameters: SegmentDefinitionsArnParameters<Partition>) {
+export function segmentDefinitionsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SegmentDefinitionsArnParameters<Partition>,
+) {
   return new SegmentDefinitionsArn<Partition>(parameters)
 }

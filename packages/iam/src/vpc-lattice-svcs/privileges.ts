@@ -1,3 +1,1 @@
-export type VpcLatticeSvcsPrivilege =
-  | 'Connect'
-  | 'Invoke'
+export type VpcLatticeSvcsPrivilege = 'Connect' | 'Invoke'

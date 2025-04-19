@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface SpaceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface SpaceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class SpaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'space', `arn:${string}:repostspace:${string}:${string}:space/${string}`> {
+class SpaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'space',
+  `arn:${string}:repostspace:${string}:${string}:space/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'space' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +33,8 @@ class SpaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'spac
   }
 }
 export type { SpaceArn }
-export function spaceArn<Partition extends ArnPartition = 'aws'>(parameters: SpaceArnParameters<Partition>) {
+export function spaceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SpaceArnParameters<Partition>,
+) {
   return new SpaceArn<Partition>(parameters)
 }

@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ServiceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -7,7 +13,10 @@ export interface ServiceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly serviceName: string
   readonly serviceId: string
 }
-class ServiceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'service', `arn:${string}:apprunner:${string}:${string}:service/${string}/${string}`> {
+class ServiceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'service',
+  `arn:${string}:apprunner:${string}:${string}:service/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'service' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,18 +36,25 @@ class ServiceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'se
   }
 }
 export type { ServiceArn }
-export function serviceArn<Partition extends ArnPartition = 'aws'>(parameters: ServiceArnParameters<Partition>) {
+export function serviceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ServiceArnParameters<Partition>,
+) {
   return new ServiceArn<Partition>(parameters)
 }
 
-export interface ConnectionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConnectionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly connectionName: string
   readonly connectionId: string
 }
-class ConnectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'connection', `arn:${string}:apprunner:${string}:${string}:connection/${string}/${string}`> {
+class ConnectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'connection',
+  `arn:${string}:apprunner:${string}:${string}:connection/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'connection' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -58,11 +74,15 @@ class ConnectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { ConnectionArn }
-export function connectionArn<Partition extends ArnPartition = 'aws'>(parameters: ConnectionArnParameters<Partition>) {
+export function connectionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConnectionArnParameters<Partition>,
+) {
   return new ConnectionArn<Partition>(parameters)
 }
 
-export interface AutoscalingconfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AutoscalingconfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -70,7 +90,12 @@ export interface AutoscalingconfigurationArnParameters<Partition extends ArnPart
   readonly autoscalingConfigurationVersion: string
   readonly autoscalingConfigurationId: string
 }
-class AutoscalingconfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'autoscalingconfiguration', `arn:${string}:apprunner:${string}:${string}:autoscalingconfiguration/${string}/${string}/${string}`> {
+class AutoscalingconfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'autoscalingconfiguration',
+  `arn:${string}:apprunner:${string}:${string}:autoscalingconfiguration/${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'autoscalingconfiguration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -84,7 +109,8 @@ class AutoscalingconfigurationArn<Partition extends ArnPartition = 'aws'> extend
     this.region = parameters.region
     this.account = parameters.account
     this.autoscalingConfigurationName = parameters.autoscalingConfigurationName
-    this.autoscalingConfigurationVersion = parameters.autoscalingConfigurationVersion
+    this.autoscalingConfigurationVersion =
+      parameters.autoscalingConfigurationVersion
     this.autoscalingConfigurationId = parameters.autoscalingConfigurationId
   }
   [StringifyArnBrand]() {
@@ -92,11 +118,15 @@ class AutoscalingconfigurationArn<Partition extends ArnPartition = 'aws'> extend
   }
 }
 export type { AutoscalingconfigurationArn }
-export function autoscalingconfigurationArn<Partition extends ArnPartition = 'aws'>(parameters: AutoscalingconfigurationArnParameters<Partition>) {
+export function autoscalingconfigurationArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: AutoscalingconfigurationArnParameters<Partition>) {
   return new AutoscalingconfigurationArn<Partition>(parameters)
 }
 
-export interface ObservabilityconfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ObservabilityconfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -104,7 +134,12 @@ export interface ObservabilityconfigurationArnParameters<Partition extends ArnPa
   readonly observabilityConfigurationVersion: string
   readonly observabilityConfigurationId: string
 }
-class ObservabilityconfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'observabilityconfiguration', `arn:${string}:apprunner:${string}:${string}:observabilityconfiguration/${string}/${string}/${string}`> {
+class ObservabilityconfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'observabilityconfiguration',
+  `arn:${string}:apprunner:${string}:${string}:observabilityconfiguration/${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'observabilityconfiguration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -117,8 +152,10 @@ class ObservabilityconfigurationArn<Partition extends ArnPartition = 'aws'> exte
     this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.observabilityConfigurationName = parameters.observabilityConfigurationName
-    this.observabilityConfigurationVersion = parameters.observabilityConfigurationVersion
+    this.observabilityConfigurationName =
+      parameters.observabilityConfigurationName
+    this.observabilityConfigurationVersion =
+      parameters.observabilityConfigurationVersion
     this.observabilityConfigurationId = parameters.observabilityConfigurationId
   }
   [StringifyArnBrand]() {
@@ -126,11 +163,15 @@ class ObservabilityconfigurationArn<Partition extends ArnPartition = 'aws'> exte
   }
 }
 export type { ObservabilityconfigurationArn }
-export function observabilityconfigurationArn<Partition extends ArnPartition = 'aws'>(parameters: ObservabilityconfigurationArnParameters<Partition>) {
+export function observabilityconfigurationArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: ObservabilityconfigurationArnParameters<Partition>) {
   return new ObservabilityconfigurationArn<Partition>(parameters)
 }
 
-export interface VpcconnectorArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface VpcconnectorArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -138,7 +179,12 @@ export interface VpcconnectorArnParameters<Partition extends ArnPartition = 'aws
   readonly vpcConnectorVersion: string
   readonly vpcConnectorId: string
 }
-class VpcconnectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'vpcconnector', `arn:${string}:apprunner:${string}:${string}:vpcconnector/${string}/${string}/${string}`> {
+class VpcconnectorArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'vpcconnector',
+  `arn:${string}:apprunner:${string}:${string}:vpcconnector/${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'vpcconnector' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -160,18 +206,27 @@ class VpcconnectorArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { VpcconnectorArn }
-export function vpcconnectorArn<Partition extends ArnPartition = 'aws'>(parameters: VpcconnectorArnParameters<Partition>) {
+export function vpcconnectorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VpcconnectorArnParameters<Partition>,
+) {
   return new VpcconnectorArn<Partition>(parameters)
 }
 
-export interface VpcingressconnectionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface VpcingressconnectionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly vpcIngressConnectionName: string
   readonly vpcIngressConnectionId: string
 }
-class VpcingressconnectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'vpcingressconnection', `arn:${string}:apprunner:${string}:${string}:vpcingressconnection/${string}/${string}`> {
+class VpcingressconnectionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'vpcingressconnection',
+  `arn:${string}:apprunner:${string}:${string}:vpcingressconnection/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'vpcingressconnection' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -191,7 +246,9 @@ class VpcingressconnectionArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { VpcingressconnectionArn }
-export function vpcingressconnectionArn<Partition extends ArnPartition = 'aws'>(parameters: VpcingressconnectionArnParameters<Partition>) {
+export function vpcingressconnectionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VpcingressconnectionArnParameters<Partition>,
+) {
   return new VpcingressconnectionArn<Partition>(parameters)
 }
 
@@ -203,7 +260,10 @@ export interface WebaclArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly name: string
   readonly id: string
 }
-class WebaclArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'webacl', `arn:${string}:wafv2:${string}:${string}:${string}/webacl/${string}/${string}`> {
+class WebaclArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'webacl',
+  `arn:${string}:wafv2:${string}:${string}:${string}/webacl/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'webacl' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -225,6 +285,8 @@ class WebaclArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'web
   }
 }
 export type { WebaclArn }
-export function webaclArn<Partition extends ArnPartition = 'aws'>(parameters: WebaclArnParameters<Partition>) {
+export function webaclArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WebaclArnParameters<Partition>,
+) {
   return new WebaclArn<Partition>(parameters)
 }

@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface JobArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface JobArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly jobId: string
 }
-class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Job', `arn:${string}:mediaconvert:${string}:${string}:jobs/${string}`> {
+class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Job',
+  `arn:${string}:mediaconvert:${string}:${string}:jobs/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Job' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Job', 
   }
 }
 export type { JobArn }
-export function jobArn<Partition extends ArnPartition = 'aws'>(parameters: JobArnParameters<Partition>) {
+export function jobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobArnParameters<Partition>,
+) {
   return new JobArn<Partition>(parameters)
 }
 
@@ -34,7 +45,10 @@ export interface QueueArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly queueName: string
 }
-class QueueArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Queue', `arn:${string}:mediaconvert:${string}:${string}:queues/${string}`> {
+class QueueArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Queue',
+  `arn:${string}:mediaconvert:${string}:${string}:queues/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Queue' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +66,9 @@ class QueueArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Queu
   }
 }
 export type { QueueArn }
-export function queueArn<Partition extends ArnPartition = 'aws'>(parameters: QueueArnParameters<Partition>) {
+export function queueArn<Partition extends ArnPartition = 'aws'>(
+  parameters: QueueArnParameters<Partition>,
+) {
   return new QueueArn<Partition>(parameters)
 }
 
@@ -62,7 +78,10 @@ export interface PresetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly presetName: string
 }
-class PresetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Preset', `arn:${string}:mediaconvert:${string}:${string}:presets/${string}`> {
+class PresetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Preset',
+  `arn:${string}:mediaconvert:${string}:${string}:presets/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Preset' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,17 +99,26 @@ class PresetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Pre
   }
 }
 export type { PresetArn }
-export function presetArn<Partition extends ArnPartition = 'aws'>(parameters: PresetArnParameters<Partition>) {
+export function presetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PresetArnParameters<Partition>,
+) {
   return new PresetArn<Partition>(parameters)
 }
 
-export interface JobTemplateArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface JobTemplateArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly jobTemplateName: string
 }
-class JobTemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'JobTemplate', `arn:${string}:mediaconvert:${string}:${string}:jobTemplates/${string}`> {
+class JobTemplateArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'JobTemplate',
+  `arn:${string}:mediaconvert:${string}:${string}:jobTemplates/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'JobTemplate' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,17 +136,26 @@ class JobTemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { JobTemplateArn }
-export function jobTemplateArn<Partition extends ArnPartition = 'aws'>(parameters: JobTemplateArnParameters<Partition>) {
+export function jobTemplateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobTemplateArnParameters<Partition>,
+) {
   return new JobTemplateArn<Partition>(parameters)
 }
 
-export interface CertificateAssociationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CertificateAssociationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly certificateArn: string
 }
-class CertificateAssociationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'CertificateAssociation', `arn:${string}:mediaconvert:${string}:${string}:certificates/${string}`> {
+class CertificateAssociationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'CertificateAssociation',
+  `arn:${string}:mediaconvert:${string}:${string}:certificates/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'CertificateAssociation' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -136,6 +173,8 @@ class CertificateAssociationArn<Partition extends ArnPartition = 'aws'> extends 
   }
 }
 export type { CertificateAssociationArn }
-export function certificateAssociationArn<Partition extends ArnPartition = 'aws'>(parameters: CertificateAssociationArnParameters<Partition>) {
+export function certificateAssociationArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: CertificateAssociationArnParameters<Partition>) {
   return new CertificateAssociationArn<Partition>(parameters)
 }

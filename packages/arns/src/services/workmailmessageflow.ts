@@ -1,6 +1,14 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface RawMessageArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RawMessageArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -8,7 +16,10 @@ export interface RawMessageArnParameters<Partition extends ArnPartition = 'aws'>
   readonly context: string
   readonly messageId: string
 }
-class RawMessageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'RawMessage', `arn:${string}:workmailmessageflow:${string}:${string}:message/${string}/${string}/${string}`> {
+class RawMessageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'RawMessage',
+  `arn:${string}:workmailmessageflow:${string}:${string}:message/${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'RawMessage' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -30,6 +41,8 @@ class RawMessageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { RawMessageArn }
-export function rawMessageArn<Partition extends ArnPartition = 'aws'>(parameters: RawMessageArnParameters<Partition>) {
+export function rawMessageArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RawMessageArnParameters<Partition>,
+) {
   return new RawMessageArn<Partition>(parameters)
 }

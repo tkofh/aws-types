@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface AnalyzerArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface AnalyzerArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly analyzerName: string
 }
-class AnalyzerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Analyzer', `arn:${string}:access-analyzer:${string}:${string}:analyzer/${string}`> {
+class AnalyzerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Analyzer',
+  `arn:${string}:access-analyzer:${string}:${string}:analyzer/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Analyzer' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,18 +33,27 @@ class AnalyzerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'A
   }
 }
 export type { AnalyzerArn }
-export function analyzerArn<Partition extends ArnPartition = 'aws'>(parameters: AnalyzerArnParameters<Partition>) {
+export function analyzerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AnalyzerArnParameters<Partition>,
+) {
   return new AnalyzerArn<Partition>(parameters)
 }
 
-export interface ArchiveRuleArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ArchiveRuleArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly analyzerName: string
   readonly ruleName: string
 }
-class ArchiveRuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ArchiveRule', `arn:${string}:access-analyzer:${string}:${string}:analyzer/${string}/archive-rule/${string}`> {
+class ArchiveRuleArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'ArchiveRule',
+  `arn:${string}:access-analyzer:${string}:${string}:analyzer/${string}/archive-rule/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ArchiveRule' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,6 +73,8 @@ class ArchiveRuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ArchiveRuleArn }
-export function archiveRuleArn<Partition extends ArnPartition = 'aws'>(parameters: ArchiveRuleArnParameters<Partition>) {
+export function archiveRuleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ArchiveRuleArnParameters<Partition>,
+) {
   return new ArchiveRuleArn<Partition>(parameters)
 }

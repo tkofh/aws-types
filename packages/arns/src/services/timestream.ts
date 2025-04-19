@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface DatabaseArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface DatabaseArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly databaseName: string
 }
-class DatabaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'database', `arn:${string}:timestream:${string}:${string}:database/${string}`> {
+class DatabaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'database',
+  `arn:${string}:timestream:${string}:${string}:database/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'database' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class DatabaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'d
   }
 }
 export type { DatabaseArn }
-export function databaseArn<Partition extends ArnPartition = 'aws'>(parameters: DatabaseArnParameters<Partition>) {
+export function databaseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DatabaseArnParameters<Partition>,
+) {
   return new DatabaseArn<Partition>(parameters)
 }
 
@@ -35,7 +46,10 @@ export interface TableArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly databaseName: string
   readonly tableName: string
 }
-class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'table', `arn:${string}:timestream:${string}:${string}:database/${string}/table/${string}`> {
+class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'table',
+  `arn:${string}:timestream:${string}:${string}:database/${string}/table/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'table' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,17 +69,26 @@ class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'tabl
   }
 }
 export type { TableArn }
-export function tableArn<Partition extends ArnPartition = 'aws'>(parameters: TableArnParameters<Partition>) {
+export function tableArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TableArnParameters<Partition>,
+) {
   return new TableArn<Partition>(parameters)
 }
 
-export interface ScheduledQueryArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ScheduledQueryArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly scheduledQueryName: string
 }
-class ScheduledQueryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'scheduled-query', `arn:${string}:timestream:${string}:${string}:scheduled-query/${string}`> {
+class ScheduledQueryArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'scheduled-query',
+  `arn:${string}:timestream:${string}:${string}:scheduled-query/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'scheduled-query' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -83,6 +106,8 @@ class ScheduledQueryArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { ScheduledQueryArn }
-export function scheduledQueryArn<Partition extends ArnPartition = 'aws'>(parameters: ScheduledQueryArnParameters<Partition>) {
+export function scheduledQueryArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ScheduledQueryArnParameters<Partition>,
+) {
   return new ScheduledQueryArn<Partition>(parameters)
 }

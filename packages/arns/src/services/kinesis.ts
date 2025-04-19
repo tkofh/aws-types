@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface StreamArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface StreamArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly streamName: string
 }
-class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stream', `arn:${string}:kinesis:${string}:${string}:stream/${string}`> {
+class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'stream',
+  `arn:${string}:kinesis:${string}:${string}:stream/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'stream' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'str
   }
 }
 export type { StreamArn }
-export function streamArn<Partition extends ArnPartition = 'aws'>(parameters: StreamArnParameters<Partition>) {
+export function streamArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StreamArnParameters<Partition>,
+) {
   return new StreamArn<Partition>(parameters)
 }
 
@@ -37,7 +48,10 @@ export interface ConsumerArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly consumerName: string
   readonly consumerCreationTimpstamp: string
 }
-class ConsumerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'consumer', `arn:${string}:kinesis:${string}:${string}:${string}/${string}/consumer/${string}:${string}`> {
+class ConsumerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'consumer',
+  `arn:${string}:kinesis:${string}:${string}:${string}/${string}/consumer/${string}:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'consumer' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -61,7 +75,9 @@ class ConsumerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'c
   }
 }
 export type { ConsumerArn }
-export function consumerArn<Partition extends ArnPartition = 'aws'>(parameters: ConsumerArnParameters<Partition>) {
+export function consumerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConsumerArnParameters<Partition>,
+) {
   return new ConsumerArn<Partition>(parameters)
 }
 
@@ -71,7 +87,10 @@ export interface KmsKeyArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly keyId: string
 }
-class KmsKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'kmsKey', `arn:${string}:kms:${string}:${string}:key/${string}`> {
+class KmsKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'kmsKey',
+  `arn:${string}:kms:${string}:${string}:key/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'kmsKey' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -89,6 +108,8 @@ class KmsKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'kms
   }
 }
 export type { KmsKeyArn }
-export function kmsKeyArn<Partition extends ArnPartition = 'aws'>(parameters: KmsKeyArnParameters<Partition>) {
+export function kmsKeyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KmsKeyArnParameters<Partition>,
+) {
   return new KmsKeyArn<Partition>(parameters)
 }

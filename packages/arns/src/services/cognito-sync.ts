@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface DatasetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -8,7 +14,10 @@ export interface DatasetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly identityId: string
   readonly datasetName: string
 }
-class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dataset', `arn:${string}:cognito-sync:${string}:${string}:identitypool/${string}/identity/${string}/dataset/${string}`> {
+class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'dataset',
+  `arn:${string}:cognito-sync:${string}:${string}:identitypool/${string}/identity/${string}/dataset/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'dataset' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -30,7 +39,9 @@ class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'da
   }
 }
 export type { DatasetArn }
-export function datasetArn<Partition extends ArnPartition = 'aws'>(parameters: DatasetArnParameters<Partition>) {
+export function datasetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DatasetArnParameters<Partition>,
+) {
   return new DatasetArn<Partition>(parameters)
 }
 
@@ -41,7 +52,10 @@ export interface IdentityArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly identityPoolId: string
   readonly identityId: string
 }
-class IdentityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'identity', `arn:${string}:cognito-sync:${string}:${string}:identitypool/${string}/identity/${string}`> {
+class IdentityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'identity',
+  `arn:${string}:cognito-sync:${string}:${string}:identitypool/${string}/identity/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'identity' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -61,17 +75,26 @@ class IdentityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'i
   }
 }
 export type { IdentityArn }
-export function identityArn<Partition extends ArnPartition = 'aws'>(parameters: IdentityArnParameters<Partition>) {
+export function identityArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IdentityArnParameters<Partition>,
+) {
   return new IdentityArn<Partition>(parameters)
 }
 
-export interface IdentitypoolArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface IdentitypoolArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly identityPoolId: string
 }
-class IdentitypoolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'identitypool', `arn:${string}:cognito-sync:${string}:${string}:identitypool/${string}`> {
+class IdentitypoolArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'identitypool',
+  `arn:${string}:cognito-sync:${string}:${string}:identitypool/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'identitypool' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -89,6 +112,8 @@ class IdentitypoolArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { IdentitypoolArn }
-export function identitypoolArn<Partition extends ArnPartition = 'aws'>(parameters: IdentitypoolArnParameters<Partition>) {
+export function identitypoolArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IdentitypoolArnParameters<Partition>,
+) {
   return new IdentitypoolArn<Partition>(parameters)
 }

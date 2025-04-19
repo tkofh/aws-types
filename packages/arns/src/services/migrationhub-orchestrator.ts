@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface WorkflowArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface WorkflowArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class WorkflowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workflow', `arn:${string}:migrationhub-orchestrator:${string}:${string}:workflow/${string}`> {
+class WorkflowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'workflow',
+  `arn:${string}:migrationhub-orchestrator:${string}:${string}:workflow/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'workflow' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class WorkflowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'w
   }
 }
 export type { WorkflowArn }
-export function workflowArn<Partition extends ArnPartition = 'aws'>(parameters: WorkflowArnParameters<Partition>) {
+export function workflowArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkflowArnParameters<Partition>,
+) {
   return new WorkflowArn<Partition>(parameters)
 }
 
@@ -34,7 +45,10 @@ export interface TemplateArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class TemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'template', `arn:${string}:migrationhub-orchestrator:${string}:${string}:template/${string}`> {
+class TemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'template',
+  `arn:${string}:migrationhub-orchestrator:${string}:${string}:template/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'template' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,6 +66,8 @@ class TemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'t
   }
 }
 export type { TemplateArn }
-export function templateArn<Partition extends ArnPartition = 'aws'>(parameters: TemplateArnParameters<Partition>) {
+export function templateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TemplateArnParameters<Partition>,
+) {
   return new TemplateArn<Partition>(parameters)
 }

@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ConfigurationSetArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConfigurationSetArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly configurationSetName: string
 }
-class ConfigurationSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'configuration-set', `arn:${string}:ses:${string}:${string}:configuration-set/${string}`> {
+class ConfigurationSetArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'configuration-set',
+  `arn:${string}:ses:${string}:${string}:configuration-set/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'configuration-set' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +37,26 @@ class ConfigurationSetArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { ConfigurationSetArn }
-export function configurationSetArn<Partition extends ArnPartition = 'aws'>(parameters: ConfigurationSetArnParameters<Partition>) {
+export function configurationSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConfigurationSetArnParameters<Partition>,
+) {
   return new ConfigurationSetArn<Partition>(parameters)
 }
 
-export interface DedicatedIpPoolArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DedicatedIpPoolArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly dedicatedIpPool: string
 }
-class DedicatedIpPoolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dedicated-ip-pool', `arn:${string}:ses:${string}:${string}:dedicated-ip-pool/${string}`> {
+class DedicatedIpPoolArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'dedicated-ip-pool',
+  `arn:${string}:ses:${string}:${string}:dedicated-ip-pool/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'dedicated-ip-pool' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +74,26 @@ class DedicatedIpPoolArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { DedicatedIpPoolArn }
-export function dedicatedIpPoolArn<Partition extends ArnPartition = 'aws'>(parameters: DedicatedIpPoolArnParameters<Partition>) {
+export function dedicatedIpPoolArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DedicatedIpPoolArnParameters<Partition>,
+) {
   return new DedicatedIpPoolArn<Partition>(parameters)
 }
 
-export interface DeliverabilityTestReportArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeliverabilityTestReportArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly reportId: string
 }
-class DeliverabilityTestReportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'deliverability-test-report', `arn:${string}:ses:${string}:${string}:deliverability-test-report/${string}`> {
+class DeliverabilityTestReportArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'deliverability-test-report',
+  `arn:${string}:ses:${string}:${string}:deliverability-test-report/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'deliverability-test-report' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,7 +111,9 @@ class DeliverabilityTestReportArn<Partition extends ArnPartition = 'aws'> extend
   }
 }
 export type { DeliverabilityTestReportArn }
-export function deliverabilityTestReportArn<Partition extends ArnPartition = 'aws'>(parameters: DeliverabilityTestReportArnParameters<Partition>) {
+export function deliverabilityTestReportArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: DeliverabilityTestReportArnParameters<Partition>) {
   return new DeliverabilityTestReportArn<Partition>(parameters)
 }
 
@@ -90,7 +123,10 @@ export interface IdentityArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly identityName: string
 }
-class IdentityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'identity', `arn:${string}:ses:${string}:${string}:identity/${string}`> {
+class IdentityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'identity',
+  `arn:${string}:ses:${string}:${string}:identity/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'identity' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,17 +144,26 @@ class IdentityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'i
   }
 }
 export type { IdentityArn }
-export function identityArn<Partition extends ArnPartition = 'aws'>(parameters: IdentityArnParameters<Partition>) {
+export function identityArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IdentityArnParameters<Partition>,
+) {
   return new IdentityArn<Partition>(parameters)
 }
 
-export interface AddonInstanceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AddonInstanceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly addonInstanceId: string
 }
-class AddonInstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'addon-instance', `arn:${string}:ses:${string}:${string}:addon-instance/${string}`> {
+class AddonInstanceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'addon-instance',
+  `arn:${string}:ses:${string}:${string}:addon-instance/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'addon-instance' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -136,17 +181,26 @@ class AddonInstanceArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { AddonInstanceArn }
-export function addonInstanceArn<Partition extends ArnPartition = 'aws'>(parameters: AddonInstanceArnParameters<Partition>) {
+export function addonInstanceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AddonInstanceArnParameters<Partition>,
+) {
   return new AddonInstanceArn<Partition>(parameters)
 }
 
-export interface AddonSubscriptionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AddonSubscriptionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly addonSubscriptionId: string
 }
-class AddonSubscriptionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'addon-subscription', `arn:${string}:ses:${string}:${string}:addon-subscription/${string}`> {
+class AddonSubscriptionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'addon-subscription',
+  `arn:${string}:ses:${string}:${string}:addon-subscription/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'addon-subscription' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -164,17 +218,26 @@ class AddonSubscriptionArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { AddonSubscriptionArn }
-export function addonSubscriptionArn<Partition extends ArnPartition = 'aws'>(parameters: AddonSubscriptionArnParameters<Partition>) {
+export function addonSubscriptionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AddonSubscriptionArnParameters<Partition>,
+) {
   return new AddonSubscriptionArn<Partition>(parameters)
 }
 
-export interface MailmanagerArchiveArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MailmanagerArchiveArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly archiveId: string
 }
-class MailmanagerArchiveArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'mailmanager-archive', `arn:${string}:ses:${string}:${string}:mailmanager-archive/${string}`> {
+class MailmanagerArchiveArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'mailmanager-archive',
+  `arn:${string}:ses:${string}:${string}:mailmanager-archive/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'mailmanager-archive' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -192,17 +255,26 @@ class MailmanagerArchiveArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { MailmanagerArchiveArn }
-export function mailmanagerArchiveArn<Partition extends ArnPartition = 'aws'>(parameters: MailmanagerArchiveArnParameters<Partition>) {
+export function mailmanagerArchiveArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MailmanagerArchiveArnParameters<Partition>,
+) {
   return new MailmanagerArchiveArn<Partition>(parameters)
 }
 
-export interface MailmanagerIngressPointArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MailmanagerIngressPointArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly ingressPointId: string
 }
-class MailmanagerIngressPointArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'mailmanager-ingress-point', `arn:${string}:ses:${string}:${string}:mailmanager-ingress-point/${string}`> {
+class MailmanagerIngressPointArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'mailmanager-ingress-point',
+  `arn:${string}:ses:${string}:${string}:mailmanager-ingress-point/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'mailmanager-ingress-point' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -220,17 +292,26 @@ class MailmanagerIngressPointArn<Partition extends ArnPartition = 'aws'> extends
   }
 }
 export type { MailmanagerIngressPointArn }
-export function mailmanagerIngressPointArn<Partition extends ArnPartition = 'aws'>(parameters: MailmanagerIngressPointArnParameters<Partition>) {
+export function mailmanagerIngressPointArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: MailmanagerIngressPointArnParameters<Partition>) {
   return new MailmanagerIngressPointArn<Partition>(parameters)
 }
 
-export interface MailmanagerSmtpRelayArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MailmanagerSmtpRelayArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly relayId: string
 }
-class MailmanagerSmtpRelayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'mailmanager-smtp-relay', `arn:${string}:ses:${string}:${string}:mailmanager-smtp-relay/${string}`> {
+class MailmanagerSmtpRelayArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'mailmanager-smtp-relay',
+  `arn:${string}:ses:${string}:${string}:mailmanager-smtp-relay/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'mailmanager-smtp-relay' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -248,17 +329,26 @@ class MailmanagerSmtpRelayArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { MailmanagerSmtpRelayArn }
-export function mailmanagerSmtpRelayArn<Partition extends ArnPartition = 'aws'>(parameters: MailmanagerSmtpRelayArnParameters<Partition>) {
+export function mailmanagerSmtpRelayArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MailmanagerSmtpRelayArnParameters<Partition>,
+) {
   return new MailmanagerSmtpRelayArn<Partition>(parameters)
 }
 
-export interface MailmanagerRuleSetArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MailmanagerRuleSetArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly ruleSetId: string
 }
-class MailmanagerRuleSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'mailmanager-rule-set', `arn:${string}:ses:${string}:${string}:mailmanager-rule-set/${string}`> {
+class MailmanagerRuleSetArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'mailmanager-rule-set',
+  `arn:${string}:ses:${string}:${string}:mailmanager-rule-set/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'mailmanager-rule-set' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -276,17 +366,26 @@ class MailmanagerRuleSetArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { MailmanagerRuleSetArn }
-export function mailmanagerRuleSetArn<Partition extends ArnPartition = 'aws'>(parameters: MailmanagerRuleSetArnParameters<Partition>) {
+export function mailmanagerRuleSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MailmanagerRuleSetArnParameters<Partition>,
+) {
   return new MailmanagerRuleSetArn<Partition>(parameters)
 }
 
-export interface MailmanagerTrafficPolicyArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MailmanagerTrafficPolicyArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly trafficPolicyId: string
 }
-class MailmanagerTrafficPolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'mailmanager-traffic-policy', `arn:${string}:ses:${string}:${string}:mailmanager-traffic-policy/${string}`> {
+class MailmanagerTrafficPolicyArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'mailmanager-traffic-policy',
+  `arn:${string}:ses:${string}:${string}:mailmanager-traffic-policy/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'mailmanager-traffic-policy' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -304,23 +403,35 @@ class MailmanagerTrafficPolicyArn<Partition extends ArnPartition = 'aws'> extend
   }
 }
 export type { MailmanagerTrafficPolicyArn }
-export function mailmanagerTrafficPolicyArn<Partition extends ArnPartition = 'aws'>(parameters: MailmanagerTrafficPolicyArnParameters<Partition>) {
+export function mailmanagerTrafficPolicyArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: MailmanagerTrafficPolicyArnParameters<Partition>) {
   return new MailmanagerTrafficPolicyArn<Partition>(parameters)
 }
 
-export interface CustomVerificationEmailTemplateArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CustomVerificationEmailTemplateArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly templateName: string
 }
-class CustomVerificationEmailTemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'custom-verification-email-template', `arn:${string}:ses:${string}:${string}:custom-verification-email-template/${string}`> {
-  readonly [ArnResourceTypeBrand] = 'custom-verification-email-template' as const
+class CustomVerificationEmailTemplateArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'custom-verification-email-template',
+  `arn:${string}:ses:${string}:${string}:custom-verification-email-template/${string}`
+> {
+  readonly [ArnResourceTypeBrand] =
+    'custom-verification-email-template' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly templateName: string
-  constructor(parameters: CustomVerificationEmailTemplateArnParameters<Partition>) {
+  constructor(
+    parameters: CustomVerificationEmailTemplateArnParameters<Partition>,
+  ) {
     super()
     this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
@@ -332,7 +443,9 @@ class CustomVerificationEmailTemplateArn<Partition extends ArnPartition = 'aws'>
   }
 }
 export type { CustomVerificationEmailTemplateArn }
-export function customVerificationEmailTemplateArn<Partition extends ArnPartition = 'aws'>(parameters: CustomVerificationEmailTemplateArnParameters<Partition>) {
+export function customVerificationEmailTemplateArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: CustomVerificationEmailTemplateArnParameters<Partition>) {
   return new CustomVerificationEmailTemplateArn<Partition>(parameters)
 }
 
@@ -342,7 +455,10 @@ export interface TemplateArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly templateName: string
 }
-class TemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'template', `arn:${string}:ses:${string}:${string}:template/${string}`> {
+class TemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'template',
+  `arn:${string}:ses:${string}:${string}:template/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'template' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -360,17 +476,26 @@ class TemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'t
   }
 }
 export type { TemplateArn }
-export function templateArn<Partition extends ArnPartition = 'aws'>(parameters: TemplateArnParameters<Partition>) {
+export function templateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TemplateArnParameters<Partition>,
+) {
   return new TemplateArn<Partition>(parameters)
 }
 
-export interface ContactListArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ContactListArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly contactListName: string
 }
-class ContactListArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'contact-list', `arn:${string}:ses:${string}:${string}:contact-list/${string}`> {
+class ContactListArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'contact-list',
+  `arn:${string}:ses:${string}:${string}:contact-list/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'contact-list' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -388,17 +513,24 @@ class ContactListArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ContactListArn }
-export function contactListArn<Partition extends ArnPartition = 'aws'>(parameters: ContactListArnParameters<Partition>) {
+export function contactListArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ContactListArnParameters<Partition>,
+) {
   return new ContactListArn<Partition>(parameters)
 }
 
-export interface ExportJobArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ExportJobArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly exportJobId: string
 }
-class ExportJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'export-job', `arn:${string}:ses:${string}:${string}:export-job/${string}`> {
+class ExportJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'export-job',
+  `arn:${string}:ses:${string}:${string}:export-job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'export-job' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -416,17 +548,24 @@ class ExportJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { ExportJobArn }
-export function exportJobArn<Partition extends ArnPartition = 'aws'>(parameters: ExportJobArnParameters<Partition>) {
+export function exportJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ExportJobArnParameters<Partition>,
+) {
   return new ExportJobArn<Partition>(parameters)
 }
 
-export interface ImportJobArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ImportJobArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly importJobId: string
 }
-class ImportJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'import-job', `arn:${string}:ses:${string}:${string}:import-job/${string}`> {
+class ImportJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'import-job',
+  `arn:${string}:ses:${string}:${string}:import-job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'import-job' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -444,6 +583,8 @@ class ImportJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { ImportJobArn }
-export function importJobArn<Partition extends ArnPartition = 'aws'>(parameters: ImportJobArnParameters<Partition>) {
+export function importJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ImportJobArnParameters<Partition>,
+) {
   return new ImportJobArn<Partition>(parameters)
 }

@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface AccountArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface AccountArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly organizationId: string
   readonly accountId: string
 }
-class AccountArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'account', `arn:${string}:organizations::${string}:account/o-${string}/${string}`> {
+class AccountArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'account',
+  `arn:${string}:organizations::${string}:account/o-${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'account' as const
   readonly partition: Partition
   readonly account: string
@@ -24,18 +33,25 @@ class AccountArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ac
   }
 }
 export type { AccountArn }
-export function accountArn<Partition extends ArnPartition = 'aws'>(parameters: AccountArnParameters<Partition>) {
+export function accountArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AccountArnParameters<Partition>,
+) {
   return new AccountArn<Partition>(parameters)
 }
 
-export interface HandshakeArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface HandshakeArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly organizationId: string
   readonly handshakeType: string
   readonly handshakeId: string
 }
-class HandshakeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'handshake', `arn:${string}:organizations::${string}:handshake/o-${string}/${string}/h-${string}`> {
+class HandshakeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'handshake',
+  `arn:${string}:organizations::${string}:handshake/o-${string}/${string}/h-${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'handshake' as const
   readonly partition: Partition
   readonly account: string
@@ -55,16 +71,25 @@ class HandshakeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { HandshakeArn }
-export function handshakeArn<Partition extends ArnPartition = 'aws'>(parameters: HandshakeArnParameters<Partition>) {
+export function handshakeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: HandshakeArnParameters<Partition>,
+) {
   return new HandshakeArn<Partition>(parameters)
 }
 
-export interface OrganizationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface OrganizationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly organizationId: string
 }
-class OrganizationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'organization', `arn:${string}:organizations::${string}:organization/o-${string}`> {
+class OrganizationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'organization',
+  `arn:${string}:organizations::${string}:organization/o-${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'organization' as const
   readonly partition: Partition
   readonly account: string
@@ -80,17 +105,26 @@ class OrganizationArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { OrganizationArn }
-export function organizationArn<Partition extends ArnPartition = 'aws'>(parameters: OrganizationArnParameters<Partition>) {
+export function organizationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: OrganizationArnParameters<Partition>,
+) {
   return new OrganizationArn<Partition>(parameters)
 }
 
-export interface OrganizationalunitArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface OrganizationalunitArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly organizationId: string
   readonly organizationalUnitId: string
 }
-class OrganizationalunitArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'organizationalunit', `arn:${string}:organizations::${string}:ou/o-${string}/ou-${string}`> {
+class OrganizationalunitArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'organizationalunit',
+  `arn:${string}:organizations::${string}:ou/o-${string}/ou-${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'organizationalunit' as const
   readonly partition: Partition
   readonly account: string
@@ -108,7 +142,9 @@ class OrganizationalunitArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { OrganizationalunitArn }
-export function organizationalunitArn<Partition extends ArnPartition = 'aws'>(parameters: OrganizationalunitArnParameters<Partition>) {
+export function organizationalunitArn<Partition extends ArnPartition = 'aws'>(
+  parameters: OrganizationalunitArnParameters<Partition>,
+) {
   return new OrganizationalunitArn<Partition>(parameters)
 }
 
@@ -119,7 +155,10 @@ export interface PolicyArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly policyType: string
   readonly policyId: string
 }
-class PolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'policy', `arn:${string}:organizations::${string}:policy/o-${string}/${string}/p-${string}`> {
+class PolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'policy',
+  `arn:${string}:organizations::${string}:policy/o-${string}/${string}/p-${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'policy' as const
   readonly partition: Partition
   readonly account: string
@@ -139,17 +178,26 @@ class PolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pol
   }
 }
 export type { PolicyArn }
-export function policyArn<Partition extends ArnPartition = 'aws'>(parameters: PolicyArnParameters<Partition>) {
+export function policyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PolicyArnParameters<Partition>,
+) {
   return new PolicyArn<Partition>(parameters)
 }
 
-export interface ResourcepolicyArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ResourcepolicyArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly organizationId: string
   readonly resourcePolicyId: string
 }
-class ResourcepolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'resourcepolicy', `arn:${string}:organizations::${string}:resourcepolicy/o-${string}/rp-${string}`> {
+class ResourcepolicyArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'resourcepolicy',
+  `arn:${string}:organizations::${string}:resourcepolicy/o-${string}/rp-${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'resourcepolicy' as const
   readonly partition: Partition
   readonly account: string
@@ -167,16 +215,23 @@ class ResourcepolicyArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { ResourcepolicyArn }
-export function resourcepolicyArn<Partition extends ArnPartition = 'aws'>(parameters: ResourcepolicyArnParameters<Partition>) {
+export function resourcepolicyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResourcepolicyArnParameters<Partition>,
+) {
   return new ResourcepolicyArn<Partition>(parameters)
 }
 
-export interface AwspolicyArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AwspolicyArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly policyType: string
   readonly policyId: string
 }
-class AwspolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'awspolicy', `arn:${string}:organizations::aws:policy/${string}/p-${string}`> {
+class AwspolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'awspolicy',
+  `arn:${string}:organizations::aws:policy/${string}/p-${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'awspolicy' as const
   readonly partition: Partition
   readonly policyType: string
@@ -192,7 +247,9 @@ class AwspolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { AwspolicyArn }
-export function awspolicyArn<Partition extends ArnPartition = 'aws'>(parameters: AwspolicyArnParameters<Partition>) {
+export function awspolicyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AwspolicyArnParameters<Partition>,
+) {
   return new AwspolicyArn<Partition>(parameters)
 }
 
@@ -202,7 +259,10 @@ export interface RootArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly organizationId: string
   readonly rootId: string
 }
-class RootArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'root', `arn:${string}:organizations::${string}:root/o-${string}/r-${string}`> {
+class RootArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'root',
+  `arn:${string}:organizations::${string}:root/o-${string}/r-${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'root' as const
   readonly partition: Partition
   readonly account: string
@@ -220,6 +280,8 @@ class RootArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'root'
   }
 }
 export type { RootArn }
-export function rootArn<Partition extends ArnPartition = 'aws'>(parameters: RootArnParameters<Partition>) {
+export function rootArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RootArnParameters<Partition>,
+) {
   return new RootArn<Partition>(parameters)
 }

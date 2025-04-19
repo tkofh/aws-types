@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ScheduleGroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ScheduleGroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly groupName: string
 }
-class ScheduleGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'schedule-group', `arn:${string}:scheduler:${string}:${string}:schedule-group/${string}`> {
+class ScheduleGroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'schedule-group',
+  `arn:${string}:scheduler:${string}:${string}:schedule-group/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'schedule-group' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +37,9 @@ class ScheduleGroupArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { ScheduleGroupArn }
-export function scheduleGroupArn<Partition extends ArnPartition = 'aws'>(parameters: ScheduleGroupArnParameters<Partition>) {
+export function scheduleGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ScheduleGroupArnParameters<Partition>,
+) {
   return new ScheduleGroupArn<Partition>(parameters)
 }
 
@@ -35,7 +50,10 @@ export interface ScheduleArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly groupName: string
   readonly scheduleName: string
 }
-class ScheduleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'schedule', `arn:${string}:scheduler:${string}:${string}:schedule/${string}/${string}`> {
+class ScheduleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'schedule',
+  `arn:${string}:scheduler:${string}:${string}:schedule/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'schedule' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,6 +73,8 @@ class ScheduleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'s
   }
 }
 export type { ScheduleArn }
-export function scheduleArn<Partition extends ArnPartition = 'aws'>(parameters: ScheduleArnParameters<Partition>) {
+export function scheduleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ScheduleArnParameters<Partition>,
+) {
   return new ScheduleArn<Partition>(parameters)
 }

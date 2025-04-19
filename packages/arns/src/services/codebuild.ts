@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface BuildArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface BuildArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly buildId: string
 }
-class BuildArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'build', `arn:${string}:codebuild:${string}:${string}:build/${string}`> {
+class BuildArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'build',
+  `arn:${string}:codebuild:${string}:${string}:build/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'build' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +33,24 @@ class BuildArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'buil
   }
 }
 export type { BuildArn }
-export function buildArn<Partition extends ArnPartition = 'aws'>(parameters: BuildArnParameters<Partition>) {
+export function buildArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BuildArnParameters<Partition>,
+) {
   return new BuildArn<Partition>(parameters)
 }
 
-export interface BuildBatchArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface BuildBatchArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly buildBatchId: string
 }
-class BuildBatchArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'build-batch', `arn:${string}:codebuild:${string}:${string}:build-batch/${string}`> {
+class BuildBatchArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'build-batch',
+  `arn:${string}:codebuild:${string}:${string}:build-batch/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'build-batch' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +68,9 @@ class BuildBatchArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { BuildBatchArn }
-export function buildBatchArn<Partition extends ArnPartition = 'aws'>(parameters: BuildBatchArnParameters<Partition>) {
+export function buildBatchArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BuildBatchArnParameters<Partition>,
+) {
   return new BuildBatchArn<Partition>(parameters)
 }
 
@@ -62,7 +80,10 @@ export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly projectName: string
 }
-class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'project', `arn:${string}:codebuild:${string}:${string}:project/${string}`> {
+class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'project',
+  `arn:${string}:codebuild:${string}:${string}:project/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'project' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,17 +101,26 @@ class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pr
   }
 }
 export type { ProjectArn }
-export function projectArn<Partition extends ArnPartition = 'aws'>(parameters: ProjectArnParameters<Partition>) {
+export function projectArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProjectArnParameters<Partition>,
+) {
   return new ProjectArn<Partition>(parameters)
 }
 
-export interface ReportGroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ReportGroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly reportGroupName: string
 }
-class ReportGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'report-group', `arn:${string}:codebuild:${string}:${string}:report-group/${string}`> {
+class ReportGroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'report-group',
+  `arn:${string}:codebuild:${string}:${string}:report-group/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'report-group' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,7 +138,9 @@ class ReportGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ReportGroupArn }
-export function reportGroupArn<Partition extends ArnPartition = 'aws'>(parameters: ReportGroupArnParameters<Partition>) {
+export function reportGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ReportGroupArnParameters<Partition>,
+) {
   return new ReportGroupArn<Partition>(parameters)
 }
 
@@ -119,7 +151,10 @@ export interface ReportArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly reportGroupName: string
   readonly reportId: string
 }
-class ReportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'report', `arn:${string}:codebuild:${string}:${string}:report/${string}:${string}`> {
+class ReportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'report',
+  `arn:${string}:codebuild:${string}:${string}:report/${string}:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'report' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -139,7 +174,9 @@ class ReportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'rep
   }
 }
 export type { ReportArn }
-export function reportArn<Partition extends ArnPartition = 'aws'>(parameters: ReportArnParameters<Partition>) {
+export function reportArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ReportArnParameters<Partition>,
+) {
   return new ReportArn<Partition>(parameters)
 }
 
@@ -150,7 +187,10 @@ export interface FleetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly fleetName: string
   readonly fleetId: string
 }
-class FleetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'fleet', `arn:${string}:codebuild:${string}:${string}:fleet/${string}:${string}`> {
+class FleetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'fleet',
+  `arn:${string}:codebuild:${string}:${string}:fleet/${string}:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'fleet' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -170,6 +210,8 @@ class FleetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'flee
   }
 }
 export type { FleetArn }
-export function fleetArn<Partition extends ArnPartition = 'aws'>(parameters: FleetArnParameters<Partition>) {
+export function fleetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FleetArnParameters<Partition>,
+) {
   return new FleetArn<Partition>(parameters)
 }

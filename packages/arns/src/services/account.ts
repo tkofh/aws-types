@@ -1,10 +1,19 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface AccountArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly account: string
 }
-class AccountArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'account', `arn:${string}:account::${string}:account`> {
+class AccountArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'account',
+  `arn:${string}:account::${string}:account`
+> {
   readonly [ArnResourceTypeBrand] = 'account' as const
   readonly partition: Partition
   readonly account: string
@@ -18,17 +27,26 @@ class AccountArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ac
   }
 }
 export type { AccountArn }
-export function accountArn<Partition extends ArnPartition = 'aws'>(parameters: AccountArnParameters<Partition>) {
+export function accountArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AccountArnParameters<Partition>,
+) {
   return new AccountArn<Partition>(parameters)
 }
 
-export interface AccountInOrganizationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AccountInOrganizationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly managementAccountId: string
   readonly organizationId: string
   readonly memberAccountId: string
 }
-class AccountInOrganizationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'accountInOrganization', `arn:${string}:account::${string}:account/o-${string}/${string}`> {
+class AccountInOrganizationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'accountInOrganization',
+  `arn:${string}:account::${string}:account/o-${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'accountInOrganization' as const
   readonly partition: Partition
   readonly managementAccountId: string
@@ -46,6 +64,8 @@ class AccountInOrganizationArn<Partition extends ArnPartition = 'aws'> extends I
   }
 }
 export type { AccountInOrganizationArn }
-export function accountInOrganizationArn<Partition extends ArnPartition = 'aws'>(parameters: AccountInOrganizationArnParameters<Partition>) {
+export function accountInOrganizationArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: AccountInOrganizationArnParameters<Partition>) {
   return new AccountInOrganizationArn<Partition>(parameters)
 }

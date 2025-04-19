@@ -1,11 +1,20 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface HubArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
 }
-class HubArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'hub', `arn:${string}:securityhub:${string}:${string}:hub/default`> {
+class HubArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'hub',
+  `arn:${string}:securityhub:${string}:${string}:hub/default`
+> {
   readonly [ArnResourceTypeBrand] = 'hub' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -21,7 +30,9 @@ class HubArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'hub', 
   }
 }
 export type { HubArn }
-export function hubArn<Partition extends ArnPartition = 'aws'>(parameters: HubArnParameters<Partition>) {
+export function hubArn<Partition extends ArnPartition = 'aws'>(
+  parameters: HubArnParameters<Partition>,
+) {
   return new HubArn<Partition>(parameters)
 }
 
@@ -32,7 +43,10 @@ export interface ProductArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly company: string
   readonly productId: string
 }
-class ProductArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'product', `arn:${string}:securityhub:${string}:${string}:product/${string}/${string}`> {
+class ProductArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'product',
+  `arn:${string}:securityhub:${string}:${string}:product/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'product' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +66,26 @@ class ProductArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pr
   }
 }
 export type { ProductArn }
-export function productArn<Partition extends ArnPartition = 'aws'>(parameters: ProductArnParameters<Partition>) {
+export function productArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProductArnParameters<Partition>,
+) {
   return new ProductArn<Partition>(parameters)
 }
 
-export interface FindingAggregatorArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FindingAggregatorArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly findingAggregatorId: string
 }
-class FindingAggregatorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'finding-aggregator', `arn:${string}:securityhub:${string}:${string}:finding-aggregator/${string}`> {
+class FindingAggregatorArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'finding-aggregator',
+  `arn:${string}:securityhub:${string}:${string}:finding-aggregator/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'finding-aggregator' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,17 +103,26 @@ class FindingAggregatorArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { FindingAggregatorArn }
-export function findingAggregatorArn<Partition extends ArnPartition = 'aws'>(parameters: FindingAggregatorArnParameters<Partition>) {
+export function findingAggregatorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FindingAggregatorArnParameters<Partition>,
+) {
   return new FindingAggregatorArn<Partition>(parameters)
 }
 
-export interface AutomationRuleArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AutomationRuleArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly automationRuleId: string
 }
-class AutomationRuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'automation-rule', `arn:${string}:securityhub:${string}:${string}:automation-rule/${string}`> {
+class AutomationRuleArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'automation-rule',
+  `arn:${string}:securityhub:${string}:${string}:automation-rule/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'automation-rule' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,17 +140,26 @@ class AutomationRuleArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { AutomationRuleArn }
-export function automationRuleArn<Partition extends ArnPartition = 'aws'>(parameters: AutomationRuleArnParameters<Partition>) {
+export function automationRuleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AutomationRuleArnParameters<Partition>,
+) {
   return new AutomationRuleArn<Partition>(parameters)
 }
 
-export interface ConfigurationPolicyArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConfigurationPolicyArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly configurationPolicyId: string
 }
-class ConfigurationPolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'configuration-policy', `arn:${string}:securityhub:${string}:${string}:configuration-policy/${string}`> {
+class ConfigurationPolicyArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'configuration-policy',
+  `arn:${string}:securityhub:${string}:${string}:configuration-policy/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'configuration-policy' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -136,6 +177,8 @@ class ConfigurationPolicyArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { ConfigurationPolicyArn }
-export function configurationPolicyArn<Partition extends ArnPartition = 'aws'>(parameters: ConfigurationPolicyArnParameters<Partition>) {
+export function configurationPolicyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConfigurationPolicyArnParameters<Partition>,
+) {
   return new ConfigurationPolicyArn<Partition>(parameters)
 }

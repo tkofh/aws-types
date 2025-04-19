@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ComputeEnvironmentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ComputeEnvironmentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly computeEnvironmentName: string
 }
-class ComputeEnvironmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'compute-environment', `arn:${string}:batch:${string}:${string}:compute-environment/${string}`> {
+class ComputeEnvironmentArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'compute-environment',
+  `arn:${string}:batch:${string}:${string}:compute-environment/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'compute-environment' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +37,9 @@ class ComputeEnvironmentArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { ComputeEnvironmentArn }
-export function computeEnvironmentArn<Partition extends ArnPartition = 'aws'>(parameters: ComputeEnvironmentArnParameters<Partition>) {
+export function computeEnvironmentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ComputeEnvironmentArnParameters<Partition>,
+) {
   return new ComputeEnvironmentArn<Partition>(parameters)
 }
 
@@ -34,7 +49,10 @@ export interface JobQueueArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly jobQueueName: string
 }
-class JobQueueArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'job-queue', `arn:${string}:batch:${string}:${string}:job-queue/${string}`> {
+class JobQueueArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'job-queue',
+  `arn:${string}:batch:${string}:${string}:job-queue/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'job-queue' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +70,26 @@ class JobQueueArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'j
   }
 }
 export type { JobQueueArn }
-export function jobQueueArn<Partition extends ArnPartition = 'aws'>(parameters: JobQueueArnParameters<Partition>) {
+export function jobQueueArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobQueueArnParameters<Partition>,
+) {
   return new JobQueueArn<Partition>(parameters)
 }
 
-export interface JobDefinitionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface JobDefinitionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly jobDefinitionName: string
 }
-class JobDefinitionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'job-definition', `arn:${string}:batch:${string}:${string}:job-definition/${string}`> {
+class JobDefinitionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'job-definition',
+  `arn:${string}:batch:${string}:${string}:job-definition/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'job-definition' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,18 +107,27 @@ class JobDefinitionArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { JobDefinitionArn }
-export function jobDefinitionArn<Partition extends ArnPartition = 'aws'>(parameters: JobDefinitionArnParameters<Partition>) {
+export function jobDefinitionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobDefinitionArnParameters<Partition>,
+) {
   return new JobDefinitionArn<Partition>(parameters)
 }
 
-export interface JobDefinitionRevisionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface JobDefinitionRevisionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly jobDefinitionName: string
   readonly revision: string
 }
-class JobDefinitionRevisionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'job-definition-revision', `arn:${string}:batch:${string}:${string}:job-definition/${string}:${string}`> {
+class JobDefinitionRevisionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'job-definition-revision',
+  `arn:${string}:batch:${string}:${string}:job-definition/${string}:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'job-definition-revision' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -111,7 +147,9 @@ class JobDefinitionRevisionArn<Partition extends ArnPartition = 'aws'> extends I
   }
 }
 export type { JobDefinitionRevisionArn }
-export function jobDefinitionRevisionArn<Partition extends ArnPartition = 'aws'>(parameters: JobDefinitionRevisionArnParameters<Partition>) {
+export function jobDefinitionRevisionArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: JobDefinitionRevisionArnParameters<Partition>) {
   return new JobDefinitionRevisionArn<Partition>(parameters)
 }
 
@@ -121,7 +159,10 @@ export interface JobArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly jobId: string
 }
-class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'job', `arn:${string}:batch:${string}:${string}:job/${string}`> {
+class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'job',
+  `arn:${string}:batch:${string}:${string}:job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'job' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -139,17 +180,26 @@ class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'job', 
   }
 }
 export type { JobArn }
-export function jobArn<Partition extends ArnPartition = 'aws'>(parameters: JobArnParameters<Partition>) {
+export function jobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobArnParameters<Partition>,
+) {
   return new JobArn<Partition>(parameters)
 }
 
-export interface SchedulingPolicyArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SchedulingPolicyArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly schedulingPolicyName: string
 }
-class SchedulingPolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'scheduling-policy', `arn:${string}:batch:${string}:${string}:scheduling-policy/${string}`> {
+class SchedulingPolicyArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'scheduling-policy',
+  `arn:${string}:batch:${string}:${string}:scheduling-policy/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'scheduling-policy' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -167,6 +217,8 @@ class SchedulingPolicyArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { SchedulingPolicyArn }
-export function schedulingPolicyArn<Partition extends ArnPartition = 'aws'>(parameters: SchedulingPolicyArnParameters<Partition>) {
+export function schedulingPolicyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SchedulingPolicyArnParameters<Partition>,
+) {
   return new SchedulingPolicyArn<Partition>(parameters)
 }

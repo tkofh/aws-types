@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ModelArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -7,7 +13,10 @@ export interface ModelArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly projectName: string
   readonly modelVersion: string
 }
-class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'model', `arn:${string}:lookoutvision:${string}:${string}:model/${string}/${string}`> {
+class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'model',
+  `arn:${string}:lookoutvision:${string}:${string}:model/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'model' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,7 +36,9 @@ class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'mode
   }
 }
 export type { ModelArn }
-export function modelArn<Partition extends ArnPartition = 'aws'>(parameters: ModelArnParameters<Partition>) {
+export function modelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelArnParameters<Partition>,
+) {
   return new ModelArn<Partition>(parameters)
 }
 
@@ -37,7 +48,10 @@ export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly projectName: string
 }
-class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'project', `arn:${string}:lookoutvision:${string}:${string}:project/${string}`> {
+class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'project',
+  `arn:${string}:lookoutvision:${string}:${string}:project/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'project' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,6 +69,8 @@ class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pr
   }
 }
 export type { ProjectArn }
-export function projectArn<Partition extends ArnPartition = 'aws'>(parameters: ProjectArnParameters<Partition>) {
+export function projectArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProjectArnParameters<Partition>,
+) {
   return new ProjectArn<Partition>(parameters)
 }

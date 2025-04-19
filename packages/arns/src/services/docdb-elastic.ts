@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cluster', `arn:${string}:docdb-elastic:${string}:${string}:cluster/${string}`> {
+class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'cluster',
+  `arn:${string}:docdb-elastic:${string}:${string}:cluster/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'cluster' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +33,26 @@ class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cl
   }
 }
 export type { ClusterArn }
-export function clusterArn<Partition extends ArnPartition = 'aws'>(parameters: ClusterArnParameters<Partition>) {
+export function clusterArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ClusterArnParameters<Partition>,
+) {
   return new ClusterArn<Partition>(parameters)
 }
 
-export interface ClusterSnapshotArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ClusterSnapshotArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class ClusterSnapshotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cluster-snapshot', `arn:${string}:docdb-elastic:${string}:${string}:cluster-snapshot/${string}`> {
+class ClusterSnapshotArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'cluster-snapshot',
+  `arn:${string}:docdb-elastic:${string}:${string}:cluster-snapshot/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'cluster-snapshot' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,6 +70,8 @@ class ClusterSnapshotArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { ClusterSnapshotArn }
-export function clusterSnapshotArn<Partition extends ArnPartition = 'aws'>(parameters: ClusterSnapshotArnParameters<Partition>) {
+export function clusterSnapshotArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ClusterSnapshotArnParameters<Partition>,
+) {
   return new ClusterSnapshotArn<Partition>(parameters)
 }

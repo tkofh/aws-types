@@ -1,6 +1,14 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ComponentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ComponentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -8,7 +16,10 @@ export interface ComponentArnParameters<Partition extends ArnPartition = 'aws'> 
   readonly componentVersion: string
   readonly componentBuildVersion: string
 }
-class ComponentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'component', `arn:${string}:imagebuilder:${string}:${string}:component/${string}/${string}/${string}`> {
+class ComponentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'component',
+  `arn:${string}:imagebuilder:${string}:${string}:component/${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'component' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -30,18 +41,27 @@ class ComponentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { ComponentArn }
-export function componentArn<Partition extends ArnPartition = 'aws'>(parameters: ComponentArnParameters<Partition>) {
+export function componentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ComponentArnParameters<Partition>,
+) {
   return new ComponentArn<Partition>(parameters)
 }
 
-export interface ComponentVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ComponentVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly componentName: string
   readonly componentVersion: string
 }
-class ComponentVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'componentVersion', `arn:${string}:imagebuilder:${string}:${string}:component/${string}/${string}`> {
+class ComponentVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'componentVersion',
+  `arn:${string}:imagebuilder:${string}:${string}:component/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'componentVersion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -61,17 +81,26 @@ class ComponentVersionArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { ComponentVersionArn }
-export function componentVersionArn<Partition extends ArnPartition = 'aws'>(parameters: ComponentVersionArnParameters<Partition>) {
+export function componentVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ComponentVersionArnParameters<Partition>,
+) {
   return new ComponentVersionArn<Partition>(parameters)
 }
 
-export interface DistributionConfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DistributionConfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly distributionConfigurationName: string
 }
-class DistributionConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'distributionConfiguration', `arn:${string}:imagebuilder:${string}:${string}:distribution-configuration/${string}`> {
+class DistributionConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'distributionConfiguration',
+  `arn:${string}:imagebuilder:${string}:${string}:distribution-configuration/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'distributionConfiguration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -82,14 +111,17 @@ class DistributionConfigurationArn<Partition extends ArnPartition = 'aws'> exten
     this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.distributionConfigurationName = parameters.distributionConfigurationName
+    this.distributionConfigurationName =
+      parameters.distributionConfigurationName
   }
   [StringifyArnBrand]() {
     return `arn:${this.partition}:imagebuilder:${this.region}:${this.account}:distribution-configuration/${this.distributionConfigurationName}` as const
   }
 }
 export type { DistributionConfigurationArn }
-export function distributionConfigurationArn<Partition extends ArnPartition = 'aws'>(parameters: DistributionConfigurationArnParameters<Partition>) {
+export function distributionConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: DistributionConfigurationArnParameters<Partition>) {
   return new DistributionConfigurationArn<Partition>(parameters)
 }
 
@@ -101,7 +133,10 @@ export interface ImageArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly imageVersion: string
   readonly imageBuildVersion: string
 }
-class ImageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'image', `arn:${string}:imagebuilder:${string}:${string}:image/${string}/${string}/${string}`> {
+class ImageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'image',
+  `arn:${string}:imagebuilder:${string}:${string}:image/${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'image' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -123,18 +158,27 @@ class ImageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'imag
   }
 }
 export type { ImageArn }
-export function imageArn<Partition extends ArnPartition = 'aws'>(parameters: ImageArnParameters<Partition>) {
+export function imageArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ImageArnParameters<Partition>,
+) {
   return new ImageArn<Partition>(parameters)
 }
 
-export interface ImageVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ImageVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly imageName: string
   readonly imageVersion: string
 }
-class ImageVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'imageVersion', `arn:${string}:imagebuilder:${string}:${string}:image/${string}/${string}`> {
+class ImageVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'imageVersion',
+  `arn:${string}:imagebuilder:${string}:${string}:image/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'imageVersion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -154,18 +198,27 @@ class ImageVersionArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { ImageVersionArn }
-export function imageVersionArn<Partition extends ArnPartition = 'aws'>(parameters: ImageVersionArnParameters<Partition>) {
+export function imageVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ImageVersionArnParameters<Partition>,
+) {
   return new ImageVersionArn<Partition>(parameters)
 }
 
-export interface ImageRecipeArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ImageRecipeArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly imageRecipeName: string
   readonly imageRecipeVersion: string
 }
-class ImageRecipeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'imageRecipe', `arn:${string}:imagebuilder:${string}:${string}:image-recipe/${string}/${string}`> {
+class ImageRecipeArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'imageRecipe',
+  `arn:${string}:imagebuilder:${string}:${string}:image-recipe/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'imageRecipe' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -185,18 +238,27 @@ class ImageRecipeArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ImageRecipeArn }
-export function imageRecipeArn<Partition extends ArnPartition = 'aws'>(parameters: ImageRecipeArnParameters<Partition>) {
+export function imageRecipeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ImageRecipeArnParameters<Partition>,
+) {
   return new ImageRecipeArn<Partition>(parameters)
 }
 
-export interface ContainerRecipeArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ContainerRecipeArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly containerRecipeName: string
   readonly containerRecipeVersion: string
 }
-class ContainerRecipeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'containerRecipe', `arn:${string}:imagebuilder:${string}:${string}:container-recipe/${string}/${string}`> {
+class ContainerRecipeArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'containerRecipe',
+  `arn:${string}:imagebuilder:${string}:${string}:container-recipe/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'containerRecipe' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -216,17 +278,26 @@ class ContainerRecipeArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { ContainerRecipeArn }
-export function containerRecipeArn<Partition extends ArnPartition = 'aws'>(parameters: ContainerRecipeArnParameters<Partition>) {
+export function containerRecipeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ContainerRecipeArnParameters<Partition>,
+) {
   return new ContainerRecipeArn<Partition>(parameters)
 }
 
-export interface ImagePipelineArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ImagePipelineArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly imagePipelineName: string
 }
-class ImagePipelineArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'imagePipeline', `arn:${string}:imagebuilder:${string}:${string}:image-pipeline/${string}`> {
+class ImagePipelineArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'imagePipeline',
+  `arn:${string}:imagebuilder:${string}:${string}:image-pipeline/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'imagePipeline' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -244,17 +315,26 @@ class ImagePipelineArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { ImagePipelineArn }
-export function imagePipelineArn<Partition extends ArnPartition = 'aws'>(parameters: ImagePipelineArnParameters<Partition>) {
+export function imagePipelineArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ImagePipelineArnParameters<Partition>,
+) {
   return new ImagePipelineArn<Partition>(parameters)
 }
 
-export interface InfrastructureConfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface InfrastructureConfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class InfrastructureConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'infrastructureConfiguration', `arn:${string}:imagebuilder:${string}:${string}:infrastructure-configuration/${string}`> {
+class InfrastructureConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'infrastructureConfiguration',
+  `arn:${string}:imagebuilder:${string}:${string}:infrastructure-configuration/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'infrastructureConfiguration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -272,7 +352,9 @@ class InfrastructureConfigurationArn<Partition extends ArnPartition = 'aws'> ext
   }
 }
 export type { InfrastructureConfigurationArn }
-export function infrastructureConfigurationArn<Partition extends ArnPartition = 'aws'>(parameters: InfrastructureConfigurationArnParameters<Partition>) {
+export function infrastructureConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: InfrastructureConfigurationArnParameters<Partition>) {
   return new InfrastructureConfigurationArn<Partition>(parameters)
 }
 
@@ -282,7 +364,10 @@ export interface KmsKeyArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly keyId: string
 }
-class KmsKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'kmsKey', `arn:${string}:kms:${string}:${string}:key/${string}`> {
+class KmsKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'kmsKey',
+  `arn:${string}:kms:${string}:${string}:key/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'kmsKey' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -300,17 +385,26 @@ class KmsKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'kms
   }
 }
 export type { KmsKeyArn }
-export function kmsKeyArn<Partition extends ArnPartition = 'aws'>(parameters: KmsKeyArnParameters<Partition>) {
+export function kmsKeyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KmsKeyArnParameters<Partition>,
+) {
   return new KmsKeyArn<Partition>(parameters)
 }
 
-export interface LifecycleExecutionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface LifecycleExecutionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly lifecycleExecutionId: string
 }
-class LifecycleExecutionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'lifecycleExecution', `arn:${string}:imagebuilder:${string}:${string}:lifecycle-execution/${string}`> {
+class LifecycleExecutionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'lifecycleExecution',
+  `arn:${string}:imagebuilder:${string}:${string}:lifecycle-execution/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'lifecycleExecution' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -328,17 +422,26 @@ class LifecycleExecutionArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { LifecycleExecutionArn }
-export function lifecycleExecutionArn<Partition extends ArnPartition = 'aws'>(parameters: LifecycleExecutionArnParameters<Partition>) {
+export function lifecycleExecutionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LifecycleExecutionArnParameters<Partition>,
+) {
   return new LifecycleExecutionArn<Partition>(parameters)
 }
 
-export interface LifecyclePolicyArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface LifecyclePolicyArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly lifecyclePolicyName: string
 }
-class LifecyclePolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'lifecyclePolicy', `arn:${string}:imagebuilder:${string}:${string}:lifecycle-policy/${string}`> {
+class LifecyclePolicyArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'lifecyclePolicy',
+  `arn:${string}:imagebuilder:${string}:${string}:lifecycle-policy/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'lifecyclePolicy' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -356,7 +459,9 @@ class LifecyclePolicyArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { LifecyclePolicyArn }
-export function lifecyclePolicyArn<Partition extends ArnPartition = 'aws'>(parameters: LifecyclePolicyArnParameters<Partition>) {
+export function lifecyclePolicyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LifecyclePolicyArnParameters<Partition>,
+) {
   return new LifecyclePolicyArn<Partition>(parameters)
 }
 
@@ -369,7 +474,10 @@ export interface WorkflowArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly workflowVersion: string
   readonly workflowBuildVersion: string
 }
-class WorkflowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workflow', `arn:${string}:imagebuilder:${string}:${string}:workflow/${string}/${string}/${string}/${string}`> {
+class WorkflowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'workflow',
+  `arn:${string}:imagebuilder:${string}:${string}:workflow/${string}/${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'workflow' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -393,11 +501,15 @@ class WorkflowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'w
   }
 }
 export type { WorkflowArn }
-export function workflowArn<Partition extends ArnPartition = 'aws'>(parameters: WorkflowArnParameters<Partition>) {
+export function workflowArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkflowArnParameters<Partition>,
+) {
   return new WorkflowArn<Partition>(parameters)
 }
 
-export interface WorkflowVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface WorkflowVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -405,7 +517,12 @@ export interface WorkflowVersionArnParameters<Partition extends ArnPartition = '
   readonly workflowName: string
   readonly workflowVersion: string
 }
-class WorkflowVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workflowVersion', `arn:${string}:imagebuilder:${string}:${string}:workflow/${string}/${string}/${string}`> {
+class WorkflowVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'workflowVersion',
+  `arn:${string}:imagebuilder:${string}:${string}:workflow/${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'workflowVersion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -427,17 +544,26 @@ class WorkflowVersionArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { WorkflowVersionArn }
-export function workflowVersionArn<Partition extends ArnPartition = 'aws'>(parameters: WorkflowVersionArnParameters<Partition>) {
+export function workflowVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkflowVersionArnParameters<Partition>,
+) {
   return new WorkflowVersionArn<Partition>(parameters)
 }
 
-export interface WorkflowExecutionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface WorkflowExecutionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly workflowExecutionId: string
 }
-class WorkflowExecutionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workflowExecution', `arn:${string}:imagebuilder:${string}:${string}:workflow-execution/${string}`> {
+class WorkflowExecutionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'workflowExecution',
+  `arn:${string}:imagebuilder:${string}:${string}:workflow-execution/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'workflowExecution' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -455,17 +581,26 @@ class WorkflowExecutionArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { WorkflowExecutionArn }
-export function workflowExecutionArn<Partition extends ArnPartition = 'aws'>(parameters: WorkflowExecutionArnParameters<Partition>) {
+export function workflowExecutionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkflowExecutionArnParameters<Partition>,
+) {
   return new WorkflowExecutionArn<Partition>(parameters)
 }
 
-export interface WorkflowStepExecutionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface WorkflowStepExecutionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly workflowStepExecutionId: string
 }
-class WorkflowStepExecutionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workflowStepExecution', `arn:${string}:imagebuilder:${string}:${string}:workflow-step-execution/${string}`> {
+class WorkflowStepExecutionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'workflowStepExecution',
+  `arn:${string}:imagebuilder:${string}:${string}:workflow-step-execution/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'workflowStepExecution' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -483,6 +618,8 @@ class WorkflowStepExecutionArn<Partition extends ArnPartition = 'aws'> extends I
   }
 }
 export type { WorkflowStepExecutionArn }
-export function workflowStepExecutionArn<Partition extends ArnPartition = 'aws'>(parameters: WorkflowStepExecutionArnParameters<Partition>) {
+export function workflowStepExecutionArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: WorkflowStepExecutionArnParameters<Partition>) {
   return new WorkflowStepExecutionArn<Partition>(parameters)
 }

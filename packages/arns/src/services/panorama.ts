@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface DeviceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface DeviceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly deviceId: string
 }
-class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'device', `arn:${string}:panorama:${string}:${string}:device/${string}`> {
+class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'device',
+  `arn:${string}:panorama:${string}:${string}:device/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'device' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dev
   }
 }
 export type { DeviceArn }
-export function deviceArn<Partition extends ArnPartition = 'aws'>(parameters: DeviceArnParameters<Partition>) {
+export function deviceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeviceArnParameters<Partition>,
+) {
   return new DeviceArn<Partition>(parameters)
 }
 
@@ -34,7 +45,10 @@ export interface PackageArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly packageId: string
 }
-class PackageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'package', `arn:${string}:panorama:${string}:${string}:package/${string}`> {
+class PackageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'package',
+  `arn:${string}:panorama:${string}:${string}:package/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'package' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +66,26 @@ class PackageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pa
   }
 }
 export type { PackageArn }
-export function packageArn<Partition extends ArnPartition = 'aws'>(parameters: PackageArnParameters<Partition>) {
+export function packageArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PackageArnParameters<Partition>,
+) {
   return new PackageArn<Partition>(parameters)
 }
 
-export interface ApplicationInstanceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ApplicationInstanceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly applicationInstanceId: string
 }
-class ApplicationInstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'applicationInstance', `arn:${string}:panorama:${string}:${string}:applicationInstance/${string}`> {
+class ApplicationInstanceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'applicationInstance',
+  `arn:${string}:panorama:${string}:${string}:applicationInstance/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'applicationInstance' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,6 +103,8 @@ class ApplicationInstanceArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { ApplicationInstanceArn }
-export function applicationInstanceArn<Partition extends ArnPartition = 'aws'>(parameters: ApplicationInstanceArnParameters<Partition>) {
+export function applicationInstanceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApplicationInstanceArnParameters<Partition>,
+) {
   return new ApplicationInstanceArn<Partition>(parameters)
 }

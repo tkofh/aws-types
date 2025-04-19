@@ -1,2 +1,1 @@
-export type RhelkbPrivilege =
-  | 'GetRhelURL'
+export type RhelkbPrivilege = 'GetRhelURL'

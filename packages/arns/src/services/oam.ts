@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface LinkArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface LinkArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class LinkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Link', `arn:${string}:oam:${string}:${string}:link/${string}`> {
+class LinkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Link',
+  `arn:${string}:oam:${string}:${string}:link/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Link' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class LinkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Link'
   }
 }
 export type { LinkArn }
-export function linkArn<Partition extends ArnPartition = 'aws'>(parameters: LinkArnParameters<Partition>) {
+export function linkArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LinkArnParameters<Partition>,
+) {
   return new LinkArn<Partition>(parameters)
 }
 
@@ -34,7 +45,10 @@ export interface SinkArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class SinkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Sink', `arn:${string}:oam:${string}:${string}:sink/${string}`> {
+class SinkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Sink',
+  `arn:${string}:oam:${string}:${string}:sink/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Sink' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,6 +66,8 @@ class SinkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Sink'
   }
 }
 export type { SinkArn }
-export function sinkArn<Partition extends ArnPartition = 'aws'>(parameters: SinkArnParameters<Partition>) {
+export function sinkArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SinkArnParameters<Partition>,
+) {
   return new SinkArn<Partition>(parameters)
 }

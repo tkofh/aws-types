@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ApplicationsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ApplicationsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class ApplicationsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'applications', `arn:${string}:serverlessrepo:${string}:${string}:applications/${string}`> {
+class ApplicationsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'applications',
+  `arn:${string}:serverlessrepo:${string}:${string}:applications/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'applications' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +37,8 @@ class ApplicationsArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { ApplicationsArn }
-export function applicationsArn<Partition extends ArnPartition = 'aws'>(parameters: ApplicationsArnParameters<Partition>) {
+export function applicationsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApplicationsArnParameters<Partition>,
+) {
   return new ApplicationsArn<Partition>(parameters)
 }

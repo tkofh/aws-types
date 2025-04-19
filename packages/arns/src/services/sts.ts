@@ -1,11 +1,20 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface RoleArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly roleNameWithPath: string
 }
-class RoleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'role', `arn:${string}:iam::${string}:role/${string}`> {
+class RoleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'role',
+  `arn:${string}:iam::${string}:role/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'role' as const
   readonly partition: Partition
   readonly account: string
@@ -21,7 +30,9 @@ class RoleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'role'
   }
 }
 export type { RoleArn }
-export function roleArn<Partition extends ArnPartition = 'aws'>(parameters: RoleArnParameters<Partition>) {
+export function roleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RoleArnParameters<Partition>,
+) {
   return new RoleArn<Partition>(parameters)
 }
 
@@ -30,7 +41,10 @@ export interface UserArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly userNameWithPath: string
 }
-class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'user', `arn:${string}:iam::${string}:user/${string}`> {
+class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'user',
+  `arn:${string}:iam::${string}:user/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'user' as const
   readonly partition: Partition
   readonly account: string
@@ -46,15 +60,21 @@ class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'user'
   }
 }
 export type { UserArn }
-export function userArn<Partition extends ArnPartition = 'aws'>(parameters: UserArnParameters<Partition>) {
+export function userArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UserArnParameters<Partition>,
+) {
   return new UserArn<Partition>(parameters)
 }
 
-export interface SelfSessionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SelfSessionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
 }
-class SelfSessionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'self-session', `arn:${string}:sts::${string}:self`> {
+class SelfSessionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<'self-session', `arn:${string}:sts::${string}:self`> {
   readonly [ArnResourceTypeBrand] = 'self-session' as const
   readonly partition: Partition
   readonly account: string
@@ -68,6 +88,8 @@ class SelfSessionArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { SelfSessionArn }
-export function selfSessionArn<Partition extends ArnPartition = 'aws'>(parameters: SelfSessionArnParameters<Partition>) {
+export function selfSessionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SelfSessionArnParameters<Partition>,
+) {
   return new SelfSessionArn<Partition>(parameters)
 }

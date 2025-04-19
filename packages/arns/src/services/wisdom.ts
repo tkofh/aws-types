@@ -1,12 +1,23 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface AssistantArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AssistantArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly assistantId: string
 }
-class AssistantArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Assistant', `arn:${string}:wisdom:${string}:${string}:assistant/${string}`> {
+class AssistantArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Assistant',
+  `arn:${string}:wisdom:${string}:${string}:assistant/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Assistant' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,18 +35,27 @@ class AssistantArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { AssistantArn }
-export function assistantArn<Partition extends ArnPartition = 'aws'>(parameters: AssistantArnParameters<Partition>) {
+export function assistantArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AssistantArnParameters<Partition>,
+) {
   return new AssistantArn<Partition>(parameters)
 }
 
-export interface AssistantAssociationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AssistantAssociationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly assistantId: string
   readonly assistantAssociationId: string
 }
-class AssistantAssociationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'AssistantAssociation', `arn:${string}:wisdom:${string}:${string}:association/${string}/${string}`> {
+class AssistantAssociationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'AssistantAssociation',
+  `arn:${string}:wisdom:${string}:${string}:association/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'AssistantAssociation' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,7 +75,9 @@ class AssistantAssociationArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { AssistantAssociationArn }
-export function assistantAssociationArn<Partition extends ArnPartition = 'aws'>(parameters: AssistantAssociationArnParameters<Partition>) {
+export function assistantAssociationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AssistantAssociationArnParameters<Partition>,
+) {
   return new AssistantAssociationArn<Partition>(parameters)
 }
 
@@ -66,7 +88,10 @@ export interface ContentArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly knowledgeBaseId: string
   readonly contentId: string
 }
-class ContentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Content', `arn:${string}:wisdom:${string}:${string}:content/${string}/${string}`> {
+class ContentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Content',
+  `arn:${string}:wisdom:${string}:${string}:content/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Content' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,11 +111,15 @@ class ContentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Co
   }
 }
 export type { ContentArn }
-export function contentArn<Partition extends ArnPartition = 'aws'>(parameters: ContentArnParameters<Partition>) {
+export function contentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ContentArnParameters<Partition>,
+) {
   return new ContentArn<Partition>(parameters)
 }
 
-export interface ContentAssociationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ContentAssociationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -98,7 +127,12 @@ export interface ContentAssociationArnParameters<Partition extends ArnPartition 
   readonly contentId: string
   readonly contentAssociationId: string
 }
-class ContentAssociationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ContentAssociation', `arn:${string}:wisdom:${string}:${string}:content-association/${string}/${string}/${string}`> {
+class ContentAssociationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'ContentAssociation',
+  `arn:${string}:wisdom:${string}:${string}:content-association/${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ContentAssociation' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -120,17 +154,26 @@ class ContentAssociationArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { ContentAssociationArn }
-export function contentAssociationArn<Partition extends ArnPartition = 'aws'>(parameters: ContentAssociationArnParameters<Partition>) {
+export function contentAssociationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ContentAssociationArnParameters<Partition>,
+) {
   return new ContentAssociationArn<Partition>(parameters)
 }
 
-export interface KnowledgeBaseArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface KnowledgeBaseArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly knowledgeBaseId: string
 }
-class KnowledgeBaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'KnowledgeBase', `arn:${string}:wisdom:${string}:${string}:knowledge-base/${string}`> {
+class KnowledgeBaseArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'KnowledgeBase',
+  `arn:${string}:wisdom:${string}:${string}:knowledge-base/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'KnowledgeBase' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -148,18 +191,27 @@ class KnowledgeBaseArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { KnowledgeBaseArn }
-export function knowledgeBaseArn<Partition extends ArnPartition = 'aws'>(parameters: KnowledgeBaseArnParameters<Partition>) {
+export function knowledgeBaseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KnowledgeBaseArnParameters<Partition>,
+) {
   return new KnowledgeBaseArn<Partition>(parameters)
 }
 
-export interface MessageTemplateArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MessageTemplateArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly knowledgeBaseId: string
   readonly messageTemplateId: string
 }
-class MessageTemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'MessageTemplate', `arn:${string}:wisdom:${string}:${string}:message-template/${string}/${string}`> {
+class MessageTemplateArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'MessageTemplate',
+  `arn:${string}:wisdom:${string}:${string}:message-template/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'MessageTemplate' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -179,7 +231,9 @@ class MessageTemplateArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { MessageTemplateArn }
-export function messageTemplateArn<Partition extends ArnPartition = 'aws'>(parameters: MessageTemplateArnParameters<Partition>) {
+export function messageTemplateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MessageTemplateArnParameters<Partition>,
+) {
   return new MessageTemplateArn<Partition>(parameters)
 }
 
@@ -190,7 +244,10 @@ export interface SessionArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly assistantId: string
   readonly sessionId: string
 }
-class SessionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Session', `arn:${string}:wisdom:${string}:${string}:session/${string}/${string}`> {
+class SessionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Session',
+  `arn:${string}:wisdom:${string}:${string}:session/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Session' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -210,18 +267,27 @@ class SessionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Se
   }
 }
 export type { SessionArn }
-export function sessionArn<Partition extends ArnPartition = 'aws'>(parameters: SessionArnParameters<Partition>) {
+export function sessionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SessionArnParameters<Partition>,
+) {
   return new SessionArn<Partition>(parameters)
 }
 
-export interface QuickResponseArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface QuickResponseArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly knowledgeBaseId: string
   readonly quickResponseId: string
 }
-class QuickResponseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'QuickResponse', `arn:${string}:wisdom:${string}:${string}:quick-response/${string}/${string}`> {
+class QuickResponseArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'QuickResponse',
+  `arn:${string}:wisdom:${string}:${string}:quick-response/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'QuickResponse' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -241,6 +307,8 @@ class QuickResponseArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { QuickResponseArn }
-export function quickResponseArn<Partition extends ArnPartition = 'aws'>(parameters: QuickResponseArnParameters<Partition>) {
+export function quickResponseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: QuickResponseArnParameters<Partition>,
+) {
   return new QuickResponseArn<Partition>(parameters)
 }

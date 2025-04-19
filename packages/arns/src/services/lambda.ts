@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface CodeSigningConfigArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CodeSigningConfigArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly codeSigningConfigId: string
 }
-class CodeSigningConfigArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'code signing config', `arn:${string}:lambda:${string}:${string}:code-signing-config:${string}`> {
+class CodeSigningConfigArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'code signing config',
+  `arn:${string}:lambda:${string}:${string}:code-signing-config:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'code signing config' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +37,26 @@ class CodeSigningConfigArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { CodeSigningConfigArn }
-export function codeSigningConfigArn<Partition extends ArnPartition = 'aws'>(parameters: CodeSigningConfigArnParameters<Partition>) {
+export function codeSigningConfigArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CodeSigningConfigArnParameters<Partition>,
+) {
   return new CodeSigningConfigArn<Partition>(parameters)
 }
 
-export interface EventSourceMappingArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface EventSourceMappingArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly uuid: string
 }
-class EventSourceMappingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'eventSourceMapping', `arn:${string}:lambda:${string}:${string}:event-source-mapping:${string}`> {
+class EventSourceMappingArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'eventSourceMapping',
+  `arn:${string}:lambda:${string}:${string}:event-source-mapping:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'eventSourceMapping' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +74,9 @@ class EventSourceMappingArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { EventSourceMappingArn }
-export function eventSourceMappingArn<Partition extends ArnPartition = 'aws'>(parameters: EventSourceMappingArnParameters<Partition>) {
+export function eventSourceMappingArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EventSourceMappingArnParameters<Partition>,
+) {
   return new EventSourceMappingArn<Partition>(parameters)
 }
 
@@ -62,7 +86,10 @@ export interface FunctionArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly functionName: string
 }
-class FunctionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'function', `arn:${string}:lambda:${string}:${string}:function:${string}`> {
+class FunctionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'function',
+  `arn:${string}:lambda:${string}:${string}:function:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'function' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,18 +107,27 @@ class FunctionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'f
   }
 }
 export type { FunctionArn }
-export function functionArn<Partition extends ArnPartition = 'aws'>(parameters: FunctionArnParameters<Partition>) {
+export function functionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FunctionArnParameters<Partition>,
+) {
   return new FunctionArn<Partition>(parameters)
 }
 
-export interface FunctionAliasArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FunctionAliasArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly functionName: string
   readonly alias: string
 }
-class FunctionAliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'function alias', `arn:${string}:lambda:${string}:${string}:function:${string}:${string}`> {
+class FunctionAliasArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'function alias',
+  `arn:${string}:lambda:${string}:${string}:function:${string}:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'function alias' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -111,18 +147,27 @@ class FunctionAliasArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { FunctionAliasArn }
-export function functionAliasArn<Partition extends ArnPartition = 'aws'>(parameters: FunctionAliasArnParameters<Partition>) {
+export function functionAliasArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FunctionAliasArnParameters<Partition>,
+) {
   return new FunctionAliasArn<Partition>(parameters)
 }
 
-export interface FunctionVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FunctionVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly functionName: string
   readonly version: string
 }
-class FunctionVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'function version', `arn:${string}:lambda:${string}:${string}:function:${string}:${string}`> {
+class FunctionVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'function version',
+  `arn:${string}:lambda:${string}:${string}:function:${string}:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'function version' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -142,7 +187,9 @@ class FunctionVersionArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { FunctionVersionArn }
-export function functionVersionArn<Partition extends ArnPartition = 'aws'>(parameters: FunctionVersionArnParameters<Partition>) {
+export function functionVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FunctionVersionArnParameters<Partition>,
+) {
   return new FunctionVersionArn<Partition>(parameters)
 }
 
@@ -152,7 +199,10 @@ export interface LayerArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly layerName: string
 }
-class LayerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'layer', `arn:${string}:lambda:${string}:${string}:layer:${string}`> {
+class LayerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'layer',
+  `arn:${string}:lambda:${string}:${string}:layer:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'layer' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -170,18 +220,27 @@ class LayerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'laye
   }
 }
 export type { LayerArn }
-export function layerArn<Partition extends ArnPartition = 'aws'>(parameters: LayerArnParameters<Partition>) {
+export function layerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LayerArnParameters<Partition>,
+) {
   return new LayerArn<Partition>(parameters)
 }
 
-export interface LayerVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface LayerVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly layerName: string
   readonly layerVersion: string
 }
-class LayerVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'layerVersion', `arn:${string}:lambda:${string}:${string}:layer:${string}:${string}`> {
+class LayerVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'layerVersion',
+  `arn:${string}:lambda:${string}:${string}:layer:${string}:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'layerVersion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -201,6 +260,8 @@ class LayerVersionArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { LayerVersionArn }
-export function layerVersionArn<Partition extends ArnPartition = 'aws'>(parameters: LayerVersionArnParameters<Partition>) {
+export function layerVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LayerVersionArnParameters<Partition>,
+) {
   return new LayerVersionArn<Partition>(parameters)
 }

@@ -1,12 +1,23 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface CollectionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CollectionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly collectionId: string
 }
-class CollectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'collection', `arn:${string}:rekognition:${string}:${string}:collection/${string}`> {
+class CollectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'collection',
+  `arn:${string}:rekognition:${string}:${string}:collection/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'collection' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +35,26 @@ class CollectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { CollectionArn }
-export function collectionArn<Partition extends ArnPartition = 'aws'>(parameters: CollectionArnParameters<Partition>) {
+export function collectionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CollectionArnParameters<Partition>,
+) {
   return new CollectionArn<Partition>(parameters)
 }
 
-export interface StreamprocessorArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface StreamprocessorArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly streamprocessorId: string
 }
-class StreamprocessorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'streamprocessor', `arn:${string}:rekognition:${string}:${string}:streamprocessor/${string}`> {
+class StreamprocessorArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'streamprocessor',
+  `arn:${string}:rekognition:${string}:${string}:streamprocessor/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'streamprocessor' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +72,9 @@ class StreamprocessorArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { StreamprocessorArn }
-export function streamprocessorArn<Partition extends ArnPartition = 'aws'>(parameters: StreamprocessorArnParameters<Partition>) {
+export function streamprocessorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StreamprocessorArnParameters<Partition>,
+) {
   return new StreamprocessorArn<Partition>(parameters)
 }
 
@@ -63,7 +85,10 @@ export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly projectName: string
   readonly creationTimestamp: string
 }
-class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'project', `arn:${string}:rekognition:${string}:${string}:project/${string}/${string}`> {
+class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'project',
+  `arn:${string}:rekognition:${string}:${string}:project/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'project' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -83,11 +108,15 @@ class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pr
   }
 }
 export type { ProjectArn }
-export function projectArn<Partition extends ArnPartition = 'aws'>(parameters: ProjectArnParameters<Partition>) {
+export function projectArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProjectArnParameters<Partition>,
+) {
   return new ProjectArn<Partition>(parameters)
 }
 
-export interface ProjectversionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ProjectversionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -95,7 +124,12 @@ export interface ProjectversionArnParameters<Partition extends ArnPartition = 'a
   readonly versionName: string
   readonly creationTimestamp: string
 }
-class ProjectversionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'projectversion', `arn:${string}:rekognition:${string}:${string}:project/${string}/version/${string}/${string}`> {
+class ProjectversionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'projectversion',
+  `arn:${string}:rekognition:${string}:${string}:project/${string}/version/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'projectversion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -117,7 +151,9 @@ class ProjectversionArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { ProjectversionArn }
-export function projectversionArn<Partition extends ArnPartition = 'aws'>(parameters: ProjectversionArnParameters<Partition>) {
+export function projectversionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProjectversionArnParameters<Partition>,
+) {
   return new ProjectversionArn<Partition>(parameters)
 }
 
@@ -129,7 +165,10 @@ export interface DatasetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly datasetType: string
   readonly creationTimestamp: string
 }
-class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dataset', `arn:${string}:rekognition:${string}:${string}:project/${string}/dataset/${string}/${string}`> {
+class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'dataset',
+  `arn:${string}:rekognition:${string}:${string}:project/${string}/dataset/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'dataset' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -151,6 +190,8 @@ class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'da
   }
 }
 export type { DatasetArn }
-export function datasetArn<Partition extends ArnPartition = 'aws'>(parameters: DatasetArnParameters<Partition>) {
+export function datasetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DatasetArnParameters<Partition>,
+) {
   return new DatasetArn<Partition>(parameters)
 }

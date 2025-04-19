@@ -1,13 +1,24 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ChallengeArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ChallengeArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly connectorId: string
   readonly challengeId: string
 }
-class ChallengeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Challenge', `arn:${string}:pca-connector-scep:${string}:${string}:connector/${string}/challenge/${string}`> {
+class ChallengeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Challenge',
+  `arn:${string}:pca-connector-scep:${string}:${string}:connector/${string}/challenge/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Challenge' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,17 +38,24 @@ class ChallengeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { ChallengeArn }
-export function challengeArn<Partition extends ArnPartition = 'aws'>(parameters: ChallengeArnParameters<Partition>) {
+export function challengeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ChallengeArnParameters<Partition>,
+) {
   return new ChallengeArn<Partition>(parameters)
 }
 
-export interface ConnectorArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConnectorArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly connectorId: string
 }
-class ConnectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Connector', `arn:${string}:pca-connector-scep:${string}:${string}:connector/${string}`> {
+class ConnectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Connector',
+  `arn:${string}:pca-connector-scep:${string}:${string}:connector/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Connector' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,6 +73,8 @@ class ConnectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { ConnectorArn }
-export function connectorArn<Partition extends ArnPartition = 'aws'>(parameters: ConnectorArnParameters<Partition>) {
+export function connectorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConnectorArnParameters<Partition>,
+) {
   return new ConnectorArn<Partition>(parameters)
 }

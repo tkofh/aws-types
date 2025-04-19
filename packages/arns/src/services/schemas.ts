@@ -1,12 +1,23 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface DiscovererArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DiscovererArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly discovererId: string
 }
-class DiscovererArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'discoverer', `arn:${string}:schemas:${string}:${string}:discoverer/${string}`> {
+class DiscovererArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'discoverer',
+  `arn:${string}:schemas:${string}:${string}:discoverer/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'discoverer' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +35,9 @@ class DiscovererArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { DiscovererArn }
-export function discovererArn<Partition extends ArnPartition = 'aws'>(parameters: DiscovererArnParameters<Partition>) {
+export function discovererArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DiscovererArnParameters<Partition>,
+) {
   return new DiscovererArn<Partition>(parameters)
 }
 
@@ -34,7 +47,10 @@ export interface RegistryArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly registryName: string
 }
-class RegistryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'registry', `arn:${string}:schemas:${string}:${string}:registry/${string}`> {
+class RegistryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'registry',
+  `arn:${string}:schemas:${string}:${string}:registry/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'registry' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +68,9 @@ class RegistryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'r
   }
 }
 export type { RegistryArn }
-export function registryArn<Partition extends ArnPartition = 'aws'>(parameters: RegistryArnParameters<Partition>) {
+export function registryArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RegistryArnParameters<Partition>,
+) {
   return new RegistryArn<Partition>(parameters)
 }
 
@@ -63,7 +81,10 @@ export interface SchemaArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly registryName: string
   readonly schemaName: string
 }
-class SchemaArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'schema', `arn:${string}:schemas:${string}:${string}:schema/${string}/${string}`> {
+class SchemaArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'schema',
+  `arn:${string}:schemas:${string}:${string}:schema/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'schema' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -83,6 +104,8 @@ class SchemaArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'sch
   }
 }
 export type { SchemaArn }
-export function schemaArn<Partition extends ArnPartition = 'aws'>(parameters: SchemaArnParameters<Partition>) {
+export function schemaArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SchemaArnParameters<Partition>,
+) {
   return new SchemaArn<Partition>(parameters)
 }

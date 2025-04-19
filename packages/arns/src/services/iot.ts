@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ClientArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ClientArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly clientId: string
 }
-class ClientArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'client', `arn:${string}:iot:${string}:${string}:client/${string}`> {
+class ClientArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'client',
+  `arn:${string}:iot:${string}:${string}:client/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'client' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class ClientArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cli
   }
 }
 export type { ClientArn }
-export function clientArn<Partition extends ArnPartition = 'aws'>(parameters: ClientArnParameters<Partition>) {
+export function clientArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ClientArnParameters<Partition>,
+) {
   return new ClientArn<Partition>(parameters)
 }
 
@@ -34,7 +45,10 @@ export interface IndexArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly indexName: string
 }
-class IndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'index', `arn:${string}:iot:${string}:${string}:index/${string}`> {
+class IndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'index',
+  `arn:${string}:iot:${string}:${string}:index/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'index' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +66,26 @@ class IndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'inde
   }
 }
 export type { IndexArn }
-export function indexArn<Partition extends ArnPartition = 'aws'>(parameters: IndexArnParameters<Partition>) {
+export function indexArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IndexArnParameters<Partition>,
+) {
   return new IndexArn<Partition>(parameters)
 }
 
-export interface FleetmetricArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FleetmetricArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly fleetMetricName: string
 }
-class FleetmetricArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'fleetmetric', `arn:${string}:iot:${string}:${string}:fleetmetric/${string}`> {
+class FleetmetricArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'fleetmetric',
+  `arn:${string}:iot:${string}:${string}:fleetmetric/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'fleetmetric' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,7 +103,9 @@ class FleetmetricArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { FleetmetricArn }
-export function fleetmetricArn<Partition extends ArnPartition = 'aws'>(parameters: FleetmetricArnParameters<Partition>) {
+export function fleetmetricArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FleetmetricArnParameters<Partition>,
+) {
   return new FleetmetricArn<Partition>(parameters)
 }
 
@@ -90,7 +115,10 @@ export interface JobArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly jobId: string
 }
-class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'job', `arn:${string}:iot:${string}:${string}:job/${string}`> {
+class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'job',
+  `arn:${string}:iot:${string}:${string}:job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'job' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,17 +136,26 @@ class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'job', 
   }
 }
 export type { JobArn }
-export function jobArn<Partition extends ArnPartition = 'aws'>(parameters: JobArnParameters<Partition>) {
+export function jobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobArnParameters<Partition>,
+) {
   return new JobArn<Partition>(parameters)
 }
 
-export interface JobtemplateArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface JobtemplateArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly jobTemplateId: string
 }
-class JobtemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'jobtemplate', `arn:${string}:iot:${string}:${string}:jobtemplate/${string}`> {
+class JobtemplateArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'jobtemplate',
+  `arn:${string}:iot:${string}:${string}:jobtemplate/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'jobtemplate' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -136,7 +173,9 @@ class JobtemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { JobtemplateArn }
-export function jobtemplateArn<Partition extends ArnPartition = 'aws'>(parameters: JobtemplateArnParameters<Partition>) {
+export function jobtemplateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobtemplateArnParameters<Partition>,
+) {
   return new JobtemplateArn<Partition>(parameters)
 }
 
@@ -146,7 +185,10 @@ export interface TunnelArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly tunnelId: string
 }
-class TunnelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'tunnel', `arn:${string}:iot:${string}:${string}:tunnel/${string}`> {
+class TunnelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'tunnel',
+  `arn:${string}:iot:${string}:${string}:tunnel/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'tunnel' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -164,7 +206,9 @@ class TunnelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'tun
   }
 }
 export type { TunnelArn }
-export function tunnelArn<Partition extends ArnPartition = 'aws'>(parameters: TunnelArnParameters<Partition>) {
+export function tunnelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TunnelArnParameters<Partition>,
+) {
   return new TunnelArn<Partition>(parameters)
 }
 
@@ -174,7 +218,10 @@ export interface ThingArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly thingName: string
 }
-class ThingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'thing', `arn:${string}:iot:${string}:${string}:thing/${string}`> {
+class ThingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'thing',
+  `arn:${string}:iot:${string}:${string}:thing/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'thing' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -192,17 +239,24 @@ class ThingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'thin
   }
 }
 export type { ThingArn }
-export function thingArn<Partition extends ArnPartition = 'aws'>(parameters: ThingArnParameters<Partition>) {
+export function thingArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ThingArnParameters<Partition>,
+) {
   return new ThingArn<Partition>(parameters)
 }
 
-export interface ThinggroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ThinggroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly thingGroupName: string
 }
-class ThinggroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'thinggroup', `arn:${string}:iot:${string}:${string}:thinggroup/${string}`> {
+class ThinggroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'thinggroup',
+  `arn:${string}:iot:${string}:${string}:thinggroup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'thinggroup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -220,17 +274,26 @@ class ThinggroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { ThinggroupArn }
-export function thinggroupArn<Partition extends ArnPartition = 'aws'>(parameters: ThinggroupArnParameters<Partition>) {
+export function thinggroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ThinggroupArnParameters<Partition>,
+) {
   return new ThinggroupArn<Partition>(parameters)
 }
 
-export interface BillinggroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface BillinggroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly billingGroupName: string
 }
-class BillinggroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'billinggroup', `arn:${string}:iot:${string}:${string}:billinggroup/${string}`> {
+class BillinggroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'billinggroup',
+  `arn:${string}:iot:${string}:${string}:billinggroup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'billinggroup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -248,17 +311,26 @@ class BillinggroupArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { BillinggroupArn }
-export function billinggroupArn<Partition extends ArnPartition = 'aws'>(parameters: BillinggroupArnParameters<Partition>) {
+export function billinggroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BillinggroupArnParameters<Partition>,
+) {
   return new BillinggroupArn<Partition>(parameters)
 }
 
-export interface DynamicthinggroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DynamicthinggroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly thingGroupName: string
 }
-class DynamicthinggroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dynamicthinggroup', `arn:${string}:iot:${string}:${string}:thinggroup/${string}`> {
+class DynamicthinggroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'dynamicthinggroup',
+  `arn:${string}:iot:${string}:${string}:thinggroup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'dynamicthinggroup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -276,17 +348,24 @@ class DynamicthinggroupArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { DynamicthinggroupArn }
-export function dynamicthinggroupArn<Partition extends ArnPartition = 'aws'>(parameters: DynamicthinggroupArnParameters<Partition>) {
+export function dynamicthinggroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DynamicthinggroupArnParameters<Partition>,
+) {
   return new DynamicthinggroupArn<Partition>(parameters)
 }
 
-export interface ThingtypeArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ThingtypeArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly thingTypeName: string
 }
-class ThingtypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'thingtype', `arn:${string}:iot:${string}:${string}:thingtype/${string}`> {
+class ThingtypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'thingtype',
+  `arn:${string}:iot:${string}:${string}:thingtype/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'thingtype' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -304,7 +383,9 @@ class ThingtypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { ThingtypeArn }
-export function thingtypeArn<Partition extends ArnPartition = 'aws'>(parameters: ThingtypeArnParameters<Partition>) {
+export function thingtypeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ThingtypeArnParameters<Partition>,
+) {
   return new ThingtypeArn<Partition>(parameters)
 }
 
@@ -314,7 +395,10 @@ export interface TopicArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly topicName: string
 }
-class TopicArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'topic', `arn:${string}:iot:${string}:${string}:topic/${string}`> {
+class TopicArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'topic',
+  `arn:${string}:iot:${string}:${string}:topic/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'topic' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -332,17 +416,26 @@ class TopicArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'topi
   }
 }
 export type { TopicArn }
-export function topicArn<Partition extends ArnPartition = 'aws'>(parameters: TopicArnParameters<Partition>) {
+export function topicArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TopicArnParameters<Partition>,
+) {
   return new TopicArn<Partition>(parameters)
 }
 
-export interface TopicfilterArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TopicfilterArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly topicFilter: string
 }
-class TopicfilterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'topicfilter', `arn:${string}:iot:${string}:${string}:topicfilter/${string}`> {
+class TopicfilterArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'topicfilter',
+  `arn:${string}:iot:${string}:${string}:topicfilter/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'topicfilter' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -360,17 +453,24 @@ class TopicfilterArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { TopicfilterArn }
-export function topicfilterArn<Partition extends ArnPartition = 'aws'>(parameters: TopicfilterArnParameters<Partition>) {
+export function topicfilterArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TopicfilterArnParameters<Partition>,
+) {
   return new TopicfilterArn<Partition>(parameters)
 }
 
-export interface RolealiasArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RolealiasArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly roleAlias: string
 }
-class RolealiasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'rolealias', `arn:${string}:iot:${string}:${string}:rolealias/${string}`> {
+class RolealiasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'rolealias',
+  `arn:${string}:iot:${string}:${string}:rolealias/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'rolealias' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -388,17 +488,24 @@ class RolealiasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { RolealiasArn }
-export function rolealiasArn<Partition extends ArnPartition = 'aws'>(parameters: RolealiasArnParameters<Partition>) {
+export function rolealiasArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RolealiasArnParameters<Partition>,
+) {
   return new RolealiasArn<Partition>(parameters)
 }
 
-export interface AuthorizerArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AuthorizerArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly authorizerName: string
 }
-class AuthorizerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'authorizer', `arn:${string}:iot:${string}:${string}:authorizer/${string}`> {
+class AuthorizerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'authorizer',
+  `arn:${string}:iot:${string}:${string}:authorizer/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'authorizer' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -416,7 +523,9 @@ class AuthorizerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { AuthorizerArn }
-export function authorizerArn<Partition extends ArnPartition = 'aws'>(parameters: AuthorizerArnParameters<Partition>) {
+export function authorizerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AuthorizerArnParameters<Partition>,
+) {
   return new AuthorizerArn<Partition>(parameters)
 }
 
@@ -426,7 +535,10 @@ export interface PolicyArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly policyName: string
 }
-class PolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'policy', `arn:${string}:iot:${string}:${string}:policy/${string}`> {
+class PolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'policy',
+  `arn:${string}:iot:${string}:${string}:policy/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'policy' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -444,7 +556,9 @@ class PolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pol
   }
 }
 export type { PolicyArn }
-export function policyArn<Partition extends ArnPartition = 'aws'>(parameters: PolicyArnParameters<Partition>) {
+export function policyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PolicyArnParameters<Partition>,
+) {
   return new PolicyArn<Partition>(parameters)
 }
 
@@ -454,7 +568,10 @@ export interface CertArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly certificate: string
 }
-class CertArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cert', `arn:${string}:iot:${string}:${string}:cert/${string}`> {
+class CertArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'cert',
+  `arn:${string}:iot:${string}:${string}:cert/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'cert' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -472,7 +589,9 @@ class CertArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cert'
   }
 }
 export type { CertArn }
-export function certArn<Partition extends ArnPartition = 'aws'>(parameters: CertArnParameters<Partition>) {
+export function certArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CertArnParameters<Partition>,
+) {
   return new CertArn<Partition>(parameters)
 }
 
@@ -482,7 +601,10 @@ export interface CacertArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly caCertificate: string
 }
-class CacertArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cacert', `arn:${string}:iot:${string}:${string}:cacert/${string}`> {
+class CacertArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'cacert',
+  `arn:${string}:iot:${string}:${string}:cacert/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'cacert' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -500,7 +622,9 @@ class CacertArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cac
   }
 }
 export type { CacertArn }
-export function cacertArn<Partition extends ArnPartition = 'aws'>(parameters: CacertArnParameters<Partition>) {
+export function cacertArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CacertArnParameters<Partition>,
+) {
   return new CacertArn<Partition>(parameters)
 }
 
@@ -510,7 +634,10 @@ export interface StreamArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly streamId: string
 }
-class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stream', `arn:${string}:iot:${string}:${string}:stream/${string}`> {
+class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'stream',
+  `arn:${string}:iot:${string}:${string}:stream/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'stream' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -528,17 +655,24 @@ class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'str
   }
 }
 export type { StreamArn }
-export function streamArn<Partition extends ArnPartition = 'aws'>(parameters: StreamArnParameters<Partition>) {
+export function streamArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StreamArnParameters<Partition>,
+) {
   return new StreamArn<Partition>(parameters)
 }
 
-export interface OtaupdateArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface OtaupdateArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly otaUpdateId: string
 }
-class OtaupdateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'otaupdate', `arn:${string}:iot:${string}:${string}:otaupdate/${string}`> {
+class OtaupdateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'otaupdate',
+  `arn:${string}:iot:${string}:${string}:otaupdate/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'otaupdate' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -556,17 +690,26 @@ class OtaupdateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { OtaupdateArn }
-export function otaupdateArn<Partition extends ArnPartition = 'aws'>(parameters: OtaupdateArnParameters<Partition>) {
+export function otaupdateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: OtaupdateArnParameters<Partition>,
+) {
   return new OtaupdateArn<Partition>(parameters)
 }
 
-export interface ScheduledauditArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ScheduledauditArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly scheduleName: string
 }
-class ScheduledauditArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'scheduledaudit', `arn:${string}:iot:${string}:${string}:scheduledaudit/${string}`> {
+class ScheduledauditArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'scheduledaudit',
+  `arn:${string}:iot:${string}:${string}:scheduledaudit/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'scheduledaudit' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -584,17 +727,26 @@ class ScheduledauditArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { ScheduledauditArn }
-export function scheduledauditArn<Partition extends ArnPartition = 'aws'>(parameters: ScheduledauditArnParameters<Partition>) {
+export function scheduledauditArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ScheduledauditArnParameters<Partition>,
+) {
   return new ScheduledauditArn<Partition>(parameters)
 }
 
-export interface MitigationactionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MitigationactionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly mitigationActionName: string
 }
-class MitigationactionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'mitigationaction', `arn:${string}:iot:${string}:${string}:mitigationaction/${string}`> {
+class MitigationactionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'mitigationaction',
+  `arn:${string}:iot:${string}:${string}:mitigationaction/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'mitigationaction' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -612,17 +764,26 @@ class MitigationactionArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { MitigationactionArn }
-export function mitigationactionArn<Partition extends ArnPartition = 'aws'>(parameters: MitigationactionArnParameters<Partition>) {
+export function mitigationactionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MitigationactionArnParameters<Partition>,
+) {
   return new MitigationactionArn<Partition>(parameters)
 }
 
-export interface SecurityprofileArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SecurityprofileArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly securityProfileName: string
 }
-class SecurityprofileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'securityprofile', `arn:${string}:iot:${string}:${string}:securityprofile/${string}`> {
+class SecurityprofileArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'securityprofile',
+  `arn:${string}:iot:${string}:${string}:securityprofile/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'securityprofile' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -640,17 +801,26 @@ class SecurityprofileArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { SecurityprofileArn }
-export function securityprofileArn<Partition extends ArnPartition = 'aws'>(parameters: SecurityprofileArnParameters<Partition>) {
+export function securityprofileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SecurityprofileArnParameters<Partition>,
+) {
   return new SecurityprofileArn<Partition>(parameters)
 }
 
-export interface CustommetricArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CustommetricArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly metricName: string
 }
-class CustommetricArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'custommetric', `arn:${string}:iot:${string}:${string}:custommetric/${string}`> {
+class CustommetricArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'custommetric',
+  `arn:${string}:iot:${string}:${string}:custommetric/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'custommetric' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -668,17 +838,24 @@ class CustommetricArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { CustommetricArn }
-export function custommetricArn<Partition extends ArnPartition = 'aws'>(parameters: CustommetricArnParameters<Partition>) {
+export function custommetricArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CustommetricArnParameters<Partition>,
+) {
   return new CustommetricArn<Partition>(parameters)
 }
 
-export interface DimensionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DimensionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly dimensionName: string
 }
-class DimensionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dimension', `arn:${string}:iot:${string}:${string}:dimension/${string}`> {
+class DimensionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'dimension',
+  `arn:${string}:iot:${string}:${string}:dimension/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'dimension' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -696,7 +873,9 @@ class DimensionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { DimensionArn }
-export function dimensionArn<Partition extends ArnPartition = 'aws'>(parameters: DimensionArnParameters<Partition>) {
+export function dimensionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DimensionArnParameters<Partition>,
+) {
   return new DimensionArn<Partition>(parameters)
 }
 
@@ -706,7 +885,10 @@ export interface RuleArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly ruleName: string
 }
-class RuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'rule', `arn:${string}:iot:${string}:${string}:rule/${string}`> {
+class RuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'rule',
+  `arn:${string}:iot:${string}:${string}:rule/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'rule' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -724,18 +906,27 @@ class RuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'rule'
   }
 }
 export type { RuleArn }
-export function ruleArn<Partition extends ArnPartition = 'aws'>(parameters: RuleArnParameters<Partition>) {
+export function ruleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RuleArnParameters<Partition>,
+) {
   return new RuleArn<Partition>(parameters)
 }
 
-export interface DestinationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DestinationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly destinationType: string
   readonly uuid: string
 }
-class DestinationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'destination', `arn:${string}:iot:${string}:${string}:destination/${string}/${string}`> {
+class DestinationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'destination',
+  `arn:${string}:iot:${string}:${string}:destination/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'destination' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -755,17 +946,26 @@ class DestinationArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { DestinationArn }
-export function destinationArn<Partition extends ArnPartition = 'aws'>(parameters: DestinationArnParameters<Partition>) {
+export function destinationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DestinationArnParameters<Partition>,
+) {
   return new DestinationArn<Partition>(parameters)
 }
 
-export interface ProvisioningtemplateArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ProvisioningtemplateArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly provisioningTemplate: string
 }
-class ProvisioningtemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'provisioningtemplate', `arn:${string}:iot:${string}:${string}:provisioningtemplate/${string}`> {
+class ProvisioningtemplateArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'provisioningtemplate',
+  `arn:${string}:iot:${string}:${string}:provisioningtemplate/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'provisioningtemplate' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -783,18 +983,27 @@ class ProvisioningtemplateArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { ProvisioningtemplateArn }
-export function provisioningtemplateArn<Partition extends ArnPartition = 'aws'>(parameters: ProvisioningtemplateArnParameters<Partition>) {
+export function provisioningtemplateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProvisioningtemplateArnParameters<Partition>,
+) {
   return new ProvisioningtemplateArn<Partition>(parameters)
 }
 
-export interface DomainconfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DomainconfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly domainConfigurationName: string
   readonly id: string
 }
-class DomainconfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'domainconfiguration', `arn:${string}:iot:${string}:${string}:domainconfiguration/${string}/${string}`> {
+class DomainconfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'domainconfiguration',
+  `arn:${string}:iot:${string}:${string}:domainconfiguration/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'domainconfiguration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -814,7 +1023,9 @@ class DomainconfigurationArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { DomainconfigurationArn }
-export function domainconfigurationArn<Partition extends ArnPartition = 'aws'>(parameters: DomainconfigurationArnParameters<Partition>) {
+export function domainconfigurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DomainconfigurationArnParameters<Partition>,
+) {
   return new DomainconfigurationArn<Partition>(parameters)
 }
 
@@ -824,7 +1035,10 @@ export interface PackageArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly packageName: string
 }
-class PackageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'package', `arn:${string}:iot:${string}:${string}:package/${string}`> {
+class PackageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'package',
+  `arn:${string}:iot:${string}:${string}:package/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'package' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -842,18 +1056,27 @@ class PackageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pa
   }
 }
 export type { PackageArn }
-export function packageArn<Partition extends ArnPartition = 'aws'>(parameters: PackageArnParameters<Partition>) {
+export function packageArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PackageArnParameters<Partition>,
+) {
   return new PackageArn<Partition>(parameters)
 }
 
-export interface PackageversionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface PackageversionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly packageName: string
   readonly versionName: string
 }
-class PackageversionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'packageversion', `arn:${string}:iot:${string}:${string}:package/${string}/version/${string}`> {
+class PackageversionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'packageversion',
+  `arn:${string}:iot:${string}:${string}:package/${string}/version/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'packageversion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -873,17 +1096,26 @@ class PackageversionArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { PackageversionArn }
-export function packageversionArn<Partition extends ArnPartition = 'aws'>(parameters: PackageversionArnParameters<Partition>) {
+export function packageversionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PackageversionArnParameters<Partition>,
+) {
   return new PackageversionArn<Partition>(parameters)
 }
 
-export interface CertificateproviderArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CertificateproviderArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly certificateProviderName: string
 }
-class CertificateproviderArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'certificateprovider', `arn:${string}:iot:${string}:${string}:certificateprovider/${string}`> {
+class CertificateproviderArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'certificateprovider',
+  `arn:${string}:iot:${string}:${string}:certificateprovider/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'certificateprovider' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -901,6 +1133,8 @@ class CertificateproviderArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { CertificateproviderArn }
-export function certificateproviderArn<Partition extends ArnPartition = 'aws'>(parameters: CertificateproviderArnParameters<Partition>) {
+export function certificateproviderArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CertificateproviderArnParameters<Partition>,
+) {
   return new CertificateproviderArn<Partition>(parameters)
 }

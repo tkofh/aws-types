@@ -1,12 +1,23 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface WorkspaceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface WorkspaceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class WorkspaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workspace', `arn:${string}:grafana:${string}:${string}:/workspaces/${string}`> {
+class WorkspaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'workspace',
+  `arn:${string}:grafana:${string}:${string}:/workspaces/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'workspace' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +35,8 @@ class WorkspaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { WorkspaceArn }
-export function workspaceArn<Partition extends ArnPartition = 'aws'>(parameters: WorkspaceArnParameters<Partition>) {
+export function workspaceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkspaceArnParameters<Partition>,
+) {
   return new WorkspaceArn<Partition>(parameters)
 }

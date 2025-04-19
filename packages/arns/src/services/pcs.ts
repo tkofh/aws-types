@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly clusterIdentifier: string
 }
-class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cluster', `arn:${string}:pcs:${string}:${string}:cluster/${string}`> {
+class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'cluster',
+  `arn:${string}:pcs:${string}:${string}:cluster/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'cluster' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,18 +33,27 @@ class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cl
   }
 }
 export type { ClusterArn }
-export function clusterArn<Partition extends ArnPartition = 'aws'>(parameters: ClusterArnParameters<Partition>) {
+export function clusterArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ClusterArnParameters<Partition>,
+) {
   return new ClusterArn<Partition>(parameters)
 }
 
-export interface ComputenodegroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ComputenodegroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly clusterIdentifier: string
   readonly computeNodeGroupIdentifier: string
 }
-class ComputenodegroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'computenodegroup', `arn:${string}:pcs:${string}:${string}:cluster/${string}/computenodegroup/${string}`> {
+class ComputenodegroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'computenodegroup',
+  `arn:${string}:pcs:${string}:${string}:cluster/${string}/computenodegroup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'computenodegroup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,7 +73,9 @@ class ComputenodegroupArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { ComputenodegroupArn }
-export function computenodegroupArn<Partition extends ArnPartition = 'aws'>(parameters: ComputenodegroupArnParameters<Partition>) {
+export function computenodegroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ComputenodegroupArnParameters<Partition>,
+) {
   return new ComputenodegroupArn<Partition>(parameters)
 }
 
@@ -66,7 +86,10 @@ export interface QueueArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly clusterIdentifier: string
   readonly queueIdentifier: string
 }
-class QueueArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'queue', `arn:${string}:pcs:${string}:${string}:cluster/${string}/queue/${string}`> {
+class QueueArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'queue',
+  `arn:${string}:pcs:${string}:${string}:cluster/${string}/queue/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'queue' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,6 +109,8 @@ class QueueArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'queu
   }
 }
 export type { QueueArn }
-export function queueArn<Partition extends ArnPartition = 'aws'>(parameters: QueueArnParameters<Partition>) {
+export function queueArn<Partition extends ArnPartition = 'aws'>(
+  parameters: QueueArnParameters<Partition>,
+) {
   return new QueueArn<Partition>(parameters)
 }

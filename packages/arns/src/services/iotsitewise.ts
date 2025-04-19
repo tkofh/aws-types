@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface AssetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface AssetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly assetId: string
 }
-class AssetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'asset', `arn:${string}:iotsitewise:${string}:${string}:asset/${string}`> {
+class AssetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'asset',
+  `arn:${string}:iotsitewise:${string}:${string}:asset/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'asset' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +33,24 @@ class AssetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'asse
   }
 }
 export type { AssetArn }
-export function assetArn<Partition extends ArnPartition = 'aws'>(parameters: AssetArnParameters<Partition>) {
+export function assetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AssetArnParameters<Partition>,
+) {
   return new AssetArn<Partition>(parameters)
 }
 
-export interface AssetModelArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AssetModelArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly assetModelId: string
 }
-class AssetModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'asset-model', `arn:${string}:iotsitewise:${string}:${string}:asset-model/${string}`> {
+class AssetModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'asset-model',
+  `arn:${string}:iotsitewise:${string}:${string}:asset-model/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'asset-model' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +68,24 @@ class AssetModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { AssetModelArn }
-export function assetModelArn<Partition extends ArnPartition = 'aws'>(parameters: AssetModelArnParameters<Partition>) {
+export function assetModelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AssetModelArnParameters<Partition>,
+) {
   return new AssetModelArn<Partition>(parameters)
 }
 
-export interface TimeSeriesArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TimeSeriesArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly timeSeriesId: string
 }
-class TimeSeriesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'time-series', `arn:${string}:iotsitewise:${string}:${string}:time-series/${string}`> {
+class TimeSeriesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'time-series',
+  `arn:${string}:iotsitewise:${string}:${string}:time-series/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'time-series' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,7 +103,9 @@ class TimeSeriesArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { TimeSeriesArn }
-export function timeSeriesArn<Partition extends ArnPartition = 'aws'>(parameters: TimeSeriesArnParameters<Partition>) {
+export function timeSeriesArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TimeSeriesArnParameters<Partition>,
+) {
   return new TimeSeriesArn<Partition>(parameters)
 }
 
@@ -90,7 +115,10 @@ export interface GatewayArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly gatewayId: string
 }
-class GatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'gateway', `arn:${string}:iotsitewise:${string}:${string}:gateway/${string}`> {
+class GatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'gateway',
+  `arn:${string}:iotsitewise:${string}:${string}:gateway/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'gateway' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,7 +136,9 @@ class GatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ga
   }
 }
 export type { GatewayArn }
-export function gatewayArn<Partition extends ArnPartition = 'aws'>(parameters: GatewayArnParameters<Partition>) {
+export function gatewayArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GatewayArnParameters<Partition>,
+) {
   return new GatewayArn<Partition>(parameters)
 }
 
@@ -118,7 +148,10 @@ export interface PortalArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly portalId: string
 }
-class PortalArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'portal', `arn:${string}:iotsitewise:${string}:${string}:portal/${string}`> {
+class PortalArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'portal',
+  `arn:${string}:iotsitewise:${string}:${string}:portal/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'portal' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -136,7 +169,9 @@ class PortalArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'por
   }
 }
 export type { PortalArn }
-export function portalArn<Partition extends ArnPartition = 'aws'>(parameters: PortalArnParameters<Partition>) {
+export function portalArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PortalArnParameters<Partition>,
+) {
   return new PortalArn<Partition>(parameters)
 }
 
@@ -146,7 +181,10 @@ export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly projectId: string
 }
-class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'project', `arn:${string}:iotsitewise:${string}:${string}:project/${string}`> {
+class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'project',
+  `arn:${string}:iotsitewise:${string}:${string}:project/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'project' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -164,17 +202,24 @@ class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pr
   }
 }
 export type { ProjectArn }
-export function projectArn<Partition extends ArnPartition = 'aws'>(parameters: ProjectArnParameters<Partition>) {
+export function projectArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProjectArnParameters<Partition>,
+) {
   return new ProjectArn<Partition>(parameters)
 }
 
-export interface DashboardArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DashboardArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly dashboardId: string
 }
-class DashboardArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dashboard', `arn:${string}:iotsitewise:${string}:${string}:dashboard/${string}`> {
+class DashboardArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'dashboard',
+  `arn:${string}:iotsitewise:${string}:${string}:dashboard/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'dashboard' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -192,17 +237,26 @@ class DashboardArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { DashboardArn }
-export function dashboardArn<Partition extends ArnPartition = 'aws'>(parameters: DashboardArnParameters<Partition>) {
+export function dashboardArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DashboardArnParameters<Partition>,
+) {
   return new DashboardArn<Partition>(parameters)
 }
 
-export interface AccessPolicyArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AccessPolicyArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly accessPolicyId: string
 }
-class AccessPolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'access-policy', `arn:${string}:iotsitewise:${string}:${string}:access-policy/${string}`> {
+class AccessPolicyArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'access-policy',
+  `arn:${string}:iotsitewise:${string}:${string}:access-policy/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'access-policy' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -220,6 +274,8 @@ class AccessPolicyArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { AccessPolicyArn }
-export function accessPolicyArn<Partition extends ArnPartition = 'aws'>(parameters: AccessPolicyArnParameters<Partition>) {
+export function accessPolicyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AccessPolicyArnParameters<Partition>,
+) {
   return new AccessPolicyArn<Partition>(parameters)
 }

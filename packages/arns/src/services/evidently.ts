@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly projectName: string
 }
-class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Project', `arn:${string}:evidently:${string}:${string}:project/${string}`> {
+class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Project',
+  `arn:${string}:evidently:${string}:${string}:project/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Project' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Pr
   }
 }
 export type { ProjectArn }
-export function projectArn<Partition extends ArnPartition = 'aws'>(parameters: ProjectArnParameters<Partition>) {
+export function projectArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProjectArnParameters<Partition>,
+) {
   return new ProjectArn<Partition>(parameters)
 }
 
@@ -35,7 +46,10 @@ export interface FeatureArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly projectName: string
   readonly featureName: string
 }
-class FeatureArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Feature', `arn:${string}:evidently:${string}:${string}:project/${string}/feature/${string}`> {
+class FeatureArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Feature',
+  `arn:${string}:evidently:${string}:${string}:project/${string}/feature/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Feature' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,18 +69,25 @@ class FeatureArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Fe
   }
 }
 export type { FeatureArn }
-export function featureArn<Partition extends ArnPartition = 'aws'>(parameters: FeatureArnParameters<Partition>) {
+export function featureArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FeatureArnParameters<Partition>,
+) {
   return new FeatureArn<Partition>(parameters)
 }
 
-export interface ExperimentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ExperimentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly projectName: string
   readonly experimentName: string
 }
-class ExperimentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Experiment', `arn:${string}:evidently:${string}:${string}:project/${string}/experiment/${string}`> {
+class ExperimentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Experiment',
+  `arn:${string}:evidently:${string}:${string}:project/${string}/experiment/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Experiment' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,7 +107,9 @@ class ExperimentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { ExperimentArn }
-export function experimentArn<Partition extends ArnPartition = 'aws'>(parameters: ExperimentArnParameters<Partition>) {
+export function experimentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ExperimentArnParameters<Partition>,
+) {
   return new ExperimentArn<Partition>(parameters)
 }
 
@@ -97,7 +120,10 @@ export interface LaunchArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly projectName: string
   readonly launchName: string
 }
-class LaunchArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Launch', `arn:${string}:evidently:${string}:${string}:project/${string}/launch/${string}`> {
+class LaunchArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Launch',
+  `arn:${string}:evidently:${string}:${string}:project/${string}/launch/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Launch' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -117,7 +143,9 @@ class LaunchArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Lau
   }
 }
 export type { LaunchArn }
-export function launchArn<Partition extends ArnPartition = 'aws'>(parameters: LaunchArnParameters<Partition>) {
+export function launchArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LaunchArnParameters<Partition>,
+) {
   return new LaunchArn<Partition>(parameters)
 }
 
@@ -127,7 +155,10 @@ export interface SegmentArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly segmentName: string
 }
-class SegmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Segment', `arn:${string}:evidently:${string}:${string}:segment/${string}`> {
+class SegmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Segment',
+  `arn:${string}:evidently:${string}:${string}:segment/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Segment' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -145,6 +176,8 @@ class SegmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Se
   }
 }
 export type { SegmentArn }
-export function segmentArn<Partition extends ArnPartition = 'aws'>(parameters: SegmentArnParameters<Partition>) {
+export function segmentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SegmentArnParameters<Partition>,
+) {
   return new SegmentArn<Partition>(parameters)
 }

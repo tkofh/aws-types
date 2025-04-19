@@ -1,13 +1,26 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface RobotApplicationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RobotApplicationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly applicationName: string
   readonly createdOnEpoch: string
 }
-class RobotApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'robotApplication', `arn:${string}:robomaker:${string}:${string}:robot-application/${string}/${string}`> {
+class RobotApplicationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'robotApplication',
+  `arn:${string}:robomaker:${string}:${string}:robot-application/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'robotApplication' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,18 +40,27 @@ class RobotApplicationArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { RobotApplicationArn }
-export function robotApplicationArn<Partition extends ArnPartition = 'aws'>(parameters: RobotApplicationArnParameters<Partition>) {
+export function robotApplicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RobotApplicationArnParameters<Partition>,
+) {
   return new RobotApplicationArn<Partition>(parameters)
 }
 
-export interface SimulationApplicationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SimulationApplicationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly applicationName: string
   readonly createdOnEpoch: string
 }
-class SimulationApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'simulationApplication', `arn:${string}:robomaker:${string}:${string}:simulation-application/${string}/${string}`> {
+class SimulationApplicationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'simulationApplication',
+  `arn:${string}:robomaker:${string}:${string}:simulation-application/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'simulationApplication' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -58,17 +80,26 @@ class SimulationApplicationArn<Partition extends ArnPartition = 'aws'> extends I
   }
 }
 export type { SimulationApplicationArn }
-export function simulationApplicationArn<Partition extends ArnPartition = 'aws'>(parameters: SimulationApplicationArnParameters<Partition>) {
+export function simulationApplicationArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: SimulationApplicationArnParameters<Partition>) {
   return new SimulationApplicationArn<Partition>(parameters)
 }
 
-export interface SimulationJobArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SimulationJobArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly simulationJobId: string
 }
-class SimulationJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'simulationJob', `arn:${string}:robomaker:${string}:${string}:simulation-job/${string}`> {
+class SimulationJobArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'simulationJob',
+  `arn:${string}:robomaker:${string}:${string}:simulation-job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'simulationJob' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,17 +117,26 @@ class SimulationJobArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { SimulationJobArn }
-export function simulationJobArn<Partition extends ArnPartition = 'aws'>(parameters: SimulationJobArnParameters<Partition>) {
+export function simulationJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SimulationJobArnParameters<Partition>,
+) {
   return new SimulationJobArn<Partition>(parameters)
 }
 
-export interface SimulationJobBatchArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SimulationJobBatchArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly simulationJobBatchId: string
 }
-class SimulationJobBatchArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'simulationJobBatch', `arn:${string}:robomaker:${string}:${string}:simulation-job-batch/${string}`> {
+class SimulationJobBatchArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'simulationJobBatch',
+  `arn:${string}:robomaker:${string}:${string}:simulation-job-batch/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'simulationJobBatch' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -114,17 +154,26 @@ class SimulationJobBatchArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { SimulationJobBatchArn }
-export function simulationJobBatchArn<Partition extends ArnPartition = 'aws'>(parameters: SimulationJobBatchArnParameters<Partition>) {
+export function simulationJobBatchArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SimulationJobBatchArnParameters<Partition>,
+) {
   return new SimulationJobBatchArn<Partition>(parameters)
 }
 
-export interface DeploymentJobArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeploymentJobArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly deploymentJobId: string
 }
-class DeploymentJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'deploymentJob', `arn:${string}:robomaker:${string}:${string}:deployment-job/${string}`> {
+class DeploymentJobArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'deploymentJob',
+  `arn:${string}:robomaker:${string}:${string}:deployment-job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'deploymentJob' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -142,7 +191,9 @@ class DeploymentJobArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { DeploymentJobArn }
-export function deploymentJobArn<Partition extends ArnPartition = 'aws'>(parameters: DeploymentJobArnParameters<Partition>) {
+export function deploymentJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeploymentJobArnParameters<Partition>,
+) {
   return new DeploymentJobArn<Partition>(parameters)
 }
 
@@ -153,7 +204,10 @@ export interface RobotArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly robotName: string
   readonly createdOnEpoch: string
 }
-class RobotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'robot', `arn:${string}:robomaker:${string}:${string}:robot/${string}/${string}`> {
+class RobotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'robot',
+  `arn:${string}:robomaker:${string}:${string}:robot/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'robot' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -173,18 +227,27 @@ class RobotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'robo
   }
 }
 export type { RobotArn }
-export function robotArn<Partition extends ArnPartition = 'aws'>(parameters: RobotArnParameters<Partition>) {
+export function robotArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RobotArnParameters<Partition>,
+) {
   return new RobotArn<Partition>(parameters)
 }
 
-export interface DeploymentFleetArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeploymentFleetArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly fleetName: string
   readonly createdOnEpoch: string
 }
-class DeploymentFleetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'deploymentFleet', `arn:${string}:robomaker:${string}:${string}:deployment-fleet/${string}/${string}`> {
+class DeploymentFleetArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'deploymentFleet',
+  `arn:${string}:robomaker:${string}:${string}:deployment-fleet/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'deploymentFleet' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -204,17 +267,26 @@ class DeploymentFleetArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { DeploymentFleetArn }
-export function deploymentFleetArn<Partition extends ArnPartition = 'aws'>(parameters: DeploymentFleetArnParameters<Partition>) {
+export function deploymentFleetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeploymentFleetArnParameters<Partition>,
+) {
   return new DeploymentFleetArn<Partition>(parameters)
 }
 
-export interface WorldGenerationJobArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface WorldGenerationJobArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly worldGenerationJobId: string
 }
-class WorldGenerationJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'worldGenerationJob', `arn:${string}:robomaker:${string}:${string}:world-generation-job/${string}`> {
+class WorldGenerationJobArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'worldGenerationJob',
+  `arn:${string}:robomaker:${string}:${string}:world-generation-job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'worldGenerationJob' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -232,17 +304,26 @@ class WorldGenerationJobArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { WorldGenerationJobArn }
-export function worldGenerationJobArn<Partition extends ArnPartition = 'aws'>(parameters: WorldGenerationJobArnParameters<Partition>) {
+export function worldGenerationJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorldGenerationJobArnParameters<Partition>,
+) {
   return new WorldGenerationJobArn<Partition>(parameters)
 }
 
-export interface WorldExportJobArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface WorldExportJobArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly worldExportJobId: string
 }
-class WorldExportJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'worldExportJob', `arn:${string}:robomaker:${string}:${string}:world-export-job/${string}`> {
+class WorldExportJobArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'worldExportJob',
+  `arn:${string}:robomaker:${string}:${string}:world-export-job/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'worldExportJob' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -260,17 +341,26 @@ class WorldExportJobArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { WorldExportJobArn }
-export function worldExportJobArn<Partition extends ArnPartition = 'aws'>(parameters: WorldExportJobArnParameters<Partition>) {
+export function worldExportJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorldExportJobArnParameters<Partition>,
+) {
   return new WorldExportJobArn<Partition>(parameters)
 }
 
-export interface WorldTemplateArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface WorldTemplateArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly worldTemplateJobId: string
 }
-class WorldTemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'worldTemplate', `arn:${string}:robomaker:${string}:${string}:world-template/${string}`> {
+class WorldTemplateArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'worldTemplate',
+  `arn:${string}:robomaker:${string}:${string}:world-template/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'worldTemplate' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -288,7 +378,9 @@ class WorldTemplateArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { WorldTemplateArn }
-export function worldTemplateArn<Partition extends ArnPartition = 'aws'>(parameters: WorldTemplateArnParameters<Partition>) {
+export function worldTemplateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorldTemplateArnParameters<Partition>,
+) {
   return new WorldTemplateArn<Partition>(parameters)
 }
 
@@ -298,7 +390,10 @@ export interface WorldArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly worldId: string
 }
-class WorldArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'world', `arn:${string}:robomaker:${string}:${string}:world/${string}`> {
+class WorldArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'world',
+  `arn:${string}:robomaker:${string}:${string}:world/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'world' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -316,6 +411,8 @@ class WorldArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'worl
   }
 }
 export type { WorldArn }
-export function worldArn<Partition extends ArnPartition = 'aws'>(parameters: WorldArnParameters<Partition>) {
+export function worldArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorldArnParameters<Partition>,
+) {
   return new WorldArn<Partition>(parameters)
 }

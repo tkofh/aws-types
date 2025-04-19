@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ActionArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -8,7 +14,10 @@ export interface ActionArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly stageName: string
   readonly actionName: string
 }
-class ActionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'action', `arn:${string}:codepipeline:${string}:${string}:${string}/${string}/${string}`> {
+class ActionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'action',
+  `arn:${string}:codepipeline:${string}:${string}:${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'action' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -30,11 +39,15 @@ class ActionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'act
   }
 }
 export type { ActionArn }
-export function actionArn<Partition extends ArnPartition = 'aws'>(parameters: ActionArnParameters<Partition>) {
+export function actionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ActionArnParameters<Partition>,
+) {
   return new ActionArn<Partition>(parameters)
 }
 
-export interface ActiontypeArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ActiontypeArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -43,7 +56,10 @@ export interface ActiontypeArnParameters<Partition extends ArnPartition = 'aws'>
   readonly provider: string
   readonly version: string
 }
-class ActiontypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'actiontype', `arn:${string}:codepipeline:${string}:${string}:actiontype:${string}/${string}/${string}/${string}`> {
+class ActiontypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'actiontype',
+  `arn:${string}:codepipeline:${string}:${string}:actiontype:${string}/${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'actiontype' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -67,7 +83,9 @@ class ActiontypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { ActiontypeArn }
-export function actiontypeArn<Partition extends ArnPartition = 'aws'>(parameters: ActiontypeArnParameters<Partition>) {
+export function actiontypeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ActiontypeArnParameters<Partition>,
+) {
   return new ActiontypeArn<Partition>(parameters)
 }
 
@@ -77,7 +95,10 @@ export interface PipelineArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly pipelineName: string
 }
-class PipelineArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pipeline', `arn:${string}:codepipeline:${string}:${string}:${string}`> {
+class PipelineArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'pipeline',
+  `arn:${string}:codepipeline:${string}:${string}:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'pipeline' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -95,7 +116,9 @@ class PipelineArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'p
   }
 }
 export type { PipelineArn }
-export function pipelineArn<Partition extends ArnPartition = 'aws'>(parameters: PipelineArnParameters<Partition>) {
+export function pipelineArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PipelineArnParameters<Partition>,
+) {
   return new PipelineArn<Partition>(parameters)
 }
 
@@ -106,7 +129,10 @@ export interface StageArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly pipelineName: string
   readonly stageName: string
 }
-class StageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stage', `arn:${string}:codepipeline:${string}:${string}:${string}/${string}`> {
+class StageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'stage',
+  `arn:${string}:codepipeline:${string}:${string}:${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'stage' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -126,7 +152,9 @@ class StageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stag
   }
 }
 export type { StageArn }
-export function stageArn<Partition extends ArnPartition = 'aws'>(parameters: StageArnParameters<Partition>) {
+export function stageArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StageArnParameters<Partition>,
+) {
   return new StageArn<Partition>(parameters)
 }
 
@@ -136,7 +164,10 @@ export interface WebhookArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly webhookName: string
 }
-class WebhookArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'webhook', `arn:${string}:codepipeline:${string}:${string}:webhook:${string}`> {
+class WebhookArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'webhook',
+  `arn:${string}:codepipeline:${string}:${string}:webhook:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'webhook' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -154,6 +185,8 @@ class WebhookArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'we
   }
 }
 export type { WebhookArn }
-export function webhookArn<Partition extends ArnPartition = 'aws'>(parameters: WebhookArnParameters<Partition>) {
+export function webhookArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WebhookArnParameters<Partition>,
+) {
   return new WebhookArn<Partition>(parameters)
 }

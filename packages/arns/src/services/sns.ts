@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface TopicArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface TopicArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly topicName: string
 }
-class TopicArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'topic', `arn:${string}:sns:${string}:${string}:${string}`> {
+class TopicArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'topic',
+  `arn:${string}:sns:${string}:${string}:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'topic' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +33,8 @@ class TopicArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'topi
   }
 }
 export type { TopicArn }
-export function topicArn<Partition extends ArnPartition = 'aws'>(parameters: TopicArnParameters<Partition>) {
+export function topicArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TopicArnParameters<Partition>,
+) {
   return new TopicArn<Partition>(parameters)
 }

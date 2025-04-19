@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ConfigurationSetArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConfigurationSetArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly configurationSetName: string
 }
-class ConfigurationSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ConfigurationSet', `arn:${string}:sms-voice:${string}:${string}:configuration-set/${string}`> {
+class ConfigurationSetArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'ConfigurationSet',
+  `arn:${string}:sms-voice:${string}:${string}:configuration-set/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ConfigurationSet' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +37,24 @@ class ConfigurationSetArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { ConfigurationSetArn }
-export function configurationSetArn<Partition extends ArnPartition = 'aws'>(parameters: ConfigurationSetArnParameters<Partition>) {
+export function configurationSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConfigurationSetArnParameters<Partition>,
+) {
   return new ConfigurationSetArn<Partition>(parameters)
 }
 
-export interface OptOutListArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface OptOutListArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly optOutListName: string
 }
-class OptOutListArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'OptOutList', `arn:${string}:sms-voice:${string}:${string}:opt-out-list/${string}`> {
+class OptOutListArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'OptOutList',
+  `arn:${string}:sms-voice:${string}:${string}:opt-out-list/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'OptOutList' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +72,26 @@ class OptOutListArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { OptOutListArn }
-export function optOutListArn<Partition extends ArnPartition = 'aws'>(parameters: OptOutListArnParameters<Partition>) {
+export function optOutListArn<Partition extends ArnPartition = 'aws'>(
+  parameters: OptOutListArnParameters<Partition>,
+) {
   return new OptOutListArn<Partition>(parameters)
 }
 
-export interface PhoneNumberArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface PhoneNumberArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly phoneNumberId: string
 }
-class PhoneNumberArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'PhoneNumber', `arn:${string}:sms-voice:${string}:${string}:phone-number/${string}`> {
+class PhoneNumberArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'PhoneNumber',
+  `arn:${string}:sms-voice:${string}:${string}:phone-number/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'PhoneNumber' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,7 +109,9 @@ class PhoneNumberArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { PhoneNumberArn }
-export function phoneNumberArn<Partition extends ArnPartition = 'aws'>(parameters: PhoneNumberArnParameters<Partition>) {
+export function phoneNumberArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PhoneNumberArnParameters<Partition>,
+) {
   return new PhoneNumberArn<Partition>(parameters)
 }
 
@@ -90,7 +121,10 @@ export interface PoolArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly poolId: string
 }
-class PoolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Pool', `arn:${string}:sms-voice:${string}:${string}:pool/${string}`> {
+class PoolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Pool',
+  `arn:${string}:sms-voice:${string}:${string}:pool/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Pool' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,17 +142,26 @@ class PoolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Pool'
   }
 }
 export type { PoolArn }
-export function poolArn<Partition extends ArnPartition = 'aws'>(parameters: PoolArnParameters<Partition>) {
+export function poolArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PoolArnParameters<Partition>,
+) {
   return new PoolArn<Partition>(parameters)
 }
 
-export interface ProtectConfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ProtectConfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly protectConfigurationId: string
 }
-class ProtectConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ProtectConfiguration', `arn:${string}:sms-voice:${string}:${string}:protect-configuration/${string}`> {
+class ProtectConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'ProtectConfiguration',
+  `arn:${string}:sms-voice:${string}:${string}:protect-configuration/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ProtectConfiguration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -136,7 +179,9 @@ class ProtectConfigurationArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { ProtectConfigurationArn }
-export function protectConfigurationArn<Partition extends ArnPartition = 'aws'>(parameters: ProtectConfigurationArnParameters<Partition>) {
+export function protectConfigurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProtectConfigurationArnParameters<Partition>,
+) {
   return new ProtectConfigurationArn<Partition>(parameters)
 }
 
@@ -147,7 +192,10 @@ export interface SenderIdArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly senderId: string
   readonly isoCountryCode: string
 }
-class SenderIdArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'SenderId', `arn:${string}:sms-voice:${string}:${string}:sender-id/${string}/${string}`> {
+class SenderIdArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'SenderId',
+  `arn:${string}:sms-voice:${string}:${string}:sender-id/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'SenderId' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -167,17 +215,26 @@ class SenderIdArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'S
   }
 }
 export type { SenderIdArn }
-export function senderIdArn<Partition extends ArnPartition = 'aws'>(parameters: SenderIdArnParameters<Partition>) {
+export function senderIdArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SenderIdArnParameters<Partition>,
+) {
   return new SenderIdArn<Partition>(parameters)
 }
 
-export interface RegistrationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RegistrationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly registrationId: string
 }
-class RegistrationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Registration', `arn:${string}:sms-voice:${string}:${string}:registration/${string}`> {
+class RegistrationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'Registration',
+  `arn:${string}:sms-voice:${string}:${string}:registration/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Registration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -195,17 +252,26 @@ class RegistrationArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { RegistrationArn }
-export function registrationArn<Partition extends ArnPartition = 'aws'>(parameters: RegistrationArnParameters<Partition>) {
+export function registrationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RegistrationArnParameters<Partition>,
+) {
   return new RegistrationArn<Partition>(parameters)
 }
 
-export interface RegistrationAttachmentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RegistrationAttachmentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly registrationAttachmentId: string
 }
-class RegistrationAttachmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'RegistrationAttachment', `arn:${string}:sms-voice:${string}:${string}:registration-attachment/${string}`> {
+class RegistrationAttachmentArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'RegistrationAttachment',
+  `arn:${string}:sms-voice:${string}:${string}:registration-attachment/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'RegistrationAttachment' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -223,17 +289,26 @@ class RegistrationAttachmentArn<Partition extends ArnPartition = 'aws'> extends 
   }
 }
 export type { RegistrationAttachmentArn }
-export function registrationAttachmentArn<Partition extends ArnPartition = 'aws'>(parameters: RegistrationAttachmentArnParameters<Partition>) {
+export function registrationAttachmentArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: RegistrationAttachmentArnParameters<Partition>) {
   return new RegistrationAttachmentArn<Partition>(parameters)
 }
 
-export interface VerifiedDestinationNumberArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface VerifiedDestinationNumberArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly verifiedDestinationNumberId: string
 }
-class VerifiedDestinationNumberArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'VerifiedDestinationNumber', `arn:${string}:sms-voice:${string}:${string}:verified-destination-number/${string}`> {
+class VerifiedDestinationNumberArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'VerifiedDestinationNumber',
+  `arn:${string}:sms-voice:${string}:${string}:verified-destination-number/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'VerifiedDestinationNumber' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -251,6 +326,8 @@ class VerifiedDestinationNumberArn<Partition extends ArnPartition = 'aws'> exten
   }
 }
 export type { VerifiedDestinationNumberArn }
-export function verifiedDestinationNumberArn<Partition extends ArnPartition = 'aws'>(parameters: VerifiedDestinationNumberArnParameters<Partition>) {
+export function verifiedDestinationNumberArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: VerifiedDestinationNumberArnParameters<Partition>) {
   return new VerifiedDestinationNumberArn<Partition>(parameters)
 }

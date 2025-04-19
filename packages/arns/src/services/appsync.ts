@@ -1,13 +1,24 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface DatasourceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DatasourceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly graphQlapiId: string
   readonly datasourceName: string
 }
-class DatasourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'datasource', `arn:${string}:appsync:${string}:${string}:apis/${string}/datasources/${string}`> {
+class DatasourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'datasource',
+  `arn:${string}:appsync:${string}:${string}:apis/${string}/datasources/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'datasource' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,7 +38,9 @@ class DatasourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { DatasourceArn }
-export function datasourceArn<Partition extends ArnPartition = 'aws'>(parameters: DatasourceArnParameters<Partition>) {
+export function datasourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DatasourceArnParameters<Partition>,
+) {
   return new DatasourceArn<Partition>(parameters)
 }
 
@@ -37,7 +50,10 @@ export interface DomainArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly domainName: string
 }
-class DomainArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'domain', `arn:${string}:appsync:${string}:${string}:domainnames/${string}`> {
+class DomainArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'domain',
+  `arn:${string}:appsync:${string}:${string}:domainnames/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'domain' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,17 +71,24 @@ class DomainArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dom
   }
 }
 export type { DomainArn }
-export function domainArn<Partition extends ArnPartition = 'aws'>(parameters: DomainArnParameters<Partition>) {
+export function domainArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DomainArnParameters<Partition>,
+) {
   return new DomainArn<Partition>(parameters)
 }
 
-export interface GraphqlapiArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface GraphqlapiArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly graphQlapiId: string
 }
-class GraphqlapiArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'graphqlapi', `arn:${string}:appsync:${string}:${string}:apis/${string}`> {
+class GraphqlapiArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'graphqlapi',
+  `arn:${string}:appsync:${string}:${string}:apis/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'graphqlapi' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -83,7 +106,9 @@ class GraphqlapiArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { GraphqlapiArn }
-export function graphqlapiArn<Partition extends ArnPartition = 'aws'>(parameters: GraphqlapiArnParameters<Partition>) {
+export function graphqlapiArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GraphqlapiArnParameters<Partition>,
+) {
   return new GraphqlapiArn<Partition>(parameters)
 }
 
@@ -95,7 +120,10 @@ export interface FieldArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly typeName: string
   readonly fieldName: string
 }
-class FieldArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'field', `arn:${string}:appsync:${string}:${string}:apis/${string}/types/${string}/fields/${string}`> {
+class FieldArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'field',
+  `arn:${string}:appsync:${string}:${string}:apis/${string}/types/${string}/fields/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'field' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -117,7 +145,9 @@ class FieldArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'fiel
   }
 }
 export type { FieldArn }
-export function fieldArn<Partition extends ArnPartition = 'aws'>(parameters: FieldArnParameters<Partition>) {
+export function fieldArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FieldArnParameters<Partition>,
+) {
   return new FieldArn<Partition>(parameters)
 }
 
@@ -128,7 +158,10 @@ export interface TypeArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly graphQlapiId: string
   readonly typeName: string
 }
-class TypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'type', `arn:${string}:appsync:${string}:${string}:apis/${string}/types/${string}`> {
+class TypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'type',
+  `arn:${string}:appsync:${string}:${string}:apis/${string}/types/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'type' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -148,7 +181,9 @@ class TypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'type'
   }
 }
 export type { TypeArn }
-export function typeArn<Partition extends ArnPartition = 'aws'>(parameters: TypeArnParameters<Partition>) {
+export function typeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TypeArnParameters<Partition>,
+) {
   return new TypeArn<Partition>(parameters)
 }
 
@@ -159,7 +194,10 @@ export interface FunctionArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly graphQlapiId: string
   readonly functionId: string
 }
-class FunctionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'function', `arn:${string}:appsync:${string}:${string}:apis/${string}/functions/${string}`> {
+class FunctionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'function',
+  `arn:${string}:appsync:${string}:${string}:apis/${string}/functions/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'function' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -179,18 +217,27 @@ class FunctionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'f
   }
 }
 export type { FunctionArn }
-export function functionArn<Partition extends ArnPartition = 'aws'>(parameters: FunctionArnParameters<Partition>) {
+export function functionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FunctionArnParameters<Partition>,
+) {
   return new FunctionArn<Partition>(parameters)
 }
 
-export interface SourceApiAssociationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SourceApiAssociationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly mergedGraphQlapiId: string
   readonly associationid: string
 }
-class SourceApiAssociationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'sourceApiAssociation', `arn:${string}:appsync:${string}:${string}:apis/${string}/sourceApiAssociations/${string}`> {
+class SourceApiAssociationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'sourceApiAssociation',
+  `arn:${string}:appsync:${string}:${string}:apis/${string}/sourceApiAssociations/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'sourceApiAssociation' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -210,18 +257,27 @@ class SourceApiAssociationArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { SourceApiAssociationArn }
-export function sourceApiAssociationArn<Partition extends ArnPartition = 'aws'>(parameters: SourceApiAssociationArnParameters<Partition>) {
+export function sourceApiAssociationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SourceApiAssociationArnParameters<Partition>,
+) {
   return new SourceApiAssociationArn<Partition>(parameters)
 }
 
-export interface MergedApiAssociationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MergedApiAssociationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly sourceGraphQlapiId: string
   readonly associationid: string
 }
-class MergedApiAssociationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'mergedApiAssociation', `arn:${string}:appsync:${string}:${string}:apis/${string}/mergedApiAssociations/${string}`> {
+class MergedApiAssociationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'mergedApiAssociation',
+  `arn:${string}:appsync:${string}:${string}:apis/${string}/mergedApiAssociations/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'mergedApiAssociation' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -241,6 +297,8 @@ class MergedApiAssociationArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { MergedApiAssociationArn }
-export function mergedApiAssociationArn<Partition extends ArnPartition = 'aws'>(parameters: MergedApiAssociationArnParameters<Partition>) {
+export function mergedApiAssociationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MergedApiAssociationArnParameters<Partition>,
+) {
   return new MergedApiAssociationArn<Partition>(parameters)
 }

@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface BrowserSettingsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface BrowserSettingsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly browserSettingsId: string
 }
-class BrowserSettingsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'browserSettings', `arn:${string}:workspaces-web:${string}:${string}:browserSettings/${string}`> {
+class BrowserSettingsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'browserSettings',
+  `arn:${string}:workspaces-web:${string}:${string}:browserSettings/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'browserSettings' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,18 +37,27 @@ class BrowserSettingsArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { BrowserSettingsArn }
-export function browserSettingsArn<Partition extends ArnPartition = 'aws'>(parameters: BrowserSettingsArnParameters<Partition>) {
+export function browserSettingsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BrowserSettingsArnParameters<Partition>,
+) {
   return new BrowserSettingsArn<Partition>(parameters)
 }
 
-export interface IdentityProviderArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface IdentityProviderArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly portalId: string
   readonly identityProviderId: string
 }
-class IdentityProviderArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'identityProvider', `arn:${string}:workspaces-web:${string}:${string}:identityProvider/${string}/${string}`> {
+class IdentityProviderArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'identityProvider',
+  `arn:${string}:workspaces-web:${string}:${string}:identityProvider/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'identityProvider' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,17 +77,26 @@ class IdentityProviderArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { IdentityProviderArn }
-export function identityProviderArn<Partition extends ArnPartition = 'aws'>(parameters: IdentityProviderArnParameters<Partition>) {
+export function identityProviderArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IdentityProviderArnParameters<Partition>,
+) {
   return new IdentityProviderArn<Partition>(parameters)
 }
 
-export interface NetworkSettingsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface NetworkSettingsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly networkSettingsId: string
 }
-class NetworkSettingsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'networkSettings', `arn:${string}:workspaces-web:${string}:${string}:networkSettings/${string}`> {
+class NetworkSettingsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'networkSettings',
+  `arn:${string}:workspaces-web:${string}:${string}:networkSettings/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'networkSettings' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -83,7 +114,9 @@ class NetworkSettingsArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { NetworkSettingsArn }
-export function networkSettingsArn<Partition extends ArnPartition = 'aws'>(parameters: NetworkSettingsArnParameters<Partition>) {
+export function networkSettingsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NetworkSettingsArnParameters<Partition>,
+) {
   return new NetworkSettingsArn<Partition>(parameters)
 }
 
@@ -93,7 +126,10 @@ export interface PortalArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly portalId: string
 }
-class PortalArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'portal', `arn:${string}:workspaces-web:${string}:${string}:portal/${string}`> {
+class PortalArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'portal',
+  `arn:${string}:workspaces-web:${string}:${string}:portal/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'portal' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -111,17 +147,24 @@ class PortalArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'por
   }
 }
 export type { PortalArn }
-export function portalArn<Partition extends ArnPartition = 'aws'>(parameters: PortalArnParameters<Partition>) {
+export function portalArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PortalArnParameters<Partition>,
+) {
   return new PortalArn<Partition>(parameters)
 }
 
-export interface TrustStoreArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TrustStoreArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly trustStoreId: string
 }
-class TrustStoreArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'trustStore', `arn:${string}:workspaces-web:${string}:${string}:trustStore/${string}`> {
+class TrustStoreArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'trustStore',
+  `arn:${string}:workspaces-web:${string}:${string}:trustStore/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'trustStore' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -139,17 +182,26 @@ class TrustStoreArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { TrustStoreArn }
-export function trustStoreArn<Partition extends ArnPartition = 'aws'>(parameters: TrustStoreArnParameters<Partition>) {
+export function trustStoreArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TrustStoreArnParameters<Partition>,
+) {
   return new TrustStoreArn<Partition>(parameters)
 }
 
-export interface UserSettingsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface UserSettingsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly userSettingsId: string
 }
-class UserSettingsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'userSettings', `arn:${string}:workspaces-web:${string}:${string}:userSettings/${string}`> {
+class UserSettingsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'userSettings',
+  `arn:${string}:workspaces-web:${string}:${string}:userSettings/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'userSettings' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -167,17 +219,26 @@ class UserSettingsArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { UserSettingsArn }
-export function userSettingsArn<Partition extends ArnPartition = 'aws'>(parameters: UserSettingsArnParameters<Partition>) {
+export function userSettingsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UserSettingsArnParameters<Partition>,
+) {
   return new UserSettingsArn<Partition>(parameters)
 }
 
-export interface UserAccessLoggingSettingsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface UserAccessLoggingSettingsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly userAccessLoggingSettingsId: string
 }
-class UserAccessLoggingSettingsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'userAccessLoggingSettings', `arn:${string}:workspaces-web:${string}:${string}:userAccessLoggingSettings/${string}`> {
+class UserAccessLoggingSettingsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'userAccessLoggingSettings',
+  `arn:${string}:workspaces-web:${string}:${string}:userAccessLoggingSettings/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'userAccessLoggingSettings' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -195,17 +256,26 @@ class UserAccessLoggingSettingsArn<Partition extends ArnPartition = 'aws'> exten
   }
 }
 export type { UserAccessLoggingSettingsArn }
-export function userAccessLoggingSettingsArn<Partition extends ArnPartition = 'aws'>(parameters: UserAccessLoggingSettingsArnParameters<Partition>) {
+export function userAccessLoggingSettingsArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: UserAccessLoggingSettingsArnParameters<Partition>) {
   return new UserAccessLoggingSettingsArn<Partition>(parameters)
 }
 
-export interface IpAccessSettingsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface IpAccessSettingsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly ipAccessSettingsId: string
 }
-class IpAccessSettingsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ipAccessSettings', `arn:${string}:workspaces-web:${string}:${string}:ipAccessSettings/${string}`> {
+class IpAccessSettingsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'ipAccessSettings',
+  `arn:${string}:workspaces-web:${string}:${string}:ipAccessSettings/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ipAccessSettings' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -223,6 +293,8 @@ class IpAccessSettingsArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { IpAccessSettingsArn }
-export function ipAccessSettingsArn<Partition extends ArnPartition = 'aws'>(parameters: IpAccessSettingsArnParameters<Partition>) {
+export function ipAccessSettingsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IpAccessSettingsArnParameters<Partition>,
+) {
   return new IpAccessSettingsArn<Partition>(parameters)
 }

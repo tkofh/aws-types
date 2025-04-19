@@ -1,11 +1,24 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface PermissionSetArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface PermissionSetArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly instanceId: string
   readonly permissionSetId: string
 }
-class PermissionSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'PermissionSet', `arn:${string}:sso:::permissionSet/${string}/${string}`> {
+class PermissionSetArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'PermissionSet',
+  `arn:${string}:sso:::permissionSet/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'PermissionSet' as const
   readonly partition: Partition
   readonly instanceId: string
@@ -21,7 +34,9 @@ class PermissionSetArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { PermissionSetArn }
-export function permissionSetArn<Partition extends ArnPartition = 'aws'>(parameters: PermissionSetArnParameters<Partition>) {
+export function permissionSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PermissionSetArnParameters<Partition>,
+) {
   return new PermissionSetArn<Partition>(parameters)
 }
 
@@ -29,7 +44,10 @@ export interface AccountArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly accountId: string
 }
-class AccountArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Account', `arn:${string}:sso:::account/${string}`> {
+class AccountArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Account',
+  `arn:${string}:sso:::account/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Account' as const
   readonly partition: Partition
   readonly accountId: string
@@ -43,7 +61,9 @@ class AccountArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Ac
   }
 }
 export type { AccountArn }
-export function accountArn<Partition extends ArnPartition = 'aws'>(parameters: AccountArnParameters<Partition>) {
+export function accountArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AccountArnParameters<Partition>,
+) {
   return new AccountArn<Partition>(parameters)
 }
 
@@ -51,7 +71,10 @@ export interface InstanceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly instanceId: string
 }
-class InstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Instance', `arn:${string}:sso:::instance/${string}`> {
+class InstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Instance',
+  `arn:${string}:sso:::instance/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Instance' as const
   readonly partition: Partition
   readonly instanceId: string
@@ -65,17 +88,26 @@ class InstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'I
   }
 }
 export type { InstanceArn }
-export function instanceArn<Partition extends ArnPartition = 'aws'>(parameters: InstanceArnParameters<Partition>) {
+export function instanceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InstanceArnParameters<Partition>,
+) {
   return new InstanceArn<Partition>(parameters)
 }
 
-export interface ApplicationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ApplicationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly accountId: string
   readonly instanceId: string
   readonly applicationId: string
 }
-class ApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Application', `arn:${string}:sso::${string}:application/${string}/${string}`> {
+class ApplicationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'Application',
+  `arn:${string}:sso::${string}:application/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Application' as const
   readonly partition: Partition
   readonly accountId: string
@@ -93,17 +125,26 @@ class ApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ApplicationArn }
-export function applicationArn<Partition extends ArnPartition = 'aws'>(parameters: ApplicationArnParameters<Partition>) {
+export function applicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApplicationArnParameters<Partition>,
+) {
   return new ApplicationArn<Partition>(parameters)
 }
 
-export interface TrustedTokenIssuerArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TrustedTokenIssuerArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly accountId: string
   readonly instanceId: string
   readonly trustedTokenIssuerId: string
 }
-class TrustedTokenIssuerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'TrustedTokenIssuer', `arn:${string}:sso::${string}:trustedTokenIssuer/${string}/${string}`> {
+class TrustedTokenIssuerArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'TrustedTokenIssuer',
+  `arn:${string}:sso::${string}:trustedTokenIssuer/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'TrustedTokenIssuer' as const
   readonly partition: Partition
   readonly accountId: string
@@ -121,15 +162,24 @@ class TrustedTokenIssuerArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { TrustedTokenIssuerArn }
-export function trustedTokenIssuerArn<Partition extends ArnPartition = 'aws'>(parameters: TrustedTokenIssuerArnParameters<Partition>) {
+export function trustedTokenIssuerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TrustedTokenIssuerArnParameters<Partition>,
+) {
   return new TrustedTokenIssuerArn<Partition>(parameters)
 }
 
-export interface ApplicationProviderArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ApplicationProviderArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly applicationProviderId: string
 }
-class ApplicationProviderArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ApplicationProvider', `arn:${string}:sso::aws:applicationProvider/${string}`> {
+class ApplicationProviderArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'ApplicationProvider',
+  `arn:${string}:sso::aws:applicationProvider/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ApplicationProvider' as const
   readonly partition: Partition
   readonly applicationProviderId: string
@@ -143,6 +193,8 @@ class ApplicationProviderArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { ApplicationProviderArn }
-export function applicationProviderArn<Partition extends ArnPartition = 'aws'>(parameters: ApplicationProviderArnParameters<Partition>) {
+export function applicationProviderArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApplicationProviderArnParameters<Partition>,
+) {
   return new ApplicationProviderArn<Partition>(parameters)
 }

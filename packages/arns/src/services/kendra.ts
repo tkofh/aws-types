@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface IndexArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface IndexArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly indexId: string
 }
-class IndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'index', `arn:${string}:kendra:${string}:${string}:index/${string}`> {
+class IndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'index',
+  `arn:${string}:kendra:${string}:${string}:index/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'index' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,18 +33,25 @@ class IndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'inde
   }
 }
 export type { IndexArn }
-export function indexArn<Partition extends ArnPartition = 'aws'>(parameters: IndexArnParameters<Partition>) {
+export function indexArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IndexArnParameters<Partition>,
+) {
   return new IndexArn<Partition>(parameters)
 }
 
-export interface DataSourceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DataSourceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly indexId: string
   readonly dataSourceId: string
 }
-class DataSourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'data-source', `arn:${string}:kendra:${string}:${string}:index/${string}/data-source/${string}`> {
+class DataSourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'data-source',
+  `arn:${string}:kendra:${string}:${string}:index/${string}/data-source/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'data-source' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,7 +71,9 @@ class DataSourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { DataSourceArn }
-export function dataSourceArn<Partition extends ArnPartition = 'aws'>(parameters: DataSourceArnParameters<Partition>) {
+export function dataSourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DataSourceArnParameters<Partition>,
+) {
   return new DataSourceArn<Partition>(parameters)
 }
 
@@ -66,7 +84,10 @@ export interface FaqArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly indexId: string
   readonly faqId: string
 }
-class FaqArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'faq', `arn:${string}:kendra:${string}:${string}:index/${string}/faq/${string}`> {
+class FaqArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'faq',
+  `arn:${string}:kendra:${string}:${string}:index/${string}/faq/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'faq' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,18 +107,25 @@ class FaqArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'faq', 
   }
 }
 export type { FaqArn }
-export function faqArn<Partition extends ArnPartition = 'aws'>(parameters: FaqArnParameters<Partition>) {
+export function faqArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FaqArnParameters<Partition>,
+) {
   return new FaqArn<Partition>(parameters)
 }
 
-export interface ExperienceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ExperienceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly indexId: string
   readonly experienceId: string
 }
-class ExperienceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'experience', `arn:${string}:kendra:${string}:${string}:index/${string}/experience/${string}`> {
+class ExperienceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'experience',
+  `arn:${string}:kendra:${string}:${string}:index/${string}/experience/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'experience' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -117,18 +145,25 @@ class ExperienceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { ExperienceArn }
-export function experienceArn<Partition extends ArnPartition = 'aws'>(parameters: ExperienceArnParameters<Partition>) {
+export function experienceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ExperienceArnParameters<Partition>,
+) {
   return new ExperienceArn<Partition>(parameters)
 }
 
-export interface ThesaurusArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ThesaurusArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly indexId: string
   readonly thesaurusId: string
 }
-class ThesaurusArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'thesaurus', `arn:${string}:kendra:${string}:${string}:index/${string}/thesaurus/${string}`> {
+class ThesaurusArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'thesaurus',
+  `arn:${string}:kendra:${string}:${string}:index/${string}/thesaurus/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'thesaurus' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -148,18 +183,27 @@ class ThesaurusArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { ThesaurusArn }
-export function thesaurusArn<Partition extends ArnPartition = 'aws'>(parameters: ThesaurusArnParameters<Partition>) {
+export function thesaurusArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ThesaurusArnParameters<Partition>,
+) {
   return new ThesaurusArn<Partition>(parameters)
 }
 
-export interface QuerySuggestionsBlockListArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface QuerySuggestionsBlockListArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly indexId: string
   readonly querySuggestionsBlockListId: string
 }
-class QuerySuggestionsBlockListArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'query-suggestions-block-list', `arn:${string}:kendra:${string}:${string}:index/${string}/query-suggestions-block-list/${string}`> {
+class QuerySuggestionsBlockListArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'query-suggestions-block-list',
+  `arn:${string}:kendra:${string}:${string}:index/${string}/query-suggestions-block-list/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'query-suggestions-block-list' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -179,18 +223,27 @@ class QuerySuggestionsBlockListArn<Partition extends ArnPartition = 'aws'> exten
   }
 }
 export type { QuerySuggestionsBlockListArn }
-export function querySuggestionsBlockListArn<Partition extends ArnPartition = 'aws'>(parameters: QuerySuggestionsBlockListArnParameters<Partition>) {
+export function querySuggestionsBlockListArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: QuerySuggestionsBlockListArnParameters<Partition>) {
   return new QuerySuggestionsBlockListArn<Partition>(parameters)
 }
 
-export interface FeaturedResultsSetArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FeaturedResultsSetArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly indexId: string
   readonly featuredResultsSetId: string
 }
-class FeaturedResultsSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'featured-results-set', `arn:${string}:kendra:${string}:${string}:index/${string}/featured-results-set/${string}`> {
+class FeaturedResultsSetArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'featured-results-set',
+  `arn:${string}:kendra:${string}:${string}:index/${string}/featured-results-set/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'featured-results-set' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -210,18 +263,27 @@ class FeaturedResultsSetArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { FeaturedResultsSetArn }
-export function featuredResultsSetArn<Partition extends ArnPartition = 'aws'>(parameters: FeaturedResultsSetArnParameters<Partition>) {
+export function featuredResultsSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FeaturedResultsSetArnParameters<Partition>,
+) {
   return new FeaturedResultsSetArn<Partition>(parameters)
 }
 
-export interface AccessControlConfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AccessControlConfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly indexId: string
   readonly accessControlConfigurationId: string
 }
-class AccessControlConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'access-control-configuration', `arn:${string}:kendra:${string}:${string}:index/${string}/access-control-configuration/${string}`> {
+class AccessControlConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'access-control-configuration',
+  `arn:${string}:kendra:${string}:${string}:index/${string}/access-control-configuration/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'access-control-configuration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -241,6 +303,8 @@ class AccessControlConfigurationArn<Partition extends ArnPartition = 'aws'> exte
   }
 }
 export type { AccessControlConfigurationArn }
-export function accessControlConfigurationArn<Partition extends ArnPartition = 'aws'>(parameters: AccessControlConfigurationArnParameters<Partition>) {
+export function accessControlConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: AccessControlConfigurationArnParameters<Partition>) {
   return new AccessControlConfigurationArn<Partition>(parameters)
 }

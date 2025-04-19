@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ContactArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ContactArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly contactAlias: string
 }
-class ContactArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'contact', `arn:${string}:ssm-contacts:${string}:${string}:contact/${string}`> {
+class ContactArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'contact',
+  `arn:${string}:ssm-contacts:${string}:${string}:contact/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'contact' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,18 +33,27 @@ class ContactArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'co
   }
 }
 export type { ContactArn }
-export function contactArn<Partition extends ArnPartition = 'aws'>(parameters: ContactArnParameters<Partition>) {
+export function contactArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ContactArnParameters<Partition>,
+) {
   return new ContactArn<Partition>(parameters)
 }
 
-export interface ContactchannelArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ContactchannelArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly contactAlias: string
   readonly contactChannelId: string
 }
-class ContactchannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'contactchannel', `arn:${string}:ssm-contacts:${string}:${string}:contactchannel/${string}/${string}`> {
+class ContactchannelArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'contactchannel',
+  `arn:${string}:ssm-contacts:${string}:${string}:contactchannel/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'contactchannel' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,18 +73,25 @@ class ContactchannelArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { ContactchannelArn }
-export function contactchannelArn<Partition extends ArnPartition = 'aws'>(parameters: ContactchannelArnParameters<Partition>) {
+export function contactchannelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ContactchannelArnParameters<Partition>,
+) {
   return new ContactchannelArn<Partition>(parameters)
 }
 
-export interface EngagementArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface EngagementArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly contactAlias: string
   readonly engagementId: string
 }
-class EngagementArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'engagement', `arn:${string}:ssm-contacts:${string}:${string}:engagement/${string}/${string}`> {
+class EngagementArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'engagement',
+  `arn:${string}:ssm-contacts:${string}:${string}:engagement/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'engagement' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,7 +111,9 @@ class EngagementArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { EngagementArn }
-export function engagementArn<Partition extends ArnPartition = 'aws'>(parameters: EngagementArnParameters<Partition>) {
+export function engagementArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EngagementArnParameters<Partition>,
+) {
   return new EngagementArn<Partition>(parameters)
 }
 
@@ -97,7 +124,10 @@ export interface PageArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly contactAlias: string
   readonly pageId: string
 }
-class PageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'page', `arn:${string}:ssm-contacts:${string}:${string}:page/${string}/${string}`> {
+class PageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'page',
+  `arn:${string}:ssm-contacts:${string}:${string}:page/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'page' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -117,7 +147,9 @@ class PageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'page'
   }
 }
 export type { PageArn }
-export function pageArn<Partition extends ArnPartition = 'aws'>(parameters: PageArnParameters<Partition>) {
+export function pageArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PageArnParameters<Partition>,
+) {
   return new PageArn<Partition>(parameters)
 }
 
@@ -127,7 +159,10 @@ export interface RotationArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly rotationId: string
 }
-class RotationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'rotation', `arn:${string}:ssm-contacts:${string}:${string}:rotation/${string}`> {
+class RotationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'rotation',
+  `arn:${string}:ssm-contacts:${string}:${string}:rotation/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'rotation' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -145,6 +180,8 @@ class RotationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'r
   }
 }
 export type { RotationArn }
-export function rotationArn<Partition extends ArnPartition = 'aws'>(parameters: RotationArnParameters<Partition>) {
+export function rotationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RotationArnParameters<Partition>,
+) {
   return new RotationArn<Partition>(parameters)
 }

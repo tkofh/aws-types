@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface RoomArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface RoomArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class RoomArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Room', `arn:${string}:ivschat:${string}:${string}:room/${string}`> {
+class RoomArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Room',
+  `arn:${string}:ivschat:${string}:${string}:room/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Room' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +33,26 @@ class RoomArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Room'
   }
 }
 export type { RoomArn }
-export function roomArn<Partition extends ArnPartition = 'aws'>(parameters: RoomArnParameters<Partition>) {
+export function roomArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RoomArnParameters<Partition>,
+) {
   return new RoomArn<Partition>(parameters)
 }
 
-export interface LoggingConfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface LoggingConfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class LoggingConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Logging-Configuration', `arn:${string}:ivschat:${string}:${string}:logging-configuration/${string}`> {
+class LoggingConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'Logging-Configuration',
+  `arn:${string}:ivschat:${string}:${string}:logging-configuration/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Logging-Configuration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,6 +70,8 @@ class LoggingConfigurationArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { LoggingConfigurationArn }
-export function loggingConfigurationArn<Partition extends ArnPartition = 'aws'>(parameters: LoggingConfigurationArnParameters<Partition>) {
+export function loggingConfigurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LoggingConfigurationArnParameters<Partition>,
+) {
   return new LoggingConfigurationArn<Partition>(parameters)
 }

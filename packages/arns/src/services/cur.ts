@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface CurArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface CurArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly reportName: string
 }
-class CurArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cur', `arn:${string}:cur:${string}:${string}:definition/${string}`> {
+class CurArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'cur',
+  `arn:${string}:cur:${string}:${string}:definition/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'cur' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +33,8 @@ class CurArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cur', 
   }
 }
 export type { CurArn }
-export function curArn<Partition extends ArnPartition = 'aws'>(parameters: CurArnParameters<Partition>) {
+export function curArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CurArnParameters<Partition>,
+) {
   return new CurArn<Partition>(parameters)
 }

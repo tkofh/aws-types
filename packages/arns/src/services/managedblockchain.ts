@@ -1,11 +1,20 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface NetworkArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly networkId: string
 }
-class NetworkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'network', `arn:${string}:managedblockchain:${string}::networks/${string}`> {
+class NetworkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'network',
+  `arn:${string}:managedblockchain:${string}::networks/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'network' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -21,7 +30,9 @@ class NetworkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ne
   }
 }
 export type { NetworkArn }
-export function networkArn<Partition extends ArnPartition = 'aws'>(parameters: NetworkArnParameters<Partition>) {
+export function networkArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NetworkArnParameters<Partition>,
+) {
   return new NetworkArn<Partition>(parameters)
 }
 
@@ -31,7 +42,10 @@ export interface MemberArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly memberId: string
 }
-class MemberArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'member', `arn:${string}:managedblockchain:${string}:${string}:members/${string}`> {
+class MemberArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'member',
+  `arn:${string}:managedblockchain:${string}:${string}:members/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'member' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -49,7 +63,9 @@ class MemberArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'mem
   }
 }
 export type { MemberArn }
-export function memberArn<Partition extends ArnPartition = 'aws'>(parameters: MemberArnParameters<Partition>) {
+export function memberArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MemberArnParameters<Partition>,
+) {
   return new MemberArn<Partition>(parameters)
 }
 
@@ -59,7 +75,10 @@ export interface NodeArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly nodeId: string
 }
-class NodeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'node', `arn:${string}:managedblockchain:${string}:${string}:nodes/${string}`> {
+class NodeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'node',
+  `arn:${string}:managedblockchain:${string}:${string}:nodes/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'node' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -77,7 +96,9 @@ class NodeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'node'
   }
 }
 export type { NodeArn }
-export function nodeArn<Partition extends ArnPartition = 'aws'>(parameters: NodeArnParameters<Partition>) {
+export function nodeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NodeArnParameters<Partition>,
+) {
   return new NodeArn<Partition>(parameters)
 }
 
@@ -86,7 +107,10 @@ export interface ProposalArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly region: ArnRegion<Partition>
   readonly proposalId: string
 }
-class ProposalArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'proposal', `arn:${string}:managedblockchain:${string}::proposals/${string}`> {
+class ProposalArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'proposal',
+  `arn:${string}:managedblockchain:${string}::proposals/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'proposal' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -102,17 +126,24 @@ class ProposalArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'p
   }
 }
 export type { ProposalArn }
-export function proposalArn<Partition extends ArnPartition = 'aws'>(parameters: ProposalArnParameters<Partition>) {
+export function proposalArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProposalArnParameters<Partition>,
+) {
   return new ProposalArn<Partition>(parameters)
 }
 
-export interface InvitationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface InvitationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly invitationId: string
 }
-class InvitationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'invitation', `arn:${string}:managedblockchain:${string}:${string}:invitations/${string}`> {
+class InvitationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'invitation',
+  `arn:${string}:managedblockchain:${string}:${string}:invitations/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'invitation' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -130,7 +161,9 @@ class InvitationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { InvitationArn }
-export function invitationArn<Partition extends ArnPartition = 'aws'>(parameters: InvitationArnParameters<Partition>) {
+export function invitationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InvitationArnParameters<Partition>,
+) {
   return new InvitationArn<Partition>(parameters)
 }
 
@@ -140,7 +173,10 @@ export interface AccessorArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly accessorId: string
 }
-class AccessorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'accessor', `arn:${string}:managedblockchain:${string}:${string}:accessors/${string}`> {
+class AccessorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'accessor',
+  `arn:${string}:managedblockchain:${string}:${string}:accessors/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'accessor' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -158,6 +194,8 @@ class AccessorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'a
   }
 }
 export type { AccessorArn }
-export function accessorArn<Partition extends ArnPartition = 'aws'>(parameters: AccessorArnParameters<Partition>) {
+export function accessorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AccessorArnParameters<Partition>,
+) {
   return new AccessorArn<Partition>(parameters)
 }

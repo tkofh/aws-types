@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface KeyspaceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface KeyspaceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly keyspaceName: string
 }
-class KeyspaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'keyspace', `arn:${string}:cassandra:${string}:${string}:/keyspace/${string}/`> {
+class KeyspaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'keyspace',
+  `arn:${string}:cassandra:${string}:${string}:/keyspace/${string}/`
+> {
   readonly [ArnResourceTypeBrand] = 'keyspace' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class KeyspaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'k
   }
 }
 export type { KeyspaceArn }
-export function keyspaceArn<Partition extends ArnPartition = 'aws'>(parameters: KeyspaceArnParameters<Partition>) {
+export function keyspaceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KeyspaceArnParameters<Partition>,
+) {
   return new KeyspaceArn<Partition>(parameters)
 }
 
@@ -35,7 +46,10 @@ export interface TableArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly keyspaceName: string
   readonly tableName: string
 }
-class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'table', `arn:${string}:cassandra:${string}:${string}:/keyspace/${string}/table/${string}`> {
+class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'table',
+  `arn:${string}:cassandra:${string}:${string}:/keyspace/${string}/table/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'table' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,6 +69,8 @@ class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'tabl
   }
 }
 export type { TableArn }
-export function tableArn<Partition extends ArnPartition = 'aws'>(parameters: TableArnParameters<Partition>) {
+export function tableArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TableArnParameters<Partition>,
+) {
   return new TableArn<Partition>(parameters)
 }

@@ -1,10 +1,23 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface CidrcollectionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CidrcollectionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly id: string
 }
-class CidrcollectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cidrcollection', `arn:${string}:route53:::cidrcollection/${string}`> {
+class CidrcollectionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'cidrcollection',
+  `arn:${string}:route53:::cidrcollection/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'cidrcollection' as const
   readonly partition: Partition
   readonly id: string
@@ -18,7 +31,9 @@ class CidrcollectionArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { CidrcollectionArn }
-export function cidrcollectionArn<Partition extends ArnPartition = 'aws'>(parameters: CidrcollectionArnParameters<Partition>) {
+export function cidrcollectionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CidrcollectionArnParameters<Partition>,
+) {
   return new CidrcollectionArn<Partition>(parameters)
 }
 
@@ -26,7 +41,10 @@ export interface ChangeArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly id: string
 }
-class ChangeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'change', `arn:${string}:route53:::change/${string}`> {
+class ChangeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'change',
+  `arn:${string}:route53:::change/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'change' as const
   readonly partition: Partition
   readonly id: string
@@ -40,15 +58,24 @@ class ChangeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cha
   }
 }
 export type { ChangeArn }
-export function changeArn<Partition extends ArnPartition = 'aws'>(parameters: ChangeArnParameters<Partition>) {
+export function changeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ChangeArnParameters<Partition>,
+) {
   return new ChangeArn<Partition>(parameters)
 }
 
-export interface DelegationsetArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DelegationsetArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly id: string
 }
-class DelegationsetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'delegationset', `arn:${string}:route53:::delegationset/${string}`> {
+class DelegationsetArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'delegationset',
+  `arn:${string}:route53:::delegationset/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'delegationset' as const
   readonly partition: Partition
   readonly id: string
@@ -62,15 +89,24 @@ class DelegationsetArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { DelegationsetArn }
-export function delegationsetArn<Partition extends ArnPartition = 'aws'>(parameters: DelegationsetArnParameters<Partition>) {
+export function delegationsetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DelegationsetArnParameters<Partition>,
+) {
   return new DelegationsetArn<Partition>(parameters)
 }
 
-export interface HealthcheckArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface HealthcheckArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly id: string
 }
-class HealthcheckArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'healthcheck', `arn:${string}:route53:::healthcheck/${string}`> {
+class HealthcheckArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'healthcheck',
+  `arn:${string}:route53:::healthcheck/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'healthcheck' as const
   readonly partition: Partition
   readonly id: string
@@ -84,15 +120,22 @@ class HealthcheckArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { HealthcheckArn }
-export function healthcheckArn<Partition extends ArnPartition = 'aws'>(parameters: HealthcheckArnParameters<Partition>) {
+export function healthcheckArn<Partition extends ArnPartition = 'aws'>(
+  parameters: HealthcheckArnParameters<Partition>,
+) {
   return new HealthcheckArn<Partition>(parameters)
 }
 
-export interface HostedzoneArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface HostedzoneArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly id: string
 }
-class HostedzoneArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'hostedzone', `arn:${string}:route53:::hostedzone/${string}`> {
+class HostedzoneArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'hostedzone',
+  `arn:${string}:route53:::hostedzone/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'hostedzone' as const
   readonly partition: Partition
   readonly id: string
@@ -106,15 +149,24 @@ class HostedzoneArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { HostedzoneArn }
-export function hostedzoneArn<Partition extends ArnPartition = 'aws'>(parameters: HostedzoneArnParameters<Partition>) {
+export function hostedzoneArn<Partition extends ArnPartition = 'aws'>(
+  parameters: HostedzoneArnParameters<Partition>,
+) {
   return new HostedzoneArn<Partition>(parameters)
 }
 
-export interface TrafficpolicyArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TrafficpolicyArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly id: string
 }
-class TrafficpolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'trafficpolicy', `arn:${string}:route53:::trafficpolicy/${string}`> {
+class TrafficpolicyArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'trafficpolicy',
+  `arn:${string}:route53:::trafficpolicy/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'trafficpolicy' as const
   readonly partition: Partition
   readonly id: string
@@ -128,15 +180,24 @@ class TrafficpolicyArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { TrafficpolicyArn }
-export function trafficpolicyArn<Partition extends ArnPartition = 'aws'>(parameters: TrafficpolicyArnParameters<Partition>) {
+export function trafficpolicyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TrafficpolicyArnParameters<Partition>,
+) {
   return new TrafficpolicyArn<Partition>(parameters)
 }
 
-export interface TrafficpolicyinstanceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface TrafficpolicyinstanceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly id: string
 }
-class TrafficpolicyinstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'trafficpolicyinstance', `arn:${string}:route53:::trafficpolicyinstance/${string}`> {
+class TrafficpolicyinstanceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'trafficpolicyinstance',
+  `arn:${string}:route53:::trafficpolicyinstance/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'trafficpolicyinstance' as const
   readonly partition: Partition
   readonly id: string
@@ -150,15 +211,24 @@ class TrafficpolicyinstanceArn<Partition extends ArnPartition = 'aws'> extends I
   }
 }
 export type { TrafficpolicyinstanceArn }
-export function trafficpolicyinstanceArn<Partition extends ArnPartition = 'aws'>(parameters: TrafficpolicyinstanceArnParameters<Partition>) {
+export function trafficpolicyinstanceArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: TrafficpolicyinstanceArnParameters<Partition>) {
   return new TrafficpolicyinstanceArn<Partition>(parameters)
 }
 
-export interface QueryloggingconfigArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface QueryloggingconfigArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly id: string
 }
-class QueryloggingconfigArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'queryloggingconfig', `arn:${string}:route53:::queryloggingconfig/${string}`> {
+class QueryloggingconfigArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'queryloggingconfig',
+  `arn:${string}:route53:::queryloggingconfig/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'queryloggingconfig' as const
   readonly partition: Partition
   readonly id: string
@@ -172,7 +242,9 @@ class QueryloggingconfigArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { QueryloggingconfigArn }
-export function queryloggingconfigArn<Partition extends ArnPartition = 'aws'>(parameters: QueryloggingconfigArnParameters<Partition>) {
+export function queryloggingconfigArn<Partition extends ArnPartition = 'aws'>(
+  parameters: QueryloggingconfigArnParameters<Partition>,
+) {
   return new QueryloggingconfigArn<Partition>(parameters)
 }
 
@@ -182,7 +254,10 @@ export interface VpcArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly vpcId: string
 }
-class VpcArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'vpc', `arn:${string}:ec2:${string}:${string}:vpc/${string}`> {
+class VpcArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'vpc',
+  `arn:${string}:ec2:${string}:${string}:vpc/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'vpc' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -200,6 +275,8 @@ class VpcArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'vpc', 
   }
 }
 export type { VpcArn }
-export function vpcArn<Partition extends ArnPartition = 'aws'>(parameters: VpcArnParameters<Partition>) {
+export function vpcArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VpcArnParameters<Partition>,
+) {
   return new VpcArn<Partition>(parameters)
 }

@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface FilterArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -7,7 +13,10 @@ export interface FilterArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly ownerId: string
   readonly filterId: string
 }
-class FilterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Filter', `arn:${string}:inspector2:${string}:${string}:owner/${string}/filter/${string}`> {
+class FilterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Filter',
+  `arn:${string}:inspector2:${string}:${string}:owner/${string}/filter/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Filter' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,7 +36,9 @@ class FilterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Fil
   }
 }
 export type { FilterArn }
-export function filterArn<Partition extends ArnPartition = 'aws'>(parameters: FilterArnParameters<Partition>) {
+export function filterArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FilterArnParameters<Partition>,
+) {
   return new FilterArn<Partition>(parameters)
 }
 
@@ -37,7 +48,10 @@ export interface FindingArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly findingId: string
 }
-class FindingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Finding', `arn:${string}:inspector2:${string}:${string}:finding/${string}`> {
+class FindingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Finding',
+  `arn:${string}:inspector2:${string}:${string}:finding/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Finding' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,18 +69,27 @@ class FindingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Fi
   }
 }
 export type { FindingArn }
-export function findingArn<Partition extends ArnPartition = 'aws'>(parameters: FindingArnParameters<Partition>) {
+export function findingArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FindingArnParameters<Partition>,
+) {
   return new FindingArn<Partition>(parameters)
 }
 
-export interface CisScanConfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CisScanConfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly ownerId: string
   readonly cisScanConfigurationId: string
 }
-class CisScanConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'CIS Scan Configuration', `arn:${string}:inspector2:${string}:${string}:owner/${string}/cis-configuration/${string}`> {
+class CisScanConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'CIS Scan Configuration',
+  `arn:${string}:inspector2:${string}:${string}:owner/${string}/cis-configuration/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'CIS Scan Configuration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,6 +109,8 @@ class CisScanConfigurationArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { CisScanConfigurationArn }
-export function cisScanConfigurationArn<Partition extends ArnPartition = 'aws'>(parameters: CisScanConfigurationArnParameters<Partition>) {
+export function cisScanConfigurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CisScanConfigurationArnParameters<Partition>,
+) {
   return new CisScanConfigurationArn<Partition>(parameters)
 }

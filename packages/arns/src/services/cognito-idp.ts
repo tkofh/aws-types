@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface UserpoolArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface UserpoolArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly userPoolId: string
 }
-class UserpoolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'userpool', `arn:${string}:cognito-idp:${string}:${string}:userpool/${string}`> {
+class UserpoolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'userpool',
+  `arn:${string}:cognito-idp:${string}:${string}:userpool/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'userpool' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class UserpoolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'u
   }
 }
 export type { UserpoolArn }
-export function userpoolArn<Partition extends ArnPartition = 'aws'>(parameters: UserpoolArnParameters<Partition>) {
+export function userpoolArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UserpoolArnParameters<Partition>,
+) {
   return new UserpoolArn<Partition>(parameters)
 }
 
@@ -36,7 +47,10 @@ export interface WebaclArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly name: string
   readonly id: string
 }
-class WebaclArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'webacl', `arn:${string}:wafv2:${string}:${string}:${string}/webacl/${string}/${string}`> {
+class WebaclArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'webacl',
+  `arn:${string}:wafv2:${string}:${string}:${string}/webacl/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'webacl' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -58,6 +72,8 @@ class WebaclArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'web
   }
 }
 export type { WebaclArn }
-export function webaclArn<Partition extends ArnPartition = 'aws'>(parameters: WebaclArnParameters<Partition>) {
+export function webaclArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WebaclArnParameters<Partition>,
+) {
   return new WebaclArn<Partition>(parameters)
 }

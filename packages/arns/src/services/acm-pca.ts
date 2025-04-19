@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface CertificateAuthorityArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CertificateAuthorityArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly certificateAuthorityId: string
 }
-class CertificateAuthorityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'certificate-authority', `arn:${string}:acm-pca:${string}:${string}:certificate-authority/${string}`> {
+class CertificateAuthorityArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'certificate-authority',
+  `arn:${string}:acm-pca:${string}:${string}:certificate-authority/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'certificate-authority' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +37,8 @@ class CertificateAuthorityArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { CertificateAuthorityArn }
-export function certificateAuthorityArn<Partition extends ArnPartition = 'aws'>(parameters: CertificateAuthorityArnParameters<Partition>) {
+export function certificateAuthorityArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CertificateAuthorityArnParameters<Partition>,
+) {
   return new CertificateAuthorityArn<Partition>(parameters)
 }

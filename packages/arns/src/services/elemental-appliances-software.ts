@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface QuoteArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface QuoteArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class QuoteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'quote', `arn:${string}:elemental-appliances-software:${string}:${string}:quote/${string}`> {
+class QuoteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'quote',
+  `arn:${string}:elemental-appliances-software:${string}:${string}:quote/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'quote' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +33,8 @@ class QuoteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'quot
   }
 }
 export type { QuoteArn }
-export function quoteArn<Partition extends ArnPartition = 'aws'>(parameters: QuoteArnParameters<Partition>) {
+export function quoteArn<Partition extends ArnPartition = 'aws'>(
+  parameters: QuoteArnParameters<Partition>,
+) {
   return new QuoteArn<Partition>(parameters)
 }

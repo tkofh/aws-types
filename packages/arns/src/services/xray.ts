@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface GroupArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -7,7 +13,10 @@ export interface GroupArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly groupName: string
   readonly id: string
 }
-class GroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'group', `arn:${string}:xray:${string}:${string}:group/${string}/${string}`> {
+class GroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'group',
+  `arn:${string}:xray:${string}:${string}:group/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'group' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,17 +36,26 @@ class GroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'grou
   }
 }
 export type { GroupArn }
-export function groupArn<Partition extends ArnPartition = 'aws'>(parameters: GroupArnParameters<Partition>) {
+export function groupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupArnParameters<Partition>,
+) {
   return new GroupArn<Partition>(parameters)
 }
 
-export interface SamplingRuleArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SamplingRuleArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly samplingRuleName: string
 }
-class SamplingRuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'sampling-rule', `arn:${string}:xray:${string}:${string}:sampling-rule/${string}`> {
+class SamplingRuleArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'sampling-rule',
+  `arn:${string}:xray:${string}:${string}:sampling-rule/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'sampling-rule' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,6 +73,8 @@ class SamplingRuleArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { SamplingRuleArn }
-export function samplingRuleArn<Partition extends ArnPartition = 'aws'>(parameters: SamplingRuleArnParameters<Partition>) {
+export function samplingRuleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SamplingRuleArnParameters<Partition>,
+) {
   return new SamplingRuleArn<Partition>(parameters)
 }

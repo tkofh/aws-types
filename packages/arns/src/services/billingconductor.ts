@@ -1,11 +1,24 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface BillinggroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface BillinggroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly billingGroupId: string
 }
-class BillinggroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'billinggroup', `arn:${string}:billingconductor::${string}:billinggroup/${string}`> {
+class BillinggroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'billinggroup',
+  `arn:${string}:billingconductor::${string}:billinggroup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'billinggroup' as const
   readonly partition: Partition
   readonly account: string
@@ -21,16 +34,25 @@ class BillinggroupArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { BillinggroupArn }
-export function billinggroupArn<Partition extends ArnPartition = 'aws'>(parameters: BillinggroupArnParameters<Partition>) {
+export function billinggroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BillinggroupArnParameters<Partition>,
+) {
   return new BillinggroupArn<Partition>(parameters)
 }
 
-export interface PricingplanArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface PricingplanArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly pricingPlanId: string
 }
-class PricingplanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pricingplan', `arn:${string}:billingconductor::${string}:pricingplan/${string}`> {
+class PricingplanArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'pricingplan',
+  `arn:${string}:billingconductor::${string}:pricingplan/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'pricingplan' as const
   readonly partition: Partition
   readonly account: string
@@ -46,16 +68,25 @@ class PricingplanArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { PricingplanArn }
-export function pricingplanArn<Partition extends ArnPartition = 'aws'>(parameters: PricingplanArnParameters<Partition>) {
+export function pricingplanArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PricingplanArnParameters<Partition>,
+) {
   return new PricingplanArn<Partition>(parameters)
 }
 
-export interface PricingruleArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface PricingruleArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly pricingRuleId: string
 }
-class PricingruleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pricingrule', `arn:${string}:billingconductor::${string}:pricingrule/${string}`> {
+class PricingruleArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'pricingrule',
+  `arn:${string}:billingconductor::${string}:pricingrule/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'pricingrule' as const
   readonly partition: Partition
   readonly account: string
@@ -71,16 +102,25 @@ class PricingruleArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { PricingruleArn }
-export function pricingruleArn<Partition extends ArnPartition = 'aws'>(parameters: PricingruleArnParameters<Partition>) {
+export function pricingruleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PricingruleArnParameters<Partition>,
+) {
   return new PricingruleArn<Partition>(parameters)
 }
 
-export interface CustomlineitemArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CustomlineitemArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly customLineItemId: string
 }
-class CustomlineitemArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'customlineitem', `arn:${string}:billingconductor::${string}:customlineitem/${string}`> {
+class CustomlineitemArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'customlineitem',
+  `arn:${string}:billingconductor::${string}:customlineitem/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'customlineitem' as const
   readonly partition: Partition
   readonly account: string
@@ -96,6 +136,8 @@ class CustomlineitemArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { CustomlineitemArn }
-export function customlineitemArn<Partition extends ArnPartition = 'aws'>(parameters: CustomlineitemArnParameters<Partition>) {
+export function customlineitemArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CustomlineitemArnParameters<Partition>,
+) {
   return new CustomlineitemArn<Partition>(parameters)
 }

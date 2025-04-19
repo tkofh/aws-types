@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ApplicationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ApplicationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly applicationId: string
 }
-class ApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Application', `arn:${string}:m2:${string}:${string}:app/${string}`> {
+class ApplicationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'Application',
+  `arn:${string}:m2:${string}:${string}:app/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Application' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +37,26 @@ class ApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ApplicationArn }
-export function applicationArn<Partition extends ArnPartition = 'aws'>(parameters: ApplicationArnParameters<Partition>) {
+export function applicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApplicationArnParameters<Partition>,
+) {
   return new ApplicationArn<Partition>(parameters)
 }
 
-export interface EnvironmentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface EnvironmentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly environmentId: string
 }
-class EnvironmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Environment', `arn:${string}:m2:${string}:${string}:env/${string}`> {
+class EnvironmentArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'Environment',
+  `arn:${string}:m2:${string}:${string}:env/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Environment' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,6 +74,8 @@ class EnvironmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { EnvironmentArn }
-export function environmentArn<Partition extends ArnPartition = 'aws'>(parameters: EnvironmentArnParameters<Partition>) {
+export function environmentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EnvironmentArnParameters<Partition>,
+) {
   return new EnvironmentArn<Partition>(parameters)
 }

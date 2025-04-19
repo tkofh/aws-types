@@ -1,11 +1,24 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface IdentitystoreArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface IdentitystoreArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly identityStoreId: string
 }
-class IdentitystoreArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Identitystore', `arn:${string}:identitystore::${string}:identitystore/${string}`> {
+class IdentitystoreArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'Identitystore',
+  `arn:${string}:identitystore::${string}:identitystore/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Identitystore' as const
   readonly partition: Partition
   readonly account: string
@@ -21,7 +34,9 @@ class IdentitystoreArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { IdentitystoreArn }
-export function identitystoreArn<Partition extends ArnPartition = 'aws'>(parameters: IdentitystoreArnParameters<Partition>) {
+export function identitystoreArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IdentitystoreArnParameters<Partition>,
+) {
   return new IdentitystoreArn<Partition>(parameters)
 }
 
@@ -29,7 +44,10 @@ export interface UserArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly userId: string
 }
-class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'User', `arn:${string}:identitystore:::user/${string}`> {
+class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'User',
+  `arn:${string}:identitystore:::user/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'User' as const
   readonly partition: Partition
   readonly userId: string
@@ -43,7 +61,9 @@ class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'User'
   }
 }
 export type { UserArn }
-export function userArn<Partition extends ArnPartition = 'aws'>(parameters: UserArnParameters<Partition>) {
+export function userArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UserArnParameters<Partition>,
+) {
   return new UserArn<Partition>(parameters)
 }
 
@@ -51,7 +71,10 @@ export interface GroupArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly groupId: string
 }
-class GroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Group', `arn:${string}:identitystore:::group/${string}`> {
+class GroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Group',
+  `arn:${string}:identitystore:::group/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Group' as const
   readonly partition: Partition
   readonly groupId: string
@@ -65,15 +88,24 @@ class GroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Grou
   }
 }
 export type { GroupArn }
-export function groupArn<Partition extends ArnPartition = 'aws'>(parameters: GroupArnParameters<Partition>) {
+export function groupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupArnParameters<Partition>,
+) {
   return new GroupArn<Partition>(parameters)
 }
 
-export interface GroupMembershipArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface GroupMembershipArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly membershipId: string
 }
-class GroupMembershipArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'GroupMembership', `arn:${string}:identitystore:::membership/${string}`> {
+class GroupMembershipArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'GroupMembership',
+  `arn:${string}:identitystore:::membership/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'GroupMembership' as const
   readonly partition: Partition
   readonly membershipId: string
@@ -87,14 +119,19 @@ class GroupMembershipArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { GroupMembershipArn }
-export function groupMembershipArn<Partition extends ArnPartition = 'aws'>(parameters: GroupMembershipArnParameters<Partition>) {
+export function groupMembershipArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupMembershipArnParameters<Partition>,
+) {
   return new GroupMembershipArn<Partition>(parameters)
 }
 
 export interface AllUsersArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
 }
-class AllUsersArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'AllUsers', `arn:${string}:identitystore:::user/*`> {
+class AllUsersArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'AllUsers',
+  `arn:${string}:identitystore:::user/*`
+> {
   readonly [ArnResourceTypeBrand] = 'AllUsers' as const
   readonly partition: Partition
   constructor(parameters: AllUsersArnParameters<Partition>) {
@@ -106,14 +143,21 @@ class AllUsersArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'A
   }
 }
 export type { AllUsersArn }
-export function allUsersArn<Partition extends ArnPartition = 'aws'>(parameters: AllUsersArnParameters<Partition>) {
+export function allUsersArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AllUsersArnParameters<Partition>,
+) {
   return new AllUsersArn<Partition>(parameters)
 }
 
-export interface AllGroupsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AllGroupsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
 }
-class AllGroupsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'AllGroups', `arn:${string}:identitystore:::group/*`> {
+class AllGroupsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'AllGroups',
+  `arn:${string}:identitystore:::group/*`
+> {
   readonly [ArnResourceTypeBrand] = 'AllGroups' as const
   readonly partition: Partition
   constructor(parameters: AllGroupsArnParameters<Partition>) {
@@ -125,14 +169,23 @@ class AllGroupsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { AllGroupsArn }
-export function allGroupsArn<Partition extends ArnPartition = 'aws'>(parameters: AllGroupsArnParameters<Partition>) {
+export function allGroupsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AllGroupsArnParameters<Partition>,
+) {
   return new AllGroupsArn<Partition>(parameters)
 }
 
-export interface AllGroupMembershipsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AllGroupMembershipsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
 }
-class AllGroupMembershipsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'AllGroupMemberships', `arn:${string}:identitystore:::membership/*`> {
+class AllGroupMembershipsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'AllGroupMemberships',
+  `arn:${string}:identitystore:::membership/*`
+> {
   readonly [ArnResourceTypeBrand] = 'AllGroupMemberships' as const
   readonly partition: Partition
   constructor(parameters: AllGroupMembershipsArnParameters<Partition>) {
@@ -144,6 +197,8 @@ class AllGroupMembershipsArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { AllGroupMembershipsArn }
-export function allGroupMembershipsArn<Partition extends ArnPartition = 'aws'>(parameters: AllGroupMembershipsArnParameters<Partition>) {
+export function allGroupMembershipsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AllGroupMembershipsArnParameters<Partition>,
+) {
   return new AllGroupMembershipsArn<Partition>(parameters)
 }

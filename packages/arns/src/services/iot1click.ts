@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface DeviceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface DeviceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly deviceId: string
 }
-class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'device', `arn:${string}:iot1click:${string}:${string}:devices/${string}`> {
+class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'device',
+  `arn:${string}:iot1click:${string}:${string}:devices/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'device' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dev
   }
 }
 export type { DeviceArn }
-export function deviceArn<Partition extends ArnPartition = 'aws'>(parameters: DeviceArnParameters<Partition>) {
+export function deviceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeviceArnParameters<Partition>,
+) {
   return new DeviceArn<Partition>(parameters)
 }
 
@@ -34,7 +45,10 @@ export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly projectName: string
 }
-class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'project', `arn:${string}:iot1click:${string}:${string}:projects/${string}`> {
+class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'project',
+  `arn:${string}:iot1click:${string}:${string}:projects/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'project' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,6 +66,8 @@ class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pr
   }
 }
 export type { ProjectArn }
-export function projectArn<Partition extends ArnPartition = 'aws'>(parameters: ProjectArnParameters<Partition>) {
+export function projectArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProjectArnParameters<Partition>,
+) {
   return new ProjectArn<Partition>(parameters)
 }

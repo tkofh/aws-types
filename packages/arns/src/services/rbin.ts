@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface RuleArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface RuleArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceName: string
 }
-class RuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'rule', `arn:${string}:rbin:${string}:${string}:rule/${string}`> {
+class RuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'rule',
+  `arn:${string}:rbin:${string}:${string}:rule/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'rule' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +33,8 @@ class RuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'rule'
   }
 }
 export type { RuleArn }
-export function ruleArn<Partition extends ArnPartition = 'aws'>(parameters: RuleArnParameters<Partition>) {
+export function ruleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RuleArnParameters<Partition>,
+) {
   return new RuleArn<Partition>(parameters)
 }

@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface IndexArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -7,7 +13,10 @@ export interface IndexArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly tableName: string
   readonly indexName: string
 }
-class IndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'index', `arn:${string}:dynamodb:${string}:${string}:table/${string}/index/${string}`> {
+class IndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'index',
+  `arn:${string}:dynamodb:${string}:${string}:table/${string}/index/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'index' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,7 +36,9 @@ class IndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'inde
   }
 }
 export type { IndexArn }
-export function indexArn<Partition extends ArnPartition = 'aws'>(parameters: IndexArnParameters<Partition>) {
+export function indexArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IndexArnParameters<Partition>,
+) {
   return new IndexArn<Partition>(parameters)
 }
 
@@ -38,7 +49,10 @@ export interface StreamArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly tableName: string
   readonly streamLabel: string
 }
-class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stream', `arn:${string}:dynamodb:${string}:${string}:table/${string}/stream/${string}`> {
+class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'stream',
+  `arn:${string}:dynamodb:${string}:${string}:table/${string}/stream/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'stream' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -58,7 +72,9 @@ class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'str
   }
 }
 export type { StreamArn }
-export function streamArn<Partition extends ArnPartition = 'aws'>(parameters: StreamArnParameters<Partition>) {
+export function streamArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StreamArnParameters<Partition>,
+) {
   return new StreamArn<Partition>(parameters)
 }
 
@@ -68,7 +84,10 @@ export interface TableArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly tableName: string
 }
-class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'table', `arn:${string}:dynamodb:${string}:${string}:table/${string}`> {
+class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'table',
+  `arn:${string}:dynamodb:${string}:${string}:table/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'table' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,7 +105,9 @@ class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'tabl
   }
 }
 export type { TableArn }
-export function tableArn<Partition extends ArnPartition = 'aws'>(parameters: TableArnParameters<Partition>) {
+export function tableArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TableArnParameters<Partition>,
+) {
   return new TableArn<Partition>(parameters)
 }
 
@@ -97,7 +118,10 @@ export interface BackupArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly tableName: string
   readonly backupName: string
 }
-class BackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'backup', `arn:${string}:dynamodb:${string}:${string}:table/${string}/backup/${string}`> {
+class BackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'backup',
+  `arn:${string}:dynamodb:${string}:${string}:table/${string}/backup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'backup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -117,7 +141,9 @@ class BackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'bac
   }
 }
 export type { BackupArn }
-export function backupArn<Partition extends ArnPartition = 'aws'>(parameters: BackupArnParameters<Partition>) {
+export function backupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BackupArnParameters<Partition>,
+) {
   return new BackupArn<Partition>(parameters)
 }
 
@@ -128,7 +154,10 @@ export interface ExportArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly tableName: string
   readonly exportName: string
 }
-class ExportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'export', `arn:${string}:dynamodb:${string}:${string}:table/${string}/export/${string}`> {
+class ExportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'export',
+  `arn:${string}:dynamodb:${string}:${string}:table/${string}/export/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'export' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -148,16 +177,25 @@ class ExportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'exp
   }
 }
 export type { ExportArn }
-export function exportArn<Partition extends ArnPartition = 'aws'>(parameters: ExportArnParameters<Partition>) {
+export function exportArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ExportArnParameters<Partition>,
+) {
   return new ExportArn<Partition>(parameters)
 }
 
-export interface GlobalTableArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface GlobalTableArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly globalTableName: string
 }
-class GlobalTableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'global-table', `arn:${string}:dynamodb::${string}:global-table/${string}`> {
+class GlobalTableArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'global-table',
+  `arn:${string}:dynamodb::${string}:global-table/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'global-table' as const
   readonly partition: Partition
   readonly account: string
@@ -173,7 +211,9 @@ class GlobalTableArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { GlobalTableArn }
-export function globalTableArn<Partition extends ArnPartition = 'aws'>(parameters: GlobalTableArnParameters<Partition>) {
+export function globalTableArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GlobalTableArnParameters<Partition>,
+) {
   return new GlobalTableArn<Partition>(parameters)
 }
 
@@ -184,7 +224,10 @@ export interface ImportArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly tableName: string
   readonly importName: string
 }
-class ImportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'import', `arn:${string}:dynamodb:${string}:${string}:table/${string}/import/${string}`> {
+class ImportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'import',
+  `arn:${string}:dynamodb:${string}:${string}:table/${string}/import/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'import' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -204,6 +247,8 @@ class ImportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'imp
   }
 }
 export type { ImportArn }
-export function importArn<Partition extends ArnPartition = 'aws'>(parameters: ImportArnParameters<Partition>) {
+export function importArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ImportArnParameters<Partition>,
+) {
   return new ImportArn<Partition>(parameters)
 }

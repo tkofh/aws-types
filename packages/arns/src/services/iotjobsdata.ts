@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ThingArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ThingArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly thingName: string
 }
-class ThingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'thing', `arn:${string}:iot:${string}:${string}:thing/${string}`> {
+class ThingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'thing',
+  `arn:${string}:iot:${string}:${string}:thing/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'thing' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +33,8 @@ class ThingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'thin
   }
 }
 export type { ThingArn }
-export function thingArn<Partition extends ArnPartition = 'aws'>(parameters: ThingArnParameters<Partition>) {
+export function thingArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ThingArnParameters<Partition>,
+) {
   return new ThingArn<Partition>(parameters)
 }

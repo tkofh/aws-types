@@ -1,6 +1,14 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface CodegenJobResourceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CodegenJobResourceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -8,7 +16,12 @@ export interface CodegenJobResourceArnParameters<Partition extends ArnPartition 
   readonly environmentName: string
   readonly id: string
 }
-class CodegenJobResourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'CodegenJobResource', `arn:${string}:amplifyuibuilder:${string}:${string}:app/${string}/environment/${string}/codegen-jobs/${string}`> {
+class CodegenJobResourceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'CodegenJobResource',
+  `arn:${string}:amplifyuibuilder:${string}:${string}:app/${string}/environment/${string}/codegen-jobs/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'CodegenJobResource' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -30,11 +43,15 @@ class CodegenJobResourceArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { CodegenJobResourceArn }
-export function codegenJobResourceArn<Partition extends ArnPartition = 'aws'>(parameters: CodegenJobResourceArnParameters<Partition>) {
+export function codegenJobResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CodegenJobResourceArnParameters<Partition>,
+) {
   return new CodegenJobResourceArn<Partition>(parameters)
 }
 
-export interface ComponentResourceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ComponentResourceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -42,7 +59,12 @@ export interface ComponentResourceArnParameters<Partition extends ArnPartition =
   readonly environmentName: string
   readonly id: string
 }
-class ComponentResourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ComponentResource', `arn:${string}:amplifyuibuilder:${string}:${string}:app/${string}/environment/${string}/components/${string}`> {
+class ComponentResourceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'ComponentResource',
+  `arn:${string}:amplifyuibuilder:${string}:${string}:app/${string}/environment/${string}/components/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ComponentResource' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -64,11 +86,15 @@ class ComponentResourceArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { ComponentResourceArn }
-export function componentResourceArn<Partition extends ArnPartition = 'aws'>(parameters: ComponentResourceArnParameters<Partition>) {
+export function componentResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ComponentResourceArnParameters<Partition>,
+) {
   return new ComponentResourceArn<Partition>(parameters)
 }
 
-export interface FormResourceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FormResourceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -76,7 +102,12 @@ export interface FormResourceArnParameters<Partition extends ArnPartition = 'aws
   readonly environmentName: string
   readonly id: string
 }
-class FormResourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'FormResource', `arn:${string}:amplifyuibuilder:${string}:${string}:app/${string}/environment/${string}/forms/${string}`> {
+class FormResourceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'FormResource',
+  `arn:${string}:amplifyuibuilder:${string}:${string}:app/${string}/environment/${string}/forms/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'FormResource' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -98,11 +129,15 @@ class FormResourceArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { FormResourceArn }
-export function formResourceArn<Partition extends ArnPartition = 'aws'>(parameters: FormResourceArnParameters<Partition>) {
+export function formResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FormResourceArnParameters<Partition>,
+) {
   return new FormResourceArn<Partition>(parameters)
 }
 
-export interface ThemeResourceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ThemeResourceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -110,7 +145,12 @@ export interface ThemeResourceArnParameters<Partition extends ArnPartition = 'aw
   readonly environmentName: string
   readonly id: string
 }
-class ThemeResourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ThemeResource', `arn:${string}:amplifyuibuilder:${string}:${string}:app/${string}/environment/${string}/themes/${string}`> {
+class ThemeResourceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'ThemeResource',
+  `arn:${string}:amplifyuibuilder:${string}:${string}:app/${string}/environment/${string}/themes/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ThemeResource' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -132,6 +172,8 @@ class ThemeResourceArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { ThemeResourceArn }
-export function themeResourceArn<Partition extends ArnPartition = 'aws'>(parameters: ThemeResourceArnParameters<Partition>) {
+export function themeResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ThemeResourceArnParameters<Partition>,
+) {
   return new ThemeResourceArn<Partition>(parameters)
 }

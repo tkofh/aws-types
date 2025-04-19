@@ -1,2 +1,1 @@
-export type ElementalSupportContentPrivilege =
-  | 'Query'
+export type ElementalSupportContentPrivilege = 'Query'

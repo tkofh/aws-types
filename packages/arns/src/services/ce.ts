@@ -1,11 +1,24 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface AnomalysubscriptionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AnomalysubscriptionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly identifier: string
 }
-class AnomalysubscriptionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'anomalysubscription', `arn:${string}:ce::${string}:anomalysubscription/${string}`> {
+class AnomalysubscriptionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'anomalysubscription',
+  `arn:${string}:ce::${string}:anomalysubscription/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'anomalysubscription' as const
   readonly partition: Partition
   readonly account: string
@@ -21,16 +34,25 @@ class AnomalysubscriptionArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { AnomalysubscriptionArn }
-export function anomalysubscriptionArn<Partition extends ArnPartition = 'aws'>(parameters: AnomalysubscriptionArnParameters<Partition>) {
+export function anomalysubscriptionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AnomalysubscriptionArnParameters<Partition>,
+) {
   return new AnomalysubscriptionArn<Partition>(parameters)
 }
 
-export interface AnomalymonitorArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AnomalymonitorArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly identifier: string
 }
-class AnomalymonitorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'anomalymonitor', `arn:${string}:ce::${string}:anomalymonitor/${string}`> {
+class AnomalymonitorArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'anomalymonitor',
+  `arn:${string}:ce::${string}:anomalymonitor/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'anomalymonitor' as const
   readonly partition: Partition
   readonly account: string
@@ -46,16 +68,25 @@ class AnomalymonitorArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { AnomalymonitorArn }
-export function anomalymonitorArn<Partition extends ArnPartition = 'aws'>(parameters: AnomalymonitorArnParameters<Partition>) {
+export function anomalymonitorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AnomalymonitorArnParameters<Partition>,
+) {
   return new AnomalymonitorArn<Partition>(parameters)
 }
 
-export interface CostcategoryArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CostcategoryArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly identifier: string
 }
-class CostcategoryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'costcategory', `arn:${string}:ce::${string}:costcategory/${string}`> {
+class CostcategoryArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'costcategory',
+  `arn:${string}:ce::${string}:costcategory/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'costcategory' as const
   readonly partition: Partition
   readonly account: string
@@ -71,6 +102,8 @@ class CostcategoryArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { CostcategoryArn }
-export function costcategoryArn<Partition extends ArnPartition = 'aws'>(parameters: CostcategoryArnParameters<Partition>) {
+export function costcategoryArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CostcategoryArnParameters<Partition>,
+) {
   return new CostcategoryArn<Partition>(parameters)
 }

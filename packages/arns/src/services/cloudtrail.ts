@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface TrailArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface TrailArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly trailName: string
 }
-class TrailArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'trail', `arn:${string}:cloudtrail:${string}:${string}:trail/${string}`> {
+class TrailArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'trail',
+  `arn:${string}:cloudtrail:${string}:${string}:trail/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'trail' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +33,26 @@ class TrailArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'trai
   }
 }
 export type { TrailArn }
-export function trailArn<Partition extends ArnPartition = 'aws'>(parameters: TrailArnParameters<Partition>) {
+export function trailArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TrailArnParameters<Partition>,
+) {
   return new TrailArn<Partition>(parameters)
 }
 
-export interface EventdatastoreArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface EventdatastoreArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly eventDataStoreId: string
 }
-class EventdatastoreArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'eventdatastore', `arn:${string}:cloudtrail:${string}:${string}:eventdatastore/${string}`> {
+class EventdatastoreArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'eventdatastore',
+  `arn:${string}:cloudtrail:${string}:${string}:eventdatastore/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'eventdatastore' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +70,9 @@ class EventdatastoreArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { EventdatastoreArn }
-export function eventdatastoreArn<Partition extends ArnPartition = 'aws'>(parameters: EventdatastoreArnParameters<Partition>) {
+export function eventdatastoreArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EventdatastoreArnParameters<Partition>,
+) {
   return new EventdatastoreArn<Partition>(parameters)
 }
 
@@ -62,7 +82,10 @@ export interface ChannelArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly channelId: string
 }
-class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'channel', `arn:${string}:cloudtrail:${string}:${string}:channel/${string}`> {
+class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'channel',
+  `arn:${string}:cloudtrail:${string}:${string}:channel/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'channel' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,6 +103,8 @@ class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ch
   }
 }
 export type { ChannelArn }
-export function channelArn<Partition extends ArnPartition = 'aws'>(parameters: ChannelArnParameters<Partition>) {
+export function channelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ChannelArnParameters<Partition>,
+) {
   return new ChannelArn<Partition>(parameters)
 }

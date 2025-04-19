@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ResolverDnssecConfigArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ResolverDnssecConfigArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class ResolverDnssecConfigArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'resolver-dnssec-config', `arn:${string}:route53resolver:${string}:${string}:resolver-dnssec-config/${string}`> {
+class ResolverDnssecConfigArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'resolver-dnssec-config',
+  `arn:${string}:route53resolver:${string}:${string}:resolver-dnssec-config/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'resolver-dnssec-config' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +37,26 @@ class ResolverDnssecConfigArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { ResolverDnssecConfigArn }
-export function resolverDnssecConfigArn<Partition extends ArnPartition = 'aws'>(parameters: ResolverDnssecConfigArnParameters<Partition>) {
+export function resolverDnssecConfigArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResolverDnssecConfigArnParameters<Partition>,
+) {
   return new ResolverDnssecConfigArn<Partition>(parameters)
 }
 
-export interface ResolverQueryLogConfigArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ResolverQueryLogConfigArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class ResolverQueryLogConfigArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'resolver-query-log-config', `arn:${string}:route53resolver:${string}:${string}:resolver-query-log-config/${string}`> {
+class ResolverQueryLogConfigArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'resolver-query-log-config',
+  `arn:${string}:route53resolver:${string}:${string}:resolver-query-log-config/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'resolver-query-log-config' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +74,26 @@ class ResolverQueryLogConfigArn<Partition extends ArnPartition = 'aws'> extends 
   }
 }
 export type { ResolverQueryLogConfigArn }
-export function resolverQueryLogConfigArn<Partition extends ArnPartition = 'aws'>(parameters: ResolverQueryLogConfigArnParameters<Partition>) {
+export function resolverQueryLogConfigArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: ResolverQueryLogConfigArnParameters<Partition>) {
   return new ResolverQueryLogConfigArn<Partition>(parameters)
 }
 
-export interface ResolverRuleArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ResolverRuleArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class ResolverRuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'resolver-rule', `arn:${string}:route53resolver:${string}:${string}:resolver-rule/${string}`> {
+class ResolverRuleArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'resolver-rule',
+  `arn:${string}:route53resolver:${string}:${string}:resolver-rule/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'resolver-rule' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,17 +111,26 @@ class ResolverRuleArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { ResolverRuleArn }
-export function resolverRuleArn<Partition extends ArnPartition = 'aws'>(parameters: ResolverRuleArnParameters<Partition>) {
+export function resolverRuleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResolverRuleArnParameters<Partition>,
+) {
   return new ResolverRuleArn<Partition>(parameters)
 }
 
-export interface ResolverEndpointArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ResolverEndpointArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class ResolverEndpointArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'resolver-endpoint', `arn:${string}:route53resolver:${string}:${string}:resolver-endpoint/${string}`> {
+class ResolverEndpointArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'resolver-endpoint',
+  `arn:${string}:route53resolver:${string}:${string}:resolver-endpoint/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'resolver-endpoint' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,17 +148,26 @@ class ResolverEndpointArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { ResolverEndpointArn }
-export function resolverEndpointArn<Partition extends ArnPartition = 'aws'>(parameters: ResolverEndpointArnParameters<Partition>) {
+export function resolverEndpointArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResolverEndpointArnParameters<Partition>,
+) {
   return new ResolverEndpointArn<Partition>(parameters)
 }
 
-export interface FirewallRuleGroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FirewallRuleGroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class FirewallRuleGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'firewall-rule-group', `arn:${string}:route53resolver:${string}:${string}:firewall-rule-group/${string}`> {
+class FirewallRuleGroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'firewall-rule-group',
+  `arn:${string}:route53resolver:${string}:${string}:firewall-rule-group/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'firewall-rule-group' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -136,23 +185,34 @@ class FirewallRuleGroupArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { FirewallRuleGroupArn }
-export function firewallRuleGroupArn<Partition extends ArnPartition = 'aws'>(parameters: FirewallRuleGroupArnParameters<Partition>) {
+export function firewallRuleGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FirewallRuleGroupArnParameters<Partition>,
+) {
   return new FirewallRuleGroupArn<Partition>(parameters)
 }
 
-export interface FirewallRuleGroupAssociationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FirewallRuleGroupAssociationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class FirewallRuleGroupAssociationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'firewall-rule-group-association', `arn:${string}:route53resolver:${string}:${string}:firewall-rule-group-association/${string}`> {
+class FirewallRuleGroupAssociationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'firewall-rule-group-association',
+  `arn:${string}:route53resolver:${string}:${string}:firewall-rule-group-association/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'firewall-rule-group-association' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
-  constructor(parameters: FirewallRuleGroupAssociationArnParameters<Partition>) {
+  constructor(
+    parameters: FirewallRuleGroupAssociationArnParameters<Partition>,
+  ) {
     super()
     this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
@@ -164,17 +224,26 @@ class FirewallRuleGroupAssociationArn<Partition extends ArnPartition = 'aws'> ex
   }
 }
 export type { FirewallRuleGroupAssociationArn }
-export function firewallRuleGroupAssociationArn<Partition extends ArnPartition = 'aws'>(parameters: FirewallRuleGroupAssociationArnParameters<Partition>) {
+export function firewallRuleGroupAssociationArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: FirewallRuleGroupAssociationArnParameters<Partition>) {
   return new FirewallRuleGroupAssociationArn<Partition>(parameters)
 }
 
-export interface FirewallDomainListArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FirewallDomainListArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class FirewallDomainListArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'firewall-domain-list', `arn:${string}:route53resolver:${string}:${string}:firewall-domain-list/${string}`> {
+class FirewallDomainListArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'firewall-domain-list',
+  `arn:${string}:route53resolver:${string}:${string}:firewall-domain-list/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'firewall-domain-list' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -192,17 +261,26 @@ class FirewallDomainListArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { FirewallDomainListArn }
-export function firewallDomainListArn<Partition extends ArnPartition = 'aws'>(parameters: FirewallDomainListArnParameters<Partition>) {
+export function firewallDomainListArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FirewallDomainListArnParameters<Partition>,
+) {
   return new FirewallDomainListArn<Partition>(parameters)
 }
 
-export interface FirewallConfigArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FirewallConfigArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class FirewallConfigArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'firewall-config', `arn:${string}:route53resolver:${string}:${string}:firewall-config/${string}`> {
+class FirewallConfigArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'firewall-config',
+  `arn:${string}:route53resolver:${string}:${string}:firewall-config/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'firewall-config' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -220,17 +298,26 @@ class FirewallConfigArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { FirewallConfigArn }
-export function firewallConfigArn<Partition extends ArnPartition = 'aws'>(parameters: FirewallConfigArnParameters<Partition>) {
+export function firewallConfigArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FirewallConfigArnParameters<Partition>,
+) {
   return new FirewallConfigArn<Partition>(parameters)
 }
 
-export interface ResolverConfigArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ResolverConfigArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class ResolverConfigArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'resolver-config', `arn:${string}:route53resolver:${string}:${string}:resolver-config/${string}`> {
+class ResolverConfigArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'resolver-config',
+  `arn:${string}:route53resolver:${string}:${string}:resolver-config/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'resolver-config' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -248,17 +335,26 @@ class ResolverConfigArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { ResolverConfigArn }
-export function resolverConfigArn<Partition extends ArnPartition = 'aws'>(parameters: ResolverConfigArnParameters<Partition>) {
+export function resolverConfigArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResolverConfigArnParameters<Partition>,
+) {
   return new ResolverConfigArn<Partition>(parameters)
 }
 
-export interface OutpostResolverArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface OutpostResolverArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class OutpostResolverArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'outpost-resolver', `arn:${string}:route53resolver:${string}:${string}:outpost-resolver/${string}`> {
+class OutpostResolverArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'outpost-resolver',
+  `arn:${string}:route53resolver:${string}:${string}:outpost-resolver/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'outpost-resolver' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -276,6 +372,8 @@ class OutpostResolverArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { OutpostResolverArn }
-export function outpostResolverArn<Partition extends ArnPartition = 'aws'>(parameters: OutpostResolverArnParameters<Partition>) {
+export function outpostResolverArn<Partition extends ArnPartition = 'aws'>(
+  parameters: OutpostResolverArnParameters<Partition>,
+) {
   return new OutpostResolverArn<Partition>(parameters)
 }

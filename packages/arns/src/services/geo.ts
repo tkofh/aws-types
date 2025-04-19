@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ApiKeyArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ApiKeyArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly keyName: string
 }
-class ApiKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'api-key', `arn:${string}:geo:${string}:${string}:api-key/${string}`> {
+class ApiKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'api-key',
+  `arn:${string}:geo:${string}:${string}:api-key/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'api-key' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +33,26 @@ class ApiKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'api
   }
 }
 export type { ApiKeyArn }
-export function apiKeyArn<Partition extends ArnPartition = 'aws'>(parameters: ApiKeyArnParameters<Partition>) {
+export function apiKeyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApiKeyArnParameters<Partition>,
+) {
   return new ApiKeyArn<Partition>(parameters)
 }
 
-export interface GeofenceCollectionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface GeofenceCollectionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly geofenceCollectionName: string
 }
-class GeofenceCollectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'geofence-collection', `arn:${string}:geo:${string}:${string}:geofence-collection/${string}`> {
+class GeofenceCollectionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'geofence-collection',
+  `arn:${string}:geo:${string}:${string}:geofence-collection/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'geofence-collection' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +70,9 @@ class GeofenceCollectionArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { GeofenceCollectionArn }
-export function geofenceCollectionArn<Partition extends ArnPartition = 'aws'>(parameters: GeofenceCollectionArnParameters<Partition>) {
+export function geofenceCollectionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GeofenceCollectionArnParameters<Partition>,
+) {
   return new GeofenceCollectionArn<Partition>(parameters)
 }
 
@@ -62,7 +82,10 @@ export interface MapArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly mapName: string
 }
-class MapArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'map', `arn:${string}:geo:${string}:${string}:map/${string}`> {
+class MapArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'map',
+  `arn:${string}:geo:${string}:${string}:map/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'map' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,17 +103,24 @@ class MapArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'map', 
   }
 }
 export type { MapArn }
-export function mapArn<Partition extends ArnPartition = 'aws'>(parameters: MapArnParameters<Partition>) {
+export function mapArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MapArnParameters<Partition>,
+) {
   return new MapArn<Partition>(parameters)
 }
 
-export interface PlaceIndexArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface PlaceIndexArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly indexName: string
 }
-class PlaceIndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'place-index', `arn:${string}:geo:${string}:${string}:place-index/${string}`> {
+class PlaceIndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'place-index',
+  `arn:${string}:geo:${string}:${string}:place-index/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'place-index' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,17 +138,26 @@ class PlaceIndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { PlaceIndexArn }
-export function placeIndexArn<Partition extends ArnPartition = 'aws'>(parameters: PlaceIndexArnParameters<Partition>) {
+export function placeIndexArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PlaceIndexArnParameters<Partition>,
+) {
   return new PlaceIndexArn<Partition>(parameters)
 }
 
-export interface RouteCalculatorArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RouteCalculatorArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly calculatorName: string
 }
-class RouteCalculatorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'route-calculator', `arn:${string}:geo:${string}:${string}:route-calculator/${string}`> {
+class RouteCalculatorArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'route-calculator',
+  `arn:${string}:geo:${string}:${string}:route-calculator/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'route-calculator' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -136,7 +175,9 @@ class RouteCalculatorArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { RouteCalculatorArn }
-export function routeCalculatorArn<Partition extends ArnPartition = 'aws'>(parameters: RouteCalculatorArnParameters<Partition>) {
+export function routeCalculatorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RouteCalculatorArnParameters<Partition>,
+) {
   return new RouteCalculatorArn<Partition>(parameters)
 }
 
@@ -146,7 +187,10 @@ export interface TrackerArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly trackerName: string
 }
-class TrackerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'tracker', `arn:${string}:geo:${string}:${string}:tracker/${string}`> {
+class TrackerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'tracker',
+  `arn:${string}:geo:${string}:${string}:tracker/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'tracker' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -164,6 +208,8 @@ class TrackerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'tr
   }
 }
 export type { TrackerArn }
-export function trackerArn<Partition extends ArnPartition = 'aws'>(parameters: TrackerArnParameters<Partition>) {
+export function trackerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TrackerArnParameters<Partition>,
+) {
   return new TrackerArn<Partition>(parameters)
 }

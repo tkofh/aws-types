@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface AlarmArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface AlarmArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly alarmName: string
 }
-class AlarmArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'alarm', `arn:${string}:cloudwatch:${string}:${string}:alarm:${string}`> {
+class AlarmArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'alarm',
+  `arn:${string}:cloudwatch:${string}:${string}:alarm:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'alarm' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,16 +33,23 @@ class AlarmArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'alar
   }
 }
 export type { AlarmArn }
-export function alarmArn<Partition extends ArnPartition = 'aws'>(parameters: AlarmArnParameters<Partition>) {
+export function alarmArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AlarmArnParameters<Partition>,
+) {
   return new AlarmArn<Partition>(parameters)
 }
 
-export interface DashboardArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DashboardArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly dashboardName: string
 }
-class DashboardArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dashboard', `arn:${string}:cloudwatch::${string}:dashboard/${string}`> {
+class DashboardArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'dashboard',
+  `arn:${string}:cloudwatch::${string}:dashboard/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'dashboard' as const
   readonly partition: Partition
   readonly account: string
@@ -49,17 +65,26 @@ class DashboardArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { DashboardArn }
-export function dashboardArn<Partition extends ArnPartition = 'aws'>(parameters: DashboardArnParameters<Partition>) {
+export function dashboardArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DashboardArnParameters<Partition>,
+) {
   return new DashboardArn<Partition>(parameters)
 }
 
-export interface InsightRuleArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface InsightRuleArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly insightRuleName: string
 }
-class InsightRuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'insight-rule', `arn:${string}:cloudwatch:${string}:${string}:insight-rule/${string}`> {
+class InsightRuleArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'insight-rule',
+  `arn:${string}:cloudwatch:${string}:${string}:insight-rule/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'insight-rule' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -77,17 +102,26 @@ class InsightRuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { InsightRuleArn }
-export function insightRuleArn<Partition extends ArnPartition = 'aws'>(parameters: InsightRuleArnParameters<Partition>) {
+export function insightRuleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InsightRuleArnParameters<Partition>,
+) {
   return new InsightRuleArn<Partition>(parameters)
 }
 
-export interface MetricStreamArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MetricStreamArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly metricStreamName: string
 }
-class MetricStreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'metric-stream', `arn:${string}:cloudwatch:${string}:${string}:metric-stream/${string}`> {
+class MetricStreamArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'metric-stream',
+  `arn:${string}:cloudwatch:${string}:${string}:metric-stream/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'metric-stream' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -105,7 +139,9 @@ class MetricStreamArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { MetricStreamArn }
-export function metricStreamArn<Partition extends ArnPartition = 'aws'>(parameters: MetricStreamArnParameters<Partition>) {
+export function metricStreamArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MetricStreamArnParameters<Partition>,
+) {
   return new MetricStreamArn<Partition>(parameters)
 }
 
@@ -115,7 +151,10 @@ export interface SloArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly sloName: string
 }
-class SloArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'slo', `arn:${string}:cloudwatch:${string}:${string}:slo/${string}`> {
+class SloArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'slo',
+  `arn:${string}:cloudwatch:${string}:${string}:slo/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'slo' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -133,7 +172,9 @@ class SloArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'slo', 
   }
 }
 export type { SloArn }
-export function sloArn<Partition extends ArnPartition = 'aws'>(parameters: SloArnParameters<Partition>) {
+export function sloArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SloArnParameters<Partition>,
+) {
   return new SloArn<Partition>(parameters)
 }
 
@@ -144,7 +185,10 @@ export interface ServiceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly serviceName: string
   readonly uniqueAttributesHex: string
 }
-class ServiceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'service', `arn:${string}:cloudwatch:${string}:${string}:service/${string}-${string}`> {
+class ServiceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'service',
+  `arn:${string}:cloudwatch:${string}:${string}:service/${string}-${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'service' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -164,6 +208,8 @@ class ServiceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'se
   }
 }
 export type { ServiceArn }
-export function serviceArn<Partition extends ArnPartition = 'aws'>(parameters: ServiceArnParameters<Partition>) {
+export function serviceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ServiceArnParameters<Partition>,
+) {
   return new ServiceArn<Partition>(parameters)
 }

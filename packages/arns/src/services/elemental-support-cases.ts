@@ -1,11 +1,20 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface CaseArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly resourceId: string
 }
-class CaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'case', `arn:${string}:elemental-support-cases::${string}:case/${string}`> {
+class CaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'case',
+  `arn:${string}:elemental-support-cases::${string}:case/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'case' as const
   readonly partition: Partition
   readonly account: string
@@ -21,6 +30,8 @@ class CaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'case'
   }
 }
 export type { CaseArn }
-export function caseArn<Partition extends ArnPartition = 'aws'>(parameters: CaseArnParameters<Partition>) {
+export function caseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CaseArnParameters<Partition>,
+) {
   return new CaseArn<Partition>(parameters)
 }

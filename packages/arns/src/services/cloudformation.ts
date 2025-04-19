@@ -1,13 +1,24 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ChangesetArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ChangesetArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly changeSetName: string
   readonly id: string
 }
-class ChangesetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'changeset', `arn:${string}:cloudformation:${string}:${string}:changeSet/${string}/${string}`> {
+class ChangesetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'changeset',
+  `arn:${string}:cloudformation:${string}:${string}:changeSet/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'changeset' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,7 +38,9 @@ class ChangesetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { ChangesetArn }
-export function changesetArn<Partition extends ArnPartition = 'aws'>(parameters: ChangesetArnParameters<Partition>) {
+export function changesetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ChangesetArnParameters<Partition>,
+) {
   return new ChangesetArn<Partition>(parameters)
 }
 
@@ -38,7 +51,10 @@ export interface StackArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly stackName: string
   readonly id: string
 }
-class StackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stack', `arn:${string}:cloudformation:${string}:${string}:stack/${string}/${string}`> {
+class StackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'stack',
+  `arn:${string}:cloudformation:${string}:${string}:stack/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'stack' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -58,7 +74,9 @@ class StackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stac
   }
 }
 export type { StackArn }
-export function stackArn<Partition extends ArnPartition = 'aws'>(parameters: StackArnParameters<Partition>) {
+export function stackArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StackArnParameters<Partition>,
+) {
   return new StackArn<Partition>(parameters)
 }
 
@@ -69,7 +87,10 @@ export interface StacksetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly stackSetName: string
   readonly id: string
 }
-class StacksetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stackset', `arn:${string}:cloudformation:${string}:${string}:stackset/${string}:${string}`> {
+class StacksetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'stackset',
+  `arn:${string}:cloudformation:${string}:${string}:stackset/${string}:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'stackset' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -89,17 +110,26 @@ class StacksetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'s
   }
 }
 export type { StacksetArn }
-export function stacksetArn<Partition extends ArnPartition = 'aws'>(parameters: StacksetArnParameters<Partition>) {
+export function stacksetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StacksetArnParameters<Partition>,
+) {
   return new StacksetArn<Partition>(parameters)
 }
 
-export interface StacksetTargetArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface StacksetTargetArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly stackSetTarget: string
 }
-class StacksetTargetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stackset-target', `arn:${string}:cloudformation:${string}:${string}:stackset-target/${string}`> {
+class StacksetTargetArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'stackset-target',
+  `arn:${string}:cloudformation:${string}:${string}:stackset-target/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'stackset-target' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -117,7 +147,9 @@ class StacksetTargetArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { StacksetTargetArn }
-export function stacksetTargetArn<Partition extends ArnPartition = 'aws'>(parameters: StacksetTargetArnParameters<Partition>) {
+export function stacksetTargetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StacksetTargetArnParameters<Partition>,
+) {
   return new StacksetTargetArn<Partition>(parameters)
 }
 
@@ -127,7 +159,10 @@ export interface TypeArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly type: string
 }
-class TypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'type', `arn:${string}:cloudformation:${string}:${string}:type/resource/${string}`> {
+class TypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'type',
+  `arn:${string}:cloudformation:${string}:${string}:type/resource/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'type' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -145,17 +180,26 @@ class TypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'type'
   }
 }
 export type { TypeArn }
-export function typeArn<Partition extends ArnPartition = 'aws'>(parameters: TypeArnParameters<Partition>) {
+export function typeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TypeArnParameters<Partition>,
+) {
   return new TypeArn<Partition>(parameters)
 }
 
-export interface GeneratedtemplateArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface GeneratedtemplateArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class GeneratedtemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'generatedtemplate', `arn:${string}:cloudformation:${string}:${string}:generatedTemplate/${string}`> {
+class GeneratedtemplateArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'generatedtemplate',
+  `arn:${string}:cloudformation:${string}:${string}:generatedTemplate/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'generatedtemplate' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -173,17 +217,26 @@ class GeneratedtemplateArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { GeneratedtemplateArn }
-export function generatedtemplateArn<Partition extends ArnPartition = 'aws'>(parameters: GeneratedtemplateArnParameters<Partition>) {
+export function generatedtemplateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GeneratedtemplateArnParameters<Partition>,
+) {
   return new GeneratedtemplateArn<Partition>(parameters)
 }
 
-export interface ResourcescanArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ResourcescanArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class ResourcescanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'resourcescan', `arn:${string}:cloudformation:${string}:${string}:resourceScan/${string}`> {
+class ResourcescanArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'resourcescan',
+  `arn:${string}:cloudformation:${string}:${string}:resourceScan/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'resourcescan' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -201,6 +254,8 @@ class ResourcescanArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { ResourcescanArn }
-export function resourcescanArn<Partition extends ArnPartition = 'aws'>(parameters: ResourcescanArnParameters<Partition>) {
+export function resourcescanArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResourcescanArnParameters<Partition>,
+) {
   return new ResourcescanArn<Partition>(parameters)
 }

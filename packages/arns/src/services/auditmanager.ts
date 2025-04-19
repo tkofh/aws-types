@@ -1,12 +1,23 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface AssessmentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AssessmentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly assessmentId: string
 }
-class AssessmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'assessment', `arn:${string}:auditmanager:${string}:${string}:assessment/${string}`> {
+class AssessmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'assessment',
+  `arn:${string}:auditmanager:${string}:${string}:assessment/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'assessment' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +35,26 @@ class AssessmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { AssessmentArn }
-export function assessmentArn<Partition extends ArnPartition = 'aws'>(parameters: AssessmentArnParameters<Partition>) {
+export function assessmentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AssessmentArnParameters<Partition>,
+) {
   return new AssessmentArn<Partition>(parameters)
 }
 
-export interface AssessmentFrameworkArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AssessmentFrameworkArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly assessmentFrameworkId: string
 }
-class AssessmentFrameworkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'assessmentFramework', `arn:${string}:auditmanager:${string}:${string}:assessmentFramework/${string}`> {
+class AssessmentFrameworkArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'assessmentFramework',
+  `arn:${string}:auditmanager:${string}:${string}:assessmentFramework/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'assessmentFramework' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,18 +72,27 @@ class AssessmentFrameworkArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { AssessmentFrameworkArn }
-export function assessmentFrameworkArn<Partition extends ArnPartition = 'aws'>(parameters: AssessmentFrameworkArnParameters<Partition>) {
+export function assessmentFrameworkArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AssessmentFrameworkArnParameters<Partition>,
+) {
   return new AssessmentFrameworkArn<Partition>(parameters)
 }
 
-export interface AssessmentControlSetArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AssessmentControlSetArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly assessmentId: string
   readonly controlSetId: string
 }
-class AssessmentControlSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'assessmentControlSet', `arn:${string}:auditmanager:${string}:${string}:assessment/${string}/controlSet/${string}`> {
+class AssessmentControlSetArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'assessmentControlSet',
+  `arn:${string}:auditmanager:${string}:${string}:assessment/${string}/controlSet/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'assessmentControlSet' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -83,7 +112,9 @@ class AssessmentControlSetArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { AssessmentControlSetArn }
-export function assessmentControlSetArn<Partition extends ArnPartition = 'aws'>(parameters: AssessmentControlSetArnParameters<Partition>) {
+export function assessmentControlSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AssessmentControlSetArnParameters<Partition>,
+) {
   return new AssessmentControlSetArn<Partition>(parameters)
 }
 
@@ -93,7 +124,10 @@ export interface ControlArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly controlId: string
 }
-class ControlArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'control', `arn:${string}:auditmanager:${string}:${string}:control/${string}`> {
+class ControlArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'control',
+  `arn:${string}:auditmanager:${string}:${string}:control/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'control' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -111,6 +145,8 @@ class ControlArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'co
   }
 }
 export type { ControlArn }
-export function controlArn<Partition extends ArnPartition = 'aws'>(parameters: ControlArnParameters<Partition>) {
+export function controlArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ControlArnParameters<Partition>,
+) {
   return new ControlArn<Partition>(parameters)
 }

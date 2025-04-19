@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ApplicationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ApplicationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly applicationName: string
 }
-class ApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'application', `arn:${string}:elasticbeanstalk:${string}:${string}:application/${string}`> {
+class ApplicationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'application',
+  `arn:${string}:elasticbeanstalk:${string}:${string}:application/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'application' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,18 +37,27 @@ class ApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ApplicationArn }
-export function applicationArn<Partition extends ArnPartition = 'aws'>(parameters: ApplicationArnParameters<Partition>) {
+export function applicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApplicationArnParameters<Partition>,
+) {
   return new ApplicationArn<Partition>(parameters)
 }
 
-export interface ApplicationversionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ApplicationversionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly applicationName: string
   readonly versionLabel: string
 }
-class ApplicationversionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'applicationversion', `arn:${string}:elasticbeanstalk:${string}:${string}:applicationversion/${string}/${string}`> {
+class ApplicationversionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'applicationversion',
+  `arn:${string}:elasticbeanstalk:${string}:${string}:applicationversion/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'applicationversion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,18 +77,27 @@ class ApplicationversionArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { ApplicationversionArn }
-export function applicationversionArn<Partition extends ArnPartition = 'aws'>(parameters: ApplicationversionArnParameters<Partition>) {
+export function applicationversionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApplicationversionArnParameters<Partition>,
+) {
   return new ApplicationversionArn<Partition>(parameters)
 }
 
-export interface ConfigurationtemplateArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConfigurationtemplateArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly applicationName: string
   readonly templateName: string
 }
-class ConfigurationtemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'configurationtemplate', `arn:${string}:elasticbeanstalk:${string}:${string}:configurationtemplate/${string}/${string}`> {
+class ConfigurationtemplateArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'configurationtemplate',
+  `arn:${string}:elasticbeanstalk:${string}:${string}:configurationtemplate/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'configurationtemplate' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,18 +117,27 @@ class ConfigurationtemplateArn<Partition extends ArnPartition = 'aws'> extends I
   }
 }
 export type { ConfigurationtemplateArn }
-export function configurationtemplateArn<Partition extends ArnPartition = 'aws'>(parameters: ConfigurationtemplateArnParameters<Partition>) {
+export function configurationtemplateArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: ConfigurationtemplateArnParameters<Partition>) {
   return new ConfigurationtemplateArn<Partition>(parameters)
 }
 
-export interface EnvironmentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface EnvironmentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly applicationName: string
   readonly environmentName: string
 }
-class EnvironmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'environment', `arn:${string}:elasticbeanstalk:${string}:${string}:environment/${string}/${string}`> {
+class EnvironmentArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'environment',
+  `arn:${string}:elasticbeanstalk:${string}:${string}:environment/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'environment' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -117,16 +157,25 @@ class EnvironmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { EnvironmentArn }
-export function environmentArn<Partition extends ArnPartition = 'aws'>(parameters: EnvironmentArnParameters<Partition>) {
+export function environmentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EnvironmentArnParameters<Partition>,
+) {
   return new EnvironmentArn<Partition>(parameters)
 }
 
-export interface SolutionstackArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SolutionstackArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly solutionStackName: string
 }
-class SolutionstackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'solutionstack', `arn:${string}:elasticbeanstalk:${string}::solutionstack/${string}`> {
+class SolutionstackArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'solutionstack',
+  `arn:${string}:elasticbeanstalk:${string}::solutionstack/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'solutionstack' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -142,7 +191,9 @@ class SolutionstackArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { SolutionstackArn }
-export function solutionstackArn<Partition extends ArnPartition = 'aws'>(parameters: SolutionstackArnParameters<Partition>) {
+export function solutionstackArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SolutionstackArnParameters<Partition>,
+) {
   return new SolutionstackArn<Partition>(parameters)
 }
 
@@ -151,7 +202,10 @@ export interface PlatformArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly region: ArnRegion<Partition>
   readonly platformNameWithVersion: string
 }
-class PlatformArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'platform', `arn:${string}:elasticbeanstalk:${string}::platform/${string}`> {
+class PlatformArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'platform',
+  `arn:${string}:elasticbeanstalk:${string}::platform/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'platform' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -167,6 +221,8 @@ class PlatformArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'p
   }
 }
 export type { PlatformArn }
-export function platformArn<Partition extends ArnPartition = 'aws'>(parameters: PlatformArnParameters<Partition>) {
+export function platformArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PlatformArnParameters<Partition>,
+) {
   return new PlatformArn<Partition>(parameters)
 }

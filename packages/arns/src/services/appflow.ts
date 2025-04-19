@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ConnectorprofileArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConnectorprofileArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly profileName: string
 }
-class ConnectorprofileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'connectorprofile', `arn:${string}:appflow:${string}:${string}:connectorprofile/${string}`> {
+class ConnectorprofileArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'connectorprofile',
+  `arn:${string}:appflow:${string}:${string}:connectorprofile/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'connectorprofile' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +37,9 @@ class ConnectorprofileArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { ConnectorprofileArn }
-export function connectorprofileArn<Partition extends ArnPartition = 'aws'>(parameters: ConnectorprofileArnParameters<Partition>) {
+export function connectorprofileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConnectorprofileArnParameters<Partition>,
+) {
   return new ConnectorprofileArn<Partition>(parameters)
 }
 
@@ -34,7 +49,10 @@ export interface FlowArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly flowName: string
 }
-class FlowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'flow', `arn:${string}:appflow:${string}:${string}:flow/${string}`> {
+class FlowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'flow',
+  `arn:${string}:appflow:${string}:${string}:flow/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'flow' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +70,24 @@ class FlowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'flow'
   }
 }
 export type { FlowArn }
-export function flowArn<Partition extends ArnPartition = 'aws'>(parameters: FlowArnParameters<Partition>) {
+export function flowArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FlowArnParameters<Partition>,
+) {
   return new FlowArn<Partition>(parameters)
 }
 
-export interface ConnectorArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConnectorArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly connectorLabel: string
 }
-class ConnectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'connector', `arn:${string}:appflow:${string}:${string}:connector/${string}`> {
+class ConnectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'connector',
+  `arn:${string}:appflow:${string}:${string}:connector/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'connector' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,6 +105,8 @@ class ConnectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { ConnectorArn }
-export function connectorArn<Partition extends ArnPartition = 'aws'>(parameters: ConnectorArnParameters<Partition>) {
+export function connectorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConnectorArnParameters<Partition>,
+) {
   return new ConnectorArn<Partition>(parameters)
 }

@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ExportArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ExportArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly identifier: string
 }
-class ExportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'export', `arn:${string}:bcm-data-exports:${string}:${string}:export/${string}`> {
+class ExportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'export',
+  `arn:${string}:bcm-data-exports:${string}:${string}:export/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'export' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class ExportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'exp
   }
 }
 export type { ExportArn }
-export function exportArn<Partition extends ArnPartition = 'aws'>(parameters: ExportArnParameters<Partition>) {
+export function exportArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ExportArnParameters<Partition>,
+) {
   return new ExportArn<Partition>(parameters)
 }
 
@@ -34,7 +45,10 @@ export interface TableArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly identifier: string
 }
-class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'table', `arn:${string}:bcm-data-exports:${string}:${string}:table/${string}`> {
+class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'table',
+  `arn:${string}:bcm-data-exports:${string}:${string}:table/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'table' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,6 +66,8 @@ class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'tabl
   }
 }
 export type { TableArn }
-export function tableArn<Partition extends ArnPartition = 'aws'>(parameters: TableArnParameters<Partition>) {
+export function tableArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TableArnParameters<Partition>,
+) {
   return new TableArn<Partition>(parameters)
 }

@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ConnectionsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConnectionsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly connectionId: string
 }
-class ConnectionsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'connections', `arn:${string}:codecatalyst:${string}:${string}:/connections/${string}`> {
+class ConnectionsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'connections',
+  `arn:${string}:codecatalyst:${string}:${string}:/connections/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'connections' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +37,26 @@ class ConnectionsArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ConnectionsArn }
-export function connectionsArn<Partition extends ArnPartition = 'aws'>(parameters: ConnectionsArnParameters<Partition>) {
+export function connectionsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConnectionsArnParameters<Partition>,
+) {
   return new ConnectionsArn<Partition>(parameters)
 }
 
-export interface IdentityCenterApplicationsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface IdentityCenterApplicationsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly identityCenterApplicationId: string
 }
-class IdentityCenterApplicationsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'identity-center-applications', `arn:${string}:codecatalyst:${string}:${string}:/identity-center-applications/${string}`> {
+class IdentityCenterApplicationsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'identity-center-applications',
+  `arn:${string}:codecatalyst:${string}:${string}:/identity-center-applications/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'identity-center-applications' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +74,9 @@ class IdentityCenterApplicationsArn<Partition extends ArnPartition = 'aws'> exte
   }
 }
 export type { IdentityCenterApplicationsArn }
-export function identityCenterApplicationsArn<Partition extends ArnPartition = 'aws'>(parameters: IdentityCenterApplicationsArnParameters<Partition>) {
+export function identityCenterApplicationsArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: IdentityCenterApplicationsArnParameters<Partition>) {
   return new IdentityCenterApplicationsArn<Partition>(parameters)
 }
 
@@ -60,7 +84,10 @@ export interface SpaceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly spaceId: string
 }
-class SpaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'space', `arn:${string}:codecatalyst:::space/${string}`> {
+class SpaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'space',
+  `arn:${string}:codecatalyst:::space/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'space' as const
   readonly partition: Partition
   readonly spaceId: string
@@ -74,7 +101,9 @@ class SpaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'spac
   }
 }
 export type { SpaceArn }
-export function spaceArn<Partition extends ArnPartition = 'aws'>(parameters: SpaceArnParameters<Partition>) {
+export function spaceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SpaceArnParameters<Partition>,
+) {
   return new SpaceArn<Partition>(parameters)
 }
 
@@ -83,7 +112,10 @@ export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly spaceId: string
   readonly projectId: string
 }
-class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'project', `arn:${string}:codecatalyst:::space/${string}/project/${string}`> {
+class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'project',
+  `arn:${string}:codecatalyst:::space/${string}/project/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'project' as const
   readonly partition: Partition
   readonly spaceId: string
@@ -99,6 +131,8 @@ class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pr
   }
 }
 export type { ProjectArn }
-export function projectArn<Partition extends ArnPartition = 'aws'>(parameters: ProjectArnParameters<Partition>) {
+export function projectArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProjectArnParameters<Partition>,
+) {
   return new ProjectArn<Partition>(parameters)
 }

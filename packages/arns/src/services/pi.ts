@@ -1,13 +1,26 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface MetricResourceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MetricResourceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly serviceType: string
   readonly identifier: string
 }
-class MetricResourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'metric-resource', `arn:${string}:pi:${string}:${string}:metrics/${string}/${string}`> {
+class MetricResourceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'metric-resource',
+  `arn:${string}:pi:${string}:${string}:metrics/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'metric-resource' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,11 +40,15 @@ class MetricResourceArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { MetricResourceArn }
-export function metricResourceArn<Partition extends ArnPartition = 'aws'>(parameters: MetricResourceArnParameters<Partition>) {
+export function metricResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MetricResourceArnParameters<Partition>,
+) {
   return new MetricResourceArn<Partition>(parameters)
 }
 
-export interface PerfReportsResourceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface PerfReportsResourceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -39,7 +56,12 @@ export interface PerfReportsResourceArnParameters<Partition extends ArnPartition
   readonly identifier: string
   readonly reportId: string
 }
-class PerfReportsResourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'perf-reports-resource', `arn:${string}:pi:${string}:${string}:perf-reports/${string}/${string}/${string}`> {
+class PerfReportsResourceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'perf-reports-resource',
+  `arn:${string}:pi:${string}:${string}:perf-reports/${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'perf-reports-resource' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -61,6 +83,8 @@ class PerfReportsResourceArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { PerfReportsResourceArn }
-export function perfReportsResourceArn<Partition extends ArnPartition = 'aws'>(parameters: PerfReportsResourceArnParameters<Partition>) {
+export function perfReportsResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PerfReportsResourceArnParameters<Partition>,
+) {
   return new PerfReportsResourceArn<Partition>(parameters)
 }

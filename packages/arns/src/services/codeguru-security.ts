@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ScanNameArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ScanNameArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly scanName: string
 }
-class ScanNameArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ScanName', `arn:${string}:codeguru-security:${string}:${string}:scans/${string}`> {
+class ScanNameArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'ScanName',
+  `arn:${string}:codeguru-security:${string}:${string}:scans/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ScanName' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +33,8 @@ class ScanNameArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'S
   }
 }
 export type { ScanNameArn }
-export function scanNameArn<Partition extends ArnPartition = 'aws'>(parameters: ScanNameArnParameters<Partition>) {
+export function scanNameArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ScanNameArnParameters<Partition>,
+) {
   return new ScanNameArn<Partition>(parameters)
 }

@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface DeliverystreamArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeliverystreamArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly deliveryStreamName: string
 }
-class DeliverystreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'deliverystream', `arn:${string}:firehose:${string}:${string}:deliverystream/${string}`> {
+class DeliverystreamArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'deliverystream',
+  `arn:${string}:firehose:${string}:${string}:deliverystream/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'deliverystream' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +37,8 @@ class DeliverystreamArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { DeliverystreamArn }
-export function deliverystreamArn<Partition extends ArnPartition = 'aws'>(parameters: DeliverystreamArnParameters<Partition>) {
+export function deliverystreamArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeliverystreamArnParameters<Partition>,
+) {
   return new DeliverystreamArn<Partition>(parameters)
 }

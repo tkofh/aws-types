@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface DbUserArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -7,7 +13,10 @@ export interface DbUserArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly dbiResourceId: string
   readonly dbUserName: string
 }
-class DbUserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'db-user', `arn:${string}:rds-db:${string}:${string}:dbuser:${string}/${string}`> {
+class DbUserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'db-user',
+  `arn:${string}:rds-db:${string}:${string}:dbuser:${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'db-user' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,6 +36,8 @@ class DbUserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'db-
   }
 }
 export type { DbUserArn }
-export function dbUserArn<Partition extends ArnPartition = 'aws'>(parameters: DbUserArnParameters<Partition>) {
+export function dbUserArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DbUserArnParameters<Partition>,
+) {
   return new DbUserArn<Partition>(parameters)
 }

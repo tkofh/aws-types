@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface LogGroupArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface LogGroupArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly logGroupName: string
 }
-class LogGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'log-group', `arn:${string}:logs:${string}:${string}:log-group:${string}`> {
+class LogGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'log-group',
+  `arn:${string}:logs:${string}:${string}:log-group:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'log-group' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,18 +33,25 @@ class LogGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'l
   }
 }
 export type { LogGroupArn }
-export function logGroupArn<Partition extends ArnPartition = 'aws'>(parameters: LogGroupArnParameters<Partition>) {
+export function logGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LogGroupArnParameters<Partition>,
+) {
   return new LogGroupArn<Partition>(parameters)
 }
 
-export interface LogStreamArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface LogStreamArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly logGroupName: string
   readonly logStreamName: string
 }
-class LogStreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'log-stream', `arn:${string}:logs:${string}:${string}:log-group:${string}:log-stream:${string}`> {
+class LogStreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'log-stream',
+  `arn:${string}:logs:${string}:${string}:log-group:${string}:log-stream:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'log-stream' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,17 +71,26 @@ class LogStreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { LogStreamArn }
-export function logStreamArn<Partition extends ArnPartition = 'aws'>(parameters: LogStreamArnParameters<Partition>) {
+export function logStreamArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LogStreamArnParameters<Partition>,
+) {
   return new LogStreamArn<Partition>(parameters)
 }
 
-export interface DestinationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DestinationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly destinationName: string
 }
-class DestinationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'destination', `arn:${string}:logs:${string}:${string}:destination:${string}`> {
+class DestinationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'destination',
+  `arn:${string}:logs:${string}:${string}:destination:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'destination' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -83,17 +108,26 @@ class DestinationArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { DestinationArn }
-export function destinationArn<Partition extends ArnPartition = 'aws'>(parameters: DestinationArnParameters<Partition>) {
+export function destinationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DestinationArnParameters<Partition>,
+) {
   return new DestinationArn<Partition>(parameters)
 }
 
-export interface DeliverySourceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeliverySourceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly deliverySourceName: string
 }
-class DeliverySourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'delivery-source', `arn:${string}:logs:${string}:${string}:delivery-source:${string}`> {
+class DeliverySourceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'delivery-source',
+  `arn:${string}:logs:${string}:${string}:delivery-source:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'delivery-source' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -111,7 +145,9 @@ class DeliverySourceArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { DeliverySourceArn }
-export function deliverySourceArn<Partition extends ArnPartition = 'aws'>(parameters: DeliverySourceArnParameters<Partition>) {
+export function deliverySourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeliverySourceArnParameters<Partition>,
+) {
   return new DeliverySourceArn<Partition>(parameters)
 }
 
@@ -121,7 +157,10 @@ export interface DeliveryArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly deliveryName: string
 }
-class DeliveryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'delivery', `arn:${string}:logs:${string}:${string}:delivery:${string}`> {
+class DeliveryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'delivery',
+  `arn:${string}:logs:${string}:${string}:delivery:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'delivery' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -139,17 +178,26 @@ class DeliveryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'d
   }
 }
 export type { DeliveryArn }
-export function deliveryArn<Partition extends ArnPartition = 'aws'>(parameters: DeliveryArnParameters<Partition>) {
+export function deliveryArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeliveryArnParameters<Partition>,
+) {
   return new DeliveryArn<Partition>(parameters)
 }
 
-export interface DeliveryDestinationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeliveryDestinationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly deliveryDestinationName: string
 }
-class DeliveryDestinationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'delivery-destination', `arn:${string}:logs:${string}:${string}:delivery-destination:${string}`> {
+class DeliveryDestinationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'delivery-destination',
+  `arn:${string}:logs:${string}:${string}:delivery-destination:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'delivery-destination' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -167,17 +215,26 @@ class DeliveryDestinationArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { DeliveryDestinationArn }
-export function deliveryDestinationArn<Partition extends ArnPartition = 'aws'>(parameters: DeliveryDestinationArnParameters<Partition>) {
+export function deliveryDestinationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeliveryDestinationArnParameters<Partition>,
+) {
   return new DeliveryDestinationArn<Partition>(parameters)
 }
 
-export interface AnomalyDetectorArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AnomalyDetectorArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly detectorId: string
 }
-class AnomalyDetectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'anomaly-detector', `arn:${string}:logs:${string}:${string}:anomaly-detector:${string}`> {
+class AnomalyDetectorArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'anomaly-detector',
+  `arn:${string}:logs:${string}:${string}:anomaly-detector:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'anomaly-detector' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -195,6 +252,8 @@ class AnomalyDetectorArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { AnomalyDetectorArn }
-export function anomalyDetectorArn<Partition extends ArnPartition = 'aws'>(parameters: AnomalyDetectorArnParameters<Partition>) {
+export function anomalyDetectorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AnomalyDetectorArnParameters<Partition>,
+) {
   return new AnomalyDetectorArn<Partition>(parameters)
 }

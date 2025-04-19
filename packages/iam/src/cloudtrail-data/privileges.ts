@@ -1,2 +1,1 @@
-export type CloudtrailDataPrivilege =
-  | 'PutAuditEvents'
+export type CloudtrailDataPrivilege = 'PutAuditEvents'

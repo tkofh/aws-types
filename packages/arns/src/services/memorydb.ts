@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ParametergroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ParametergroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly parameterGroupName: string
 }
-class ParametergroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'parametergroup', `arn:${string}:memorydb:${string}:${string}:parametergroup/${string}`> {
+class ParametergroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'parametergroup',
+  `arn:${string}:memorydb:${string}:${string}:parametergroup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'parametergroup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +37,26 @@ class ParametergroupArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { ParametergroupArn }
-export function parametergroupArn<Partition extends ArnPartition = 'aws'>(parameters: ParametergroupArnParameters<Partition>) {
+export function parametergroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ParametergroupArnParameters<Partition>,
+) {
   return new ParametergroupArn<Partition>(parameters)
 }
 
-export interface SubnetgroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SubnetgroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly subnetGroupName: string
 }
-class SubnetgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'subnetgroup', `arn:${string}:memorydb:${string}:${string}:subnetgroup/${string}`> {
+class SubnetgroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'subnetgroup',
+  `arn:${string}:memorydb:${string}:${string}:subnetgroup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'subnetgroup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +74,9 @@ class SubnetgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { SubnetgroupArn }
-export function subnetgroupArn<Partition extends ArnPartition = 'aws'>(parameters: SubnetgroupArnParameters<Partition>) {
+export function subnetgroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SubnetgroupArnParameters<Partition>,
+) {
   return new SubnetgroupArn<Partition>(parameters)
 }
 
@@ -62,7 +86,10 @@ export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly clusterName: string
 }
-class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cluster', `arn:${string}:memorydb:${string}:${string}:cluster/${string}`> {
+class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'cluster',
+  `arn:${string}:memorydb:${string}:${string}:cluster/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'cluster' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,7 +107,9 @@ class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cl
   }
 }
 export type { ClusterArn }
-export function clusterArn<Partition extends ArnPartition = 'aws'>(parameters: ClusterArnParameters<Partition>) {
+export function clusterArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ClusterArnParameters<Partition>,
+) {
   return new ClusterArn<Partition>(parameters)
 }
 
@@ -90,7 +119,10 @@ export interface SnapshotArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly snapshotName: string
 }
-class SnapshotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'snapshot', `arn:${string}:memorydb:${string}:${string}:snapshot/${string}`> {
+class SnapshotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'snapshot',
+  `arn:${string}:memorydb:${string}:${string}:snapshot/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'snapshot' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,7 +140,9 @@ class SnapshotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'s
   }
 }
 export type { SnapshotArn }
-export function snapshotArn<Partition extends ArnPartition = 'aws'>(parameters: SnapshotArnParameters<Partition>) {
+export function snapshotArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SnapshotArnParameters<Partition>,
+) {
   return new SnapshotArn<Partition>(parameters)
 }
 
@@ -118,7 +152,10 @@ export interface UserArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly userName: string
 }
-class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'user', `arn:${string}:memorydb:${string}:${string}:user/${string}`> {
+class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'user',
+  `arn:${string}:memorydb:${string}:${string}:user/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'user' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -136,7 +173,9 @@ class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'user'
   }
 }
 export type { UserArn }
-export function userArn<Partition extends ArnPartition = 'aws'>(parameters: UserArnParameters<Partition>) {
+export function userArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UserArnParameters<Partition>,
+) {
   return new UserArn<Partition>(parameters)
 }
 
@@ -146,7 +185,10 @@ export interface AclArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly aclName: string
 }
-class AclArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'acl', `arn:${string}:memorydb:${string}:${string}:acl/${string}`> {
+class AclArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'acl',
+  `arn:${string}:memorydb:${string}:${string}:acl/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'acl' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -164,17 +206,26 @@ class AclArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'acl', 
   }
 }
 export type { AclArn }
-export function aclArn<Partition extends ArnPartition = 'aws'>(parameters: AclArnParameters<Partition>) {
+export function aclArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AclArnParameters<Partition>,
+) {
   return new AclArn<Partition>(parameters)
 }
 
-export interface ReservednodeArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ReservednodeArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly reservationId: string
 }
-class ReservednodeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'reservednode', `arn:${string}:memorydb:${string}:${string}:reservednode/${string}`> {
+class ReservednodeArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'reservednode',
+  `arn:${string}:memorydb:${string}:${string}:reservednode/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'reservednode' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -192,6 +243,8 @@ class ReservednodeArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { ReservednodeArn }
-export function reservednodeArn<Partition extends ArnPartition = 'aws'>(parameters: ReservednodeArnParameters<Partition>) {
+export function reservednodeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ReservednodeArnParameters<Partition>,
+) {
   return new ReservednodeArn<Partition>(parameters)
 }

@@ -1,13 +1,26 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface SellerDashboardArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SellerDashboardArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly catalog: string
   readonly factTable: string
   readonly dashboardName: string
 }
-class SellerDashboardArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'SellerDashboard', `arn:${string}:aws-marketplace::${string}:${string}/ReportingData/${string}/Dashboard/${string}`> {
+class SellerDashboardArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'SellerDashboard',
+  `arn:${string}:aws-marketplace::${string}:${string}/ReportingData/${string}/Dashboard/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'SellerDashboard' as const
   readonly partition: Partition
   readonly account: string
@@ -27,11 +40,15 @@ class SellerDashboardArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { SellerDashboardArn }
-export function sellerDashboardArn<Partition extends ArnPartition = 'aws'>(parameters: SellerDashboardArnParameters<Partition>) {
+export function sellerDashboardArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SellerDashboardArnParameters<Partition>,
+) {
   return new SellerDashboardArn<Partition>(parameters)
 }
 
-export interface DeploymentParameterArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeploymentParameterArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -39,7 +56,12 @@ export interface DeploymentParameterArnParameters<Partition extends ArnPartition
   readonly productId: string
   readonly resourceId: string
 }
-class DeploymentParameterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'DeploymentParameter', `arn:${string}:aws-marketplace:${string}:${string}:DeploymentParameter:catalogs/${string}/products/${string}/${string}`> {
+class DeploymentParameterArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'DeploymentParameter',
+  `arn:${string}:aws-marketplace:${string}:${string}:DeploymentParameter:catalogs/${string}/products/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'DeploymentParameter' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -61,7 +83,9 @@ class DeploymentParameterArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { DeploymentParameterArn }
-export function deploymentParameterArn<Partition extends ArnPartition = 'aws'>(parameters: DeploymentParameterArnParameters<Partition>) {
+export function deploymentParameterArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeploymentParameterArnParameters<Partition>,
+) {
   return new DeploymentParameterArn<Partition>(parameters)
 }
 
@@ -73,7 +97,10 @@ export interface EntityArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly entityType: string
   readonly resourceId: string
 }
-class EntityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Entity', `arn:${string}:aws-marketplace:${string}:${string}:${string}/${string}/${string}`> {
+class EntityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Entity',
+  `arn:${string}:aws-marketplace:${string}:${string}:${string}/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Entity' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -95,18 +122,25 @@ class EntityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Ent
   }
 }
 export type { EntityArn }
-export function entityArn<Partition extends ArnPartition = 'aws'>(parameters: EntityArnParameters<Partition>) {
+export function entityArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EntityArnParameters<Partition>,
+) {
   return new EntityArn<Partition>(parameters)
 }
 
-export interface ChangeSetArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ChangeSetArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly catalog: string
   readonly resourceId: string
 }
-class ChangeSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ChangeSet', `arn:${string}:aws-marketplace:${string}:${string}:${string}/ChangeSet/${string}`> {
+class ChangeSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'ChangeSet',
+  `arn:${string}:aws-marketplace:${string}:${string}:${string}/ChangeSet/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ChangeSet' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -126,6 +160,8 @@ class ChangeSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { ChangeSetArn }
-export function changeSetArn<Partition extends ArnPartition = 'aws'>(parameters: ChangeSetArnParameters<Partition>) {
+export function changeSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ChangeSetArnParameters<Partition>,
+) {
   return new ChangeSetArn<Partition>(parameters)
 }

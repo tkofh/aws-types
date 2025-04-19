@@ -1,6 +1,14 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface AppliedSchemaArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AppliedSchemaArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -8,7 +16,12 @@ export interface AppliedSchemaArnParameters<Partition extends ArnPartition = 'aw
   readonly schemaName: string
   readonly version: string
 }
-class AppliedSchemaArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'appliedSchema', `arn:${string}:clouddirectory:${string}:${string}:directory/${string}/schema/${string}/${string}`> {
+class AppliedSchemaArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'appliedSchema',
+  `arn:${string}:clouddirectory:${string}:${string}:directory/${string}/schema/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'appliedSchema' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -30,17 +43,26 @@ class AppliedSchemaArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { AppliedSchemaArn }
-export function appliedSchemaArn<Partition extends ArnPartition = 'aws'>(parameters: AppliedSchemaArnParameters<Partition>) {
+export function appliedSchemaArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppliedSchemaArnParameters<Partition>,
+) {
   return new AppliedSchemaArn<Partition>(parameters)
 }
 
-export interface DevelopmentSchemaArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DevelopmentSchemaArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly schemaName: string
 }
-class DevelopmentSchemaArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'developmentSchema', `arn:${string}:clouddirectory:${string}:${string}:schema/development/${string}`> {
+class DevelopmentSchemaArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'developmentSchema',
+  `arn:${string}:clouddirectory:${string}:${string}:schema/development/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'developmentSchema' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -58,17 +80,24 @@ class DevelopmentSchemaArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { DevelopmentSchemaArn }
-export function developmentSchemaArn<Partition extends ArnPartition = 'aws'>(parameters: DevelopmentSchemaArnParameters<Partition>) {
+export function developmentSchemaArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DevelopmentSchemaArnParameters<Partition>,
+) {
   return new DevelopmentSchemaArn<Partition>(parameters)
 }
 
-export interface DirectoryArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DirectoryArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly directoryId: string
 }
-class DirectoryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'directory', `arn:${string}:clouddirectory:${string}:${string}:directory/${string}`> {
+class DirectoryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'directory',
+  `arn:${string}:clouddirectory:${string}:${string}:directory/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'directory' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,18 +115,27 @@ class DirectoryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { DirectoryArn }
-export function directoryArn<Partition extends ArnPartition = 'aws'>(parameters: DirectoryArnParameters<Partition>) {
+export function directoryArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DirectoryArnParameters<Partition>,
+) {
   return new DirectoryArn<Partition>(parameters)
 }
 
-export interface PublishedSchemaArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface PublishedSchemaArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly schemaName: string
   readonly version: string
 }
-class PublishedSchemaArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'publishedSchema', `arn:${string}:clouddirectory:${string}:${string}:schema/published/${string}/${string}`> {
+class PublishedSchemaArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'publishedSchema',
+  `arn:${string}:clouddirectory:${string}:${string}:schema/published/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'publishedSchema' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -117,6 +155,8 @@ class PublishedSchemaArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { PublishedSchemaArn }
-export function publishedSchemaArn<Partition extends ArnPartition = 'aws'>(parameters: PublishedSchemaArnParameters<Partition>) {
+export function publishedSchemaArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PublishedSchemaArnParameters<Partition>,
+) {
   return new PublishedSchemaArn<Partition>(parameters)
 }

@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface DxconArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface DxconArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly connectionId: string
 }
-class DxconArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dxcon', `arn:${string}:directconnect:${string}:${string}:dxcon/${string}`> {
+class DxconArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'dxcon',
+  `arn:${string}:directconnect:${string}:${string}:dxcon/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'dxcon' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class DxconArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dxco
   }
 }
 export type { DxconArn }
-export function dxconArn<Partition extends ArnPartition = 'aws'>(parameters: DxconArnParameters<Partition>) {
+export function dxconArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DxconArnParameters<Partition>,
+) {
   return new DxconArn<Partition>(parameters)
 }
 
@@ -34,7 +45,10 @@ export interface DxlagArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly lagId: string
 }
-class DxlagArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dxlag', `arn:${string}:directconnect:${string}:${string}:dxlag/${string}`> {
+class DxlagArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'dxlag',
+  `arn:${string}:directconnect:${string}:${string}:dxlag/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'dxlag' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +66,9 @@ class DxlagArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dxla
   }
 }
 export type { DxlagArn }
-export function dxlagArn<Partition extends ArnPartition = 'aws'>(parameters: DxlagArnParameters<Partition>) {
+export function dxlagArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DxlagArnParameters<Partition>,
+) {
   return new DxlagArn<Partition>(parameters)
 }
 
@@ -62,7 +78,10 @@ export interface DxvifArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly virtualInterfaceId: string
 }
-class DxvifArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dxvif', `arn:${string}:directconnect:${string}:${string}:dxvif/${string}`> {
+class DxvifArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'dxvif',
+  `arn:${string}:directconnect:${string}:${string}:dxvif/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'dxvif' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,16 +99,23 @@ class DxvifArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dxvi
   }
 }
 export type { DxvifArn }
-export function dxvifArn<Partition extends ArnPartition = 'aws'>(parameters: DxvifArnParameters<Partition>) {
+export function dxvifArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DxvifArnParameters<Partition>,
+) {
   return new DxvifArn<Partition>(parameters)
 }
 
-export interface DxGatewayArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DxGatewayArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly directConnectGatewayId: string
 }
-class DxGatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dx-gateway', `arn:${string}:directconnect::${string}:dx-gateway/${string}`> {
+class DxGatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'dx-gateway',
+  `arn:${string}:directconnect::${string}:dx-gateway/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'dx-gateway' as const
   readonly partition: Partition
   readonly account: string
@@ -105,6 +131,8 @@ class DxGatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { DxGatewayArn }
-export function dxGatewayArn<Partition extends ArnPartition = 'aws'>(parameters: DxGatewayArnParameters<Partition>) {
+export function dxGatewayArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DxGatewayArnParameters<Partition>,
+) {
   return new DxGatewayArn<Partition>(parameters)
 }

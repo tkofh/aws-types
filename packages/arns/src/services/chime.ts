@@ -1,11 +1,20 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface MeetingArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly accountId: string
   readonly meetingId: string
 }
-class MeetingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'meeting', `arn:${string}:chime::${string}:meeting/${string}`> {
+class MeetingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'meeting',
+  `arn:${string}:chime::${string}:meeting/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'meeting' as const
   readonly partition: Partition
   readonly accountId: string
@@ -21,17 +30,26 @@ class MeetingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'me
   }
 }
 export type { MeetingArn }
-export function meetingArn<Partition extends ArnPartition = 'aws'>(parameters: MeetingArnParameters<Partition>) {
+export function meetingArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MeetingArnParameters<Partition>,
+) {
   return new MeetingArn<Partition>(parameters)
 }
 
-export interface AppInstanceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AppInstanceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly accountId: string
   readonly appInstanceId: string
 }
-class AppInstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'app-instance', `arn:${string}:chime:${string}:${string}:app-instance/${string}`> {
+class AppInstanceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'app-instance',
+  `arn:${string}:chime:${string}:${string}:app-instance/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'app-instance' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -49,18 +67,27 @@ class AppInstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { AppInstanceArn }
-export function appInstanceArn<Partition extends ArnPartition = 'aws'>(parameters: AppInstanceArnParameters<Partition>) {
+export function appInstanceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppInstanceArnParameters<Partition>,
+) {
   return new AppInstanceArn<Partition>(parameters)
 }
 
-export interface AppInstanceUserArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AppInstanceUserArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly accountId: string
   readonly appInstanceId: string
   readonly appInstanceUserId: string
 }
-class AppInstanceUserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'app-instance-user', `arn:${string}:chime:${string}:${string}:app-instance/${string}/user/${string}`> {
+class AppInstanceUserArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'app-instance-user',
+  `arn:${string}:chime:${string}:${string}:app-instance/${string}/user/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'app-instance-user' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,18 +107,27 @@ class AppInstanceUserArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { AppInstanceUserArn }
-export function appInstanceUserArn<Partition extends ArnPartition = 'aws'>(parameters: AppInstanceUserArnParameters<Partition>) {
+export function appInstanceUserArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppInstanceUserArnParameters<Partition>,
+) {
   return new AppInstanceUserArn<Partition>(parameters)
 }
 
-export interface AppInstanceBotArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AppInstanceBotArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly accountId: string
   readonly appInstanceId: string
   readonly appInstanceBotId: string
 }
-class AppInstanceBotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'app-instance-bot', `arn:${string}:chime:${string}:${string}:app-instance/${string}/bot/${string}`> {
+class AppInstanceBotArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'app-instance-bot',
+  `arn:${string}:chime:${string}:${string}:app-instance/${string}/bot/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'app-instance-bot' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -111,7 +147,9 @@ class AppInstanceBotArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { AppInstanceBotArn }
-export function appInstanceBotArn<Partition extends ArnPartition = 'aws'>(parameters: AppInstanceBotArnParameters<Partition>) {
+export function appInstanceBotArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppInstanceBotArnParameters<Partition>,
+) {
   return new AppInstanceBotArn<Partition>(parameters)
 }
 
@@ -122,7 +160,10 @@ export interface ChannelArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly appInstanceId: string
   readonly channelId: string
 }
-class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'channel', `arn:${string}:chime:${string}:${string}:app-instance/${string}/channel/${string}`> {
+class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'channel',
+  `arn:${string}:chime:${string}:${string}:app-instance/${string}/channel/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'channel' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -142,18 +183,27 @@ class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ch
   }
 }
 export type { ChannelArn }
-export function channelArn<Partition extends ArnPartition = 'aws'>(parameters: ChannelArnParameters<Partition>) {
+export function channelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ChannelArnParameters<Partition>,
+) {
   return new ChannelArn<Partition>(parameters)
 }
 
-export interface ChannelFlowArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ChannelFlowArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly accountId: string
   readonly appInstanceId: string
   readonly channelFlowId: string
 }
-class ChannelFlowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'channel-flow', `arn:${string}:chime:${string}:${string}:app-instance/${string}/channel-flow/${string}`> {
+class ChannelFlowArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'channel-flow',
+  `arn:${string}:chime:${string}:${string}:app-instance/${string}/channel-flow/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'channel-flow' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -173,17 +223,26 @@ class ChannelFlowArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ChannelFlowArn }
-export function channelFlowArn<Partition extends ArnPartition = 'aws'>(parameters: ChannelFlowArnParameters<Partition>) {
+export function channelFlowArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ChannelFlowArnParameters<Partition>,
+) {
   return new ChannelFlowArn<Partition>(parameters)
 }
 
-export interface MediaPipelineArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MediaPipelineArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly accountId: string
   readonly mediaPipelineId: string
 }
-class MediaPipelineArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'media-pipeline', `arn:${string}:chime:${string}:${string}:media-pipeline/${string}`> {
+class MediaPipelineArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'media-pipeline',
+  `arn:${string}:chime:${string}:${string}:media-pipeline/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'media-pipeline' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -201,23 +260,35 @@ class MediaPipelineArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { MediaPipelineArn }
-export function mediaPipelineArn<Partition extends ArnPartition = 'aws'>(parameters: MediaPipelineArnParameters<Partition>) {
+export function mediaPipelineArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MediaPipelineArnParameters<Partition>,
+) {
   return new MediaPipelineArn<Partition>(parameters)
 }
 
-export interface MediaInsightsPipelineConfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MediaInsightsPipelineConfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly accountId: string
   readonly configurationName: string
 }
-class MediaInsightsPipelineConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'media-insights-pipeline-configuration', `arn:${string}:chime:${string}:${string}:media-insights-pipeline-configuration/${string}`> {
-  readonly [ArnResourceTypeBrand] = 'media-insights-pipeline-configuration' as const
+class MediaInsightsPipelineConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'media-insights-pipeline-configuration',
+  `arn:${string}:chime:${string}:${string}:media-insights-pipeline-configuration/${string}`
+> {
+  readonly [ArnResourceTypeBrand] =
+    'media-insights-pipeline-configuration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
   readonly accountId: string
   readonly configurationName: string
-  constructor(parameters: MediaInsightsPipelineConfigurationArnParameters<Partition>) {
+  constructor(
+    parameters: MediaInsightsPipelineConfigurationArnParameters<Partition>,
+  ) {
     super()
     this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
@@ -229,23 +300,35 @@ class MediaInsightsPipelineConfigurationArn<Partition extends ArnPartition = 'aw
   }
 }
 export type { MediaInsightsPipelineConfigurationArn }
-export function mediaInsightsPipelineConfigurationArn<Partition extends ArnPartition = 'aws'>(parameters: MediaInsightsPipelineConfigurationArnParameters<Partition>) {
+export function mediaInsightsPipelineConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: MediaInsightsPipelineConfigurationArnParameters<Partition>) {
   return new MediaInsightsPipelineConfigurationArn<Partition>(parameters)
 }
 
-export interface MediaPipelineKinesisVideoStreamPoolArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MediaPipelineKinesisVideoStreamPoolArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly accountId: string
   readonly poolName: string
 }
-class MediaPipelineKinesisVideoStreamPoolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'media-pipeline-kinesis-video-stream-pool', `arn:${string}:chime:${string}:${string}:media-pipeline-kinesis-video-stream-pool/${string}`> {
-  readonly [ArnResourceTypeBrand] = 'media-pipeline-kinesis-video-stream-pool' as const
+class MediaPipelineKinesisVideoStreamPoolArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'media-pipeline-kinesis-video-stream-pool',
+  `arn:${string}:chime:${string}:${string}:media-pipeline-kinesis-video-stream-pool/${string}`
+> {
+  readonly [ArnResourceTypeBrand] =
+    'media-pipeline-kinesis-video-stream-pool' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
   readonly accountId: string
   readonly poolName: string
-  constructor(parameters: MediaPipelineKinesisVideoStreamPoolArnParameters<Partition>) {
+  constructor(
+    parameters: MediaPipelineKinesisVideoStreamPoolArnParameters<Partition>,
+  ) {
     super()
     this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
@@ -257,17 +340,26 @@ class MediaPipelineKinesisVideoStreamPoolArn<Partition extends ArnPartition = 'a
   }
 }
 export type { MediaPipelineKinesisVideoStreamPoolArn }
-export function mediaPipelineKinesisVideoStreamPoolArn<Partition extends ArnPartition = 'aws'>(parameters: MediaPipelineKinesisVideoStreamPoolArnParameters<Partition>) {
+export function mediaPipelineKinesisVideoStreamPoolArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: MediaPipelineKinesisVideoStreamPoolArnParameters<Partition>) {
   return new MediaPipelineKinesisVideoStreamPoolArn<Partition>(parameters)
 }
 
-export interface VoiceProfileDomainArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface VoiceProfileDomainArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly accountId: string
   readonly voiceProfileDomainId: string
 }
-class VoiceProfileDomainArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'voice-profile-domain', `arn:${string}:chime:${string}:${string}:voice-profile-domain/${string}`> {
+class VoiceProfileDomainArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'voice-profile-domain',
+  `arn:${string}:chime:${string}:${string}:voice-profile-domain/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'voice-profile-domain' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -285,17 +377,26 @@ class VoiceProfileDomainArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { VoiceProfileDomainArn }
-export function voiceProfileDomainArn<Partition extends ArnPartition = 'aws'>(parameters: VoiceProfileDomainArnParameters<Partition>) {
+export function voiceProfileDomainArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VoiceProfileDomainArnParameters<Partition>,
+) {
   return new VoiceProfileDomainArn<Partition>(parameters)
 }
 
-export interface VoiceProfileArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface VoiceProfileArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly accountId: string
   readonly voiceProfileId: string
 }
-class VoiceProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'voice-profile', `arn:${string}:chime:${string}:${string}:voice-profile/${string}`> {
+class VoiceProfileArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'voice-profile',
+  `arn:${string}:chime:${string}:${string}:voice-profile/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'voice-profile' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -313,17 +414,26 @@ class VoiceProfileArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { VoiceProfileArn }
-export function voiceProfileArn<Partition extends ArnPartition = 'aws'>(parameters: VoiceProfileArnParameters<Partition>) {
+export function voiceProfileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VoiceProfileArnParameters<Partition>,
+) {
   return new VoiceProfileArn<Partition>(parameters)
 }
 
-export interface VoiceConnectorArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface VoiceConnectorArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly accountId: string
   readonly voiceConnectorId: string
 }
-class VoiceConnectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'voice-connector', `arn:${string}:chime:${string}:${string}:vc/${string}`> {
+class VoiceConnectorArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'voice-connector',
+  `arn:${string}:chime:${string}:${string}:vc/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'voice-connector' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -341,17 +451,26 @@ class VoiceConnectorArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { VoiceConnectorArn }
-export function voiceConnectorArn<Partition extends ArnPartition = 'aws'>(parameters: VoiceConnectorArnParameters<Partition>) {
+export function voiceConnectorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VoiceConnectorArnParameters<Partition>,
+) {
   return new VoiceConnectorArn<Partition>(parameters)
 }
 
-export interface SipMediaApplicationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SipMediaApplicationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly accountId: string
   readonly sipMediaApplicationId: string
 }
-class SipMediaApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'sip-media-application', `arn:${string}:chime:${string}:${string}:sma/${string}`> {
+class SipMediaApplicationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'sip-media-application',
+  `arn:${string}:chime:${string}:${string}:sma/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'sip-media-application' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -369,6 +488,8 @@ class SipMediaApplicationArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { SipMediaApplicationArn }
-export function sipMediaApplicationArn<Partition extends ArnPartition = 'aws'>(parameters: SipMediaApplicationArnParameters<Partition>) {
+export function sipMediaApplicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SipMediaApplicationArnParameters<Partition>,
+) {
   return new SipMediaApplicationArn<Partition>(parameters)
 }

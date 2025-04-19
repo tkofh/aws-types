@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface BucketArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface BucketArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly bucketName: string
 }
-class BucketArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'bucket', `arn:${string}:s3express:${string}:${string}:bucket/${string}`> {
+class BucketArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'bucket',
+  `arn:${string}:s3express:${string}:${string}:bucket/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'bucket' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +33,8 @@ class BucketArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'buc
   }
 }
 export type { BucketArn }
-export function bucketArn<Partition extends ArnPartition = 'aws'>(parameters: BucketArnParameters<Partition>) {
+export function bucketArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BucketArnParameters<Partition>,
+) {
   return new BucketArn<Partition>(parameters)
 }

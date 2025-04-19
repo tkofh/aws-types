@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface BackupArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface BackupArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly cloudHsmBackupInstanceName: string
 }
-class BackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'backup', `arn:${string}:cloudhsm:${string}:${string}:backup/${string}`> {
+class BackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'backup',
+  `arn:${string}:cloudhsm:${string}:${string}:backup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'backup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class BackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'bac
   }
 }
 export type { BackupArn }
-export function backupArn<Partition extends ArnPartition = 'aws'>(parameters: BackupArnParameters<Partition>) {
+export function backupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BackupArnParameters<Partition>,
+) {
   return new BackupArn<Partition>(parameters)
 }
 
@@ -34,7 +45,10 @@ export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly cloudHsmClusterInstanceName: string
 }
-class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cluster', `arn:${string}:cloudhsm:${string}:${string}:cluster/${string}`> {
+class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'cluster',
+  `arn:${string}:cloudhsm:${string}:${string}:cluster/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'cluster' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,6 +66,8 @@ class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cl
   }
 }
 export type { ClusterArn }
-export function clusterArn<Partition extends ArnPartition = 'aws'>(parameters: ClusterArnParameters<Partition>) {
+export function clusterArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ClusterArnParameters<Partition>,
+) {
   return new ClusterArn<Partition>(parameters)
 }

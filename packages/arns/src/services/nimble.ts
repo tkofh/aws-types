@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface StudioArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface StudioArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly studioId: string
 }
-class StudioArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'studio', `arn:${string}:nimble:${string}:${string}:studio/${string}`> {
+class StudioArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'studio',
+  `arn:${string}:nimble:${string}:${string}:studio/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'studio' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +33,26 @@ class StudioArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stu
   }
 }
 export type { StudioArn }
-export function studioArn<Partition extends ArnPartition = 'aws'>(parameters: StudioArnParameters<Partition>) {
+export function studioArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StudioArnParameters<Partition>,
+) {
   return new StudioArn<Partition>(parameters)
 }
 
-export interface StreamingImageArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface StreamingImageArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly streamingImageId: string
 }
-class StreamingImageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'streaming-image', `arn:${string}:nimble:${string}:${string}:streaming-image/${string}`> {
+class StreamingImageArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'streaming-image',
+  `arn:${string}:nimble:${string}:${string}:streaming-image/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'streaming-image' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +70,26 @@ class StreamingImageArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { StreamingImageArn }
-export function streamingImageArn<Partition extends ArnPartition = 'aws'>(parameters: StreamingImageArnParameters<Partition>) {
+export function streamingImageArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StreamingImageArnParameters<Partition>,
+) {
   return new StreamingImageArn<Partition>(parameters)
 }
 
-export interface StudioComponentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface StudioComponentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly studioComponentId: string
 }
-class StudioComponentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'studio-component', `arn:${string}:nimble:${string}:${string}:studio-component/${string}`> {
+class StudioComponentArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'studio-component',
+  `arn:${string}:nimble:${string}:${string}:studio-component/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'studio-component' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,17 +107,26 @@ class StudioComponentArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { StudioComponentArn }
-export function studioComponentArn<Partition extends ArnPartition = 'aws'>(parameters: StudioComponentArnParameters<Partition>) {
+export function studioComponentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StudioComponentArnParameters<Partition>,
+) {
   return new StudioComponentArn<Partition>(parameters)
 }
 
-export interface LaunchProfileArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface LaunchProfileArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly launchProfileId: string
 }
-class LaunchProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'launch-profile', `arn:${string}:nimble:${string}:${string}:launch-profile/${string}`> {
+class LaunchProfileArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'launch-profile',
+  `arn:${string}:nimble:${string}:${string}:launch-profile/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'launch-profile' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,17 +144,26 @@ class LaunchProfileArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { LaunchProfileArn }
-export function launchProfileArn<Partition extends ArnPartition = 'aws'>(parameters: LaunchProfileArnParameters<Partition>) {
+export function launchProfileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LaunchProfileArnParameters<Partition>,
+) {
   return new LaunchProfileArn<Partition>(parameters)
 }
 
-export interface StreamingSessionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface StreamingSessionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly streamingSessionId: string
 }
-class StreamingSessionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'streaming-session', `arn:${string}:nimble:${string}:${string}:streaming-session/${string}`> {
+class StreamingSessionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'streaming-session',
+  `arn:${string}:nimble:${string}:${string}:streaming-session/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'streaming-session' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -136,17 +181,26 @@ class StreamingSessionArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { StreamingSessionArn }
-export function streamingSessionArn<Partition extends ArnPartition = 'aws'>(parameters: StreamingSessionArnParameters<Partition>) {
+export function streamingSessionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StreamingSessionArnParameters<Partition>,
+) {
   return new StreamingSessionArn<Partition>(parameters)
 }
 
-export interface StreamingSessionBackupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface StreamingSessionBackupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly streamingSessionBackupId: string
 }
-class StreamingSessionBackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'streaming-session-backup', `arn:${string}:nimble:${string}:${string}:streaming-session-backup/${string}`> {
+class StreamingSessionBackupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'streaming-session-backup',
+  `arn:${string}:nimble:${string}:${string}:streaming-session-backup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'streaming-session-backup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -164,7 +218,9 @@ class StreamingSessionBackupArn<Partition extends ArnPartition = 'aws'> extends 
   }
 }
 export type { StreamingSessionBackupArn }
-export function streamingSessionBackupArn<Partition extends ArnPartition = 'aws'>(parameters: StreamingSessionBackupArnParameters<Partition>) {
+export function streamingSessionBackupArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: StreamingSessionBackupArnParameters<Partition>) {
   return new StreamingSessionBackupArn<Partition>(parameters)
 }
 
@@ -174,7 +230,10 @@ export interface EulaArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly eulaId: string
 }
-class EulaArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'eula', `arn:${string}:nimble:${string}:${string}:eula/${string}`> {
+class EulaArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'eula',
+  `arn:${string}:nimble:${string}:${string}:eula/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'eula' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -192,17 +251,26 @@ class EulaArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'eula'
   }
 }
 export type { EulaArn }
-export function eulaArn<Partition extends ArnPartition = 'aws'>(parameters: EulaArnParameters<Partition>) {
+export function eulaArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EulaArnParameters<Partition>,
+) {
   return new EulaArn<Partition>(parameters)
 }
 
-export interface EulaAcceptanceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface EulaAcceptanceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly eulaAcceptanceId: string
 }
-class EulaAcceptanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'eula-acceptance', `arn:${string}:nimble:${string}:${string}:eula-acceptance/${string}`> {
+class EulaAcceptanceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'eula-acceptance',
+  `arn:${string}:nimble:${string}:${string}:eula-acceptance/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'eula-acceptance' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -220,6 +288,8 @@ class EulaAcceptanceArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { EulaAcceptanceArn }
-export function eulaAcceptanceArn<Partition extends ArnPartition = 'aws'>(parameters: EulaAcceptanceArnParameters<Partition>) {
+export function eulaAcceptanceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EulaAcceptanceArnParameters<Partition>,
+) {
   return new EulaAcceptanceArn<Partition>(parameters)
 }

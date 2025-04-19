@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface MatchingWorkflowArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface MatchingWorkflowArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly workflowName: string
 }
-class MatchingWorkflowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'MatchingWorkflow', `arn:${string}:entityresolution:${string}:${string}:matchingworkflow/${string}`> {
+class MatchingWorkflowArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'MatchingWorkflow',
+  `arn:${string}:entityresolution:${string}:${string}:matchingworkflow/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'MatchingWorkflow' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +37,26 @@ class MatchingWorkflowArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { MatchingWorkflowArn }
-export function matchingWorkflowArn<Partition extends ArnPartition = 'aws'>(parameters: MatchingWorkflowArnParameters<Partition>) {
+export function matchingWorkflowArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MatchingWorkflowArnParameters<Partition>,
+) {
   return new MatchingWorkflowArn<Partition>(parameters)
 }
 
-export interface SchemaMappingArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SchemaMappingArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly schemaName: string
 }
-class SchemaMappingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'SchemaMapping', `arn:${string}:entityresolution:${string}:${string}:schemamapping/${string}`> {
+class SchemaMappingArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'SchemaMapping',
+  `arn:${string}:entityresolution:${string}:${string}:schemamapping/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'SchemaMapping' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +74,26 @@ class SchemaMappingArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { SchemaMappingArn }
-export function schemaMappingArn<Partition extends ArnPartition = 'aws'>(parameters: SchemaMappingArnParameters<Partition>) {
+export function schemaMappingArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SchemaMappingArnParameters<Partition>,
+) {
   return new SchemaMappingArn<Partition>(parameters)
 }
 
-export interface IdMappingWorkflowArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface IdMappingWorkflowArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly workflowName: string
 }
-class IdMappingWorkflowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'IdMappingWorkflow', `arn:${string}:entityresolution:${string}:${string}:idmappingworkflow/${string}`> {
+class IdMappingWorkflowArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'IdMappingWorkflow',
+  `arn:${string}:entityresolution:${string}:${string}:idmappingworkflow/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'IdMappingWorkflow' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,18 +111,27 @@ class IdMappingWorkflowArn<Partition extends ArnPartition = 'aws'> extends Inter
   }
 }
 export type { IdMappingWorkflowArn }
-export function idMappingWorkflowArn<Partition extends ArnPartition = 'aws'>(parameters: IdMappingWorkflowArnParameters<Partition>) {
+export function idMappingWorkflowArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IdMappingWorkflowArnParameters<Partition>,
+) {
   return new IdMappingWorkflowArn<Partition>(parameters)
 }
 
-export interface ProviderServiceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ProviderServiceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly providerName: string
   readonly providerServiceName: string
 }
-class ProviderServiceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ProviderService', `arn:${string}:entityresolution:${string}:${string}:providerservice/${string}/${string}`> {
+class ProviderServiceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'ProviderService',
+  `arn:${string}:entityresolution:${string}:${string}:providerservice/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'ProviderService' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -111,17 +151,26 @@ class ProviderServiceArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { ProviderServiceArn }
-export function providerServiceArn<Partition extends ArnPartition = 'aws'>(parameters: ProviderServiceArnParameters<Partition>) {
+export function providerServiceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProviderServiceArnParameters<Partition>,
+) {
   return new ProviderServiceArn<Partition>(parameters)
 }
 
-export interface IdNamespaceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface IdNamespaceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly idNamespaceName: string
 }
-class IdNamespaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'IdNamespace', `arn:${string}:entityresolution:${string}:${string}:idnamespace/${string}`> {
+class IdNamespaceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'IdNamespace',
+  `arn:${string}:entityresolution:${string}:${string}:idnamespace/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'IdNamespace' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -139,6 +188,8 @@ class IdNamespaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { IdNamespaceArn }
-export function idNamespaceArn<Partition extends ArnPartition = 'aws'>(parameters: IdNamespaceArnParameters<Partition>) {
+export function idNamespaceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IdNamespaceArnParameters<Partition>,
+) {
   return new IdNamespaceArn<Partition>(parameters)
 }

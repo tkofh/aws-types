@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface ProfileArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface ProfileArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'profile', `arn:${string}:a4b:${string}:${string}:profile/${string}`> {
+class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'profile',
+  `arn:${string}:a4b:${string}:${string}:profile/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'profile' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pr
   }
 }
 export type { ProfileArn }
-export function profileArn<Partition extends ArnPartition = 'aws'>(parameters: ProfileArnParameters<Partition>) {
+export function profileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProfileArnParameters<Partition>,
+) {
   return new ProfileArn<Partition>(parameters)
 }
 
@@ -34,7 +45,10 @@ export interface RoomArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class RoomArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'room', `arn:${string}:a4b:${string}:${string}:room/${string}`> {
+class RoomArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'room',
+  `arn:${string}:a4b:${string}:${string}:room/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'room' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +66,9 @@ class RoomArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'room'
   }
 }
 export type { RoomArn }
-export function roomArn<Partition extends ArnPartition = 'aws'>(parameters: RoomArnParameters<Partition>) {
+export function roomArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RoomArnParameters<Partition>,
+) {
   return new RoomArn<Partition>(parameters)
 }
 
@@ -62,7 +78,10 @@ export interface DeviceArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'device', `arn:${string}:a4b:${string}:${string}:device/${string}`> {
+class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'device',
+  `arn:${string}:a4b:${string}:${string}:device/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'device' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,17 +99,24 @@ class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dev
   }
 }
 export type { DeviceArn }
-export function deviceArn<Partition extends ArnPartition = 'aws'>(parameters: DeviceArnParameters<Partition>) {
+export function deviceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeviceArnParameters<Partition>,
+) {
   return new DeviceArn<Partition>(parameters)
 }
 
-export interface SkillgroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SkillgroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class SkillgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'skillgroup', `arn:${string}:a4b:${string}:${string}:skill-group/${string}`> {
+class SkillgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'skillgroup',
+  `arn:${string}:a4b:${string}:${string}:skill-group/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'skillgroup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,7 +134,9 @@ class SkillgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { SkillgroupArn }
-export function skillgroupArn<Partition extends ArnPartition = 'aws'>(parameters: SkillgroupArnParameters<Partition>) {
+export function skillgroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SkillgroupArnParameters<Partition>,
+) {
   return new SkillgroupArn<Partition>(parameters)
 }
 
@@ -118,7 +146,10 @@ export interface UserArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'user', `arn:${string}:a4b:${string}:${string}:user/${string}`> {
+class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'user',
+  `arn:${string}:a4b:${string}:${string}:user/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'user' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -136,17 +167,26 @@ class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'user'
   }
 }
 export type { UserArn }
-export function userArn<Partition extends ArnPartition = 'aws'>(parameters: UserArnParameters<Partition>) {
+export function userArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UserArnParameters<Partition>,
+) {
   return new UserArn<Partition>(parameters)
 }
 
-export interface AddressbookArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AddressbookArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class AddressbookArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'addressbook', `arn:${string}:a4b:${string}:${string}:address-book/${string}`> {
+class AddressbookArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'addressbook',
+  `arn:${string}:a4b:${string}:${string}:address-book/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'addressbook' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -164,17 +204,26 @@ class AddressbookArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { AddressbookArn }
-export function addressbookArn<Partition extends ArnPartition = 'aws'>(parameters: AddressbookArnParameters<Partition>) {
+export function addressbookArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AddressbookArnParameters<Partition>,
+) {
   return new AddressbookArn<Partition>(parameters)
 }
 
-export interface ConferenceproviderArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConferenceproviderArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class ConferenceproviderArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'conferenceprovider', `arn:${string}:a4b:${string}:${string}:conference-provider/${string}`> {
+class ConferenceproviderArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'conferenceprovider',
+  `arn:${string}:a4b:${string}:${string}:conference-provider/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'conferenceprovider' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -192,7 +241,9 @@ class ConferenceproviderArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { ConferenceproviderArn }
-export function conferenceproviderArn<Partition extends ArnPartition = 'aws'>(parameters: ConferenceproviderArnParameters<Partition>) {
+export function conferenceproviderArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConferenceproviderArnParameters<Partition>,
+) {
   return new ConferenceproviderArn<Partition>(parameters)
 }
 
@@ -202,7 +253,10 @@ export interface ContactArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class ContactArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'contact', `arn:${string}:a4b:${string}:${string}:contact/${string}`> {
+class ContactArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'contact',
+  `arn:${string}:a4b:${string}:${string}:contact/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'contact' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -220,7 +274,9 @@ class ContactArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'co
   }
 }
 export type { ContactArn }
-export function contactArn<Partition extends ArnPartition = 'aws'>(parameters: ContactArnParameters<Partition>) {
+export function contactArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ContactArnParameters<Partition>,
+) {
   return new ContactArn<Partition>(parameters)
 }
 
@@ -230,7 +286,10 @@ export interface ScheduleArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class ScheduleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'schedule', `arn:${string}:a4b:${string}:${string}:schedule/${string}`> {
+class ScheduleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'schedule',
+  `arn:${string}:a4b:${string}:${string}:schedule/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'schedule' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -248,17 +307,26 @@ class ScheduleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'s
   }
 }
 export type { ScheduleArn }
-export function scheduleArn<Partition extends ArnPartition = 'aws'>(parameters: ScheduleArnParameters<Partition>) {
+export function scheduleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ScheduleArnParameters<Partition>,
+) {
   return new ScheduleArn<Partition>(parameters)
 }
 
-export interface NetworkprofileArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface NetworkprofileArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class NetworkprofileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'networkprofile', `arn:${string}:a4b:${string}:${string}:network-profile/${string}`> {
+class NetworkprofileArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'networkprofile',
+  `arn:${string}:a4b:${string}:${string}:network-profile/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'networkprofile' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -276,7 +344,9 @@ class NetworkprofileArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { NetworkprofileArn }
-export function networkprofileArn<Partition extends ArnPartition = 'aws'>(parameters: NetworkprofileArnParameters<Partition>) {
+export function networkprofileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NetworkprofileArnParameters<Partition>,
+) {
   return new NetworkprofileArn<Partition>(parameters)
 }
 
@@ -286,7 +356,10 @@ export interface GatewayArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly resourceId: string
 }
-class GatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'gateway', `arn:${string}:a4b:${string}:${string}:gateway/${string}`> {
+class GatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'gateway',
+  `arn:${string}:a4b:${string}:${string}:gateway/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'gateway' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -304,17 +377,26 @@ class GatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ga
   }
 }
 export type { GatewayArn }
-export function gatewayArn<Partition extends ArnPartition = 'aws'>(parameters: GatewayArnParameters<Partition>) {
+export function gatewayArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GatewayArnParameters<Partition>,
+) {
   return new GatewayArn<Partition>(parameters)
 }
 
-export interface GatewaygroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface GatewaygroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceId: string
 }
-class GatewaygroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'gatewaygroup', `arn:${string}:a4b:${string}:${string}:gateway-group/${string}`> {
+class GatewaygroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'gatewaygroup',
+  `arn:${string}:a4b:${string}:${string}:gateway-group/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'gatewaygroup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -332,6 +414,8 @@ class GatewaygroupArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { GatewaygroupArn }
-export function gatewaygroupArn<Partition extends ArnPartition = 'aws'>(parameters: GatewaygroupArnParameters<Partition>) {
+export function gatewaygroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GatewaygroupArnParameters<Partition>,
+) {
   return new GatewaygroupArn<Partition>(parameters)
 }

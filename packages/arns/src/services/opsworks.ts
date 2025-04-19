@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface StackArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface StackArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly stackId: string
 }
-class StackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stack', `arn:${string}:opsworks:${string}:${string}:stack/${string}/`> {
+class StackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'stack',
+  `arn:${string}:opsworks:${string}:${string}:stack/${string}/`
+> {
   readonly [ArnResourceTypeBrand] = 'stack' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +33,8 @@ class StackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stac
   }
 }
 export type { StackArn }
-export function stackArn<Partition extends ArnPartition = 'aws'>(parameters: StackArnParameters<Partition>) {
+export function stackArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StackArnParameters<Partition>,
+) {
   return new StackArn<Partition>(parameters)
 }

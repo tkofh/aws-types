@@ -1,11 +1,22 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface AgreementArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AgreementArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly agreement: string
   readonly agreementId: string
 }
-class AgreementArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'agreement', `arn:${string}:mapcredits:::${string}/${string}`> {
+class AgreementArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'agreement',
+  `arn:${string}:mapcredits:::${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'agreement' as const
   readonly partition: Partition
   readonly agreement: string
@@ -21,6 +32,8 @@ class AgreementArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { AgreementArn }
-export function agreementArn<Partition extends ArnPartition = 'aws'>(parameters: AgreementArnParameters<Partition>) {
+export function agreementArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AgreementArnParameters<Partition>,
+) {
   return new AgreementArn<Partition>(parameters)
 }

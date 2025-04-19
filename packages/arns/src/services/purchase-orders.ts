@@ -1,11 +1,24 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface PurchaseOrderArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface PurchaseOrderArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly resourceName: string
 }
-class PurchaseOrderArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'purchase-order', `arn:${string}:purchase-orders::${string}:purchase-order/${string}`> {
+class PurchaseOrderArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'purchase-order',
+  `arn:${string}:purchase-orders::${string}:purchase-order/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'purchase-order' as const
   readonly partition: Partition
   readonly account: string
@@ -21,6 +34,8 @@ class PurchaseOrderArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { PurchaseOrderArn }
-export function purchaseOrderArn<Partition extends ArnPartition = 'aws'>(parameters: PurchaseOrderArnParameters<Partition>) {
+export function purchaseOrderArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PurchaseOrderArnParameters<Partition>,
+) {
   return new PurchaseOrderArn<Partition>(parameters)
 }

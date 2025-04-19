@@ -1,2 +1,1 @@
-export type RdsDbPrivilege =
-  | 'connect'
+export type RdsDbPrivilege = 'connect'

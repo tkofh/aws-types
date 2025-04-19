@@ -1,11 +1,20 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface GatewayArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly gatewayId: string
 }
-class GatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'gateway', `arn:${string}:backup-gateway::${string}:gateway/${string}`> {
+class GatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'gateway',
+  `arn:${string}:backup-gateway::${string}:gateway/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'gateway' as const
   readonly partition: Partition
   readonly account: string
@@ -21,16 +30,23 @@ class GatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ga
   }
 }
 export type { GatewayArn }
-export function gatewayArn<Partition extends ArnPartition = 'aws'>(parameters: GatewayArnParameters<Partition>) {
+export function gatewayArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GatewayArnParameters<Partition>,
+) {
   return new GatewayArn<Partition>(parameters)
 }
 
-export interface HypervisorArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface HypervisorArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly hypervisorId: string
 }
-class HypervisorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'hypervisor', `arn:${string}:backup-gateway::${string}:hypervisor/${string}`> {
+class HypervisorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'hypervisor',
+  `arn:${string}:backup-gateway::${string}:hypervisor/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'hypervisor' as const
   readonly partition: Partition
   readonly account: string
@@ -46,16 +62,25 @@ class HypervisorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { HypervisorArn }
-export function hypervisorArn<Partition extends ArnPartition = 'aws'>(parameters: HypervisorArnParameters<Partition>) {
+export function hypervisorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: HypervisorArnParameters<Partition>,
+) {
   return new HypervisorArn<Partition>(parameters)
 }
 
-export interface VirtualmachineArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface VirtualmachineArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly virtualmachineId: string
 }
-class VirtualmachineArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'virtualmachine', `arn:${string}:backup-gateway::${string}:vm/${string}`> {
+class VirtualmachineArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'virtualmachine',
+  `arn:${string}:backup-gateway::${string}:vm/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'virtualmachine' as const
   readonly partition: Partition
   readonly account: string
@@ -71,6 +96,8 @@ class VirtualmachineArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { VirtualmachineArn }
-export function virtualmachineArn<Partition extends ArnPartition = 'aws'>(parameters: VirtualmachineArnParameters<Partition>) {
+export function virtualmachineArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VirtualmachineArnParameters<Partition>,
+) {
   return new VirtualmachineArn<Partition>(parameters)
 }

@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface AssetsArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface AssetsArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly assetIdentifier: string
 }
-class AssetsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'assets', `arn:${string}:mediapackage-vod:${string}:${string}:assets/${string}`> {
+class AssetsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'assets',
+  `arn:${string}:mediapackage-vod:${string}:${string}:assets/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'assets' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +33,26 @@ class AssetsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ass
   }
 }
 export type { AssetsArn }
-export function assetsArn<Partition extends ArnPartition = 'aws'>(parameters: AssetsArnParameters<Partition>) {
+export function assetsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AssetsArnParameters<Partition>,
+) {
   return new AssetsArn<Partition>(parameters)
 }
 
-export interface PackagingConfigurationsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface PackagingConfigurationsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly packagingConfigurationIdentifier: string
 }
-class PackagingConfigurationsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'packaging-configurations', `arn:${string}:mediapackage-vod:${string}:${string}:packaging-configurations/${string}`> {
+class PackagingConfigurationsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'packaging-configurations',
+  `arn:${string}:mediapackage-vod:${string}:${string}:packaging-configurations/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'packaging-configurations' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -45,24 +63,34 @@ class PackagingConfigurationsArn<Partition extends ArnPartition = 'aws'> extends
     this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.packagingConfigurationIdentifier = parameters.packagingConfigurationIdentifier
+    this.packagingConfigurationIdentifier =
+      parameters.packagingConfigurationIdentifier
   }
   [StringifyArnBrand]() {
     return `arn:${this.partition}:mediapackage-vod:${this.region}:${this.account}:packaging-configurations/${this.packagingConfigurationIdentifier}` as const
   }
 }
 export type { PackagingConfigurationsArn }
-export function packagingConfigurationsArn<Partition extends ArnPartition = 'aws'>(parameters: PackagingConfigurationsArnParameters<Partition>) {
+export function packagingConfigurationsArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: PackagingConfigurationsArnParameters<Partition>) {
   return new PackagingConfigurationsArn<Partition>(parameters)
 }
 
-export interface PackagingGroupsArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface PackagingGroupsArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly packagingGroupIdentifier: string
 }
-class PackagingGroupsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'packaging-groups', `arn:${string}:mediapackage-vod:${string}:${string}:packaging-groups/${string}`> {
+class PackagingGroupsArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'packaging-groups',
+  `arn:${string}:mediapackage-vod:${string}:${string}:packaging-groups/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'packaging-groups' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,6 +108,8 @@ class PackagingGroupsArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { PackagingGroupsArn }
-export function packagingGroupsArn<Partition extends ArnPartition = 'aws'>(parameters: PackagingGroupsArnParameters<Partition>) {
+export function packagingGroupsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PackagingGroupsArnParameters<Partition>,
+) {
   return new PackagingGroupsArn<Partition>(parameters)
 }

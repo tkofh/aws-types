@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ApplicationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ApplicationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly applicationId: string
 }
-class ApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'application', `arn:${string}:emr-serverless:${string}:${string}:/applications/${string}`> {
+class ApplicationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'application',
+  `arn:${string}:emr-serverless:${string}:${string}:/applications/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'application' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +37,9 @@ class ApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ApplicationArn }
-export function applicationArn<Partition extends ArnPartition = 'aws'>(parameters: ApplicationArnParameters<Partition>) {
+export function applicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApplicationArnParameters<Partition>,
+) {
   return new ApplicationArn<Partition>(parameters)
 }
 
@@ -35,7 +50,10 @@ export interface JobRunArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly applicationId: string
   readonly jobRunId: string
 }
-class JobRunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'jobRun', `arn:${string}:emr-serverless:${string}:${string}:/applications/${string}/jobruns/${string}`> {
+class JobRunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'jobRun',
+  `arn:${string}:emr-serverless:${string}:${string}:/applications/${string}/jobruns/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'jobRun' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,6 +73,8 @@ class JobRunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'job
   }
 }
 export type { JobRunArn }
-export function jobRunArn<Partition extends ArnPartition = 'aws'>(parameters: JobRunArnParameters<Partition>) {
+export function jobRunArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobRunArnParameters<Partition>,
+) {
   return new JobRunArn<Partition>(parameters)
 }

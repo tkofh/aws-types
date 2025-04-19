@@ -1,2 +1,1 @@
-export type MediaimportPrivilege =
-  | 'CreateDatabaseBinarySnapshot'
+export type MediaimportPrivilege = 'CreateDatabaseBinarySnapshot'

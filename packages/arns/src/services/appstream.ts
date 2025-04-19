@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface FleetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface FleetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly fleetName: string
 }
-class FleetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'fleet', `arn:${string}:appstream:${string}:${string}:fleet/${string}`> {
+class FleetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'fleet',
+  `arn:${string}:appstream:${string}:${string}:fleet/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'fleet' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class FleetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'flee
   }
 }
 export type { FleetArn }
-export function fleetArn<Partition extends ArnPartition = 'aws'>(parameters: FleetArnParameters<Partition>) {
+export function fleetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FleetArnParameters<Partition>,
+) {
   return new FleetArn<Partition>(parameters)
 }
 
@@ -34,7 +45,10 @@ export interface ImageArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly imageName: string
 }
-class ImageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'image', `arn:${string}:appstream:${string}:${string}:image/${string}`> {
+class ImageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'image',
+  `arn:${string}:appstream:${string}:${string}:image/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'image' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +66,26 @@ class ImageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'imag
   }
 }
 export type { ImageArn }
-export function imageArn<Partition extends ArnPartition = 'aws'>(parameters: ImageArnParameters<Partition>) {
+export function imageArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ImageArnParameters<Partition>,
+) {
   return new ImageArn<Partition>(parameters)
 }
 
-export interface ImageBuilderArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ImageBuilderArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly imageBuilderName: string
 }
-class ImageBuilderArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'image-builder', `arn:${string}:appstream:${string}:${string}:image-builder/${string}`> {
+class ImageBuilderArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'image-builder',
+  `arn:${string}:appstream:${string}:${string}:image-builder/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'image-builder' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,7 +103,9 @@ class ImageBuilderArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { ImageBuilderArn }
-export function imageBuilderArn<Partition extends ArnPartition = 'aws'>(parameters: ImageBuilderArnParameters<Partition>) {
+export function imageBuilderArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ImageBuilderArnParameters<Partition>,
+) {
   return new ImageBuilderArn<Partition>(parameters)
 }
 
@@ -90,7 +115,10 @@ export interface StackArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly stackName: string
 }
-class StackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stack', `arn:${string}:appstream:${string}:${string}:stack/${string}`> {
+class StackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'stack',
+  `arn:${string}:appstream:${string}:${string}:stack/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'stack' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,7 +136,9 @@ class StackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stac
   }
 }
 export type { StackArn }
-export function stackArn<Partition extends ArnPartition = 'aws'>(parameters: StackArnParameters<Partition>) {
+export function stackArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StackArnParameters<Partition>,
+) {
   return new StackArn<Partition>(parameters)
 }
 
@@ -118,7 +148,10 @@ export interface AppBlockArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly appBlockName: string
 }
-class AppBlockArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'app-block', `arn:${string}:appstream:${string}:${string}:app-block/${string}`> {
+class AppBlockArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'app-block',
+  `arn:${string}:appstream:${string}:${string}:app-block/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'app-block' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -136,17 +169,26 @@ class AppBlockArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'a
   }
 }
 export type { AppBlockArn }
-export function appBlockArn<Partition extends ArnPartition = 'aws'>(parameters: AppBlockArnParameters<Partition>) {
+export function appBlockArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppBlockArnParameters<Partition>,
+) {
   return new AppBlockArn<Partition>(parameters)
 }
 
-export interface ApplicationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ApplicationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly applicationName: string
 }
-class ApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'application', `arn:${string}:appstream:${string}:${string}:application/${string}`> {
+class ApplicationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'application',
+  `arn:${string}:appstream:${string}:${string}:application/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'application' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -164,17 +206,26 @@ class ApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ApplicationArn }
-export function applicationArn<Partition extends ArnPartition = 'aws'>(parameters: ApplicationArnParameters<Partition>) {
+export function applicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApplicationArnParameters<Partition>,
+) {
   return new ApplicationArn<Partition>(parameters)
 }
 
-export interface AppBlockBuilderArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AppBlockBuilderArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly appBlockBuilderName: string
 }
-class AppBlockBuilderArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'app-block-builder', `arn:${string}:appstream:${string}:${string}:app-block-builder/${string}`> {
+class AppBlockBuilderArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'app-block-builder',
+  `arn:${string}:appstream:${string}:${string}:app-block-builder/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'app-block-builder' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -192,6 +243,8 @@ class AppBlockBuilderArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { AppBlockBuilderArn }
-export function appBlockBuilderArn<Partition extends ArnPartition = 'aws'>(parameters: AppBlockBuilderArnParameters<Partition>) {
+export function appBlockBuilderArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppBlockBuilderArnParameters<Partition>,
+) {
   return new AppBlockBuilderArn<Partition>(parameters)
 }

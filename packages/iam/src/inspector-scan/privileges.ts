@@ -1,2 +1,1 @@
-export type InspectorScanPrivilege =
-  | 'ScanSbom'
+export type InspectorScanPrivilege = 'ScanSbom'

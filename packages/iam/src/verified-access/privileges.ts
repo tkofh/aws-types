@@ -1,2 +1,1 @@
-export type VerifiedAccessPrivilege =
-  | 'AllowVerifiedAccess'
+export type VerifiedAccessPrivilege = 'AllowVerifiedAccess'

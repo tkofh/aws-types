@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface RoutingcontrolArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RoutingcontrolArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly controlPanelId: string
   readonly routingControlId: string
 }
-class RoutingcontrolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'routingcontrol', `arn:${string}:route53-recovery-control::${string}:controlpanel/${string}/routingcontrol/${string}`> {
+class RoutingcontrolArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'routingcontrol',
+  `arn:${string}:route53-recovery-control::${string}:controlpanel/${string}/routingcontrol/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'routingcontrol' as const
   readonly partition: Partition
   readonly account: string
@@ -24,6 +37,8 @@ class RoutingcontrolArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { RoutingcontrolArn }
-export function routingcontrolArn<Partition extends ArnPartition = 'aws'>(parameters: RoutingcontrolArnParameters<Partition>) {
+export function routingcontrolArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RoutingcontrolArnParameters<Partition>,
+) {
   return new RoutingcontrolArn<Partition>(parameters)
 }

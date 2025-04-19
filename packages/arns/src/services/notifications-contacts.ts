@@ -1,11 +1,24 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface EmailContactResourceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface EmailContactResourceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly emailContactId: string
 }
-class EmailContactResourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'EmailContactResource', `arn:${string}:notifications-contacts::${string}:emailcontact/${string}`> {
+class EmailContactResourceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'EmailContactResource',
+  `arn:${string}:notifications-contacts::${string}:emailcontact/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'EmailContactResource' as const
   readonly partition: Partition
   readonly account: string
@@ -21,6 +34,8 @@ class EmailContactResourceArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { EmailContactResourceArn }
-export function emailContactResourceArn<Partition extends ArnPartition = 'aws'>(parameters: EmailContactResourceArnParameters<Partition>) {
+export function emailContactResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EmailContactResourceArnParameters<Partition>,
+) {
   return new EmailContactResourceArn<Partition>(parameters)
 }

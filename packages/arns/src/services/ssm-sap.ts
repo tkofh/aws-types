@@ -1,13 +1,26 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ApplicationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ApplicationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly applicationType: string
   readonly applicationId: string
 }
-class ApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'application', `arn:${string}:ssm-sap:${string}:${string}:${string}/${string}`> {
+class ApplicationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'application',
+  `arn:${string}:ssm-sap:${string}:${string}:${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'application' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,11 +40,15 @@ class ApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { ApplicationArn }
-export function applicationArn<Partition extends ArnPartition = 'aws'>(parameters: ApplicationArnParameters<Partition>) {
+export function applicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ApplicationArnParameters<Partition>,
+) {
   return new ApplicationArn<Partition>(parameters)
 }
 
-export interface ComponentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ComponentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -39,7 +56,10 @@ export interface ComponentArnParameters<Partition extends ArnPartition = 'aws'> 
   readonly applicationId: string
   readonly componentId: string
 }
-class ComponentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'component', `arn:${string}:ssm-sap:${string}:${string}:${string}/${string}/COMPONENT/${string}`> {
+class ComponentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'component',
+  `arn:${string}:ssm-sap:${string}:${string}:${string}/${string}/COMPONENT/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'component' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -61,7 +81,9 @@ class ComponentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { ComponentArn }
-export function componentArn<Partition extends ArnPartition = 'aws'>(parameters: ComponentArnParameters<Partition>) {
+export function componentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ComponentArnParameters<Partition>,
+) {
   return new ComponentArn<Partition>(parameters)
 }
 
@@ -73,7 +95,10 @@ export interface DatabaseArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly applicationId: string
   readonly databaseId: string
 }
-class DatabaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'database', `arn:${string}:ssm-sap:${string}:${string}:${string}/${string}/DB/${string}`> {
+class DatabaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'database',
+  `arn:${string}:ssm-sap:${string}:${string}:${string}/${string}/DB/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'database' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -95,6 +120,8 @@ class DatabaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'d
   }
 }
 export type { DatabaseArn }
-export function databaseArn<Partition extends ArnPartition = 'aws'>(parameters: DatabaseArnParameters<Partition>) {
+export function databaseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DatabaseArnParameters<Partition>,
+) {
   return new DatabaseArn<Partition>(parameters)
 }

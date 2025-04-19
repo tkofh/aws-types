@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface VirtualClusterArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface VirtualClusterArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly virtualClusterId: string
 }
-class VirtualClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'virtualCluster', `arn:${string}:emr-containers:${string}:${string}:/virtualclusters/${string}`> {
+class VirtualClusterArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'virtualCluster',
+  `arn:${string}:emr-containers:${string}:${string}:/virtualclusters/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'virtualCluster' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +37,9 @@ class VirtualClusterArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { VirtualClusterArn }
-export function virtualClusterArn<Partition extends ArnPartition = 'aws'>(parameters: VirtualClusterArnParameters<Partition>) {
+export function virtualClusterArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VirtualClusterArnParameters<Partition>,
+) {
   return new VirtualClusterArn<Partition>(parameters)
 }
 
@@ -35,7 +50,10 @@ export interface JobRunArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly virtualClusterId: string
   readonly jobRunId: string
 }
-class JobRunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'jobRun', `arn:${string}:emr-containers:${string}:${string}:/virtualclusters/${string}/jobruns/${string}`> {
+class JobRunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'jobRun',
+  `arn:${string}:emr-containers:${string}:${string}:/virtualclusters/${string}/jobruns/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'jobRun' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,17 +73,26 @@ class JobRunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'job
   }
 }
 export type { JobRunArn }
-export function jobRunArn<Partition extends ArnPartition = 'aws'>(parameters: JobRunArnParameters<Partition>) {
+export function jobRunArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobRunArnParameters<Partition>,
+) {
   return new JobRunArn<Partition>(parameters)
 }
 
-export interface JobTemplateArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface JobTemplateArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly jobTemplateId: string
 }
-class JobTemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'jobTemplate', `arn:${string}:emr-containers:${string}:${string}:/jobtemplates/${string}`> {
+class JobTemplateArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'jobTemplate',
+  `arn:${string}:emr-containers:${string}:${string}:/jobtemplates/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'jobTemplate' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -83,18 +110,27 @@ class JobTemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { JobTemplateArn }
-export function jobTemplateArn<Partition extends ArnPartition = 'aws'>(parameters: JobTemplateArnParameters<Partition>) {
+export function jobTemplateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobTemplateArnParameters<Partition>,
+) {
   return new JobTemplateArn<Partition>(parameters)
 }
 
-export interface ManagedEndpointArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ManagedEndpointArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly virtualClusterId: string
   readonly endpointId: string
 }
-class ManagedEndpointArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'managedEndpoint', `arn:${string}:emr-containers:${string}:${string}:/virtualclusters/${string}/endpoints/${string}`> {
+class ManagedEndpointArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'managedEndpoint',
+  `arn:${string}:emr-containers:${string}:${string}:/virtualclusters/${string}/endpoints/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'managedEndpoint' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -114,17 +150,26 @@ class ManagedEndpointArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { ManagedEndpointArn }
-export function managedEndpointArn<Partition extends ArnPartition = 'aws'>(parameters: ManagedEndpointArnParameters<Partition>) {
+export function managedEndpointArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ManagedEndpointArnParameters<Partition>,
+) {
   return new ManagedEndpointArn<Partition>(parameters)
 }
 
-export interface SecurityConfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SecurityConfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly securityConfigurationId: string
 }
-class SecurityConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'securityConfiguration', `arn:${string}:emr-containers:${string}:${string}:/securityconfigurations/${string}`> {
+class SecurityConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'securityConfiguration',
+  `arn:${string}:emr-containers:${string}:${string}:/securityconfigurations/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'securityConfiguration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -142,6 +187,8 @@ class SecurityConfigurationArn<Partition extends ArnPartition = 'aws'> extends I
   }
 }
 export type { SecurityConfigurationArn }
-export function securityConfigurationArn<Partition extends ArnPartition = 'aws'>(parameters: SecurityConfigurationArnParameters<Partition>) {
+export function securityConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: SecurityConfigurationArnParameters<Partition>) {
   return new SecurityConfigurationArn<Partition>(parameters)
 }

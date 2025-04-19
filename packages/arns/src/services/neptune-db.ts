@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface DatabaseArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface DatabaseArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly clusterResourceId: string
 }
-class DatabaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'database', `arn:${string}:neptune-db:${string}:${string}:${string}/*`> {
+class DatabaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'database',
+  `arn:${string}:neptune-db:${string}:${string}:${string}/*`
+> {
   readonly [ArnResourceTypeBrand] = 'database' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +33,8 @@ class DatabaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'d
   }
 }
 export type { DatabaseArn }
-export function databaseArn<Partition extends ArnPartition = 'aws'>(parameters: DatabaseArnParameters<Partition>) {
+export function databaseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DatabaseArnParameters<Partition>,
+) {
   return new DatabaseArn<Partition>(parameters)
 }

@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface SigningProfileArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SigningProfileArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly profileName: string
 }
-class SigningProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'signing-profile', `arn:${string}:signer:${string}:${string}:/signing-profiles/${string}`> {
+class SigningProfileArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'signing-profile',
+  `arn:${string}:signer:${string}:${string}:/signing-profiles/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'signing-profile' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +37,24 @@ class SigningProfileArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { SigningProfileArn }
-export function signingProfileArn<Partition extends ArnPartition = 'aws'>(parameters: SigningProfileArnParameters<Partition>) {
+export function signingProfileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SigningProfileArnParameters<Partition>,
+) {
   return new SigningProfileArn<Partition>(parameters)
 }
 
-export interface SigningJobArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SigningJobArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly jobId: string
 }
-class SigningJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'signing-job', `arn:${string}:signer:${string}:${string}:/signing-jobs/${string}`> {
+class SigningJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'signing-job',
+  `arn:${string}:signer:${string}:${string}:/signing-jobs/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'signing-job' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,6 +72,8 @@ class SigningJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { SigningJobArn }
-export function signingJobArn<Partition extends ArnPartition = 'aws'>(parameters: SigningJobArnParameters<Partition>) {
+export function signingJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SigningJobArnParameters<Partition>,
+) {
   return new SigningJobArn<Partition>(parameters)
 }

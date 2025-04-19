@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface DeviceInstanceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeviceInstanceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly deviceInstanceId: string
 }
-class DeviceInstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'device-instance', `arn:${string}:one:${string}:${string}:device-instance/${string}`> {
+class DeviceInstanceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'device-instance',
+  `arn:${string}:one:${string}:${string}:device-instance/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'device-instance' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,18 +37,27 @@ class DeviceInstanceArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { DeviceInstanceArn }
-export function deviceInstanceArn<Partition extends ArnPartition = 'aws'>(parameters: DeviceInstanceArnParameters<Partition>) {
+export function deviceInstanceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeviceInstanceArnParameters<Partition>,
+) {
   return new DeviceInstanceArn<Partition>(parameters)
 }
 
-export interface ConfigurationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConfigurationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly deviceInstanceId: string
   readonly version: string
 }
-class ConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'configuration', `arn:${string}:one:${string}:${string}:device-instance/${string}/configuration/${string}`> {
+class ConfigurationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'configuration',
+  `arn:${string}:one:${string}:${string}:device-instance/${string}/configuration/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'configuration' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,17 +77,26 @@ class ConfigurationArn<Partition extends ArnPartition = 'aws'> extends InternalA
   }
 }
 export type { ConfigurationArn }
-export function configurationArn<Partition extends ArnPartition = 'aws'>(parameters: ConfigurationArnParameters<Partition>) {
+export function configurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConfigurationArnParameters<Partition>,
+) {
   return new ConfigurationArn<Partition>(parameters)
 }
 
-export interface DeviceConfigurationTemplateArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeviceConfigurationTemplateArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly templateId: string
 }
-class DeviceConfigurationTemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'device-configuration-template', `arn:${string}:one:${string}:${string}:device-configuration-template/${string}`> {
+class DeviceConfigurationTemplateArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'device-configuration-template',
+  `arn:${string}:one:${string}:${string}:device-configuration-template/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'device-configuration-template' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -83,7 +114,9 @@ class DeviceConfigurationTemplateArn<Partition extends ArnPartition = 'aws'> ext
   }
 }
 export type { DeviceConfigurationTemplateArn }
-export function deviceConfigurationTemplateArn<Partition extends ArnPartition = 'aws'>(parameters: DeviceConfigurationTemplateArnParameters<Partition>) {
+export function deviceConfigurationTemplateArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: DeviceConfigurationTemplateArnParameters<Partition>) {
   return new DeviceConfigurationTemplateArn<Partition>(parameters)
 }
 
@@ -93,7 +126,10 @@ export interface SiteArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly siteId: string
 }
-class SiteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'site', `arn:${string}:one:${string}:${string}:site/${string}`> {
+class SiteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'site',
+  `arn:${string}:one:${string}:${string}:site/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'site' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -111,7 +147,9 @@ class SiteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'site'
   }
 }
 export type { SiteArn }
-export function siteArn<Partition extends ArnPartition = 'aws'>(parameters: SiteArnParameters<Partition>) {
+export function siteArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SiteArnParameters<Partition>,
+) {
   return new SiteArn<Partition>(parameters)
 }
 
@@ -121,7 +159,10 @@ export interface UserArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly userId: string
 }
-class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'user', `arn:${string}:one:${string}:${string}:user/${string}`> {
+class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'user',
+  `arn:${string}:one:${string}:${string}:user/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'user' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -139,6 +180,8 @@ class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'user'
   }
 }
 export type { UserArn }
-export function userArn<Partition extends ArnPartition = 'aws'>(parameters: UserArnParameters<Partition>) {
+export function userArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UserArnParameters<Partition>,
+) {
   return new UserArn<Partition>(parameters)
 }

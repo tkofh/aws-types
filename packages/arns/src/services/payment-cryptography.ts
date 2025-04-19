@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface KeyArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -6,7 +12,10 @@ export interface KeyArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly keyId: string
 }
-class KeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'key', `arn:${string}:payment-cryptography:${string}:${string}:key/${string}`> {
+class KeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'key',
+  `arn:${string}:payment-cryptography:${string}:${string}:key/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'key' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,7 +33,9 @@ class KeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'key', 
   }
 }
 export type { KeyArn }
-export function keyArn<Partition extends ArnPartition = 'aws'>(parameters: KeyArnParameters<Partition>) {
+export function keyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KeyArnParameters<Partition>,
+) {
   return new KeyArn<Partition>(parameters)
 }
 
@@ -34,7 +45,10 @@ export interface AliasArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly alias: string
 }
-class AliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'alias', `arn:${string}:payment-cryptography:${string}:${string}:alias/${string}`> {
+class AliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'alias',
+  `arn:${string}:payment-cryptography:${string}:${string}:alias/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'alias' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,6 +66,8 @@ class AliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'alia
   }
 }
 export type { AliasArn }
-export function aliasArn<Partition extends ArnPartition = 'aws'>(parameters: AliasArnParameters<Partition>) {
+export function aliasArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AliasArnParameters<Partition>,
+) {
   return new AliasArn<Partition>(parameters)
 }

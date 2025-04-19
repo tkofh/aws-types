@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface DatacatalogArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DatacatalogArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly dataCatalogName: string
 }
-class DatacatalogArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'datacatalog', `arn:${string}:athena:${string}:${string}:datacatalog/${string}`> {
+class DatacatalogArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'datacatalog',
+  `arn:${string}:athena:${string}:${string}:datacatalog/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'datacatalog' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +37,24 @@ class DatacatalogArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { DatacatalogArn }
-export function datacatalogArn<Partition extends ArnPartition = 'aws'>(parameters: DatacatalogArnParameters<Partition>) {
+export function datacatalogArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DatacatalogArnParameters<Partition>,
+) {
   return new DatacatalogArn<Partition>(parameters)
 }
 
-export interface WorkgroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface WorkgroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly workGroupName: string
 }
-class WorkgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workgroup', `arn:${string}:athena:${string}:${string}:workgroup/${string}`> {
+class WorkgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'workgroup',
+  `arn:${string}:athena:${string}:${string}:workgroup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'workgroup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +72,26 @@ class WorkgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { WorkgroupArn }
-export function workgroupArn<Partition extends ArnPartition = 'aws'>(parameters: WorkgroupArnParameters<Partition>) {
+export function workgroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkgroupArnParameters<Partition>,
+) {
   return new WorkgroupArn<Partition>(parameters)
 }
 
-export interface CapacityReservationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CapacityReservationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly capacityReservationName: string
 }
-class CapacityReservationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'capacity-reservation', `arn:${string}:athena:${string}:${string}:capacity-reservation/${string}`> {
+class CapacityReservationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'capacity-reservation',
+  `arn:${string}:athena:${string}:${string}:capacity-reservation/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'capacity-reservation' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,6 +109,8 @@ class CapacityReservationArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { CapacityReservationArn }
-export function capacityReservationArn<Partition extends ArnPartition = 'aws'>(parameters: CapacityReservationArnParameters<Partition>) {
+export function capacityReservationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CapacityReservationArnParameters<Partition>,
+) {
   return new CapacityReservationArn<Partition>(parameters)
 }

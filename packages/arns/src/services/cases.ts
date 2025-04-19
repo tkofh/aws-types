@@ -1,4 +1,10 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface CaseArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
@@ -7,7 +13,10 @@ export interface CaseArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly domainId: string
   readonly caseId: string
 }
-class CaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Case', `arn:${string}:cases:${string}:${string}:domain/${string}/case/${string}`> {
+class CaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Case',
+  `arn:${string}:cases:${string}:${string}:domain/${string}/case/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Case' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -27,7 +36,9 @@ class CaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Case'
   }
 }
 export type { CaseArn }
-export function caseArn<Partition extends ArnPartition = 'aws'>(parameters: CaseArnParameters<Partition>) {
+export function caseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CaseArnParameters<Partition>,
+) {
   return new CaseArn<Partition>(parameters)
 }
 
@@ -37,7 +48,10 @@ export interface DomainArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly domainId: string
 }
-class DomainArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Domain', `arn:${string}:cases:${string}:${string}:domain/${string}`> {
+class DomainArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Domain',
+  `arn:${string}:cases:${string}:${string}:domain/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Domain' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,7 +69,9 @@ class DomainArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Dom
   }
 }
 export type { DomainArn }
-export function domainArn<Partition extends ArnPartition = 'aws'>(parameters: DomainArnParameters<Partition>) {
+export function domainArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DomainArnParameters<Partition>,
+) {
   return new DomainArn<Partition>(parameters)
 }
 
@@ -66,7 +82,10 @@ export interface FieldArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly domainId: string
   readonly fieldId: string
 }
-class FieldArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Field', `arn:${string}:cases:${string}:${string}:domain/${string}/field/${string}`> {
+class FieldArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Field',
+  `arn:${string}:cases:${string}:${string}:domain/${string}/field/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Field' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -86,7 +105,9 @@ class FieldArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Fiel
   }
 }
 export type { FieldArn }
-export function fieldArn<Partition extends ArnPartition = 'aws'>(parameters: FieldArnParameters<Partition>) {
+export function fieldArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FieldArnParameters<Partition>,
+) {
   return new FieldArn<Partition>(parameters)
 }
 
@@ -97,7 +118,10 @@ export interface LayoutArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly domainId: string
   readonly layoutId: string
 }
-class LayoutArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Layout', `arn:${string}:cases:${string}:${string}:domain/${string}/layout/${string}`> {
+class LayoutArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Layout',
+  `arn:${string}:cases:${string}:${string}:domain/${string}/layout/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Layout' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -117,11 +141,15 @@ class LayoutArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Lay
   }
 }
 export type { LayoutArn }
-export function layoutArn<Partition extends ArnPartition = 'aws'>(parameters: LayoutArnParameters<Partition>) {
+export function layoutArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LayoutArnParameters<Partition>,
+) {
   return new LayoutArn<Partition>(parameters)
 }
 
-export interface RelatedItemArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface RelatedItemArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
@@ -129,7 +157,12 @@ export interface RelatedItemArnParameters<Partition extends ArnPartition = 'aws'
   readonly caseId: string
   readonly relatedItemId: string
 }
-class RelatedItemArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'RelatedItem', `arn:${string}:cases:${string}:${string}:domain/${string}/case/${string}/related-item/${string}`> {
+class RelatedItemArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'RelatedItem',
+  `arn:${string}:cases:${string}:${string}:domain/${string}/case/${string}/related-item/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'RelatedItem' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -151,7 +184,9 @@ class RelatedItemArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { RelatedItemArn }
-export function relatedItemArn<Partition extends ArnPartition = 'aws'>(parameters: RelatedItemArnParameters<Partition>) {
+export function relatedItemArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RelatedItemArnParameters<Partition>,
+) {
   return new RelatedItemArn<Partition>(parameters)
 }
 
@@ -162,7 +197,10 @@ export interface TemplateArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly domainId: string
   readonly templateId: string
 }
-class TemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Template', `arn:${string}:cases:${string}:${string}:domain/${string}/template/${string}`> {
+class TemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'Template',
+  `arn:${string}:cases:${string}:${string}:domain/${string}/template/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'Template' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -182,6 +220,8 @@ class TemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'T
   }
 }
 export type { TemplateArn }
-export function templateArn<Partition extends ArnPartition = 'aws'>(parameters: TemplateArnParameters<Partition>) {
+export function templateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TemplateArnParameters<Partition>,
+) {
   return new TemplateArn<Partition>(parameters)
 }

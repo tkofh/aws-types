@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface ConnectivityInfoArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConnectivityInfoArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly thingName: string
 }
-class ConnectivityInfoArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'connectivityInfo', `arn:${string}:greengrass:${string}:${string}:/greengrass/things/${string}/connectivityInfo`> {
+class ConnectivityInfoArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'connectivityInfo',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/things/${string}/connectivityInfo`
+> {
   readonly [ArnResourceTypeBrand] = 'connectivityInfo' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +37,24 @@ class ConnectivityInfoArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { ConnectivityInfoArn }
-export function connectivityInfoArn<Partition extends ArnPartition = 'aws'>(parameters: ConnectivityInfoArnParameters<Partition>) {
+export function connectivityInfoArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConnectivityInfoArnParameters<Partition>,
+) {
   return new ConnectivityInfoArn<Partition>(parameters)
 }
 
-export interface ComponentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ComponentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly componentName: string
 }
-class ComponentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'component', `arn:${string}:greengrass:${string}:${string}:components:${string}`> {
+class ComponentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'component',
+  `arn:${string}:greengrass:${string}:${string}:components:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'component' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,18 +72,27 @@ class ComponentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { ComponentArn }
-export function componentArn<Partition extends ArnPartition = 'aws'>(parameters: ComponentArnParameters<Partition>) {
+export function componentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ComponentArnParameters<Partition>,
+) {
   return new ComponentArn<Partition>(parameters)
 }
 
-export interface ComponentVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ComponentVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly componentName: string
   readonly componentVersion: string
 }
-class ComponentVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'componentVersion', `arn:${string}:greengrass:${string}:${string}:components:${string}:versions:${string}`> {
+class ComponentVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'componentVersion',
+  `arn:${string}:greengrass:${string}:${string}:components:${string}:versions:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'componentVersion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -83,17 +112,24 @@ class ComponentVersionArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { ComponentVersionArn }
-export function componentVersionArn<Partition extends ArnPartition = 'aws'>(parameters: ComponentVersionArnParameters<Partition>) {
+export function componentVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ComponentVersionArnParameters<Partition>,
+) {
   return new ComponentVersionArn<Partition>(parameters)
 }
 
-export interface CoreDeviceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CoreDeviceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly coreDeviceThingName: string
 }
-class CoreDeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'coreDevice', `arn:${string}:greengrass:${string}:${string}:coreDevices:${string}`> {
+class CoreDeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'coreDevice',
+  `arn:${string}:greengrass:${string}:${string}:coreDevices:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'coreDevice' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -111,17 +147,24 @@ class CoreDeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { CoreDeviceArn }
-export function coreDeviceArn<Partition extends ArnPartition = 'aws'>(parameters: CoreDeviceArnParameters<Partition>) {
+export function coreDeviceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CoreDeviceArnParameters<Partition>,
+) {
   return new CoreDeviceArn<Partition>(parameters)
 }
 
-export interface DeploymentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeploymentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly deploymentId: string
 }
-class DeploymentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'deployment', `arn:${string}:greengrass:${string}:${string}:deployments:${string}`> {
+class DeploymentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'deployment',
+  `arn:${string}:greengrass:${string}:${string}:deployments:${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'deployment' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -139,18 +182,27 @@ class DeploymentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { DeploymentArn }
-export function deploymentArn<Partition extends ArnPartition = 'aws'>(parameters: DeploymentArnParameters<Partition>) {
+export function deploymentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeploymentArnParameters<Partition>,
+) {
   return new DeploymentArn<Partition>(parameters)
 }
 
-export interface CertificateAuthorityArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CertificateAuthorityArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly groupId: string
   readonly certificateAuthorityId: string
 }
-class CertificateAuthorityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'certificateAuthority', `arn:${string}:greengrass:${string}:${string}:/greengrass/groups/${string}/certificateauthorities/${string}`> {
+class CertificateAuthorityArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'certificateAuthority',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/groups/${string}/certificateauthorities/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'certificateAuthority' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -170,17 +222,26 @@ class CertificateAuthorityArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { CertificateAuthorityArn }
-export function certificateAuthorityArn<Partition extends ArnPartition = 'aws'>(parameters: CertificateAuthorityArnParameters<Partition>) {
+export function certificateAuthorityArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CertificateAuthorityArnParameters<Partition>,
+) {
   return new CertificateAuthorityArn<Partition>(parameters)
 }
 
-export interface BulkDeploymentArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface BulkDeploymentArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly bulkDeploymentId: string
 }
-class BulkDeploymentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'bulkDeployment', `arn:${string}:greengrass:${string}:${string}:/greengrass/bulk/deployments/${string}`> {
+class BulkDeploymentArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'bulkDeployment',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/bulk/deployments/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'bulkDeployment' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -198,7 +259,9 @@ class BulkDeploymentArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { BulkDeploymentArn }
-export function bulkDeploymentArn<Partition extends ArnPartition = 'aws'>(parameters: BulkDeploymentArnParameters<Partition>) {
+export function bulkDeploymentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BulkDeploymentArnParameters<Partition>,
+) {
   return new BulkDeploymentArn<Partition>(parameters)
 }
 
@@ -208,7 +271,10 @@ export interface GroupArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly groupId: string
 }
-class GroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'group', `arn:${string}:greengrass:${string}:${string}:/greengrass/groups/${string}`> {
+class GroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'group',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/groups/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'group' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -226,18 +292,27 @@ class GroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'grou
   }
 }
 export type { GroupArn }
-export function groupArn<Partition extends ArnPartition = 'aws'>(parameters: GroupArnParameters<Partition>) {
+export function groupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupArnParameters<Partition>,
+) {
   return new GroupArn<Partition>(parameters)
 }
 
-export interface GroupVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface GroupVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly groupId: string
   readonly versionId: string
 }
-class GroupVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'groupVersion', `arn:${string}:greengrass:${string}:${string}:/greengrass/groups/${string}/versions/${string}`> {
+class GroupVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'groupVersion',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/groups/${string}/versions/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'groupVersion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -257,17 +332,26 @@ class GroupVersionArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { GroupVersionArn }
-export function groupVersionArn<Partition extends ArnPartition = 'aws'>(parameters: GroupVersionArnParameters<Partition>) {
+export function groupVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupVersionArnParameters<Partition>,
+) {
   return new GroupVersionArn<Partition>(parameters)
 }
 
-export interface CoreDefinitionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CoreDefinitionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly coreDefinitionId: string
 }
-class CoreDefinitionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'coreDefinition', `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/cores/${string}`> {
+class CoreDefinitionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'coreDefinition',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/cores/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'coreDefinition' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -285,18 +369,27 @@ class CoreDefinitionArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { CoreDefinitionArn }
-export function coreDefinitionArn<Partition extends ArnPartition = 'aws'>(parameters: CoreDefinitionArnParameters<Partition>) {
+export function coreDefinitionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CoreDefinitionArnParameters<Partition>,
+) {
   return new CoreDefinitionArn<Partition>(parameters)
 }
 
-export interface CoreDefinitionVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface CoreDefinitionVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly coreDefinitionId: string
   readonly versionId: string
 }
-class CoreDefinitionVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'coreDefinitionVersion', `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/cores/${string}/versions/${string}`> {
+class CoreDefinitionVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'coreDefinitionVersion',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/cores/${string}/versions/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'coreDefinitionVersion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -316,17 +409,26 @@ class CoreDefinitionVersionArn<Partition extends ArnPartition = 'aws'> extends I
   }
 }
 export type { CoreDefinitionVersionArn }
-export function coreDefinitionVersionArn<Partition extends ArnPartition = 'aws'>(parameters: CoreDefinitionVersionArnParameters<Partition>) {
+export function coreDefinitionVersionArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: CoreDefinitionVersionArnParameters<Partition>) {
   return new CoreDefinitionVersionArn<Partition>(parameters)
 }
 
-export interface DeviceDefinitionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeviceDefinitionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly deviceDefinitionId: string
 }
-class DeviceDefinitionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'deviceDefinition', `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/devices/${string}`> {
+class DeviceDefinitionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'deviceDefinition',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/devices/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'deviceDefinition' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -344,18 +446,27 @@ class DeviceDefinitionArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { DeviceDefinitionArn }
-export function deviceDefinitionArn<Partition extends ArnPartition = 'aws'>(parameters: DeviceDefinitionArnParameters<Partition>) {
+export function deviceDefinitionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeviceDefinitionArnParameters<Partition>,
+) {
   return new DeviceDefinitionArn<Partition>(parameters)
 }
 
-export interface DeviceDefinitionVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DeviceDefinitionVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly deviceDefinitionId: string
   readonly versionId: string
 }
-class DeviceDefinitionVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'deviceDefinitionVersion', `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/devices/${string}/versions/${string}`> {
+class DeviceDefinitionVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'deviceDefinitionVersion',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/devices/${string}/versions/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'deviceDefinitionVersion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -375,17 +486,26 @@ class DeviceDefinitionVersionArn<Partition extends ArnPartition = 'aws'> extends
   }
 }
 export type { DeviceDefinitionVersionArn }
-export function deviceDefinitionVersionArn<Partition extends ArnPartition = 'aws'>(parameters: DeviceDefinitionVersionArnParameters<Partition>) {
+export function deviceDefinitionVersionArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: DeviceDefinitionVersionArnParameters<Partition>) {
   return new DeviceDefinitionVersionArn<Partition>(parameters)
 }
 
-export interface FunctionDefinitionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FunctionDefinitionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly functionDefinitionId: string
 }
-class FunctionDefinitionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'functionDefinition', `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/functions/${string}`> {
+class FunctionDefinitionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'functionDefinition',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/functions/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'functionDefinition' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -403,18 +523,27 @@ class FunctionDefinitionArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { FunctionDefinitionArn }
-export function functionDefinitionArn<Partition extends ArnPartition = 'aws'>(parameters: FunctionDefinitionArnParameters<Partition>) {
+export function functionDefinitionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FunctionDefinitionArnParameters<Partition>,
+) {
   return new FunctionDefinitionArn<Partition>(parameters)
 }
 
-export interface FunctionDefinitionVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FunctionDefinitionVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly functionDefinitionId: string
   readonly versionId: string
 }
-class FunctionDefinitionVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'functionDefinitionVersion', `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/functions/${string}/versions/${string}`> {
+class FunctionDefinitionVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'functionDefinitionVersion',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/functions/${string}/versions/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'functionDefinitionVersion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -434,17 +563,26 @@ class FunctionDefinitionVersionArn<Partition extends ArnPartition = 'aws'> exten
   }
 }
 export type { FunctionDefinitionVersionArn }
-export function functionDefinitionVersionArn<Partition extends ArnPartition = 'aws'>(parameters: FunctionDefinitionVersionArnParameters<Partition>) {
+export function functionDefinitionVersionArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: FunctionDefinitionVersionArnParameters<Partition>) {
   return new FunctionDefinitionVersionArn<Partition>(parameters)
 }
 
-export interface SubscriptionDefinitionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SubscriptionDefinitionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly subscriptionDefinitionId: string
 }
-class SubscriptionDefinitionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'subscriptionDefinition', `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/subscriptions/${string}`> {
+class SubscriptionDefinitionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'subscriptionDefinition',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/subscriptions/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'subscriptionDefinition' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -462,25 +600,36 @@ class SubscriptionDefinitionArn<Partition extends ArnPartition = 'aws'> extends 
   }
 }
 export type { SubscriptionDefinitionArn }
-export function subscriptionDefinitionArn<Partition extends ArnPartition = 'aws'>(parameters: SubscriptionDefinitionArnParameters<Partition>) {
+export function subscriptionDefinitionArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: SubscriptionDefinitionArnParameters<Partition>) {
   return new SubscriptionDefinitionArn<Partition>(parameters)
 }
 
-export interface SubscriptionDefinitionVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SubscriptionDefinitionVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly subscriptionDefinitionId: string
   readonly versionId: string
 }
-class SubscriptionDefinitionVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'subscriptionDefinitionVersion', `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/subscriptions/${string}/versions/${string}`> {
+class SubscriptionDefinitionVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'subscriptionDefinitionVersion',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/subscriptions/${string}/versions/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'subscriptionDefinitionVersion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly subscriptionDefinitionId: string
   readonly versionId: string
-  constructor(parameters: SubscriptionDefinitionVersionArnParameters<Partition>) {
+  constructor(
+    parameters: SubscriptionDefinitionVersionArnParameters<Partition>,
+  ) {
     super()
     this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
@@ -493,17 +642,26 @@ class SubscriptionDefinitionVersionArn<Partition extends ArnPartition = 'aws'> e
   }
 }
 export type { SubscriptionDefinitionVersionArn }
-export function subscriptionDefinitionVersionArn<Partition extends ArnPartition = 'aws'>(parameters: SubscriptionDefinitionVersionArnParameters<Partition>) {
+export function subscriptionDefinitionVersionArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: SubscriptionDefinitionVersionArnParameters<Partition>) {
   return new SubscriptionDefinitionVersionArn<Partition>(parameters)
 }
 
-export interface LoggerDefinitionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface LoggerDefinitionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly loggerDefinitionId: string
 }
-class LoggerDefinitionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'loggerDefinition', `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/loggers/${string}`> {
+class LoggerDefinitionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'loggerDefinition',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/loggers/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'loggerDefinition' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -521,18 +679,27 @@ class LoggerDefinitionArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { LoggerDefinitionArn }
-export function loggerDefinitionArn<Partition extends ArnPartition = 'aws'>(parameters: LoggerDefinitionArnParameters<Partition>) {
+export function loggerDefinitionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LoggerDefinitionArnParameters<Partition>,
+) {
   return new LoggerDefinitionArn<Partition>(parameters)
 }
 
-export interface LoggerDefinitionVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface LoggerDefinitionVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly loggerDefinitionId: string
   readonly versionId: string
 }
-class LoggerDefinitionVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'loggerDefinitionVersion', `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/loggers/${string}/versions/${string}`> {
+class LoggerDefinitionVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'loggerDefinitionVersion',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/loggers/${string}/versions/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'loggerDefinitionVersion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -552,17 +719,26 @@ class LoggerDefinitionVersionArn<Partition extends ArnPartition = 'aws'> extends
   }
 }
 export type { LoggerDefinitionVersionArn }
-export function loggerDefinitionVersionArn<Partition extends ArnPartition = 'aws'>(parameters: LoggerDefinitionVersionArnParameters<Partition>) {
+export function loggerDefinitionVersionArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: LoggerDefinitionVersionArnParameters<Partition>) {
   return new LoggerDefinitionVersionArn<Partition>(parameters)
 }
 
-export interface ResourceDefinitionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ResourceDefinitionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceDefinitionId: string
 }
-class ResourceDefinitionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'resourceDefinition', `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/resources/${string}`> {
+class ResourceDefinitionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'resourceDefinition',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/resources/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'resourceDefinition' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -580,18 +756,27 @@ class ResourceDefinitionArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { ResourceDefinitionArn }
-export function resourceDefinitionArn<Partition extends ArnPartition = 'aws'>(parameters: ResourceDefinitionArnParameters<Partition>) {
+export function resourceDefinitionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResourceDefinitionArnParameters<Partition>,
+) {
   return new ResourceDefinitionArn<Partition>(parameters)
 }
 
-export interface ResourceDefinitionVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ResourceDefinitionVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly resourceDefinitionId: string
   readonly versionId: string
 }
-class ResourceDefinitionVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'resourceDefinitionVersion', `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/resources/${string}/versions/${string}`> {
+class ResourceDefinitionVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'resourceDefinitionVersion',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/resources/${string}/versions/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'resourceDefinitionVersion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -611,17 +796,26 @@ class ResourceDefinitionVersionArn<Partition extends ArnPartition = 'aws'> exten
   }
 }
 export type { ResourceDefinitionVersionArn }
-export function resourceDefinitionVersionArn<Partition extends ArnPartition = 'aws'>(parameters: ResourceDefinitionVersionArnParameters<Partition>) {
+export function resourceDefinitionVersionArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: ResourceDefinitionVersionArnParameters<Partition>) {
   return new ResourceDefinitionVersionArn<Partition>(parameters)
 }
 
-export interface ConnectorDefinitionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConnectorDefinitionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly connectorDefinitionId: string
 }
-class ConnectorDefinitionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'connectorDefinition', `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/connectors/${string}`> {
+class ConnectorDefinitionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'connectorDefinition',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/connectors/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'connectorDefinition' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -639,18 +833,27 @@ class ConnectorDefinitionArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { ConnectorDefinitionArn }
-export function connectorDefinitionArn<Partition extends ArnPartition = 'aws'>(parameters: ConnectorDefinitionArnParameters<Partition>) {
+export function connectorDefinitionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConnectorDefinitionArnParameters<Partition>,
+) {
   return new ConnectorDefinitionArn<Partition>(parameters)
 }
 
-export interface ConnectorDefinitionVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConnectorDefinitionVersionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly connectorDefinitionId: string
   readonly versionId: string
 }
-class ConnectorDefinitionVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'connectorDefinitionVersion', `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/connectors/${string}/versions/${string}`> {
+class ConnectorDefinitionVersionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'connectorDefinitionVersion',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/definition/connectors/${string}/versions/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'connectorDefinitionVersion' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -670,7 +873,9 @@ class ConnectorDefinitionVersionArn<Partition extends ArnPartition = 'aws'> exte
   }
 }
 export type { ConnectorDefinitionVersionArn }
-export function connectorDefinitionVersionArn<Partition extends ArnPartition = 'aws'>(parameters: ConnectorDefinitionVersionArnParameters<Partition>) {
+export function connectorDefinitionVersionArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: ConnectorDefinitionVersionArnParameters<Partition>) {
   return new ConnectorDefinitionVersionArn<Partition>(parameters)
 }
 
@@ -680,7 +885,10 @@ export interface ThingArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly thingName: string
 }
-class ThingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'thing', `arn:${string}:iot:${string}:${string}:thing/${string}`> {
+class ThingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'thing',
+  `arn:${string}:iot:${string}:${string}:thing/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'thing' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -698,17 +906,26 @@ class ThingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'thin
   }
 }
 export type { ThingArn }
-export function thingArn<Partition extends ArnPartition = 'aws'>(parameters: ThingArnParameters<Partition>) {
+export function thingArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ThingArnParameters<Partition>,
+) {
   return new ThingArn<Partition>(parameters)
 }
 
-export interface ThingRuntimeConfigArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ThingRuntimeConfigArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly thingName: string
 }
-class ThingRuntimeConfigArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'thingRuntimeConfig', `arn:${string}:greengrass:${string}:${string}:/greengrass/things/${string}/runtimeconfig`> {
+class ThingRuntimeConfigArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'thingRuntimeConfig',
+  `arn:${string}:greengrass:${string}:${string}:/greengrass/things/${string}/runtimeconfig`
+> {
   readonly [ArnResourceTypeBrand] = 'thingRuntimeConfig' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -726,6 +943,8 @@ class ThingRuntimeConfigArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { ThingRuntimeConfigArn }
-export function thingRuntimeConfigArn<Partition extends ArnPartition = 'aws'>(parameters: ThingRuntimeConfigArnParameters<Partition>) {
+export function thingRuntimeConfigArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ThingRuntimeConfigArnParameters<Partition>,
+) {
   return new ThingRuntimeConfigArn<Partition>(parameters)
 }

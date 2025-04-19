@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface SyncProfileResourceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SyncProfileResourceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly syncProfileName: string
 }
-class SyncProfileResourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'SyncProfileResource', `arn:${string}:identity-sync:${string}:${string}:profile/${string}`> {
+class SyncProfileResourceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'SyncProfileResource',
+  `arn:${string}:identity-sync:${string}:${string}:profile/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'SyncProfileResource' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,18 +37,27 @@ class SyncProfileResourceArn<Partition extends ArnPartition = 'aws'> extends Int
   }
 }
 export type { SyncProfileResourceArn }
-export function syncProfileResourceArn<Partition extends ArnPartition = 'aws'>(parameters: SyncProfileResourceArnParameters<Partition>) {
+export function syncProfileResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SyncProfileResourceArnParameters<Partition>,
+) {
   return new SyncProfileResourceArn<Partition>(parameters)
 }
 
-export interface SyncTargetResourceArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface SyncTargetResourceArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly syncProfileName: string
   readonly syncTargetName: string
 }
-class SyncTargetResourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'SyncTargetResource', `arn:${string}:identity-sync:${string}:${string}:target/${string}/${string}`> {
+class SyncTargetResourceArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'SyncTargetResource',
+  `arn:${string}:identity-sync:${string}:${string}:target/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'SyncTargetResource' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -55,6 +77,8 @@ class SyncTargetResourceArn<Partition extends ArnPartition = 'aws'> extends Inte
   }
 }
 export type { SyncTargetResourceArn }
-export function syncTargetResourceArn<Partition extends ArnPartition = 'aws'>(parameters: SyncTargetResourceArnParameters<Partition>) {
+export function syncTargetResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SyncTargetResourceArnParameters<Partition>,
+) {
   return new SyncTargetResourceArn<Partition>(parameters)
 }

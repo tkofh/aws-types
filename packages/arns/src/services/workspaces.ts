@@ -1,12 +1,25 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface DirectoryidArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DirectoryidArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly directoryId: string
 }
-class DirectoryidArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'directoryid', `arn:${string}:workspaces:${string}:${string}:directory/${string}`> {
+class DirectoryidArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'directoryid',
+  `arn:${string}:workspaces:${string}:${string}:directory/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'directoryid' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +37,26 @@ class DirectoryidArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { DirectoryidArn }
-export function directoryidArn<Partition extends ArnPartition = 'aws'>(parameters: DirectoryidArnParameters<Partition>) {
+export function directoryidArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DirectoryidArnParameters<Partition>,
+) {
   return new DirectoryidArn<Partition>(parameters)
 }
 
-export interface WorkspacebundleArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface WorkspacebundleArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly bundleId: string
 }
-class WorkspacebundleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workspacebundle', `arn:${string}:workspaces:${string}:${string}:workspacebundle/${string}`> {
+class WorkspacebundleArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'workspacebundle',
+  `arn:${string}:workspaces:${string}:${string}:workspacebundle/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'workspacebundle' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,17 +74,26 @@ class WorkspacebundleArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { WorkspacebundleArn }
-export function workspacebundleArn<Partition extends ArnPartition = 'aws'>(parameters: WorkspacebundleArnParameters<Partition>) {
+export function workspacebundleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkspacebundleArnParameters<Partition>,
+) {
   return new WorkspacebundleArn<Partition>(parameters)
 }
 
-export interface WorkspaceidArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface WorkspaceidArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly workspaceId: string
 }
-class WorkspaceidArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workspaceid', `arn:${string}:workspaces:${string}:${string}:workspace/${string}`> {
+class WorkspaceidArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'workspaceid',
+  `arn:${string}:workspaces:${string}:${string}:workspace/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'workspaceid' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,17 +111,26 @@ class WorkspaceidArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { WorkspaceidArn }
-export function workspaceidArn<Partition extends ArnPartition = 'aws'>(parameters: WorkspaceidArnParameters<Partition>) {
+export function workspaceidArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkspaceidArnParameters<Partition>,
+) {
   return new WorkspaceidArn<Partition>(parameters)
 }
 
-export interface WorkspaceimageArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface WorkspaceimageArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly imageId: string
 }
-class WorkspaceimageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workspaceimage', `arn:${string}:workspaces:${string}:${string}:workspaceimage/${string}`> {
+class WorkspaceimageArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'workspaceimage',
+  `arn:${string}:workspaces:${string}:${string}:workspaceimage/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'workspaceimage' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -108,17 +148,26 @@ class WorkspaceimageArn<Partition extends ArnPartition = 'aws'> extends Internal
   }
 }
 export type { WorkspaceimageArn }
-export function workspaceimageArn<Partition extends ArnPartition = 'aws'>(parameters: WorkspaceimageArnParameters<Partition>) {
+export function workspaceimageArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkspaceimageArnParameters<Partition>,
+) {
   return new WorkspaceimageArn<Partition>(parameters)
 }
 
-export interface WorkspaceipgroupArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface WorkspaceipgroupArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly groupId: string
 }
-class WorkspaceipgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workspaceipgroup', `arn:${string}:workspaces:${string}:${string}:workspaceipgroup/${string}`> {
+class WorkspaceipgroupArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'workspaceipgroup',
+  `arn:${string}:workspaces:${string}:${string}:workspaceipgroup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'workspaceipgroup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -136,17 +185,26 @@ class WorkspaceipgroupArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { WorkspaceipgroupArn }
-export function workspaceipgroupArn<Partition extends ArnPartition = 'aws'>(parameters: WorkspaceipgroupArnParameters<Partition>) {
+export function workspaceipgroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkspaceipgroupArnParameters<Partition>,
+) {
   return new WorkspaceipgroupArn<Partition>(parameters)
 }
 
-export interface WorkspacespoolidArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface WorkspacespoolidArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly poolId: string
 }
-class WorkspacespoolidArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workspacespoolid', `arn:${string}:workspaces:${string}:${string}:workspacespool/${string}`> {
+class WorkspacespoolidArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'workspacespoolid',
+  `arn:${string}:workspaces:${string}:${string}:workspacespool/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'workspacespoolid' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -164,17 +222,26 @@ class WorkspacespoolidArn<Partition extends ArnPartition = 'aws'> extends Intern
   }
 }
 export type { WorkspacespoolidArn }
-export function workspacespoolidArn<Partition extends ArnPartition = 'aws'>(parameters: WorkspacespoolidArnParameters<Partition>) {
+export function workspacespoolidArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkspacespoolidArnParameters<Partition>,
+) {
   return new WorkspacespoolidArn<Partition>(parameters)
 }
 
-export interface ConnectionaliasArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface ConnectionaliasArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly connectionAliasId: string
 }
-class ConnectionaliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'connectionalias', `arn:${string}:workspaces:${string}:${string}:connectionalias/${string}`> {
+class ConnectionaliasArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'connectionalias',
+  `arn:${string}:workspaces:${string}:${string}:connectionalias/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'connectionalias' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -192,17 +259,26 @@ class ConnectionaliasArn<Partition extends ArnPartition = 'aws'> extends Interna
   }
 }
 export type { ConnectionaliasArn }
-export function connectionaliasArn<Partition extends ArnPartition = 'aws'>(parameters: ConnectionaliasArnParameters<Partition>) {
+export function connectionaliasArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConnectionaliasArnParameters<Partition>,
+) {
   return new ConnectionaliasArn<Partition>(parameters)
 }
 
-export interface WorkspaceapplicationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface WorkspaceapplicationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly workSpaceApplicationId: string
 }
-class WorkspaceapplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workspaceapplication', `arn:${string}:workspaces:${string}:${string}:workspaceapplication/${string}`> {
+class WorkspaceapplicationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'workspaceapplication',
+  `arn:${string}:workspaces:${string}:${string}:workspaceapplication/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'workspaceapplication' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -220,6 +296,8 @@ class WorkspaceapplicationArn<Partition extends ArnPartition = 'aws'> extends In
   }
 }
 export type { WorkspaceapplicationArn }
-export function workspaceapplicationArn<Partition extends ArnPartition = 'aws'>(parameters: WorkspaceapplicationArnParameters<Partition>) {
+export function workspaceapplicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkspaceapplicationArnParameters<Partition>,
+) {
   return new WorkspaceapplicationArn<Partition>(parameters)
 }

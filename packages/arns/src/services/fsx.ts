@@ -1,12 +1,23 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface FileSystemArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FileSystemArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly fileSystemId: string
 }
-class FileSystemArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'file-system', `arn:${string}:fsx:${string}:${string}:file-system/${string}`> {
+class FileSystemArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'file-system',
+  `arn:${string}:fsx:${string}:${string}:file-system/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'file-system' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,17 +35,24 @@ class FileSystemArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   }
 }
 export type { FileSystemArn }
-export function fileSystemArn<Partition extends ArnPartition = 'aws'>(parameters: FileSystemArnParameters<Partition>) {
+export function fileSystemArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FileSystemArnParameters<Partition>,
+) {
   return new FileSystemArn<Partition>(parameters)
 }
 
-export interface FileCacheArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface FileCacheArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly fileCacheId: string
 }
-class FileCacheArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'file-cache', `arn:${string}:fsx:${string}:${string}:file-cache/${string}`> {
+class FileCacheArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'file-cache',
+  `arn:${string}:fsx:${string}:${string}:file-cache/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'file-cache' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -52,7 +70,9 @@ class FileCacheArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { FileCacheArn }
-export function fileCacheArn<Partition extends ArnPartition = 'aws'>(parameters: FileCacheArnParameters<Partition>) {
+export function fileCacheArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FileCacheArnParameters<Partition>,
+) {
   return new FileCacheArn<Partition>(parameters)
 }
 
@@ -62,7 +82,10 @@ export interface BackupArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly backupId: string
 }
-class BackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'backup', `arn:${string}:fsx:${string}:${string}:backup/${string}`> {
+class BackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'backup',
+  `arn:${string}:fsx:${string}:${string}:backup/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'backup' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -80,18 +103,27 @@ class BackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'bac
   }
 }
 export type { BackupArn }
-export function backupArn<Partition extends ArnPartition = 'aws'>(parameters: BackupArnParameters<Partition>) {
+export function backupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BackupArnParameters<Partition>,
+) {
   return new BackupArn<Partition>(parameters)
 }
 
-export interface StorageVirtualMachineArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface StorageVirtualMachineArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly fileSystemId: string
   readonly storageVirtualMachineId: string
 }
-class StorageVirtualMachineArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'storage-virtual-machine', `arn:${string}:fsx:${string}:${string}:storage-virtual-machine/${string}/${string}`> {
+class StorageVirtualMachineArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'storage-virtual-machine',
+  `arn:${string}:fsx:${string}:${string}:storage-virtual-machine/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'storage-virtual-machine' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -111,7 +143,9 @@ class StorageVirtualMachineArn<Partition extends ArnPartition = 'aws'> extends I
   }
 }
 export type { StorageVirtualMachineArn }
-export function storageVirtualMachineArn<Partition extends ArnPartition = 'aws'>(parameters: StorageVirtualMachineArnParameters<Partition>) {
+export function storageVirtualMachineArn<
+  Partition extends ArnPartition = 'aws',
+>(parameters: StorageVirtualMachineArnParameters<Partition>) {
   return new StorageVirtualMachineArn<Partition>(parameters)
 }
 
@@ -121,7 +155,10 @@ export interface TaskArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly account: string
   readonly taskId: string
 }
-class TaskArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'task', `arn:${string}:fsx:${string}:${string}:task/${string}`> {
+class TaskArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'task',
+  `arn:${string}:fsx:${string}:${string}:task/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'task' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -139,18 +176,27 @@ class TaskArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'task'
   }
 }
 export type { TaskArn }
-export function taskArn<Partition extends ArnPartition = 'aws'>(parameters: TaskArnParameters<Partition>) {
+export function taskArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TaskArnParameters<Partition>,
+) {
   return new TaskArn<Partition>(parameters)
 }
 
-export interface AssociationArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface AssociationArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly fileSystemIdOrFileCacheId: string
   readonly dataRepositoryAssociationId: string
 }
-class AssociationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'association', `arn:${string}:fsx:${string}:${string}:association/${string}/${string}`> {
+class AssociationArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'association',
+  `arn:${string}:fsx:${string}:${string}:association/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'association' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -170,7 +216,9 @@ class AssociationArn<Partition extends ArnPartition = 'aws'> extends InternalArn
   }
 }
 export type { AssociationArn }
-export function associationArn<Partition extends ArnPartition = 'aws'>(parameters: AssociationArnParameters<Partition>) {
+export function associationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AssociationArnParameters<Partition>,
+) {
   return new AssociationArn<Partition>(parameters)
 }
 
@@ -181,7 +229,10 @@ export interface VolumeArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly fileSystemId: string
   readonly volumeId: string
 }
-class VolumeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'volume', `arn:${string}:fsx:${string}:${string}:volume/${string}/${string}`> {
+class VolumeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'volume',
+  `arn:${string}:fsx:${string}:${string}:volume/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'volume' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -201,7 +252,9 @@ class VolumeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'vol
   }
 }
 export type { VolumeArn }
-export function volumeArn<Partition extends ArnPartition = 'aws'>(parameters: VolumeArnParameters<Partition>) {
+export function volumeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VolumeArnParameters<Partition>,
+) {
   return new VolumeArn<Partition>(parameters)
 }
 
@@ -212,7 +265,10 @@ export interface SnapshotArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly volumeId: string
   readonly snapshotId: string
 }
-class SnapshotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'snapshot', `arn:${string}:fsx:${string}:${string}:snapshot/${string}/${string}`> {
+class SnapshotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'snapshot',
+  `arn:${string}:fsx:${string}:${string}:snapshot/${string}/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'snapshot' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -232,6 +288,8 @@ class SnapshotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'s
   }
 }
 export type { SnapshotArn }
-export function snapshotArn<Partition extends ArnPartition = 'aws'>(parameters: SnapshotArnParameters<Partition>) {
+export function snapshotArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SnapshotArnParameters<Partition>,
+) {
   return new SnapshotArn<Partition>(parameters)
 }

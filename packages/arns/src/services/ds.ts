@@ -1,12 +1,23 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
-export interface DirectoryArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface DirectoryArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly region: ArnRegion<Partition>
   readonly account: string
   readonly directoryId: string
 }
-class DirectoryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'directory', `arn:${string}:ds:${string}:${string}:directory/${string}`> {
+class DirectoryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'directory',
+  `arn:${string}:ds:${string}:${string}:directory/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'directory' as const
   readonly partition: Partition
   readonly region: ArnRegion<Partition>
@@ -24,6 +35,8 @@ class DirectoryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'
   }
 }
 export type { DirectoryArn }
-export function directoryArn<Partition extends ArnPartition = 'aws'>(parameters: DirectoryArnParameters<Partition>) {
+export function directoryArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DirectoryArnParameters<Partition>,
+) {
   return new DirectoryArn<Partition>(parameters)
 }

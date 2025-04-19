@@ -1,3 +1,1 @@
-export type ConsoleappPrivilege =
-  | 'GetDeviceIdentity'
-  | 'ListDeviceIdentities'
+export type ConsoleappPrivilege = 'GetDeviceIdentity' | 'ListDeviceIdentities'

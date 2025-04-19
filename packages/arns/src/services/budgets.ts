@@ -1,11 +1,20 @@
-import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+import {
+  type ArnPartition,
+  type ArnRegion,
+  ArnResourceTypeBrand,
+  InternalArn,
+  StringifyArnBrand,
+} from '../internal.js'
 
 export interface BudgetArnParameters<Partition extends ArnPartition = 'aws'> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly budgetName: string
 }
-class BudgetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'budget', `arn:${string}:budgets::${string}:budget/${string}`> {
+class BudgetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+  'budget',
+  `arn:${string}:budgets::${string}:budget/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'budget' as const
   readonly partition: Partition
   readonly account: string
@@ -21,17 +30,26 @@ class BudgetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'bud
   }
 }
 export type { BudgetArn }
-export function budgetArn<Partition extends ArnPartition = 'aws'>(parameters: BudgetArnParameters<Partition>) {
+export function budgetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BudgetArnParameters<Partition>,
+) {
   return new BudgetArn<Partition>(parameters)
 }
 
-export interface BudgetActionArnParameters<Partition extends ArnPartition = 'aws'> {
+export interface BudgetActionArnParameters<
+  Partition extends ArnPartition = 'aws',
+> {
   readonly partition?: Partition | undefined
   readonly account: string
   readonly budgetName: string
   readonly actionId: string
 }
-class BudgetActionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'budgetAction', `arn:${string}:budgets::${string}:budget/${string}/action/${string}`> {
+class BudgetActionArn<
+  Partition extends ArnPartition = 'aws',
+> extends InternalArn<
+  'budgetAction',
+  `arn:${string}:budgets::${string}:budget/${string}/action/${string}`
+> {
   readonly [ArnResourceTypeBrand] = 'budgetAction' as const
   readonly partition: Partition
   readonly account: string
@@ -49,6 +67,8 @@ class BudgetActionArn<Partition extends ArnPartition = 'aws'> extends InternalAr
   }
 }
 export type { BudgetActionArn }
-export function budgetActionArn<Partition extends ArnPartition = 'aws'>(parameters: BudgetActionArnParameters<Partition>) {
+export function budgetActionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BudgetActionArnParameters<Partition>,
+) {
   return new BudgetActionArn<Partition>(parameters)
 }
