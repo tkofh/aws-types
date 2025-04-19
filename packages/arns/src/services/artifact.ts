@@ -1,35 +1,89 @@
-export interface ReportPackageArnParameters {
-  partition?: string | undefined
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface ReportPackageArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
 }
-export type ReportPackageArn = `arn:${string}:artifact:::report-package/*`
-export function reportPackageArn(parameters: ReportPackageArnParameters): ReportPackageArn {
-  return `arn:${parameters.partition ?? 'aws'}:artifact:::report-package/*`
+class ReportPackageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'report-package', `arn:${string}:artifact:::report-package/*`> {
+  readonly [ArnResourceTypeBrand] = 'report-package' as const
+  readonly partition: Partition
+  constructor(parameters: ReportPackageArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:artifact:::report-package/*` as const
+  }
+}
+export type { ReportPackageArn }
+export function reportPackageArn<Partition extends ArnPartition = 'aws'>(parameters: ReportPackageArnParameters<Partition>) {
+  return new ReportPackageArn<Partition>(parameters)
 }
 
-export interface CustomerAgreementArnParameters {
-  partition?: string | undefined
-  account: string
+export interface CustomerAgreementArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly account: string
 }
-export type CustomerAgreementArn = `arn:${string}:artifact::${string}:customer-agreement/*`
-export function customerAgreementArn(parameters: CustomerAgreementArnParameters): CustomerAgreementArn {
-  return `arn:${parameters.partition ?? 'aws'}:artifact::${parameters.account}:customer-agreement/*`
+class CustomerAgreementArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'customer-agreement', `arn:${string}:artifact::${string}:customer-agreement/*`> {
+  readonly [ArnResourceTypeBrand] = 'customer-agreement' as const
+  readonly partition: Partition
+  readonly account: string
+  constructor(parameters: CustomerAgreementArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.account = parameters.account
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:artifact::${this.account}:customer-agreement/*` as const
+  }
+}
+export type { CustomerAgreementArn }
+export function customerAgreementArn<Partition extends ArnPartition = 'aws'>(parameters: CustomerAgreementArnParameters<Partition>) {
+  return new CustomerAgreementArn<Partition>(parameters)
 }
 
-export interface AgreementArnParameters {
-  partition?: string | undefined
+export interface AgreementArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
 }
-export type AgreementArn = `arn:${string}:artifact:::agreement/*`
-export function agreementArn(parameters: AgreementArnParameters): AgreementArn {
-  return `arn:${parameters.partition ?? 'aws'}:artifact:::agreement/*`
+class AgreementArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'agreement', `arn:${string}:artifact:::agreement/*`> {
+  readonly [ArnResourceTypeBrand] = 'agreement' as const
+  readonly partition: Partition
+  constructor(parameters: AgreementArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:artifact:::agreement/*` as const
+  }
+}
+export type { AgreementArn }
+export function agreementArn<Partition extends ArnPartition = 'aws'>(parameters: AgreementArnParameters<Partition>) {
+  return new AgreementArn<Partition>(parameters)
 }
 
-export interface ReportArnParameters {
-  partition?: string | undefined
-  region: string
-  reportId: string
-  version: string
+export interface ReportArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly reportId: string
+  readonly version: string
 }
-export type ReportArn = `arn:${string}:artifact:${string}::report/${string}:${string}`
-export function reportArn(parameters: ReportArnParameters): ReportArn {
-  return `arn:${parameters.partition ?? 'aws'}:artifact:${parameters.region}::report/${parameters.reportId}:${parameters.version}`
+class ReportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'report', `arn:${string}:artifact:${string}::report/${string}:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'report' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly reportId: string
+  readonly version: string
+  constructor(parameters: ReportArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.reportId = parameters.reportId
+    this.version = parameters.version
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:artifact:${this.region}::report/${this.reportId}:${this.version}` as const
+  }
+}
+export type { ReportArn }
+export function reportArn<Partition extends ArnPartition = 'aws'>(parameters: ReportArnParameters<Partition>) {
+  return new ReportArn<Partition>(parameters)
 }

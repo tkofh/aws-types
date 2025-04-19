@@ -1,45 +1,119 @@
-export interface LedgerArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  ledgerName: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface LedgerArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly ledgerName: string
 }
-export type LedgerArn = `arn:${string}:qldb:${string}:${string}:ledger/${string}`
-export function ledgerArn(parameters: LedgerArnParameters): LedgerArn {
-  return `arn:${parameters.partition ?? 'aws'}:qldb:${parameters.region}:${parameters.account}:ledger/${parameters.ledgerName}`
+class LedgerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ledger', `arn:${string}:qldb:${string}:${string}:ledger/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'ledger' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly ledgerName: string
+  constructor(parameters: LedgerArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.ledgerName = parameters.ledgerName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:qldb:${this.region}:${this.account}:ledger/${this.ledgerName}` as const
+  }
+}
+export type { LedgerArn }
+export function ledgerArn<Partition extends ArnPartition = 'aws'>(parameters: LedgerArnParameters<Partition>) {
+  return new LedgerArn<Partition>(parameters)
 }
 
-export interface StreamArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  ledgerName: string
-  streamId: string
+export interface StreamArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly ledgerName: string
+  readonly streamId: string
 }
-export type StreamArn = `arn:${string}:qldb:${string}:${string}:stream/${string}/${string}`
-export function streamArn(parameters: StreamArnParameters): StreamArn {
-  return `arn:${parameters.partition ?? 'aws'}:qldb:${parameters.region}:${parameters.account}:stream/${parameters.ledgerName}/${parameters.streamId}`
+class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'stream', `arn:${string}:qldb:${string}:${string}:stream/${string}/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'stream' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly ledgerName: string
+  readonly streamId: string
+  constructor(parameters: StreamArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.ledgerName = parameters.ledgerName
+    this.streamId = parameters.streamId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:qldb:${this.region}:${this.account}:stream/${this.ledgerName}/${this.streamId}` as const
+  }
+}
+export type { StreamArn }
+export function streamArn<Partition extends ArnPartition = 'aws'>(parameters: StreamArnParameters<Partition>) {
+  return new StreamArn<Partition>(parameters)
 }
 
-export interface TableArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  ledgerName: string
-  tableId: string
+export interface TableArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly ledgerName: string
+  readonly tableId: string
 }
-export type TableArn = `arn:${string}:qldb:${string}:${string}:ledger/${string}/table/${string}`
-export function tableArn(parameters: TableArnParameters): TableArn {
-  return `arn:${parameters.partition ?? 'aws'}:qldb:${parameters.region}:${parameters.account}:ledger/${parameters.ledgerName}/table/${parameters.tableId}`
+class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'table', `arn:${string}:qldb:${string}:${string}:ledger/${string}/table/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'table' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly ledgerName: string
+  readonly tableId: string
+  constructor(parameters: TableArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.ledgerName = parameters.ledgerName
+    this.tableId = parameters.tableId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:qldb:${this.region}:${this.account}:ledger/${this.ledgerName}/table/${this.tableId}` as const
+  }
+}
+export type { TableArn }
+export function tableArn<Partition extends ArnPartition = 'aws'>(parameters: TableArnParameters<Partition>) {
+  return new TableArn<Partition>(parameters)
 }
 
-export interface CatalogArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  ledgerName: string
+export interface CatalogArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly ledgerName: string
 }
-export type CatalogArn = `arn:${string}:qldb:${string}:${string}:ledger/${string}/information_schema/user_tables`
-export function catalogArn(parameters: CatalogArnParameters): CatalogArn {
-  return `arn:${parameters.partition ?? 'aws'}:qldb:${parameters.region}:${parameters.account}:ledger/${parameters.ledgerName}/information_schema/user_tables`
+class CatalogArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'catalog', `arn:${string}:qldb:${string}:${string}:ledger/${string}/information_schema/user_tables`> {
+  readonly [ArnResourceTypeBrand] = 'catalog' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly ledgerName: string
+  constructor(parameters: CatalogArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.ledgerName = parameters.ledgerName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:qldb:${this.region}:${this.account}:ledger/${this.ledgerName}/information_schema/user_tables` as const
+  }
+}
+export type { CatalogArn }
+export function catalogArn<Partition extends ArnPartition = 'aws'>(parameters: CatalogArnParameters<Partition>) {
+  return new CatalogArn<Partition>(parameters)
 }

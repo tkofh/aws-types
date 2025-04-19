@@ -1,43 +1,113 @@
-export interface ProfileArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  resourceId: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface ProfileArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
 }
-export type ProfileArn = `arn:${string}:b2bi:${string}:${string}:profile/${string}`
-export function profileArn(parameters: ProfileArnParameters): ProfileArn {
-  return `arn:${parameters.partition ?? 'aws'}:b2bi:${parameters.region}:${parameters.account}:profile/${parameters.resourceId}`
+class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'profile', `arn:${string}:b2bi:${string}:${string}:profile/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'profile' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
+  constructor(parameters: ProfileArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.resourceId = parameters.resourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:b2bi:${this.region}:${this.account}:profile/${this.resourceId}` as const
+  }
+}
+export type { ProfileArn }
+export function profileArn<Partition extends ArnPartition = 'aws'>(parameters: ProfileArnParameters<Partition>) {
+  return new ProfileArn<Partition>(parameters)
 }
 
-export interface CapabilityArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  resourceId: string
+export interface CapabilityArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
 }
-export type CapabilityArn = `arn:${string}:b2bi:${string}:${string}:capability/${string}`
-export function capabilityArn(parameters: CapabilityArnParameters): CapabilityArn {
-  return `arn:${parameters.partition ?? 'aws'}:b2bi:${parameters.region}:${parameters.account}:capability/${parameters.resourceId}`
+class CapabilityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'capability', `arn:${string}:b2bi:${string}:${string}:capability/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'capability' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
+  constructor(parameters: CapabilityArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.resourceId = parameters.resourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:b2bi:${this.region}:${this.account}:capability/${this.resourceId}` as const
+  }
+}
+export type { CapabilityArn }
+export function capabilityArn<Partition extends ArnPartition = 'aws'>(parameters: CapabilityArnParameters<Partition>) {
+  return new CapabilityArn<Partition>(parameters)
 }
 
-export interface PartnershipArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  resourceId: string
+export interface PartnershipArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
 }
-export type PartnershipArn = `arn:${string}:b2bi:${string}:${string}:partnership/${string}`
-export function partnershipArn(parameters: PartnershipArnParameters): PartnershipArn {
-  return `arn:${parameters.partition ?? 'aws'}:b2bi:${parameters.region}:${parameters.account}:partnership/${parameters.resourceId}`
+class PartnershipArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'partnership', `arn:${string}:b2bi:${string}:${string}:partnership/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'partnership' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
+  constructor(parameters: PartnershipArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.resourceId = parameters.resourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:b2bi:${this.region}:${this.account}:partnership/${this.resourceId}` as const
+  }
+}
+export type { PartnershipArn }
+export function partnershipArn<Partition extends ArnPartition = 'aws'>(parameters: PartnershipArnParameters<Partition>) {
+  return new PartnershipArn<Partition>(parameters)
 }
 
-export interface TransformerArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  resourceId: string
+export interface TransformerArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
 }
-export type TransformerArn = `arn:${string}:b2bi:${string}:${string}:transformer/${string}`
-export function transformerArn(parameters: TransformerArnParameters): TransformerArn {
-  return `arn:${parameters.partition ?? 'aws'}:b2bi:${parameters.region}:${parameters.account}:transformer/${parameters.resourceId}`
+class TransformerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'transformer', `arn:${string}:b2bi:${string}:${string}:transformer/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'transformer' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
+  constructor(parameters: TransformerArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.resourceId = parameters.resourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:b2bi:${this.region}:${this.account}:transformer/${this.resourceId}` as const
+  }
+}
+export type { TransformerArn }
+export function transformerArn<Partition extends ArnPartition = 'aws'>(parameters: TransformerArnParameters<Partition>) {
+  return new TransformerArn<Partition>(parameters)
 }

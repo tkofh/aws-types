@@ -1,165 +1,424 @@
-export interface TargetedSentimentDetectionJobArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  jobId: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface TargetedSentimentDetectionJobArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
 }
-export type TargetedSentimentDetectionJobArn = `arn:${string}:comprehend:${string}:${string}:targeted-sentiment-detection-job/${string}`
-export function targetedSentimentDetectionJobArn(parameters: TargetedSentimentDetectionJobArnParameters): TargetedSentimentDetectionJobArn {
-  return `arn:${parameters.partition ?? 'aws'}:comprehend:${parameters.region}:${parameters.account}:targeted-sentiment-detection-job/${parameters.jobId}`
+class TargetedSentimentDetectionJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'targeted-sentiment-detection-job', `arn:${string}:comprehend:${string}:${string}:targeted-sentiment-detection-job/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'targeted-sentiment-detection-job' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
+  constructor(parameters: TargetedSentimentDetectionJobArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.jobId = parameters.jobId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:comprehend:${this.region}:${this.account}:targeted-sentiment-detection-job/${this.jobId}` as const
+  }
+}
+export type { TargetedSentimentDetectionJobArn }
+export function targetedSentimentDetectionJobArn<Partition extends ArnPartition = 'aws'>(parameters: TargetedSentimentDetectionJobArnParameters<Partition>) {
+  return new TargetedSentimentDetectionJobArn<Partition>(parameters)
 }
 
-export interface DocumentClassifierArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  documentClassifierName: string
+export interface DocumentClassifierArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly documentClassifierName: string
 }
-export type DocumentClassifierArn = `arn:${string}:comprehend:${string}:${string}:document-classifier/${string}`
-export function documentClassifierArn(parameters: DocumentClassifierArnParameters): DocumentClassifierArn {
-  return `arn:${parameters.partition ?? 'aws'}:comprehend:${parameters.region}:${parameters.account}:document-classifier/${parameters.documentClassifierName}`
+class DocumentClassifierArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'document-classifier', `arn:${string}:comprehend:${string}:${string}:document-classifier/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'document-classifier' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly documentClassifierName: string
+  constructor(parameters: DocumentClassifierArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.documentClassifierName = parameters.documentClassifierName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:comprehend:${this.region}:${this.account}:document-classifier/${this.documentClassifierName}` as const
+  }
 }
-
-export interface DocumentClassifierEndpointArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  documentClassifierEndpointName: string
-}
-export type DocumentClassifierEndpointArn = `arn:${string}:comprehend:${string}:${string}:document-classifier-endpoint/${string}`
-export function documentClassifierEndpointArn(parameters: DocumentClassifierEndpointArnParameters): DocumentClassifierEndpointArn {
-  return `arn:${parameters.partition ?? 'aws'}:comprehend:${parameters.region}:${parameters.account}:document-classifier-endpoint/${parameters.documentClassifierEndpointName}`
-}
-
-export interface EntityRecognizerArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  entityRecognizerName: string
-}
-export type EntityRecognizerArn = `arn:${string}:comprehend:${string}:${string}:entity-recognizer/${string}`
-export function entityRecognizerArn(parameters: EntityRecognizerArnParameters): EntityRecognizerArn {
-  return `arn:${parameters.partition ?? 'aws'}:comprehend:${parameters.region}:${parameters.account}:entity-recognizer/${parameters.entityRecognizerName}`
+export type { DocumentClassifierArn }
+export function documentClassifierArn<Partition extends ArnPartition = 'aws'>(parameters: DocumentClassifierArnParameters<Partition>) {
+  return new DocumentClassifierArn<Partition>(parameters)
 }
 
-export interface EntityRecognizerEndpointArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  entityRecognizerEndpointName: string
+export interface DocumentClassifierEndpointArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly documentClassifierEndpointName: string
 }
-export type EntityRecognizerEndpointArn = `arn:${string}:comprehend:${string}:${string}:entity-recognizer-endpoint/${string}`
-export function entityRecognizerEndpointArn(parameters: EntityRecognizerEndpointArnParameters): EntityRecognizerEndpointArn {
-  return `arn:${parameters.partition ?? 'aws'}:comprehend:${parameters.region}:${parameters.account}:entity-recognizer-endpoint/${parameters.entityRecognizerEndpointName}`
+class DocumentClassifierEndpointArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'document-classifier-endpoint', `arn:${string}:comprehend:${string}:${string}:document-classifier-endpoint/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'document-classifier-endpoint' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly documentClassifierEndpointName: string
+  constructor(parameters: DocumentClassifierEndpointArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.documentClassifierEndpointName = parameters.documentClassifierEndpointName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:comprehend:${this.region}:${this.account}:document-classifier-endpoint/${this.documentClassifierEndpointName}` as const
+  }
 }
-
-export interface DominantLanguageDetectionJobArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  jobId: string
-}
-export type DominantLanguageDetectionJobArn = `arn:${string}:comprehend:${string}:${string}:dominant-language-detection-job/${string}`
-export function dominantLanguageDetectionJobArn(parameters: DominantLanguageDetectionJobArnParameters): DominantLanguageDetectionJobArn {
-  return `arn:${parameters.partition ?? 'aws'}:comprehend:${parameters.region}:${parameters.account}:dominant-language-detection-job/${parameters.jobId}`
-}
-
-export interface EntitiesDetectionJobArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  jobId: string
-}
-export type EntitiesDetectionJobArn = `arn:${string}:comprehend:${string}:${string}:entities-detection-job/${string}`
-export function entitiesDetectionJobArn(parameters: EntitiesDetectionJobArnParameters): EntitiesDetectionJobArn {
-  return `arn:${parameters.partition ?? 'aws'}:comprehend:${parameters.region}:${parameters.account}:entities-detection-job/${parameters.jobId}`
+export type { DocumentClassifierEndpointArn }
+export function documentClassifierEndpointArn<Partition extends ArnPartition = 'aws'>(parameters: DocumentClassifierEndpointArnParameters<Partition>) {
+  return new DocumentClassifierEndpointArn<Partition>(parameters)
 }
 
-export interface PiiEntitiesDetectionJobArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  jobId: string
+export interface EntityRecognizerArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly entityRecognizerName: string
 }
-export type PiiEntitiesDetectionJobArn = `arn:${string}:comprehend:${string}:${string}:pii-entities-detection-job/${string}`
-export function piiEntitiesDetectionJobArn(parameters: PiiEntitiesDetectionJobArnParameters): PiiEntitiesDetectionJobArn {
-  return `arn:${parameters.partition ?? 'aws'}:comprehend:${parameters.region}:${parameters.account}:pii-entities-detection-job/${parameters.jobId}`
+class EntityRecognizerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'entity-recognizer', `arn:${string}:comprehend:${string}:${string}:entity-recognizer/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'entity-recognizer' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly entityRecognizerName: string
+  constructor(parameters: EntityRecognizerArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.entityRecognizerName = parameters.entityRecognizerName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:comprehend:${this.region}:${this.account}:entity-recognizer/${this.entityRecognizerName}` as const
+  }
 }
-
-export interface EventsDetectionJobArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  jobId: string
-}
-export type EventsDetectionJobArn = `arn:${string}:comprehend:${string}:${string}:events-detection-job/${string}`
-export function eventsDetectionJobArn(parameters: EventsDetectionJobArnParameters): EventsDetectionJobArn {
-  return `arn:${parameters.partition ?? 'aws'}:comprehend:${parameters.region}:${parameters.account}:events-detection-job/${parameters.jobId}`
-}
-
-export interface KeyPhrasesDetectionJobArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  jobId: string
-}
-export type KeyPhrasesDetectionJobArn = `arn:${string}:comprehend:${string}:${string}:key-phrases-detection-job/${string}`
-export function keyPhrasesDetectionJobArn(parameters: KeyPhrasesDetectionJobArnParameters): KeyPhrasesDetectionJobArn {
-  return `arn:${parameters.partition ?? 'aws'}:comprehend:${parameters.region}:${parameters.account}:key-phrases-detection-job/${parameters.jobId}`
+export type { EntityRecognizerArn }
+export function entityRecognizerArn<Partition extends ArnPartition = 'aws'>(parameters: EntityRecognizerArnParameters<Partition>) {
+  return new EntityRecognizerArn<Partition>(parameters)
 }
 
-export interface SentimentDetectionJobArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  jobId: string
+export interface EntityRecognizerEndpointArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly entityRecognizerEndpointName: string
 }
-export type SentimentDetectionJobArn = `arn:${string}:comprehend:${string}:${string}:sentiment-detection-job/${string}`
-export function sentimentDetectionJobArn(parameters: SentimentDetectionJobArnParameters): SentimentDetectionJobArn {
-  return `arn:${parameters.partition ?? 'aws'}:comprehend:${parameters.region}:${parameters.account}:sentiment-detection-job/${parameters.jobId}`
+class EntityRecognizerEndpointArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'entity-recognizer-endpoint', `arn:${string}:comprehend:${string}:${string}:entity-recognizer-endpoint/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'entity-recognizer-endpoint' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly entityRecognizerEndpointName: string
+  constructor(parameters: EntityRecognizerEndpointArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.entityRecognizerEndpointName = parameters.entityRecognizerEndpointName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:comprehend:${this.region}:${this.account}:entity-recognizer-endpoint/${this.entityRecognizerEndpointName}` as const
+  }
 }
-
-export interface TopicsDetectionJobArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  jobId: string
-}
-export type TopicsDetectionJobArn = `arn:${string}:comprehend:${string}:${string}:topics-detection-job/${string}`
-export function topicsDetectionJobArn(parameters: TopicsDetectionJobArnParameters): TopicsDetectionJobArn {
-  return `arn:${parameters.partition ?? 'aws'}:comprehend:${parameters.region}:${parameters.account}:topics-detection-job/${parameters.jobId}`
-}
-
-export interface DocumentClassificationJobArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  jobId: string
-}
-export type DocumentClassificationJobArn = `arn:${string}:comprehend:${string}:${string}:document-classification-job/${string}`
-export function documentClassificationJobArn(parameters: DocumentClassificationJobArnParameters): DocumentClassificationJobArn {
-  return `arn:${parameters.partition ?? 'aws'}:comprehend:${parameters.region}:${parameters.account}:document-classification-job/${parameters.jobId}`
+export type { EntityRecognizerEndpointArn }
+export function entityRecognizerEndpointArn<Partition extends ArnPartition = 'aws'>(parameters: EntityRecognizerEndpointArnParameters<Partition>) {
+  return new EntityRecognizerEndpointArn<Partition>(parameters)
 }
 
-export interface FlywheelArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  flywheelName: string
+export interface DominantLanguageDetectionJobArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
 }
-export type FlywheelArn = `arn:${string}:comprehend:${string}:${string}:flywheel/${string}`
-export function flywheelArn(parameters: FlywheelArnParameters): FlywheelArn {
-  return `arn:${parameters.partition ?? 'aws'}:comprehend:${parameters.region}:${parameters.account}:flywheel/${parameters.flywheelName}`
+class DominantLanguageDetectionJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'dominant-language-detection-job', `arn:${string}:comprehend:${string}:${string}:dominant-language-detection-job/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'dominant-language-detection-job' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
+  constructor(parameters: DominantLanguageDetectionJobArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.jobId = parameters.jobId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:comprehend:${this.region}:${this.account}:dominant-language-detection-job/${this.jobId}` as const
+  }
+}
+export type { DominantLanguageDetectionJobArn }
+export function dominantLanguageDetectionJobArn<Partition extends ArnPartition = 'aws'>(parameters: DominantLanguageDetectionJobArnParameters<Partition>) {
+  return new DominantLanguageDetectionJobArn<Partition>(parameters)
 }
 
-export interface FlywheelDatasetArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  flywheelName: string
-  datasetName: string
+export interface EntitiesDetectionJobArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
 }
-export type FlywheelDatasetArn = `arn:${string}:comprehend:${string}:${string}:flywheel/${string}/dataset/${string}`
-export function flywheelDatasetArn(parameters: FlywheelDatasetArnParameters): FlywheelDatasetArn {
-  return `arn:${parameters.partition ?? 'aws'}:comprehend:${parameters.region}:${parameters.account}:flywheel/${parameters.flywheelName}/dataset/${parameters.datasetName}`
+class EntitiesDetectionJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'entities-detection-job', `arn:${string}:comprehend:${string}:${string}:entities-detection-job/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'entities-detection-job' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
+  constructor(parameters: EntitiesDetectionJobArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.jobId = parameters.jobId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:comprehend:${this.region}:${this.account}:entities-detection-job/${this.jobId}` as const
+  }
+}
+export type { EntitiesDetectionJobArn }
+export function entitiesDetectionJobArn<Partition extends ArnPartition = 'aws'>(parameters: EntitiesDetectionJobArnParameters<Partition>) {
+  return new EntitiesDetectionJobArn<Partition>(parameters)
+}
+
+export interface PiiEntitiesDetectionJobArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
+}
+class PiiEntitiesDetectionJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pii-entities-detection-job', `arn:${string}:comprehend:${string}:${string}:pii-entities-detection-job/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'pii-entities-detection-job' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
+  constructor(parameters: PiiEntitiesDetectionJobArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.jobId = parameters.jobId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:comprehend:${this.region}:${this.account}:pii-entities-detection-job/${this.jobId}` as const
+  }
+}
+export type { PiiEntitiesDetectionJobArn }
+export function piiEntitiesDetectionJobArn<Partition extends ArnPartition = 'aws'>(parameters: PiiEntitiesDetectionJobArnParameters<Partition>) {
+  return new PiiEntitiesDetectionJobArn<Partition>(parameters)
+}
+
+export interface EventsDetectionJobArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
+}
+class EventsDetectionJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'events-detection-job', `arn:${string}:comprehend:${string}:${string}:events-detection-job/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'events-detection-job' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
+  constructor(parameters: EventsDetectionJobArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.jobId = parameters.jobId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:comprehend:${this.region}:${this.account}:events-detection-job/${this.jobId}` as const
+  }
+}
+export type { EventsDetectionJobArn }
+export function eventsDetectionJobArn<Partition extends ArnPartition = 'aws'>(parameters: EventsDetectionJobArnParameters<Partition>) {
+  return new EventsDetectionJobArn<Partition>(parameters)
+}
+
+export interface KeyPhrasesDetectionJobArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
+}
+class KeyPhrasesDetectionJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'key-phrases-detection-job', `arn:${string}:comprehend:${string}:${string}:key-phrases-detection-job/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'key-phrases-detection-job' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
+  constructor(parameters: KeyPhrasesDetectionJobArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.jobId = parameters.jobId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:comprehend:${this.region}:${this.account}:key-phrases-detection-job/${this.jobId}` as const
+  }
+}
+export type { KeyPhrasesDetectionJobArn }
+export function keyPhrasesDetectionJobArn<Partition extends ArnPartition = 'aws'>(parameters: KeyPhrasesDetectionJobArnParameters<Partition>) {
+  return new KeyPhrasesDetectionJobArn<Partition>(parameters)
+}
+
+export interface SentimentDetectionJobArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
+}
+class SentimentDetectionJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'sentiment-detection-job', `arn:${string}:comprehend:${string}:${string}:sentiment-detection-job/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'sentiment-detection-job' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
+  constructor(parameters: SentimentDetectionJobArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.jobId = parameters.jobId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:comprehend:${this.region}:${this.account}:sentiment-detection-job/${this.jobId}` as const
+  }
+}
+export type { SentimentDetectionJobArn }
+export function sentimentDetectionJobArn<Partition extends ArnPartition = 'aws'>(parameters: SentimentDetectionJobArnParameters<Partition>) {
+  return new SentimentDetectionJobArn<Partition>(parameters)
+}
+
+export interface TopicsDetectionJobArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
+}
+class TopicsDetectionJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'topics-detection-job', `arn:${string}:comprehend:${string}:${string}:topics-detection-job/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'topics-detection-job' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
+  constructor(parameters: TopicsDetectionJobArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.jobId = parameters.jobId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:comprehend:${this.region}:${this.account}:topics-detection-job/${this.jobId}` as const
+  }
+}
+export type { TopicsDetectionJobArn }
+export function topicsDetectionJobArn<Partition extends ArnPartition = 'aws'>(parameters: TopicsDetectionJobArnParameters<Partition>) {
+  return new TopicsDetectionJobArn<Partition>(parameters)
+}
+
+export interface DocumentClassificationJobArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
+}
+class DocumentClassificationJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'document-classification-job', `arn:${string}:comprehend:${string}:${string}:document-classification-job/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'document-classification-job' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly jobId: string
+  constructor(parameters: DocumentClassificationJobArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.jobId = parameters.jobId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:comprehend:${this.region}:${this.account}:document-classification-job/${this.jobId}` as const
+  }
+}
+export type { DocumentClassificationJobArn }
+export function documentClassificationJobArn<Partition extends ArnPartition = 'aws'>(parameters: DocumentClassificationJobArnParameters<Partition>) {
+  return new DocumentClassificationJobArn<Partition>(parameters)
+}
+
+export interface FlywheelArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly flywheelName: string
+}
+class FlywheelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'flywheel', `arn:${string}:comprehend:${string}:${string}:flywheel/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'flywheel' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly flywheelName: string
+  constructor(parameters: FlywheelArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.flywheelName = parameters.flywheelName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:comprehend:${this.region}:${this.account}:flywheel/${this.flywheelName}` as const
+  }
+}
+export type { FlywheelArn }
+export function flywheelArn<Partition extends ArnPartition = 'aws'>(parameters: FlywheelArnParameters<Partition>) {
+  return new FlywheelArn<Partition>(parameters)
+}
+
+export interface FlywheelDatasetArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly flywheelName: string
+  readonly datasetName: string
+}
+class FlywheelDatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'flywheel-dataset', `arn:${string}:comprehend:${string}:${string}:flywheel/${string}/dataset/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'flywheel-dataset' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly flywheelName: string
+  readonly datasetName: string
+  constructor(parameters: FlywheelDatasetArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.flywheelName = parameters.flywheelName
+    this.datasetName = parameters.datasetName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:comprehend:${this.region}:${this.account}:flywheel/${this.flywheelName}/dataset/${this.datasetName}` as const
+  }
+}
+export type { FlywheelDatasetArn }
+export function flywheelDatasetArn<Partition extends ArnPartition = 'aws'>(parameters: FlywheelDatasetArnParameters<Partition>) {
+  return new FlywheelDatasetArn<Partition>(parameters)
 }

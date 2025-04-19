@@ -1,79 +1,206 @@
-export interface CodeSigningConfigArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  codeSigningConfigId: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface CodeSigningConfigArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly codeSigningConfigId: string
 }
-export type CodeSigningConfigArn = `arn:${string}:lambda:${string}:${string}:code-signing-config:${string}`
-export function codeSigningConfigArn(parameters: CodeSigningConfigArnParameters): CodeSigningConfigArn {
-  return `arn:${parameters.partition ?? 'aws'}:lambda:${parameters.region}:${parameters.account}:code-signing-config:${parameters.codeSigningConfigId}`
+class CodeSigningConfigArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'code signing config', `arn:${string}:lambda:${string}:${string}:code-signing-config:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'code signing config' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly codeSigningConfigId: string
+  constructor(parameters: CodeSigningConfigArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.codeSigningConfigId = parameters.codeSigningConfigId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:lambda:${this.region}:${this.account}:code-signing-config:${this.codeSigningConfigId}` as const
+  }
+}
+export type { CodeSigningConfigArn }
+export function codeSigningConfigArn<Partition extends ArnPartition = 'aws'>(parameters: CodeSigningConfigArnParameters<Partition>) {
+  return new CodeSigningConfigArn<Partition>(parameters)
 }
 
-export interface EventSourceMappingArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  uuid: string
+export interface EventSourceMappingArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly uuid: string
 }
-export type EventSourceMappingArn = `arn:${string}:lambda:${string}:${string}:event-source-mapping:${string}`
-export function eventSourceMappingArn(parameters: EventSourceMappingArnParameters): EventSourceMappingArn {
-  return `arn:${parameters.partition ?? 'aws'}:lambda:${parameters.region}:${parameters.account}:event-source-mapping:${parameters.uuid}`
+class EventSourceMappingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'eventSourceMapping', `arn:${string}:lambda:${string}:${string}:event-source-mapping:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'eventSourceMapping' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly uuid: string
+  constructor(parameters: EventSourceMappingArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.uuid = parameters.uuid
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:lambda:${this.region}:${this.account}:event-source-mapping:${this.uuid}` as const
+  }
 }
-
-export interface FunctionArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  functionName: string
-}
-export type FunctionArn = `arn:${string}:lambda:${string}:${string}:function:${string}`
-export function functionArn(parameters: FunctionArnParameters): FunctionArn {
-  return `arn:${parameters.partition ?? 'aws'}:lambda:${parameters.region}:${parameters.account}:function:${parameters.functionName}`
-}
-
-export interface FunctionAliasArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  functionName: string
-  alias: string
-}
-export type FunctionAliasArn = `arn:${string}:lambda:${string}:${string}:function:${string}:${string}`
-export function functionAliasArn(parameters: FunctionAliasArnParameters): FunctionAliasArn {
-  return `arn:${parameters.partition ?? 'aws'}:lambda:${parameters.region}:${parameters.account}:function:${parameters.functionName}:${parameters.alias}`
+export type { EventSourceMappingArn }
+export function eventSourceMappingArn<Partition extends ArnPartition = 'aws'>(parameters: EventSourceMappingArnParameters<Partition>) {
+  return new EventSourceMappingArn<Partition>(parameters)
 }
 
-export interface FunctionVersionArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  functionName: string
-  version: string
+export interface FunctionArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly functionName: string
 }
-export type FunctionVersionArn = `arn:${string}:lambda:${string}:${string}:function:${string}:${string}`
-export function functionVersionArn(parameters: FunctionVersionArnParameters): FunctionVersionArn {
-  return `arn:${parameters.partition ?? 'aws'}:lambda:${parameters.region}:${parameters.account}:function:${parameters.functionName}:${parameters.version}`
+class FunctionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'function', `arn:${string}:lambda:${string}:${string}:function:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'function' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly functionName: string
+  constructor(parameters: FunctionArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.functionName = parameters.functionName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:lambda:${this.region}:${this.account}:function:${this.functionName}` as const
+  }
+}
+export type { FunctionArn }
+export function functionArn<Partition extends ArnPartition = 'aws'>(parameters: FunctionArnParameters<Partition>) {
+  return new FunctionArn<Partition>(parameters)
 }
 
-export interface LayerArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  layerName: string
+export interface FunctionAliasArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly functionName: string
+  readonly alias: string
 }
-export type LayerArn = `arn:${string}:lambda:${string}:${string}:layer:${string}`
-export function layerArn(parameters: LayerArnParameters): LayerArn {
-  return `arn:${parameters.partition ?? 'aws'}:lambda:${parameters.region}:${parameters.account}:layer:${parameters.layerName}`
+class FunctionAliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'function alias', `arn:${string}:lambda:${string}:${string}:function:${string}:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'function alias' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly functionName: string
+  readonly alias: string
+  constructor(parameters: FunctionAliasArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.functionName = parameters.functionName
+    this.alias = parameters.alias
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:lambda:${this.region}:${this.account}:function:${this.functionName}:${this.alias}` as const
+  }
+}
+export type { FunctionAliasArn }
+export function functionAliasArn<Partition extends ArnPartition = 'aws'>(parameters: FunctionAliasArnParameters<Partition>) {
+  return new FunctionAliasArn<Partition>(parameters)
 }
 
-export interface LayerVersionArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  layerName: string
-  layerVersion: string
+export interface FunctionVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly functionName: string
+  readonly version: string
 }
-export type LayerVersionArn = `arn:${string}:lambda:${string}:${string}:layer:${string}:${string}`
-export function layerVersionArn(parameters: LayerVersionArnParameters): LayerVersionArn {
-  return `arn:${parameters.partition ?? 'aws'}:lambda:${parameters.region}:${parameters.account}:layer:${parameters.layerName}:${parameters.layerVersion}`
+class FunctionVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'function version', `arn:${string}:lambda:${string}:${string}:function:${string}:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'function version' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly functionName: string
+  readonly version: string
+  constructor(parameters: FunctionVersionArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.functionName = parameters.functionName
+    this.version = parameters.version
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:lambda:${this.region}:${this.account}:function:${this.functionName}:${this.version}` as const
+  }
+}
+export type { FunctionVersionArn }
+export function functionVersionArn<Partition extends ArnPartition = 'aws'>(parameters: FunctionVersionArnParameters<Partition>) {
+  return new FunctionVersionArn<Partition>(parameters)
+}
+
+export interface LayerArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly layerName: string
+}
+class LayerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'layer', `arn:${string}:lambda:${string}:${string}:layer:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'layer' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly layerName: string
+  constructor(parameters: LayerArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.layerName = parameters.layerName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:lambda:${this.region}:${this.account}:layer:${this.layerName}` as const
+  }
+}
+export type { LayerArn }
+export function layerArn<Partition extends ArnPartition = 'aws'>(parameters: LayerArnParameters<Partition>) {
+  return new LayerArn<Partition>(parameters)
+}
+
+export interface LayerVersionArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly layerName: string
+  readonly layerVersion: string
+}
+class LayerVersionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'layerVersion', `arn:${string}:lambda:${string}:${string}:layer:${string}:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'layerVersion' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly layerName: string
+  readonly layerVersion: string
+  constructor(parameters: LayerVersionArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.layerName = parameters.layerName
+    this.layerVersion = parameters.layerVersion
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:lambda:${this.region}:${this.account}:layer:${this.layerName}:${this.layerVersion}` as const
+  }
+}
+export type { LayerVersionArn }
+export function layerVersionArn<Partition extends ArnPartition = 'aws'>(parameters: LayerVersionArnParameters<Partition>) {
+  return new LayerVersionArn<Partition>(parameters)
 }

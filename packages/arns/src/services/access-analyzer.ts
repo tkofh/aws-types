@@ -1,22 +1,60 @@
-export interface AnalyzerArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  analyzerName: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface AnalyzerArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly analyzerName: string
 }
-export type AnalyzerArn = `arn:${string}:access-analyzer:${string}:${string}:analyzer/${string}`
-export function analyzerArn(parameters: AnalyzerArnParameters): AnalyzerArn {
-  return `arn:${parameters.partition ?? 'aws'}:access-analyzer:${parameters.region}:${parameters.account}:analyzer/${parameters.analyzerName}`
+class AnalyzerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Analyzer', `arn:${string}:access-analyzer:${string}:${string}:analyzer/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'Analyzer' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly analyzerName: string
+  constructor(parameters: AnalyzerArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.analyzerName = parameters.analyzerName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:access-analyzer:${this.region}:${this.account}:analyzer/${this.analyzerName}` as const
+  }
+}
+export type { AnalyzerArn }
+export function analyzerArn<Partition extends ArnPartition = 'aws'>(parameters: AnalyzerArnParameters<Partition>) {
+  return new AnalyzerArn<Partition>(parameters)
 }
 
-export interface ArchiveRuleArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  analyzerName: string
-  ruleName: string
+export interface ArchiveRuleArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly analyzerName: string
+  readonly ruleName: string
 }
-export type ArchiveRuleArn = `arn:${string}:access-analyzer:${string}:${string}:analyzer/${string}/archive-rule/${string}`
-export function archiveRuleArn(parameters: ArchiveRuleArnParameters): ArchiveRuleArn {
-  return `arn:${parameters.partition ?? 'aws'}:access-analyzer:${parameters.region}:${parameters.account}:analyzer/${parameters.analyzerName}/archive-rule/${parameters.ruleName}`
+class ArchiveRuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ArchiveRule', `arn:${string}:access-analyzer:${string}:${string}:analyzer/${string}/archive-rule/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'ArchiveRule' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly analyzerName: string
+  readonly ruleName: string
+  constructor(parameters: ArchiveRuleArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.analyzerName = parameters.analyzerName
+    this.ruleName = parameters.ruleName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:access-analyzer:${this.region}:${this.account}:analyzer/${this.analyzerName}/archive-rule/${this.ruleName}` as const
+  }
+}
+export type { ArchiveRuleArn }
+export function archiveRuleArn<Partition extends ArnPartition = 'aws'>(parameters: ArchiveRuleArnParameters<Partition>) {
+  return new ArchiveRuleArn<Partition>(parameters)
 }

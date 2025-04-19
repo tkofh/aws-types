@@ -1,10 +1,29 @@
-export interface EventArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  eventId: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface EventArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly eventId: string
 }
-export type EventArn = `arn:${string}:bugbust:${string}:${string}:events/${string}`
-export function eventArn(parameters: EventArnParameters): EventArn {
-  return `arn:${parameters.partition ?? 'aws'}:bugbust:${parameters.region}:${parameters.account}:events/${parameters.eventId}`
+class EventArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Event', `arn:${string}:bugbust:${string}:${string}:events/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'Event' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly eventId: string
+  constructor(parameters: EventArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.eventId = parameters.eventId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:bugbust:${this.region}:${this.account}:events/${this.eventId}` as const
+  }
+}
+export type { EventArn }
+export function eventArn<Partition extends ArnPartition = 'aws'>(parameters: EventArnParameters<Partition>) {
+  return new EventArn<Partition>(parameters)
 }

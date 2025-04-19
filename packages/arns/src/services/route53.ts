@@ -1,82 +1,205 @@
-export interface CidrcollectionArnParameters {
-  partition?: string | undefined
-  id: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface CidrcollectionArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly id: string
 }
-export type CidrcollectionArn = `arn:${string}:route53:::cidrcollection/${string}`
-export function cidrcollectionArn(parameters: CidrcollectionArnParameters): CidrcollectionArn {
-  return `arn:${parameters.partition ?? 'aws'}:route53:::cidrcollection/${parameters.id}`
+class CidrcollectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cidrcollection', `arn:${string}:route53:::cidrcollection/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'cidrcollection' as const
+  readonly partition: Partition
+  readonly id: string
+  constructor(parameters: CidrcollectionArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.id = parameters.id
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:route53:::cidrcollection/${this.id}` as const
+  }
+}
+export type { CidrcollectionArn }
+export function cidrcollectionArn<Partition extends ArnPartition = 'aws'>(parameters: CidrcollectionArnParameters<Partition>) {
+  return new CidrcollectionArn<Partition>(parameters)
 }
 
-export interface ChangeArnParameters {
-  partition?: string | undefined
-  id: string
+export interface ChangeArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly id: string
 }
-export type ChangeArn = `arn:${string}:route53:::change/${string}`
-export function changeArn(parameters: ChangeArnParameters): ChangeArn {
-  return `arn:${parameters.partition ?? 'aws'}:route53:::change/${parameters.id}`
+class ChangeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'change', `arn:${string}:route53:::change/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'change' as const
+  readonly partition: Partition
+  readonly id: string
+  constructor(parameters: ChangeArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.id = parameters.id
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:route53:::change/${this.id}` as const
+  }
 }
-
-export interface DelegationsetArnParameters {
-  partition?: string | undefined
-  id: string
-}
-export type DelegationsetArn = `arn:${string}:route53:::delegationset/${string}`
-export function delegationsetArn(parameters: DelegationsetArnParameters): DelegationsetArn {
-  return `arn:${parameters.partition ?? 'aws'}:route53:::delegationset/${parameters.id}`
-}
-
-export interface HealthcheckArnParameters {
-  partition?: string | undefined
-  id: string
-}
-export type HealthcheckArn = `arn:${string}:route53:::healthcheck/${string}`
-export function healthcheckArn(parameters: HealthcheckArnParameters): HealthcheckArn {
-  return `arn:${parameters.partition ?? 'aws'}:route53:::healthcheck/${parameters.id}`
+export type { ChangeArn }
+export function changeArn<Partition extends ArnPartition = 'aws'>(parameters: ChangeArnParameters<Partition>) {
+  return new ChangeArn<Partition>(parameters)
 }
 
-export interface HostedzoneArnParameters {
-  partition?: string | undefined
-  id: string
+export interface DelegationsetArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly id: string
 }
-export type HostedzoneArn = `arn:${string}:route53:::hostedzone/${string}`
-export function hostedzoneArn(parameters: HostedzoneArnParameters): HostedzoneArn {
-  return `arn:${parameters.partition ?? 'aws'}:route53:::hostedzone/${parameters.id}`
+class DelegationsetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'delegationset', `arn:${string}:route53:::delegationset/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'delegationset' as const
+  readonly partition: Partition
+  readonly id: string
+  constructor(parameters: DelegationsetArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.id = parameters.id
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:route53:::delegationset/${this.id}` as const
+  }
 }
-
-export interface TrafficpolicyArnParameters {
-  partition?: string | undefined
-  id: string
-}
-export type TrafficpolicyArn = `arn:${string}:route53:::trafficpolicy/${string}`
-export function trafficpolicyArn(parameters: TrafficpolicyArnParameters): TrafficpolicyArn {
-  return `arn:${parameters.partition ?? 'aws'}:route53:::trafficpolicy/${parameters.id}`
-}
-
-export interface TrafficpolicyinstanceArnParameters {
-  partition?: string | undefined
-  id: string
-}
-export type TrafficpolicyinstanceArn = `arn:${string}:route53:::trafficpolicyinstance/${string}`
-export function trafficpolicyinstanceArn(parameters: TrafficpolicyinstanceArnParameters): TrafficpolicyinstanceArn {
-  return `arn:${parameters.partition ?? 'aws'}:route53:::trafficpolicyinstance/${parameters.id}`
+export type { DelegationsetArn }
+export function delegationsetArn<Partition extends ArnPartition = 'aws'>(parameters: DelegationsetArnParameters<Partition>) {
+  return new DelegationsetArn<Partition>(parameters)
 }
 
-export interface QueryloggingconfigArnParameters {
-  partition?: string | undefined
-  id: string
+export interface HealthcheckArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly id: string
 }
-export type QueryloggingconfigArn = `arn:${string}:route53:::queryloggingconfig/${string}`
-export function queryloggingconfigArn(parameters: QueryloggingconfigArnParameters): QueryloggingconfigArn {
-  return `arn:${parameters.partition ?? 'aws'}:route53:::queryloggingconfig/${parameters.id}`
+class HealthcheckArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'healthcheck', `arn:${string}:route53:::healthcheck/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'healthcheck' as const
+  readonly partition: Partition
+  readonly id: string
+  constructor(parameters: HealthcheckArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.id = parameters.id
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:route53:::healthcheck/${this.id}` as const
+  }
+}
+export type { HealthcheckArn }
+export function healthcheckArn<Partition extends ArnPartition = 'aws'>(parameters: HealthcheckArnParameters<Partition>) {
+  return new HealthcheckArn<Partition>(parameters)
 }
 
-export interface VpcArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  vpcId: string
+export interface HostedzoneArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly id: string
 }
-export type VpcArn = `arn:${string}:ec2:${string}:${string}:vpc/${string}`
-export function vpcArn(parameters: VpcArnParameters): VpcArn {
-  return `arn:${parameters.partition ?? 'aws'}:ec2:${parameters.region}:${parameters.account}:vpc/${parameters.vpcId}`
+class HostedzoneArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'hostedzone', `arn:${string}:route53:::hostedzone/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'hostedzone' as const
+  readonly partition: Partition
+  readonly id: string
+  constructor(parameters: HostedzoneArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.id = parameters.id
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:route53:::hostedzone/${this.id}` as const
+  }
+}
+export type { HostedzoneArn }
+export function hostedzoneArn<Partition extends ArnPartition = 'aws'>(parameters: HostedzoneArnParameters<Partition>) {
+  return new HostedzoneArn<Partition>(parameters)
+}
+
+export interface TrafficpolicyArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly id: string
+}
+class TrafficpolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'trafficpolicy', `arn:${string}:route53:::trafficpolicy/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'trafficpolicy' as const
+  readonly partition: Partition
+  readonly id: string
+  constructor(parameters: TrafficpolicyArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.id = parameters.id
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:route53:::trafficpolicy/${this.id}` as const
+  }
+}
+export type { TrafficpolicyArn }
+export function trafficpolicyArn<Partition extends ArnPartition = 'aws'>(parameters: TrafficpolicyArnParameters<Partition>) {
+  return new TrafficpolicyArn<Partition>(parameters)
+}
+
+export interface TrafficpolicyinstanceArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly id: string
+}
+class TrafficpolicyinstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'trafficpolicyinstance', `arn:${string}:route53:::trafficpolicyinstance/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'trafficpolicyinstance' as const
+  readonly partition: Partition
+  readonly id: string
+  constructor(parameters: TrafficpolicyinstanceArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.id = parameters.id
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:route53:::trafficpolicyinstance/${this.id}` as const
+  }
+}
+export type { TrafficpolicyinstanceArn }
+export function trafficpolicyinstanceArn<Partition extends ArnPartition = 'aws'>(parameters: TrafficpolicyinstanceArnParameters<Partition>) {
+  return new TrafficpolicyinstanceArn<Partition>(parameters)
+}
+
+export interface QueryloggingconfigArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly id: string
+}
+class QueryloggingconfigArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'queryloggingconfig', `arn:${string}:route53:::queryloggingconfig/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'queryloggingconfig' as const
+  readonly partition: Partition
+  readonly id: string
+  constructor(parameters: QueryloggingconfigArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.id = parameters.id
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:route53:::queryloggingconfig/${this.id}` as const
+  }
+}
+export type { QueryloggingconfigArn }
+export function queryloggingconfigArn<Partition extends ArnPartition = 'aws'>(parameters: QueryloggingconfigArnParameters<Partition>) {
+  return new QueryloggingconfigArn<Partition>(parameters)
+}
+
+export interface VpcArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly vpcId: string
+}
+class VpcArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'vpc', `arn:${string}:ec2:${string}:${string}:vpc/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'vpc' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly vpcId: string
+  constructor(parameters: VpcArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.vpcId = parameters.vpcId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:ec2:${this.region}:${this.account}:vpc/${this.vpcId}` as const
+  }
+}
+export type { VpcArn }
+export function vpcArn<Partition extends ArnPartition = 'aws'>(parameters: VpcArnParameters<Partition>) {
+  return new VpcArn<Partition>(parameters)
 }

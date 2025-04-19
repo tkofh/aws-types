@@ -1,9 +1,9 @@
-import { accessgrantArn } from '@aws-types/arn/s3'
+import { s3 } from '@aws-types/arn'
 
 console.log(
-  accessgrantArn({
+  s3.accessgrantArn({
     region: 'us-east-1',
     account: '123456789012',
     token: 'hello',
-  }),
+  }).account,
 )

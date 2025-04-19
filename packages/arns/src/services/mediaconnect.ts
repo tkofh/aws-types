@@ -1,84 +1,221 @@
-export interface EntitlementArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  flowId: string
-  entitlementName: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface EntitlementArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly flowId: string
+  readonly entitlementName: string
 }
-export type EntitlementArn = `arn:${string}:mediaconnect:${string}:${string}:entitlement:${string}:${string}`
-export function entitlementArn(parameters: EntitlementArnParameters): EntitlementArn {
-  return `arn:${parameters.partition ?? 'aws'}:mediaconnect:${parameters.region}:${parameters.account}:entitlement:${parameters.flowId}:${parameters.entitlementName}`
+class EntitlementArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Entitlement', `arn:${string}:mediaconnect:${string}:${string}:entitlement:${string}:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'Entitlement' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly flowId: string
+  readonly entitlementName: string
+  constructor(parameters: EntitlementArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.flowId = parameters.flowId
+    this.entitlementName = parameters.entitlementName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:mediaconnect:${this.region}:${this.account}:entitlement:${this.flowId}:${this.entitlementName}` as const
+  }
+}
+export type { EntitlementArn }
+export function entitlementArn<Partition extends ArnPartition = 'aws'>(parameters: EntitlementArnParameters<Partition>) {
+  return new EntitlementArn<Partition>(parameters)
 }
 
-export interface FlowArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  flowId: string
-  flowName: string
+export interface FlowArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly flowId: string
+  readonly flowName: string
 }
-export type FlowArn = `arn:${string}:mediaconnect:${string}:${string}:flow:${string}:${string}`
-export function flowArn(parameters: FlowArnParameters): FlowArn {
-  return `arn:${parameters.partition ?? 'aws'}:mediaconnect:${parameters.region}:${parameters.account}:flow:${parameters.flowId}:${parameters.flowName}`
+class FlowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Flow', `arn:${string}:mediaconnect:${string}:${string}:flow:${string}:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'Flow' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly flowId: string
+  readonly flowName: string
+  constructor(parameters: FlowArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.flowId = parameters.flowId
+    this.flowName = parameters.flowName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:mediaconnect:${this.region}:${this.account}:flow:${this.flowId}:${this.flowName}` as const
+  }
 }
-
-export interface OutputArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  outputId: string
-  outputName: string
-}
-export type OutputArn = `arn:${string}:mediaconnect:${string}:${string}:output:${string}:${string}`
-export function outputArn(parameters: OutputArnParameters): OutputArn {
-  return `arn:${parameters.partition ?? 'aws'}:mediaconnect:${parameters.region}:${parameters.account}:output:${parameters.outputId}:${parameters.outputName}`
-}
-
-export interface SourceArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  sourceId: string
-  sourceName: string
-}
-export type SourceArn = `arn:${string}:mediaconnect:${string}:${string}:source:${string}:${string}`
-export function sourceArn(parameters: SourceArnParameters): SourceArn {
-  return `arn:${parameters.partition ?? 'aws'}:mediaconnect:${parameters.region}:${parameters.account}:source:${parameters.sourceId}:${parameters.sourceName}`
+export type { FlowArn }
+export function flowArn<Partition extends ArnPartition = 'aws'>(parameters: FlowArnParameters<Partition>) {
+  return new FlowArn<Partition>(parameters)
 }
 
-export interface GatewayArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  gatewayId: string
-  gatewayName: string
+export interface OutputArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly outputId: string
+  readonly outputName: string
 }
-export type GatewayArn = `arn:${string}:mediaconnect:${string}:${string}:gateway:${string}:${string}`
-export function gatewayArn(parameters: GatewayArnParameters): GatewayArn {
-  return `arn:${parameters.partition ?? 'aws'}:mediaconnect:${parameters.region}:${parameters.account}:gateway:${parameters.gatewayId}:${parameters.gatewayName}`
+class OutputArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Output', `arn:${string}:mediaconnect:${string}:${string}:output:${string}:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'Output' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly outputId: string
+  readonly outputName: string
+  constructor(parameters: OutputArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.outputId = parameters.outputId
+    this.outputName = parameters.outputName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:mediaconnect:${this.region}:${this.account}:output:${this.outputId}:${this.outputName}` as const
+  }
+}
+export type { OutputArn }
+export function outputArn<Partition extends ArnPartition = 'aws'>(parameters: OutputArnParameters<Partition>) {
+  return new OutputArn<Partition>(parameters)
 }
 
-export interface BridgeArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  flowId: string
-  flowName: string
+export interface SourceArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly sourceId: string
+  readonly sourceName: string
 }
-export type BridgeArn = `arn:${string}:mediaconnect:${string}:${string}:bridge:${string}:${string}`
-export function bridgeArn(parameters: BridgeArnParameters): BridgeArn {
-  return `arn:${parameters.partition ?? 'aws'}:mediaconnect:${parameters.region}:${parameters.account}:bridge:${parameters.flowId}:${parameters.flowName}`
+class SourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Source', `arn:${string}:mediaconnect:${string}:${string}:source:${string}:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'Source' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly sourceId: string
+  readonly sourceName: string
+  constructor(parameters: SourceArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.sourceId = parameters.sourceId
+    this.sourceName = parameters.sourceName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:mediaconnect:${this.region}:${this.account}:source:${this.sourceId}:${this.sourceName}` as const
+  }
+}
+export type { SourceArn }
+export function sourceArn<Partition extends ArnPartition = 'aws'>(parameters: SourceArnParameters<Partition>) {
+  return new SourceArn<Partition>(parameters)
 }
 
-export interface GatewayInstanceArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  gatewayId: string
-  gatewayName: string
-  instanceId: string
+export interface GatewayArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly gatewayId: string
+  readonly gatewayName: string
 }
-export type GatewayInstanceArn = `arn:${string}:mediaconnect:${string}:${string}:gateway:${string}:${string}:instance:${string}`
-export function gatewayInstanceArn(parameters: GatewayInstanceArnParameters): GatewayInstanceArn {
-  return `arn:${parameters.partition ?? 'aws'}:mediaconnect:${parameters.region}:${parameters.account}:gateway:${parameters.gatewayId}:${parameters.gatewayName}:instance:${parameters.instanceId}`
+class GatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Gateway', `arn:${string}:mediaconnect:${string}:${string}:gateway:${string}:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'Gateway' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly gatewayId: string
+  readonly gatewayName: string
+  constructor(parameters: GatewayArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.gatewayId = parameters.gatewayId
+    this.gatewayName = parameters.gatewayName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:mediaconnect:${this.region}:${this.account}:gateway:${this.gatewayId}:${this.gatewayName}` as const
+  }
+}
+export type { GatewayArn }
+export function gatewayArn<Partition extends ArnPartition = 'aws'>(parameters: GatewayArnParameters<Partition>) {
+  return new GatewayArn<Partition>(parameters)
+}
+
+export interface BridgeArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly flowId: string
+  readonly flowName: string
+}
+class BridgeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Bridge', `arn:${string}:mediaconnect:${string}:${string}:bridge:${string}:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'Bridge' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly flowId: string
+  readonly flowName: string
+  constructor(parameters: BridgeArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.flowId = parameters.flowId
+    this.flowName = parameters.flowName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:mediaconnect:${this.region}:${this.account}:bridge:${this.flowId}:${this.flowName}` as const
+  }
+}
+export type { BridgeArn }
+export function bridgeArn<Partition extends ArnPartition = 'aws'>(parameters: BridgeArnParameters<Partition>) {
+  return new BridgeArn<Partition>(parameters)
+}
+
+export interface GatewayInstanceArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly gatewayId: string
+  readonly gatewayName: string
+  readonly instanceId: string
+}
+class GatewayInstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'GatewayInstance', `arn:${string}:mediaconnect:${string}:${string}:gateway:${string}:${string}:instance:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'GatewayInstance' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly gatewayId: string
+  readonly gatewayName: string
+  readonly instanceId: string
+  constructor(parameters: GatewayInstanceArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.gatewayId = parameters.gatewayId
+    this.gatewayName = parameters.gatewayName
+    this.instanceId = parameters.instanceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:mediaconnect:${this.region}:${this.account}:gateway:${this.gatewayId}:${this.gatewayName}:instance:${this.instanceId}` as const
+  }
+}
+export type { GatewayInstanceArn }
+export function gatewayInstanceArn<Partition extends ArnPartition = 'aws'>(parameters: GatewayInstanceArnParameters<Partition>) {
+  return new GatewayInstanceArn<Partition>(parameters)
 }

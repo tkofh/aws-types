@@ -1,43 +1,113 @@
-export interface WorkloadArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  resourceId: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface WorkloadArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
 }
-export type WorkloadArn = `arn:${string}:wellarchitected:${string}:${string}:workload/${string}`
-export function workloadArn(parameters: WorkloadArnParameters): WorkloadArn {
-  return `arn:${parameters.partition ?? 'aws'}:wellarchitected:${parameters.region}:${parameters.account}:workload/${parameters.resourceId}`
+class WorkloadArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workload', `arn:${string}:wellarchitected:${string}:${string}:workload/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'workload' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
+  constructor(parameters: WorkloadArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.resourceId = parameters.resourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:wellarchitected:${this.region}:${this.account}:workload/${this.resourceId}` as const
+  }
+}
+export type { WorkloadArn }
+export function workloadArn<Partition extends ArnPartition = 'aws'>(parameters: WorkloadArnParameters<Partition>) {
+  return new WorkloadArn<Partition>(parameters)
 }
 
-export interface LensArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  resourceId: string
+export interface LensArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
 }
-export type LensArn = `arn:${string}:wellarchitected:${string}:${string}:lens/${string}`
-export function lensArn(parameters: LensArnParameters): LensArn {
-  return `arn:${parameters.partition ?? 'aws'}:wellarchitected:${parameters.region}:${parameters.account}:lens/${parameters.resourceId}`
+class LensArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'lens', `arn:${string}:wellarchitected:${string}:${string}:lens/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'lens' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
+  constructor(parameters: LensArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.resourceId = parameters.resourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:wellarchitected:${this.region}:${this.account}:lens/${this.resourceId}` as const
+  }
+}
+export type { LensArn }
+export function lensArn<Partition extends ArnPartition = 'aws'>(parameters: LensArnParameters<Partition>) {
+  return new LensArn<Partition>(parameters)
 }
 
-export interface ProfileArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  resourceId: string
+export interface ProfileArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
 }
-export type ProfileArn = `arn:${string}:wellarchitected:${string}:${string}:profile/${string}`
-export function profileArn(parameters: ProfileArnParameters): ProfileArn {
-  return `arn:${parameters.partition ?? 'aws'}:wellarchitected:${parameters.region}:${parameters.account}:profile/${parameters.resourceId}`
+class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'profile', `arn:${string}:wellarchitected:${string}:${string}:profile/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'profile' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
+  constructor(parameters: ProfileArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.resourceId = parameters.resourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:wellarchitected:${this.region}:${this.account}:profile/${this.resourceId}` as const
+  }
+}
+export type { ProfileArn }
+export function profileArn<Partition extends ArnPartition = 'aws'>(parameters: ProfileArnParameters<Partition>) {
+  return new ProfileArn<Partition>(parameters)
 }
 
-export interface ReviewTemplateArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  resourceId: string
+export interface ReviewTemplateArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
 }
-export type ReviewTemplateArn = `arn:${string}:wellarchitected:${string}:${string}:review-template/${string}`
-export function reviewTemplateArn(parameters: ReviewTemplateArnParameters): ReviewTemplateArn {
-  return `arn:${parameters.partition ?? 'aws'}:wellarchitected:${parameters.region}:${parameters.account}:review-template/${parameters.resourceId}`
+class ReviewTemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'review-template', `arn:${string}:wellarchitected:${string}:${string}:review-template/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'review-template' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
+  constructor(parameters: ReviewTemplateArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.resourceId = parameters.resourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:wellarchitected:${this.region}:${this.account}:review-template/${this.resourceId}` as const
+  }
+}
+export type { ReviewTemplateArn }
+export function reviewTemplateArn<Partition extends ArnPartition = 'aws'>(parameters: ReviewTemplateArnParameters<Partition>) {
+  return new ReviewTemplateArn<Partition>(parameters)
 }

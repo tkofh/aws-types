@@ -1,21 +1,57 @@
-export interface ProfileArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  resourceId: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface ProfileArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
 }
-export type ProfileArn = `arn:${string}:route53profiles:${string}:${string}:profile/${string}`
-export function profileArn(parameters: ProfileArnParameters): ProfileArn {
-  return `arn:${parameters.partition ?? 'aws'}:route53profiles:${parameters.region}:${parameters.account}:profile/${parameters.resourceId}`
+class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'profile', `arn:${string}:route53profiles:${string}:${string}:profile/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'profile' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
+  constructor(parameters: ProfileArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.resourceId = parameters.resourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:route53profiles:${this.region}:${this.account}:profile/${this.resourceId}` as const
+  }
+}
+export type { ProfileArn }
+export function profileArn<Partition extends ArnPartition = 'aws'>(parameters: ProfileArnParameters<Partition>) {
+  return new ProfileArn<Partition>(parameters)
 }
 
-export interface ProfileAssociationArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  resourceId: string
+export interface ProfileAssociationArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
 }
-export type ProfileAssociationArn = `arn:${string}:route53profiles:${string}:${string}:profile-association/${string}`
-export function profileAssociationArn(parameters: ProfileAssociationArnParameters): ProfileAssociationArn {
-  return `arn:${parameters.partition ?? 'aws'}:route53profiles:${parameters.region}:${parameters.account}:profile-association/${parameters.resourceId}`
+class ProfileAssociationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'profile-association', `arn:${string}:route53profiles:${string}:${string}:profile-association/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'profile-association' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
+  constructor(parameters: ProfileAssociationArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.resourceId = parameters.resourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:route53profiles:${this.region}:${this.account}:profile-association/${this.resourceId}` as const
+  }
+}
+export type { ProfileAssociationArn }
+export function profileAssociationArn<Partition extends ArnPartition = 'aws'>(parameters: ProfileAssociationArnParameters<Partition>) {
+  return new ProfileAssociationArn<Partition>(parameters)
 }

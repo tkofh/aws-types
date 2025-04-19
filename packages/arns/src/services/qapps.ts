@@ -1,35 +1,94 @@
-export interface ApplicationArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  applicationId: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface ApplicationArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly applicationId: string
 }
-export type ApplicationArn = `arn:${string}:qbusiness:${string}:${string}:application/${string}`
-export function applicationArn(parameters: ApplicationArnParameters): ApplicationArn {
-  return `arn:${parameters.partition ?? 'aws'}:qbusiness:${parameters.region}:${parameters.account}:application/${parameters.applicationId}`
+class ApplicationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'application', `arn:${string}:qbusiness:${string}:${string}:application/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'application' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly applicationId: string
+  constructor(parameters: ApplicationArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.applicationId = parameters.applicationId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.applicationId}` as const
+  }
+}
+export type { ApplicationArn }
+export function applicationArn<Partition extends ArnPartition = 'aws'>(parameters: ApplicationArnParameters<Partition>) {
+  return new ApplicationArn<Partition>(parameters)
 }
 
-export interface QappArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  applicationId: string
-  appId: string
+export interface QappArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly applicationId: string
+  readonly appId: string
 }
-export type QappArn = `arn:${string}:qapps:${string}:${string}:application/${string}/qapp/${string}`
-export function qappArn(parameters: QappArnParameters): QappArn {
-  return `arn:${parameters.partition ?? 'aws'}:qapps:${parameters.region}:${parameters.account}:application/${parameters.applicationId}/qapp/${parameters.appId}`
+class QappArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'qapp', `arn:${string}:qapps:${string}:${string}:application/${string}/qapp/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'qapp' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly applicationId: string
+  readonly appId: string
+  constructor(parameters: QappArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.applicationId = parameters.applicationId
+    this.appId = parameters.appId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:qapps:${this.region}:${this.account}:application/${this.applicationId}/qapp/${this.appId}` as const
+  }
+}
+export type { QappArn }
+export function qappArn<Partition extends ArnPartition = 'aws'>(parameters: QappArnParameters<Partition>) {
+  return new QappArn<Partition>(parameters)
 }
 
-export interface QappSessionArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  applicationId: string
-  appId: string
-  sessionId: string
+export interface QappSessionArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly applicationId: string
+  readonly appId: string
+  readonly sessionId: string
 }
-export type QappSessionArn = `arn:${string}:qapps:${string}:${string}:application/${string}/qapp/${string}/session/${string}`
-export function qappSessionArn(parameters: QappSessionArnParameters): QappSessionArn {
-  return `arn:${parameters.partition ?? 'aws'}:qapps:${parameters.region}:${parameters.account}:application/${parameters.applicationId}/qapp/${parameters.appId}/session/${parameters.sessionId}`
+class QappSessionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'qapp-session', `arn:${string}:qapps:${string}:${string}:application/${string}/qapp/${string}/session/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'qapp-session' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly applicationId: string
+  readonly appId: string
+  readonly sessionId: string
+  constructor(parameters: QappSessionArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.applicationId = parameters.applicationId
+    this.appId = parameters.appId
+    this.sessionId = parameters.sessionId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:qapps:${this.region}:${this.account}:application/${this.applicationId}/qapp/${this.appId}/session/${this.sessionId}` as const
+  }
+}
+export type { QappSessionArn }
+export function qappSessionArn<Partition extends ArnPartition = 'aws'>(parameters: QappSessionArnParameters<Partition>) {
+  return new QappSessionArn<Partition>(parameters)
 }

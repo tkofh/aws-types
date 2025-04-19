@@ -1,97 +1,250 @@
-export interface CreatedBackendArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface CreatedBackendArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
 }
-export type CreatedBackendArn = `arn:${string}:amplifybackend:${string}:${string}:/backend/*`
-export function createdBackendArn(parameters: CreatedBackendArnParameters): CreatedBackendArn {
-  return `arn:${parameters.partition ?? 'aws'}:amplifybackend:${parameters.region}:${parameters.account}:/backend/*`
+class CreatedBackendArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'created-backend', `arn:${string}:amplifybackend:${string}:${string}:/backend/*`> {
+  readonly [ArnResourceTypeBrand] = 'created-backend' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  constructor(parameters: CreatedBackendArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:amplifybackend:${this.region}:${this.account}:/backend/*` as const
+  }
+}
+export type { CreatedBackendArn }
+export function createdBackendArn<Partition extends ArnPartition = 'aws'>(parameters: CreatedBackendArnParameters<Partition>) {
+  return new CreatedBackendArn<Partition>(parameters)
 }
 
-export interface BackendArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  appId: string
+export interface BackendArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly appId: string
 }
-export type BackendArn = `arn:${string}:amplifybackend:${string}:${string}:/backend/${string}/*`
-export function backendArn(parameters: BackendArnParameters): BackendArn {
-  return `arn:${parameters.partition ?? 'aws'}:amplifybackend:${parameters.region}:${parameters.account}:/backend/${parameters.appId}/*`
+class BackendArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'backend', `arn:${string}:amplifybackend:${string}:${string}:/backend/${string}/*`> {
+  readonly [ArnResourceTypeBrand] = 'backend' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly appId: string
+  constructor(parameters: BackendArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.appId = parameters.appId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:amplifybackend:${this.region}:${this.account}:/backend/${this.appId}/*` as const
+  }
 }
-
-export interface EnvironmentArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  appId: string
-}
-export type EnvironmentArn = `arn:${string}:amplifybackend:${string}:${string}:/backend/${string}/environments/*`
-export function environmentArn(parameters: EnvironmentArnParameters): EnvironmentArn {
-  return `arn:${parameters.partition ?? 'aws'}:amplifybackend:${parameters.region}:${parameters.account}:/backend/${parameters.appId}/environments/*`
-}
-
-export interface ApiArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  appId: string
-}
-export type ApiArn = `arn:${string}:amplifybackend:${string}:${string}:/backend/${string}/api/*`
-export function apiArn(parameters: ApiArnParameters): ApiArn {
-  return `arn:${parameters.partition ?? 'aws'}:amplifybackend:${parameters.region}:${parameters.account}:/backend/${parameters.appId}/api/*`
+export type { BackendArn }
+export function backendArn<Partition extends ArnPartition = 'aws'>(parameters: BackendArnParameters<Partition>) {
+  return new BackendArn<Partition>(parameters)
 }
 
-export interface AuthArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  appId: string
+export interface EnvironmentArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly appId: string
 }
-export type AuthArn = `arn:${string}:amplifybackend:${string}:${string}:/backend/${string}/auth/*`
-export function authArn(parameters: AuthArnParameters): AuthArn {
-  return `arn:${parameters.partition ?? 'aws'}:amplifybackend:${parameters.region}:${parameters.account}:/backend/${parameters.appId}/auth/*`
+class EnvironmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'environment', `arn:${string}:amplifybackend:${string}:${string}:/backend/${string}/environments/*`> {
+  readonly [ArnResourceTypeBrand] = 'environment' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly appId: string
+  constructor(parameters: EnvironmentArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.appId = parameters.appId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:amplifybackend:${this.region}:${this.account}:/backend/${this.appId}/environments/*` as const
+  }
 }
-
-export interface JobArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  appId: string
-}
-export type JobArn = `arn:${string}:amplifybackend:${string}:${string}:/backend/${string}/job/*`
-export function jobArn(parameters: JobArnParameters): JobArn {
-  return `arn:${parameters.partition ?? 'aws'}:amplifybackend:${parameters.region}:${parameters.account}:/backend/${parameters.appId}/job/*`
-}
-
-export interface ConfigArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  appId: string
-}
-export type ConfigArn = `arn:${string}:amplifybackend:${string}:${string}:/backend/${string}/config/*`
-export function configArn(parameters: ConfigArnParameters): ConfigArn {
-  return `arn:${parameters.partition ?? 'aws'}:amplifybackend:${parameters.region}:${parameters.account}:/backend/${parameters.appId}/config/*`
+export type { EnvironmentArn }
+export function environmentArn<Partition extends ArnPartition = 'aws'>(parameters: EnvironmentArnParameters<Partition>) {
+  return new EnvironmentArn<Partition>(parameters)
 }
 
-export interface TokenArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  appId: string
+export interface ApiArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly appId: string
 }
-export type TokenArn = `arn:${string}:amplifybackend:${string}:${string}:/backend/${string}/challenge/*`
-export function tokenArn(parameters: TokenArnParameters): TokenArn {
-  return `arn:${parameters.partition ?? 'aws'}:amplifybackend:${parameters.region}:${parameters.account}:/backend/${parameters.appId}/challenge/*`
+class ApiArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'api', `arn:${string}:amplifybackend:${string}:${string}:/backend/${string}/api/*`> {
+  readonly [ArnResourceTypeBrand] = 'api' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly appId: string
+  constructor(parameters: ApiArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.appId = parameters.appId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:amplifybackend:${this.region}:${this.account}:/backend/${this.appId}/api/*` as const
+  }
+}
+export type { ApiArn }
+export function apiArn<Partition extends ArnPartition = 'aws'>(parameters: ApiArnParameters<Partition>) {
+  return new ApiArn<Partition>(parameters)
 }
 
-export interface StorageArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  appId: string
+export interface AuthArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly appId: string
 }
-export type StorageArn = `arn:${string}:amplifybackend:${string}:${string}:/backend/${string}/storage/*`
-export function storageArn(parameters: StorageArnParameters): StorageArn {
-  return `arn:${parameters.partition ?? 'aws'}:amplifybackend:${parameters.region}:${parameters.account}:/backend/${parameters.appId}/storage/*`
+class AuthArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'auth', `arn:${string}:amplifybackend:${string}:${string}:/backend/${string}/auth/*`> {
+  readonly [ArnResourceTypeBrand] = 'auth' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly appId: string
+  constructor(parameters: AuthArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.appId = parameters.appId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:amplifybackend:${this.region}:${this.account}:/backend/${this.appId}/auth/*` as const
+  }
+}
+export type { AuthArn }
+export function authArn<Partition extends ArnPartition = 'aws'>(parameters: AuthArnParameters<Partition>) {
+  return new AuthArn<Partition>(parameters)
+}
+
+export interface JobArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly appId: string
+}
+class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'job', `arn:${string}:amplifybackend:${string}:${string}:/backend/${string}/job/*`> {
+  readonly [ArnResourceTypeBrand] = 'job' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly appId: string
+  constructor(parameters: JobArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.appId = parameters.appId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:amplifybackend:${this.region}:${this.account}:/backend/${this.appId}/job/*` as const
+  }
+}
+export type { JobArn }
+export function jobArn<Partition extends ArnPartition = 'aws'>(parameters: JobArnParameters<Partition>) {
+  return new JobArn<Partition>(parameters)
+}
+
+export interface ConfigArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly appId: string
+}
+class ConfigArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'config', `arn:${string}:amplifybackend:${string}:${string}:/backend/${string}/config/*`> {
+  readonly [ArnResourceTypeBrand] = 'config' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly appId: string
+  constructor(parameters: ConfigArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.appId = parameters.appId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:amplifybackend:${this.region}:${this.account}:/backend/${this.appId}/config/*` as const
+  }
+}
+export type { ConfigArn }
+export function configArn<Partition extends ArnPartition = 'aws'>(parameters: ConfigArnParameters<Partition>) {
+  return new ConfigArn<Partition>(parameters)
+}
+
+export interface TokenArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly appId: string
+}
+class TokenArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'token', `arn:${string}:amplifybackend:${string}:${string}:/backend/${string}/challenge/*`> {
+  readonly [ArnResourceTypeBrand] = 'token' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly appId: string
+  constructor(parameters: TokenArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.appId = parameters.appId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:amplifybackend:${this.region}:${this.account}:/backend/${this.appId}/challenge/*` as const
+  }
+}
+export type { TokenArn }
+export function tokenArn<Partition extends ArnPartition = 'aws'>(parameters: TokenArnParameters<Partition>) {
+  return new TokenArn<Partition>(parameters)
+}
+
+export interface StorageArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly appId: string
+}
+class StorageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'storage', `arn:${string}:amplifybackend:${string}:${string}:/backend/${string}/storage/*`> {
+  readonly [ArnResourceTypeBrand] = 'storage' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly appId: string
+  constructor(parameters: StorageArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.appId = parameters.appId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:amplifybackend:${this.region}:${this.account}:/backend/${this.appId}/storage/*` as const
+  }
+}
+export type { StorageArn }
+export function storageArn<Partition extends ArnPartition = 'aws'>(parameters: StorageArnParameters<Partition>) {
+  return new StorageArn<Partition>(parameters)
 }

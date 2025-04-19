@@ -1,10 +1,29 @@
-export interface ApplicationsArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  resourceId: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface ApplicationsArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
 }
-export type ApplicationsArn = `arn:${string}:serverlessrepo:${string}:${string}:applications/${string}`
-export function applicationsArn(parameters: ApplicationsArnParameters): ApplicationsArn {
-  return `arn:${parameters.partition ?? 'aws'}:serverlessrepo:${parameters.region}:${parameters.account}:applications/${parameters.resourceId}`
+class ApplicationsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'applications', `arn:${string}:serverlessrepo:${string}:${string}:applications/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'applications' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
+  constructor(parameters: ApplicationsArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.resourceId = parameters.resourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:serverlessrepo:${this.region}:${this.account}:applications/${this.resourceId}` as const
+  }
+}
+export type { ApplicationsArn }
+export function applicationsArn<Partition extends ArnPartition = 'aws'>(parameters: ApplicationsArnParameters<Partition>) {
+  return new ApplicationsArn<Partition>(parameters)
 }

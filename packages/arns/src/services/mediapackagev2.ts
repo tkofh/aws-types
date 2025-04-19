@@ -1,35 +1,94 @@
-export interface ChannelGroupArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  channelGroupName: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface ChannelGroupArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly channelGroupName: string
 }
-export type ChannelGroupArn = `arn:${string}:mediapackagev2:${string}:${string}:channelGroup/${string}`
-export function channelGroupArn(parameters: ChannelGroupArnParameters): ChannelGroupArn {
-  return `arn:${parameters.partition ?? 'aws'}:mediapackagev2:${parameters.region}:${parameters.account}:channelGroup/${parameters.channelGroupName}`
+class ChannelGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ChannelGroup', `arn:${string}:mediapackagev2:${string}:${string}:channelGroup/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'ChannelGroup' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly channelGroupName: string
+  constructor(parameters: ChannelGroupArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.channelGroupName = parameters.channelGroupName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:mediapackagev2:${this.region}:${this.account}:channelGroup/${this.channelGroupName}` as const
+  }
+}
+export type { ChannelGroupArn }
+export function channelGroupArn<Partition extends ArnPartition = 'aws'>(parameters: ChannelGroupArnParameters<Partition>) {
+  return new ChannelGroupArn<Partition>(parameters)
 }
 
-export interface ChannelArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  channelGroupName: string
-  channelName: string
+export interface ChannelArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly channelGroupName: string
+  readonly channelName: string
 }
-export type ChannelArn = `arn:${string}:mediapackagev2:${string}:${string}:channelGroup/${string}/channel/${string}`
-export function channelArn(parameters: ChannelArnParameters): ChannelArn {
-  return `arn:${parameters.partition ?? 'aws'}:mediapackagev2:${parameters.region}:${parameters.account}:channelGroup/${parameters.channelGroupName}/channel/${parameters.channelName}`
+class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'Channel', `arn:${string}:mediapackagev2:${string}:${string}:channelGroup/${string}/channel/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'Channel' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly channelGroupName: string
+  readonly channelName: string
+  constructor(parameters: ChannelArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.channelGroupName = parameters.channelGroupName
+    this.channelName = parameters.channelName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:mediapackagev2:${this.region}:${this.account}:channelGroup/${this.channelGroupName}/channel/${this.channelName}` as const
+  }
+}
+export type { ChannelArn }
+export function channelArn<Partition extends ArnPartition = 'aws'>(parameters: ChannelArnParameters<Partition>) {
+  return new ChannelArn<Partition>(parameters)
 }
 
-export interface OriginEndpointArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  channelGroupName: string
-  channelName: string
-  originEndpointName: string
+export interface OriginEndpointArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly channelGroupName: string
+  readonly channelName: string
+  readonly originEndpointName: string
 }
-export type OriginEndpointArn = `arn:${string}:mediapackagev2:${string}:${string}:channelGroup/${string}/channel/${string}/originEndpoint/${string}`
-export function originEndpointArn(parameters: OriginEndpointArnParameters): OriginEndpointArn {
-  return `arn:${parameters.partition ?? 'aws'}:mediapackagev2:${parameters.region}:${parameters.account}:channelGroup/${parameters.channelGroupName}/channel/${parameters.channelName}/originEndpoint/${parameters.originEndpointName}`
+class OriginEndpointArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'OriginEndpoint', `arn:${string}:mediapackagev2:${string}:${string}:channelGroup/${string}/channel/${string}/originEndpoint/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'OriginEndpoint' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly channelGroupName: string
+  readonly channelName: string
+  readonly originEndpointName: string
+  constructor(parameters: OriginEndpointArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.channelGroupName = parameters.channelGroupName
+    this.channelName = parameters.channelName
+    this.originEndpointName = parameters.originEndpointName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:mediapackagev2:${this.region}:${this.account}:channelGroup/${this.channelGroupName}/channel/${this.channelName}/originEndpoint/${this.originEndpointName}` as const
+  }
+}
+export type { OriginEndpointArn }
+export function originEndpointArn<Partition extends ArnPartition = 'aws'>(parameters: OriginEndpointArnParameters<Partition>) {
+  return new OriginEndpointArn<Partition>(parameters)
 }

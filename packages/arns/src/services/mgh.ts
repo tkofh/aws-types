@@ -1,22 +1,60 @@
-export interface ProgressUpdateStreamArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  stream: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface ProgressUpdateStreamArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly stream: string
 }
-export type ProgressUpdateStreamArn = `arn:${string}:mgh:${string}:${string}:progressUpdateStream/${string}`
-export function progressUpdateStreamArn(parameters: ProgressUpdateStreamArnParameters): ProgressUpdateStreamArn {
-  return `arn:${parameters.partition ?? 'aws'}:mgh:${parameters.region}:${parameters.account}:progressUpdateStream/${parameters.stream}`
+class ProgressUpdateStreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'progressUpdateStream', `arn:${string}:mgh:${string}:${string}:progressUpdateStream/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'progressUpdateStream' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly stream: string
+  constructor(parameters: ProgressUpdateStreamArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.stream = parameters.stream
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:mgh:${this.region}:${this.account}:progressUpdateStream/${this.stream}` as const
+  }
+}
+export type { ProgressUpdateStreamArn }
+export function progressUpdateStreamArn<Partition extends ArnPartition = 'aws'>(parameters: ProgressUpdateStreamArnParameters<Partition>) {
+  return new ProgressUpdateStreamArn<Partition>(parameters)
 }
 
-export interface MigrationTaskArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  stream: string
-  task: string
+export interface MigrationTaskArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly stream: string
+  readonly task: string
 }
-export type MigrationTaskArn = `arn:${string}:mgh:${string}:${string}:progressUpdateStream/${string}/migrationTask/${string}`
-export function migrationTaskArn(parameters: MigrationTaskArnParameters): MigrationTaskArn {
-  return `arn:${parameters.partition ?? 'aws'}:mgh:${parameters.region}:${parameters.account}:progressUpdateStream/${parameters.stream}/migrationTask/${parameters.task}`
+class MigrationTaskArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'migrationTask', `arn:${string}:mgh:${string}:${string}:progressUpdateStream/${string}/migrationTask/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'migrationTask' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly stream: string
+  readonly task: string
+  constructor(parameters: MigrationTaskArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.stream = parameters.stream
+    this.task = parameters.task
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:mgh:${this.region}:${this.account}:progressUpdateStream/${this.stream}/migrationTask/${this.task}` as const
+  }
+}
+export type { MigrationTaskArn }
+export function migrationTaskArn<Partition extends ArnPartition = 'aws'>(parameters: MigrationTaskArnParameters<Partition>) {
+  return new MigrationTaskArn<Partition>(parameters)
 }

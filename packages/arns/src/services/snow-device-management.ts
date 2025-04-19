@@ -1,21 +1,57 @@
-export interface ManagedDeviceArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  resourceId: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface ManagedDeviceArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
 }
-export type ManagedDeviceArn = `arn:${string}:snow-device-management:${string}:${string}:managed-device/${string}`
-export function managedDeviceArn(parameters: ManagedDeviceArnParameters): ManagedDeviceArn {
-  return `arn:${parameters.partition ?? 'aws'}:snow-device-management:${parameters.region}:${parameters.account}:managed-device/${parameters.resourceId}`
+class ManagedDeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'managed-device', `arn:${string}:snow-device-management:${string}:${string}:managed-device/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'managed-device' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
+  constructor(parameters: ManagedDeviceArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.resourceId = parameters.resourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:snow-device-management:${this.region}:${this.account}:managed-device/${this.resourceId}` as const
+  }
+}
+export type { ManagedDeviceArn }
+export function managedDeviceArn<Partition extends ArnPartition = 'aws'>(parameters: ManagedDeviceArnParameters<Partition>) {
+  return new ManagedDeviceArn<Partition>(parameters)
 }
 
-export interface TaskArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  resourceId: string
+export interface TaskArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
 }
-export type TaskArn = `arn:${string}:snow-device-management:${string}:${string}:task/${string}`
-export function taskArn(parameters: TaskArnParameters): TaskArn {
-  return `arn:${parameters.partition ?? 'aws'}:snow-device-management:${parameters.region}:${parameters.account}:task/${parameters.resourceId}`
+class TaskArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'task', `arn:${string}:snow-device-management:${string}:${string}:task/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'task' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
+  constructor(parameters: TaskArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.resourceId = parameters.resourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:snow-device-management:${this.region}:${this.account}:task/${this.resourceId}` as const
+  }
+}
+export type { TaskArn }
+export function taskArn<Partition extends ArnPartition = 'aws'>(parameters: TaskArnParameters<Partition>) {
+  return new TaskArn<Partition>(parameters)
 }

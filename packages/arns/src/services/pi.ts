@@ -1,24 +1,66 @@
-export interface MetricResourceArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  serviceType: string
-  identifier: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface MetricResourceArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly serviceType: string
+  readonly identifier: string
 }
-export type MetricResourceArn = `arn:${string}:pi:${string}:${string}:metrics/${string}/${string}`
-export function metricResourceArn(parameters: MetricResourceArnParameters): MetricResourceArn {
-  return `arn:${parameters.partition ?? 'aws'}:pi:${parameters.region}:${parameters.account}:metrics/${parameters.serviceType}/${parameters.identifier}`
+class MetricResourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'metric-resource', `arn:${string}:pi:${string}:${string}:metrics/${string}/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'metric-resource' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly serviceType: string
+  readonly identifier: string
+  constructor(parameters: MetricResourceArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.serviceType = parameters.serviceType
+    this.identifier = parameters.identifier
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:pi:${this.region}:${this.account}:metrics/${this.serviceType}/${this.identifier}` as const
+  }
+}
+export type { MetricResourceArn }
+export function metricResourceArn<Partition extends ArnPartition = 'aws'>(parameters: MetricResourceArnParameters<Partition>) {
+  return new MetricResourceArn<Partition>(parameters)
 }
 
-export interface PerfReportsResourceArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  serviceType: string
-  identifier: string
-  reportId: string
+export interface PerfReportsResourceArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly serviceType: string
+  readonly identifier: string
+  readonly reportId: string
 }
-export type PerfReportsResourceArn = `arn:${string}:pi:${string}:${string}:perf-reports/${string}/${string}/${string}`
-export function perfReportsResourceArn(parameters: PerfReportsResourceArnParameters): PerfReportsResourceArn {
-  return `arn:${parameters.partition ?? 'aws'}:pi:${parameters.region}:${parameters.account}:perf-reports/${parameters.serviceType}/${parameters.identifier}/${parameters.reportId}`
+class PerfReportsResourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'perf-reports-resource', `arn:${string}:pi:${string}:${string}:perf-reports/${string}/${string}/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'perf-reports-resource' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly serviceType: string
+  readonly identifier: string
+  readonly reportId: string
+  constructor(parameters: PerfReportsResourceArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.serviceType = parameters.serviceType
+    this.identifier = parameters.identifier
+    this.reportId = parameters.reportId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:pi:${this.region}:${this.account}:perf-reports/${this.serviceType}/${this.identifier}/${this.reportId}` as const
+  }
+}
+export type { PerfReportsResourceArn }
+export function perfReportsResourceArn<Partition extends ArnPartition = 'aws'>(parameters: PerfReportsResourceArnParameters<Partition>) {
+  return new PerfReportsResourceArn<Partition>(parameters)
 }

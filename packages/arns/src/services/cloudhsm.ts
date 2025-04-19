@@ -1,21 +1,57 @@
-export interface BackupArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  cloudHsmBackupInstanceName: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface BackupArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly cloudHsmBackupInstanceName: string
 }
-export type BackupArn = `arn:${string}:cloudhsm:${string}:${string}:backup/${string}`
-export function backupArn(parameters: BackupArnParameters): BackupArn {
-  return `arn:${parameters.partition ?? 'aws'}:cloudhsm:${parameters.region}:${parameters.account}:backup/${parameters.cloudHsmBackupInstanceName}`
+class BackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'backup', `arn:${string}:cloudhsm:${string}:${string}:backup/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'backup' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly cloudHsmBackupInstanceName: string
+  constructor(parameters: BackupArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.cloudHsmBackupInstanceName = parameters.cloudHsmBackupInstanceName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:cloudhsm:${this.region}:${this.account}:backup/${this.cloudHsmBackupInstanceName}` as const
+  }
+}
+export type { BackupArn }
+export function backupArn<Partition extends ArnPartition = 'aws'>(parameters: BackupArnParameters<Partition>) {
+  return new BackupArn<Partition>(parameters)
 }
 
-export interface ClusterArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  cloudHsmClusterInstanceName: string
+export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly cloudHsmClusterInstanceName: string
 }
-export type ClusterArn = `arn:${string}:cloudhsm:${string}:${string}:cluster/${string}`
-export function clusterArn(parameters: ClusterArnParameters): ClusterArn {
-  return `arn:${parameters.partition ?? 'aws'}:cloudhsm:${parameters.region}:${parameters.account}:cluster/${parameters.cloudHsmClusterInstanceName}`
+class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cluster', `arn:${string}:cloudhsm:${string}:${string}:cluster/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'cluster' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly cloudHsmClusterInstanceName: string
+  constructor(parameters: ClusterArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.cloudHsmClusterInstanceName = parameters.cloudHsmClusterInstanceName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:cloudhsm:${this.region}:${this.account}:cluster/${this.cloudHsmClusterInstanceName}` as const
+  }
+}
+export type { ClusterArn }
+export function clusterArn<Partition extends ArnPartition = 'aws'>(parameters: ClusterArnParameters<Partition>) {
+  return new ClusterArn<Partition>(parameters)
 }

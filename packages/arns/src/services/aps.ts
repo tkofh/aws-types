@@ -1,44 +1,116 @@
-export interface WorkspaceArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  workspaceId: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface WorkspaceArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly workspaceId: string
 }
-export type WorkspaceArn = `arn:${string}:aps:${string}:${string}:workspace/${string}`
-export function workspaceArn(parameters: WorkspaceArnParameters): WorkspaceArn {
-  return `arn:${parameters.partition ?? 'aws'}:aps:${parameters.region}:${parameters.account}:workspace/${parameters.workspaceId}`
+class WorkspaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'workspace', `arn:${string}:aps:${string}:${string}:workspace/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'workspace' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly workspaceId: string
+  constructor(parameters: WorkspaceArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.workspaceId = parameters.workspaceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:aps:${this.region}:${this.account}:workspace/${this.workspaceId}` as const
+  }
+}
+export type { WorkspaceArn }
+export function workspaceArn<Partition extends ArnPartition = 'aws'>(parameters: WorkspaceArnParameters<Partition>) {
+  return new WorkspaceArn<Partition>(parameters)
 }
 
-export interface RulegroupsnamespaceArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  workspaceId: string
-  namespace: string
+export interface RulegroupsnamespaceArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly workspaceId: string
+  readonly namespace: string
 }
-export type RulegroupsnamespaceArn = `arn:${string}:aps:${string}:${string}:rulegroupsnamespace/${string}/${string}`
-export function rulegroupsnamespaceArn(parameters: RulegroupsnamespaceArnParameters): RulegroupsnamespaceArn {
-  return `arn:${parameters.partition ?? 'aws'}:aps:${parameters.region}:${parameters.account}:rulegroupsnamespace/${parameters.workspaceId}/${parameters.namespace}`
+class RulegroupsnamespaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'rulegroupsnamespace', `arn:${string}:aps:${string}:${string}:rulegroupsnamespace/${string}/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'rulegroupsnamespace' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly workspaceId: string
+  readonly namespace: string
+  constructor(parameters: RulegroupsnamespaceArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.workspaceId = parameters.workspaceId
+    this.namespace = parameters.namespace
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:aps:${this.region}:${this.account}:rulegroupsnamespace/${this.workspaceId}/${this.namespace}` as const
+  }
+}
+export type { RulegroupsnamespaceArn }
+export function rulegroupsnamespaceArn<Partition extends ArnPartition = 'aws'>(parameters: RulegroupsnamespaceArnParameters<Partition>) {
+  return new RulegroupsnamespaceArn<Partition>(parameters)
 }
 
-export interface ScraperArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  scraperId: string
+export interface ScraperArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly scraperId: string
 }
-export type ScraperArn = `arn:${string}:aps:${string}:${string}:scraper/${string}`
-export function scraperArn(parameters: ScraperArnParameters): ScraperArn {
-  return `arn:${parameters.partition ?? 'aws'}:aps:${parameters.region}:${parameters.account}:scraper/${parameters.scraperId}`
+class ScraperArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'scraper', `arn:${string}:aps:${string}:${string}:scraper/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'scraper' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly scraperId: string
+  constructor(parameters: ScraperArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.scraperId = parameters.scraperId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:aps:${this.region}:${this.account}:scraper/${this.scraperId}` as const
+  }
+}
+export type { ScraperArn }
+export function scraperArn<Partition extends ArnPartition = 'aws'>(parameters: ScraperArnParameters<Partition>) {
+  return new ScraperArn<Partition>(parameters)
 }
 
-export interface ClusterArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  clusterName: string
+export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly clusterName: string
 }
-export type ClusterArn = `arn:${string}:eks:${string}:${string}:cluster/${string}`
-export function clusterArn(parameters: ClusterArnParameters): ClusterArn {
-  return `arn:${parameters.partition ?? 'aws'}:eks:${parameters.region}:${parameters.account}:cluster/${parameters.clusterName}`
+class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cluster', `arn:${string}:eks:${string}:${string}:cluster/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'cluster' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly clusterName: string
+  constructor(parameters: ClusterArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.clusterName = parameters.clusterName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:eks:${this.region}:${this.account}:cluster/${this.clusterName}` as const
+  }
+}
+export type { ClusterArn }
+export function clusterArn<Partition extends ArnPartition = 'aws'>(parameters: ClusterArnParameters<Partition>) {
+  return new ClusterArn<Partition>(parameters)
 }

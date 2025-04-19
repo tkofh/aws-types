@@ -1,10 +1,29 @@
-export interface TopicArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  topicName: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface TopicArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly topicName: string
 }
-export type TopicArn = `arn:${string}:sns:${string}:${string}:${string}`
-export function topicArn(parameters: TopicArnParameters): TopicArn {
-  return `arn:${parameters.partition ?? 'aws'}:sns:${parameters.region}:${parameters.account}:${parameters.topicName}`
+class TopicArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'topic', `arn:${string}:sns:${string}:${string}:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'topic' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly topicName: string
+  constructor(parameters: TopicArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.topicName = parameters.topicName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:sns:${this.region}:${this.account}:${this.topicName}` as const
+  }
+}
+export type { TopicArn }
+export function topicArn<Partition extends ArnPartition = 'aws'>(parameters: TopicArnParameters<Partition>) {
+  return new TopicArn<Partition>(parameters)
 }

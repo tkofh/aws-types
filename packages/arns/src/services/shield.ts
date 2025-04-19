@@ -1,29 +1,76 @@
-export interface AttackArnParameters {
-  partition?: string | undefined
-  account: string
-  id: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface AttackArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly account: string
+  readonly id: string
 }
-export type AttackArn = `arn:${string}:shield::${string}:attack/${string}`
-export function attackArn(parameters: AttackArnParameters): AttackArn {
-  return `arn:${parameters.partition ?? 'aws'}:shield::${parameters.account}:attack/${parameters.id}`
+class AttackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'attack', `arn:${string}:shield::${string}:attack/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'attack' as const
+  readonly partition: Partition
+  readonly account: string
+  readonly id: string
+  constructor(parameters: AttackArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.account = parameters.account
+    this.id = parameters.id
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:shield::${this.account}:attack/${this.id}` as const
+  }
+}
+export type { AttackArn }
+export function attackArn<Partition extends ArnPartition = 'aws'>(parameters: AttackArnParameters<Partition>) {
+  return new AttackArn<Partition>(parameters)
 }
 
-export interface ProtectionArnParameters {
-  partition?: string | undefined
-  account: string
-  id: string
+export interface ProtectionArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly account: string
+  readonly id: string
 }
-export type ProtectionArn = `arn:${string}:shield::${string}:protection/${string}`
-export function protectionArn(parameters: ProtectionArnParameters): ProtectionArn {
-  return `arn:${parameters.partition ?? 'aws'}:shield::${parameters.account}:protection/${parameters.id}`
+class ProtectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'protection', `arn:${string}:shield::${string}:protection/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'protection' as const
+  readonly partition: Partition
+  readonly account: string
+  readonly id: string
+  constructor(parameters: ProtectionArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.account = parameters.account
+    this.id = parameters.id
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:shield::${this.account}:protection/${this.id}` as const
+  }
+}
+export type { ProtectionArn }
+export function protectionArn<Partition extends ArnPartition = 'aws'>(parameters: ProtectionArnParameters<Partition>) {
+  return new ProtectionArn<Partition>(parameters)
 }
 
-export interface ProtectionGroupArnParameters {
-  partition?: string | undefined
-  account: string
-  id: string
+export interface ProtectionGroupArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly account: string
+  readonly id: string
 }
-export type ProtectionGroupArn = `arn:${string}:shield::${string}:protection-group/${string}`
-export function protectionGroupArn(parameters: ProtectionGroupArnParameters): ProtectionGroupArn {
-  return `arn:${parameters.partition ?? 'aws'}:shield::${parameters.account}:protection-group/${parameters.id}`
+class ProtectionGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'protection-group', `arn:${string}:shield::${string}:protection-group/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'protection-group' as const
+  readonly partition: Partition
+  readonly account: string
+  readonly id: string
+  constructor(parameters: ProtectionGroupArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.account = parameters.account
+    this.id = parameters.id
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:shield::${this.account}:protection-group/${this.id}` as const
+  }
+}
+export type { ProtectionGroupArn }
+export function protectionGroupArn<Partition extends ArnPartition = 'aws'>(parameters: ProtectionGroupArnParameters<Partition>) {
+  return new ProtectionGroupArn<Partition>(parameters)
 }

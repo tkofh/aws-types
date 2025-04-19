@@ -69,16 +69,15 @@ const PACKAGE_LICENSE = Config.string('REPO_LICENSE').pipe(
 
 function buildExports(
   exports: Iterable<PackageJsonExport>,
-): Record<string, { import: string; require: string; types: string }> {
+): Record<string, { import: string; types: string }> {
   return Object.fromEntries(
     Array.from(
       exports,
       (exp) =>
         [
-          `./${exp.name}`,
+          exp.name === '' ? '.' : `./${exp.name}`,
           {
             import: `./dist/${exp.location}.mjs`,
-            require: `./dist/${exp.location}.cjs`,
             types: `./dist/${exp.location}.d.ts`,
           },
         ] as const,
@@ -113,9 +112,6 @@ export function packageJson(
         license,
         sideEffects: false,
         type: 'module',
-        main: './dist/index.cjs',
-        module: './dist/index.mjs',
-        types: './dist/index.d.ts',
         files: ['dist'],
         publishConfig: {
           access: 'public',

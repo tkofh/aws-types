@@ -1,10 +1,29 @@
-export interface OrganizationArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  resourceId: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface OrganizationArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
 }
-export type OrganizationArn = `arn:${string}:workdocs:${string}:${string}:organization/${string}`
-export function organizationArn(parameters: OrganizationArnParameters): OrganizationArn {
-  return `arn:${parameters.partition ?? 'aws'}:workdocs:${parameters.region}:${parameters.account}:organization/${parameters.resourceId}`
+class OrganizationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'organization', `arn:${string}:workdocs:${string}:${string}:organization/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'organization' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly resourceId: string
+  constructor(parameters: OrganizationArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.resourceId = parameters.resourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:workdocs:${this.region}:${this.account}:organization/${this.resourceId}` as const
+  }
+}
+export type { OrganizationArn }
+export function organizationArn<Partition extends ArnPartition = 'aws'>(parameters: OrganizationArnParameters<Partition>) {
+  return new OrganizationArn<Partition>(parameters)
 }

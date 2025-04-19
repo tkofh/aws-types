@@ -1,265 +1,679 @@
-export interface ClusterArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  dbClusterInstanceName: string
+import { type ArnPartition, type ArnRegion, ArnResourceTypeBrand, InternalArn, StringifyArnBrand } from '../internal.js'
+
+export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly dbClusterInstanceName: string
 }
-export type ClusterArn = `arn:${string}:rds:${string}:${string}:cluster:${string}`
-export function clusterArn(parameters: ClusterArnParameters): ClusterArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:cluster:${parameters.dbClusterInstanceName}`
+class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cluster', `arn:${string}:rds:${string}:${string}:cluster:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'cluster' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly dbClusterInstanceName: string
+  constructor(parameters: ClusterArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.dbClusterInstanceName = parameters.dbClusterInstanceName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:cluster:${this.dbClusterInstanceName}` as const
+  }
+}
+export type { ClusterArn }
+export function clusterArn<Partition extends ArnPartition = 'aws'>(parameters: ClusterArnParameters<Partition>) {
+  return new ClusterArn<Partition>(parameters)
 }
 
-export interface ShardgrpArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  dbShardGroupResourceId: string
+export interface ShardgrpArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly dbShardGroupResourceId: string
 }
-export type ShardgrpArn = `arn:${string}:rds:${string}:${string}:shard-group:${string}`
-export function shardgrpArn(parameters: ShardgrpArnParameters): ShardgrpArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:shard-group:${parameters.dbShardGroupResourceId}`
+class ShardgrpArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'shardgrp', `arn:${string}:rds:${string}:${string}:shard-group:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'shardgrp' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly dbShardGroupResourceId: string
+  constructor(parameters: ShardgrpArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.dbShardGroupResourceId = parameters.dbShardGroupResourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:shard-group:${this.dbShardGroupResourceId}` as const
+  }
 }
-
-export interface ClusterAutoBackupArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  dbClusterAutomatedBackupId: string
-}
-export type ClusterAutoBackupArn = `arn:${string}:rds:${string}:${string}:cluster-auto-backup:${string}`
-export function clusterAutoBackupArn(parameters: ClusterAutoBackupArnParameters): ClusterAutoBackupArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:cluster-auto-backup:${parameters.dbClusterAutomatedBackupId}`
-}
-
-export interface AutoBackupArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  dbInstanceAutomatedBackupId: string
-}
-export type AutoBackupArn = `arn:${string}:rds:${string}:${string}:auto-backup:${string}`
-export function autoBackupArn(parameters: AutoBackupArnParameters): AutoBackupArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:auto-backup:${parameters.dbInstanceAutomatedBackupId}`
+export type { ShardgrpArn }
+export function shardgrpArn<Partition extends ArnPartition = 'aws'>(parameters: ShardgrpArnParameters<Partition>) {
+  return new ShardgrpArn<Partition>(parameters)
 }
 
-export interface ClusterEndpointArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  dbClusterEndpoint: string
+export interface ClusterAutoBackupArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly dbClusterAutomatedBackupId: string
 }
-export type ClusterEndpointArn = `arn:${string}:rds:${string}:${string}:cluster-endpoint:${string}`
-export function clusterEndpointArn(parameters: ClusterEndpointArnParameters): ClusterEndpointArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:cluster-endpoint:${parameters.dbClusterEndpoint}`
+class ClusterAutoBackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cluster-auto-backup', `arn:${string}:rds:${string}:${string}:cluster-auto-backup:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'cluster-auto-backup' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly dbClusterAutomatedBackupId: string
+  constructor(parameters: ClusterAutoBackupArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.dbClusterAutomatedBackupId = parameters.dbClusterAutomatedBackupId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:cluster-auto-backup:${this.dbClusterAutomatedBackupId}` as const
+  }
 }
-
-export interface ClusterPgArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  clusterParameterGroupName: string
-}
-export type ClusterPgArn = `arn:${string}:rds:${string}:${string}:cluster-pg:${string}`
-export function clusterPgArn(parameters: ClusterPgArnParameters): ClusterPgArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:cluster-pg:${parameters.clusterParameterGroupName}`
-}
-
-export interface ClusterSnapshotArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  clusterSnapshotName: string
-}
-export type ClusterSnapshotArn = `arn:${string}:rds:${string}:${string}:cluster-snapshot:${string}`
-export function clusterSnapshotArn(parameters: ClusterSnapshotArnParameters): ClusterSnapshotArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:cluster-snapshot:${parameters.clusterSnapshotName}`
+export type { ClusterAutoBackupArn }
+export function clusterAutoBackupArn<Partition extends ArnPartition = 'aws'>(parameters: ClusterAutoBackupArnParameters<Partition>) {
+  return new ClusterAutoBackupArn<Partition>(parameters)
 }
 
-export interface DbArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  dbInstanceName: string
+export interface AutoBackupArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly dbInstanceAutomatedBackupId: string
 }
-export type DbArn = `arn:${string}:rds:${string}:${string}:db:${string}`
-export function dbArn(parameters: DbArnParameters): DbArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:db:${parameters.dbInstanceName}`
+class AutoBackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'auto-backup', `arn:${string}:rds:${string}:${string}:auto-backup:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'auto-backup' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly dbInstanceAutomatedBackupId: string
+  constructor(parameters: AutoBackupArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.dbInstanceAutomatedBackupId = parameters.dbInstanceAutomatedBackupId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:auto-backup:${this.dbInstanceAutomatedBackupId}` as const
+  }
 }
-
-export interface EsArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  subscriptionName: string
-}
-export type EsArn = `arn:${string}:rds:${string}:${string}:es:${string}`
-export function esArn(parameters: EsArnParameters): EsArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:es:${parameters.subscriptionName}`
-}
-
-export interface GlobalClusterArnParameters {
-  partition?: string | undefined
-  account: string
-  globalCluster: string
-}
-export type GlobalClusterArn = `arn:${string}:rds::${string}:global-cluster:${string}`
-export function globalClusterArn(parameters: GlobalClusterArnParameters): GlobalClusterArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds::${parameters.account}:global-cluster:${parameters.globalCluster}`
+export type { AutoBackupArn }
+export function autoBackupArn<Partition extends ArnPartition = 'aws'>(parameters: AutoBackupArnParameters<Partition>) {
+  return new AutoBackupArn<Partition>(parameters)
 }
 
-export interface OgArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  optionGroupName: string
+export interface ClusterEndpointArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly dbClusterEndpoint: string
 }
-export type OgArn = `arn:${string}:rds:${string}:${string}:og:${string}`
-export function ogArn(parameters: OgArnParameters): OgArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:og:${parameters.optionGroupName}`
+class ClusterEndpointArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cluster-endpoint', `arn:${string}:rds:${string}:${string}:cluster-endpoint:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'cluster-endpoint' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly dbClusterEndpoint: string
+  constructor(parameters: ClusterEndpointArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.dbClusterEndpoint = parameters.dbClusterEndpoint
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:cluster-endpoint:${this.dbClusterEndpoint}` as const
+  }
 }
-
-export interface PgArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  parameterGroupName: string
-}
-export type PgArn = `arn:${string}:rds:${string}:${string}:pg:${string}`
-export function pgArn(parameters: PgArnParameters): PgArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:pg:${parameters.parameterGroupName}`
-}
-
-export interface ProxyArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  dbProxyId: string
-}
-export type ProxyArn = `arn:${string}:rds:${string}:${string}:db-proxy:${string}`
-export function proxyArn(parameters: ProxyArnParameters): ProxyArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:db-proxy:${parameters.dbProxyId}`
+export type { ClusterEndpointArn }
+export function clusterEndpointArn<Partition extends ArnPartition = 'aws'>(parameters: ClusterEndpointArnParameters<Partition>) {
+  return new ClusterEndpointArn<Partition>(parameters)
 }
 
-export interface ProxyEndpointArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  dbProxyEndpointId: string
+export interface ClusterPgArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly clusterParameterGroupName: string
 }
-export type ProxyEndpointArn = `arn:${string}:rds:${string}:${string}:db-proxy-endpoint:${string}`
-export function proxyEndpointArn(parameters: ProxyEndpointArnParameters): ProxyEndpointArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:db-proxy-endpoint:${parameters.dbProxyEndpointId}`
+class ClusterPgArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cluster-pg', `arn:${string}:rds:${string}:${string}:cluster-pg:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'cluster-pg' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly clusterParameterGroupName: string
+  constructor(parameters: ClusterPgArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.clusterParameterGroupName = parameters.clusterParameterGroupName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:cluster-pg:${this.clusterParameterGroupName}` as const
+  }
 }
-
-export interface RiArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  reservedDbInstanceName: string
-}
-export type RiArn = `arn:${string}:rds:${string}:${string}:ri:${string}`
-export function riArn(parameters: RiArnParameters): RiArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:ri:${parameters.reservedDbInstanceName}`
-}
-
-export interface SecgrpArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  securityGroupName: string
-}
-export type SecgrpArn = `arn:${string}:rds:${string}:${string}:secgrp:${string}`
-export function secgrpArn(parameters: SecgrpArnParameters): SecgrpArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:secgrp:${parameters.securityGroupName}`
+export type { ClusterPgArn }
+export function clusterPgArn<Partition extends ArnPartition = 'aws'>(parameters: ClusterPgArnParameters<Partition>) {
+  return new ClusterPgArn<Partition>(parameters)
 }
 
-export interface SnapshotArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  snapshotName: string
+export interface ClusterSnapshotArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly clusterSnapshotName: string
 }
-export type SnapshotArn = `arn:${string}:rds:${string}:${string}:snapshot:${string}`
-export function snapshotArn(parameters: SnapshotArnParameters): SnapshotArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:snapshot:${parameters.snapshotName}`
+class ClusterSnapshotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cluster-snapshot', `arn:${string}:rds:${string}:${string}:cluster-snapshot:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'cluster-snapshot' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly clusterSnapshotName: string
+  constructor(parameters: ClusterSnapshotArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.clusterSnapshotName = parameters.clusterSnapshotName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:cluster-snapshot:${this.clusterSnapshotName}` as const
+  }
 }
-
-export interface SubgrpArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  subnetGroupName: string
-}
-export type SubgrpArn = `arn:${string}:rds:${string}:${string}:subgrp:${string}`
-export function subgrpArn(parameters: SubgrpArnParameters): SubgrpArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:subgrp:${parameters.subnetGroupName}`
-}
-
-export interface TargetGroupArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  targetGroupId: string
-}
-export type TargetGroupArn = `arn:${string}:rds:${string}:${string}:target-group:${string}`
-export function targetGroupArn(parameters: TargetGroupArnParameters): TargetGroupArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:target-group:${parameters.targetGroupId}`
+export type { ClusterSnapshotArn }
+export function clusterSnapshotArn<Partition extends ArnPartition = 'aws'>(parameters: ClusterSnapshotArnParameters<Partition>) {
+  return new ClusterSnapshotArn<Partition>(parameters)
 }
 
-export interface CevArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  engine: string
-  engineVersion: string
-  customDbEngineVersionId: string
+export interface DbArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly dbInstanceName: string
 }
-export type CevArn = `arn:${string}:rds:${string}:${string}:cev:${string}/${string}/${string}`
-export function cevArn(parameters: CevArnParameters): CevArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:cev:${parameters.engine}/${parameters.engineVersion}/${parameters.customDbEngineVersionId}`
+class DbArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'db', `arn:${string}:rds:${string}:${string}:db:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'db' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly dbInstanceName: string
+  constructor(parameters: DbArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.dbInstanceName = parameters.dbInstanceName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:db:${this.dbInstanceName}` as const
+  }
 }
-
-export interface DeploymentArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  blueGreenDeploymentIdentifier: string
-}
-export type DeploymentArn = `arn:${string}:rds:${string}:${string}:deployment:${string}`
-export function deploymentArn(parameters: DeploymentArnParameters): DeploymentArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:deployment:${parameters.blueGreenDeploymentIdentifier}`
-}
-
-export interface IntegrationArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  integrationIdentifier: string
-}
-export type IntegrationArn = `arn:${string}:rds:${string}:${string}:integration:${string}`
-export function integrationArn(parameters: IntegrationArnParameters): IntegrationArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:integration:${parameters.integrationIdentifier}`
+export type { DbArn }
+export function dbArn<Partition extends ArnPartition = 'aws'>(parameters: DbArnParameters<Partition>) {
+  return new DbArn<Partition>(parameters)
 }
 
-export interface SnapshotTenantDatabaseArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  snapshotName: string
-  tenantResourceId: string
+export interface EsArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly subscriptionName: string
 }
-export type SnapshotTenantDatabaseArn = `arn:${string}:rds:${string}:${string}:snapshot-tenant-database:${string}:${string}`
-export function snapshotTenantDatabaseArn(parameters: SnapshotTenantDatabaseArnParameters): SnapshotTenantDatabaseArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:snapshot-tenant-database:${parameters.snapshotName}:${parameters.tenantResourceId}`
+class EsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'es', `arn:${string}:rds:${string}:${string}:es:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'es' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly subscriptionName: string
+  constructor(parameters: EsArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.subscriptionName = parameters.subscriptionName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:es:${this.subscriptionName}` as const
+  }
+}
+export type { EsArn }
+export function esArn<Partition extends ArnPartition = 'aws'>(parameters: EsArnParameters<Partition>) {
+  return new EsArn<Partition>(parameters)
 }
 
-export interface TenantDatabaseArnParameters {
-  partition?: string | undefined
-  region: string
-  account: string
-  tenantResourceId: string
+export interface GlobalClusterArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly account: string
+  readonly globalCluster: string
 }
-export type TenantDatabaseArn = `arn:${string}:rds:${string}:${string}:tenant-database:${string}`
-export function tenantDatabaseArn(parameters: TenantDatabaseArnParameters): TenantDatabaseArn {
-  return `arn:${parameters.partition ?? 'aws'}:rds:${parameters.region}:${parameters.account}:tenant-database:${parameters.tenantResourceId}`
+class GlobalClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'global-cluster', `arn:${string}:rds::${string}:global-cluster:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'global-cluster' as const
+  readonly partition: Partition
+  readonly account: string
+  readonly globalCluster: string
+  constructor(parameters: GlobalClusterArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.account = parameters.account
+    this.globalCluster = parameters.globalCluster
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds::${this.account}:global-cluster:${this.globalCluster}` as const
+  }
+}
+export type { GlobalClusterArn }
+export function globalClusterArn<Partition extends ArnPartition = 'aws'>(parameters: GlobalClusterArnParameters<Partition>) {
+  return new GlobalClusterArn<Partition>(parameters)
+}
+
+export interface OgArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly optionGroupName: string
+}
+class OgArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'og', `arn:${string}:rds:${string}:${string}:og:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'og' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly optionGroupName: string
+  constructor(parameters: OgArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.optionGroupName = parameters.optionGroupName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:og:${this.optionGroupName}` as const
+  }
+}
+export type { OgArn }
+export function ogArn<Partition extends ArnPartition = 'aws'>(parameters: OgArnParameters<Partition>) {
+  return new OgArn<Partition>(parameters)
+}
+
+export interface PgArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly parameterGroupName: string
+}
+class PgArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'pg', `arn:${string}:rds:${string}:${string}:pg:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'pg' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly parameterGroupName: string
+  constructor(parameters: PgArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.parameterGroupName = parameters.parameterGroupName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:pg:${this.parameterGroupName}` as const
+  }
+}
+export type { PgArn }
+export function pgArn<Partition extends ArnPartition = 'aws'>(parameters: PgArnParameters<Partition>) {
+  return new PgArn<Partition>(parameters)
+}
+
+export interface ProxyArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly dbProxyId: string
+}
+class ProxyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'proxy', `arn:${string}:rds:${string}:${string}:db-proxy:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'proxy' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly dbProxyId: string
+  constructor(parameters: ProxyArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.dbProxyId = parameters.dbProxyId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:db-proxy:${this.dbProxyId}` as const
+  }
+}
+export type { ProxyArn }
+export function proxyArn<Partition extends ArnPartition = 'aws'>(parameters: ProxyArnParameters<Partition>) {
+  return new ProxyArn<Partition>(parameters)
+}
+
+export interface ProxyEndpointArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly dbProxyEndpointId: string
+}
+class ProxyEndpointArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'proxy-endpoint', `arn:${string}:rds:${string}:${string}:db-proxy-endpoint:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'proxy-endpoint' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly dbProxyEndpointId: string
+  constructor(parameters: ProxyEndpointArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.dbProxyEndpointId = parameters.dbProxyEndpointId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:db-proxy-endpoint:${this.dbProxyEndpointId}` as const
+  }
+}
+export type { ProxyEndpointArn }
+export function proxyEndpointArn<Partition extends ArnPartition = 'aws'>(parameters: ProxyEndpointArnParameters<Partition>) {
+  return new ProxyEndpointArn<Partition>(parameters)
+}
+
+export interface RiArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly reservedDbInstanceName: string
+}
+class RiArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'ri', `arn:${string}:rds:${string}:${string}:ri:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'ri' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly reservedDbInstanceName: string
+  constructor(parameters: RiArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.reservedDbInstanceName = parameters.reservedDbInstanceName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:ri:${this.reservedDbInstanceName}` as const
+  }
+}
+export type { RiArn }
+export function riArn<Partition extends ArnPartition = 'aws'>(parameters: RiArnParameters<Partition>) {
+  return new RiArn<Partition>(parameters)
+}
+
+export interface SecgrpArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly securityGroupName: string
+}
+class SecgrpArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'secgrp', `arn:${string}:rds:${string}:${string}:secgrp:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'secgrp' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly securityGroupName: string
+  constructor(parameters: SecgrpArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.securityGroupName = parameters.securityGroupName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:secgrp:${this.securityGroupName}` as const
+  }
+}
+export type { SecgrpArn }
+export function secgrpArn<Partition extends ArnPartition = 'aws'>(parameters: SecgrpArnParameters<Partition>) {
+  return new SecgrpArn<Partition>(parameters)
+}
+
+export interface SnapshotArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly snapshotName: string
+}
+class SnapshotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'snapshot', `arn:${string}:rds:${string}:${string}:snapshot:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'snapshot' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly snapshotName: string
+  constructor(parameters: SnapshotArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.snapshotName = parameters.snapshotName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:snapshot:${this.snapshotName}` as const
+  }
+}
+export type { SnapshotArn }
+export function snapshotArn<Partition extends ArnPartition = 'aws'>(parameters: SnapshotArnParameters<Partition>) {
+  return new SnapshotArn<Partition>(parameters)
+}
+
+export interface SubgrpArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly subnetGroupName: string
+}
+class SubgrpArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'subgrp', `arn:${string}:rds:${string}:${string}:subgrp:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'subgrp' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly subnetGroupName: string
+  constructor(parameters: SubgrpArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.subnetGroupName = parameters.subnetGroupName
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:subgrp:${this.subnetGroupName}` as const
+  }
+}
+export type { SubgrpArn }
+export function subgrpArn<Partition extends ArnPartition = 'aws'>(parameters: SubgrpArnParameters<Partition>) {
+  return new SubgrpArn<Partition>(parameters)
+}
+
+export interface TargetGroupArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly targetGroupId: string
+}
+class TargetGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'target-group', `arn:${string}:rds:${string}:${string}:target-group:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'target-group' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly targetGroupId: string
+  constructor(parameters: TargetGroupArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.targetGroupId = parameters.targetGroupId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:target-group:${this.targetGroupId}` as const
+  }
+}
+export type { TargetGroupArn }
+export function targetGroupArn<Partition extends ArnPartition = 'aws'>(parameters: TargetGroupArnParameters<Partition>) {
+  return new TargetGroupArn<Partition>(parameters)
+}
+
+export interface CevArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly engine: string
+  readonly engineVersion: string
+  readonly customDbEngineVersionId: string
+}
+class CevArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'cev', `arn:${string}:rds:${string}:${string}:cev:${string}/${string}/${string}`> {
+  readonly [ArnResourceTypeBrand] = 'cev' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly engine: string
+  readonly engineVersion: string
+  readonly customDbEngineVersionId: string
+  constructor(parameters: CevArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.engine = parameters.engine
+    this.engineVersion = parameters.engineVersion
+    this.customDbEngineVersionId = parameters.customDbEngineVersionId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:cev:${this.engine}/${this.engineVersion}/${this.customDbEngineVersionId}` as const
+  }
+}
+export type { CevArn }
+export function cevArn<Partition extends ArnPartition = 'aws'>(parameters: CevArnParameters<Partition>) {
+  return new CevArn<Partition>(parameters)
+}
+
+export interface DeploymentArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly blueGreenDeploymentIdentifier: string
+}
+class DeploymentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'deployment', `arn:${string}:rds:${string}:${string}:deployment:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'deployment' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly blueGreenDeploymentIdentifier: string
+  constructor(parameters: DeploymentArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.blueGreenDeploymentIdentifier = parameters.blueGreenDeploymentIdentifier
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:deployment:${this.blueGreenDeploymentIdentifier}` as const
+  }
+}
+export type { DeploymentArn }
+export function deploymentArn<Partition extends ArnPartition = 'aws'>(parameters: DeploymentArnParameters<Partition>) {
+  return new DeploymentArn<Partition>(parameters)
+}
+
+export interface IntegrationArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly integrationIdentifier: string
+}
+class IntegrationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'integration', `arn:${string}:rds:${string}:${string}:integration:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'integration' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly integrationIdentifier: string
+  constructor(parameters: IntegrationArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.integrationIdentifier = parameters.integrationIdentifier
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:integration:${this.integrationIdentifier}` as const
+  }
+}
+export type { IntegrationArn }
+export function integrationArn<Partition extends ArnPartition = 'aws'>(parameters: IntegrationArnParameters<Partition>) {
+  return new IntegrationArn<Partition>(parameters)
+}
+
+export interface SnapshotTenantDatabaseArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly snapshotName: string
+  readonly tenantResourceId: string
+}
+class SnapshotTenantDatabaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'snapshot-tenant-database', `arn:${string}:rds:${string}:${string}:snapshot-tenant-database:${string}:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'snapshot-tenant-database' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly snapshotName: string
+  readonly tenantResourceId: string
+  constructor(parameters: SnapshotTenantDatabaseArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.snapshotName = parameters.snapshotName
+    this.tenantResourceId = parameters.tenantResourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:snapshot-tenant-database:${this.snapshotName}:${this.tenantResourceId}` as const
+  }
+}
+export type { SnapshotTenantDatabaseArn }
+export function snapshotTenantDatabaseArn<Partition extends ArnPartition = 'aws'>(parameters: SnapshotTenantDatabaseArnParameters<Partition>) {
+  return new SnapshotTenantDatabaseArn<Partition>(parameters)
+}
+
+export interface TenantDatabaseArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly tenantResourceId: string
+}
+class TenantDatabaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<'tenant-database', `arn:${string}:rds:${string}:${string}:tenant-database:${string}`> {
+  readonly [ArnResourceTypeBrand] = 'tenant-database' as const
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly account: string
+  readonly tenantResourceId: string
+  constructor(parameters: TenantDatabaseArnParameters<Partition>) {
+    super()
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.region = parameters.region
+    this.account = parameters.account
+    this.tenantResourceId = parameters.tenantResourceId
+  }
+  [StringifyArnBrand]() {
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:tenant-database:${this.tenantResourceId}` as const
+  }
+}
+export type { TenantDatabaseArn }
+export function tenantDatabaseArn<Partition extends ArnPartition = 'aws'>(parameters: TenantDatabaseArnParameters<Partition>) {
+  return new TenantDatabaseArn<Partition>(parameters)
 }
