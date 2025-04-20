@@ -1,6 +1,6 @@
 {
   "name": "@aws-types/arn",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "typed helpers for constructing ARNs",
   "author": "Tim Morris <timthewebguy@gmail.com>",
   "tags": [],
