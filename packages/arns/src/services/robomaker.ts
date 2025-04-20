@@ -6,224 +6,224 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ApplicationRobotArnParameters<
+export interface RobotApplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameApplication: string
-  readonly epochOnCreated: string
+  readonly applicationName: string
+  readonly createdOnEpoch: string
 }
-class ApplicationRobotArn<
+class RobotApplicationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'robotApplication',
   `arn:${string}:robomaker:${string}:${string}:robot-application/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'robotApplication' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameApplication: string
-  readonly epochOnCreated: string
-  constructor(parameters: ApplicationRobotArnParameters<Partition>) {
+  readonly applicationName: string
+  readonly createdOnEpoch: string
+  constructor(parameters: RobotApplicationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameApplication = parameters.nameApplication
-    this.epochOnCreated = parameters.epochOnCreated
+    this.applicationName = parameters.applicationName
+    this.createdOnEpoch = parameters.createdOnEpoch
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:robot-application/${this.nameApplication}/${this.epochOnCreated}` as const
+    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:robot-application/${this.applicationName}/${this.createdOnEpoch}` as const
   }
 }
-export type { ApplicationRobotArn }
-export function applicationRobotArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ApplicationRobotArnParameters<Partition>,
+export type { RobotApplicationArn }
+export function robotApplicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RobotApplicationArnParameters<Partition>,
 ) {
-  return new ApplicationRobotArn<Partition>(parameters)
+  return new RobotApplicationArn<Partition>(parameters)
 }
 
-export interface ApplicationSimulationArnParameters<
+export interface SimulationApplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameApplication: string
-  readonly epochOnCreated: string
+  readonly applicationName: string
+  readonly createdOnEpoch: string
 }
-class ApplicationSimulationArn<
+class SimulationApplicationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'simulationApplication',
   `arn:${string}:robomaker:${string}:${string}:simulation-application/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'simulationApplication' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameApplication: string
-  readonly epochOnCreated: string
-  constructor(parameters: ApplicationSimulationArnParameters<Partition>) {
+  readonly applicationName: string
+  readonly createdOnEpoch: string
+  constructor(parameters: SimulationApplicationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameApplication = parameters.nameApplication
-    this.epochOnCreated = parameters.epochOnCreated
+    this.applicationName = parameters.applicationName
+    this.createdOnEpoch = parameters.createdOnEpoch
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:simulation-application/${this.nameApplication}/${this.epochOnCreated}` as const
+    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:simulation-application/${this.applicationName}/${this.createdOnEpoch}` as const
   }
 }
-export type { ApplicationSimulationArn }
-export function applicationSimulationArn<
+export type { SimulationApplicationArn }
+export function simulationApplicationArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ApplicationSimulationArnParameters<Partition>) {
-  return new ApplicationSimulationArn<Partition>(parameters)
+>(parameters: SimulationApplicationArnParameters<Partition>) {
+  return new SimulationApplicationArn<Partition>(parameters)
 }
 
-export interface JobSimulationArnParameters<
+export interface SimulationJobArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJobSimulation: string
+  readonly simulationJobId: string
 }
-class JobSimulationArn<
+class SimulationJobArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'simulationJob',
   `arn:${string}:robomaker:${string}:${string}:simulation-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'simulationJob' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJobSimulation: string
-  constructor(parameters: JobSimulationArnParameters<Partition>) {
+  readonly simulationJobId: string
+  constructor(parameters: SimulationJobArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idJobSimulation = parameters.idJobSimulation
+    this.simulationJobId = parameters.simulationJobId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:simulation-job/${this.idJobSimulation}` as const
+    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:simulation-job/${this.simulationJobId}` as const
   }
 }
-export type { JobSimulationArn }
-export function jobSimulationArn<Partition extends ArnPartition = 'aws'>(
-  parameters: JobSimulationArnParameters<Partition>,
+export type { SimulationJobArn }
+export function simulationJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SimulationJobArnParameters<Partition>,
 ) {
-  return new JobSimulationArn<Partition>(parameters)
+  return new SimulationJobArn<Partition>(parameters)
 }
 
-export interface BatchJobSimulationArnParameters<
+export interface SimulationJobBatchArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idBatchJobSimulation: string
+  readonly simulationJobBatchId: string
 }
-class BatchJobSimulationArn<
+class SimulationJobBatchArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'simulationJobBatch',
   `arn:${string}:robomaker:${string}:${string}:simulation-job-batch/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'simulationJobBatch' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idBatchJobSimulation: string
-  constructor(parameters: BatchJobSimulationArnParameters<Partition>) {
+  readonly simulationJobBatchId: string
+  constructor(parameters: SimulationJobBatchArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idBatchJobSimulation = parameters.idBatchJobSimulation
+    this.simulationJobBatchId = parameters.simulationJobBatchId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:simulation-job-batch/${this.idBatchJobSimulation}` as const
+    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:simulation-job-batch/${this.simulationJobBatchId}` as const
   }
 }
-export type { BatchJobSimulationArn }
-export function batchJobSimulationArn<Partition extends ArnPartition = 'aws'>(
-  parameters: BatchJobSimulationArnParameters<Partition>,
+export type { SimulationJobBatchArn }
+export function simulationJobBatchArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SimulationJobBatchArnParameters<Partition>,
 ) {
-  return new BatchJobSimulationArn<Partition>(parameters)
+  return new SimulationJobBatchArn<Partition>(parameters)
 }
 
-export interface JobDeploymentArnParameters<
+export interface DeploymentJobArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJobDeployment: string
+  readonly deploymentJobId: string
 }
-class JobDeploymentArn<
+class DeploymentJobArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'deploymentJob',
   `arn:${string}:robomaker:${string}:${string}:deployment-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'deploymentJob' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJobDeployment: string
-  constructor(parameters: JobDeploymentArnParameters<Partition>) {
+  readonly deploymentJobId: string
+  constructor(parameters: DeploymentJobArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idJobDeployment = parameters.idJobDeployment
+    this.deploymentJobId = parameters.deploymentJobId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:deployment-job/${this.idJobDeployment}` as const
+    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:deployment-job/${this.deploymentJobId}` as const
   }
 }
-export type { JobDeploymentArn }
-export function jobDeploymentArn<Partition extends ArnPartition = 'aws'>(
-  parameters: JobDeploymentArnParameters<Partition>,
+export type { DeploymentJobArn }
+export function deploymentJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeploymentJobArnParameters<Partition>,
 ) {
-  return new JobDeploymentArn<Partition>(parameters)
+  return new DeploymentJobArn<Partition>(parameters)
 }
 
 export interface RobotArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameRobot: string
-  readonly epochOnCreated: string
+  readonly robotName: string
+  readonly createdOnEpoch: string
 }
 class RobotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'robot',
   `arn:${string}:robomaker:${string}:${string}:robot/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'robot' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameRobot: string
-  readonly epochOnCreated: string
+  readonly robotName: string
+  readonly createdOnEpoch: string
   constructor(parameters: RobotArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameRobot = parameters.nameRobot
-    this.epochOnCreated = parameters.epochOnCreated
+    this.robotName = parameters.robotName
+    this.createdOnEpoch = parameters.createdOnEpoch
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:robot/${this.nameRobot}/${this.epochOnCreated}` as const
+    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:robot/${this.robotName}/${this.createdOnEpoch}` as const
   }
 }
 export type { RobotArn }
@@ -233,181 +233,181 @@ export function robotArn<Partition extends ArnPartition = 'aws'>(
   return new RobotArn<Partition>(parameters)
 }
 
-export interface FleetDeploymentArnParameters<
+export interface DeploymentFleetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameFleet: string
-  readonly epochOnCreated: string
+  readonly fleetName: string
+  readonly createdOnEpoch: string
 }
-class FleetDeploymentArn<
+class DeploymentFleetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'deploymentFleet',
   `arn:${string}:robomaker:${string}:${string}:deployment-fleet/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'deploymentFleet' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameFleet: string
-  readonly epochOnCreated: string
-  constructor(parameters: FleetDeploymentArnParameters<Partition>) {
+  readonly fleetName: string
+  readonly createdOnEpoch: string
+  constructor(parameters: DeploymentFleetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameFleet = parameters.nameFleet
-    this.epochOnCreated = parameters.epochOnCreated
+    this.fleetName = parameters.fleetName
+    this.createdOnEpoch = parameters.createdOnEpoch
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:deployment-fleet/${this.nameFleet}/${this.epochOnCreated}` as const
+    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:deployment-fleet/${this.fleetName}/${this.createdOnEpoch}` as const
   }
 }
-export type { FleetDeploymentArn }
-export function fleetDeploymentArn<Partition extends ArnPartition = 'aws'>(
-  parameters: FleetDeploymentArnParameters<Partition>,
+export type { DeploymentFleetArn }
+export function deploymentFleetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeploymentFleetArnParameters<Partition>,
 ) {
-  return new FleetDeploymentArn<Partition>(parameters)
+  return new DeploymentFleetArn<Partition>(parameters)
 }
 
-export interface JobGenerationWorldArnParameters<
+export interface WorldGenerationJobArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJobGenerationWorld: string
+  readonly worldGenerationJobId: string
 }
-class JobGenerationWorldArn<
+class WorldGenerationJobArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'worldGenerationJob',
   `arn:${string}:robomaker:${string}:${string}:world-generation-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'worldGenerationJob' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJobGenerationWorld: string
-  constructor(parameters: JobGenerationWorldArnParameters<Partition>) {
+  readonly worldGenerationJobId: string
+  constructor(parameters: WorldGenerationJobArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idJobGenerationWorld = parameters.idJobGenerationWorld
+    this.worldGenerationJobId = parameters.worldGenerationJobId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:world-generation-job/${this.idJobGenerationWorld}` as const
+    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:world-generation-job/${this.worldGenerationJobId}` as const
   }
 }
-export type { JobGenerationWorldArn }
-export function jobGenerationWorldArn<Partition extends ArnPartition = 'aws'>(
-  parameters: JobGenerationWorldArnParameters<Partition>,
+export type { WorldGenerationJobArn }
+export function worldGenerationJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorldGenerationJobArnParameters<Partition>,
 ) {
-  return new JobGenerationWorldArn<Partition>(parameters)
+  return new WorldGenerationJobArn<Partition>(parameters)
 }
 
-export interface JobExportWorldArnParameters<
+export interface WorldExportJobArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJobExportWorld: string
+  readonly worldExportJobId: string
 }
-class JobExportWorldArn<
+class WorldExportJobArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'worldExportJob',
   `arn:${string}:robomaker:${string}:${string}:world-export-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'worldExportJob' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJobExportWorld: string
-  constructor(parameters: JobExportWorldArnParameters<Partition>) {
+  readonly worldExportJobId: string
+  constructor(parameters: WorldExportJobArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idJobExportWorld = parameters.idJobExportWorld
+    this.worldExportJobId = parameters.worldExportJobId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:world-export-job/${this.idJobExportWorld}` as const
+    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:world-export-job/${this.worldExportJobId}` as const
   }
 }
-export type { JobExportWorldArn }
-export function jobExportWorldArn<Partition extends ArnPartition = 'aws'>(
-  parameters: JobExportWorldArnParameters<Partition>,
+export type { WorldExportJobArn }
+export function worldExportJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorldExportJobArnParameters<Partition>,
 ) {
-  return new JobExportWorldArn<Partition>(parameters)
+  return new WorldExportJobArn<Partition>(parameters)
 }
 
-export interface TemplateWorldArnParameters<
+export interface WorldTemplateArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJobTemplateWorld: string
+  readonly worldTemplateJobId: string
 }
-class TemplateWorldArn<
+class WorldTemplateArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'worldTemplate',
   `arn:${string}:robomaker:${string}:${string}:world-template/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'worldTemplate' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJobTemplateWorld: string
-  constructor(parameters: TemplateWorldArnParameters<Partition>) {
+  readonly worldTemplateJobId: string
+  constructor(parameters: WorldTemplateArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idJobTemplateWorld = parameters.idJobTemplateWorld
+    this.worldTemplateJobId = parameters.worldTemplateJobId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:world-template/${this.idJobTemplateWorld}` as const
+    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:world-template/${this.worldTemplateJobId}` as const
   }
 }
-export type { TemplateWorldArn }
-export function templateWorldArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TemplateWorldArnParameters<Partition>,
+export type { WorldTemplateArn }
+export function worldTemplateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorldTemplateArnParameters<Partition>,
 ) {
-  return new TemplateWorldArn<Partition>(parameters)
+  return new WorldTemplateArn<Partition>(parameters)
 }
 
 export interface WorldArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idWorld: string
+  readonly worldId: string
 }
 class WorldArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'world',
   `arn:${string}:robomaker:${string}:${string}:world/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'world' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idWorld: string
+  readonly worldId: string
   constructor(parameters: WorldArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idWorld = parameters.idWorld
+    this.worldId = parameters.worldId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:world/${this.idWorld}` as const
+    return `arn:${this.partition}:robomaker:${this.region}:${this.account}:world/${this.worldId}` as const
   }
 }
 export type { WorldArn }

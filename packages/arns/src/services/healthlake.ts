@@ -6,37 +6,37 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface StoreDataArnParameters<
+export interface DataStoreArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idDatastore: string
+  readonly datastoreId: string
 }
-class StoreDataArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class DataStoreArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'datastore',
   `arn:${string}:healthlake:${string}:${string}:datastore/fhir/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'datastore' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idDatastore: string
-  constructor(parameters: StoreDataArnParameters<Partition>) {
+  readonly datastoreId: string
+  constructor(parameters: DataStoreArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idDatastore = parameters.idDatastore
+    this.datastoreId = parameters.datastoreId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:healthlake:${this.region}:${this.account}:datastore/fhir/${this.idDatastore}` as const
+    return `arn:${this.partition}:healthlake:${this.region}:${this.account}:datastore/fhir/${this.datastoreId}` as const
   }
 }
-export type { StoreDataArn }
-export function storeDataArn<Partition extends ArnPartition = 'aws'>(
-  parameters: StoreDataArnParameters<Partition>,
+export type { DataStoreArn }
+export function dataStoreArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DataStoreArnParameters<Partition>,
 ) {
-  return new StoreDataArn<Partition>(parameters)
+  return new DataStoreArn<Partition>(parameters)
 }

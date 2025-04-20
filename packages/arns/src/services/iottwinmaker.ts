@@ -9,29 +9,29 @@ import {
 export interface WorkspaceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idWorkspace: string
+  readonly workspaceId: string
 }
 class WorkspaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'workspace',
   `arn:${string}:iottwinmaker:${string}:${string}:workspace/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'workspace' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idWorkspace: string
+  readonly workspaceId: string
   constructor(parameters: WorkspaceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idWorkspace = parameters.idWorkspace
+    this.workspaceId = parameters.workspaceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iottwinmaker:${this.region}:${this.account}:workspace/${this.idWorkspace}` as const
+    return `arn:${this.partition}:iottwinmaker:${this.region}:${this.account}:workspace/${this.workspaceId}` as const
   }
 }
 export type { WorkspaceArn }
@@ -42,32 +42,32 @@ export function workspaceArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface EntityArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idWorkspace: string
-  readonly idEntity: string
+  readonly workspaceId: string
+  readonly entityId: string
 }
 class EntityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'entity',
   `arn:${string}:iottwinmaker:${string}:${string}:workspace/${string}/entity/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'entity' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idWorkspace: string
-  readonly idEntity: string
+  readonly workspaceId: string
+  readonly entityId: string
   constructor(parameters: EntityArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idWorkspace = parameters.idWorkspace
-    this.idEntity = parameters.idEntity
+    this.workspaceId = parameters.workspaceId
+    this.entityId = parameters.entityId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iottwinmaker:${this.region}:${this.account}:workspace/${this.idWorkspace}/entity/${this.idEntity}` as const
+    return `arn:${this.partition}:iottwinmaker:${this.region}:${this.account}:workspace/${this.workspaceId}/entity/${this.entityId}` as const
   }
 }
 export type { EntityArn }
@@ -77,73 +77,73 @@ export function entityArn<Partition extends ArnPartition = 'aws'>(
   return new EntityArn<Partition>(parameters)
 }
 
-export interface TypeComponentArnParameters<
+export interface ComponentTypeArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idWorkspace: string
-  readonly idTypeComponent: string
+  readonly workspaceId: string
+  readonly componentTypeId: string
 }
-class TypeComponentArn<
+class ComponentTypeArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'componentType',
   `arn:${string}:iottwinmaker:${string}:${string}:workspace/${string}/component-type/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'componentType' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idWorkspace: string
-  readonly idTypeComponent: string
-  constructor(parameters: TypeComponentArnParameters<Partition>) {
+  readonly workspaceId: string
+  readonly componentTypeId: string
+  constructor(parameters: ComponentTypeArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idWorkspace = parameters.idWorkspace
-    this.idTypeComponent = parameters.idTypeComponent
+    this.workspaceId = parameters.workspaceId
+    this.componentTypeId = parameters.componentTypeId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iottwinmaker:${this.region}:${this.account}:workspace/${this.idWorkspace}/component-type/${this.idTypeComponent}` as const
+    return `arn:${this.partition}:iottwinmaker:${this.region}:${this.account}:workspace/${this.workspaceId}/component-type/${this.componentTypeId}` as const
   }
 }
-export type { TypeComponentArn }
-export function typeComponentArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TypeComponentArnParameters<Partition>,
+export type { ComponentTypeArn }
+export function componentTypeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ComponentTypeArnParameters<Partition>,
 ) {
-  return new TypeComponentArn<Partition>(parameters)
+  return new ComponentTypeArn<Partition>(parameters)
 }
 
 export interface SceneArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idWorkspace: string
-  readonly idScene: string
+  readonly workspaceId: string
+  readonly sceneId: string
 }
 class SceneArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'scene',
   `arn:${string}:iottwinmaker:${string}:${string}:workspace/${string}/scene/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'scene' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idWorkspace: string
-  readonly idScene: string
+  readonly workspaceId: string
+  readonly sceneId: string
   constructor(parameters: SceneArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idWorkspace = parameters.idWorkspace
-    this.idScene = parameters.idScene
+    this.workspaceId = parameters.workspaceId
+    this.sceneId = parameters.sceneId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iottwinmaker:${this.region}:${this.account}:workspace/${this.idWorkspace}/scene/${this.idScene}` as const
+    return `arn:${this.partition}:iottwinmaker:${this.region}:${this.account}:workspace/${this.workspaceId}/scene/${this.sceneId}` as const
   }
 }
 export type { SceneArn }
@@ -153,75 +153,75 @@ export function sceneArn<Partition extends ArnPartition = 'aws'>(
   return new SceneArn<Partition>(parameters)
 }
 
-export interface JobSyncArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface SyncJobArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idWorkspace: string
-  readonly idJobSync: string
+  readonly workspaceId: string
+  readonly syncJobId: string
 }
-class JobSyncArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class SyncJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'syncJob',
   `arn:${string}:iottwinmaker:${string}:${string}:workspace/${string}/sync-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'syncJob' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idWorkspace: string
-  readonly idJobSync: string
-  constructor(parameters: JobSyncArnParameters<Partition>) {
+  readonly workspaceId: string
+  readonly syncJobId: string
+  constructor(parameters: SyncJobArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idWorkspace = parameters.idWorkspace
-    this.idJobSync = parameters.idJobSync
+    this.workspaceId = parameters.workspaceId
+    this.syncJobId = parameters.syncJobId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iottwinmaker:${this.region}:${this.account}:workspace/${this.idWorkspace}/sync-job/${this.idJobSync}` as const
+    return `arn:${this.partition}:iottwinmaker:${this.region}:${this.account}:workspace/${this.workspaceId}/sync-job/${this.syncJobId}` as const
   }
 }
-export type { JobSyncArn }
-export function jobSyncArn<Partition extends ArnPartition = 'aws'>(
-  parameters: JobSyncArnParameters<Partition>,
+export type { SyncJobArn }
+export function syncJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SyncJobArnParameters<Partition>,
 ) {
-  return new JobSyncArn<Partition>(parameters)
+  return new SyncJobArn<Partition>(parameters)
 }
 
-export interface JobTransferMetadataArnParameters<
+export interface MetadataTransferJobArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJobTransferMetadata: string
+  readonly metadataTransferJobId: string
 }
-class JobTransferMetadataArn<
+class MetadataTransferJobArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'metadataTransferJob',
   `arn:${string}:iottwinmaker:${string}:${string}:metadata-transfer-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'metadataTransferJob' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJobTransferMetadata: string
-  constructor(parameters: JobTransferMetadataArnParameters<Partition>) {
+  readonly metadataTransferJobId: string
+  constructor(parameters: MetadataTransferJobArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idJobTransferMetadata = parameters.idJobTransferMetadata
+    this.metadataTransferJobId = parameters.metadataTransferJobId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iottwinmaker:${this.region}:${this.account}:metadata-transfer-job/${this.idJobTransferMetadata}` as const
+    return `arn:${this.partition}:iottwinmaker:${this.region}:${this.account}:metadata-transfer-job/${this.metadataTransferJobId}` as const
   }
 }
-export type { JobTransferMetadataArn }
-export function jobTransferMetadataArn<Partition extends ArnPartition = 'aws'>(
-  parameters: JobTransferMetadataArnParameters<Partition>,
+export type { MetadataTransferJobArn }
+export function metadataTransferJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MetadataTransferJobArnParameters<Partition>,
 ) {
-  return new JobTransferMetadataArn<Partition>(parameters)
+  return new MetadataTransferJobArn<Partition>(parameters)
 }

@@ -6,67 +6,67 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface AnchorTrustArnParameters<
+export interface TrustAnchorArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAnchorTrust: string
+  readonly trustAnchorId: string
 }
-class AnchorTrustArn<
+class TrustAnchorArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'trust-anchor',
   `arn:${string}:rolesanywhere:${string}:${string}:trust-anchor/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'trust-anchor' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAnchorTrust: string
-  constructor(parameters: AnchorTrustArnParameters<Partition>) {
+  readonly trustAnchorId: string
+  constructor(parameters: TrustAnchorArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idAnchorTrust = parameters.idAnchorTrust
+    this.trustAnchorId = parameters.trustAnchorId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:rolesanywhere:${this.region}:${this.account}:trust-anchor/${this.idAnchorTrust}` as const
+    return `arn:${this.partition}:rolesanywhere:${this.region}:${this.account}:trust-anchor/${this.trustAnchorId}` as const
   }
 }
-export type { AnchorTrustArn }
-export function anchorTrustArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AnchorTrustArnParameters<Partition>,
+export type { TrustAnchorArn }
+export function trustAnchorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TrustAnchorArnParameters<Partition>,
 ) {
-  return new AnchorTrustArn<Partition>(parameters)
+  return new TrustAnchorArn<Partition>(parameters)
 }
 
 export interface ProfileArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idProfile: string
+  readonly profileId: string
 }
 class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'profile',
   `arn:${string}:rolesanywhere:${string}:${string}:profile/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'profile' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idProfile: string
+  readonly profileId: string
   constructor(parameters: ProfileArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idProfile = parameters.idProfile
+    this.profileId = parameters.profileId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:rolesanywhere:${this.region}:${this.account}:profile/${this.idProfile}` as const
+    return `arn:${this.partition}:rolesanywhere:${this.region}:${this.account}:profile/${this.profileId}` as const
   }
 }
 export type { ProfileArn }
@@ -77,29 +77,29 @@ export function profileArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface SubjectArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSubject: string
+  readonly subjectId: string
 }
 class SubjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'subject',
   `arn:${string}:rolesanywhere:${string}:${string}:subject/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'subject' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSubject: string
+  readonly subjectId: string
   constructor(parameters: SubjectArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idSubject = parameters.idSubject
+    this.subjectId = parameters.subjectId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:rolesanywhere:${this.region}:${this.account}:subject/${this.idSubject}` as const
+    return `arn:${this.partition}:rolesanywhere:${this.region}:${this.account}:subject/${this.subjectId}` as const
   }
 }
 export type { SubjectArn }
@@ -110,29 +110,29 @@ export function subjectArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface CrlArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCrl: string
+  readonly crlId: string
 }
 class CrlArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'crl',
   `arn:${string}:rolesanywhere:${string}:${string}:crl/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'crl' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCrl: string
+  readonly crlId: string
   constructor(parameters: CrlArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idCrl = parameters.idCrl
+    this.crlId = parameters.crlId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:rolesanywhere:${this.region}:${this.account}:crl/${this.idCrl}` as const
+    return `arn:${this.partition}:rolesanywhere:${this.region}:${this.account}:crl/${this.crlId}` as const
   }
 }
 export type { CrlArn }

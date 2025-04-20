@@ -9,32 +9,32 @@ import {
 export interface ExecutionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idUser: string
-  readonly idTool: string
-  readonly idExecution: string
+  readonly userId: string
+  readonly toolId: string
+  readonly executionId: string
 }
 class ExecutionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'execution',
   `arn:${string}:ts::${string}:execution/${string}/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'execution' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idUser: string
-  readonly idTool: string
-  readonly idExecution: string
+  readonly userId: string
+  readonly toolId: string
+  readonly executionId: string
   constructor(parameters: ExecutionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idUser = parameters.idUser
-    this.idTool = parameters.idTool
-    this.idExecution = parameters.idExecution
+    this.userId = parameters.userId
+    this.toolId = parameters.toolId
+    this.executionId = parameters.executionId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ts::${this.account}:execution/${this.idUser}/${this.idTool}/${this.idExecution}` as const
+    return `arn:${this.partition}:ts::${this.account}:execution/${this.userId}/${this.toolId}/${this.executionId}` as const
   }
 }
 export type { ExecutionArn }
@@ -45,23 +45,23 @@ export function executionArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ToolArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly idTool: string
+  readonly partition?: Partition | undefined
+  readonly toolId: string
 }
 class ToolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'tool',
   `arn:${string}:ts::aws:tool/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'tool' as const
-  readonly partition: string
-  readonly idTool: string
+  readonly partition: Partition
+  readonly toolId: string
   constructor(parameters: ToolArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
-    this.idTool = parameters.idTool
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.toolId = parameters.toolId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ts::aws:tool/${this.idTool}` as const
+    return `arn:${this.partition}:ts::aws:tool/${this.toolId}` as const
   }
 }
 export type { ToolArn }

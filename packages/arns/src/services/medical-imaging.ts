@@ -6,73 +6,73 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface StoreDataArnParameters<
+export interface DataStoreArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idDatastore: string
+  readonly datastoreId: string
 }
-class StoreDataArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class DataStoreArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'datastore',
   `arn:${string}:medical-imaging:${string}:${string}:datastore/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'datastore' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idDatastore: string
-  constructor(parameters: StoreDataArnParameters<Partition>) {
+  readonly datastoreId: string
+  constructor(parameters: DataStoreArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idDatastore = parameters.idDatastore
+    this.datastoreId = parameters.datastoreId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medical-imaging:${this.region}:${this.account}:datastore/${this.idDatastore}` as const
+    return `arn:${this.partition}:medical-imaging:${this.region}:${this.account}:datastore/${this.datastoreId}` as const
   }
 }
-export type { StoreDataArn }
-export function storeDataArn<Partition extends ArnPartition = 'aws'>(
-  parameters: StoreDataArnParameters<Partition>,
+export type { DataStoreArn }
+export function dataStoreArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DataStoreArnParameters<Partition>,
 ) {
-  return new StoreDataArn<Partition>(parameters)
+  return new DataStoreArn<Partition>(parameters)
 }
 
-export interface SetImageArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface ImageSetArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idDatastore: string
-  readonly idSetImage: string
+  readonly datastoreId: string
+  readonly imageSetId: string
 }
-class SetImageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class ImageSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'imageset',
   `arn:${string}:medical-imaging:${string}:${string}:datastore/${string}/imageset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'imageset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idDatastore: string
-  readonly idSetImage: string
-  constructor(parameters: SetImageArnParameters<Partition>) {
+  readonly datastoreId: string
+  readonly imageSetId: string
+  constructor(parameters: ImageSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idDatastore = parameters.idDatastore
-    this.idSetImage = parameters.idSetImage
+    this.datastoreId = parameters.datastoreId
+    this.imageSetId = parameters.imageSetId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medical-imaging:${this.region}:${this.account}:datastore/${this.idDatastore}/imageset/${this.idSetImage}` as const
+    return `arn:${this.partition}:medical-imaging:${this.region}:${this.account}:datastore/${this.datastoreId}/imageset/${this.imageSetId}` as const
   }
 }
-export type { SetImageArn }
-export function setImageArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetImageArnParameters<Partition>,
+export type { ImageSetArn }
+export function imageSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ImageSetArnParameters<Partition>,
 ) {
-  return new SetImageArn<Partition>(parameters)
+  return new ImageSetArn<Partition>(parameters)
 }

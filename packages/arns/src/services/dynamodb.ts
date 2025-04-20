@@ -7,32 +7,32 @@ import {
 } from '../internal.js'
 
 export interface IndexArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameTable: string
-  readonly nameIndex: string
+  readonly tableName: string
+  readonly indexName: string
 }
 class IndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'index',
   `arn:${string}:dynamodb:${string}:${string}:table/${string}/index/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'index' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameTable: string
-  readonly nameIndex: string
+  readonly tableName: string
+  readonly indexName: string
   constructor(parameters: IndexArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameTable = parameters.nameTable
-    this.nameIndex = parameters.nameIndex
+    this.tableName = parameters.tableName
+    this.indexName = parameters.indexName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:dynamodb:${this.region}:${this.account}:table/${this.nameTable}/index/${this.nameIndex}` as const
+    return `arn:${this.partition}:dynamodb:${this.region}:${this.account}:table/${this.tableName}/index/${this.indexName}` as const
   }
 }
 export type { IndexArn }
@@ -43,32 +43,32 @@ export function indexArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface StreamArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameTable: string
-  readonly labelStream: string
+  readonly tableName: string
+  readonly streamLabel: string
 }
 class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'stream',
   `arn:${string}:dynamodb:${string}:${string}:table/${string}/stream/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'stream' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameTable: string
-  readonly labelStream: string
+  readonly tableName: string
+  readonly streamLabel: string
   constructor(parameters: StreamArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameTable = parameters.nameTable
-    this.labelStream = parameters.labelStream
+    this.tableName = parameters.tableName
+    this.streamLabel = parameters.streamLabel
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:dynamodb:${this.region}:${this.account}:table/${this.nameTable}/stream/${this.labelStream}` as const
+    return `arn:${this.partition}:dynamodb:${this.region}:${this.account}:table/${this.tableName}/stream/${this.streamLabel}` as const
   }
 }
 export type { StreamArn }
@@ -79,29 +79,29 @@ export function streamArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface TableArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameTable: string
+  readonly tableName: string
 }
 class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'table',
   `arn:${string}:dynamodb:${string}:${string}:table/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'table' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameTable: string
+  readonly tableName: string
   constructor(parameters: TableArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameTable = parameters.nameTable
+    this.tableName = parameters.tableName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:dynamodb:${this.region}:${this.account}:table/${this.nameTable}` as const
+    return `arn:${this.partition}:dynamodb:${this.region}:${this.account}:table/${this.tableName}` as const
   }
 }
 export type { TableArn }
@@ -112,32 +112,32 @@ export function tableArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface BackupArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameTable: string
-  readonly nameBackup: string
+  readonly tableName: string
+  readonly backupName: string
 }
 class BackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'backup',
   `arn:${string}:dynamodb:${string}:${string}:table/${string}/backup/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'backup' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameTable: string
-  readonly nameBackup: string
+  readonly tableName: string
+  readonly backupName: string
   constructor(parameters: BackupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameTable = parameters.nameTable
-    this.nameBackup = parameters.nameBackup
+    this.tableName = parameters.tableName
+    this.backupName = parameters.backupName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:dynamodb:${this.region}:${this.account}:table/${this.nameTable}/backup/${this.nameBackup}` as const
+    return `arn:${this.partition}:dynamodb:${this.region}:${this.account}:table/${this.tableName}/backup/${this.backupName}` as const
   }
 }
 export type { BackupArn }
@@ -148,32 +148,32 @@ export function backupArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ExportArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameTable: string
-  readonly nameExport: string
+  readonly tableName: string
+  readonly exportName: string
 }
 class ExportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'export',
   `arn:${string}:dynamodb:${string}:${string}:table/${string}/export/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'export' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameTable: string
-  readonly nameExport: string
+  readonly tableName: string
+  readonly exportName: string
   constructor(parameters: ExportArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameTable = parameters.nameTable
-    this.nameExport = parameters.nameExport
+    this.tableName = parameters.tableName
+    this.exportName = parameters.exportName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:dynamodb:${this.region}:${this.account}:table/${this.nameTable}/export/${this.nameExport}` as const
+    return `arn:${this.partition}:dynamodb:${this.region}:${this.account}:table/${this.tableName}/export/${this.exportName}` as const
   }
 }
 export type { ExportArn }
@@ -183,67 +183,67 @@ export function exportArn<Partition extends ArnPartition = 'aws'>(
   return new ExportArn<Partition>(parameters)
 }
 
-export interface TableGlobalArnParameters<
+export interface GlobalTableArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly nameTableGlobal: string
+  readonly globalTableName: string
 }
-class TableGlobalArn<
+class GlobalTableArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'global-table',
   `arn:${string}:dynamodb::${string}:global-table/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'global-table' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly nameTableGlobal: string
-  constructor(parameters: TableGlobalArnParameters<Partition>) {
+  readonly globalTableName: string
+  constructor(parameters: GlobalTableArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.nameTableGlobal = parameters.nameTableGlobal
+    this.globalTableName = parameters.globalTableName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:dynamodb::${this.account}:global-table/${this.nameTableGlobal}` as const
+    return `arn:${this.partition}:dynamodb::${this.account}:global-table/${this.globalTableName}` as const
   }
 }
-export type { TableGlobalArn }
-export function tableGlobalArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TableGlobalArnParameters<Partition>,
+export type { GlobalTableArn }
+export function globalTableArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GlobalTableArnParameters<Partition>,
 ) {
-  return new TableGlobalArn<Partition>(parameters)
+  return new GlobalTableArn<Partition>(parameters)
 }
 
 export interface ImportArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameTable: string
-  readonly nameImport: string
+  readonly tableName: string
+  readonly importName: string
 }
 class ImportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'import',
   `arn:${string}:dynamodb:${string}:${string}:table/${string}/import/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'import' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameTable: string
-  readonly nameImport: string
+  readonly tableName: string
+  readonly importName: string
   constructor(parameters: ImportArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameTable = parameters.nameTable
-    this.nameImport = parameters.nameImport
+    this.tableName = parameters.tableName
+    this.importName = parameters.importName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:dynamodb:${this.region}:${this.account}:table/${this.nameTable}/import/${this.nameImport}` as const
+    return `arn:${this.partition}:dynamodb:${this.region}:${this.account}:table/${this.tableName}/import/${this.importName}` as const
   }
 }
 export type { ImportArn }

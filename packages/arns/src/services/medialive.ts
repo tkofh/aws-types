@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface ChannelArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idChannel: string
+  readonly channelId: string
 }
 class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'channel',
   `arn:${string}:medialive:${string}:${string}:channel:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'channel' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idChannel: string
+  readonly channelId: string
   constructor(parameters: ChannelArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idChannel = parameters.idChannel
+    this.channelId = parameters.channelId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medialive:${this.region}:${this.account}:channel:${this.idChannel}` as const
+    return `arn:${this.partition}:medialive:${this.region}:${this.account}:channel:${this.channelId}` as const
   }
 }
 export type { ChannelArn }
@@ -40,29 +40,29 @@ export function channelArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface InputArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idInput: string
+  readonly inputId: string
 }
 class InputArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'input',
   `arn:${string}:medialive:${string}:${string}:input:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'input' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idInput: string
+  readonly inputId: string
   constructor(parameters: InputArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idInput = parameters.idInput
+    this.inputId = parameters.inputId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medialive:${this.region}:${this.account}:input:${this.idInput}` as const
+    return `arn:${this.partition}:medialive:${this.region}:${this.account}:input:${this.inputId}` as const
   }
 }
 export type { InputArn }
@@ -72,106 +72,106 @@ export function inputArn<Partition extends ArnPartition = 'aws'>(
   return new InputArn<Partition>(parameters)
 }
 
-export interface DeviceInputArnParameters<
+export interface InputDeviceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idDevice: string
+  readonly deviceId: string
 }
-class DeviceInputArn<
+class InputDeviceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'input-device',
   `arn:${string}:medialive:${string}:${string}:inputDevice:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'input-device' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idDevice: string
-  constructor(parameters: DeviceInputArnParameters<Partition>) {
+  readonly deviceId: string
+  constructor(parameters: InputDeviceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idDevice = parameters.idDevice
+    this.deviceId = parameters.deviceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medialive:${this.region}:${this.account}:inputDevice:${this.idDevice}` as const
+    return `arn:${this.partition}:medialive:${this.region}:${this.account}:inputDevice:${this.deviceId}` as const
   }
 }
-export type { DeviceInputArn }
-export function deviceInputArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DeviceInputArnParameters<Partition>,
+export type { InputDeviceArn }
+export function inputDeviceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InputDeviceArnParameters<Partition>,
 ) {
-  return new DeviceInputArn<Partition>(parameters)
+  return new InputDeviceArn<Partition>(parameters)
 }
 
-export interface GroupSecurityInputArnParameters<
+export interface InputSecurityGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idGroupSecurityInput: string
+  readonly inputSecurityGroupId: string
 }
-class GroupSecurityInputArn<
+class InputSecurityGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'input-security-group',
   `arn:${string}:medialive:${string}:${string}:inputSecurityGroup:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'input-security-group' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idGroupSecurityInput: string
-  constructor(parameters: GroupSecurityInputArnParameters<Partition>) {
+  readonly inputSecurityGroupId: string
+  constructor(parameters: InputSecurityGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idGroupSecurityInput = parameters.idGroupSecurityInput
+    this.inputSecurityGroupId = parameters.inputSecurityGroupId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medialive:${this.region}:${this.account}:inputSecurityGroup:${this.idGroupSecurityInput}` as const
+    return `arn:${this.partition}:medialive:${this.region}:${this.account}:inputSecurityGroup:${this.inputSecurityGroupId}` as const
   }
 }
-export type { GroupSecurityInputArn }
-export function groupSecurityInputArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupSecurityInputArnParameters<Partition>,
+export type { InputSecurityGroupArn }
+export function inputSecurityGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InputSecurityGroupArnParameters<Partition>,
 ) {
-  return new GroupSecurityInputArn<Partition>(parameters)
+  return new InputSecurityGroupArn<Partition>(parameters)
 }
 
 export interface MultiplexArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idMultiplex: string
+  readonly multiplexId: string
 }
 class MultiplexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'multiplex',
   `arn:${string}:medialive:${string}:${string}:multiplex:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'multiplex' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idMultiplex: string
+  readonly multiplexId: string
   constructor(parameters: MultiplexArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idMultiplex = parameters.idMultiplex
+    this.multiplexId = parameters.multiplexId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medialive:${this.region}:${this.account}:multiplex:${this.idMultiplex}` as const
+    return `arn:${this.partition}:medialive:${this.region}:${this.account}:multiplex:${this.multiplexId}` as const
   }
 }
 export type { MultiplexArn }
@@ -184,10 +184,10 @@ export function multiplexArn<Partition extends ArnPartition = 'aws'>(
 export interface ReservationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idReservation: string
+  readonly reservationId: string
 }
 class ReservationArn<
   Partition extends ArnPartition = 'aws',
@@ -196,19 +196,19 @@ class ReservationArn<
   `arn:${string}:medialive:${string}:${string}:reservation:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'reservation' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idReservation: string
+  readonly reservationId: string
   constructor(parameters: ReservationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idReservation = parameters.idReservation
+    this.reservationId = parameters.reservationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medialive:${this.region}:${this.account}:reservation:${this.idReservation}` as const
+    return `arn:${this.partition}:medialive:${this.region}:${this.account}:reservation:${this.reservationId}` as const
   }
 }
 export type { ReservationArn }
@@ -219,29 +219,29 @@ export function reservationArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface OfferingArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idOffering: string
+  readonly offeringId: string
 }
 class OfferingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'offering',
   `arn:${string}:medialive:${string}:${string}:offering:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'offering' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idOffering: string
+  readonly offeringId: string
   constructor(parameters: OfferingArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idOffering = parameters.idOffering
+    this.offeringId = parameters.offeringId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medialive:${this.region}:${this.account}:offering:${this.idOffering}` as const
+    return `arn:${this.partition}:medialive:${this.region}:${this.account}:offering:${this.offeringId}` as const
   }
 }
 export type { OfferingArn }
@@ -251,219 +251,219 @@ export function offeringArn<Partition extends ArnPartition = 'aws'>(
   return new OfferingArn<Partition>(parameters)
 }
 
-export interface MapSignalArnParameters<
+export interface SignalMapArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idMapSignal: string
+  readonly signalMapId: string
 }
-class MapSignalArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class SignalMapArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'signal-map',
   `arn:${string}:medialive:${string}:${string}:signal-map:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'signal-map' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idMapSignal: string
-  constructor(parameters: MapSignalArnParameters<Partition>) {
+  readonly signalMapId: string
+  constructor(parameters: SignalMapArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idMapSignal = parameters.idMapSignal
+    this.signalMapId = parameters.signalMapId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medialive:${this.region}:${this.account}:signal-map:${this.idMapSignal}` as const
+    return `arn:${this.partition}:medialive:${this.region}:${this.account}:signal-map:${this.signalMapId}` as const
   }
 }
-export type { MapSignalArn }
-export function mapSignalArn<Partition extends ArnPartition = 'aws'>(
-  parameters: MapSignalArnParameters<Partition>,
+export type { SignalMapArn }
+export function signalMapArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SignalMapArnParameters<Partition>,
 ) {
-  return new MapSignalArn<Partition>(parameters)
+  return new SignalMapArn<Partition>(parameters)
 }
 
-export interface GroupTemplateAlarmCloudwatchArnParameters<
+export interface CloudwatchAlarmTemplateGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idGroupTemplateAlarmCloudwatch: string
+  readonly cloudwatchAlarmTemplateGroupId: string
 }
-class GroupTemplateAlarmCloudwatchArn<
+class CloudwatchAlarmTemplateGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'cloudwatch-alarm-template-group',
   `arn:${string}:medialive:${string}:${string}:cloudwatch-alarm-template-group:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'cloudwatch-alarm-template-group' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idGroupTemplateAlarmCloudwatch: string
+  readonly cloudwatchAlarmTemplateGroupId: string
   constructor(
-    parameters: GroupTemplateAlarmCloudwatchArnParameters<Partition>,
+    parameters: CloudwatchAlarmTemplateGroupArnParameters<Partition>,
   ) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idGroupTemplateAlarmCloudwatch =
-      parameters.idGroupTemplateAlarmCloudwatch
+    this.cloudwatchAlarmTemplateGroupId =
+      parameters.cloudwatchAlarmTemplateGroupId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medialive:${this.region}:${this.account}:cloudwatch-alarm-template-group:${this.idGroupTemplateAlarmCloudwatch}` as const
+    return `arn:${this.partition}:medialive:${this.region}:${this.account}:cloudwatch-alarm-template-group:${this.cloudwatchAlarmTemplateGroupId}` as const
   }
 }
-export type { GroupTemplateAlarmCloudwatchArn }
-export function groupTemplateAlarmCloudwatchArn<
+export type { CloudwatchAlarmTemplateGroupArn }
+export function cloudwatchAlarmTemplateGroupArn<
   Partition extends ArnPartition = 'aws',
->(parameters: GroupTemplateAlarmCloudwatchArnParameters<Partition>) {
-  return new GroupTemplateAlarmCloudwatchArn<Partition>(parameters)
+>(parameters: CloudwatchAlarmTemplateGroupArnParameters<Partition>) {
+  return new CloudwatchAlarmTemplateGroupArn<Partition>(parameters)
 }
 
-export interface TemplateAlarmCloudwatchArnParameters<
+export interface CloudwatchAlarmTemplateArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idTemplateAlarmCloudwatch: string
+  readonly cloudwatchAlarmTemplateId: string
 }
-class TemplateAlarmCloudwatchArn<
+class CloudwatchAlarmTemplateArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'cloudwatch-alarm-template',
   `arn:${string}:medialive:${string}:${string}:cloudwatch-alarm-template:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'cloudwatch-alarm-template' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idTemplateAlarmCloudwatch: string
-  constructor(parameters: TemplateAlarmCloudwatchArnParameters<Partition>) {
+  readonly cloudwatchAlarmTemplateId: string
+  constructor(parameters: CloudwatchAlarmTemplateArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idTemplateAlarmCloudwatch = parameters.idTemplateAlarmCloudwatch
+    this.cloudwatchAlarmTemplateId = parameters.cloudwatchAlarmTemplateId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medialive:${this.region}:${this.account}:cloudwatch-alarm-template:${this.idTemplateAlarmCloudwatch}` as const
+    return `arn:${this.partition}:medialive:${this.region}:${this.account}:cloudwatch-alarm-template:${this.cloudwatchAlarmTemplateId}` as const
   }
 }
-export type { TemplateAlarmCloudwatchArn }
-export function templateAlarmCloudwatchArn<
+export type { CloudwatchAlarmTemplateArn }
+export function cloudwatchAlarmTemplateArn<
   Partition extends ArnPartition = 'aws',
->(parameters: TemplateAlarmCloudwatchArnParameters<Partition>) {
-  return new TemplateAlarmCloudwatchArn<Partition>(parameters)
+>(parameters: CloudwatchAlarmTemplateArnParameters<Partition>) {
+  return new CloudwatchAlarmTemplateArn<Partition>(parameters)
 }
 
-export interface GroupTemplateRuleBridgeEventArnParameters<
+export interface EventBridgeRuleTemplateGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idGroupTemplateRuleBridgeEvent: string
+  readonly eventBridgeRuleTemplateGroupId: string
 }
-class GroupTemplateRuleBridgeEventArn<
+class EventBridgeRuleTemplateGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'eventbridge-rule-template-group',
   `arn:${string}:medialive:${string}:${string}:eventbridge-rule-template-group:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'eventbridge-rule-template-group' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idGroupTemplateRuleBridgeEvent: string
+  readonly eventBridgeRuleTemplateGroupId: string
   constructor(
-    parameters: GroupTemplateRuleBridgeEventArnParameters<Partition>,
+    parameters: EventBridgeRuleTemplateGroupArnParameters<Partition>,
   ) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idGroupTemplateRuleBridgeEvent =
-      parameters.idGroupTemplateRuleBridgeEvent
+    this.eventBridgeRuleTemplateGroupId =
+      parameters.eventBridgeRuleTemplateGroupId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medialive:${this.region}:${this.account}:eventbridge-rule-template-group:${this.idGroupTemplateRuleBridgeEvent}` as const
+    return `arn:${this.partition}:medialive:${this.region}:${this.account}:eventbridge-rule-template-group:${this.eventBridgeRuleTemplateGroupId}` as const
   }
 }
-export type { GroupTemplateRuleBridgeEventArn }
-export function groupTemplateRuleBridgeEventArn<
+export type { EventBridgeRuleTemplateGroupArn }
+export function eventBridgeRuleTemplateGroupArn<
   Partition extends ArnPartition = 'aws',
->(parameters: GroupTemplateRuleBridgeEventArnParameters<Partition>) {
-  return new GroupTemplateRuleBridgeEventArn<Partition>(parameters)
+>(parameters: EventBridgeRuleTemplateGroupArnParameters<Partition>) {
+  return new EventBridgeRuleTemplateGroupArn<Partition>(parameters)
 }
 
-export interface TemplateRuleBridgeEventArnParameters<
+export interface EventBridgeRuleTemplateArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idTemplateRuleBridgeEvent: string
+  readonly eventBridgeRuleTemplateId: string
 }
-class TemplateRuleBridgeEventArn<
+class EventBridgeRuleTemplateArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'eventbridge-rule-template',
   `arn:${string}:medialive:${string}:${string}:eventbridge-rule-template:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'eventbridge-rule-template' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idTemplateRuleBridgeEvent: string
-  constructor(parameters: TemplateRuleBridgeEventArnParameters<Partition>) {
+  readonly eventBridgeRuleTemplateId: string
+  constructor(parameters: EventBridgeRuleTemplateArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idTemplateRuleBridgeEvent = parameters.idTemplateRuleBridgeEvent
+    this.eventBridgeRuleTemplateId = parameters.eventBridgeRuleTemplateId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medialive:${this.region}:${this.account}:eventbridge-rule-template:${this.idTemplateRuleBridgeEvent}` as const
+    return `arn:${this.partition}:medialive:${this.region}:${this.account}:eventbridge-rule-template:${this.eventBridgeRuleTemplateId}` as const
   }
 }
-export type { TemplateRuleBridgeEventArn }
-export function templateRuleBridgeEventArn<
+export type { EventBridgeRuleTemplateArn }
+export function eventBridgeRuleTemplateArn<
   Partition extends ArnPartition = 'aws',
->(parameters: TemplateRuleBridgeEventArnParameters<Partition>) {
-  return new TemplateRuleBridgeEventArn<Partition>(parameters)
+>(parameters: EventBridgeRuleTemplateArnParameters<Partition>) {
+  return new EventBridgeRuleTemplateArn<Partition>(parameters)
 }
 
 export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCluster: string
+  readonly clusterId: string
 }
 class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'cluster',
   `arn:${string}:medialive:${string}:${string}:cluster:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'cluster' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCluster: string
+  readonly clusterId: string
   constructor(parameters: ClusterArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idCluster = parameters.idCluster
+    this.clusterId = parameters.clusterId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medialive:${this.region}:${this.account}:cluster:${this.idCluster}` as const
+    return `arn:${this.partition}:medialive:${this.region}:${this.account}:cluster:${this.clusterId}` as const
   }
 }
 export type { ClusterArn }
@@ -474,32 +474,32 @@ export function clusterArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface NodeArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCluster: string
-  readonly idNode: string
+  readonly clusterId: string
+  readonly nodeId: string
 }
 class NodeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'node',
   `arn:${string}:medialive:${string}:${string}:node:${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'node' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCluster: string
-  readonly idNode: string
+  readonly clusterId: string
+  readonly nodeId: string
   constructor(parameters: NodeArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idCluster = parameters.idCluster
-    this.idNode = parameters.idNode
+    this.clusterId = parameters.clusterId
+    this.nodeId = parameters.nodeId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medialive:${this.region}:${this.account}:node:${this.idCluster}/${this.idNode}` as const
+    return `arn:${this.partition}:medialive:${this.region}:${this.account}:node:${this.clusterId}/${this.nodeId}` as const
   }
 }
 export type { NodeArn }
@@ -510,29 +510,29 @@ export function nodeArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface NetworkArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idNetwork: string
+  readonly networkId: string
 }
 class NetworkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'network',
   `arn:${string}:medialive:${string}:${string}:network:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'network' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idNetwork: string
+  readonly networkId: string
   constructor(parameters: NetworkArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idNetwork = parameters.idNetwork
+    this.networkId = parameters.networkId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medialive:${this.region}:${this.account}:network:${this.idNetwork}` as const
+    return `arn:${this.partition}:medialive:${this.region}:${this.account}:network:${this.networkId}` as const
   }
 }
 export type { NetworkArn }
@@ -542,42 +542,42 @@ export function networkArn<Partition extends ArnPartition = 'aws'>(
   return new NetworkArn<Partition>(parameters)
 }
 
-export interface GroupPlacementChannelArnParameters<
+export interface ChannelPlacementGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCluster: string
-  readonly idGroupPlacementChannel: string
+  readonly clusterId: string
+  readonly channelPlacementGroupId: string
 }
-class GroupPlacementChannelArn<
+class ChannelPlacementGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'channel-placement-group',
   `arn:${string}:medialive:${string}:${string}:channelPlacementGroup:${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'channel-placement-group' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCluster: string
-  readonly idGroupPlacementChannel: string
-  constructor(parameters: GroupPlacementChannelArnParameters<Partition>) {
+  readonly clusterId: string
+  readonly channelPlacementGroupId: string
+  constructor(parameters: ChannelPlacementGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idCluster = parameters.idCluster
-    this.idGroupPlacementChannel = parameters.idGroupPlacementChannel
+    this.clusterId = parameters.clusterId
+    this.channelPlacementGroupId = parameters.channelPlacementGroupId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:medialive:${this.region}:${this.account}:channelPlacementGroup:${this.idCluster}/${this.idGroupPlacementChannel}` as const
+    return `arn:${this.partition}:medialive:${this.region}:${this.account}:channelPlacementGroup:${this.clusterId}/${this.channelPlacementGroupId}` as const
   }
 }
-export type { GroupPlacementChannelArn }
-export function groupPlacementChannelArn<
+export type { ChannelPlacementGroupArn }
+export function channelPlacementGroupArn<
   Partition extends ArnPartition = 'aws',
->(parameters: GroupPlacementChannelArnParameters<Partition>) {
-  return new GroupPlacementChannelArn<Partition>(parameters)
+>(parameters: ChannelPlacementGroupArnParameters<Partition>) {
+  return new ChannelPlacementGroupArn<Partition>(parameters)
 }

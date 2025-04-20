@@ -9,32 +9,32 @@ import {
 export interface ChallengeArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idConnector: string
-  readonly idChallenge: string
+  readonly connectorId: string
+  readonly challengeId: string
 }
 class ChallengeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Challenge',
   `arn:${string}:pca-connector-scep:${string}:${string}:connector/${string}/challenge/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Challenge' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idConnector: string
-  readonly idChallenge: string
+  readonly connectorId: string
+  readonly challengeId: string
   constructor(parameters: ChallengeArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idConnector = parameters.idConnector
-    this.idChallenge = parameters.idChallenge
+    this.connectorId = parameters.connectorId
+    this.challengeId = parameters.challengeId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:pca-connector-scep:${this.region}:${this.account}:connector/${this.idConnector}/challenge/${this.idChallenge}` as const
+    return `arn:${this.partition}:pca-connector-scep:${this.region}:${this.account}:connector/${this.connectorId}/challenge/${this.challengeId}` as const
   }
 }
 export type { ChallengeArn }
@@ -47,29 +47,29 @@ export function challengeArn<Partition extends ArnPartition = 'aws'>(
 export interface ConnectorArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idConnector: string
+  readonly connectorId: string
 }
 class ConnectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Connector',
   `arn:${string}:pca-connector-scep:${string}:${string}:connector/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Connector' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idConnector: string
+  readonly connectorId: string
   constructor(parameters: ConnectorArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idConnector = parameters.idConnector
+    this.connectorId = parameters.connectorId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:pca-connector-scep:${this.region}:${this.account}:connector/${this.idConnector}` as const
+    return `arn:${this.partition}:pca-connector-scep:${this.region}:${this.account}:connector/${this.connectorId}` as const
   }
 }
 export type { ConnectorArn }

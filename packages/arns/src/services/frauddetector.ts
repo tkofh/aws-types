@@ -6,67 +6,67 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface PredictionBatchArnParameters<
+export interface BatchPredictionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
 }
-class PredictionBatchArn<
+class BatchPredictionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'batch-prediction',
   `arn:${string}:frauddetector:${string}:${string}:batch-prediction/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'batch-prediction' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
-  constructor(parameters: PredictionBatchArnParameters<Partition>) {
+  readonly resourcePath: string
+  constructor(parameters: BatchPredictionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pathResource = parameters.pathResource
+    this.resourcePath = parameters.resourcePath
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:batch-prediction/${this.pathResource}` as const
+    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:batch-prediction/${this.resourcePath}` as const
   }
 }
-export type { PredictionBatchArn }
-export function predictionBatchArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PredictionBatchArnParameters<Partition>,
+export type { BatchPredictionArn }
+export function batchPredictionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BatchPredictionArnParameters<Partition>,
 ) {
-  return new PredictionBatchArn<Partition>(parameters)
+  return new BatchPredictionArn<Partition>(parameters)
 }
 
 export interface DetectorArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
 }
 class DetectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'detector',
   `arn:${string}:frauddetector:${string}:${string}:detector/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'detector' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
   constructor(parameters: DetectorArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pathResource = parameters.pathResource
+    this.resourcePath = parameters.resourcePath
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:detector/${this.pathResource}` as const
+    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:detector/${this.resourcePath}` as const
   }
 }
 export type { DetectorArn }
@@ -76,174 +76,174 @@ export function detectorArn<Partition extends ArnPartition = 'aws'>(
   return new DetectorArn<Partition>(parameters)
 }
 
-export interface VersionDetectorArnParameters<
+export interface DetectorVersionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
 }
-class VersionDetectorArn<
+class DetectorVersionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'detector-version',
   `arn:${string}:frauddetector:${string}:${string}:detector-version/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'detector-version' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
-  constructor(parameters: VersionDetectorArnParameters<Partition>) {
+  readonly resourcePath: string
+  constructor(parameters: DetectorVersionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pathResource = parameters.pathResource
+    this.resourcePath = parameters.resourcePath
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:detector-version/${this.pathResource}` as const
+    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:detector-version/${this.resourcePath}` as const
   }
 }
-export type { VersionDetectorArn }
-export function versionDetectorArn<Partition extends ArnPartition = 'aws'>(
-  parameters: VersionDetectorArnParameters<Partition>,
+export type { DetectorVersionArn }
+export function detectorVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DetectorVersionArnParameters<Partition>,
 ) {
-  return new VersionDetectorArn<Partition>(parameters)
+  return new DetectorVersionArn<Partition>(parameters)
 }
 
-export interface TypeEntityArnParameters<
+export interface EntityTypeArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
 }
-class TypeEntityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class EntityTypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'entity-type',
   `arn:${string}:frauddetector:${string}:${string}:entity-type/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'entity-type' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
-  constructor(parameters: TypeEntityArnParameters<Partition>) {
+  readonly resourcePath: string
+  constructor(parameters: EntityTypeArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pathResource = parameters.pathResource
+    this.resourcePath = parameters.resourcePath
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:entity-type/${this.pathResource}` as const
+    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:entity-type/${this.resourcePath}` as const
   }
 }
-export type { TypeEntityArn }
-export function typeEntityArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TypeEntityArnParameters<Partition>,
+export type { EntityTypeArn }
+export function entityTypeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EntityTypeArnParameters<Partition>,
 ) {
-  return new TypeEntityArn<Partition>(parameters)
+  return new EntityTypeArn<Partition>(parameters)
 }
 
-export interface ModelExternalArnParameters<
+export interface ExternalModelArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
 }
-class ModelExternalArn<
+class ExternalModelArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'external-model',
   `arn:${string}:frauddetector:${string}:${string}:external-model/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'external-model' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
-  constructor(parameters: ModelExternalArnParameters<Partition>) {
+  readonly resourcePath: string
+  constructor(parameters: ExternalModelArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pathResource = parameters.pathResource
+    this.resourcePath = parameters.resourcePath
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:external-model/${this.pathResource}` as const
+    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:external-model/${this.resourcePath}` as const
   }
 }
-export type { ModelExternalArn }
-export function modelExternalArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ModelExternalArnParameters<Partition>,
+export type { ExternalModelArn }
+export function externalModelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ExternalModelArnParameters<Partition>,
 ) {
-  return new ModelExternalArn<Partition>(parameters)
+  return new ExternalModelArn<Partition>(parameters)
 }
 
-export interface TypeEventArnParameters<
+export interface EventTypeArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
 }
-class TypeEventArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class EventTypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'event-type',
   `arn:${string}:frauddetector:${string}:${string}:event-type/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'event-type' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
-  constructor(parameters: TypeEventArnParameters<Partition>) {
+  readonly resourcePath: string
+  constructor(parameters: EventTypeArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pathResource = parameters.pathResource
+    this.resourcePath = parameters.resourcePath
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:event-type/${this.pathResource}` as const
+    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:event-type/${this.resourcePath}` as const
   }
 }
-export type { TypeEventArn }
-export function typeEventArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TypeEventArnParameters<Partition>,
+export type { EventTypeArn }
+export function eventTypeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EventTypeArnParameters<Partition>,
 ) {
-  return new TypeEventArn<Partition>(parameters)
+  return new EventTypeArn<Partition>(parameters)
 }
 
 export interface LabelArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
 }
 class LabelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'label',
   `arn:${string}:frauddetector:${string}:${string}:label/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'label' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
   constructor(parameters: LabelArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pathResource = parameters.pathResource
+    this.resourcePath = parameters.resourcePath
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:label/${this.pathResource}` as const
+    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:label/${this.resourcePath}` as const
   }
 }
 export type { LabelArn }
@@ -254,29 +254,29 @@ export function labelArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ModelArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
 }
 class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'model',
   `arn:${string}:frauddetector:${string}:${string}:model/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'model' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
   constructor(parameters: ModelArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pathResource = parameters.pathResource
+    this.resourcePath = parameters.resourcePath
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:model/${this.pathResource}` as const
+    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:model/${this.resourcePath}` as const
   }
 }
 export type { ModelArn }
@@ -286,67 +286,67 @@ export function modelArn<Partition extends ArnPartition = 'aws'>(
   return new ModelArn<Partition>(parameters)
 }
 
-export interface VersionModelArnParameters<
+export interface ModelVersionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
 }
-class VersionModelArn<
+class ModelVersionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'model-version',
   `arn:${string}:frauddetector:${string}:${string}:model-version/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'model-version' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
-  constructor(parameters: VersionModelArnParameters<Partition>) {
+  readonly resourcePath: string
+  constructor(parameters: ModelVersionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pathResource = parameters.pathResource
+    this.resourcePath = parameters.resourcePath
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:model-version/${this.pathResource}` as const
+    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:model-version/${this.resourcePath}` as const
   }
 }
-export type { VersionModelArn }
-export function versionModelArn<Partition extends ArnPartition = 'aws'>(
-  parameters: VersionModelArnParameters<Partition>,
+export type { ModelVersionArn }
+export function modelVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelVersionArnParameters<Partition>,
 ) {
-  return new VersionModelArn<Partition>(parameters)
+  return new ModelVersionArn<Partition>(parameters)
 }
 
 export interface OutcomeArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
 }
 class OutcomeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'outcome',
   `arn:${string}:frauddetector:${string}:${string}:outcome/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'outcome' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
   constructor(parameters: OutcomeArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pathResource = parameters.pathResource
+    this.resourcePath = parameters.resourcePath
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:outcome/${this.pathResource}` as const
+    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:outcome/${this.resourcePath}` as const
   }
 }
 export type { OutcomeArn }
@@ -357,29 +357,29 @@ export function outcomeArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface RuleArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
 }
 class RuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'rule',
   `arn:${string}:frauddetector:${string}:${string}:rule/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'rule' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
   constructor(parameters: RuleArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pathResource = parameters.pathResource
+    this.resourcePath = parameters.resourcePath
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:rule/${this.pathResource}` as const
+    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:rule/${this.resourcePath}` as const
   }
 }
 export type { RuleArn }
@@ -390,29 +390,29 @@ export function ruleArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface VariableArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
 }
 class VariableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'variable',
   `arn:${string}:frauddetector:${string}:${string}:variable/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'variable' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
   constructor(parameters: VariableArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pathResource = parameters.pathResource
+    this.resourcePath = parameters.resourcePath
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:variable/${this.pathResource}` as const
+    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:variable/${this.resourcePath}` as const
   }
 }
 export type { VariableArn }
@@ -422,67 +422,67 @@ export function variableArn<Partition extends ArnPartition = 'aws'>(
   return new VariableArn<Partition>(parameters)
 }
 
-export interface ImportBatchArnParameters<
+export interface BatchImportArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
 }
-class ImportBatchArn<
+class BatchImportArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'batch-import',
   `arn:${string}:frauddetector:${string}:${string}:batch-import/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'batch-import' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
-  constructor(parameters: ImportBatchArnParameters<Partition>) {
+  readonly resourcePath: string
+  constructor(parameters: BatchImportArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pathResource = parameters.pathResource
+    this.resourcePath = parameters.resourcePath
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:batch-import/${this.pathResource}` as const
+    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:batch-import/${this.resourcePath}` as const
   }
 }
-export type { ImportBatchArn }
-export function importBatchArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ImportBatchArnParameters<Partition>,
+export type { BatchImportArn }
+export function batchImportArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BatchImportArnParameters<Partition>,
 ) {
-  return new ImportBatchArn<Partition>(parameters)
+  return new BatchImportArn<Partition>(parameters)
 }
 
 export interface ListArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
 }
 class ListArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'list',
   `arn:${string}:frauddetector:${string}:${string}:list/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'list' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly pathResource: string
+  readonly resourcePath: string
   constructor(parameters: ListArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pathResource = parameters.pathResource
+    this.resourcePath = parameters.resourcePath
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:list/${this.pathResource}` as const
+    return `arn:${this.partition}:frauddetector:${this.region}:${this.account}:list/${this.resourcePath}` as const
   }
 }
 export type { ListArn }

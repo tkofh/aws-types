@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface RuleArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameResource: string
+  readonly resourceName: string
 }
 class RuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'rule',
   `arn:${string}:rbin:${string}:${string}:rule/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'rule' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameResource: string
+  readonly resourceName: string
   constructor(parameters: RuleArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameResource = parameters.nameResource
+    this.resourceName = parameters.resourceName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:rbin:${this.region}:${this.account}:rule/${this.nameResource}` as const
+    return `arn:${this.partition}:rbin:${this.region}:${this.account}:rule/${this.resourceName}` as const
   }
 }
 export type { RuleArn }

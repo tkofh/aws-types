@@ -7,26 +7,26 @@ import {
 } from '../internal.js'
 
 export interface AliasArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
-  readonly idAlias: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly aliasId: string
 }
 class AliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'alias',
   `arn:${string}:gamelift:${string}::alias/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'alias' as const
-  readonly partition: string
-  readonly region: string
-  readonly idAlias: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly aliasId: string
   constructor(parameters: AliasArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
-    this.idAlias = parameters.idAlias
+    this.aliasId = parameters.aliasId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:gamelift:${this.region}::alias/${this.idAlias}` as const
+    return `arn:${this.partition}:gamelift:${this.region}::alias/${this.aliasId}` as const
   }
 }
 export type { AliasArn }
@@ -37,29 +37,29 @@ export function aliasArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface BuildArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idBuild: string
+  readonly buildId: string
 }
 class BuildArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'build',
   `arn:${string}:gamelift:${string}:${string}:build/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'build' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idBuild: string
+  readonly buildId: string
   constructor(parameters: BuildArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idBuild = parameters.idBuild
+    this.buildId = parameters.buildId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:gamelift:${this.region}:${this.account}:build/${this.idBuild}` as const
+    return `arn:${this.partition}:gamelift:${this.region}:${this.account}:build/${this.buildId}` as const
   }
 }
 export type { BuildArn }
@@ -69,28 +69,28 @@ export function buildArn<Partition extends ArnPartition = 'aws'>(
   return new BuildArn<Partition>(parameters)
 }
 
-export interface DefinitionGroupContainerArnParameters<
+export interface ContainerGroupDefinitionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly name: string
 }
-class DefinitionGroupContainerArn<
+class ContainerGroupDefinitionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'containerGroupDefinition',
   `arn:${string}:gamelift:${string}:${string}:containergroupdefinition/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'containerGroupDefinition' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly name: string
-  constructor(parameters: DefinitionGroupContainerArnParameters<Partition>) {
+  constructor(parameters: ContainerGroupDefinitionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.name = parameters.name
@@ -99,37 +99,37 @@ class DefinitionGroupContainerArn<
     return `arn:${this.partition}:gamelift:${this.region}:${this.account}:containergroupdefinition/${this.name}` as const
   }
 }
-export type { DefinitionGroupContainerArn }
-export function definitionGroupContainerArn<
+export type { ContainerGroupDefinitionArn }
+export function containerGroupDefinitionArn<
   Partition extends ArnPartition = 'aws',
->(parameters: DefinitionGroupContainerArnParameters<Partition>) {
-  return new DefinitionGroupContainerArn<Partition>(parameters)
+>(parameters: ContainerGroupDefinitionArnParameters<Partition>) {
+  return new ContainerGroupDefinitionArn<Partition>(parameters)
 }
 
 export interface FleetArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idFleet: string
+  readonly fleetId: string
 }
 class FleetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'fleet',
   `arn:${string}:gamelift:${string}:${string}:fleet/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'fleet' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idFleet: string
+  readonly fleetId: string
   constructor(parameters: FleetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idFleet = parameters.idFleet
+    this.fleetId = parameters.fleetId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:gamelift:${this.region}:${this.account}:fleet/${this.idFleet}` as const
+    return `arn:${this.partition}:gamelift:${this.region}:${this.account}:fleet/${this.fleetId}` as const
   }
 }
 export type { FleetArn }
@@ -139,104 +139,104 @@ export function fleetArn<Partition extends ArnPartition = 'aws'>(
   return new FleetArn<Partition>(parameters)
 }
 
-export interface GroupServerGameArnParameters<
+export interface GameServerGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupServerGame: string
+  readonly gameServerGroupName: string
 }
-class GroupServerGameArn<
+class GameServerGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'gameServerGroup',
   `arn:${string}:gamelift:${string}:${string}:gameservergroup/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'gameServerGroup' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupServerGame: string
-  constructor(parameters: GroupServerGameArnParameters<Partition>) {
+  readonly gameServerGroupName: string
+  constructor(parameters: GameServerGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameGroupServerGame = parameters.nameGroupServerGame
+    this.gameServerGroupName = parameters.gameServerGroupName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:gamelift:${this.region}:${this.account}:gameservergroup/${this.nameGroupServerGame}` as const
+    return `arn:${this.partition}:gamelift:${this.region}:${this.account}:gameservergroup/${this.gameServerGroupName}` as const
   }
 }
-export type { GroupServerGameArn }
-export function groupServerGameArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupServerGameArnParameters<Partition>,
+export type { GameServerGroupArn }
+export function gameServerGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GameServerGroupArnParameters<Partition>,
 ) {
-  return new GroupServerGameArn<Partition>(parameters)
+  return new GameServerGroupArn<Partition>(parameters)
 }
 
-export interface QueueSessionGameArnParameters<
+export interface GameSessionQueueArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameQueueSessionGame: string
+  readonly gameSessionQueueName: string
 }
-class QueueSessionGameArn<
+class GameSessionQueueArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'gameSessionQueue',
   `arn:${string}:gamelift:${string}:${string}:gamesessionqueue/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'gameSessionQueue' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameQueueSessionGame: string
-  constructor(parameters: QueueSessionGameArnParameters<Partition>) {
+  readonly gameSessionQueueName: string
+  constructor(parameters: GameSessionQueueArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameQueueSessionGame = parameters.nameQueueSessionGame
+    this.gameSessionQueueName = parameters.gameSessionQueueName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:gamelift:${this.region}:${this.account}:gamesessionqueue/${this.nameQueueSessionGame}` as const
+    return `arn:${this.partition}:gamelift:${this.region}:${this.account}:gamesessionqueue/${this.gameSessionQueueName}` as const
   }
 }
-export type { QueueSessionGameArn }
-export function queueSessionGameArn<Partition extends ArnPartition = 'aws'>(
-  parameters: QueueSessionGameArnParameters<Partition>,
+export type { GameSessionQueueArn }
+export function gameSessionQueueArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GameSessionQueueArnParameters<Partition>,
 ) {
-  return new QueueSessionGameArn<Partition>(parameters)
+  return new GameSessionQueueArn<Partition>(parameters)
 }
 
 export interface LocationArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idLocation: string
+  readonly locationId: string
 }
 class LocationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'location',
   `arn:${string}:gamelift:${string}:${string}:location/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'location' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idLocation: string
+  readonly locationId: string
   constructor(parameters: LocationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idLocation = parameters.idLocation
+    this.locationId = parameters.locationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:gamelift:${this.region}:${this.account}:location/${this.idLocation}` as const
+    return `arn:${this.partition}:gamelift:${this.region}:${this.account}:location/${this.locationId}` as const
   }
 }
 export type { LocationArn }
@@ -246,104 +246,104 @@ export function locationArn<Partition extends ArnPartition = 'aws'>(
   return new LocationArn<Partition>(parameters)
 }
 
-export interface ConfigurationMatchmakingArnParameters<
+export interface MatchmakingConfigurationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameConfigurationMakingMatch: string
+  readonly matchMakingConfigurationName: string
 }
-class ConfigurationMatchmakingArn<
+class MatchmakingConfigurationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'matchmakingConfiguration',
   `arn:${string}:gamelift:${string}:${string}:matchmakingconfiguration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'matchmakingConfiguration' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameConfigurationMakingMatch: string
-  constructor(parameters: ConfigurationMatchmakingArnParameters<Partition>) {
+  readonly matchMakingConfigurationName: string
+  constructor(parameters: MatchmakingConfigurationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameConfigurationMakingMatch = parameters.nameConfigurationMakingMatch
+    this.matchMakingConfigurationName = parameters.matchMakingConfigurationName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:gamelift:${this.region}:${this.account}:matchmakingconfiguration/${this.nameConfigurationMakingMatch}` as const
+    return `arn:${this.partition}:gamelift:${this.region}:${this.account}:matchmakingconfiguration/${this.matchMakingConfigurationName}` as const
   }
 }
-export type { ConfigurationMatchmakingArn }
-export function configurationMatchmakingArn<
+export type { MatchmakingConfigurationArn }
+export function matchmakingConfigurationArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ConfigurationMatchmakingArnParameters<Partition>) {
-  return new ConfigurationMatchmakingArn<Partition>(parameters)
+>(parameters: MatchmakingConfigurationArnParameters<Partition>) {
+  return new MatchmakingConfigurationArn<Partition>(parameters)
 }
 
-export interface SetRuleMatchmakingArnParameters<
+export interface MatchmakingRuleSetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSetRuleMakingMatch: string
+  readonly matchMakingRuleSetName: string
 }
-class SetRuleMatchmakingArn<
+class MatchmakingRuleSetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'matchmakingRuleSet',
   `arn:${string}:gamelift:${string}:${string}:matchmakingruleset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'matchmakingRuleSet' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSetRuleMakingMatch: string
-  constructor(parameters: SetRuleMatchmakingArnParameters<Partition>) {
+  readonly matchMakingRuleSetName: string
+  constructor(parameters: MatchmakingRuleSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameSetRuleMakingMatch = parameters.nameSetRuleMakingMatch
+    this.matchMakingRuleSetName = parameters.matchMakingRuleSetName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:gamelift:${this.region}:${this.account}:matchmakingruleset/${this.nameSetRuleMakingMatch}` as const
+    return `arn:${this.partition}:gamelift:${this.region}:${this.account}:matchmakingruleset/${this.matchMakingRuleSetName}` as const
   }
 }
-export type { SetRuleMatchmakingArn }
-export function setRuleMatchmakingArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetRuleMatchmakingArnParameters<Partition>,
+export type { MatchmakingRuleSetArn }
+export function matchmakingRuleSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MatchmakingRuleSetArnParameters<Partition>,
 ) {
-  return new SetRuleMatchmakingArn<Partition>(parameters)
+  return new MatchmakingRuleSetArn<Partition>(parameters)
 }
 
 export interface ScriptArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idScript: string
+  readonly scriptId: string
 }
 class ScriptArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'script',
   `arn:${string}:gamelift:${string}:${string}:script/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'script' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idScript: string
+  readonly scriptId: string
   constructor(parameters: ScriptArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idScript = parameters.idScript
+    this.scriptId = parameters.scriptId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:gamelift:${this.region}:${this.account}:script/${this.idScript}` as const
+    return `arn:${this.partition}:gamelift:${this.region}:${this.account}:script/${this.scriptId}` as const
   }
 }
 export type { ScriptArn }

@@ -7,26 +7,26 @@ import {
 } from '../internal.js'
 
 export interface FleetArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly nameFleet: string
+  readonly fleetName: string
 }
 class FleetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'fleet',
   `arn:${string}:worklink::${string}:fleet/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'fleet' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly nameFleet: string
+  readonly fleetName: string
   constructor(parameters: FleetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.nameFleet = parameters.nameFleet
+    this.fleetName = parameters.fleetName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:worklink::${this.account}:fleet/${this.nameFleet}` as const
+    return `arn:${this.partition}:worklink::${this.account}:fleet/${this.fleetName}` as const
   }
 }
 export type { FleetArn }

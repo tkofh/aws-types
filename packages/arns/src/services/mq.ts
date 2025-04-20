@@ -7,32 +7,32 @@ import {
 } from '../internal.js'
 
 export interface BrokersArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameBroker: string
-  readonly idBroker: string
+  readonly brokerName: string
+  readonly brokerId: string
 }
 class BrokersArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'brokers',
   `arn:${string}:mq:${string}:${string}:broker:${string}:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'brokers' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameBroker: string
-  readonly idBroker: string
+  readonly brokerName: string
+  readonly brokerId: string
   constructor(parameters: BrokersArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameBroker = parameters.nameBroker
-    this.idBroker = parameters.idBroker
+    this.brokerName = parameters.brokerName
+    this.brokerId = parameters.brokerId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:mq:${this.region}:${this.account}:broker:${this.nameBroker}:${this.idBroker}` as const
+    return `arn:${this.partition}:mq:${this.region}:${this.account}:broker:${this.brokerName}:${this.brokerId}` as const
   }
 }
 export type { BrokersArn }
@@ -45,10 +45,10 @@ export function brokersArn<Partition extends ArnPartition = 'aws'>(
 export interface ConfigurationsArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idConfiguration: string
+  readonly configurationId: string
 }
 class ConfigurationsArn<
   Partition extends ArnPartition = 'aws',
@@ -57,19 +57,19 @@ class ConfigurationsArn<
   `arn:${string}:mq:${string}:${string}:configuration:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'configurations' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idConfiguration: string
+  readonly configurationId: string
   constructor(parameters: ConfigurationsArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idConfiguration = parameters.idConfiguration
+    this.configurationId = parameters.configurationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:mq:${this.region}:${this.account}:configuration:${this.idConfiguration}` as const
+    return `arn:${this.partition}:mq:${this.region}:${this.account}:configuration:${this.configurationId}` as const
   }
 }
 export type { ConfigurationsArn }

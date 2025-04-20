@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProject: string
+  readonly projectName: string
 }
 class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Project',
   `arn:${string}:evidently:${string}:${string}:project/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Project' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProject: string
+  readonly projectName: string
   constructor(parameters: ProjectArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameProject = parameters.nameProject
+    this.projectName = parameters.projectName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:evidently:${this.region}:${this.account}:project/${this.nameProject}` as const
+    return `arn:${this.partition}:evidently:${this.region}:${this.account}:project/${this.projectName}` as const
   }
 }
 export type { ProjectArn }
@@ -40,32 +40,32 @@ export function projectArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface FeatureArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProject: string
-  readonly nameFeature: string
+  readonly projectName: string
+  readonly featureName: string
 }
 class FeatureArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Feature',
   `arn:${string}:evidently:${string}:${string}:project/${string}/feature/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Feature' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProject: string
-  readonly nameFeature: string
+  readonly projectName: string
+  readonly featureName: string
   constructor(parameters: FeatureArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameProject = parameters.nameProject
-    this.nameFeature = parameters.nameFeature
+    this.projectName = parameters.projectName
+    this.featureName = parameters.featureName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:evidently:${this.region}:${this.account}:project/${this.nameProject}/feature/${this.nameFeature}` as const
+    return `arn:${this.partition}:evidently:${this.region}:${this.account}:project/${this.projectName}/feature/${this.featureName}` as const
   }
 }
 export type { FeatureArn }
@@ -78,32 +78,32 @@ export function featureArn<Partition extends ArnPartition = 'aws'>(
 export interface ExperimentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProject: string
-  readonly nameExperiment: string
+  readonly projectName: string
+  readonly experimentName: string
 }
 class ExperimentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Experiment',
   `arn:${string}:evidently:${string}:${string}:project/${string}/experiment/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Experiment' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProject: string
-  readonly nameExperiment: string
+  readonly projectName: string
+  readonly experimentName: string
   constructor(parameters: ExperimentArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameProject = parameters.nameProject
-    this.nameExperiment = parameters.nameExperiment
+    this.projectName = parameters.projectName
+    this.experimentName = parameters.experimentName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:evidently:${this.region}:${this.account}:project/${this.nameProject}/experiment/${this.nameExperiment}` as const
+    return `arn:${this.partition}:evidently:${this.region}:${this.account}:project/${this.projectName}/experiment/${this.experimentName}` as const
   }
 }
 export type { ExperimentArn }
@@ -114,32 +114,32 @@ export function experimentArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface LaunchArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProject: string
-  readonly nameLaunch: string
+  readonly projectName: string
+  readonly launchName: string
 }
 class LaunchArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Launch',
   `arn:${string}:evidently:${string}:${string}:project/${string}/launch/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Launch' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProject: string
-  readonly nameLaunch: string
+  readonly projectName: string
+  readonly launchName: string
   constructor(parameters: LaunchArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameProject = parameters.nameProject
-    this.nameLaunch = parameters.nameLaunch
+    this.projectName = parameters.projectName
+    this.launchName = parameters.launchName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:evidently:${this.region}:${this.account}:project/${this.nameProject}/launch/${this.nameLaunch}` as const
+    return `arn:${this.partition}:evidently:${this.region}:${this.account}:project/${this.projectName}/launch/${this.launchName}` as const
   }
 }
 export type { LaunchArn }
@@ -150,29 +150,29 @@ export function launchArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface SegmentArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSegment: string
+  readonly segmentName: string
 }
 class SegmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Segment',
   `arn:${string}:evidently:${string}:${string}:segment/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Segment' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSegment: string
+  readonly segmentName: string
   constructor(parameters: SegmentArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameSegment = parameters.nameSegment
+    this.segmentName = parameters.segmentName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:evidently:${this.region}:${this.account}:segment/${this.nameSegment}` as const
+    return `arn:${this.partition}:evidently:${this.region}:${this.account}:segment/${this.segmentName}` as const
   }
 }
 export type { SegmentArn }

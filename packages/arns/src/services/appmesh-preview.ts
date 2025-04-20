@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface MeshArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMesh: string
+  readonly meshName: string
 }
 class MeshArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'mesh',
   `arn:${string}:appmesh-preview:${string}:${string}:mesh/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'mesh' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMesh: string
+  readonly meshName: string
   constructor(parameters: MeshArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMesh = parameters.nameMesh
+    this.meshName = parameters.meshName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appmesh-preview:${this.region}:${this.account}:mesh/${this.nameMesh}` as const
+    return `arn:${this.partition}:appmesh-preview:${this.region}:${this.account}:mesh/${this.meshName}` as const
   }
 }
 export type { MeshArn }
@@ -39,156 +39,156 @@ export function meshArn<Partition extends ArnPartition = 'aws'>(
   return new MeshArn<Partition>(parameters)
 }
 
-export interface ServiceVirtualArnParameters<
+export interface VirtualServiceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMesh: string
-  readonly nameServiceVirtual: string
+  readonly meshName: string
+  readonly virtualServiceName: string
 }
-class ServiceVirtualArn<
+class VirtualServiceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'virtualService',
   `arn:${string}:appmesh-preview:${string}:${string}:mesh/${string}/virtualService/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'virtualService' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMesh: string
-  readonly nameServiceVirtual: string
-  constructor(parameters: ServiceVirtualArnParameters<Partition>) {
+  readonly meshName: string
+  readonly virtualServiceName: string
+  constructor(parameters: VirtualServiceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMesh = parameters.nameMesh
-    this.nameServiceVirtual = parameters.nameServiceVirtual
+    this.meshName = parameters.meshName
+    this.virtualServiceName = parameters.virtualServiceName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appmesh-preview:${this.region}:${this.account}:mesh/${this.nameMesh}/virtualService/${this.nameServiceVirtual}` as const
+    return `arn:${this.partition}:appmesh-preview:${this.region}:${this.account}:mesh/${this.meshName}/virtualService/${this.virtualServiceName}` as const
   }
 }
-export type { ServiceVirtualArn }
-export function serviceVirtualArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ServiceVirtualArnParameters<Partition>,
+export type { VirtualServiceArn }
+export function virtualServiceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VirtualServiceArnParameters<Partition>,
 ) {
-  return new ServiceVirtualArn<Partition>(parameters)
+  return new VirtualServiceArn<Partition>(parameters)
 }
 
-export interface NodeVirtualArnParameters<
+export interface VirtualNodeArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMesh: string
-  readonly nameNodeVirtual: string
+  readonly meshName: string
+  readonly virtualNodeName: string
 }
-class NodeVirtualArn<
+class VirtualNodeArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'virtualNode',
   `arn:${string}:appmesh-preview:${string}:${string}:mesh/${string}/virtualNode/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'virtualNode' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMesh: string
-  readonly nameNodeVirtual: string
-  constructor(parameters: NodeVirtualArnParameters<Partition>) {
+  readonly meshName: string
+  readonly virtualNodeName: string
+  constructor(parameters: VirtualNodeArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMesh = parameters.nameMesh
-    this.nameNodeVirtual = parameters.nameNodeVirtual
+    this.meshName = parameters.meshName
+    this.virtualNodeName = parameters.virtualNodeName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appmesh-preview:${this.region}:${this.account}:mesh/${this.nameMesh}/virtualNode/${this.nameNodeVirtual}` as const
+    return `arn:${this.partition}:appmesh-preview:${this.region}:${this.account}:mesh/${this.meshName}/virtualNode/${this.virtualNodeName}` as const
   }
 }
-export type { NodeVirtualArn }
-export function nodeVirtualArn<Partition extends ArnPartition = 'aws'>(
-  parameters: NodeVirtualArnParameters<Partition>,
+export type { VirtualNodeArn }
+export function virtualNodeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VirtualNodeArnParameters<Partition>,
 ) {
-  return new NodeVirtualArn<Partition>(parameters)
+  return new VirtualNodeArn<Partition>(parameters)
 }
 
-export interface RouterVirtualArnParameters<
+export interface VirtualRouterArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMesh: string
-  readonly nameRouterVirtual: string
+  readonly meshName: string
+  readonly virtualRouterName: string
 }
-class RouterVirtualArn<
+class VirtualRouterArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'virtualRouter',
   `arn:${string}:appmesh-preview:${string}:${string}:mesh/${string}/virtualRouter/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'virtualRouter' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMesh: string
-  readonly nameRouterVirtual: string
-  constructor(parameters: RouterVirtualArnParameters<Partition>) {
+  readonly meshName: string
+  readonly virtualRouterName: string
+  constructor(parameters: VirtualRouterArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMesh = parameters.nameMesh
-    this.nameRouterVirtual = parameters.nameRouterVirtual
+    this.meshName = parameters.meshName
+    this.virtualRouterName = parameters.virtualRouterName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appmesh-preview:${this.region}:${this.account}:mesh/${this.nameMesh}/virtualRouter/${this.nameRouterVirtual}` as const
+    return `arn:${this.partition}:appmesh-preview:${this.region}:${this.account}:mesh/${this.meshName}/virtualRouter/${this.virtualRouterName}` as const
   }
 }
-export type { RouterVirtualArn }
-export function routerVirtualArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RouterVirtualArnParameters<Partition>,
+export type { VirtualRouterArn }
+export function virtualRouterArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VirtualRouterArnParameters<Partition>,
 ) {
-  return new RouterVirtualArn<Partition>(parameters)
+  return new VirtualRouterArn<Partition>(parameters)
 }
 
 export interface RouteArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMesh: string
-  readonly nameRouterVirtual: string
-  readonly nameRoute: string
+  readonly meshName: string
+  readonly virtualRouterName: string
+  readonly routeName: string
 }
 class RouteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'route',
   `arn:${string}:appmesh-preview:${string}:${string}:mesh/${string}/virtualRouter/${string}/route/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'route' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMesh: string
-  readonly nameRouterVirtual: string
-  readonly nameRoute: string
+  readonly meshName: string
+  readonly virtualRouterName: string
+  readonly routeName: string
   constructor(parameters: RouteArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMesh = parameters.nameMesh
-    this.nameRouterVirtual = parameters.nameRouterVirtual
-    this.nameRoute = parameters.nameRoute
+    this.meshName = parameters.meshName
+    this.virtualRouterName = parameters.virtualRouterName
+    this.routeName = parameters.routeName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appmesh-preview:${this.region}:${this.account}:mesh/${this.nameMesh}/virtualRouter/${this.nameRouterVirtual}/route/${this.nameRoute}` as const
+    return `arn:${this.partition}:appmesh-preview:${this.region}:${this.account}:mesh/${this.meshName}/virtualRouter/${this.virtualRouterName}/route/${this.routeName}` as const
   }
 }
 export type { RouteArn }
@@ -198,85 +198,85 @@ export function routeArn<Partition extends ArnPartition = 'aws'>(
   return new RouteArn<Partition>(parameters)
 }
 
-export interface GatewayVirtualArnParameters<
+export interface VirtualGatewayArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMesh: string
-  readonly nameGatewayVirtual: string
+  readonly meshName: string
+  readonly virtualGatewayName: string
 }
-class GatewayVirtualArn<
+class VirtualGatewayArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'virtualGateway',
   `arn:${string}:appmesh-preview:${string}:${string}:mesh/${string}/virtualGateway/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'virtualGateway' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMesh: string
-  readonly nameGatewayVirtual: string
-  constructor(parameters: GatewayVirtualArnParameters<Partition>) {
+  readonly meshName: string
+  readonly virtualGatewayName: string
+  constructor(parameters: VirtualGatewayArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMesh = parameters.nameMesh
-    this.nameGatewayVirtual = parameters.nameGatewayVirtual
+    this.meshName = parameters.meshName
+    this.virtualGatewayName = parameters.virtualGatewayName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appmesh-preview:${this.region}:${this.account}:mesh/${this.nameMesh}/virtualGateway/${this.nameGatewayVirtual}` as const
+    return `arn:${this.partition}:appmesh-preview:${this.region}:${this.account}:mesh/${this.meshName}/virtualGateway/${this.virtualGatewayName}` as const
   }
 }
-export type { GatewayVirtualArn }
-export function gatewayVirtualArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GatewayVirtualArnParameters<Partition>,
+export type { VirtualGatewayArn }
+export function virtualGatewayArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VirtualGatewayArnParameters<Partition>,
 ) {
-  return new GatewayVirtualArn<Partition>(parameters)
+  return new VirtualGatewayArn<Partition>(parameters)
 }
 
-export interface RouteGatewayArnParameters<
+export interface GatewayRouteArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMesh: string
-  readonly nameGatewayVirtual: string
-  readonly nameRouteGateway: string
+  readonly meshName: string
+  readonly virtualGatewayName: string
+  readonly gatewayRouteName: string
 }
-class RouteGatewayArn<
+class GatewayRouteArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'gatewayRoute',
   `arn:${string}:appmesh-preview:${string}:${string}:mesh/${string}/virtualGateway/${string}/gatewayRoute/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'gatewayRoute' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMesh: string
-  readonly nameGatewayVirtual: string
-  readonly nameRouteGateway: string
-  constructor(parameters: RouteGatewayArnParameters<Partition>) {
+  readonly meshName: string
+  readonly virtualGatewayName: string
+  readonly gatewayRouteName: string
+  constructor(parameters: GatewayRouteArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMesh = parameters.nameMesh
-    this.nameGatewayVirtual = parameters.nameGatewayVirtual
-    this.nameRouteGateway = parameters.nameRouteGateway
+    this.meshName = parameters.meshName
+    this.virtualGatewayName = parameters.virtualGatewayName
+    this.gatewayRouteName = parameters.gatewayRouteName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appmesh-preview:${this.region}:${this.account}:mesh/${this.nameMesh}/virtualGateway/${this.nameGatewayVirtual}/gatewayRoute/${this.nameRouteGateway}` as const
+    return `arn:${this.partition}:appmesh-preview:${this.region}:${this.account}:mesh/${this.meshName}/virtualGateway/${this.virtualGatewayName}/gatewayRoute/${this.gatewayRouteName}` as const
   }
 }
-export type { RouteGatewayArn }
-export function routeGatewayArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RouteGatewayArnParameters<Partition>,
+export type { GatewayRouteArn }
+export function gatewayRouteArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GatewayRouteArnParameters<Partition>,
 ) {
-  return new RouteGatewayArn<Partition>(parameters)
+  return new GatewayRouteArn<Partition>(parameters)
 }

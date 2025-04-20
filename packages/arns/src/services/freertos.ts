@@ -9,10 +9,10 @@ import {
 export interface ConfigurationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameConfiguration: string
+  readonly configurationName: string
 }
 class ConfigurationArn<
   Partition extends ArnPartition = 'aws',
@@ -21,19 +21,19 @@ class ConfigurationArn<
   `arn:${string}:freertos:${string}:${string}:configuration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'configuration' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameConfiguration: string
+  readonly configurationName: string
   constructor(parameters: ConfigurationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameConfiguration = parameters.nameConfiguration
+    this.configurationName = parameters.configurationName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:freertos:${this.region}:${this.account}:configuration/${this.nameConfiguration}` as const
+    return `arn:${this.partition}:freertos:${this.region}:${this.account}:configuration/${this.configurationName}` as const
   }
 }
 export type { ConfigurationArn }
@@ -46,10 +46,10 @@ export function configurationArn<Partition extends ArnPartition = 'aws'>(
 export interface SubscriptionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSubscription: string
+  readonly subscriptionId: string
 }
 class SubscriptionArn<
   Partition extends ArnPartition = 'aws',
@@ -58,19 +58,19 @@ class SubscriptionArn<
   `arn:${string}:freertos:${string}:${string}:subscription/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'subscription' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSubscription: string
+  readonly subscriptionId: string
   constructor(parameters: SubscriptionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idSubscription = parameters.idSubscription
+    this.subscriptionId = parameters.subscriptionId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:freertos:${this.region}:${this.account}:subscription/${this.idSubscription}` as const
+    return `arn:${this.partition}:freertos:${this.region}:${this.account}:subscription/${this.subscriptionId}` as const
   }
 }
 export type { SubscriptionArn }

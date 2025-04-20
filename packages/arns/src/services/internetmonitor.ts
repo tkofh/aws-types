@@ -6,70 +6,70 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface EventHealthArnParameters<
+export interface HealthEventArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMonitor: string
-  readonly idEvent: string
+  readonly monitorName: string
+  readonly eventId: string
 }
-class EventHealthArn<
+class HealthEventArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'HealthEvent',
   `arn:${string}:internetmonitor:${string}:${string}:monitor/${string}/health-event/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'HealthEvent' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMonitor: string
-  readonly idEvent: string
-  constructor(parameters: EventHealthArnParameters<Partition>) {
+  readonly monitorName: string
+  readonly eventId: string
+  constructor(parameters: HealthEventArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMonitor = parameters.nameMonitor
-    this.idEvent = parameters.idEvent
+    this.monitorName = parameters.monitorName
+    this.eventId = parameters.eventId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:internetmonitor:${this.region}:${this.account}:monitor/${this.nameMonitor}/health-event/${this.idEvent}` as const
+    return `arn:${this.partition}:internetmonitor:${this.region}:${this.account}:monitor/${this.monitorName}/health-event/${this.eventId}` as const
   }
 }
-export type { EventHealthArn }
-export function eventHealthArn<Partition extends ArnPartition = 'aws'>(
-  parameters: EventHealthArnParameters<Partition>,
+export type { HealthEventArn }
+export function healthEventArn<Partition extends ArnPartition = 'aws'>(
+  parameters: HealthEventArnParameters<Partition>,
 ) {
-  return new EventHealthArn<Partition>(parameters)
+  return new HealthEventArn<Partition>(parameters)
 }
 
 export interface MonitorArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMonitor: string
+  readonly monitorName: string
 }
 class MonitorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Monitor',
   `arn:${string}:internetmonitor:${string}:${string}:monitor/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Monitor' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMonitor: string
+  readonly monitorName: string
   constructor(parameters: MonitorArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMonitor = parameters.nameMonitor
+    this.monitorName = parameters.monitorName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:internetmonitor:${this.region}:${this.account}:monitor/${this.nameMonitor}` as const
+    return `arn:${this.partition}:internetmonitor:${this.region}:${this.account}:monitor/${this.monitorName}` as const
   }
 }
 export type { MonitorArn }
@@ -79,36 +79,36 @@ export function monitorArn<Partition extends ArnPartition = 'aws'>(
   return new MonitorArn<Partition>(parameters)
 }
 
-export interface EventInternetArnParameters<
+export interface InternetEventArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idEventInternet: string
+  readonly internetEventId: string
 }
-class EventInternetArn<
+class InternetEventArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'InternetEvent',
   `arn:${string}:internetmonitor::${string}:internet-event/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'InternetEvent' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idEventInternet: string
-  constructor(parameters: EventInternetArnParameters<Partition>) {
+  readonly internetEventId: string
+  constructor(parameters: InternetEventArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idEventInternet = parameters.idEventInternet
+    this.internetEventId = parameters.internetEventId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:internetmonitor::${this.account}:internet-event/${this.idEventInternet}` as const
+    return `arn:${this.partition}:internetmonitor::${this.account}:internet-event/${this.internetEventId}` as const
   }
 }
-export type { EventInternetArn }
-export function eventInternetArn<Partition extends ArnPartition = 'aws'>(
-  parameters: EventInternetArnParameters<Partition>,
+export type { InternetEventArn }
+export function internetEventArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InternetEventArnParameters<Partition>,
 ) {
-  return new EventInternetArn<Partition>(parameters)
+  return new InternetEventArn<Partition>(parameters)
 }

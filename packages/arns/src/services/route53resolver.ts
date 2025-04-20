@@ -6,374 +6,374 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ConfigDnssecResolverArnParameters<
+export interface ResolverDnssecConfigArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ConfigDnssecResolverArn<
+class ResolverDnssecConfigArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'resolver-dnssec-config',
   `arn:${string}:route53resolver:${string}:${string}:resolver-dnssec-config/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'resolver-dnssec-config' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ConfigDnssecResolverArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: ResolverDnssecConfigArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:resolver-dnssec-config/${this.idResource}` as const
+    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:resolver-dnssec-config/${this.resourceId}` as const
   }
 }
-export type { ConfigDnssecResolverArn }
-export function configDnssecResolverArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ConfigDnssecResolverArnParameters<Partition>,
+export type { ResolverDnssecConfigArn }
+export function resolverDnssecConfigArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResolverDnssecConfigArnParameters<Partition>,
 ) {
-  return new ConfigDnssecResolverArn<Partition>(parameters)
+  return new ResolverDnssecConfigArn<Partition>(parameters)
 }
 
-export interface ConfigLogQueryResolverArnParameters<
+export interface ResolverQueryLogConfigArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ConfigLogQueryResolverArn<
+class ResolverQueryLogConfigArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'resolver-query-log-config',
   `arn:${string}:route53resolver:${string}:${string}:resolver-query-log-config/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'resolver-query-log-config' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ConfigLogQueryResolverArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: ResolverQueryLogConfigArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:resolver-query-log-config/${this.idResource}` as const
+    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:resolver-query-log-config/${this.resourceId}` as const
   }
 }
-export type { ConfigLogQueryResolverArn }
-export function configLogQueryResolverArn<
+export type { ResolverQueryLogConfigArn }
+export function resolverQueryLogConfigArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ConfigLogQueryResolverArnParameters<Partition>) {
-  return new ConfigLogQueryResolverArn<Partition>(parameters)
+>(parameters: ResolverQueryLogConfigArnParameters<Partition>) {
+  return new ResolverQueryLogConfigArn<Partition>(parameters)
 }
 
-export interface RuleResolverArnParameters<
+export interface ResolverRuleArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class RuleResolverArn<
+class ResolverRuleArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'resolver-rule',
   `arn:${string}:route53resolver:${string}:${string}:resolver-rule/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'resolver-rule' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: RuleResolverArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: ResolverRuleArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:resolver-rule/${this.idResource}` as const
+    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:resolver-rule/${this.resourceId}` as const
   }
 }
-export type { RuleResolverArn }
-export function ruleResolverArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RuleResolverArnParameters<Partition>,
+export type { ResolverRuleArn }
+export function resolverRuleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResolverRuleArnParameters<Partition>,
 ) {
-  return new RuleResolverArn<Partition>(parameters)
+  return new ResolverRuleArn<Partition>(parameters)
 }
 
-export interface EndpointResolverArnParameters<
+export interface ResolverEndpointArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class EndpointResolverArn<
+class ResolverEndpointArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'resolver-endpoint',
   `arn:${string}:route53resolver:${string}:${string}:resolver-endpoint/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'resolver-endpoint' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: EndpointResolverArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: ResolverEndpointArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:resolver-endpoint/${this.idResource}` as const
+    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:resolver-endpoint/${this.resourceId}` as const
   }
 }
-export type { EndpointResolverArn }
-export function endpointResolverArn<Partition extends ArnPartition = 'aws'>(
-  parameters: EndpointResolverArnParameters<Partition>,
+export type { ResolverEndpointArn }
+export function resolverEndpointArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResolverEndpointArnParameters<Partition>,
 ) {
-  return new EndpointResolverArn<Partition>(parameters)
+  return new ResolverEndpointArn<Partition>(parameters)
 }
 
-export interface GroupRuleFirewallArnParameters<
+export interface FirewallRuleGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class GroupRuleFirewallArn<
+class FirewallRuleGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'firewall-rule-group',
   `arn:${string}:route53resolver:${string}:${string}:firewall-rule-group/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'firewall-rule-group' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: GroupRuleFirewallArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: FirewallRuleGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:firewall-rule-group/${this.idResource}` as const
+    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:firewall-rule-group/${this.resourceId}` as const
   }
 }
-export type { GroupRuleFirewallArn }
-export function groupRuleFirewallArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupRuleFirewallArnParameters<Partition>,
+export type { FirewallRuleGroupArn }
+export function firewallRuleGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FirewallRuleGroupArnParameters<Partition>,
 ) {
-  return new GroupRuleFirewallArn<Partition>(parameters)
+  return new FirewallRuleGroupArn<Partition>(parameters)
 }
 
-export interface AssociationGroupRuleFirewallArnParameters<
+export interface FirewallRuleGroupAssociationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class AssociationGroupRuleFirewallArn<
+class FirewallRuleGroupAssociationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'firewall-rule-group-association',
   `arn:${string}:route53resolver:${string}:${string}:firewall-rule-group-association/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'firewall-rule-group-association' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
   constructor(
-    parameters: AssociationGroupRuleFirewallArnParameters<Partition>,
+    parameters: FirewallRuleGroupAssociationArnParameters<Partition>,
   ) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:firewall-rule-group-association/${this.idResource}` as const
+    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:firewall-rule-group-association/${this.resourceId}` as const
   }
 }
-export type { AssociationGroupRuleFirewallArn }
-export function associationGroupRuleFirewallArn<
+export type { FirewallRuleGroupAssociationArn }
+export function firewallRuleGroupAssociationArn<
   Partition extends ArnPartition = 'aws',
->(parameters: AssociationGroupRuleFirewallArnParameters<Partition>) {
-  return new AssociationGroupRuleFirewallArn<Partition>(parameters)
+>(parameters: FirewallRuleGroupAssociationArnParameters<Partition>) {
+  return new FirewallRuleGroupAssociationArn<Partition>(parameters)
 }
 
-export interface ListDomainFirewallArnParameters<
+export interface FirewallDomainListArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ListDomainFirewallArn<
+class FirewallDomainListArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'firewall-domain-list',
   `arn:${string}:route53resolver:${string}:${string}:firewall-domain-list/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'firewall-domain-list' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ListDomainFirewallArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: FirewallDomainListArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:firewall-domain-list/${this.idResource}` as const
+    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:firewall-domain-list/${this.resourceId}` as const
   }
 }
-export type { ListDomainFirewallArn }
-export function listDomainFirewallArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ListDomainFirewallArnParameters<Partition>,
+export type { FirewallDomainListArn }
+export function firewallDomainListArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FirewallDomainListArnParameters<Partition>,
 ) {
-  return new ListDomainFirewallArn<Partition>(parameters)
+  return new FirewallDomainListArn<Partition>(parameters)
 }
 
-export interface ConfigFirewallArnParameters<
+export interface FirewallConfigArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ConfigFirewallArn<
+class FirewallConfigArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'firewall-config',
   `arn:${string}:route53resolver:${string}:${string}:firewall-config/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'firewall-config' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ConfigFirewallArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: FirewallConfigArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:firewall-config/${this.idResource}` as const
+    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:firewall-config/${this.resourceId}` as const
   }
 }
-export type { ConfigFirewallArn }
-export function configFirewallArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ConfigFirewallArnParameters<Partition>,
+export type { FirewallConfigArn }
+export function firewallConfigArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FirewallConfigArnParameters<Partition>,
 ) {
-  return new ConfigFirewallArn<Partition>(parameters)
+  return new FirewallConfigArn<Partition>(parameters)
 }
 
-export interface ConfigResolverArnParameters<
+export interface ResolverConfigArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ConfigResolverArn<
+class ResolverConfigArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'resolver-config',
   `arn:${string}:route53resolver:${string}:${string}:resolver-config/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'resolver-config' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ConfigResolverArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: ResolverConfigArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:resolver-config/${this.idResource}` as const
+    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:resolver-config/${this.resourceId}` as const
   }
 }
-export type { ConfigResolverArn }
-export function configResolverArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ConfigResolverArnParameters<Partition>,
+export type { ResolverConfigArn }
+export function resolverConfigArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResolverConfigArnParameters<Partition>,
 ) {
-  return new ConfigResolverArn<Partition>(parameters)
+  return new ResolverConfigArn<Partition>(parameters)
 }
 
-export interface ResolverOutpostArnParameters<
+export interface OutpostResolverArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ResolverOutpostArn<
+class OutpostResolverArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'outpost-resolver',
   `arn:${string}:route53resolver:${string}:${string}:outpost-resolver/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'outpost-resolver' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ResolverOutpostArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: OutpostResolverArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:outpost-resolver/${this.idResource}` as const
+    return `arn:${this.partition}:route53resolver:${this.region}:${this.account}:outpost-resolver/${this.resourceId}` as const
   }
 }
-export type { ResolverOutpostArn }
-export function resolverOutpostArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ResolverOutpostArnParameters<Partition>,
+export type { OutpostResolverArn }
+export function outpostResolverArn<Partition extends ArnPartition = 'aws'>(
+  parameters: OutpostResolverArnParameters<Partition>,
 ) {
-  return new ResolverOutpostArn<Partition>(parameters)
+  return new OutpostResolverArn<Partition>(parameters)
 }

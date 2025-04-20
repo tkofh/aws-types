@@ -9,10 +9,10 @@ import {
 export interface EnvironmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameEnvironment: string
+  readonly environmentName: string
 }
 class EnvironmentArn<
   Partition extends ArnPartition = 'aws',
@@ -21,19 +21,19 @@ class EnvironmentArn<
   `arn:${string}:airflow:${string}:${string}:environment/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'environment' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameEnvironment: string
+  readonly environmentName: string
   constructor(parameters: EnvironmentArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameEnvironment = parameters.nameEnvironment
+    this.environmentName = parameters.environmentName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:airflow:${this.region}:${this.account}:environment/${this.nameEnvironment}` as const
+    return `arn:${this.partition}:airflow:${this.region}:${this.account}:environment/${this.environmentName}` as const
   }
 }
 export type { EnvironmentArn }
@@ -43,38 +43,38 @@ export function environmentArn<Partition extends ArnPartition = 'aws'>(
   return new EnvironmentArn<Partition>(parameters)
 }
 
-export interface RoleRbacArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface RbacRoleArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameEnvironment: string
-  readonly nameRole: string
+  readonly environmentName: string
+  readonly roleName: string
 }
-class RoleRbacArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class RbacRoleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'rbac-role',
   `arn:${string}:airflow:${string}:${string}:role/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'rbac-role' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameEnvironment: string
-  readonly nameRole: string
-  constructor(parameters: RoleRbacArnParameters<Partition>) {
+  readonly environmentName: string
+  readonly roleName: string
+  constructor(parameters: RbacRoleArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameEnvironment = parameters.nameEnvironment
-    this.nameRole = parameters.nameRole
+    this.environmentName = parameters.environmentName
+    this.roleName = parameters.roleName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:airflow:${this.region}:${this.account}:role/${this.nameEnvironment}/${this.nameRole}` as const
+    return `arn:${this.partition}:airflow:${this.region}:${this.account}:role/${this.environmentName}/${this.roleName}` as const
   }
 }
-export type { RoleRbacArn }
-export function roleRbacArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RoleRbacArnParameters<Partition>,
+export type { RbacRoleArn }
+export function rbacRoleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RbacRoleArnParameters<Partition>,
 ) {
-  return new RoleRbacArn<Partition>(parameters)
+  return new RbacRoleArn<Partition>(parameters)
 }

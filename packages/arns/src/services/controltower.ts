@@ -6,64 +6,64 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ControlEnabledArnParameters<
+export interface EnabledControlArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idControlEnabled: string
+  readonly enabledControlId: string
 }
-class ControlEnabledArn<
+class EnabledControlArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'EnabledControl',
   `arn:${string}:controltower:${string}:${string}:enabledcontrol/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'EnabledControl' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idControlEnabled: string
-  constructor(parameters: ControlEnabledArnParameters<Partition>) {
+  readonly enabledControlId: string
+  constructor(parameters: EnabledControlArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idControlEnabled = parameters.idControlEnabled
+    this.enabledControlId = parameters.enabledControlId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:controltower:${this.region}:${this.account}:enabledcontrol/${this.idControlEnabled}` as const
+    return `arn:${this.partition}:controltower:${this.region}:${this.account}:enabledcontrol/${this.enabledControlId}` as const
   }
 }
-export type { ControlEnabledArn }
-export function controlEnabledArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ControlEnabledArnParameters<Partition>,
+export type { EnabledControlArn }
+export function enabledControlArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EnabledControlArnParameters<Partition>,
 ) {
-  return new ControlEnabledArn<Partition>(parameters)
+  return new EnabledControlArn<Partition>(parameters)
 }
 
 export interface BaselineArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
-  readonly idBaseline: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly baselineId: string
 }
 class BaselineArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Baseline',
   `arn:${string}:controltower:${string}::baseline/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Baseline' as const
-  readonly partition: string
-  readonly region: string
-  readonly idBaseline: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly baselineId: string
   constructor(parameters: BaselineArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
-    this.idBaseline = parameters.idBaseline
+    this.baselineId = parameters.baselineId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:controltower:${this.region}::baseline/${this.idBaseline}` as const
+    return `arn:${this.partition}:controltower:${this.region}::baseline/${this.baselineId}` as const
   }
 }
 export type { BaselineArn }
@@ -73,76 +73,76 @@ export function baselineArn<Partition extends ArnPartition = 'aws'>(
   return new BaselineArn<Partition>(parameters)
 }
 
-export interface BaselineEnabledArnParameters<
+export interface EnabledBaselineArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idBaselineEnabled: string
+  readonly enabledBaselineId: string
 }
-class BaselineEnabledArn<
+class EnabledBaselineArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'EnabledBaseline',
   `arn:${string}:controltower:${string}:${string}:enabledbaseline/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'EnabledBaseline' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idBaselineEnabled: string
-  constructor(parameters: BaselineEnabledArnParameters<Partition>) {
+  readonly enabledBaselineId: string
+  constructor(parameters: EnabledBaselineArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idBaselineEnabled = parameters.idBaselineEnabled
+    this.enabledBaselineId = parameters.enabledBaselineId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:controltower:${this.region}:${this.account}:enabledbaseline/${this.idBaselineEnabled}` as const
+    return `arn:${this.partition}:controltower:${this.region}:${this.account}:enabledbaseline/${this.enabledBaselineId}` as const
   }
 }
-export type { BaselineEnabledArn }
-export function baselineEnabledArn<Partition extends ArnPartition = 'aws'>(
-  parameters: BaselineEnabledArnParameters<Partition>,
+export type { EnabledBaselineArn }
+export function enabledBaselineArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EnabledBaselineArnParameters<Partition>,
 ) {
-  return new BaselineEnabledArn<Partition>(parameters)
+  return new EnabledBaselineArn<Partition>(parameters)
 }
 
-export interface ZoneLandingArnParameters<
+export interface LandingZoneArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idZoneLanding: string
+  readonly landingZoneId: string
 }
-class ZoneLandingArn<
+class LandingZoneArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'LandingZone',
   `arn:${string}:controltower:${string}:${string}:landingzone/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'LandingZone' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idZoneLanding: string
-  constructor(parameters: ZoneLandingArnParameters<Partition>) {
+  readonly landingZoneId: string
+  constructor(parameters: LandingZoneArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idZoneLanding = parameters.idZoneLanding
+    this.landingZoneId = parameters.landingZoneId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:controltower:${this.region}:${this.account}:landingzone/${this.idZoneLanding}` as const
+    return `arn:${this.partition}:controltower:${this.region}:${this.account}:landingzone/${this.landingZoneId}` as const
   }
 }
-export type { ZoneLandingArn }
-export function zoneLandingArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ZoneLandingArnParameters<Partition>,
+export type { LandingZoneArn }
+export function landingZoneArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LandingZoneArnParameters<Partition>,
 ) {
-  return new ZoneLandingArn<Partition>(parameters)
+  return new LandingZoneArn<Partition>(parameters)
 }

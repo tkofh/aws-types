@@ -9,10 +9,10 @@ import {
 export interface ApplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly idAccount: string
-  readonly idInstance: string
-  readonly idApplication: string
+  readonly partition?: Partition | undefined
+  readonly accountId: string
+  readonly instanceId: string
+  readonly applicationId: string
 }
 class ApplicationArn<
   Partition extends ArnPartition = 'aws',
@@ -21,19 +21,19 @@ class ApplicationArn<
   `arn:${string}:sso::${string}:application/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Application' as const
-  readonly partition: string
-  readonly idAccount: string
-  readonly idInstance: string
-  readonly idApplication: string
+  readonly partition: Partition
+  readonly accountId: string
+  readonly instanceId: string
+  readonly applicationId: string
   constructor(parameters: ApplicationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
-    this.idAccount = parameters.idAccount
-    this.idInstance = parameters.idInstance
-    this.idApplication = parameters.idApplication
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.accountId = parameters.accountId
+    this.instanceId = parameters.instanceId
+    this.applicationId = parameters.applicationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sso::${this.idAccount}:application/${this.idInstance}/${this.idApplication}` as const
+    return `arn:${this.partition}:sso::${this.accountId}:application/${this.instanceId}/${this.applicationId}` as const
   }
 }
 export type { ApplicationArn }

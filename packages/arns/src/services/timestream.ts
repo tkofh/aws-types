@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface DatabaseArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameDatabase: string
+  readonly databaseName: string
 }
 class DatabaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'database',
   `arn:${string}:timestream:${string}:${string}:database/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'database' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameDatabase: string
+  readonly databaseName: string
   constructor(parameters: DatabaseArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameDatabase = parameters.nameDatabase
+    this.databaseName = parameters.databaseName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:timestream:${this.region}:${this.account}:database/${this.nameDatabase}` as const
+    return `arn:${this.partition}:timestream:${this.region}:${this.account}:database/${this.databaseName}` as const
   }
 }
 export type { DatabaseArn }
@@ -40,32 +40,32 @@ export function databaseArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface TableArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameDatabase: string
-  readonly nameTable: string
+  readonly databaseName: string
+  readonly tableName: string
 }
 class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'table',
   `arn:${string}:timestream:${string}:${string}:database/${string}/table/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'table' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameDatabase: string
-  readonly nameTable: string
+  readonly databaseName: string
+  readonly tableName: string
   constructor(parameters: TableArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameDatabase = parameters.nameDatabase
-    this.nameTable = parameters.nameTable
+    this.databaseName = parameters.databaseName
+    this.tableName = parameters.tableName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:timestream:${this.region}:${this.account}:database/${this.nameDatabase}/table/${this.nameTable}` as const
+    return `arn:${this.partition}:timestream:${this.region}:${this.account}:database/${this.databaseName}/table/${this.tableName}` as const
   }
 }
 export type { TableArn }
@@ -75,39 +75,39 @@ export function tableArn<Partition extends ArnPartition = 'aws'>(
   return new TableArn<Partition>(parameters)
 }
 
-export interface QueryScheduledArnParameters<
+export interface ScheduledQueryArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameQueryScheduled: string
+  readonly scheduledQueryName: string
 }
-class QueryScheduledArn<
+class ScheduledQueryArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'scheduled-query',
   `arn:${string}:timestream:${string}:${string}:scheduled-query/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'scheduled-query' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameQueryScheduled: string
-  constructor(parameters: QueryScheduledArnParameters<Partition>) {
+  readonly scheduledQueryName: string
+  constructor(parameters: ScheduledQueryArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameQueryScheduled = parameters.nameQueryScheduled
+    this.scheduledQueryName = parameters.scheduledQueryName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:timestream:${this.region}:${this.account}:scheduled-query/${this.nameQueryScheduled}` as const
+    return `arn:${this.partition}:timestream:${this.region}:${this.account}:scheduled-query/${this.scheduledQueryName}` as const
   }
 }
-export type { QueryScheduledArn }
-export function queryScheduledArn<Partition extends ArnPartition = 'aws'>(
-  parameters: QueryScheduledArnParameters<Partition>,
+export type { ScheduledQueryArn }
+export function scheduledQueryArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ScheduledQueryArnParameters<Partition>,
 ) {
-  return new QueryScheduledArn<Partition>(parameters)
+  return new ScheduledQueryArn<Partition>(parameters)
 }

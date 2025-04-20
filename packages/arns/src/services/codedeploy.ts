@@ -9,10 +9,10 @@ import {
 export interface ApplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameApplication: string
+  readonly applicationName: string
 }
 class ApplicationArn<
   Partition extends ArnPartition = 'aws',
@@ -21,19 +21,19 @@ class ApplicationArn<
   `arn:${string}:codedeploy:${string}:${string}:application:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'application' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameApplication: string
+  readonly applicationName: string
   constructor(parameters: ApplicationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameApplication = parameters.nameApplication
+    this.applicationName = parameters.applicationName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:codedeploy:${this.region}:${this.account}:application:${this.nameApplication}` as const
+    return `arn:${this.partition}:codedeploy:${this.region}:${this.account}:application:${this.applicationName}` as const
   }
 }
 export type { ApplicationArn }
@@ -43,107 +43,107 @@ export function applicationArn<Partition extends ArnPartition = 'aws'>(
   return new ApplicationArn<Partition>(parameters)
 }
 
-export interface ConfigDeploymentArnParameters<
+export interface DeploymentConfigArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameConfigurationDeployment: string
+  readonly deploymentConfigurationName: string
 }
-class ConfigDeploymentArn<
+class DeploymentConfigArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'deploymentconfig',
   `arn:${string}:codedeploy:${string}:${string}:deploymentconfig:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'deploymentconfig' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameConfigurationDeployment: string
-  constructor(parameters: ConfigDeploymentArnParameters<Partition>) {
+  readonly deploymentConfigurationName: string
+  constructor(parameters: DeploymentConfigArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameConfigurationDeployment = parameters.nameConfigurationDeployment
+    this.deploymentConfigurationName = parameters.deploymentConfigurationName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:codedeploy:${this.region}:${this.account}:deploymentconfig:${this.nameConfigurationDeployment}` as const
+    return `arn:${this.partition}:codedeploy:${this.region}:${this.account}:deploymentconfig:${this.deploymentConfigurationName}` as const
   }
 }
-export type { ConfigDeploymentArn }
-export function configDeploymentArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ConfigDeploymentArnParameters<Partition>,
+export type { DeploymentConfigArn }
+export function deploymentConfigArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeploymentConfigArnParameters<Partition>,
 ) {
-  return new ConfigDeploymentArn<Partition>(parameters)
+  return new DeploymentConfigArn<Partition>(parameters)
 }
 
-export interface GroupDeploymentArnParameters<
+export interface DeploymentGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameApplication: string
-  readonly nameGroupDeployment: string
+  readonly applicationName: string
+  readonly deploymentGroupName: string
 }
-class GroupDeploymentArn<
+class DeploymentGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'deploymentgroup',
   `arn:${string}:codedeploy:${string}:${string}:deploymentgroup:${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'deploymentgroup' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameApplication: string
-  readonly nameGroupDeployment: string
-  constructor(parameters: GroupDeploymentArnParameters<Partition>) {
+  readonly applicationName: string
+  readonly deploymentGroupName: string
+  constructor(parameters: DeploymentGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameApplication = parameters.nameApplication
-    this.nameGroupDeployment = parameters.nameGroupDeployment
+    this.applicationName = parameters.applicationName
+    this.deploymentGroupName = parameters.deploymentGroupName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:codedeploy:${this.region}:${this.account}:deploymentgroup:${this.nameApplication}/${this.nameGroupDeployment}` as const
+    return `arn:${this.partition}:codedeploy:${this.region}:${this.account}:deploymentgroup:${this.applicationName}/${this.deploymentGroupName}` as const
   }
 }
-export type { GroupDeploymentArn }
-export function groupDeploymentArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupDeploymentArnParameters<Partition>,
+export type { DeploymentGroupArn }
+export function deploymentGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeploymentGroupArnParameters<Partition>,
 ) {
-  return new GroupDeploymentArn<Partition>(parameters)
+  return new DeploymentGroupArn<Partition>(parameters)
 }
 
 export interface InstanceArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameInstance: string
+  readonly instanceName: string
 }
 class InstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'instance',
   `arn:${string}:codedeploy:${string}:${string}:instance:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'instance' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameInstance: string
+  readonly instanceName: string
   constructor(parameters: InstanceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameInstance = parameters.nameInstance
+    this.instanceName = parameters.instanceName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:codedeploy:${this.region}:${this.account}:instance:${this.nameInstance}` as const
+    return `arn:${this.partition}:codedeploy:${this.region}:${this.account}:instance:${this.instanceName}` as const
   }
 }
 export type { InstanceArn }

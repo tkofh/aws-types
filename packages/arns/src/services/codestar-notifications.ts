@@ -6,39 +6,39 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface RuleNotificationArnParameters<
+export interface NotificationRuleArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idRuleNotification: string
+  readonly notificationRuleId: string
 }
-class RuleNotificationArn<
+class NotificationRuleArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'notificationrule',
   `arn:${string}:codestar-notifications:${string}:${string}:notificationrule/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'notificationrule' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idRuleNotification: string
-  constructor(parameters: RuleNotificationArnParameters<Partition>) {
+  readonly notificationRuleId: string
+  constructor(parameters: NotificationRuleArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idRuleNotification = parameters.idRuleNotification
+    this.notificationRuleId = parameters.notificationRuleId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:codestar-notifications:${this.region}:${this.account}:notificationrule/${this.idRuleNotification}` as const
+    return `arn:${this.partition}:codestar-notifications:${this.region}:${this.account}:notificationrule/${this.notificationRuleId}` as const
   }
 }
-export type { RuleNotificationArn }
-export function ruleNotificationArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RuleNotificationArnParameters<Partition>,
+export type { NotificationRuleArn }
+export function notificationRuleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NotificationRuleArnParameters<Partition>,
 ) {
-  return new RuleNotificationArn<Partition>(parameters)
+  return new NotificationRuleArn<Partition>(parameters)
 }

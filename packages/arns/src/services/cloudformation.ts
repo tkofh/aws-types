@@ -6,49 +6,49 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface SetChangeArnParameters<
+export interface ChangeSetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSetChange: string
+  readonly changeSetName: string
   readonly id: string
 }
-class SetChangeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class ChangeSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'changeset',
   `arn:${string}:cloudformation:${string}:${string}:changeSet/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'changeset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSetChange: string
+  readonly changeSetName: string
   readonly id: string
-  constructor(parameters: SetChangeArnParameters<Partition>) {
+  constructor(parameters: ChangeSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameSetChange = parameters.nameSetChange
+    this.changeSetName = parameters.changeSetName
     this.id = parameters.id
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudformation:${this.region}:${this.account}:changeSet/${this.nameSetChange}/${this.id}` as const
+    return `arn:${this.partition}:cloudformation:${this.region}:${this.account}:changeSet/${this.changeSetName}/${this.id}` as const
   }
 }
-export type { SetChangeArn }
-export function setChangeArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetChangeArnParameters<Partition>,
+export type { ChangeSetArn }
+export function changeSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ChangeSetArnParameters<Partition>,
 ) {
-  return new SetChangeArn<Partition>(parameters)
+  return new ChangeSetArn<Partition>(parameters)
 }
 
 export interface StackArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameStack: string
+  readonly stackName: string
   readonly id: string
 }
 class StackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
@@ -56,21 +56,21 @@ class StackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:cloudformation:${string}:${string}:stack/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'stack' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameStack: string
+  readonly stackName: string
   readonly id: string
   constructor(parameters: StackArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameStack = parameters.nameStack
+    this.stackName = parameters.stackName
     this.id = parameters.id
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudformation:${this.region}:${this.account}:stack/${this.nameStack}/${this.id}` as const
+    return `arn:${this.partition}:cloudformation:${this.region}:${this.account}:stack/${this.stackName}/${this.id}` as const
   }
 }
 export type { StackArn }
@@ -80,82 +80,82 @@ export function stackArn<Partition extends ArnPartition = 'aws'>(
   return new StackArn<Partition>(parameters)
 }
 
-export interface SetStackArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface StackSetArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSetStack: string
+  readonly stackSetName: string
   readonly id: string
 }
-class SetStackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class StackSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'stackset',
   `arn:${string}:cloudformation:${string}:${string}:stackset/${string}:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'stackset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSetStack: string
+  readonly stackSetName: string
   readonly id: string
-  constructor(parameters: SetStackArnParameters<Partition>) {
+  constructor(parameters: StackSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameSetStack = parameters.nameSetStack
+    this.stackSetName = parameters.stackSetName
     this.id = parameters.id
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudformation:${this.region}:${this.account}:stackset/${this.nameSetStack}:${this.id}` as const
+    return `arn:${this.partition}:cloudformation:${this.region}:${this.account}:stackset/${this.stackSetName}:${this.id}` as const
   }
 }
-export type { SetStackArn }
-export function setStackArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetStackArnParameters<Partition>,
+export type { StackSetArn }
+export function stackSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StackSetArnParameters<Partition>,
 ) {
-  return new SetStackArn<Partition>(parameters)
+  return new StackSetArn<Partition>(parameters)
 }
 
-export interface TargetSetStackArnParameters<
+export interface StackSetTargetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly targetSetStack: string
+  readonly stackSetTarget: string
 }
-class TargetSetStackArn<
+class StackSetTargetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'stackset-target',
   `arn:${string}:cloudformation:${string}:${string}:stackset-target/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'stackset-target' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly targetSetStack: string
-  constructor(parameters: TargetSetStackArnParameters<Partition>) {
+  readonly stackSetTarget: string
+  constructor(parameters: StackSetTargetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.targetSetStack = parameters.targetSetStack
+    this.stackSetTarget = parameters.stackSetTarget
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudformation:${this.region}:${this.account}:stackset-target/${this.targetSetStack}` as const
+    return `arn:${this.partition}:cloudformation:${this.region}:${this.account}:stackset-target/${this.stackSetTarget}` as const
   }
 }
-export type { TargetSetStackArn }
-export function targetSetStackArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TargetSetStackArnParameters<Partition>,
+export type { StackSetTargetArn }
+export function stackSetTargetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StackSetTargetArnParameters<Partition>,
 ) {
-  return new TargetSetStackArn<Partition>(parameters)
+  return new StackSetTargetArn<Partition>(parameters)
 }
 
 export interface TypeArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly type: string
 }
@@ -164,13 +164,13 @@ class TypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:cloudformation:${string}:${string}:type/resource/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'type' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly type: string
   constructor(parameters: TypeArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.type = parameters.type
@@ -186,28 +186,28 @@ export function typeArn<Partition extends ArnPartition = 'aws'>(
   return new TypeArn<Partition>(parameters)
 }
 
-export interface TemplateGeneratedArnParameters<
+export interface GeneratedTemplateArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class TemplateGeneratedArn<
+class GeneratedTemplateArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'generatedtemplate',
   `arn:${string}:cloudformation:${string}:${string}:generatedTemplate/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'generatedtemplate' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: TemplateGeneratedArnParameters<Partition>) {
+  constructor(parameters: GeneratedTemplateArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -216,35 +216,35 @@ class TemplateGeneratedArn<
     return `arn:${this.partition}:cloudformation:${this.region}:${this.account}:generatedTemplate/${this.id}` as const
   }
 }
-export type { TemplateGeneratedArn }
-export function templateGeneratedArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TemplateGeneratedArnParameters<Partition>,
+export type { GeneratedTemplateArn }
+export function generatedTemplateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GeneratedTemplateArnParameters<Partition>,
 ) {
-  return new TemplateGeneratedArn<Partition>(parameters)
+  return new GeneratedTemplateArn<Partition>(parameters)
 }
 
-export interface ScanResourceArnParameters<
+export interface ResourceScanArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class ScanResourceArn<
+class ResourceScanArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'resourcescan',
   `arn:${string}:cloudformation:${string}:${string}:resourceScan/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'resourcescan' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: ScanResourceArnParameters<Partition>) {
+  constructor(parameters: ResourceScanArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -253,9 +253,9 @@ class ScanResourceArn<
     return `arn:${this.partition}:cloudformation:${this.region}:${this.account}:resourceScan/${this.id}` as const
   }
 }
-export type { ScanResourceArn }
-export function scanResourceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ScanResourceArnParameters<Partition>,
+export type { ResourceScanArn }
+export function resourceScanArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResourceScanArnParameters<Partition>,
 ) {
-  return new ScanResourceArn<Partition>(parameters)
+  return new ResourceScanArn<Partition>(parameters)
 }

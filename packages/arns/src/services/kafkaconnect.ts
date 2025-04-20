@@ -9,32 +9,32 @@ import {
 export interface ConnectorArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameConnector: string
-  readonly idUu: string
+  readonly connectorName: string
+  readonly uuId: string
 }
 class ConnectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'connector',
   `arn:${string}:kafkaconnect:${string}:${string}:connector/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'connector' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameConnector: string
-  readonly idUu: string
+  readonly connectorName: string
+  readonly uuId: string
   constructor(parameters: ConnectorArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameConnector = parameters.nameConnector
-    this.idUu = parameters.idUu
+    this.connectorName = parameters.connectorName
+    this.uuId = parameters.uuId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:kafkaconnect:${this.region}:${this.account}:connector/${this.nameConnector}/${this.idUu}` as const
+    return `arn:${this.partition}:kafkaconnect:${this.region}:${this.account}:connector/${this.connectorName}/${this.uuId}` as const
   }
 }
 export type { ConnectorArn }
@@ -44,82 +44,82 @@ export function connectorArn<Partition extends ArnPartition = 'aws'>(
   return new ConnectorArn<Partition>(parameters)
 }
 
-export interface PluginCustomArnParameters<
+export interface CustomPluginArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly namePluginCustom: string
-  readonly idUu: string
+  readonly customPluginName: string
+  readonly uuId: string
 }
-class PluginCustomArn<
+class CustomPluginArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'custom plugin',
   `arn:${string}:kafkaconnect:${string}:${string}:custom-plugin/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'custom plugin' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly namePluginCustom: string
-  readonly idUu: string
-  constructor(parameters: PluginCustomArnParameters<Partition>) {
+  readonly customPluginName: string
+  readonly uuId: string
+  constructor(parameters: CustomPluginArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.namePluginCustom = parameters.namePluginCustom
-    this.idUu = parameters.idUu
+    this.customPluginName = parameters.customPluginName
+    this.uuId = parameters.uuId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:kafkaconnect:${this.region}:${this.account}:custom-plugin/${this.namePluginCustom}/${this.idUu}` as const
+    return `arn:${this.partition}:kafkaconnect:${this.region}:${this.account}:custom-plugin/${this.customPluginName}/${this.uuId}` as const
   }
 }
-export type { PluginCustomArn }
-export function pluginCustomArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PluginCustomArnParameters<Partition>,
+export type { CustomPluginArn }
+export function customPluginArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CustomPluginArnParameters<Partition>,
 ) {
-  return new PluginCustomArn<Partition>(parameters)
+  return new CustomPluginArn<Partition>(parameters)
 }
 
-export interface ConfigurationWorkerArnParameters<
+export interface WorkerConfigurationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameConfigurationWorker: string
-  readonly idUu: string
+  readonly workerConfigurationName: string
+  readonly uuId: string
 }
-class ConfigurationWorkerArn<
+class WorkerConfigurationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'worker configuration',
   `arn:${string}:kafkaconnect:${string}:${string}:worker-configuration/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'worker configuration' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameConfigurationWorker: string
-  readonly idUu: string
-  constructor(parameters: ConfigurationWorkerArnParameters<Partition>) {
+  readonly workerConfigurationName: string
+  readonly uuId: string
+  constructor(parameters: WorkerConfigurationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameConfigurationWorker = parameters.nameConfigurationWorker
-    this.idUu = parameters.idUu
+    this.workerConfigurationName = parameters.workerConfigurationName
+    this.uuId = parameters.uuId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:kafkaconnect:${this.region}:${this.account}:worker-configuration/${this.nameConfigurationWorker}/${this.idUu}` as const
+    return `arn:${this.partition}:kafkaconnect:${this.region}:${this.account}:worker-configuration/${this.workerConfigurationName}/${this.uuId}` as const
   }
 }
-export type { ConfigurationWorkerArn }
-export function configurationWorkerArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ConfigurationWorkerArnParameters<Partition>,
+export type { WorkerConfigurationArn }
+export function workerConfigurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkerConfigurationArnParameters<Partition>,
 ) {
-  return new ConfigurationWorkerArn<Partition>(parameters)
+  return new WorkerConfigurationArn<Partition>(parameters)
 }

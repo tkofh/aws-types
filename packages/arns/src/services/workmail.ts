@@ -9,10 +9,10 @@ import {
 export interface OrganizationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
 class OrganizationArn<
   Partition extends ArnPartition = 'aws',
@@ -21,19 +21,19 @@ class OrganizationArn<
   `arn:${string}:workmail:${string}:${string}:organization/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'organization' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
   constructor(parameters: OrganizationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:workmail:${this.region}:${this.account}:organization/${this.idResource}` as const
+    return `arn:${this.partition}:workmail:${this.region}:${this.account}:organization/${this.resourceId}` as const
   }
 }
 export type { OrganizationArn }

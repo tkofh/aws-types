@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface ThingArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameThing: string
+  readonly thingName: string
 }
 class ThingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'thing',
   `arn:${string}:iot:${string}:${string}:thing/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'thing' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameThing: string
+  readonly thingName: string
   constructor(parameters: ThingArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameThing = parameters.nameThing
+    this.thingName = parameters.thingName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iot:${this.region}:${this.account}:thing/${this.nameThing}` as const
+    return `arn:${this.partition}:iot:${this.region}:${this.account}:thing/${this.thingName}` as const
   }
 }
 export type { ThingArn }

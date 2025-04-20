@@ -6,150 +6,150 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface SetDataTrainingArnParameters<
+export interface TrainingDataSetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class SetDataTrainingArn<
+class TrainingDataSetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'trainingdataset',
   `arn:${string}:cleanrooms-ml:${string}:${string}:training-dataset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'trainingdataset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: SetDataTrainingArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: TrainingDataSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cleanrooms-ml:${this.region}:${this.account}:training-dataset/${this.idResource}` as const
+    return `arn:${this.partition}:cleanrooms-ml:${this.region}:${this.account}:training-dataset/${this.resourceId}` as const
   }
 }
-export type { SetDataTrainingArn }
-export function setDataTrainingArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetDataTrainingArnParameters<Partition>,
+export type { TrainingDataSetArn }
+export function trainingDataSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TrainingDataSetArnParameters<Partition>,
 ) {
-  return new SetDataTrainingArn<Partition>(parameters)
+  return new TrainingDataSetArn<Partition>(parameters)
 }
 
-export interface ModelAudienceArnParameters<
+export interface AudienceModelArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ModelAudienceArn<
+class AudienceModelArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'audiencemodel',
   `arn:${string}:cleanrooms-ml:${string}:${string}:audience-model/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'audiencemodel' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ModelAudienceArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: AudienceModelArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cleanrooms-ml:${this.region}:${this.account}:audience-model/${this.idResource}` as const
+    return `arn:${this.partition}:cleanrooms-ml:${this.region}:${this.account}:audience-model/${this.resourceId}` as const
   }
 }
-export type { ModelAudienceArn }
-export function modelAudienceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ModelAudienceArnParameters<Partition>,
+export type { AudienceModelArn }
+export function audienceModelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AudienceModelArnParameters<Partition>,
 ) {
-  return new ModelAudienceArn<Partition>(parameters)
+  return new AudienceModelArn<Partition>(parameters)
 }
 
-export interface ModelAudienceConfiguredArnParameters<
+export interface ConfiguredAudienceModelArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ModelAudienceConfiguredArn<
+class ConfiguredAudienceModelArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'configuredaudiencemodel',
   `arn:${string}:cleanrooms-ml:${string}:${string}:configured-audience-model/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'configuredaudiencemodel' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ModelAudienceConfiguredArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: ConfiguredAudienceModelArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cleanrooms-ml:${this.region}:${this.account}:configured-audience-model/${this.idResource}` as const
+    return `arn:${this.partition}:cleanrooms-ml:${this.region}:${this.account}:configured-audience-model/${this.resourceId}` as const
   }
 }
-export type { ModelAudienceConfiguredArn }
-export function modelAudienceConfiguredArn<
+export type { ConfiguredAudienceModelArn }
+export function configuredAudienceModelArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ModelAudienceConfiguredArnParameters<Partition>) {
-  return new ModelAudienceConfiguredArn<Partition>(parameters)
+>(parameters: ConfiguredAudienceModelArnParameters<Partition>) {
+  return new ConfiguredAudienceModelArn<Partition>(parameters)
 }
 
-export interface JobGenerationAudienceArnParameters<
+export interface AudienceGenerationJobArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class JobGenerationAudienceArn<
+class AudienceGenerationJobArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'audiencegenerationjob',
   `arn:${string}:cleanrooms-ml:${string}:${string}:audience-generation-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'audiencegenerationjob' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: JobGenerationAudienceArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: AudienceGenerationJobArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cleanrooms-ml:${this.region}:${this.account}:audience-generation-job/${this.idResource}` as const
+    return `arn:${this.partition}:cleanrooms-ml:${this.region}:${this.account}:audience-generation-job/${this.resourceId}` as const
   }
 }
-export type { JobGenerationAudienceArn }
-export function jobGenerationAudienceArn<
+export type { AudienceGenerationJobArn }
+export function audienceGenerationJobArn<
   Partition extends ArnPartition = 'aws',
->(parameters: JobGenerationAudienceArnParameters<Partition>) {
-  return new JobGenerationAudienceArn<Partition>(parameters)
+>(parameters: AudienceGenerationJobArnParameters<Partition>) {
+  return new AudienceGenerationJobArn<Partition>(parameters)
 }

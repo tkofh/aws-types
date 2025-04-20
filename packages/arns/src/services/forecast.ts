@@ -6,133 +6,133 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface SetDataArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface DataSetArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class SetDataArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class DataSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'dataset',
   `arn:${string}:forecast:${string}:${string}:dataset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'dataset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: SetDataArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: DataSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:forecast:${this.region}:${this.account}:dataset/${this.idResource}` as const
+    return `arn:${this.partition}:forecast:${this.region}:${this.account}:dataset/${this.resourceId}` as const
   }
 }
-export type { SetDataArn }
-export function setDataArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetDataArnParameters<Partition>,
+export type { DataSetArn }
+export function dataSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DataSetArnParameters<Partition>,
 ) {
-  return new SetDataArn<Partition>(parameters)
+  return new DataSetArn<Partition>(parameters)
 }
 
-export interface GroupSetDataArnParameters<
+export interface DataSetGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class GroupSetDataArn<
+class DataSetGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'datasetGroup',
   `arn:${string}:forecast:${string}:${string}:dataset-group/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'datasetGroup' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: GroupSetDataArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: DataSetGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:forecast:${this.region}:${this.account}:dataset-group/${this.idResource}` as const
+    return `arn:${this.partition}:forecast:${this.region}:${this.account}:dataset-group/${this.resourceId}` as const
   }
 }
-export type { GroupSetDataArn }
-export function groupSetDataArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupSetDataArnParameters<Partition>,
+export type { DataSetGroupArn }
+export function dataSetGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DataSetGroupArnParameters<Partition>,
 ) {
-  return new GroupSetDataArn<Partition>(parameters)
+  return new DataSetGroupArn<Partition>(parameters)
 }
 
-export interface JobImportSetDataArnParameters<
+export interface DataSetImportJobArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class JobImportSetDataArn<
+class DataSetImportJobArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'datasetImportJob',
   `arn:${string}:forecast:${string}:${string}:dataset-import-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'datasetImportJob' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: JobImportSetDataArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: DataSetImportJobArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:forecast:${this.region}:${this.account}:dataset-import-job/${this.idResource}` as const
+    return `arn:${this.partition}:forecast:${this.region}:${this.account}:dataset-import-job/${this.resourceId}` as const
   }
 }
-export type { JobImportSetDataArn }
-export function jobImportSetDataArn<Partition extends ArnPartition = 'aws'>(
-  parameters: JobImportSetDataArnParameters<Partition>,
+export type { DataSetImportJobArn }
+export function dataSetImportJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DataSetImportJobArnParameters<Partition>,
 ) {
-  return new JobImportSetDataArn<Partition>(parameters)
+  return new DataSetImportJobArn<Partition>(parameters)
 }
 
 export interface AlgorithmArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly idResource: string
+  readonly partition?: Partition | undefined
+  readonly resourceId: string
 }
 class AlgorithmArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'algorithm',
   `arn:${string}:forecast:::algorithm/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'algorithm' as const
-  readonly partition: string
-  readonly idResource: string
+  readonly partition: Partition
+  readonly resourceId: string
   constructor(parameters: AlgorithmArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
-    this.idResource = parameters.idResource
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:forecast:::algorithm/${this.idResource}` as const
+    return `arn:${this.partition}:forecast:::algorithm/${this.resourceId}` as const
   }
 }
 export type { AlgorithmArn }
@@ -145,29 +145,29 @@ export function algorithmArn<Partition extends ArnPartition = 'aws'>(
 export interface PredictorArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
 class PredictorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'predictor',
   `arn:${string}:forecast:${string}:${string}:predictor/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'predictor' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
   constructor(parameters: PredictorArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:forecast:${this.region}:${this.account}:predictor/${this.idResource}` as const
+    return `arn:${this.partition}:forecast:${this.region}:${this.account}:predictor/${this.resourceId}` as const
   }
 }
 export type { PredictorArn }
@@ -177,67 +177,67 @@ export function predictorArn<Partition extends ArnPartition = 'aws'>(
   return new PredictorArn<Partition>(parameters)
 }
 
-export interface JobExportBacktestPredictorArnParameters<
+export interface PredictorBacktestExportJobArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class JobExportBacktestPredictorArn<
+class PredictorBacktestExportJobArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'predictorBacktestExportJob',
   `arn:${string}:forecast:${string}:${string}:predictor-backtest-export-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'predictorBacktestExportJob' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: JobExportBacktestPredictorArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: PredictorBacktestExportJobArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:forecast:${this.region}:${this.account}:predictor-backtest-export-job/${this.idResource}` as const
+    return `arn:${this.partition}:forecast:${this.region}:${this.account}:predictor-backtest-export-job/${this.resourceId}` as const
   }
 }
-export type { JobExportBacktestPredictorArn }
-export function jobExportBacktestPredictorArn<
+export type { PredictorBacktestExportJobArn }
+export function predictorBacktestExportJobArn<
   Partition extends ArnPartition = 'aws',
->(parameters: JobExportBacktestPredictorArnParameters<Partition>) {
-  return new JobExportBacktestPredictorArn<Partition>(parameters)
+>(parameters: PredictorBacktestExportJobArnParameters<Partition>) {
+  return new PredictorBacktestExportJobArn<Partition>(parameters)
 }
 
 export interface ForecastArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
 class ForecastArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'forecast',
   `arn:${string}:forecast:${string}:${string}:forecast/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'forecast' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
   constructor(parameters: ForecastArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:forecast:${this.region}:${this.account}:forecast/${this.idResource}` as const
+    return `arn:${this.partition}:forecast:${this.region}:${this.account}:forecast/${this.resourceId}` as const
   }
 }
 export type { ForecastArn }
@@ -247,50 +247,50 @@ export function forecastArn<Partition extends ArnPartition = 'aws'>(
   return new ForecastArn<Partition>(parameters)
 }
 
-export interface ExportForecastArnParameters<
+export interface ForecastExportArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ExportForecastArn<
+class ForecastExportArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'forecastExport',
   `arn:${string}:forecast:${string}:${string}:forecast-export-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'forecastExport' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ExportForecastArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: ForecastExportArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:forecast:${this.region}:${this.account}:forecast-export-job/${this.idResource}` as const
+    return `arn:${this.partition}:forecast:${this.region}:${this.account}:forecast-export-job/${this.resourceId}` as const
   }
 }
-export type { ExportForecastArn }
-export function exportForecastArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ExportForecastArnParameters<Partition>,
+export type { ForecastExportArn }
+export function forecastExportArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ForecastExportArnParameters<Partition>,
 ) {
-  return new ExportForecastArn<Partition>(parameters)
+  return new ForecastExportArn<Partition>(parameters)
 }
 
 export interface ExplainabilityArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
 class ExplainabilityArn<
   Partition extends ArnPartition = 'aws',
@@ -299,19 +299,19 @@ class ExplainabilityArn<
   `arn:${string}:forecast:${string}:${string}:explainability/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'explainability' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
   constructor(parameters: ExplainabilityArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:forecast:${this.region}:${this.account}:explainability/${this.idResource}` as const
+    return `arn:${this.partition}:forecast:${this.region}:${this.account}:explainability/${this.resourceId}` as const
   }
 }
 export type { ExplainabilityArn }
@@ -321,67 +321,67 @@ export function explainabilityArn<Partition extends ArnPartition = 'aws'>(
   return new ExplainabilityArn<Partition>(parameters)
 }
 
-export interface ExportExplainabilityArnParameters<
+export interface ExplainabilityExportArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ExportExplainabilityArn<
+class ExplainabilityExportArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'explainabilityExport',
   `arn:${string}:forecast:${string}:${string}:explainability-export/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'explainabilityExport' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ExportExplainabilityArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: ExplainabilityExportArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:forecast:${this.region}:${this.account}:explainability-export/${this.idResource}` as const
+    return `arn:${this.partition}:forecast:${this.region}:${this.account}:explainability-export/${this.resourceId}` as const
   }
 }
-export type { ExportExplainabilityArn }
-export function exportExplainabilityArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ExportExplainabilityArnParameters<Partition>,
+export type { ExplainabilityExportArn }
+export function explainabilityExportArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ExplainabilityExportArnParameters<Partition>,
 ) {
-  return new ExportExplainabilityArn<Partition>(parameters)
+  return new ExplainabilityExportArn<Partition>(parameters)
 }
 
 export interface MonitorArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
 class MonitorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'monitor',
   `arn:${string}:forecast:${string}:${string}:monitor/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'monitor' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
   constructor(parameters: MonitorArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:forecast:${this.region}:${this.account}:monitor/${this.idResource}` as const
+    return `arn:${this.partition}:forecast:${this.region}:${this.account}:monitor/${this.resourceId}` as const
   }
 }
 export type { MonitorArn }
@@ -391,141 +391,141 @@ export function monitorArn<Partition extends ArnPartition = 'aws'>(
   return new MonitorArn<Partition>(parameters)
 }
 
-export interface AnalysisIfWhatArnParameters<
+export interface WhatIfAnalysisArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class AnalysisIfWhatArn<
+class WhatIfAnalysisArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'whatIfAnalysis',
   `arn:${string}:forecast:${string}:${string}:what-if-analysis/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'whatIfAnalysis' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: AnalysisIfWhatArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: WhatIfAnalysisArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:forecast:${this.region}:${this.account}:what-if-analysis/${this.idResource}` as const
+    return `arn:${this.partition}:forecast:${this.region}:${this.account}:what-if-analysis/${this.resourceId}` as const
   }
 }
-export type { AnalysisIfWhatArn }
-export function analysisIfWhatArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AnalysisIfWhatArnParameters<Partition>,
+export type { WhatIfAnalysisArn }
+export function whatIfAnalysisArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WhatIfAnalysisArnParameters<Partition>,
 ) {
-  return new AnalysisIfWhatArn<Partition>(parameters)
+  return new WhatIfAnalysisArn<Partition>(parameters)
 }
 
-export interface ForecastIfWhatArnParameters<
+export interface WhatIfForecastArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ForecastIfWhatArn<
+class WhatIfForecastArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'whatIfForecast',
   `arn:${string}:forecast:${string}:${string}:what-if-forecast/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'whatIfForecast' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ForecastIfWhatArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: WhatIfForecastArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:forecast:${this.region}:${this.account}:what-if-forecast/${this.idResource}` as const
+    return `arn:${this.partition}:forecast:${this.region}:${this.account}:what-if-forecast/${this.resourceId}` as const
   }
 }
-export type { ForecastIfWhatArn }
-export function forecastIfWhatArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ForecastIfWhatArnParameters<Partition>,
+export type { WhatIfForecastArn }
+export function whatIfForecastArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WhatIfForecastArnParameters<Partition>,
 ) {
-  return new ForecastIfWhatArn<Partition>(parameters)
+  return new WhatIfForecastArn<Partition>(parameters)
 }
 
-export interface ExportForecastIfWhatArnParameters<
+export interface WhatIfForecastExportArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ExportForecastIfWhatArn<
+class WhatIfForecastExportArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'whatIfForecastExport',
   `arn:${string}:forecast:${string}:${string}:what-if-forecast-export/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'whatIfForecastExport' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ExportForecastIfWhatArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: WhatIfForecastExportArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:forecast:${this.region}:${this.account}:what-if-forecast-export/${this.idResource}` as const
+    return `arn:${this.partition}:forecast:${this.region}:${this.account}:what-if-forecast-export/${this.resourceId}` as const
   }
 }
-export type { ExportForecastIfWhatArn }
-export function exportForecastIfWhatArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ExportForecastIfWhatArnParameters<Partition>,
+export type { WhatIfForecastExportArn }
+export function whatIfForecastExportArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WhatIfForecastExportArnParameters<Partition>,
 ) {
-  return new ExportForecastIfWhatArn<Partition>(parameters)
+  return new WhatIfForecastExportArn<Partition>(parameters)
 }
 
 export interface EndpointArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
 class EndpointArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'endpoint',
   `arn:${string}:forecast:${string}:${string}:forecast-endpoint/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'endpoint' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
   constructor(parameters: EndpointArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:forecast:${this.region}:${this.account}:forecast-endpoint/${this.idResource}` as const
+    return `arn:${this.partition}:forecast:${this.region}:${this.account}:forecast-endpoint/${this.resourceId}` as const
   }
 }
 export type { EndpointArn }

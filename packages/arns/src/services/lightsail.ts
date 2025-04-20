@@ -7,8 +7,8 @@ import {
 } from '../internal.js'
 
 export interface DomainArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
@@ -17,13 +17,13 @@ class DomainArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:lightsail:${string}:${string}:Domain/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Domain' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
   constructor(parameters: DomainArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -40,8 +40,8 @@ export function domainArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface InstanceArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
@@ -50,13 +50,13 @@ class InstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:lightsail:${string}:${string}:Instance/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Instance' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
   constructor(parameters: InstanceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -72,28 +72,28 @@ export function instanceArn<Partition extends ArnPartition = 'aws'>(
   return new InstanceArn<Partition>(parameters)
 }
 
-export interface SnapshotInstanceArnParameters<
+export interface InstanceSnapshotArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class SnapshotInstanceArn<
+class InstanceSnapshotArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'InstanceSnapshot',
   `arn:${string}:lightsail:${string}:${string}:InstanceSnapshot/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'InstanceSnapshot' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: SnapshotInstanceArnParameters<Partition>) {
+  constructor(parameters: InstanceSnapshotArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -102,31 +102,31 @@ class SnapshotInstanceArn<
     return `arn:${this.partition}:lightsail:${this.region}:${this.account}:InstanceSnapshot/${this.id}` as const
   }
 }
-export type { SnapshotInstanceArn }
-export function snapshotInstanceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SnapshotInstanceArnParameters<Partition>,
+export type { InstanceSnapshotArn }
+export function instanceSnapshotArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InstanceSnapshotArnParameters<Partition>,
 ) {
-  return new SnapshotInstanceArn<Partition>(parameters)
+  return new InstanceSnapshotArn<Partition>(parameters)
 }
 
-export interface PairKeyArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface KeyPairArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class PairKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class KeyPairArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'KeyPair',
   `arn:${string}:lightsail:${string}:${string}:KeyPair/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'KeyPair' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: PairKeyArnParameters<Partition>) {
+  constructor(parameters: KeyPairArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -135,31 +135,31 @@ class PairKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
     return `arn:${this.partition}:lightsail:${this.region}:${this.account}:KeyPair/${this.id}` as const
   }
 }
-export type { PairKeyArn }
-export function pairKeyArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PairKeyArnParameters<Partition>,
+export type { KeyPairArn }
+export function keyPairArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KeyPairArnParameters<Partition>,
 ) {
-  return new PairKeyArn<Partition>(parameters)
+  return new KeyPairArn<Partition>(parameters)
 }
 
-export interface IpStaticArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface StaticIpArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class IpStaticArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class StaticIpArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'StaticIp',
   `arn:${string}:lightsail:${string}:${string}:StaticIp/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'StaticIp' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: IpStaticArnParameters<Partition>) {
+  constructor(parameters: StaticIpArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -168,16 +168,16 @@ class IpStaticArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
     return `arn:${this.partition}:lightsail:${this.region}:${this.account}:StaticIp/${this.id}` as const
   }
 }
-export type { IpStaticArn }
-export function ipStaticArn<Partition extends ArnPartition = 'aws'>(
-  parameters: IpStaticArnParameters<Partition>,
+export type { StaticIpArn }
+export function staticIpArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StaticIpArnParameters<Partition>,
 ) {
-  return new IpStaticArn<Partition>(parameters)
+  return new StaticIpArn<Partition>(parameters)
 }
 
 export interface DiskArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
@@ -186,13 +186,13 @@ class DiskArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:lightsail:${string}:${string}:Disk/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Disk' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
   constructor(parameters: DiskArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -208,28 +208,28 @@ export function diskArn<Partition extends ArnPartition = 'aws'>(
   return new DiskArn<Partition>(parameters)
 }
 
-export interface SnapshotDiskArnParameters<
+export interface DiskSnapshotArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class SnapshotDiskArn<
+class DiskSnapshotArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'DiskSnapshot',
   `arn:${string}:lightsail:${string}:${string}:DiskSnapshot/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'DiskSnapshot' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: SnapshotDiskArnParameters<Partition>) {
+  constructor(parameters: DiskSnapshotArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -238,35 +238,35 @@ class SnapshotDiskArn<
     return `arn:${this.partition}:lightsail:${this.region}:${this.account}:DiskSnapshot/${this.id}` as const
   }
 }
-export type { SnapshotDiskArn }
-export function snapshotDiskArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SnapshotDiskArnParameters<Partition>,
+export type { DiskSnapshotArn }
+export function diskSnapshotArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DiskSnapshotArnParameters<Partition>,
 ) {
-  return new SnapshotDiskArn<Partition>(parameters)
+  return new DiskSnapshotArn<Partition>(parameters)
 }
 
-export interface BalancerLoadArnParameters<
+export interface LoadBalancerArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class BalancerLoadArn<
+class LoadBalancerArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'LoadBalancer',
   `arn:${string}:lightsail:${string}:${string}:LoadBalancer/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'LoadBalancer' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: BalancerLoadArnParameters<Partition>) {
+  constructor(parameters: LoadBalancerArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -275,35 +275,35 @@ class BalancerLoadArn<
     return `arn:${this.partition}:lightsail:${this.region}:${this.account}:LoadBalancer/${this.id}` as const
   }
 }
-export type { BalancerLoadArn }
-export function balancerLoadArn<Partition extends ArnPartition = 'aws'>(
-  parameters: BalancerLoadArnParameters<Partition>,
+export type { LoadBalancerArn }
+export function loadBalancerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LoadBalancerArnParameters<Partition>,
 ) {
-  return new BalancerLoadArn<Partition>(parameters)
+  return new LoadBalancerArn<Partition>(parameters)
 }
 
-export interface CertificateTlsBalancerLoadArnParameters<
+export interface LoadBalancerTlsCertificateArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class CertificateTlsBalancerLoadArn<
+class LoadBalancerTlsCertificateArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'LoadBalancerTlsCertificate',
   `arn:${string}:lightsail:${string}:${string}:LoadBalancerTlsCertificate/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'LoadBalancerTlsCertificate' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: CertificateTlsBalancerLoadArnParameters<Partition>) {
+  constructor(parameters: LoadBalancerTlsCertificateArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -312,35 +312,35 @@ class CertificateTlsBalancerLoadArn<
     return `arn:${this.partition}:lightsail:${this.region}:${this.account}:LoadBalancerTlsCertificate/${this.id}` as const
   }
 }
-export type { CertificateTlsBalancerLoadArn }
-export function certificateTlsBalancerLoadArn<
+export type { LoadBalancerTlsCertificateArn }
+export function loadBalancerTlsCertificateArn<
   Partition extends ArnPartition = 'aws',
->(parameters: CertificateTlsBalancerLoadArnParameters<Partition>) {
-  return new CertificateTlsBalancerLoadArn<Partition>(parameters)
+>(parameters: LoadBalancerTlsCertificateArnParameters<Partition>) {
+  return new LoadBalancerTlsCertificateArn<Partition>(parameters)
 }
 
-export interface RecordSnapshotExportArnParameters<
+export interface ExportSnapshotRecordArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class RecordSnapshotExportArn<
+class ExportSnapshotRecordArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ExportSnapshotRecord',
   `arn:${string}:lightsail:${string}:${string}:ExportSnapshotRecord/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ExportSnapshotRecord' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: RecordSnapshotExportArnParameters<Partition>) {
+  constructor(parameters: ExportSnapshotRecordArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -349,35 +349,35 @@ class RecordSnapshotExportArn<
     return `arn:${this.partition}:lightsail:${this.region}:${this.account}:ExportSnapshotRecord/${this.id}` as const
   }
 }
-export type { RecordSnapshotExportArn }
-export function recordSnapshotExportArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RecordSnapshotExportArnParameters<Partition>,
+export type { ExportSnapshotRecordArn }
+export function exportSnapshotRecordArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ExportSnapshotRecordArnParameters<Partition>,
 ) {
-  return new RecordSnapshotExportArn<Partition>(parameters)
+  return new ExportSnapshotRecordArn<Partition>(parameters)
 }
 
-export interface RecordStackFormationCloudArnParameters<
+export interface CloudFormationStackRecordArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class RecordStackFormationCloudArn<
+class CloudFormationStackRecordArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'CloudFormationStackRecord',
   `arn:${string}:lightsail:${string}:${string}:CloudFormationStackRecord/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'CloudFormationStackRecord' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: RecordStackFormationCloudArnParameters<Partition>) {
+  constructor(parameters: CloudFormationStackRecordArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -386,35 +386,35 @@ class RecordStackFormationCloudArn<
     return `arn:${this.partition}:lightsail:${this.region}:${this.account}:CloudFormationStackRecord/${this.id}` as const
   }
 }
-export type { RecordStackFormationCloudArn }
-export function recordStackFormationCloudArn<
+export type { CloudFormationStackRecordArn }
+export function cloudFormationStackRecordArn<
   Partition extends ArnPartition = 'aws',
->(parameters: RecordStackFormationCloudArnParameters<Partition>) {
-  return new RecordStackFormationCloudArn<Partition>(parameters)
+>(parameters: CloudFormationStackRecordArnParameters<Partition>) {
+  return new CloudFormationStackRecordArn<Partition>(parameters)
 }
 
-export interface DatabaseRelationalArnParameters<
+export interface RelationalDatabaseArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class DatabaseRelationalArn<
+class RelationalDatabaseArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'RelationalDatabase',
   `arn:${string}:lightsail:${string}:${string}:RelationalDatabase/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'RelationalDatabase' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: DatabaseRelationalArnParameters<Partition>) {
+  constructor(parameters: RelationalDatabaseArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -423,35 +423,35 @@ class DatabaseRelationalArn<
     return `arn:${this.partition}:lightsail:${this.region}:${this.account}:RelationalDatabase/${this.id}` as const
   }
 }
-export type { DatabaseRelationalArn }
-export function databaseRelationalArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DatabaseRelationalArnParameters<Partition>,
+export type { RelationalDatabaseArn }
+export function relationalDatabaseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RelationalDatabaseArnParameters<Partition>,
 ) {
-  return new DatabaseRelationalArn<Partition>(parameters)
+  return new RelationalDatabaseArn<Partition>(parameters)
 }
 
-export interface SnapshotDatabaseRelationalArnParameters<
+export interface RelationalDatabaseSnapshotArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class SnapshotDatabaseRelationalArn<
+class RelationalDatabaseSnapshotArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'RelationalDatabaseSnapshot',
   `arn:${string}:lightsail:${string}:${string}:RelationalDatabaseSnapshot/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'RelationalDatabaseSnapshot' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: SnapshotDatabaseRelationalArnParameters<Partition>) {
+  constructor(parameters: RelationalDatabaseSnapshotArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -460,16 +460,16 @@ class SnapshotDatabaseRelationalArn<
     return `arn:${this.partition}:lightsail:${this.region}:${this.account}:RelationalDatabaseSnapshot/${this.id}` as const
   }
 }
-export type { SnapshotDatabaseRelationalArn }
-export function snapshotDatabaseRelationalArn<
+export type { RelationalDatabaseSnapshotArn }
+export function relationalDatabaseSnapshotArn<
   Partition extends ArnPartition = 'aws',
->(parameters: SnapshotDatabaseRelationalArnParameters<Partition>) {
-  return new SnapshotDatabaseRelationalArn<Partition>(parameters)
+>(parameters: RelationalDatabaseSnapshotArnParameters<Partition>) {
+  return new RelationalDatabaseSnapshotArn<Partition>(parameters)
 }
 
 export interface AlarmArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
@@ -478,13 +478,13 @@ class AlarmArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:lightsail:${string}:${string}:Alarm/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Alarm' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
   constructor(parameters: AlarmArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -503,8 +503,8 @@ export function alarmArn<Partition extends ArnPartition = 'aws'>(
 export interface CertificateArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
@@ -515,13 +515,13 @@ class CertificateArn<
   `arn:${string}:lightsail:${string}:${string}:Certificate/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Certificate' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
   constructor(parameters: CertificateArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -537,28 +537,28 @@ export function certificateArn<Partition extends ArnPartition = 'aws'>(
   return new CertificateArn<Partition>(parameters)
 }
 
-export interface MethodContactArnParameters<
+export interface ContactMethodArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class MethodContactArn<
+class ContactMethodArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ContactMethod',
   `arn:${string}:lightsail:${string}:${string}:ContactMethod/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ContactMethod' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: MethodContactArnParameters<Partition>) {
+  constructor(parameters: ContactMethodArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -567,35 +567,35 @@ class MethodContactArn<
     return `arn:${this.partition}:lightsail:${this.region}:${this.account}:ContactMethod/${this.id}` as const
   }
 }
-export type { MethodContactArn }
-export function methodContactArn<Partition extends ArnPartition = 'aws'>(
-  parameters: MethodContactArnParameters<Partition>,
+export type { ContactMethodArn }
+export function contactMethodArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ContactMethodArnParameters<Partition>,
 ) {
-  return new MethodContactArn<Partition>(parameters)
+  return new ContactMethodArn<Partition>(parameters)
 }
 
-export interface ServiceContainerArnParameters<
+export interface ContainerServiceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class ServiceContainerArn<
+class ContainerServiceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ContainerService',
   `arn:${string}:lightsail:${string}:${string}:ContainerService/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ContainerService' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: ServiceContainerArnParameters<Partition>) {
+  constructor(parameters: ContainerServiceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -604,18 +604,18 @@ class ServiceContainerArn<
     return `arn:${this.partition}:lightsail:${this.region}:${this.account}:ContainerService/${this.id}` as const
   }
 }
-export type { ServiceContainerArn }
-export function serviceContainerArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ServiceContainerArnParameters<Partition>,
+export type { ContainerServiceArn }
+export function containerServiceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ContainerServiceArnParameters<Partition>,
 ) {
-  return new ServiceContainerArn<Partition>(parameters)
+  return new ContainerServiceArn<Partition>(parameters)
 }
 
 export interface DistributionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
@@ -626,13 +626,13 @@ class DistributionArn<
   `arn:${string}:lightsail:${string}:${string}:Distribution/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Distribution' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
   constructor(parameters: DistributionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -649,8 +649,8 @@ export function distributionArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface BucketArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
@@ -659,13 +659,13 @@ class BucketArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:lightsail:${string}:${string}:Bucket/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Bucket' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
   constructor(parameters: BucketArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id

@@ -6,28 +6,28 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface SetMatchByteArnParameters<
+export interface ByteMatchSetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class SetMatchByteArn<
+class ByteMatchSetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'bytematchset',
   `arn:${string}:waf-regional:${string}:${string}:bytematchset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'bytematchset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: SetMatchByteArnParameters<Partition>) {
+  constructor(parameters: ByteMatchSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -36,31 +36,31 @@ class SetMatchByteArn<
     return `arn:${this.partition}:waf-regional:${this.region}:${this.account}:bytematchset/${this.id}` as const
   }
 }
-export type { SetMatchByteArn }
-export function setMatchByteArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetMatchByteArnParameters<Partition>,
+export type { ByteMatchSetArn }
+export function byteMatchSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ByteMatchSetArnParameters<Partition>,
 ) {
-  return new SetMatchByteArn<Partition>(parameters)
+  return new ByteMatchSetArn<Partition>(parameters)
 }
 
-export interface SetIpArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface IpSetArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class SetIpArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class IpSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'ipset',
   `arn:${string}:waf-regional:${string}:${string}:ipset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ipset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: SetIpArnParameters<Partition>) {
+  constructor(parameters: IpSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -69,75 +69,75 @@ class SetIpArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
     return `arn:${this.partition}:waf-regional:${this.region}:${this.account}:ipset/${this.id}` as const
   }
 }
-export type { SetIpArn }
-export function setIpArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetIpArnParameters<Partition>,
+export type { IpSetArn }
+export function ipSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IpSetArnParameters<Partition>,
 ) {
-  return new SetIpArn<Partition>(parameters)
+  return new IpSetArn<Partition>(parameters)
 }
 
-export interface AppBalancerLoadArnParameters<
+export interface LoadBalancerAppArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameBalancerLoad: string
-  readonly idBalancerLoad: string
+  readonly loadBalancerName: string
+  readonly loadBalancerId: string
 }
-class AppBalancerLoadArn<
+class LoadBalancerAppArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'loadbalancer/app/',
   `arn:${string}:elasticloadbalancing:${string}:${string}:loadbalancer/app/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'loadbalancer/app/' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameBalancerLoad: string
-  readonly idBalancerLoad: string
-  constructor(parameters: AppBalancerLoadArnParameters<Partition>) {
+  readonly loadBalancerName: string
+  readonly loadBalancerId: string
+  constructor(parameters: LoadBalancerAppArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameBalancerLoad = parameters.nameBalancerLoad
-    this.idBalancerLoad = parameters.idBalancerLoad
+    this.loadBalancerName = parameters.loadBalancerName
+    this.loadBalancerId = parameters.loadBalancerId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:loadbalancer/app/${this.nameBalancerLoad}/${this.idBalancerLoad}` as const
+    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:loadbalancer/app/${this.loadBalancerName}/${this.loadBalancerId}` as const
   }
 }
-export type { AppBalancerLoadArn }
-export function appBalancerLoadArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AppBalancerLoadArnParameters<Partition>,
+export type { LoadBalancerAppArn }
+export function loadBalancerAppArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LoadBalancerAppArnParameters<Partition>,
 ) {
-  return new AppBalancerLoadArn<Partition>(parameters)
+  return new LoadBalancerAppArn<Partition>(parameters)
 }
 
-export interface RuleBasedRateArnParameters<
+export interface RateBasedRuleArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class RuleBasedRateArn<
+class RateBasedRuleArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ratebasedrule',
   `arn:${string}:waf-regional:${string}:${string}:ratebasedrule/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ratebasedrule' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: RuleBasedRateArnParameters<Partition>) {
+  constructor(parameters: RateBasedRuleArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -146,16 +146,16 @@ class RuleBasedRateArn<
     return `arn:${this.partition}:waf-regional:${this.region}:${this.account}:ratebasedrule/${this.id}` as const
   }
 }
-export type { RuleBasedRateArn }
-export function ruleBasedRateArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RuleBasedRateArnParameters<Partition>,
+export type { RateBasedRuleArn }
+export function rateBasedRuleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RateBasedRuleArnParameters<Partition>,
 ) {
-  return new RuleBasedRateArn<Partition>(parameters)
+  return new RateBasedRuleArn<Partition>(parameters)
 }
 
 export interface RuleArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
@@ -164,13 +164,13 @@ class RuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:waf-regional:${string}:${string}:rule/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'rule' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
   constructor(parameters: RuleArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -186,28 +186,28 @@ export function ruleArn<Partition extends ArnPartition = 'aws'>(
   return new RuleArn<Partition>(parameters)
 }
 
-export interface SetConstraintSizeArnParameters<
+export interface SizeConstraintSetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class SetConstraintSizeArn<
+class SizeConstraintSetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'sizeconstraintset',
   `arn:${string}:waf-regional:${string}:${string}:sizeconstraintset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'sizeconstraintset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: SetConstraintSizeArnParameters<Partition>) {
+  constructor(parameters: SizeConstraintSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -216,35 +216,35 @@ class SetConstraintSizeArn<
     return `arn:${this.partition}:waf-regional:${this.region}:${this.account}:sizeconstraintset/${this.id}` as const
   }
 }
-export type { SetConstraintSizeArn }
-export function setConstraintSizeArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetConstraintSizeArnParameters<Partition>,
+export type { SizeConstraintSetArn }
+export function sizeConstraintSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SizeConstraintSetArnParameters<Partition>,
 ) {
-  return new SetConstraintSizeArn<Partition>(parameters)
+  return new SizeConstraintSetArn<Partition>(parameters)
 }
 
-export interface SetMatchInjectionSqlArnParameters<
+export interface SqlInjectionMatchSetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class SetMatchInjectionSqlArn<
+class SqlInjectionMatchSetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'sqlinjectionmatchset',
   `arn:${string}:waf-regional:${string}:${string}:sqlinjectionset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'sqlinjectionmatchset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: SetMatchInjectionSqlArnParameters<Partition>) {
+  constructor(parameters: SqlInjectionMatchSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -253,16 +253,16 @@ class SetMatchInjectionSqlArn<
     return `arn:${this.partition}:waf-regional:${this.region}:${this.account}:sqlinjectionset/${this.id}` as const
   }
 }
-export type { SetMatchInjectionSqlArn }
-export function setMatchInjectionSqlArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetMatchInjectionSqlArnParameters<Partition>,
+export type { SqlInjectionMatchSetArn }
+export function sqlInjectionMatchSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SqlInjectionMatchSetArnParameters<Partition>,
 ) {
-  return new SetMatchInjectionSqlArn<Partition>(parameters)
+  return new SqlInjectionMatchSetArn<Partition>(parameters)
 }
 
 export interface WebaclArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
@@ -271,13 +271,13 @@ class WebaclArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:waf-regional:${string}:${string}:webacl/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'webacl' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
   constructor(parameters: WebaclArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -293,28 +293,28 @@ export function webaclArn<Partition extends ArnPartition = 'aws'>(
   return new WebaclArn<Partition>(parameters)
 }
 
-export interface SetMatchXssArnParameters<
+export interface XssMatchSetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class SetMatchXssArn<
+class XssMatchSetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'xssmatchset',
   `arn:${string}:waf-regional:${string}:${string}:xssmatchset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'xssmatchset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: SetMatchXssArnParameters<Partition>) {
+  constructor(parameters: XssMatchSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -323,35 +323,35 @@ class SetMatchXssArn<
     return `arn:${this.partition}:waf-regional:${this.region}:${this.account}:xssmatchset/${this.id}` as const
   }
 }
-export type { SetMatchXssArn }
-export function setMatchXssArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetMatchXssArnParameters<Partition>,
+export type { XssMatchSetArn }
+export function xssMatchSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: XssMatchSetArnParameters<Partition>,
 ) {
-  return new SetMatchXssArn<Partition>(parameters)
+  return new XssMatchSetArn<Partition>(parameters)
 }
 
-export interface SetMatchRegexArnParameters<
+export interface RegexMatchSetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class SetMatchRegexArn<
+class RegexMatchSetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'regexmatchset',
   `arn:${string}:waf-regional:${string}:${string}:regexmatch/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'regexmatchset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: SetMatchRegexArnParameters<Partition>) {
+  constructor(parameters: RegexMatchSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -360,35 +360,35 @@ class SetMatchRegexArn<
     return `arn:${this.partition}:waf-regional:${this.region}:${this.account}:regexmatch/${this.id}` as const
   }
 }
-export type { SetMatchRegexArn }
-export function setMatchRegexArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetMatchRegexArnParameters<Partition>,
+export type { RegexMatchSetArn }
+export function regexMatchSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RegexMatchSetArnParameters<Partition>,
 ) {
-  return new SetMatchRegexArn<Partition>(parameters)
+  return new RegexMatchSetArn<Partition>(parameters)
 }
 
-export interface SetPatternRegexArnParameters<
+export interface RegexPatternSetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class SetPatternRegexArn<
+class RegexPatternSetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'regexpatternset',
   `arn:${string}:waf-regional:${string}:${string}:regexpatternset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'regexpatternset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: SetPatternRegexArnParameters<Partition>) {
+  constructor(parameters: RegexPatternSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -397,35 +397,35 @@ class SetPatternRegexArn<
     return `arn:${this.partition}:waf-regional:${this.region}:${this.account}:regexpatternset/${this.id}` as const
   }
 }
-export type { SetPatternRegexArn }
-export function setPatternRegexArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetPatternRegexArnParameters<Partition>,
+export type { RegexPatternSetArn }
+export function regexPatternSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RegexPatternSetArnParameters<Partition>,
 ) {
-  return new SetPatternRegexArn<Partition>(parameters)
+  return new RegexPatternSetArn<Partition>(parameters)
 }
 
-export interface SetMatchGeoArnParameters<
+export interface GeoMatchSetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class SetMatchGeoArn<
+class GeoMatchSetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'geomatchset',
   `arn:${string}:waf-regional:${string}:${string}:geomatchset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'geomatchset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: SetMatchGeoArnParameters<Partition>) {
+  constructor(parameters: GeoMatchSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -434,33 +434,33 @@ class SetMatchGeoArn<
     return `arn:${this.partition}:waf-regional:${this.region}:${this.account}:geomatchset/${this.id}` as const
   }
 }
-export type { SetMatchGeoArn }
-export function setMatchGeoArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetMatchGeoArnParameters<Partition>,
+export type { GeoMatchSetArn }
+export function geoMatchSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GeoMatchSetArnParameters<Partition>,
 ) {
-  return new SetMatchGeoArn<Partition>(parameters)
+  return new GeoMatchSetArn<Partition>(parameters)
 }
 
-export interface GroupRuleArnParameters<
+export interface RuleGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class GroupRuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class RuleGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'rulegroup',
   `arn:${string}:waf-regional:${string}:${string}:rulegroup/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'rulegroup' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: GroupRuleArnParameters<Partition>) {
+  constructor(parameters: RuleGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -469,9 +469,9 @@ class GroupRuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
     return `arn:${this.partition}:waf-regional:${this.region}:${this.account}:rulegroup/${this.id}` as const
   }
 }
-export type { GroupRuleArn }
-export function groupRuleArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupRuleArnParameters<Partition>,
+export type { RuleGroupArn }
+export function ruleGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RuleGroupArnParameters<Partition>,
 ) {
-  return new GroupRuleArn<Partition>(parameters)
+  return new RuleGroupArn<Partition>(parameters)
 }

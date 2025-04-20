@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface OutpostArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idOutpost: string
+  readonly outpostId: string
 }
 class OutpostArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'outpost',
   `arn:${string}:outposts:${string}:${string}:outpost/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'outpost' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idOutpost: string
+  readonly outpostId: string
   constructor(parameters: OutpostArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idOutpost = parameters.idOutpost
+    this.outpostId = parameters.outpostId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:outposts:${this.region}:${this.account}:outpost/${this.idOutpost}` as const
+    return `arn:${this.partition}:outposts:${this.region}:${this.account}:outpost/${this.outpostId}` as const
   }
 }
 export type { OutpostArn }
@@ -40,29 +40,29 @@ export function outpostArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface SiteArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSite: string
+  readonly siteId: string
 }
 class SiteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'site',
   `arn:${string}:outposts:${string}:${string}:site/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'site' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSite: string
+  readonly siteId: string
   constructor(parameters: SiteArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idSite = parameters.idSite
+    this.siteId = parameters.siteId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:outposts:${this.region}:${this.account}:site/${this.idSite}` as const
+    return `arn:${this.partition}:outposts:${this.region}:${this.account}:site/${this.siteId}` as const
   }
 }
 export type { SiteArn }

@@ -6,43 +6,43 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface MessageRawArnParameters<
+export interface RawMessageArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idOrganization: string
+  readonly organizationId: string
   readonly context: string
-  readonly idMessage: string
+  readonly messageId: string
 }
-class MessageRawArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class RawMessageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'RawMessage',
   `arn:${string}:workmailmessageflow:${string}:${string}:message/${string}/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'RawMessage' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idOrganization: string
+  readonly organizationId: string
   readonly context: string
-  readonly idMessage: string
-  constructor(parameters: MessageRawArnParameters<Partition>) {
+  readonly messageId: string
+  constructor(parameters: RawMessageArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idOrganization = parameters.idOrganization
+    this.organizationId = parameters.organizationId
     this.context = parameters.context
-    this.idMessage = parameters.idMessage
+    this.messageId = parameters.messageId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:workmailmessageflow:${this.region}:${this.account}:message/${this.idOrganization}/${this.context}/${this.idMessage}` as const
+    return `arn:${this.partition}:workmailmessageflow:${this.region}:${this.account}:message/${this.organizationId}/${this.context}/${this.messageId}` as const
   }
 }
-export type { MessageRawArn }
-export function messageRawArn<Partition extends ArnPartition = 'aws'>(
-  parameters: MessageRawArnParameters<Partition>,
+export type { RawMessageArn }
+export function rawMessageArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RawMessageArnParameters<Partition>,
 ) {
-  return new MessageRawArn<Partition>(parameters)
+  return new RawMessageArn<Partition>(parameters)
 }

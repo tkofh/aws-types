@@ -6,174 +6,174 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ResourceJobCodegenArnParameters<
+export interface CodegenJobResourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApp: string
-  readonly nameEnvironment: string
+  readonly appId: string
+  readonly environmentName: string
   readonly id: string
 }
-class ResourceJobCodegenArn<
+class CodegenJobResourceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'CodegenJobResource',
   `arn:${string}:amplifyuibuilder:${string}:${string}:app/${string}/environment/${string}/codegen-jobs/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'CodegenJobResource' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApp: string
-  readonly nameEnvironment: string
+  readonly appId: string
+  readonly environmentName: string
   readonly id: string
-  constructor(parameters: ResourceJobCodegenArnParameters<Partition>) {
+  constructor(parameters: CodegenJobResourceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApp = parameters.idApp
-    this.nameEnvironment = parameters.nameEnvironment
+    this.appId = parameters.appId
+    this.environmentName = parameters.environmentName
     this.id = parameters.id
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:amplifyuibuilder:${this.region}:${this.account}:app/${this.idApp}/environment/${this.nameEnvironment}/codegen-jobs/${this.id}` as const
+    return `arn:${this.partition}:amplifyuibuilder:${this.region}:${this.account}:app/${this.appId}/environment/${this.environmentName}/codegen-jobs/${this.id}` as const
   }
 }
-export type { ResourceJobCodegenArn }
-export function resourceJobCodegenArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ResourceJobCodegenArnParameters<Partition>,
+export type { CodegenJobResourceArn }
+export function codegenJobResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CodegenJobResourceArnParameters<Partition>,
 ) {
-  return new ResourceJobCodegenArn<Partition>(parameters)
+  return new CodegenJobResourceArn<Partition>(parameters)
 }
 
-export interface ResourceComponentArnParameters<
+export interface ComponentResourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApp: string
-  readonly nameEnvironment: string
+  readonly appId: string
+  readonly environmentName: string
   readonly id: string
 }
-class ResourceComponentArn<
+class ComponentResourceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ComponentResource',
   `arn:${string}:amplifyuibuilder:${string}:${string}:app/${string}/environment/${string}/components/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ComponentResource' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApp: string
-  readonly nameEnvironment: string
+  readonly appId: string
+  readonly environmentName: string
   readonly id: string
-  constructor(parameters: ResourceComponentArnParameters<Partition>) {
+  constructor(parameters: ComponentResourceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApp = parameters.idApp
-    this.nameEnvironment = parameters.nameEnvironment
+    this.appId = parameters.appId
+    this.environmentName = parameters.environmentName
     this.id = parameters.id
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:amplifyuibuilder:${this.region}:${this.account}:app/${this.idApp}/environment/${this.nameEnvironment}/components/${this.id}` as const
+    return `arn:${this.partition}:amplifyuibuilder:${this.region}:${this.account}:app/${this.appId}/environment/${this.environmentName}/components/${this.id}` as const
   }
 }
-export type { ResourceComponentArn }
-export function resourceComponentArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ResourceComponentArnParameters<Partition>,
+export type { ComponentResourceArn }
+export function componentResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ComponentResourceArnParameters<Partition>,
 ) {
-  return new ResourceComponentArn<Partition>(parameters)
+  return new ComponentResourceArn<Partition>(parameters)
 }
 
-export interface ResourceFormArnParameters<
+export interface FormResourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApp: string
-  readonly nameEnvironment: string
+  readonly appId: string
+  readonly environmentName: string
   readonly id: string
 }
-class ResourceFormArn<
+class FormResourceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'FormResource',
   `arn:${string}:amplifyuibuilder:${string}:${string}:app/${string}/environment/${string}/forms/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'FormResource' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApp: string
-  readonly nameEnvironment: string
+  readonly appId: string
+  readonly environmentName: string
   readonly id: string
-  constructor(parameters: ResourceFormArnParameters<Partition>) {
+  constructor(parameters: FormResourceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApp = parameters.idApp
-    this.nameEnvironment = parameters.nameEnvironment
+    this.appId = parameters.appId
+    this.environmentName = parameters.environmentName
     this.id = parameters.id
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:amplifyuibuilder:${this.region}:${this.account}:app/${this.idApp}/environment/${this.nameEnvironment}/forms/${this.id}` as const
+    return `arn:${this.partition}:amplifyuibuilder:${this.region}:${this.account}:app/${this.appId}/environment/${this.environmentName}/forms/${this.id}` as const
   }
 }
-export type { ResourceFormArn }
-export function resourceFormArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ResourceFormArnParameters<Partition>,
+export type { FormResourceArn }
+export function formResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FormResourceArnParameters<Partition>,
 ) {
-  return new ResourceFormArn<Partition>(parameters)
+  return new FormResourceArn<Partition>(parameters)
 }
 
-export interface ResourceThemeArnParameters<
+export interface ThemeResourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApp: string
-  readonly nameEnvironment: string
+  readonly appId: string
+  readonly environmentName: string
   readonly id: string
 }
-class ResourceThemeArn<
+class ThemeResourceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ThemeResource',
   `arn:${string}:amplifyuibuilder:${string}:${string}:app/${string}/environment/${string}/themes/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ThemeResource' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApp: string
-  readonly nameEnvironment: string
+  readonly appId: string
+  readonly environmentName: string
   readonly id: string
-  constructor(parameters: ResourceThemeArnParameters<Partition>) {
+  constructor(parameters: ThemeResourceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApp = parameters.idApp
-    this.nameEnvironment = parameters.nameEnvironment
+    this.appId = parameters.appId
+    this.environmentName = parameters.environmentName
     this.id = parameters.id
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:amplifyuibuilder:${this.region}:${this.account}:app/${this.idApp}/environment/${this.nameEnvironment}/themes/${this.id}` as const
+    return `arn:${this.partition}:amplifyuibuilder:${this.region}:${this.account}:app/${this.appId}/environment/${this.environmentName}/themes/${this.id}` as const
   }
 }
-export type { ResourceThemeArn }
-export function resourceThemeArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ResourceThemeArnParameters<Partition>,
+export type { ThemeResourceArn }
+export function themeResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ThemeResourceArnParameters<Partition>,
 ) {
-  return new ResourceThemeArn<Partition>(parameters)
+  return new ThemeResourceArn<Partition>(parameters)
 }

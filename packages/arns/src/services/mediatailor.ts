@@ -6,104 +6,104 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ConfigurationPlaybackArnParameters<
+export interface PlaybackConfigurationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ConfigurationPlaybackArn<
+class PlaybackConfigurationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'playbackConfiguration',
   `arn:${string}:mediatailor:${string}:${string}:playbackConfiguration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'playbackConfiguration' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ConfigurationPlaybackArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: PlaybackConfigurationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:mediatailor:${this.region}:${this.account}:playbackConfiguration/${this.idResource}` as const
+    return `arn:${this.partition}:mediatailor:${this.region}:${this.account}:playbackConfiguration/${this.resourceId}` as const
   }
 }
-export type { ConfigurationPlaybackArn }
-export function configurationPlaybackArn<
+export type { PlaybackConfigurationArn }
+export function playbackConfigurationArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ConfigurationPlaybackArnParameters<Partition>) {
-  return new ConfigurationPlaybackArn<Partition>(parameters)
+>(parameters: PlaybackConfigurationArnParameters<Partition>) {
+  return new PlaybackConfigurationArn<Partition>(parameters)
 }
 
-export interface SchedulePrefetchArnParameters<
+export interface PrefetchScheduleArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class SchedulePrefetchArn<
+class PrefetchScheduleArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'prefetchSchedule',
   `arn:${string}:mediatailor:${string}:${string}:prefetchSchedule/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'prefetchSchedule' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: SchedulePrefetchArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: PrefetchScheduleArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:mediatailor:${this.region}:${this.account}:prefetchSchedule/${this.idResource}` as const
+    return `arn:${this.partition}:mediatailor:${this.region}:${this.account}:prefetchSchedule/${this.resourceId}` as const
   }
 }
-export type { SchedulePrefetchArn }
-export function schedulePrefetchArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SchedulePrefetchArnParameters<Partition>,
+export type { PrefetchScheduleArn }
+export function prefetchScheduleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PrefetchScheduleArnParameters<Partition>,
 ) {
-  return new SchedulePrefetchArn<Partition>(parameters)
+  return new PrefetchScheduleArn<Partition>(parameters)
 }
 
 export interface ChannelArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameChannel: string
+  readonly channelName: string
 }
 class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'channel',
   `arn:${string}:mediatailor:${string}:${string}:channel/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'channel' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameChannel: string
+  readonly channelName: string
   constructor(parameters: ChannelArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameChannel = parameters.nameChannel
+    this.channelName = parameters.channelName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:mediatailor:${this.region}:${this.account}:channel/${this.nameChannel}` as const
+    return `arn:${this.partition}:mediatailor:${this.region}:${this.account}:channel/${this.channelName}` as const
   }
 }
 export type { ChannelArn }
@@ -114,32 +114,32 @@ export function channelArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ProgramArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameChannel: string
-  readonly nameProgram: string
+  readonly channelName: string
+  readonly programName: string
 }
 class ProgramArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'program',
   `arn:${string}:mediatailor:${string}:${string}:program/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'program' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameChannel: string
-  readonly nameProgram: string
+  readonly channelName: string
+  readonly programName: string
   constructor(parameters: ProgramArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameChannel = parameters.nameChannel
-    this.nameProgram = parameters.nameProgram
+    this.channelName = parameters.channelName
+    this.programName = parameters.programName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:mediatailor:${this.region}:${this.account}:program/${this.nameChannel}/${this.nameProgram}` as const
+    return `arn:${this.partition}:mediatailor:${this.region}:${this.account}:program/${this.channelName}/${this.programName}` as const
   }
 }
 export type { ProgramArn }
@@ -149,115 +149,115 @@ export function programArn<Partition extends ArnPartition = 'aws'>(
   return new ProgramArn<Partition>(parameters)
 }
 
-export interface LocationSourceArnParameters<
+export interface SourceLocationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameLocationSource: string
+  readonly sourceLocationName: string
 }
-class LocationSourceArn<
+class SourceLocationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'sourceLocation',
   `arn:${string}:mediatailor:${string}:${string}:sourceLocation/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'sourceLocation' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameLocationSource: string
-  constructor(parameters: LocationSourceArnParameters<Partition>) {
+  readonly sourceLocationName: string
+  constructor(parameters: SourceLocationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameLocationSource = parameters.nameLocationSource
+    this.sourceLocationName = parameters.sourceLocationName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:mediatailor:${this.region}:${this.account}:sourceLocation/${this.nameLocationSource}` as const
+    return `arn:${this.partition}:mediatailor:${this.region}:${this.account}:sourceLocation/${this.sourceLocationName}` as const
   }
 }
-export type { LocationSourceArn }
-export function locationSourceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: LocationSourceArnParameters<Partition>,
+export type { SourceLocationArn }
+export function sourceLocationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SourceLocationArnParameters<Partition>,
 ) {
-  return new LocationSourceArn<Partition>(parameters)
+  return new SourceLocationArn<Partition>(parameters)
 }
 
-export interface SourceVodArnParameters<
+export interface VodSourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameLocationSource: string
-  readonly nameSourceVod: string
+  readonly sourceLocationName: string
+  readonly vodSourceName: string
 }
-class SourceVodArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class VodSourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'vodSource',
   `arn:${string}:mediatailor:${string}:${string}:vodSource/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'vodSource' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameLocationSource: string
-  readonly nameSourceVod: string
-  constructor(parameters: SourceVodArnParameters<Partition>) {
+  readonly sourceLocationName: string
+  readonly vodSourceName: string
+  constructor(parameters: VodSourceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameLocationSource = parameters.nameLocationSource
-    this.nameSourceVod = parameters.nameSourceVod
+    this.sourceLocationName = parameters.sourceLocationName
+    this.vodSourceName = parameters.vodSourceName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:mediatailor:${this.region}:${this.account}:vodSource/${this.nameLocationSource}/${this.nameSourceVod}` as const
+    return `arn:${this.partition}:mediatailor:${this.region}:${this.account}:vodSource/${this.sourceLocationName}/${this.vodSourceName}` as const
   }
 }
-export type { SourceVodArn }
-export function sourceVodArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SourceVodArnParameters<Partition>,
+export type { VodSourceArn }
+export function vodSourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VodSourceArnParameters<Partition>,
 ) {
-  return new SourceVodArn<Partition>(parameters)
+  return new VodSourceArn<Partition>(parameters)
 }
 
-export interface SourceLiveArnParameters<
+export interface LiveSourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameLocationSource: string
-  readonly nameSourceLive: string
+  readonly sourceLocationName: string
+  readonly liveSourceName: string
 }
-class SourceLiveArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class LiveSourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'liveSource',
   `arn:${string}:mediatailor:${string}:${string}:liveSource/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'liveSource' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameLocationSource: string
-  readonly nameSourceLive: string
-  constructor(parameters: SourceLiveArnParameters<Partition>) {
+  readonly sourceLocationName: string
+  readonly liveSourceName: string
+  constructor(parameters: LiveSourceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameLocationSource = parameters.nameLocationSource
-    this.nameSourceLive = parameters.nameSourceLive
+    this.sourceLocationName = parameters.sourceLocationName
+    this.liveSourceName = parameters.liveSourceName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:mediatailor:${this.region}:${this.account}:liveSource/${this.nameLocationSource}/${this.nameSourceLive}` as const
+    return `arn:${this.partition}:mediatailor:${this.region}:${this.account}:liveSource/${this.sourceLocationName}/${this.liveSourceName}` as const
   }
 }
-export type { SourceLiveArn }
-export function sourceLiveArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SourceLiveArnParameters<Partition>,
+export type { LiveSourceArn }
+export function liveSourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LiveSourceArnParameters<Partition>,
 ) {
-  return new SourceLiveArn<Partition>(parameters)
+  return new LiveSourceArn<Partition>(parameters)
 }

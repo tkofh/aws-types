@@ -6,69 +6,69 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface SetDataArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface DataSetArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSetData: string
-  readonly idSetData: string
+  readonly dataSetName: string
+  readonly dataSetId: string
 }
-class SetDataArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class DataSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'dataset',
   `arn:${string}:lookoutequipment:${string}:${string}:dataset/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'dataset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSetData: string
-  readonly idSetData: string
-  constructor(parameters: SetDataArnParameters<Partition>) {
+  readonly dataSetName: string
+  readonly dataSetId: string
+  constructor(parameters: DataSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameSetData = parameters.nameSetData
-    this.idSetData = parameters.idSetData
+    this.dataSetName = parameters.dataSetName
+    this.dataSetId = parameters.dataSetId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:lookoutequipment:${this.region}:${this.account}:dataset/${this.nameSetData}/${this.idSetData}` as const
+    return `arn:${this.partition}:lookoutequipment:${this.region}:${this.account}:dataset/${this.dataSetName}/${this.dataSetId}` as const
   }
 }
-export type { SetDataArn }
-export function setDataArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetDataArnParameters<Partition>,
+export type { DataSetArn }
+export function dataSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DataSetArnParameters<Partition>,
 ) {
-  return new SetDataArn<Partition>(parameters)
+  return new DataSetArn<Partition>(parameters)
 }
 
 export interface ModelArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameModel: string
-  readonly idModel: string
+  readonly modelName: string
+  readonly modelId: string
 }
 class ModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'model',
   `arn:${string}:lookoutequipment:${string}:${string}:model/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'model' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameModel: string
-  readonly idModel: string
+  readonly modelName: string
+  readonly modelId: string
   constructor(parameters: ModelArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameModel = parameters.nameModel
-    this.idModel = parameters.idModel
+    this.modelName = parameters.modelName
+    this.modelId = parameters.modelId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:lookoutequipment:${this.region}:${this.account}:model/${this.nameModel}/${this.idModel}` as const
+    return `arn:${this.partition}:lookoutequipment:${this.region}:${this.account}:model/${this.modelName}/${this.modelId}` as const
   }
 }
 export type { ModelArn }
@@ -78,123 +78,123 @@ export function modelArn<Partition extends ArnPartition = 'aws'>(
   return new ModelArn<Partition>(parameters)
 }
 
-export interface VersionModelArnParameters<
+export interface ModelVersionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameModel: string
-  readonly idModel: string
-  readonly numberVersionModel: string
+  readonly modelName: string
+  readonly modelId: string
+  readonly modelVersionNumber: string
 }
-class VersionModelArn<
+class ModelVersionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'model-version',
   `arn:${string}:lookoutequipment:${string}:${string}:model/${string}/${string}/model-version/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'model-version' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameModel: string
-  readonly idModel: string
-  readonly numberVersionModel: string
-  constructor(parameters: VersionModelArnParameters<Partition>) {
+  readonly modelName: string
+  readonly modelId: string
+  readonly modelVersionNumber: string
+  constructor(parameters: ModelVersionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameModel = parameters.nameModel
-    this.idModel = parameters.idModel
-    this.numberVersionModel = parameters.numberVersionModel
+    this.modelName = parameters.modelName
+    this.modelId = parameters.modelId
+    this.modelVersionNumber = parameters.modelVersionNumber
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:lookoutequipment:${this.region}:${this.account}:model/${this.nameModel}/${this.idModel}/model-version/${this.numberVersionModel}` as const
+    return `arn:${this.partition}:lookoutequipment:${this.region}:${this.account}:model/${this.modelName}/${this.modelId}/model-version/${this.modelVersionNumber}` as const
   }
 }
-export type { VersionModelArn }
-export function versionModelArn<Partition extends ArnPartition = 'aws'>(
-  parameters: VersionModelArnParameters<Partition>,
+export type { ModelVersionArn }
+export function modelVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelVersionArnParameters<Partition>,
 ) {
-  return new VersionModelArn<Partition>(parameters)
+  return new ModelVersionArn<Partition>(parameters)
 }
 
-export interface SchedulerInferenceArnParameters<
+export interface InferenceSchedulerArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSchedulerInference: string
-  readonly idSchedulerInference: string
+  readonly inferenceSchedulerName: string
+  readonly inferenceSchedulerId: string
 }
-class SchedulerInferenceArn<
+class InferenceSchedulerArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'inference-scheduler',
   `arn:${string}:lookoutequipment:${string}:${string}:inference-scheduler/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'inference-scheduler' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSchedulerInference: string
-  readonly idSchedulerInference: string
-  constructor(parameters: SchedulerInferenceArnParameters<Partition>) {
+  readonly inferenceSchedulerName: string
+  readonly inferenceSchedulerId: string
+  constructor(parameters: InferenceSchedulerArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameSchedulerInference = parameters.nameSchedulerInference
-    this.idSchedulerInference = parameters.idSchedulerInference
+    this.inferenceSchedulerName = parameters.inferenceSchedulerName
+    this.inferenceSchedulerId = parameters.inferenceSchedulerId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:lookoutequipment:${this.region}:${this.account}:inference-scheduler/${this.nameSchedulerInference}/${this.idSchedulerInference}` as const
+    return `arn:${this.partition}:lookoutequipment:${this.region}:${this.account}:inference-scheduler/${this.inferenceSchedulerName}/${this.inferenceSchedulerId}` as const
   }
 }
-export type { SchedulerInferenceArn }
-export function schedulerInferenceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SchedulerInferenceArnParameters<Partition>,
+export type { InferenceSchedulerArn }
+export function inferenceSchedulerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InferenceSchedulerArnParameters<Partition>,
 ) {
-  return new SchedulerInferenceArn<Partition>(parameters)
+  return new InferenceSchedulerArn<Partition>(parameters)
 }
 
-export interface GroupLabelArnParameters<
+export interface LabelGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupLabel: string
-  readonly idGroupLabel: string
+  readonly labelGroupName: string
+  readonly labelGroupId: string
 }
-class GroupLabelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class LabelGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'label-group',
   `arn:${string}:lookoutequipment:${string}:${string}:label-group/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'label-group' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupLabel: string
-  readonly idGroupLabel: string
-  constructor(parameters: GroupLabelArnParameters<Partition>) {
+  readonly labelGroupName: string
+  readonly labelGroupId: string
+  constructor(parameters: LabelGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameGroupLabel = parameters.nameGroupLabel
-    this.idGroupLabel = parameters.idGroupLabel
+    this.labelGroupName = parameters.labelGroupName
+    this.labelGroupId = parameters.labelGroupId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:lookoutequipment:${this.region}:${this.account}:label-group/${this.nameGroupLabel}/${this.idGroupLabel}` as const
+    return `arn:${this.partition}:lookoutequipment:${this.region}:${this.account}:label-group/${this.labelGroupName}/${this.labelGroupId}` as const
   }
 }
-export type { GroupLabelArn }
-export function groupLabelArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupLabelArnParameters<Partition>,
+export type { LabelGroupArn }
+export function labelGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LabelGroupArnParameters<Partition>,
 ) {
-  return new GroupLabelArn<Partition>(parameters)
+  return new LabelGroupArn<Partition>(parameters)
 }

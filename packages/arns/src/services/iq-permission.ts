@@ -9,26 +9,26 @@ import {
 export interface PermissionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
-  readonly idRequestPermission: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
+  readonly permissionRequestId: string
 }
 class PermissionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'permission',
   `arn:${string}:iq-permission:${string}::permission/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'permission' as const
-  readonly partition: string
-  readonly region: string
-  readonly idRequestPermission: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
+  readonly permissionRequestId: string
   constructor(parameters: PermissionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
-    this.idRequestPermission = parameters.idRequestPermission
+    this.permissionRequestId = parameters.permissionRequestId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iq-permission:${this.region}::permission/${this.idRequestPermission}` as const
+    return `arn:${this.partition}:iq-permission:${this.region}::permission/${this.permissionRequestId}` as const
   }
 }
 export type { PermissionArn }

@@ -6,35 +6,35 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface NameScanArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface ScanNameArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameScan: string
+  readonly scanName: string
 }
-class NameScanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class ScanNameArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'ScanName',
   `arn:${string}:codeguru-security:${string}:${string}:scans/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ScanName' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameScan: string
-  constructor(parameters: NameScanArnParameters<Partition>) {
+  readonly scanName: string
+  constructor(parameters: ScanNameArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameScan = parameters.nameScan
+    this.scanName = parameters.scanName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:codeguru-security:${this.region}:${this.account}:scans/${this.nameScan}` as const
+    return `arn:${this.partition}:codeguru-security:${this.region}:${this.account}:scans/${this.scanName}` as const
   }
 }
-export type { NameScanArn }
-export function nameScanArn<Partition extends ArnPartition = 'aws'>(
-  parameters: NameScanArnParameters<Partition>,
+export type { ScanNameArn }
+export function scanNameArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ScanNameArnParameters<Partition>,
 ) {
-  return new NameScanArn<Partition>(parameters)
+  return new ScanNameArn<Partition>(parameters)
 }

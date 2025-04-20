@@ -9,10 +9,10 @@ import {
 export interface ApplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApplication: string
+  readonly applicationId: string
 }
 class ApplicationArn<
   Partition extends ArnPartition = 'aws',
@@ -21,19 +21,19 @@ class ApplicationArn<
   `arn:${string}:emr-serverless:${string}:${string}:/applications/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'application' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApplication: string
+  readonly applicationId: string
   constructor(parameters: ApplicationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApplication = parameters.idApplication
+    this.applicationId = parameters.applicationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:emr-serverless:${this.region}:${this.account}:/applications/${this.idApplication}` as const
+    return `arn:${this.partition}:emr-serverless:${this.region}:${this.account}:/applications/${this.applicationId}` as const
   }
 }
 export type { ApplicationArn }
@@ -43,38 +43,38 @@ export function applicationArn<Partition extends ArnPartition = 'aws'>(
   return new ApplicationArn<Partition>(parameters)
 }
 
-export interface RunJobArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface JobRunArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApplication: string
-  readonly idRunJob: string
+  readonly applicationId: string
+  readonly jobRunId: string
 }
-class RunJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class JobRunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'jobRun',
   `arn:${string}:emr-serverless:${string}:${string}:/applications/${string}/jobruns/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'jobRun' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApplication: string
-  readonly idRunJob: string
-  constructor(parameters: RunJobArnParameters<Partition>) {
+  readonly applicationId: string
+  readonly jobRunId: string
+  constructor(parameters: JobRunArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApplication = parameters.idApplication
-    this.idRunJob = parameters.idRunJob
+    this.applicationId = parameters.applicationId
+    this.jobRunId = parameters.jobRunId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:emr-serverless:${this.region}:${this.account}:/applications/${this.idApplication}/jobruns/${this.idRunJob}` as const
+    return `arn:${this.partition}:emr-serverless:${this.region}:${this.account}:/applications/${this.applicationId}/jobruns/${this.jobRunId}` as const
   }
 }
-export type { RunJobArn }
-export function runJobArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RunJobArnParameters<Partition>,
+export type { JobRunArn }
+export function jobRunArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobRunArnParameters<Partition>,
 ) {
-  return new RunJobArn<Partition>(parameters)
+  return new JobRunArn<Partition>(parameters)
 }

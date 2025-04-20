@@ -6,167 +6,167 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface IntegrationEventArnParameters<
+export interface EventIntegrationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameIntegrationEvent: string
+  readonly eventIntegrationName: string
 }
-class IntegrationEventArn<
+class EventIntegrationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'event-integration',
   `arn:${string}:app-integrations:${string}:${string}:event-integration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'event-integration' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameIntegrationEvent: string
-  constructor(parameters: IntegrationEventArnParameters<Partition>) {
+  readonly eventIntegrationName: string
+  constructor(parameters: EventIntegrationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameIntegrationEvent = parameters.nameIntegrationEvent
+    this.eventIntegrationName = parameters.eventIntegrationName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:app-integrations:${this.region}:${this.account}:event-integration/${this.nameIntegrationEvent}` as const
+    return `arn:${this.partition}:app-integrations:${this.region}:${this.account}:event-integration/${this.eventIntegrationName}` as const
   }
 }
-export type { IntegrationEventArn }
-export function integrationEventArn<Partition extends ArnPartition = 'aws'>(
-  parameters: IntegrationEventArnParameters<Partition>,
+export type { EventIntegrationArn }
+export function eventIntegrationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EventIntegrationArnParameters<Partition>,
 ) {
-  return new IntegrationEventArn<Partition>(parameters)
+  return new EventIntegrationArn<Partition>(parameters)
 }
 
-export interface AssociationIntegrationEventArnParameters<
+export interface EventIntegrationAssociationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameIntegrationEvent: string
-  readonly idResource: string
+  readonly eventIntegrationName: string
+  readonly resourceId: string
 }
-class AssociationIntegrationEventArn<
+class EventIntegrationAssociationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'event-integration-association',
   `arn:${string}:app-integrations:${string}:${string}:event-integration-association/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'event-integration-association' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameIntegrationEvent: string
-  readonly idResource: string
-  constructor(parameters: AssociationIntegrationEventArnParameters<Partition>) {
+  readonly eventIntegrationName: string
+  readonly resourceId: string
+  constructor(parameters: EventIntegrationAssociationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameIntegrationEvent = parameters.nameIntegrationEvent
-    this.idResource = parameters.idResource
+    this.eventIntegrationName = parameters.eventIntegrationName
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:app-integrations:${this.region}:${this.account}:event-integration-association/${this.nameIntegrationEvent}/${this.idResource}` as const
+    return `arn:${this.partition}:app-integrations:${this.region}:${this.account}:event-integration-association/${this.eventIntegrationName}/${this.resourceId}` as const
   }
 }
-export type { AssociationIntegrationEventArn }
-export function associationIntegrationEventArn<
+export type { EventIntegrationAssociationArn }
+export function eventIntegrationAssociationArn<
   Partition extends ArnPartition = 'aws',
->(parameters: AssociationIntegrationEventArnParameters<Partition>) {
-  return new AssociationIntegrationEventArn<Partition>(parameters)
+>(parameters: EventIntegrationAssociationArnParameters<Partition>) {
+  return new EventIntegrationAssociationArn<Partition>(parameters)
 }
 
-export interface IntegrationDataArnParameters<
+export interface DataIntegrationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idIntegrationData: string
+  readonly dataIntegrationId: string
 }
-class IntegrationDataArn<
+class DataIntegrationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'data-integration',
   `arn:${string}:app-integrations:${string}:${string}:data-integration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'data-integration' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idIntegrationData: string
-  constructor(parameters: IntegrationDataArnParameters<Partition>) {
+  readonly dataIntegrationId: string
+  constructor(parameters: DataIntegrationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idIntegrationData = parameters.idIntegrationData
+    this.dataIntegrationId = parameters.dataIntegrationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:app-integrations:${this.region}:${this.account}:data-integration/${this.idIntegrationData}` as const
+    return `arn:${this.partition}:app-integrations:${this.region}:${this.account}:data-integration/${this.dataIntegrationId}` as const
   }
 }
-export type { IntegrationDataArn }
-export function integrationDataArn<Partition extends ArnPartition = 'aws'>(
-  parameters: IntegrationDataArnParameters<Partition>,
+export type { DataIntegrationArn }
+export function dataIntegrationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DataIntegrationArnParameters<Partition>,
 ) {
-  return new IntegrationDataArn<Partition>(parameters)
+  return new DataIntegrationArn<Partition>(parameters)
 }
 
-export interface AssociationIntegrationDataArnParameters<
+export interface DataIntegrationAssociationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idIntegrationData: string
-  readonly idResource: string
+  readonly dataIntegrationId: string
+  readonly resourceId: string
 }
-class AssociationIntegrationDataArn<
+class DataIntegrationAssociationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'data-integration-association',
   `arn:${string}:app-integrations:${string}:${string}:data-integration-association/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'data-integration-association' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idIntegrationData: string
-  readonly idResource: string
-  constructor(parameters: AssociationIntegrationDataArnParameters<Partition>) {
+  readonly dataIntegrationId: string
+  readonly resourceId: string
+  constructor(parameters: DataIntegrationAssociationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idIntegrationData = parameters.idIntegrationData
-    this.idResource = parameters.idResource
+    this.dataIntegrationId = parameters.dataIntegrationId
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:app-integrations:${this.region}:${this.account}:data-integration-association/${this.idIntegrationData}/${this.idResource}` as const
+    return `arn:${this.partition}:app-integrations:${this.region}:${this.account}:data-integration-association/${this.dataIntegrationId}/${this.resourceId}` as const
   }
 }
-export type { AssociationIntegrationDataArn }
-export function associationIntegrationDataArn<
+export type { DataIntegrationAssociationArn }
+export function dataIntegrationAssociationArn<
   Partition extends ArnPartition = 'aws',
->(parameters: AssociationIntegrationDataArnParameters<Partition>) {
-  return new AssociationIntegrationDataArn<Partition>(parameters)
+>(parameters: DataIntegrationAssociationArnParameters<Partition>) {
+  return new DataIntegrationAssociationArn<Partition>(parameters)
 }
 
 export interface ApplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApplication: string
+  readonly applicationId: string
 }
 class ApplicationArn<
   Partition extends ArnPartition = 'aws',
@@ -175,19 +175,19 @@ class ApplicationArn<
   `arn:${string}:app-integrations:${string}:${string}:application/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'application' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApplication: string
+  readonly applicationId: string
   constructor(parameters: ApplicationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApplication = parameters.idApplication
+    this.applicationId = parameters.applicationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:app-integrations:${this.region}:${this.account}:application/${this.idApplication}` as const
+    return `arn:${this.partition}:app-integrations:${this.region}:${this.account}:application/${this.applicationId}` as const
   }
 }
 export type { ApplicationArn }
@@ -197,42 +197,42 @@ export function applicationArn<Partition extends ArnPartition = 'aws'>(
   return new ApplicationArn<Partition>(parameters)
 }
 
-export interface AssociationApplicationArnParameters<
+export interface ApplicationAssociationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApplication: string
-  readonly idAssociationApplication: string
+  readonly applicationId: string
+  readonly applicationAssociationId: string
 }
-class AssociationApplicationArn<
+class ApplicationAssociationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'application-association',
   `arn:${string}:app-integrations:${string}:${string}:application-association/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'application-association' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApplication: string
-  readonly idAssociationApplication: string
-  constructor(parameters: AssociationApplicationArnParameters<Partition>) {
+  readonly applicationId: string
+  readonly applicationAssociationId: string
+  constructor(parameters: ApplicationAssociationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApplication = parameters.idApplication
-    this.idAssociationApplication = parameters.idAssociationApplication
+    this.applicationId = parameters.applicationId
+    this.applicationAssociationId = parameters.applicationAssociationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:app-integrations:${this.region}:${this.account}:application-association/${this.idApplication}/${this.idAssociationApplication}` as const
+    return `arn:${this.partition}:app-integrations:${this.region}:${this.account}:application-association/${this.applicationId}/${this.applicationAssociationId}` as const
   }
 }
-export type { AssociationApplicationArn }
-export function associationApplicationArn<
+export type { ApplicationAssociationArn }
+export function applicationAssociationArn<
   Partition extends ArnPartition = 'aws',
->(parameters: AssociationApplicationArnParameters<Partition>) {
-  return new AssociationApplicationArn<Partition>(parameters)
+>(parameters: ApplicationAssociationArnParameters<Partition>) {
+  return new ApplicationAssociationArn<Partition>(parameters)
 }

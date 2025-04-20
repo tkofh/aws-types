@@ -6,104 +6,104 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface GroupParameterArnParameters<
+export interface ParameterGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupParameter: string
+  readonly parameterGroupName: string
 }
-class GroupParameterArn<
+class ParameterGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'parametergroup',
   `arn:${string}:memorydb:${string}:${string}:parametergroup/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'parametergroup' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupParameter: string
-  constructor(parameters: GroupParameterArnParameters<Partition>) {
+  readonly parameterGroupName: string
+  constructor(parameters: ParameterGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameGroupParameter = parameters.nameGroupParameter
+    this.parameterGroupName = parameters.parameterGroupName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:memorydb:${this.region}:${this.account}:parametergroup/${this.nameGroupParameter}` as const
+    return `arn:${this.partition}:memorydb:${this.region}:${this.account}:parametergroup/${this.parameterGroupName}` as const
   }
 }
-export type { GroupParameterArn }
-export function groupParameterArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupParameterArnParameters<Partition>,
+export type { ParameterGroupArn }
+export function parameterGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ParameterGroupArnParameters<Partition>,
 ) {
-  return new GroupParameterArn<Partition>(parameters)
+  return new ParameterGroupArn<Partition>(parameters)
 }
 
-export interface GroupSubnetArnParameters<
+export interface SubnetGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupSubnet: string
+  readonly subnetGroupName: string
 }
-class GroupSubnetArn<
+class SubnetGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'subnetgroup',
   `arn:${string}:memorydb:${string}:${string}:subnetgroup/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'subnetgroup' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupSubnet: string
-  constructor(parameters: GroupSubnetArnParameters<Partition>) {
+  readonly subnetGroupName: string
+  constructor(parameters: SubnetGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameGroupSubnet = parameters.nameGroupSubnet
+    this.subnetGroupName = parameters.subnetGroupName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:memorydb:${this.region}:${this.account}:subnetgroup/${this.nameGroupSubnet}` as const
+    return `arn:${this.partition}:memorydb:${this.region}:${this.account}:subnetgroup/${this.subnetGroupName}` as const
   }
 }
-export type { GroupSubnetArn }
-export function groupSubnetArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupSubnetArnParameters<Partition>,
+export type { SubnetGroupArn }
+export function subnetGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SubnetGroupArnParameters<Partition>,
 ) {
-  return new GroupSubnetArn<Partition>(parameters)
+  return new SubnetGroupArn<Partition>(parameters)
 }
 
 export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameCluster: string
+  readonly clusterName: string
 }
 class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'cluster',
   `arn:${string}:memorydb:${string}:${string}:cluster/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'cluster' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameCluster: string
+  readonly clusterName: string
   constructor(parameters: ClusterArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameCluster = parameters.nameCluster
+    this.clusterName = parameters.clusterName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:memorydb:${this.region}:${this.account}:cluster/${this.nameCluster}` as const
+    return `arn:${this.partition}:memorydb:${this.region}:${this.account}:cluster/${this.clusterName}` as const
   }
 }
 export type { ClusterArn }
@@ -114,29 +114,29 @@ export function clusterArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface SnapshotArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSnapshot: string
+  readonly snapshotName: string
 }
 class SnapshotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'snapshot',
   `arn:${string}:memorydb:${string}:${string}:snapshot/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'snapshot' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSnapshot: string
+  readonly snapshotName: string
   constructor(parameters: SnapshotArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameSnapshot = parameters.nameSnapshot
+    this.snapshotName = parameters.snapshotName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:memorydb:${this.region}:${this.account}:snapshot/${this.nameSnapshot}` as const
+    return `arn:${this.partition}:memorydb:${this.region}:${this.account}:snapshot/${this.snapshotName}` as const
   }
 }
 export type { SnapshotArn }
@@ -147,29 +147,29 @@ export function snapshotArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface UserArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameUser: string
+  readonly userName: string
 }
 class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'user',
   `arn:${string}:memorydb:${string}:${string}:user/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'user' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameUser: string
+  readonly userName: string
   constructor(parameters: UserArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameUser = parameters.nameUser
+    this.userName = parameters.userName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:memorydb:${this.region}:${this.account}:user/${this.nameUser}` as const
+    return `arn:${this.partition}:memorydb:${this.region}:${this.account}:user/${this.userName}` as const
   }
 }
 export type { UserArn }
@@ -180,29 +180,29 @@ export function userArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface AclArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameAcl: string
+  readonly aclName: string
 }
 class AclArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'acl',
   `arn:${string}:memorydb:${string}:${string}:acl/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'acl' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameAcl: string
+  readonly aclName: string
   constructor(parameters: AclArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameAcl = parameters.nameAcl
+    this.aclName = parameters.aclName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:memorydb:${this.region}:${this.account}:acl/${this.nameAcl}` as const
+    return `arn:${this.partition}:memorydb:${this.region}:${this.account}:acl/${this.aclName}` as const
   }
 }
 export type { AclArn }
@@ -212,39 +212,39 @@ export function aclArn<Partition extends ArnPartition = 'aws'>(
   return new AclArn<Partition>(parameters)
 }
 
-export interface NodeReservedArnParameters<
+export interface ReservedNodeArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idReservation: string
+  readonly reservationId: string
 }
-class NodeReservedArn<
+class ReservedNodeArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'reservednode',
   `arn:${string}:memorydb:${string}:${string}:reservednode/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'reservednode' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idReservation: string
-  constructor(parameters: NodeReservedArnParameters<Partition>) {
+  readonly reservationId: string
+  constructor(parameters: ReservedNodeArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idReservation = parameters.idReservation
+    this.reservationId = parameters.reservationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:memorydb:${this.region}:${this.account}:reservednode/${this.idReservation}` as const
+    return `arn:${this.partition}:memorydb:${this.region}:${this.account}:reservednode/${this.reservationId}` as const
   }
 }
-export type { NodeReservedArn }
-export function nodeReservedArn<Partition extends ArnPartition = 'aws'>(
-  parameters: NodeReservedArnParameters<Partition>,
+export type { ReservedNodeArn }
+export function reservedNodeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ReservedNodeArnParameters<Partition>,
 ) {
-  return new NodeReservedArn<Partition>(parameters)
+  return new ReservedNodeArn<Partition>(parameters)
 }

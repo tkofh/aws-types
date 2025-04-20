@@ -7,8 +7,8 @@ import {
 } from '../internal.js'
 
 export interface ProfileArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly identifier: string
 }
@@ -17,13 +17,13 @@ class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:codewhisperer:${string}:${string}:profile/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'profile' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly identifier: string
   constructor(parameters: ProfileArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.identifier = parameters.identifier
@@ -42,8 +42,8 @@ export function profileArn<Partition extends ArnPartition = 'aws'>(
 export interface CustomizationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly identifier: string
 }
@@ -54,13 +54,13 @@ class CustomizationArn<
   `arn:${string}:codewhisperer:${string}:${string}:customization/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'customization' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly identifier: string
   constructor(parameters: CustomizationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.identifier = parameters.identifier

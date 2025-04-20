@@ -1479,7 +1479,7 @@ function applyOperation(
     for (const part of dictionary) {
       if (name.endsWith(part)) {
         found = true
-        result.push(upperFirst(part))
+        result.unshift(upperFirst(part))
         name = name.slice(0, -part.length)
         break
       }

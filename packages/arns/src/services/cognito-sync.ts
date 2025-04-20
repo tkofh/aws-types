@@ -6,72 +6,72 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface SetDataArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface DataSetArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPoolIdentity: string
-  readonly idIdentity: string
-  readonly nameSetData: string
+  readonly identityPoolId: string
+  readonly identityId: string
+  readonly dataSetName: string
 }
-class SetDataArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class DataSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'dataset',
   `arn:${string}:cognito-sync:${string}:${string}:identitypool/${string}/identity/${string}/dataset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'dataset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPoolIdentity: string
-  readonly idIdentity: string
-  readonly nameSetData: string
-  constructor(parameters: SetDataArnParameters<Partition>) {
+  readonly identityPoolId: string
+  readonly identityId: string
+  readonly dataSetName: string
+  constructor(parameters: DataSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idPoolIdentity = parameters.idPoolIdentity
-    this.idIdentity = parameters.idIdentity
-    this.nameSetData = parameters.nameSetData
+    this.identityPoolId = parameters.identityPoolId
+    this.identityId = parameters.identityId
+    this.dataSetName = parameters.dataSetName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cognito-sync:${this.region}:${this.account}:identitypool/${this.idPoolIdentity}/identity/${this.idIdentity}/dataset/${this.nameSetData}` as const
+    return `arn:${this.partition}:cognito-sync:${this.region}:${this.account}:identitypool/${this.identityPoolId}/identity/${this.identityId}/dataset/${this.dataSetName}` as const
   }
 }
-export type { SetDataArn }
-export function setDataArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetDataArnParameters<Partition>,
+export type { DataSetArn }
+export function dataSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DataSetArnParameters<Partition>,
 ) {
-  return new SetDataArn<Partition>(parameters)
+  return new DataSetArn<Partition>(parameters)
 }
 
 export interface IdentityArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPoolIdentity: string
-  readonly idIdentity: string
+  readonly identityPoolId: string
+  readonly identityId: string
 }
 class IdentityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'identity',
   `arn:${string}:cognito-sync:${string}:${string}:identitypool/${string}/identity/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'identity' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPoolIdentity: string
-  readonly idIdentity: string
+  readonly identityPoolId: string
+  readonly identityId: string
   constructor(parameters: IdentityArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idPoolIdentity = parameters.idPoolIdentity
-    this.idIdentity = parameters.idIdentity
+    this.identityPoolId = parameters.identityPoolId
+    this.identityId = parameters.identityId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cognito-sync:${this.region}:${this.account}:identitypool/${this.idPoolIdentity}/identity/${this.idIdentity}` as const
+    return `arn:${this.partition}:cognito-sync:${this.region}:${this.account}:identitypool/${this.identityPoolId}/identity/${this.identityId}` as const
   }
 }
 export type { IdentityArn }
@@ -81,39 +81,39 @@ export function identityArn<Partition extends ArnPartition = 'aws'>(
   return new IdentityArn<Partition>(parameters)
 }
 
-export interface PoolIdentityArnParameters<
+export interface IdentityPoolArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPoolIdentity: string
+  readonly identityPoolId: string
 }
-class PoolIdentityArn<
+class IdentityPoolArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'identitypool',
   `arn:${string}:cognito-sync:${string}:${string}:identitypool/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'identitypool' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPoolIdentity: string
-  constructor(parameters: PoolIdentityArnParameters<Partition>) {
+  readonly identityPoolId: string
+  constructor(parameters: IdentityPoolArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idPoolIdentity = parameters.idPoolIdentity
+    this.identityPoolId = parameters.identityPoolId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cognito-sync:${this.region}:${this.account}:identitypool/${this.idPoolIdentity}` as const
+    return `arn:${this.partition}:cognito-sync:${this.region}:${this.account}:identitypool/${this.identityPoolId}` as const
   }
 }
-export type { PoolIdentityArn }
-export function poolIdentityArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PoolIdentityArnParameters<Partition>,
+export type { IdentityPoolArn }
+export function identityPoolArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IdentityPoolArnParameters<Partition>,
 ) {
-  return new PoolIdentityArn<Partition>(parameters)
+  return new IdentityPoolArn<Partition>(parameters)
 }

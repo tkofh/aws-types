@@ -6,36 +6,36 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface PlanSavingsArnParameters<
+export interface SavingsPlanArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class PlanSavingsArn<
+class SavingsPlanArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'savingsplan',
   `arn:${string}:savingsplans::${string}:savingsplan/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'savingsplan' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: PlanSavingsArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: SavingsPlanArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:savingsplans::${this.account}:savingsplan/${this.idResource}` as const
+    return `arn:${this.partition}:savingsplans::${this.account}:savingsplan/${this.resourceId}` as const
   }
 }
-export type { PlanSavingsArn }
-export function planSavingsArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PlanSavingsArnParameters<Partition>,
+export type { SavingsPlanArn }
+export function savingsPlanArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SavingsPlanArnParameters<Partition>,
 ) {
-  return new PlanSavingsArn<Partition>(parameters)
+  return new SavingsPlanArn<Partition>(parameters)
 }

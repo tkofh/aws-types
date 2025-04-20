@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface ActivityArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameActivity: string
+  readonly activityName: string
 }
 class ActivityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'activity',
   `arn:${string}:states:${string}:${string}:activity:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'activity' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameActivity: string
+  readonly activityName: string
   constructor(parameters: ActivityArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameActivity = parameters.nameActivity
+    this.activityName = parameters.activityName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:states:${this.region}:${this.account}:activity:${this.nameActivity}` as const
+    return `arn:${this.partition}:states:${this.region}:${this.account}:activity:${this.activityName}` as const
   }
 }
 export type { ActivityArn }
@@ -42,32 +42,32 @@ export function activityArn<Partition extends ArnPartition = 'aws'>(
 export interface ExecutionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMachineState: string
-  readonly idExecution: string
+  readonly stateMachineName: string
+  readonly executionId: string
 }
 class ExecutionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'execution',
   `arn:${string}:states:${string}:${string}:execution:${string}:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'execution' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMachineState: string
-  readonly idExecution: string
+  readonly stateMachineName: string
+  readonly executionId: string
   constructor(parameters: ExecutionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMachineState = parameters.nameMachineState
-    this.idExecution = parameters.idExecution
+    this.stateMachineName = parameters.stateMachineName
+    this.executionId = parameters.executionId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:states:${this.region}:${this.account}:execution:${this.nameMachineState}:${this.idExecution}` as const
+    return `arn:${this.partition}:states:${this.region}:${this.account}:execution:${this.stateMachineName}:${this.executionId}` as const
   }
 }
 export type { ExecutionArn }
@@ -78,35 +78,35 @@ export function executionArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ExpressArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMachineState: string
-  readonly idExecution: string
-  readonly idExpress: string
+  readonly stateMachineName: string
+  readonly executionId: string
+  readonly expressId: string
 }
 class ExpressArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'express',
   `arn:${string}:states:${string}:${string}:express:${string}:${string}:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'express' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMachineState: string
-  readonly idExecution: string
-  readonly idExpress: string
+  readonly stateMachineName: string
+  readonly executionId: string
+  readonly expressId: string
   constructor(parameters: ExpressArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMachineState = parameters.nameMachineState
-    this.idExecution = parameters.idExecution
-    this.idExpress = parameters.idExpress
+    this.stateMachineName = parameters.stateMachineName
+    this.executionId = parameters.executionId
+    this.expressId = parameters.expressId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:states:${this.region}:${this.account}:express:${this.nameMachineState}:${this.idExecution}:${this.idExpress}` as const
+    return `arn:${this.partition}:states:${this.region}:${this.account}:express:${this.stateMachineName}:${this.executionId}:${this.expressId}` as const
   }
 }
 export type { ExpressArn }
@@ -116,247 +116,247 @@ export function expressArn<Partition extends ArnPartition = 'aws'>(
   return new ExpressArn<Partition>(parameters)
 }
 
-export interface MachineStateArnParameters<
+export interface StateMachineArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMachineState: string
+  readonly stateMachineName: string
 }
-class MachineStateArn<
+class StateMachineArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'statemachine',
   `arn:${string}:states:${string}:${string}:stateMachine:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'statemachine' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMachineState: string
-  constructor(parameters: MachineStateArnParameters<Partition>) {
+  readonly stateMachineName: string
+  constructor(parameters: StateMachineArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMachineState = parameters.nameMachineState
+    this.stateMachineName = parameters.stateMachineName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:states:${this.region}:${this.account}:stateMachine:${this.nameMachineState}` as const
+    return `arn:${this.partition}:states:${this.region}:${this.account}:stateMachine:${this.stateMachineName}` as const
   }
 }
-export type { MachineStateArn }
-export function machineStateArn<Partition extends ArnPartition = 'aws'>(
-  parameters: MachineStateArnParameters<Partition>,
+export type { StateMachineArn }
+export function stateMachineArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StateMachineArnParameters<Partition>,
 ) {
-  return new MachineStateArn<Partition>(parameters)
+  return new StateMachineArn<Partition>(parameters)
 }
 
-export interface VersionMachineStateArnParameters<
+export interface StateMachineVersionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMachineState: string
-  readonly idVersionMachineState: string
+  readonly stateMachineName: string
+  readonly stateMachineVersionId: string
 }
-class VersionMachineStateArn<
+class StateMachineVersionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'statemachineversion',
   `arn:${string}:states:${string}:${string}:stateMachine:${string}:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'statemachineversion' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMachineState: string
-  readonly idVersionMachineState: string
-  constructor(parameters: VersionMachineStateArnParameters<Partition>) {
+  readonly stateMachineName: string
+  readonly stateMachineVersionId: string
+  constructor(parameters: StateMachineVersionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMachineState = parameters.nameMachineState
-    this.idVersionMachineState = parameters.idVersionMachineState
+    this.stateMachineName = parameters.stateMachineName
+    this.stateMachineVersionId = parameters.stateMachineVersionId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:states:${this.region}:${this.account}:stateMachine:${this.nameMachineState}:${this.idVersionMachineState}` as const
+    return `arn:${this.partition}:states:${this.region}:${this.account}:stateMachine:${this.stateMachineName}:${this.stateMachineVersionId}` as const
   }
 }
-export type { VersionMachineStateArn }
-export function versionMachineStateArn<Partition extends ArnPartition = 'aws'>(
-  parameters: VersionMachineStateArnParameters<Partition>,
+export type { StateMachineVersionArn }
+export function stateMachineVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StateMachineVersionArnParameters<Partition>,
 ) {
-  return new VersionMachineStateArn<Partition>(parameters)
+  return new StateMachineVersionArn<Partition>(parameters)
 }
 
-export interface AliasMachineStateArnParameters<
+export interface StateMachineAliasArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMachineState: string
-  readonly nameAliasMachineState: string
+  readonly stateMachineName: string
+  readonly stateMachineAliasName: string
 }
-class AliasMachineStateArn<
+class StateMachineAliasArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'statemachinealias',
   `arn:${string}:states:${string}:${string}:stateMachine:${string}:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'statemachinealias' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMachineState: string
-  readonly nameAliasMachineState: string
-  constructor(parameters: AliasMachineStateArnParameters<Partition>) {
+  readonly stateMachineName: string
+  readonly stateMachineAliasName: string
+  constructor(parameters: StateMachineAliasArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMachineState = parameters.nameMachineState
-    this.nameAliasMachineState = parameters.nameAliasMachineState
+    this.stateMachineName = parameters.stateMachineName
+    this.stateMachineAliasName = parameters.stateMachineAliasName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:states:${this.region}:${this.account}:stateMachine:${this.nameMachineState}:${this.nameAliasMachineState}` as const
+    return `arn:${this.partition}:states:${this.region}:${this.account}:stateMachine:${this.stateMachineName}:${this.stateMachineAliasName}` as const
   }
 }
-export type { AliasMachineStateArn }
-export function aliasMachineStateArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AliasMachineStateArnParameters<Partition>,
+export type { StateMachineAliasArn }
+export function stateMachineAliasArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StateMachineAliasArnParameters<Partition>,
 ) {
-  return new AliasMachineStateArn<Partition>(parameters)
+  return new StateMachineAliasArn<Partition>(parameters)
 }
 
-export interface RunMapArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface MapRunArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMachineState: string
-  readonly labelRunMap: string
-  readonly idRunMap: string
+  readonly stateMachineName: string
+  readonly mapRunLabel: string
+  readonly mapRunId: string
 }
-class RunMapArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class MapRunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'maprun',
   `arn:${string}:states:${string}:${string}:mapRun:${string}/${string}:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'maprun' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMachineState: string
-  readonly labelRunMap: string
-  readonly idRunMap: string
-  constructor(parameters: RunMapArnParameters<Partition>) {
+  readonly stateMachineName: string
+  readonly mapRunLabel: string
+  readonly mapRunId: string
+  constructor(parameters: MapRunArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMachineState = parameters.nameMachineState
-    this.labelRunMap = parameters.labelRunMap
-    this.idRunMap = parameters.idRunMap
+    this.stateMachineName = parameters.stateMachineName
+    this.mapRunLabel = parameters.mapRunLabel
+    this.mapRunId = parameters.mapRunId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:states:${this.region}:${this.account}:mapRun:${this.nameMachineState}/${this.labelRunMap}:${this.idRunMap}` as const
+    return `arn:${this.partition}:states:${this.region}:${this.account}:mapRun:${this.stateMachineName}/${this.mapRunLabel}:${this.mapRunId}` as const
   }
 }
-export type { RunMapArn }
-export function runMapArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RunMapArnParameters<Partition>,
+export type { MapRunArn }
+export function mapRunArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MapRunArnParameters<Partition>,
 ) {
-  return new RunMapArn<Partition>(parameters)
+  return new MapRunArn<Partition>(parameters)
 }
 
-export interface ExecutionLabelledArnParameters<
+export interface LabelledExecutionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMachineState: string
-  readonly labelRunMap: string
-  readonly idExecution: string
+  readonly stateMachineName: string
+  readonly mapRunLabel: string
+  readonly executionId: string
 }
-class ExecutionLabelledArn<
+class LabelledExecutionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'labelled execution',
   `arn:${string}:states:${string}:${string}:execution:${string}/${string}:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'labelled execution' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMachineState: string
-  readonly labelRunMap: string
-  readonly idExecution: string
-  constructor(parameters: ExecutionLabelledArnParameters<Partition>) {
+  readonly stateMachineName: string
+  readonly mapRunLabel: string
+  readonly executionId: string
+  constructor(parameters: LabelledExecutionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMachineState = parameters.nameMachineState
-    this.labelRunMap = parameters.labelRunMap
-    this.idExecution = parameters.idExecution
+    this.stateMachineName = parameters.stateMachineName
+    this.mapRunLabel = parameters.mapRunLabel
+    this.executionId = parameters.executionId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:states:${this.region}:${this.account}:execution:${this.nameMachineState}/${this.labelRunMap}:${this.idExecution}` as const
+    return `arn:${this.partition}:states:${this.region}:${this.account}:execution:${this.stateMachineName}/${this.mapRunLabel}:${this.executionId}` as const
   }
 }
-export type { ExecutionLabelledArn }
-export function executionLabelledArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ExecutionLabelledArnParameters<Partition>,
+export type { LabelledExecutionArn }
+export function labelledExecutionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LabelledExecutionArnParameters<Partition>,
 ) {
-  return new ExecutionLabelledArn<Partition>(parameters)
+  return new LabelledExecutionArn<Partition>(parameters)
 }
 
-export interface ExpressLabelledArnParameters<
+export interface LabelledExpressArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMachineState: string
-  readonly labelRunMap: string
-  readonly idExecution: string
-  readonly idExpress: string
+  readonly stateMachineName: string
+  readonly mapRunLabel: string
+  readonly executionId: string
+  readonly expressId: string
 }
-class ExpressLabelledArn<
+class LabelledExpressArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'labelled express',
   `arn:${string}:states:${string}:${string}:express:${string}/${string}:${string}:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'labelled express' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameMachineState: string
-  readonly labelRunMap: string
-  readonly idExecution: string
-  readonly idExpress: string
-  constructor(parameters: ExpressLabelledArnParameters<Partition>) {
+  readonly stateMachineName: string
+  readonly mapRunLabel: string
+  readonly executionId: string
+  readonly expressId: string
+  constructor(parameters: LabelledExpressArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameMachineState = parameters.nameMachineState
-    this.labelRunMap = parameters.labelRunMap
-    this.idExecution = parameters.idExecution
-    this.idExpress = parameters.idExpress
+    this.stateMachineName = parameters.stateMachineName
+    this.mapRunLabel = parameters.mapRunLabel
+    this.executionId = parameters.executionId
+    this.expressId = parameters.expressId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:states:${this.region}:${this.account}:express:${this.nameMachineState}/${this.labelRunMap}:${this.idExecution}:${this.idExpress}` as const
+    return `arn:${this.partition}:states:${this.region}:${this.account}:express:${this.stateMachineName}/${this.mapRunLabel}:${this.executionId}:${this.expressId}` as const
   }
 }
-export type { ExpressLabelledArn }
-export function expressLabelledArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ExpressLabelledArnParameters<Partition>,
+export type { LabelledExpressArn }
+export function labelledExpressArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LabelledExpressArnParameters<Partition>,
 ) {
-  return new ExpressLabelledArn<Partition>(parameters)
+  return new LabelledExpressArn<Partition>(parameters)
 }

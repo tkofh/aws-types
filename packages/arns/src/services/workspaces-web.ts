@@ -6,144 +6,144 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface SettingsBrowserArnParameters<
+export interface BrowserSettingsArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSettingsBrowser: string
+  readonly browserSettingsId: string
 }
-class SettingsBrowserArn<
+class BrowserSettingsArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'browserSettings',
   `arn:${string}:workspaces-web:${string}:${string}:browserSettings/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'browserSettings' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSettingsBrowser: string
-  constructor(parameters: SettingsBrowserArnParameters<Partition>) {
+  readonly browserSettingsId: string
+  constructor(parameters: BrowserSettingsArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idSettingsBrowser = parameters.idSettingsBrowser
+    this.browserSettingsId = parameters.browserSettingsId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:workspaces-web:${this.region}:${this.account}:browserSettings/${this.idSettingsBrowser}` as const
+    return `arn:${this.partition}:workspaces-web:${this.region}:${this.account}:browserSettings/${this.browserSettingsId}` as const
   }
 }
-export type { SettingsBrowserArn }
-export function settingsBrowserArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SettingsBrowserArnParameters<Partition>,
+export type { BrowserSettingsArn }
+export function browserSettingsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BrowserSettingsArnParameters<Partition>,
 ) {
-  return new SettingsBrowserArn<Partition>(parameters)
+  return new BrowserSettingsArn<Partition>(parameters)
 }
 
-export interface ProviderIdentityArnParameters<
+export interface IdentityProviderArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPortal: string
-  readonly idProviderIdentity: string
+  readonly portalId: string
+  readonly identityProviderId: string
 }
-class ProviderIdentityArn<
+class IdentityProviderArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'identityProvider',
   `arn:${string}:workspaces-web:${string}:${string}:identityProvider/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'identityProvider' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPortal: string
-  readonly idProviderIdentity: string
-  constructor(parameters: ProviderIdentityArnParameters<Partition>) {
+  readonly portalId: string
+  readonly identityProviderId: string
+  constructor(parameters: IdentityProviderArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idPortal = parameters.idPortal
-    this.idProviderIdentity = parameters.idProviderIdentity
+    this.portalId = parameters.portalId
+    this.identityProviderId = parameters.identityProviderId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:workspaces-web:${this.region}:${this.account}:identityProvider/${this.idPortal}/${this.idProviderIdentity}` as const
+    return `arn:${this.partition}:workspaces-web:${this.region}:${this.account}:identityProvider/${this.portalId}/${this.identityProviderId}` as const
   }
 }
-export type { ProviderIdentityArn }
-export function providerIdentityArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ProviderIdentityArnParameters<Partition>,
+export type { IdentityProviderArn }
+export function identityProviderArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IdentityProviderArnParameters<Partition>,
 ) {
-  return new ProviderIdentityArn<Partition>(parameters)
+  return new IdentityProviderArn<Partition>(parameters)
 }
 
-export interface SettingsNetworkArnParameters<
+export interface NetworkSettingsArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSettingsNetwork: string
+  readonly networkSettingsId: string
 }
-class SettingsNetworkArn<
+class NetworkSettingsArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'networkSettings',
   `arn:${string}:workspaces-web:${string}:${string}:networkSettings/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'networkSettings' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSettingsNetwork: string
-  constructor(parameters: SettingsNetworkArnParameters<Partition>) {
+  readonly networkSettingsId: string
+  constructor(parameters: NetworkSettingsArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idSettingsNetwork = parameters.idSettingsNetwork
+    this.networkSettingsId = parameters.networkSettingsId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:workspaces-web:${this.region}:${this.account}:networkSettings/${this.idSettingsNetwork}` as const
+    return `arn:${this.partition}:workspaces-web:${this.region}:${this.account}:networkSettings/${this.networkSettingsId}` as const
   }
 }
-export type { SettingsNetworkArn }
-export function settingsNetworkArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SettingsNetworkArnParameters<Partition>,
+export type { NetworkSettingsArn }
+export function networkSettingsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NetworkSettingsArnParameters<Partition>,
 ) {
-  return new SettingsNetworkArn<Partition>(parameters)
+  return new NetworkSettingsArn<Partition>(parameters)
 }
 
 export interface PortalArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPortal: string
+  readonly portalId: string
 }
 class PortalArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'portal',
   `arn:${string}:workspaces-web:${string}:${string}:portal/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'portal' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPortal: string
+  readonly portalId: string
   constructor(parameters: PortalArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idPortal = parameters.idPortal
+    this.portalId = parameters.portalId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:workspaces-web:${this.region}:${this.account}:portal/${this.idPortal}` as const
+    return `arn:${this.partition}:workspaces-web:${this.region}:${this.account}:portal/${this.portalId}` as const
   }
 }
 export type { PortalArn }
@@ -153,148 +153,148 @@ export function portalArn<Partition extends ArnPartition = 'aws'>(
   return new PortalArn<Partition>(parameters)
 }
 
-export interface StoreTrustArnParameters<
+export interface TrustStoreArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idStoreTrust: string
+  readonly trustStoreId: string
 }
-class StoreTrustArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class TrustStoreArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'trustStore',
   `arn:${string}:workspaces-web:${string}:${string}:trustStore/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'trustStore' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idStoreTrust: string
-  constructor(parameters: StoreTrustArnParameters<Partition>) {
+  readonly trustStoreId: string
+  constructor(parameters: TrustStoreArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idStoreTrust = parameters.idStoreTrust
+    this.trustStoreId = parameters.trustStoreId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:workspaces-web:${this.region}:${this.account}:trustStore/${this.idStoreTrust}` as const
+    return `arn:${this.partition}:workspaces-web:${this.region}:${this.account}:trustStore/${this.trustStoreId}` as const
   }
 }
-export type { StoreTrustArn }
-export function storeTrustArn<Partition extends ArnPartition = 'aws'>(
-  parameters: StoreTrustArnParameters<Partition>,
+export type { TrustStoreArn }
+export function trustStoreArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TrustStoreArnParameters<Partition>,
 ) {
-  return new StoreTrustArn<Partition>(parameters)
+  return new TrustStoreArn<Partition>(parameters)
 }
 
-export interface SettingsUserArnParameters<
+export interface UserSettingsArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSettingsUser: string
+  readonly userSettingsId: string
 }
-class SettingsUserArn<
+class UserSettingsArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'userSettings',
   `arn:${string}:workspaces-web:${string}:${string}:userSettings/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'userSettings' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSettingsUser: string
-  constructor(parameters: SettingsUserArnParameters<Partition>) {
+  readonly userSettingsId: string
+  constructor(parameters: UserSettingsArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idSettingsUser = parameters.idSettingsUser
+    this.userSettingsId = parameters.userSettingsId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:workspaces-web:${this.region}:${this.account}:userSettings/${this.idSettingsUser}` as const
+    return `arn:${this.partition}:workspaces-web:${this.region}:${this.account}:userSettings/${this.userSettingsId}` as const
   }
 }
-export type { SettingsUserArn }
-export function settingsUserArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SettingsUserArnParameters<Partition>,
+export type { UserSettingsArn }
+export function userSettingsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UserSettingsArnParameters<Partition>,
 ) {
-  return new SettingsUserArn<Partition>(parameters)
+  return new UserSettingsArn<Partition>(parameters)
 }
 
-export interface SettingsLoggingAccessUserArnParameters<
+export interface UserAccessLoggingSettingsArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSettingsLoggingAccessUser: string
+  readonly userAccessLoggingSettingsId: string
 }
-class SettingsLoggingAccessUserArn<
+class UserAccessLoggingSettingsArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'userAccessLoggingSettings',
   `arn:${string}:workspaces-web:${string}:${string}:userAccessLoggingSettings/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'userAccessLoggingSettings' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSettingsLoggingAccessUser: string
-  constructor(parameters: SettingsLoggingAccessUserArnParameters<Partition>) {
+  readonly userAccessLoggingSettingsId: string
+  constructor(parameters: UserAccessLoggingSettingsArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idSettingsLoggingAccessUser = parameters.idSettingsLoggingAccessUser
+    this.userAccessLoggingSettingsId = parameters.userAccessLoggingSettingsId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:workspaces-web:${this.region}:${this.account}:userAccessLoggingSettings/${this.idSettingsLoggingAccessUser}` as const
+    return `arn:${this.partition}:workspaces-web:${this.region}:${this.account}:userAccessLoggingSettings/${this.userAccessLoggingSettingsId}` as const
   }
 }
-export type { SettingsLoggingAccessUserArn }
-export function settingsLoggingAccessUserArn<
+export type { UserAccessLoggingSettingsArn }
+export function userAccessLoggingSettingsArn<
   Partition extends ArnPartition = 'aws',
->(parameters: SettingsLoggingAccessUserArnParameters<Partition>) {
-  return new SettingsLoggingAccessUserArn<Partition>(parameters)
+>(parameters: UserAccessLoggingSettingsArnParameters<Partition>) {
+  return new UserAccessLoggingSettingsArn<Partition>(parameters)
 }
 
-export interface SettingsAccessIpArnParameters<
+export interface IpAccessSettingsArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSettingsAccessIp: string
+  readonly ipAccessSettingsId: string
 }
-class SettingsAccessIpArn<
+class IpAccessSettingsArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ipAccessSettings',
   `arn:${string}:workspaces-web:${string}:${string}:ipAccessSettings/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ipAccessSettings' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSettingsAccessIp: string
-  constructor(parameters: SettingsAccessIpArnParameters<Partition>) {
+  readonly ipAccessSettingsId: string
+  constructor(parameters: IpAccessSettingsArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idSettingsAccessIp = parameters.idSettingsAccessIp
+    this.ipAccessSettingsId = parameters.ipAccessSettingsId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:workspaces-web:${this.region}:${this.account}:ipAccessSettings/${this.idSettingsAccessIp}` as const
+    return `arn:${this.partition}:workspaces-web:${this.region}:${this.account}:ipAccessSettings/${this.ipAccessSettingsId}` as const
   }
 }
-export type { SettingsAccessIpArn }
-export function settingsAccessIpArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SettingsAccessIpArnParameters<Partition>,
+export type { IpAccessSettingsArn }
+export function ipAccessSettingsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IpAccessSettingsArnParameters<Partition>,
 ) {
-  return new SettingsAccessIpArn<Partition>(parameters)
+  return new IpAccessSettingsArn<Partition>(parameters)
 }

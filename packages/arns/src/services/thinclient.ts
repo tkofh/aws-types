@@ -9,10 +9,10 @@ import {
 export interface EnvironmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
+  readonly environmentId: string
 }
 class EnvironmentArn<
   Partition extends ArnPartition = 'aws',
@@ -21,19 +21,19 @@ class EnvironmentArn<
   `arn:${string}:thinclient:${string}:${string}:environment/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'environment' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
+  readonly environmentId: string
   constructor(parameters: EnvironmentArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idEnvironment = parameters.idEnvironment
+    this.environmentId = parameters.environmentId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:thinclient:${this.region}:${this.account}:environment/${this.idEnvironment}` as const
+    return `arn:${this.partition}:thinclient:${this.region}:${this.account}:environment/${this.environmentId}` as const
   }
 }
 export type { EnvironmentArn }
@@ -44,29 +44,29 @@ export function environmentArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface DeviceArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idDevice: string
+  readonly deviceId: string
 }
 class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'device',
   `arn:${string}:thinclient:${string}:${string}:device/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'device' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idDevice: string
+  readonly deviceId: string
   constructor(parameters: DeviceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idDevice = parameters.idDevice
+    this.deviceId = parameters.deviceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:thinclient:${this.region}:${this.account}:device/${this.idDevice}` as const
+    return `arn:${this.partition}:thinclient:${this.region}:${this.account}:device/${this.deviceId}` as const
   }
 }
 export type { DeviceArn }
@@ -76,39 +76,39 @@ export function deviceArn<Partition extends ArnPartition = 'aws'>(
   return new DeviceArn<Partition>(parameters)
 }
 
-export interface SetSoftwareArnParameters<
+export interface SoftwareSetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSetSoftware: string
+  readonly softwareSetId: string
 }
-class SetSoftwareArn<
+class SoftwareSetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'softwareset',
   `arn:${string}:thinclient:${string}:${string}:softwareset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'softwareset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSetSoftware: string
-  constructor(parameters: SetSoftwareArnParameters<Partition>) {
+  readonly softwareSetId: string
+  constructor(parameters: SoftwareSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idSetSoftware = parameters.idSetSoftware
+    this.softwareSetId = parameters.softwareSetId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:thinclient:${this.region}:${this.account}:softwareset/${this.idSetSoftware}` as const
+    return `arn:${this.partition}:thinclient:${this.region}:${this.account}:softwareset/${this.softwareSetId}` as const
   }
 }
-export type { SetSoftwareArn }
-export function setSoftwareArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetSoftwareArnParameters<Partition>,
+export type { SoftwareSetArn }
+export function softwareSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SoftwareSetArnParameters<Partition>,
 ) {
-  return new SetSoftwareArn<Partition>(parameters)
+  return new SoftwareSetArn<Partition>(parameters)
 }

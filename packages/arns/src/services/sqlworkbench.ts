@@ -9,29 +9,29 @@ import {
 export interface ConnectionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
 class ConnectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'connection',
   `arn:${string}:sqlworkbench:${string}:${string}:connection/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'connection' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
   constructor(parameters: ConnectionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sqlworkbench:${this.region}:${this.account}:connection/${this.idResource}` as const
+    return `arn:${this.partition}:sqlworkbench:${this.region}:${this.account}:connection/${this.resourceId}` as const
   }
 }
 export type { ConnectionArn }
@@ -42,29 +42,29 @@ export function connectionArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface QueryArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
 class QueryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'query',
   `arn:${string}:sqlworkbench:${string}:${string}:query/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'query' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
   constructor(parameters: QueryArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sqlworkbench:${this.region}:${this.account}:query/${this.idResource}` as const
+    return `arn:${this.partition}:sqlworkbench:${this.region}:${this.account}:query/${this.resourceId}` as const
   }
 }
 export type { QueryArn }
@@ -75,29 +75,29 @@ export function queryArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ChartArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
 class ChartArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'chart',
   `arn:${string}:sqlworkbench:${string}:${string}:chart/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'chart' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
   constructor(parameters: ChartArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sqlworkbench:${this.region}:${this.account}:chart/${this.idResource}` as const
+    return `arn:${this.partition}:sqlworkbench:${this.region}:${this.account}:chart/${this.resourceId}` as const
   }
 }
 export type { ChartArn }
@@ -108,29 +108,29 @@ export function chartArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface NotebookArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
 class NotebookArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'notebook',
   `arn:${string}:sqlworkbench:${string}:${string}:notebook/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'notebook' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
   constructor(parameters: NotebookArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sqlworkbench:${this.region}:${this.account}:notebook/${this.idResource}` as const
+    return `arn:${this.partition}:sqlworkbench:${this.region}:${this.account}:notebook/${this.resourceId}` as const
   }
 }
 export type { NotebookArn }

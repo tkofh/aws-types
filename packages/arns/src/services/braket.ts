@@ -6,67 +6,67 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface TaskQuantumArnParameters<
+export interface QuantumTaskArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idRandom: string
+  readonly randomId: string
 }
-class TaskQuantumArn<
+class QuantumTaskArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'quantum-task',
   `arn:${string}:braket:${string}:${string}:quantum-task/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'quantum-task' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idRandom: string
-  constructor(parameters: TaskQuantumArnParameters<Partition>) {
+  readonly randomId: string
+  constructor(parameters: QuantumTaskArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idRandom = parameters.idRandom
+    this.randomId = parameters.randomId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:braket:${this.region}:${this.account}:quantum-task/${this.idRandom}` as const
+    return `arn:${this.partition}:braket:${this.region}:${this.account}:quantum-task/${this.randomId}` as const
   }
 }
-export type { TaskQuantumArn }
-export function taskQuantumArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TaskQuantumArnParameters<Partition>,
+export type { QuantumTaskArn }
+export function quantumTaskArn<Partition extends ArnPartition = 'aws'>(
+  parameters: QuantumTaskArnParameters<Partition>,
 ) {
-  return new TaskQuantumArn<Partition>(parameters)
+  return new QuantumTaskArn<Partition>(parameters)
 }
 
 export interface JobArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameJob: string
+  readonly jobName: string
 }
 class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'job',
   `arn:${string}:braket:${string}:${string}:job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'job' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameJob: string
+  readonly jobName: string
   constructor(parameters: JobArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameJob = parameters.nameJob
+    this.jobName = parameters.jobName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:braket:${this.region}:${this.account}:job/${this.nameJob}` as const
+    return `arn:${this.partition}:braket:${this.region}:${this.account}:job/${this.jobName}` as const
   }
 }
 export type { JobArn }

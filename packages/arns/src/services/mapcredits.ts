@@ -9,26 +9,26 @@ import {
 export interface AgreementArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly agreement: string
-  readonly idAgreement: string
+  readonly agreementId: string
 }
 class AgreementArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'agreement',
   `arn:${string}:mapcredits:::${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'agreement' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly agreement: string
-  readonly idAgreement: string
+  readonly agreementId: string
   constructor(parameters: AgreementArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.agreement = parameters.agreement
-    this.idAgreement = parameters.idAgreement
+    this.agreementId = parameters.agreementId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:mapcredits:::${this.agreement}/${this.idAgreement}` as const
+    return `arn:${this.partition}:mapcredits:::${this.agreement}/${this.agreementId}` as const
   }
 }
 export type { AgreementArn }

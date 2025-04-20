@@ -6,39 +6,39 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface AuthorityCertificateArnParameters<
+export interface CertificateAuthorityArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAuthorityCertificate: string
+  readonly certificateAuthorityId: string
 }
-class AuthorityCertificateArn<
+class CertificateAuthorityArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'certificate-authority',
   `arn:${string}:acm-pca:${string}:${string}:certificate-authority/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'certificate-authority' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAuthorityCertificate: string
-  constructor(parameters: AuthorityCertificateArnParameters<Partition>) {
+  readonly certificateAuthorityId: string
+  constructor(parameters: CertificateAuthorityArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idAuthorityCertificate = parameters.idAuthorityCertificate
+    this.certificateAuthorityId = parameters.certificateAuthorityId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:acm-pca:${this.region}:${this.account}:certificate-authority/${this.idAuthorityCertificate}` as const
+    return `arn:${this.partition}:acm-pca:${this.region}:${this.account}:certificate-authority/${this.certificateAuthorityId}` as const
   }
 }
-export type { AuthorityCertificateArn }
-export function authorityCertificateArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AuthorityCertificateArnParameters<Partition>,
+export type { CertificateAuthorityArn }
+export function certificateAuthorityArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CertificateAuthorityArnParameters<Partition>,
 ) {
-  return new AuthorityCertificateArn<Partition>(parameters)
+  return new CertificateAuthorityArn<Partition>(parameters)
 }

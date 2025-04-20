@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface AlarmArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameAlarm: string
+  readonly alarmName: string
 }
 class AlarmArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'alarm',
   `arn:${string}:cloudwatch:${string}:${string}:alarm:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'alarm' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameAlarm: string
+  readonly alarmName: string
   constructor(parameters: AlarmArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameAlarm = parameters.nameAlarm
+    this.alarmName = parameters.alarmName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudwatch:${this.region}:${this.account}:alarm:${this.nameAlarm}` as const
+    return `arn:${this.partition}:cloudwatch:${this.region}:${this.account}:alarm:${this.alarmName}` as const
   }
 }
 export type { AlarmArn }
@@ -42,26 +42,26 @@ export function alarmArn<Partition extends ArnPartition = 'aws'>(
 export interface DashboardArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly nameDashboard: string
+  readonly dashboardName: string
 }
 class DashboardArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'dashboard',
   `arn:${string}:cloudwatch::${string}:dashboard/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'dashboard' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly nameDashboard: string
+  readonly dashboardName: string
   constructor(parameters: DashboardArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.nameDashboard = parameters.nameDashboard
+    this.dashboardName = parameters.dashboardName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudwatch::${this.account}:dashboard/${this.nameDashboard}` as const
+    return `arn:${this.partition}:cloudwatch::${this.account}:dashboard/${this.dashboardName}` as const
   }
 }
 export type { DashboardArn }
@@ -71,104 +71,104 @@ export function dashboardArn<Partition extends ArnPartition = 'aws'>(
   return new DashboardArn<Partition>(parameters)
 }
 
-export interface RuleInsightArnParameters<
+export interface InsightRuleArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameRuleInsight: string
+  readonly insightRuleName: string
 }
-class RuleInsightArn<
+class InsightRuleArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'insight-rule',
   `arn:${string}:cloudwatch:${string}:${string}:insight-rule/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'insight-rule' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameRuleInsight: string
-  constructor(parameters: RuleInsightArnParameters<Partition>) {
+  readonly insightRuleName: string
+  constructor(parameters: InsightRuleArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameRuleInsight = parameters.nameRuleInsight
+    this.insightRuleName = parameters.insightRuleName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudwatch:${this.region}:${this.account}:insight-rule/${this.nameRuleInsight}` as const
+    return `arn:${this.partition}:cloudwatch:${this.region}:${this.account}:insight-rule/${this.insightRuleName}` as const
   }
 }
-export type { RuleInsightArn }
-export function ruleInsightArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RuleInsightArnParameters<Partition>,
+export type { InsightRuleArn }
+export function insightRuleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InsightRuleArnParameters<Partition>,
 ) {
-  return new RuleInsightArn<Partition>(parameters)
+  return new InsightRuleArn<Partition>(parameters)
 }
 
-export interface StreamMetricArnParameters<
+export interface MetricStreamArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameStreamMetric: string
+  readonly metricStreamName: string
 }
-class StreamMetricArn<
+class MetricStreamArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'metric-stream',
   `arn:${string}:cloudwatch:${string}:${string}:metric-stream/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'metric-stream' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameStreamMetric: string
-  constructor(parameters: StreamMetricArnParameters<Partition>) {
+  readonly metricStreamName: string
+  constructor(parameters: MetricStreamArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameStreamMetric = parameters.nameStreamMetric
+    this.metricStreamName = parameters.metricStreamName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudwatch:${this.region}:${this.account}:metric-stream/${this.nameStreamMetric}` as const
+    return `arn:${this.partition}:cloudwatch:${this.region}:${this.account}:metric-stream/${this.metricStreamName}` as const
   }
 }
-export type { StreamMetricArn }
-export function streamMetricArn<Partition extends ArnPartition = 'aws'>(
-  parameters: StreamMetricArnParameters<Partition>,
+export type { MetricStreamArn }
+export function metricStreamArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MetricStreamArnParameters<Partition>,
 ) {
-  return new StreamMetricArn<Partition>(parameters)
+  return new MetricStreamArn<Partition>(parameters)
 }
 
 export interface SloArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSlo: string
+  readonly sloName: string
 }
 class SloArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'slo',
   `arn:${string}:cloudwatch:${string}:${string}:slo/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'slo' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSlo: string
+  readonly sloName: string
   constructor(parameters: SloArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameSlo = parameters.nameSlo
+    this.sloName = parameters.sloName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudwatch:${this.region}:${this.account}:slo/${this.nameSlo}` as const
+    return `arn:${this.partition}:cloudwatch:${this.region}:${this.account}:slo/${this.sloName}` as const
   }
 }
 export type { SloArn }
@@ -179,32 +179,32 @@ export function sloArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ServiceArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameService: string
-  readonly hexAttributesUnique: string
+  readonly serviceName: string
+  readonly uniqueAttributesHex: string
 }
 class ServiceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'service',
   `arn:${string}:cloudwatch:${string}:${string}:service/${string}-${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'service' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameService: string
-  readonly hexAttributesUnique: string
+  readonly serviceName: string
+  readonly uniqueAttributesHex: string
   constructor(parameters: ServiceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameService = parameters.nameService
-    this.hexAttributesUnique = parameters.hexAttributesUnique
+    this.serviceName = parameters.serviceName
+    this.uniqueAttributesHex = parameters.uniqueAttributesHex
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudwatch:${this.region}:${this.account}:service/${this.nameService}-${this.hexAttributesUnique}` as const
+    return `arn:${this.partition}:cloudwatch:${this.region}:${this.account}:service/${this.serviceName}-${this.uniqueAttributesHex}` as const
   }
 }
 export type { ServiceArn }

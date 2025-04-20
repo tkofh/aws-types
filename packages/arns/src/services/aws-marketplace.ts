@@ -6,119 +6,119 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface DashboardSellerArnParameters<
+export interface SellerDashboardArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
   readonly catalog: string
-  readonly tableFact: string
-  readonly nameDashboard: string
+  readonly factTable: string
+  readonly dashboardName: string
 }
-class DashboardSellerArn<
+class SellerDashboardArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'SellerDashboard',
   `arn:${string}:aws-marketplace::${string}:${string}/ReportingData/${string}/Dashboard/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'SellerDashboard' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
   readonly catalog: string
-  readonly tableFact: string
-  readonly nameDashboard: string
-  constructor(parameters: DashboardSellerArnParameters<Partition>) {
+  readonly factTable: string
+  readonly dashboardName: string
+  constructor(parameters: SellerDashboardArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
     this.catalog = parameters.catalog
-    this.tableFact = parameters.tableFact
-    this.nameDashboard = parameters.nameDashboard
+    this.factTable = parameters.factTable
+    this.dashboardName = parameters.dashboardName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:aws-marketplace::${this.account}:${this.catalog}/ReportingData/${this.tableFact}/Dashboard/${this.nameDashboard}` as const
+    return `arn:${this.partition}:aws-marketplace::${this.account}:${this.catalog}/ReportingData/${this.factTable}/Dashboard/${this.dashboardName}` as const
   }
 }
-export type { DashboardSellerArn }
-export function dashboardSellerArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DashboardSellerArnParameters<Partition>,
+export type { SellerDashboardArn }
+export function sellerDashboardArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SellerDashboardArnParameters<Partition>,
 ) {
-  return new DashboardSellerArn<Partition>(parameters)
+  return new SellerDashboardArn<Partition>(parameters)
 }
 
-export interface ParameterDeploymentArnParameters<
+export interface DeploymentParameterArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameCatalog: string
-  readonly idProduct: string
-  readonly idResource: string
+  readonly catalogName: string
+  readonly productId: string
+  readonly resourceId: string
 }
-class ParameterDeploymentArn<
+class DeploymentParameterArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'DeploymentParameter',
   `arn:${string}:aws-marketplace:${string}:${string}:DeploymentParameter:catalogs/${string}/products/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'DeploymentParameter' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameCatalog: string
-  readonly idProduct: string
-  readonly idResource: string
-  constructor(parameters: ParameterDeploymentArnParameters<Partition>) {
+  readonly catalogName: string
+  readonly productId: string
+  readonly resourceId: string
+  constructor(parameters: DeploymentParameterArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameCatalog = parameters.nameCatalog
-    this.idProduct = parameters.idProduct
-    this.idResource = parameters.idResource
+    this.catalogName = parameters.catalogName
+    this.productId = parameters.productId
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:aws-marketplace:${this.region}:${this.account}:DeploymentParameter:catalogs/${this.nameCatalog}/products/${this.idProduct}/${this.idResource}` as const
+    return `arn:${this.partition}:aws-marketplace:${this.region}:${this.account}:DeploymentParameter:catalogs/${this.catalogName}/products/${this.productId}/${this.resourceId}` as const
   }
 }
-export type { ParameterDeploymentArn }
-export function parameterDeploymentArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ParameterDeploymentArnParameters<Partition>,
+export type { DeploymentParameterArn }
+export function deploymentParameterArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeploymentParameterArnParameters<Partition>,
 ) {
-  return new ParameterDeploymentArn<Partition>(parameters)
+  return new DeploymentParameterArn<Partition>(parameters)
 }
 
 export interface EntityArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly catalog: string
-  readonly typeEntity: string
-  readonly idResource: string
+  readonly entityType: string
+  readonly resourceId: string
 }
 class EntityArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Entity',
   `arn:${string}:aws-marketplace:${string}:${string}:${string}/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Entity' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly catalog: string
-  readonly typeEntity: string
-  readonly idResource: string
+  readonly entityType: string
+  readonly resourceId: string
   constructor(parameters: EntityArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.catalog = parameters.catalog
-    this.typeEntity = parameters.typeEntity
-    this.idResource = parameters.idResource
+    this.entityType = parameters.entityType
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:aws-marketplace:${this.region}:${this.account}:${this.catalog}/${this.typeEntity}/${this.idResource}` as const
+    return `arn:${this.partition}:aws-marketplace:${this.region}:${this.account}:${this.catalog}/${this.entityType}/${this.resourceId}` as const
   }
 }
 export type { EntityArn }
@@ -128,40 +128,40 @@ export function entityArn<Partition extends ArnPartition = 'aws'>(
   return new EntityArn<Partition>(parameters)
 }
 
-export interface SetChangeArnParameters<
+export interface ChangeSetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly catalog: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class SetChangeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class ChangeSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'ChangeSet',
   `arn:${string}:aws-marketplace:${string}:${string}:${string}/ChangeSet/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ChangeSet' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly catalog: string
-  readonly idResource: string
-  constructor(parameters: SetChangeArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: ChangeSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.catalog = parameters.catalog
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:aws-marketplace:${this.region}:${this.account}:${this.catalog}/ChangeSet/${this.idResource}` as const
+    return `arn:${this.partition}:aws-marketplace:${this.region}:${this.account}:${this.catalog}/ChangeSet/${this.resourceId}` as const
   }
 }
-export type { SetChangeArn }
-export function setChangeArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetChangeArnParameters<Partition>,
+export type { ChangeSetArn }
+export function changeSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ChangeSetArnParameters<Partition>,
 ) {
-  return new SetChangeArn<Partition>(parameters)
+  return new ChangeSetArn<Partition>(parameters)
 }

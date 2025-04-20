@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface SpaceArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
 class SpaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'space',
   `arn:${string}:repostspace:${string}:${string}:space/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'space' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
   constructor(parameters: SpaceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:repostspace:${this.region}:${this.account}:space/${this.idResource}` as const
+    return `arn:${this.partition}:repostspace:${this.region}:${this.account}:space/${this.resourceId}` as const
   }
 }
 export type { SpaceArn }

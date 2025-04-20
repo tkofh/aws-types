@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface StreamArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameStream: string
+  readonly streamName: string
 }
 class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'stream',
   `arn:${string}:kinesis:${string}:${string}:stream/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'stream' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameStream: string
+  readonly streamName: string
   constructor(parameters: StreamArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameStream = parameters.nameStream
+    this.streamName = parameters.streamName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:kinesis:${this.region}:${this.account}:stream/${this.nameStream}` as const
+    return `arn:${this.partition}:kinesis:${this.region}:${this.account}:stream/${this.streamName}` as const
   }
 }
 export type { StreamArn }
@@ -40,38 +40,38 @@ export function streamArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ConsumerArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly typeStream: string
-  readonly nameStream: string
-  readonly nameConsumer: string
-  readonly stampTimeCreationConsumer: string
+  readonly streamType: string
+  readonly streamName: string
+  readonly consumerName: string
+  readonly consumerCreationTimeStamp: string
 }
 class ConsumerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'consumer',
   `arn:${string}:kinesis:${string}:${string}:${string}/${string}/consumer/${string}:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'consumer' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly typeStream: string
-  readonly nameStream: string
-  readonly nameConsumer: string
-  readonly stampTimeCreationConsumer: string
+  readonly streamType: string
+  readonly streamName: string
+  readonly consumerName: string
+  readonly consumerCreationTimeStamp: string
   constructor(parameters: ConsumerArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.typeStream = parameters.typeStream
-    this.nameStream = parameters.nameStream
-    this.nameConsumer = parameters.nameConsumer
-    this.stampTimeCreationConsumer = parameters.stampTimeCreationConsumer
+    this.streamType = parameters.streamType
+    this.streamName = parameters.streamName
+    this.consumerName = parameters.consumerName
+    this.consumerCreationTimeStamp = parameters.consumerCreationTimeStamp
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:kinesis:${this.region}:${this.account}:${this.typeStream}/${this.nameStream}/consumer/${this.nameConsumer}:${this.stampTimeCreationConsumer}` as const
+    return `arn:${this.partition}:kinesis:${this.region}:${this.account}:${this.streamType}/${this.streamName}/consumer/${this.consumerName}:${this.consumerCreationTimeStamp}` as const
   }
 }
 export type { ConsumerArn }
@@ -81,35 +81,35 @@ export function consumerArn<Partition extends ArnPartition = 'aws'>(
   return new ConsumerArn<Partition>(parameters)
 }
 
-export interface KeyKmsArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface KmsKeyArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idKey: string
+  readonly keyId: string
 }
-class KeyKmsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class KmsKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'kmsKey',
   `arn:${string}:kms:${string}:${string}:key/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'kmsKey' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idKey: string
-  constructor(parameters: KeyKmsArnParameters<Partition>) {
+  readonly keyId: string
+  constructor(parameters: KmsKeyArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idKey = parameters.idKey
+    this.keyId = parameters.keyId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:kms:${this.region}:${this.account}:key/${this.idKey}` as const
+    return `arn:${this.partition}:kms:${this.region}:${this.account}:key/${this.keyId}` as const
   }
 }
-export type { KeyKmsArn }
-export function keyKmsArn<Partition extends ArnPartition = 'aws'>(
-  parameters: KeyKmsArnParameters<Partition>,
+export type { KmsKeyArn }
+export function kmsKeyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KmsKeyArnParameters<Partition>,
 ) {
-  return new KeyKmsArn<Partition>(parameters)
+  return new KmsKeyArn<Partition>(parameters)
 }

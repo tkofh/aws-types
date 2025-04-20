@@ -9,29 +9,29 @@ import {
 export interface CollectionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCollection: string
+  readonly collectionId: string
 }
 class CollectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'collection',
   `arn:${string}:rekognition:${string}:${string}:collection/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'collection' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCollection: string
+  readonly collectionId: string
   constructor(parameters: CollectionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idCollection = parameters.idCollection
+    this.collectionId = parameters.collectionId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:rekognition:${this.region}:${this.account}:collection/${this.idCollection}` as const
+    return `arn:${this.partition}:rekognition:${this.region}:${this.account}:collection/${this.collectionId}` as const
   }
 }
 export type { CollectionArn }
@@ -41,70 +41,70 @@ export function collectionArn<Partition extends ArnPartition = 'aws'>(
   return new CollectionArn<Partition>(parameters)
 }
 
-export interface ProcessorStreamArnParameters<
+export interface StreamProcessorArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idProcessorStream: string
+  readonly streamProcessorId: string
 }
-class ProcessorStreamArn<
+class StreamProcessorArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'streamprocessor',
   `arn:${string}:rekognition:${string}:${string}:streamprocessor/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'streamprocessor' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idProcessorStream: string
-  constructor(parameters: ProcessorStreamArnParameters<Partition>) {
+  readonly streamProcessorId: string
+  constructor(parameters: StreamProcessorArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idProcessorStream = parameters.idProcessorStream
+    this.streamProcessorId = parameters.streamProcessorId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:rekognition:${this.region}:${this.account}:streamprocessor/${this.idProcessorStream}` as const
+    return `arn:${this.partition}:rekognition:${this.region}:${this.account}:streamprocessor/${this.streamProcessorId}` as const
   }
 }
-export type { ProcessorStreamArn }
-export function processorStreamArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ProcessorStreamArnParameters<Partition>,
+export type { StreamProcessorArn }
+export function streamProcessorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StreamProcessorArnParameters<Partition>,
 ) {
-  return new ProcessorStreamArn<Partition>(parameters)
+  return new StreamProcessorArn<Partition>(parameters)
 }
 
 export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProject: string
-  readonly stampTimeCreation: string
+  readonly projectName: string
+  readonly creationTimeStamp: string
 }
 class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'project',
   `arn:${string}:rekognition:${string}:${string}:project/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'project' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProject: string
-  readonly stampTimeCreation: string
+  readonly projectName: string
+  readonly creationTimeStamp: string
   constructor(parameters: ProjectArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameProject = parameters.nameProject
-    this.stampTimeCreation = parameters.stampTimeCreation
+    this.projectName = parameters.projectName
+    this.creationTimeStamp = parameters.creationTimeStamp
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:rekognition:${this.region}:${this.account}:project/${this.nameProject}/${this.stampTimeCreation}` as const
+    return `arn:${this.partition}:rekognition:${this.region}:${this.account}:project/${this.projectName}/${this.creationTimeStamp}` as const
   }
 }
 export type { ProjectArn }
@@ -114,84 +114,84 @@ export function projectArn<Partition extends ArnPartition = 'aws'>(
   return new ProjectArn<Partition>(parameters)
 }
 
-export interface VersionProjectArnParameters<
+export interface ProjectVersionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProject: string
-  readonly nameVersion: string
-  readonly stampTimeCreation: string
+  readonly projectName: string
+  readonly versionName: string
+  readonly creationTimeStamp: string
 }
-class VersionProjectArn<
+class ProjectVersionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'projectversion',
   `arn:${string}:rekognition:${string}:${string}:project/${string}/version/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'projectversion' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProject: string
-  readonly nameVersion: string
-  readonly stampTimeCreation: string
-  constructor(parameters: VersionProjectArnParameters<Partition>) {
+  readonly projectName: string
+  readonly versionName: string
+  readonly creationTimeStamp: string
+  constructor(parameters: ProjectVersionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameProject = parameters.nameProject
-    this.nameVersion = parameters.nameVersion
-    this.stampTimeCreation = parameters.stampTimeCreation
+    this.projectName = parameters.projectName
+    this.versionName = parameters.versionName
+    this.creationTimeStamp = parameters.creationTimeStamp
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:rekognition:${this.region}:${this.account}:project/${this.nameProject}/version/${this.nameVersion}/${this.stampTimeCreation}` as const
+    return `arn:${this.partition}:rekognition:${this.region}:${this.account}:project/${this.projectName}/version/${this.versionName}/${this.creationTimeStamp}` as const
   }
 }
-export type { VersionProjectArn }
-export function versionProjectArn<Partition extends ArnPartition = 'aws'>(
-  parameters: VersionProjectArnParameters<Partition>,
+export type { ProjectVersionArn }
+export function projectVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProjectVersionArnParameters<Partition>,
 ) {
-  return new VersionProjectArn<Partition>(parameters)
+  return new ProjectVersionArn<Partition>(parameters)
 }
 
-export interface SetDataArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface DataSetArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProject: string
-  readonly typeSetData: string
-  readonly stampTimeCreation: string
+  readonly projectName: string
+  readonly dataSetType: string
+  readonly creationTimeStamp: string
 }
-class SetDataArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class DataSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'dataset',
   `arn:${string}:rekognition:${string}:${string}:project/${string}/dataset/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'dataset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProject: string
-  readonly typeSetData: string
-  readonly stampTimeCreation: string
-  constructor(parameters: SetDataArnParameters<Partition>) {
+  readonly projectName: string
+  readonly dataSetType: string
+  readonly creationTimeStamp: string
+  constructor(parameters: DataSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameProject = parameters.nameProject
-    this.typeSetData = parameters.typeSetData
-    this.stampTimeCreation = parameters.stampTimeCreation
+    this.projectName = parameters.projectName
+    this.dataSetType = parameters.dataSetType
+    this.creationTimeStamp = parameters.creationTimeStamp
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:rekognition:${this.region}:${this.account}:project/${this.nameProject}/dataset/${this.typeSetData}/${this.stampTimeCreation}` as const
+    return `arn:${this.partition}:rekognition:${this.region}:${this.account}:project/${this.projectName}/dataset/${this.dataSetType}/${this.creationTimeStamp}` as const
   }
 }
-export type { SetDataArn }
-export function setDataArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetDataArnParameters<Partition>,
+export type { DataSetArn }
+export function dataSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DataSetArnParameters<Partition>,
 ) {
-  return new SetDataArn<Partition>(parameters)
+  return new DataSetArn<Partition>(parameters)
 }

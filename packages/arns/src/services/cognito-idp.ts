@@ -6,42 +6,42 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface PoolUserArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface UserPoolArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPoolUser: string
+  readonly userPoolId: string
 }
-class PoolUserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class UserPoolArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'userpool',
   `arn:${string}:cognito-idp:${string}:${string}:userpool/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'userpool' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPoolUser: string
-  constructor(parameters: PoolUserArnParameters<Partition>) {
+  readonly userPoolId: string
+  constructor(parameters: UserPoolArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idPoolUser = parameters.idPoolUser
+    this.userPoolId = parameters.userPoolId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cognito-idp:${this.region}:${this.account}:userpool/${this.idPoolUser}` as const
+    return `arn:${this.partition}:cognito-idp:${this.region}:${this.account}:userpool/${this.userPoolId}` as const
   }
 }
-export type { PoolUserArn }
-export function poolUserArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PoolUserArnParameters<Partition>,
+export type { UserPoolArn }
+export function userPoolArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UserPoolArnParameters<Partition>,
 ) {
-  return new PoolUserArn<Partition>(parameters)
+  return new UserPoolArn<Partition>(parameters)
 }
 
 export interface WebaclArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly scope: string
   readonly name: string
@@ -52,15 +52,15 @@ class WebaclArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:wafv2:${string}:${string}:${string}/webacl/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'webacl' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly scope: string
   readonly name: string
   readonly id: string
   constructor(parameters: WebaclArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.scope = parameters.scope

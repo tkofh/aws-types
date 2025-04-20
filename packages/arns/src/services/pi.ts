@@ -6,85 +6,85 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ResourceMetricArnParameters<
+export interface MetricResourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly typeService: string
+  readonly serviceType: string
   readonly identifier: string
 }
-class ResourceMetricArn<
+class MetricResourceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'metric-resource',
   `arn:${string}:pi:${string}:${string}:metrics/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'metric-resource' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly typeService: string
+  readonly serviceType: string
   readonly identifier: string
-  constructor(parameters: ResourceMetricArnParameters<Partition>) {
+  constructor(parameters: MetricResourceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.typeService = parameters.typeService
+    this.serviceType = parameters.serviceType
     this.identifier = parameters.identifier
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:pi:${this.region}:${this.account}:metrics/${this.typeService}/${this.identifier}` as const
+    return `arn:${this.partition}:pi:${this.region}:${this.account}:metrics/${this.serviceType}/${this.identifier}` as const
   }
 }
-export type { ResourceMetricArn }
-export function resourceMetricArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ResourceMetricArnParameters<Partition>,
+export type { MetricResourceArn }
+export function metricResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MetricResourceArnParameters<Partition>,
 ) {
-  return new ResourceMetricArn<Partition>(parameters)
+  return new MetricResourceArn<Partition>(parameters)
 }
 
-export interface ResourceReportsPerfArnParameters<
+export interface PerfReportsResourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly typeService: string
+  readonly serviceType: string
   readonly identifier: string
-  readonly idReport: string
+  readonly reportId: string
 }
-class ResourceReportsPerfArn<
+class PerfReportsResourceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'perf-reports-resource',
   `arn:${string}:pi:${string}:${string}:perf-reports/${string}/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'perf-reports-resource' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly typeService: string
+  readonly serviceType: string
   readonly identifier: string
-  readonly idReport: string
-  constructor(parameters: ResourceReportsPerfArnParameters<Partition>) {
+  readonly reportId: string
+  constructor(parameters: PerfReportsResourceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.typeService = parameters.typeService
+    this.serviceType = parameters.serviceType
     this.identifier = parameters.identifier
-    this.idReport = parameters.idReport
+    this.reportId = parameters.reportId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:pi:${this.region}:${this.account}:perf-reports/${this.typeService}/${this.identifier}/${this.idReport}` as const
+    return `arn:${this.partition}:pi:${this.region}:${this.account}:perf-reports/${this.serviceType}/${this.identifier}/${this.reportId}` as const
   }
 }
-export type { ResourceReportsPerfArn }
-export function resourceReportsPerfArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ResourceReportsPerfArnParameters<Partition>,
+export type { PerfReportsResourceArn }
+export function perfReportsResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PerfReportsResourceArnParameters<Partition>,
 ) {
-  return new ResourceReportsPerfArn<Partition>(parameters)
+  return new PerfReportsResourceArn<Partition>(parameters)
 }

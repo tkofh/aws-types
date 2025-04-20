@@ -9,23 +9,23 @@ import {
 export interface DatasourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly idResource: string
+  readonly partition?: Partition | undefined
+  readonly resourceId: string
 }
 class DatasourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'DataSource',
   `arn:${string}:vendor-insights:::data-source:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'DataSource' as const
-  readonly partition: string
-  readonly idResource: string
+  readonly partition: Partition
+  readonly resourceId: string
   constructor(parameters: DatasourceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
-    this.idResource = parameters.idResource
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:vendor-insights:::data-source:${this.idResource}` as const
+    return `arn:${this.partition}:vendor-insights:::data-source:${this.resourceId}` as const
   }
 }
 export type { DatasourceArn }
@@ -35,33 +35,33 @@ export function datasourceArn<Partition extends ArnPartition = 'aws'>(
   return new DatasourceArn<Partition>(parameters)
 }
 
-export interface ProfileSecurityArnParameters<
+export interface SecurityProfileArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly idResource: string
+  readonly partition?: Partition | undefined
+  readonly resourceId: string
 }
-class ProfileSecurityArn<
+class SecurityProfileArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'SecurityProfile',
   `arn:${string}:vendor-insights:::security-profile:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'SecurityProfile' as const
-  readonly partition: string
-  readonly idResource: string
-  constructor(parameters: ProfileSecurityArnParameters<Partition>) {
+  readonly partition: Partition
+  readonly resourceId: string
+  constructor(parameters: SecurityProfileArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
-    this.idResource = parameters.idResource
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:vendor-insights:::security-profile:${this.idResource}` as const
+    return `arn:${this.partition}:vendor-insights:::security-profile:${this.resourceId}` as const
   }
 }
-export type { ProfileSecurityArn }
-export function profileSecurityArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ProfileSecurityArnParameters<Partition>,
+export type { SecurityProfileArn }
+export function securityProfileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SecurityProfileArnParameters<Partition>,
 ) {
-  return new ProfileSecurityArn<Partition>(parameters)
+  return new SecurityProfileArn<Partition>(parameters)
 }

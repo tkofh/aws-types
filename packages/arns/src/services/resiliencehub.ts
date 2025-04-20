@@ -6,50 +6,50 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface PolicyResiliencyArnParameters<
+export interface ResiliencyPolicyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPolicyResiliency: string
+  readonly resiliencyPolicyId: string
 }
-class PolicyResiliencyArn<
+class ResiliencyPolicyArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'resiliency-policy',
   `arn:${string}:resiliencehub:${string}:${string}:resiliency-policy/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'resiliency-policy' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPolicyResiliency: string
-  constructor(parameters: PolicyResiliencyArnParameters<Partition>) {
+  readonly resiliencyPolicyId: string
+  constructor(parameters: ResiliencyPolicyArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idPolicyResiliency = parameters.idPolicyResiliency
+    this.resiliencyPolicyId = parameters.resiliencyPolicyId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:resiliencehub:${this.region}:${this.account}:resiliency-policy/${this.idPolicyResiliency}` as const
+    return `arn:${this.partition}:resiliencehub:${this.region}:${this.account}:resiliency-policy/${this.resiliencyPolicyId}` as const
   }
 }
-export type { PolicyResiliencyArn }
-export function policyResiliencyArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PolicyResiliencyArnParameters<Partition>,
+export type { ResiliencyPolicyArn }
+export function resiliencyPolicyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResiliencyPolicyArnParameters<Partition>,
 ) {
-  return new PolicyResiliencyArn<Partition>(parameters)
+  return new ResiliencyPolicyArn<Partition>(parameters)
 }
 
 export interface ApplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApp: string
+  readonly appId: string
 }
 class ApplicationArn<
   Partition extends ArnPartition = 'aws',
@@ -58,19 +58,19 @@ class ApplicationArn<
   `arn:${string}:resiliencehub:${string}:${string}:app/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'application' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApp: string
+  readonly appId: string
   constructor(parameters: ApplicationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApp = parameters.idApp
+    this.appId = parameters.appId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:resiliencehub:${this.region}:${this.account}:app/${this.idApp}` as const
+    return `arn:${this.partition}:resiliencehub:${this.region}:${this.account}:app/${this.appId}` as const
   }
 }
 export type { ApplicationArn }
@@ -80,76 +80,76 @@ export function applicationArn<Partition extends ArnPartition = 'aws'>(
   return new ApplicationArn<Partition>(parameters)
 }
 
-export interface AssessmentAppArnParameters<
+export interface AppAssessmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAssessmentApp: string
+  readonly appAssessmentId: string
 }
-class AssessmentAppArn<
+class AppAssessmentArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'app-assessment',
   `arn:${string}:resiliencehub:${string}:${string}:app-assessment/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'app-assessment' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAssessmentApp: string
-  constructor(parameters: AssessmentAppArnParameters<Partition>) {
+  readonly appAssessmentId: string
+  constructor(parameters: AppAssessmentArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idAssessmentApp = parameters.idAssessmentApp
+    this.appAssessmentId = parameters.appAssessmentId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:resiliencehub:${this.region}:${this.account}:app-assessment/${this.idAssessmentApp}` as const
+    return `arn:${this.partition}:resiliencehub:${this.region}:${this.account}:app-assessment/${this.appAssessmentId}` as const
   }
 }
-export type { AssessmentAppArn }
-export function assessmentAppArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AssessmentAppArnParameters<Partition>,
+export type { AppAssessmentArn }
+export function appAssessmentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppAssessmentArnParameters<Partition>,
 ) {
-  return new AssessmentAppArn<Partition>(parameters)
+  return new AppAssessmentArn<Partition>(parameters)
 }
 
-export interface TemplateRecommendationArnParameters<
+export interface RecommendationTemplateArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idTemplateRecommendation: string
+  readonly recommendationTemplateId: string
 }
-class TemplateRecommendationArn<
+class RecommendationTemplateArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'recommendation-template',
   `arn:${string}:resiliencehub:${string}:${string}:recommendation-template/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'recommendation-template' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idTemplateRecommendation: string
-  constructor(parameters: TemplateRecommendationArnParameters<Partition>) {
+  readonly recommendationTemplateId: string
+  constructor(parameters: RecommendationTemplateArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idTemplateRecommendation = parameters.idTemplateRecommendation
+    this.recommendationTemplateId = parameters.recommendationTemplateId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:resiliencehub:${this.region}:${this.account}:recommendation-template/${this.idTemplateRecommendation}` as const
+    return `arn:${this.partition}:resiliencehub:${this.region}:${this.account}:recommendation-template/${this.recommendationTemplateId}` as const
   }
 }
-export type { TemplateRecommendationArn }
-export function templateRecommendationArn<
+export type { RecommendationTemplateArn }
+export function recommendationTemplateArn<
   Partition extends ArnPartition = 'aws',
->(parameters: TemplateRecommendationArnParameters<Partition>) {
-  return new TemplateRecommendationArn<Partition>(parameters)
+>(parameters: RecommendationTemplateArnParameters<Partition>) {
+  return new RecommendationTemplateArn<Partition>(parameters)
 }

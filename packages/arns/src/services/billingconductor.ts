@@ -6,138 +6,138 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface GroupBillingArnParameters<
+export interface BillingGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idGroupBilling: string
+  readonly billingGroupId: string
 }
-class GroupBillingArn<
+class BillingGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'billinggroup',
   `arn:${string}:billingconductor::${string}:billinggroup/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'billinggroup' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idGroupBilling: string
-  constructor(parameters: GroupBillingArnParameters<Partition>) {
+  readonly billingGroupId: string
+  constructor(parameters: BillingGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idGroupBilling = parameters.idGroupBilling
+    this.billingGroupId = parameters.billingGroupId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:billingconductor::${this.account}:billinggroup/${this.idGroupBilling}` as const
+    return `arn:${this.partition}:billingconductor::${this.account}:billinggroup/${this.billingGroupId}` as const
   }
 }
-export type { GroupBillingArn }
-export function groupBillingArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupBillingArnParameters<Partition>,
+export type { BillingGroupArn }
+export function billingGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BillingGroupArnParameters<Partition>,
 ) {
-  return new GroupBillingArn<Partition>(parameters)
+  return new BillingGroupArn<Partition>(parameters)
 }
 
-export interface PlanPricingArnParameters<
+export interface PricingPlanArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idPlanPricing: string
+  readonly pricingPlanId: string
 }
-class PlanPricingArn<
+class PricingPlanArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'pricingplan',
   `arn:${string}:billingconductor::${string}:pricingplan/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'pricingplan' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idPlanPricing: string
-  constructor(parameters: PlanPricingArnParameters<Partition>) {
+  readonly pricingPlanId: string
+  constructor(parameters: PricingPlanArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idPlanPricing = parameters.idPlanPricing
+    this.pricingPlanId = parameters.pricingPlanId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:billingconductor::${this.account}:pricingplan/${this.idPlanPricing}` as const
+    return `arn:${this.partition}:billingconductor::${this.account}:pricingplan/${this.pricingPlanId}` as const
   }
 }
-export type { PlanPricingArn }
-export function planPricingArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PlanPricingArnParameters<Partition>,
+export type { PricingPlanArn }
+export function pricingPlanArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PricingPlanArnParameters<Partition>,
 ) {
-  return new PlanPricingArn<Partition>(parameters)
+  return new PricingPlanArn<Partition>(parameters)
 }
 
-export interface RulePricingArnParameters<
+export interface PricingRuleArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idRulePricing: string
+  readonly pricingRuleId: string
 }
-class RulePricingArn<
+class PricingRuleArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'pricingrule',
   `arn:${string}:billingconductor::${string}:pricingrule/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'pricingrule' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idRulePricing: string
-  constructor(parameters: RulePricingArnParameters<Partition>) {
+  readonly pricingRuleId: string
+  constructor(parameters: PricingRuleArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idRulePricing = parameters.idRulePricing
+    this.pricingRuleId = parameters.pricingRuleId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:billingconductor::${this.account}:pricingrule/${this.idRulePricing}` as const
+    return `arn:${this.partition}:billingconductor::${this.account}:pricingrule/${this.pricingRuleId}` as const
   }
 }
-export type { RulePricingArn }
-export function rulePricingArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RulePricingArnParameters<Partition>,
+export type { PricingRuleArn }
+export function pricingRuleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PricingRuleArnParameters<Partition>,
 ) {
-  return new RulePricingArn<Partition>(parameters)
+  return new PricingRuleArn<Partition>(parameters)
 }
 
-export interface ItemLineCustomArnParameters<
+export interface CustomLineItemArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idItemLineCustom: string
+  readonly customLineItemId: string
 }
-class ItemLineCustomArn<
+class CustomLineItemArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'customlineitem',
   `arn:${string}:billingconductor::${string}:customlineitem/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'customlineitem' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idItemLineCustom: string
-  constructor(parameters: ItemLineCustomArnParameters<Partition>) {
+  readonly customLineItemId: string
+  constructor(parameters: CustomLineItemArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idItemLineCustom = parameters.idItemLineCustom
+    this.customLineItemId = parameters.customLineItemId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:billingconductor::${this.account}:customlineitem/${this.idItemLineCustom}` as const
+    return `arn:${this.partition}:billingconductor::${this.account}:customlineitem/${this.customLineItemId}` as const
   }
 }
-export type { ItemLineCustomArn }
-export function itemLineCustomArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ItemLineCustomArnParameters<Partition>,
+export type { CustomLineItemArn }
+export function customLineItemArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CustomLineItemArnParameters<Partition>,
 ) {
-  return new ItemLineCustomArn<Partition>(parameters)
+  return new CustomLineItemArn<Partition>(parameters)
 }

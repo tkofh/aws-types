@@ -6,38 +6,38 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface UserDbArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface DbUserArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResourceDbi: string
-  readonly nameUserDb: string
+  readonly dbiResourceId: string
+  readonly dbUserName: string
 }
-class UserDbArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class DbUserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'db-user',
   `arn:${string}:rds-db:${string}:${string}:dbuser:${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'db-user' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResourceDbi: string
-  readonly nameUserDb: string
-  constructor(parameters: UserDbArnParameters<Partition>) {
+  readonly dbiResourceId: string
+  readonly dbUserName: string
+  constructor(parameters: DbUserArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResourceDbi = parameters.idResourceDbi
-    this.nameUserDb = parameters.nameUserDb
+    this.dbiResourceId = parameters.dbiResourceId
+    this.dbUserName = parameters.dbUserName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:rds-db:${this.region}:${this.account}:dbuser:${this.idResourceDbi}/${this.nameUserDb}` as const
+    return `arn:${this.partition}:rds-db:${this.region}:${this.account}:dbuser:${this.dbiResourceId}/${this.dbUserName}` as const
   }
 }
-export type { UserDbArn }
-export function userDbArn<Partition extends ArnPartition = 'aws'>(
-  parameters: UserDbArnParameters<Partition>,
+export type { DbUserArn }
+export function dbUserArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DbUserArnParameters<Partition>,
 ) {
-  return new UserDbArn<Partition>(parameters)
+  return new DbUserArn<Partition>(parameters)
 }

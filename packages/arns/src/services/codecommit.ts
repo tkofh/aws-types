@@ -9,29 +9,29 @@ import {
 export interface RepositoryArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameRepository: string
+  readonly repositoryName: string
 }
 class RepositoryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'repository',
   `arn:${string}:codecommit:${string}:${string}:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'repository' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameRepository: string
+  readonly repositoryName: string
   constructor(parameters: RepositoryArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameRepository = parameters.nameRepository
+    this.repositoryName = parameters.repositoryName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:codecommit:${this.region}:${this.account}:${this.nameRepository}` as const
+    return `arn:${this.partition}:codecommit:${this.region}:${this.account}:${this.repositoryName}` as const
   }
 }
 export type { RepositoryArn }

@@ -6,113 +6,113 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface JobObservationEarthArnParameters<
+export interface EarthObservationJobArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJob: string
+  readonly jobId: string
 }
-class JobObservationEarthArn<
+class EarthObservationJobArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'EarthObservationJob',
   `arn:${string}:sagemaker-geospatial:${string}:${string}:earth-observation-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'EarthObservationJob' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJob: string
-  constructor(parameters: JobObservationEarthArnParameters<Partition>) {
+  readonly jobId: string
+  constructor(parameters: EarthObservationJobArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idJob = parameters.idJob
+    this.jobId = parameters.jobId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sagemaker-geospatial:${this.region}:${this.account}:earth-observation-job/${this.idJob}` as const
+    return `arn:${this.partition}:sagemaker-geospatial:${this.region}:${this.account}:earth-observation-job/${this.jobId}` as const
   }
 }
-export type { JobObservationEarthArn }
-export function jobObservationEarthArn<Partition extends ArnPartition = 'aws'>(
-  parameters: JobObservationEarthArnParameters<Partition>,
+export type { EarthObservationJobArn }
+export function earthObservationJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EarthObservationJobArnParameters<Partition>,
 ) {
-  return new JobObservationEarthArn<Partition>(parameters)
+  return new EarthObservationJobArn<Partition>(parameters)
 }
 
-export interface CollectionDataRasterArnParameters<
+export interface RasterDataCollectionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCollection: string
+  readonly collectionId: string
 }
-class CollectionDataRasterArn<
+class RasterDataCollectionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'RasterDataCollection',
   `arn:${string}:sagemaker-geospatial:${string}:${string}:raster-data-collection/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'RasterDataCollection' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCollection: string
-  constructor(parameters: CollectionDataRasterArnParameters<Partition>) {
+  readonly collectionId: string
+  constructor(parameters: RasterDataCollectionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idCollection = parameters.idCollection
+    this.collectionId = parameters.collectionId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sagemaker-geospatial:${this.region}:${this.account}:raster-data-collection/${this.idCollection}` as const
+    return `arn:${this.partition}:sagemaker-geospatial:${this.region}:${this.account}:raster-data-collection/${this.collectionId}` as const
   }
 }
-export type { CollectionDataRasterArn }
-export function collectionDataRasterArn<Partition extends ArnPartition = 'aws'>(
-  parameters: CollectionDataRasterArnParameters<Partition>,
+export type { RasterDataCollectionArn }
+export function rasterDataCollectionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RasterDataCollectionArnParameters<Partition>,
 ) {
-  return new CollectionDataRasterArn<Partition>(parameters)
+  return new RasterDataCollectionArn<Partition>(parameters)
 }
 
-export interface JobEnrichmentVectorArnParameters<
+export interface VectorEnrichmentJobArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJob: string
+  readonly jobId: string
 }
-class JobEnrichmentVectorArn<
+class VectorEnrichmentJobArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'VectorEnrichmentJob',
   `arn:${string}:sagemaker-geospatial:${string}:${string}:vector-enrichment-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'VectorEnrichmentJob' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJob: string
-  constructor(parameters: JobEnrichmentVectorArnParameters<Partition>) {
+  readonly jobId: string
+  constructor(parameters: VectorEnrichmentJobArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idJob = parameters.idJob
+    this.jobId = parameters.jobId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sagemaker-geospatial:${this.region}:${this.account}:vector-enrichment-job/${this.idJob}` as const
+    return `arn:${this.partition}:sagemaker-geospatial:${this.region}:${this.account}:vector-enrichment-job/${this.jobId}` as const
   }
 }
-export type { JobEnrichmentVectorArn }
-export function jobEnrichmentVectorArn<Partition extends ArnPartition = 'aws'>(
-  parameters: JobEnrichmentVectorArnParameters<Partition>,
+export type { VectorEnrichmentJobArn }
+export function vectorEnrichmentJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VectorEnrichmentJobArnParameters<Partition>,
 ) {
-  return new JobEnrichmentVectorArn<Partition>(parameters)
+  return new VectorEnrichmentJobArn<Partition>(parameters)
 }

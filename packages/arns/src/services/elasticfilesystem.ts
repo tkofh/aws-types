@@ -6,74 +6,74 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface SystemFileArnParameters<
+export interface FileSystemArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSystemFile: string
+  readonly fileSystemId: string
 }
-class SystemFileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class FileSystemArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'file-system',
   `arn:${string}:elasticfilesystem:${string}:${string}:file-system/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'file-system' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSystemFile: string
-  constructor(parameters: SystemFileArnParameters<Partition>) {
+  readonly fileSystemId: string
+  constructor(parameters: FileSystemArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idSystemFile = parameters.idSystemFile
+    this.fileSystemId = parameters.fileSystemId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticfilesystem:${this.region}:${this.account}:file-system/${this.idSystemFile}` as const
+    return `arn:${this.partition}:elasticfilesystem:${this.region}:${this.account}:file-system/${this.fileSystemId}` as const
   }
 }
-export type { SystemFileArn }
-export function systemFileArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SystemFileArnParameters<Partition>,
+export type { FileSystemArn }
+export function fileSystemArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FileSystemArnParameters<Partition>,
 ) {
-  return new SystemFileArn<Partition>(parameters)
+  return new FileSystemArn<Partition>(parameters)
 }
 
-export interface PointAccessArnParameters<
+export interface AccessPointArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPointAccess: string
+  readonly accessPointId: string
 }
-class PointAccessArn<
+class AccessPointArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'access-point',
   `arn:${string}:elasticfilesystem:${string}:${string}:access-point/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'access-point' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPointAccess: string
-  constructor(parameters: PointAccessArnParameters<Partition>) {
+  readonly accessPointId: string
+  constructor(parameters: AccessPointArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idPointAccess = parameters.idPointAccess
+    this.accessPointId = parameters.accessPointId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticfilesystem:${this.region}:${this.account}:access-point/${this.idPointAccess}` as const
+    return `arn:${this.partition}:elasticfilesystem:${this.region}:${this.account}:access-point/${this.accessPointId}` as const
   }
 }
-export type { PointAccessArn }
-export function pointAccessArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PointAccessArnParameters<Partition>,
+export type { AccessPointArn }
+export function accessPointArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AccessPointArnParameters<Partition>,
 ) {
-  return new PointAccessArn<Partition>(parameters)
+  return new AccessPointArn<Partition>(parameters)
 }

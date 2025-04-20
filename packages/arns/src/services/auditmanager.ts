@@ -9,29 +9,29 @@ import {
 export interface AssessmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAssessment: string
+  readonly assessmentId: string
 }
 class AssessmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'assessment',
   `arn:${string}:auditmanager:${string}:${string}:assessment/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'assessment' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAssessment: string
+  readonly assessmentId: string
   constructor(parameters: AssessmentArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idAssessment = parameters.idAssessment
+    this.assessmentId = parameters.assessmentId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:auditmanager:${this.region}:${this.account}:assessment/${this.idAssessment}` as const
+    return `arn:${this.partition}:auditmanager:${this.region}:${this.account}:assessment/${this.assessmentId}` as const
   }
 }
 export type { AssessmentArn }
@@ -41,107 +41,107 @@ export function assessmentArn<Partition extends ArnPartition = 'aws'>(
   return new AssessmentArn<Partition>(parameters)
 }
 
-export interface FrameworkAssessmentArnParameters<
+export interface AssessmentFrameworkArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idFrameworkAssessment: string
+  readonly assessmentFrameworkId: string
 }
-class FrameworkAssessmentArn<
+class AssessmentFrameworkArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'assessmentFramework',
   `arn:${string}:auditmanager:${string}:${string}:assessmentFramework/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'assessmentFramework' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idFrameworkAssessment: string
-  constructor(parameters: FrameworkAssessmentArnParameters<Partition>) {
+  readonly assessmentFrameworkId: string
+  constructor(parameters: AssessmentFrameworkArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idFrameworkAssessment = parameters.idFrameworkAssessment
+    this.assessmentFrameworkId = parameters.assessmentFrameworkId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:auditmanager:${this.region}:${this.account}:assessmentFramework/${this.idFrameworkAssessment}` as const
+    return `arn:${this.partition}:auditmanager:${this.region}:${this.account}:assessmentFramework/${this.assessmentFrameworkId}` as const
   }
 }
-export type { FrameworkAssessmentArn }
-export function frameworkAssessmentArn<Partition extends ArnPartition = 'aws'>(
-  parameters: FrameworkAssessmentArnParameters<Partition>,
+export type { AssessmentFrameworkArn }
+export function assessmentFrameworkArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AssessmentFrameworkArnParameters<Partition>,
 ) {
-  return new FrameworkAssessmentArn<Partition>(parameters)
+  return new AssessmentFrameworkArn<Partition>(parameters)
 }
 
-export interface SetControlAssessmentArnParameters<
+export interface AssessmentControlSetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAssessment: string
-  readonly idSetControl: string
+  readonly assessmentId: string
+  readonly controlSetId: string
 }
-class SetControlAssessmentArn<
+class AssessmentControlSetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'assessmentControlSet',
   `arn:${string}:auditmanager:${string}:${string}:assessment/${string}/controlSet/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'assessmentControlSet' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAssessment: string
-  readonly idSetControl: string
-  constructor(parameters: SetControlAssessmentArnParameters<Partition>) {
+  readonly assessmentId: string
+  readonly controlSetId: string
+  constructor(parameters: AssessmentControlSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idAssessment = parameters.idAssessment
-    this.idSetControl = parameters.idSetControl
+    this.assessmentId = parameters.assessmentId
+    this.controlSetId = parameters.controlSetId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:auditmanager:${this.region}:${this.account}:assessment/${this.idAssessment}/controlSet/${this.idSetControl}` as const
+    return `arn:${this.partition}:auditmanager:${this.region}:${this.account}:assessment/${this.assessmentId}/controlSet/${this.controlSetId}` as const
   }
 }
-export type { SetControlAssessmentArn }
-export function setControlAssessmentArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetControlAssessmentArnParameters<Partition>,
+export type { AssessmentControlSetArn }
+export function assessmentControlSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AssessmentControlSetArnParameters<Partition>,
 ) {
-  return new SetControlAssessmentArn<Partition>(parameters)
+  return new AssessmentControlSetArn<Partition>(parameters)
 }
 
 export interface ControlArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idControl: string
+  readonly controlId: string
 }
 class ControlArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'control',
   `arn:${string}:auditmanager:${string}:${string}:control/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'control' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idControl: string
+  readonly controlId: string
   constructor(parameters: ControlArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idControl = parameters.idControl
+    this.controlId = parameters.controlId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:auditmanager:${this.region}:${this.account}:control/${this.idControl}` as const
+    return `arn:${this.partition}:auditmanager:${this.region}:${this.account}:control/${this.controlId}` as const
   }
 }
 export type { ControlArn }

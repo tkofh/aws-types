@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface ChannelArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
 class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Channel',
   `arn:${string}:ivs:${string}:${string}:channel/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Channel' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
   constructor(parameters: ChannelArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ivs:${this.region}:${this.account}:channel/${this.idResource}` as const
+    return `arn:${this.partition}:ivs:${this.region}:${this.account}:channel/${this.resourceId}` as const
   }
 }
 export type { ChannelArn }
@@ -39,176 +39,176 @@ export function channelArn<Partition extends ArnPartition = 'aws'>(
   return new ChannelArn<Partition>(parameters)
 }
 
-export interface KeyStreamArnParameters<
+export interface StreamKeyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class KeyStreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class StreamKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Stream-Key',
   `arn:${string}:ivs:${string}:${string}:stream-key/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Stream-Key' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: KeyStreamArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: StreamKeyArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ivs:${this.region}:${this.account}:stream-key/${this.idResource}` as const
+    return `arn:${this.partition}:ivs:${this.region}:${this.account}:stream-key/${this.resourceId}` as const
   }
 }
-export type { KeyStreamArn }
-export function keyStreamArn<Partition extends ArnPartition = 'aws'>(
-  parameters: KeyStreamArnParameters<Partition>,
+export type { StreamKeyArn }
+export function streamKeyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StreamKeyArnParameters<Partition>,
 ) {
-  return new KeyStreamArn<Partition>(parameters)
+  return new StreamKeyArn<Partition>(parameters)
 }
 
-export interface PairKeyPlaybackArnParameters<
+export interface PlaybackKeyPairArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class PairKeyPlaybackArn<
+class PlaybackKeyPairArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'Playback-Key-Pair',
   `arn:${string}:ivs:${string}:${string}:playback-key/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Playback-Key-Pair' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: PairKeyPlaybackArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: PlaybackKeyPairArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ivs:${this.region}:${this.account}:playback-key/${this.idResource}` as const
+    return `arn:${this.partition}:ivs:${this.region}:${this.account}:playback-key/${this.resourceId}` as const
   }
 }
-export type { PairKeyPlaybackArn }
-export function pairKeyPlaybackArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PairKeyPlaybackArnParameters<Partition>,
+export type { PlaybackKeyPairArn }
+export function playbackKeyPairArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PlaybackKeyPairArnParameters<Partition>,
 ) {
-  return new PairKeyPlaybackArn<Partition>(parameters)
+  return new PlaybackKeyPairArn<Partition>(parameters)
 }
 
-export interface PolicyRestrictionPlaybackArnParameters<
+export interface PlaybackRestrictionPolicyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class PolicyRestrictionPlaybackArn<
+class PlaybackRestrictionPolicyArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'Playback-Restriction-Policy',
   `arn:${string}:ivs:${string}:${string}:playback-restriction-policy/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Playback-Restriction-Policy' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: PolicyRestrictionPlaybackArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: PlaybackRestrictionPolicyArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ivs:${this.region}:${this.account}:playback-restriction-policy/${this.idResource}` as const
+    return `arn:${this.partition}:ivs:${this.region}:${this.account}:playback-restriction-policy/${this.resourceId}` as const
   }
 }
-export type { PolicyRestrictionPlaybackArn }
-export function policyRestrictionPlaybackArn<
+export type { PlaybackRestrictionPolicyArn }
+export function playbackRestrictionPolicyArn<
   Partition extends ArnPartition = 'aws',
->(parameters: PolicyRestrictionPlaybackArnParameters<Partition>) {
-  return new PolicyRestrictionPlaybackArn<Partition>(parameters)
+>(parameters: PlaybackRestrictionPolicyArnParameters<Partition>) {
+  return new PlaybackRestrictionPolicyArn<Partition>(parameters)
 }
 
-export interface ConfigurationRecordingArnParameters<
+export interface RecordingConfigurationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ConfigurationRecordingArn<
+class RecordingConfigurationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'Recording-Configuration',
   `arn:${string}:ivs:${string}:${string}:recording-configuration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Recording-Configuration' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ConfigurationRecordingArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: RecordingConfigurationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ivs:${this.region}:${this.account}:recording-configuration/${this.idResource}` as const
+    return `arn:${this.partition}:ivs:${this.region}:${this.account}:recording-configuration/${this.resourceId}` as const
   }
 }
-export type { ConfigurationRecordingArn }
-export function configurationRecordingArn<
+export type { RecordingConfigurationArn }
+export function recordingConfigurationArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ConfigurationRecordingArnParameters<Partition>) {
-  return new ConfigurationRecordingArn<Partition>(parameters)
+>(parameters: RecordingConfigurationArnParameters<Partition>) {
+  return new RecordingConfigurationArn<Partition>(parameters)
 }
 
 export interface StageArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
 class StageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Stage',
   `arn:${string}:ivs:${string}:${string}:stage/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Stage' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
   constructor(parameters: StageArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ivs:${this.region}:${this.account}:stage/${this.idResource}` as const
+    return `arn:${this.partition}:ivs:${this.region}:${this.account}:stage/${this.resourceId}` as const
   }
 }
 export type { StageArn }
@@ -221,10 +221,10 @@ export function stageArn<Partition extends ArnPartition = 'aws'>(
 export interface CompositionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
 class CompositionArn<
   Partition extends ArnPartition = 'aws',
@@ -233,19 +233,19 @@ class CompositionArn<
   `arn:${string}:ivs:${string}:${string}:composition/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Composition' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
   constructor(parameters: CompositionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ivs:${this.region}:${this.account}:composition/${this.idResource}` as const
+    return `arn:${this.partition}:ivs:${this.region}:${this.account}:composition/${this.resourceId}` as const
   }
 }
 export type { CompositionArn }
@@ -255,148 +255,148 @@ export function compositionArn<Partition extends ArnPartition = 'aws'>(
   return new CompositionArn<Partition>(parameters)
 }
 
-export interface ConfigurationEncoderArnParameters<
+export interface EncoderConfigurationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ConfigurationEncoderArn<
+class EncoderConfigurationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'Encoder-Configuration',
   `arn:${string}:ivs:${string}:${string}:encoder-configuration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Encoder-Configuration' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ConfigurationEncoderArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: EncoderConfigurationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ivs:${this.region}:${this.account}:encoder-configuration/${this.idResource}` as const
+    return `arn:${this.partition}:ivs:${this.region}:${this.account}:encoder-configuration/${this.resourceId}` as const
   }
 }
-export type { ConfigurationEncoderArn }
-export function configurationEncoderArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ConfigurationEncoderArnParameters<Partition>,
+export type { EncoderConfigurationArn }
+export function encoderConfigurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EncoderConfigurationArnParameters<Partition>,
 ) {
-  return new ConfigurationEncoderArn<Partition>(parameters)
+  return new EncoderConfigurationArn<Partition>(parameters)
 }
 
-export interface ConfigurationStorageArnParameters<
+export interface StorageConfigurationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ConfigurationStorageArn<
+class StorageConfigurationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'Storage-Configuration',
   `arn:${string}:ivs:${string}:${string}:storage-configuration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Storage-Configuration' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ConfigurationStorageArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: StorageConfigurationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ivs:${this.region}:${this.account}:storage-configuration/${this.idResource}` as const
+    return `arn:${this.partition}:ivs:${this.region}:${this.account}:storage-configuration/${this.resourceId}` as const
   }
 }
-export type { ConfigurationStorageArn }
-export function configurationStorageArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ConfigurationStorageArnParameters<Partition>,
+export type { StorageConfigurationArn }
+export function storageConfigurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StorageConfigurationArnParameters<Partition>,
 ) {
-  return new ConfigurationStorageArn<Partition>(parameters)
+  return new StorageConfigurationArn<Partition>(parameters)
 }
 
-export interface KeyPublicArnParameters<
+export interface PublicKeyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class KeyPublicArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class PublicKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Public-Key',
   `arn:${string}:ivs:${string}:${string}:public-key/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Public-Key' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: KeyPublicArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: PublicKeyArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ivs:${this.region}:${this.account}:public-key/${this.idResource}` as const
+    return `arn:${this.partition}:ivs:${this.region}:${this.account}:public-key/${this.resourceId}` as const
   }
 }
-export type { KeyPublicArn }
-export function keyPublicArn<Partition extends ArnPartition = 'aws'>(
-  parameters: KeyPublicArnParameters<Partition>,
+export type { PublicKeyArn }
+export function publicKeyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PublicKeyArnParameters<Partition>,
 ) {
-  return new KeyPublicArn<Partition>(parameters)
+  return new PublicKeyArn<Partition>(parameters)
 }
 
-export interface ConfigurationIngestArnParameters<
+export interface IngestConfigurationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class ConfigurationIngestArn<
+class IngestConfigurationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'Ingest-Configuration',
   `arn:${string}:ivs:${string}:${string}:ingest-configuration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Ingest-Configuration' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: ConfigurationIngestArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: IngestConfigurationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ivs:${this.region}:${this.account}:ingest-configuration/${this.idResource}` as const
+    return `arn:${this.partition}:ivs:${this.region}:${this.account}:ingest-configuration/${this.resourceId}` as const
   }
 }
-export type { ConfigurationIngestArn }
-export function configurationIngestArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ConfigurationIngestArnParameters<Partition>,
+export type { IngestConfigurationArn }
+export function ingestConfigurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IngestConfigurationArnParameters<Partition>,
 ) {
-  return new ConfigurationIngestArn<Partition>(parameters)
+  return new IngestConfigurationArn<Partition>(parameters)
 }

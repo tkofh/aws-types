@@ -6,189 +6,189 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ClusterVirtualArnParameters<
+export interface VirtualClusterArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idClusterVirtual: string
+  readonly virtualClusterId: string
 }
-class ClusterVirtualArn<
+class VirtualClusterArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'virtualCluster',
   `arn:${string}:emr-containers:${string}:${string}:/virtualclusters/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'virtualCluster' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idClusterVirtual: string
-  constructor(parameters: ClusterVirtualArnParameters<Partition>) {
+  readonly virtualClusterId: string
+  constructor(parameters: VirtualClusterArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idClusterVirtual = parameters.idClusterVirtual
+    this.virtualClusterId = parameters.virtualClusterId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:emr-containers:${this.region}:${this.account}:/virtualclusters/${this.idClusterVirtual}` as const
+    return `arn:${this.partition}:emr-containers:${this.region}:${this.account}:/virtualclusters/${this.virtualClusterId}` as const
   }
 }
-export type { ClusterVirtualArn }
-export function clusterVirtualArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ClusterVirtualArnParameters<Partition>,
+export type { VirtualClusterArn }
+export function virtualClusterArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VirtualClusterArnParameters<Partition>,
 ) {
-  return new ClusterVirtualArn<Partition>(parameters)
+  return new VirtualClusterArn<Partition>(parameters)
 }
 
-export interface RunJobArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface JobRunArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idClusterVirtual: string
-  readonly idRunJob: string
+  readonly virtualClusterId: string
+  readonly jobRunId: string
 }
-class RunJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class JobRunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'jobRun',
   `arn:${string}:emr-containers:${string}:${string}:/virtualclusters/${string}/jobruns/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'jobRun' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idClusterVirtual: string
-  readonly idRunJob: string
-  constructor(parameters: RunJobArnParameters<Partition>) {
+  readonly virtualClusterId: string
+  readonly jobRunId: string
+  constructor(parameters: JobRunArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idClusterVirtual = parameters.idClusterVirtual
-    this.idRunJob = parameters.idRunJob
+    this.virtualClusterId = parameters.virtualClusterId
+    this.jobRunId = parameters.jobRunId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:emr-containers:${this.region}:${this.account}:/virtualclusters/${this.idClusterVirtual}/jobruns/${this.idRunJob}` as const
+    return `arn:${this.partition}:emr-containers:${this.region}:${this.account}:/virtualclusters/${this.virtualClusterId}/jobruns/${this.jobRunId}` as const
   }
 }
-export type { RunJobArn }
-export function runJobArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RunJobArnParameters<Partition>,
+export type { JobRunArn }
+export function jobRunArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobRunArnParameters<Partition>,
 ) {
-  return new RunJobArn<Partition>(parameters)
+  return new JobRunArn<Partition>(parameters)
 }
 
-export interface TemplateJobArnParameters<
+export interface JobTemplateArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idTemplateJob: string
+  readonly jobTemplateId: string
 }
-class TemplateJobArn<
+class JobTemplateArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'jobTemplate',
   `arn:${string}:emr-containers:${string}:${string}:/jobtemplates/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'jobTemplate' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idTemplateJob: string
-  constructor(parameters: TemplateJobArnParameters<Partition>) {
+  readonly jobTemplateId: string
+  constructor(parameters: JobTemplateArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idTemplateJob = parameters.idTemplateJob
+    this.jobTemplateId = parameters.jobTemplateId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:emr-containers:${this.region}:${this.account}:/jobtemplates/${this.idTemplateJob}` as const
+    return `arn:${this.partition}:emr-containers:${this.region}:${this.account}:/jobtemplates/${this.jobTemplateId}` as const
   }
 }
-export type { TemplateJobArn }
-export function templateJobArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TemplateJobArnParameters<Partition>,
+export type { JobTemplateArn }
+export function jobTemplateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobTemplateArnParameters<Partition>,
 ) {
-  return new TemplateJobArn<Partition>(parameters)
+  return new JobTemplateArn<Partition>(parameters)
 }
 
-export interface EndpointManagedArnParameters<
+export interface ManagedEndpointArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idClusterVirtual: string
-  readonly idEndpoint: string
+  readonly virtualClusterId: string
+  readonly endpointId: string
 }
-class EndpointManagedArn<
+class ManagedEndpointArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'managedEndpoint',
   `arn:${string}:emr-containers:${string}:${string}:/virtualclusters/${string}/endpoints/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'managedEndpoint' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idClusterVirtual: string
-  readonly idEndpoint: string
-  constructor(parameters: EndpointManagedArnParameters<Partition>) {
+  readonly virtualClusterId: string
+  readonly endpointId: string
+  constructor(parameters: ManagedEndpointArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idClusterVirtual = parameters.idClusterVirtual
-    this.idEndpoint = parameters.idEndpoint
+    this.virtualClusterId = parameters.virtualClusterId
+    this.endpointId = parameters.endpointId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:emr-containers:${this.region}:${this.account}:/virtualclusters/${this.idClusterVirtual}/endpoints/${this.idEndpoint}` as const
+    return `arn:${this.partition}:emr-containers:${this.region}:${this.account}:/virtualclusters/${this.virtualClusterId}/endpoints/${this.endpointId}` as const
   }
 }
-export type { EndpointManagedArn }
-export function endpointManagedArn<Partition extends ArnPartition = 'aws'>(
-  parameters: EndpointManagedArnParameters<Partition>,
+export type { ManagedEndpointArn }
+export function managedEndpointArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ManagedEndpointArnParameters<Partition>,
 ) {
-  return new EndpointManagedArn<Partition>(parameters)
+  return new ManagedEndpointArn<Partition>(parameters)
 }
 
-export interface ConfigurationSecurityArnParameters<
+export interface SecurityConfigurationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idConfigurationSecurity: string
+  readonly securityConfigurationId: string
 }
-class ConfigurationSecurityArn<
+class SecurityConfigurationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'securityConfiguration',
   `arn:${string}:emr-containers:${string}:${string}:/securityconfigurations/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'securityConfiguration' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idConfigurationSecurity: string
-  constructor(parameters: ConfigurationSecurityArnParameters<Partition>) {
+  readonly securityConfigurationId: string
+  constructor(parameters: SecurityConfigurationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idConfigurationSecurity = parameters.idConfigurationSecurity
+    this.securityConfigurationId = parameters.securityConfigurationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:emr-containers:${this.region}:${this.account}:/securityconfigurations/${this.idConfigurationSecurity}` as const
+    return `arn:${this.partition}:emr-containers:${this.region}:${this.account}:/securityconfigurations/${this.securityConfigurationId}` as const
   }
 }
-export type { ConfigurationSecurityArn }
-export function configurationSecurityArn<
+export type { SecurityConfigurationArn }
+export function securityConfigurationArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ConfigurationSecurityArnParameters<Partition>) {
-  return new ConfigurationSecurityArn<Partition>(parameters)
+>(parameters: SecurityConfigurationArnParameters<Partition>) {
+  return new SecurityConfigurationArn<Partition>(parameters)
 }

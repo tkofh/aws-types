@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface AccountArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idOrganization: string
-  readonly idAccount: string
+  readonly organizationId: string
+  readonly accountId: string
 }
 class AccountArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'account',
   `arn:${string}:organizations::${string}:account/o-${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'account' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idOrganization: string
-  readonly idAccount: string
+  readonly organizationId: string
+  readonly accountId: string
   constructor(parameters: AccountArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idOrganization = parameters.idOrganization
-    this.idAccount = parameters.idAccount
+    this.organizationId = parameters.organizationId
+    this.accountId = parameters.accountId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:organizations::${this.account}:account/o-${this.idOrganization}/${this.idAccount}` as const
+    return `arn:${this.partition}:organizations::${this.account}:account/o-${this.organizationId}/${this.accountId}` as const
   }
 }
 export type { AccountArn }
@@ -42,32 +42,32 @@ export function accountArn<Partition extends ArnPartition = 'aws'>(
 export interface HandshakeArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idOrganization: string
-  readonly typeHandshake: string
-  readonly idHandshake: string
+  readonly organizationId: string
+  readonly handshakeType: string
+  readonly handshakeId: string
 }
 class HandshakeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'handshake',
   `arn:${string}:organizations::${string}:handshake/o-${string}/${string}/h-${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'handshake' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idOrganization: string
-  readonly typeHandshake: string
-  readonly idHandshake: string
+  readonly organizationId: string
+  readonly handshakeType: string
+  readonly handshakeId: string
   constructor(parameters: HandshakeArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idOrganization = parameters.idOrganization
-    this.typeHandshake = parameters.typeHandshake
-    this.idHandshake = parameters.idHandshake
+    this.organizationId = parameters.organizationId
+    this.handshakeType = parameters.handshakeType
+    this.handshakeId = parameters.handshakeId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:organizations::${this.account}:handshake/o-${this.idOrganization}/${this.typeHandshake}/h-${this.idHandshake}` as const
+    return `arn:${this.partition}:organizations::${this.account}:handshake/o-${this.organizationId}/${this.handshakeType}/h-${this.handshakeId}` as const
   }
 }
 export type { HandshakeArn }
@@ -80,9 +80,9 @@ export function handshakeArn<Partition extends ArnPartition = 'aws'>(
 export interface OrganizationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idOrganization: string
+  readonly organizationId: string
 }
 class OrganizationArn<
   Partition extends ArnPartition = 'aws',
@@ -91,17 +91,17 @@ class OrganizationArn<
   `arn:${string}:organizations::${string}:organization/o-${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'organization' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idOrganization: string
+  readonly organizationId: string
   constructor(parameters: OrganizationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idOrganization = parameters.idOrganization
+    this.organizationId = parameters.organizationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:organizations::${this.account}:organization/o-${this.idOrganization}` as const
+    return `arn:${this.partition}:organizations::${this.account}:organization/o-${this.organizationId}` as const
   }
 }
 export type { OrganizationArn }
@@ -111,70 +111,70 @@ export function organizationArn<Partition extends ArnPartition = 'aws'>(
   return new OrganizationArn<Partition>(parameters)
 }
 
-export interface UnitOrganizationalArnParameters<
+export interface OrganizationalUnitArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idOrganization: string
-  readonly idUnitOrganizational: string
+  readonly organizationId: string
+  readonly organizationalUnitId: string
 }
-class UnitOrganizationalArn<
+class OrganizationalUnitArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'organizationalunit',
   `arn:${string}:organizations::${string}:ou/o-${string}/ou-${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'organizationalunit' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idOrganization: string
-  readonly idUnitOrganizational: string
-  constructor(parameters: UnitOrganizationalArnParameters<Partition>) {
+  readonly organizationId: string
+  readonly organizationalUnitId: string
+  constructor(parameters: OrganizationalUnitArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idOrganization = parameters.idOrganization
-    this.idUnitOrganizational = parameters.idUnitOrganizational
+    this.organizationId = parameters.organizationId
+    this.organizationalUnitId = parameters.organizationalUnitId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:organizations::${this.account}:ou/o-${this.idOrganization}/ou-${this.idUnitOrganizational}` as const
+    return `arn:${this.partition}:organizations::${this.account}:ou/o-${this.organizationId}/ou-${this.organizationalUnitId}` as const
   }
 }
-export type { UnitOrganizationalArn }
-export function unitOrganizationalArn<Partition extends ArnPartition = 'aws'>(
-  parameters: UnitOrganizationalArnParameters<Partition>,
+export type { OrganizationalUnitArn }
+export function organizationalUnitArn<Partition extends ArnPartition = 'aws'>(
+  parameters: OrganizationalUnitArnParameters<Partition>,
 ) {
-  return new UnitOrganizationalArn<Partition>(parameters)
+  return new OrganizationalUnitArn<Partition>(parameters)
 }
 
 export interface PolicyArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idOrganization: string
-  readonly typePolicy: string
-  readonly idPolicy: string
+  readonly organizationId: string
+  readonly policyType: string
+  readonly policyId: string
 }
 class PolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'policy',
   `arn:${string}:organizations::${string}:policy/o-${string}/${string}/p-${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'policy' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idOrganization: string
-  readonly typePolicy: string
-  readonly idPolicy: string
+  readonly organizationId: string
+  readonly policyType: string
+  readonly policyId: string
   constructor(parameters: PolicyArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idOrganization = parameters.idOrganization
-    this.typePolicy = parameters.typePolicy
-    this.idPolicy = parameters.idPolicy
+    this.organizationId = parameters.organizationId
+    this.policyType = parameters.policyType
+    this.policyId = parameters.policyId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:organizations::${this.account}:policy/o-${this.idOrganization}/${this.typePolicy}/p-${this.idPolicy}` as const
+    return `arn:${this.partition}:organizations::${this.account}:policy/o-${this.organizationId}/${this.policyType}/p-${this.policyId}` as const
   }
 }
 export type { PolicyArn }
@@ -184,99 +184,99 @@ export function policyArn<Partition extends ArnPartition = 'aws'>(
   return new PolicyArn<Partition>(parameters)
 }
 
-export interface PolicyResourceArnParameters<
+export interface ResourcePolicyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idOrganization: string
-  readonly idPolicyResource: string
+  readonly organizationId: string
+  readonly resourcePolicyId: string
 }
-class PolicyResourceArn<
+class ResourcePolicyArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'resourcepolicy',
   `arn:${string}:organizations::${string}:resourcepolicy/o-${string}/rp-${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'resourcepolicy' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idOrganization: string
-  readonly idPolicyResource: string
-  constructor(parameters: PolicyResourceArnParameters<Partition>) {
+  readonly organizationId: string
+  readonly resourcePolicyId: string
+  constructor(parameters: ResourcePolicyArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idOrganization = parameters.idOrganization
-    this.idPolicyResource = parameters.idPolicyResource
+    this.organizationId = parameters.organizationId
+    this.resourcePolicyId = parameters.resourcePolicyId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:organizations::${this.account}:resourcepolicy/o-${this.idOrganization}/rp-${this.idPolicyResource}` as const
+    return `arn:${this.partition}:organizations::${this.account}:resourcepolicy/o-${this.organizationId}/rp-${this.resourcePolicyId}` as const
   }
 }
-export type { PolicyResourceArn }
-export function policyResourceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PolicyResourceArnParameters<Partition>,
+export type { ResourcePolicyArn }
+export function resourcePolicyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResourcePolicyArnParameters<Partition>,
 ) {
-  return new PolicyResourceArn<Partition>(parameters)
+  return new ResourcePolicyArn<Partition>(parameters)
 }
 
-export interface PolicyAwsArnParameters<
+export interface AwsPolicyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly typePolicy: string
-  readonly idPolicy: string
+  readonly partition?: Partition | undefined
+  readonly policyType: string
+  readonly policyId: string
 }
-class PolicyAwsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class AwsPolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'awspolicy',
   `arn:${string}:organizations::aws:policy/${string}/p-${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'awspolicy' as const
-  readonly partition: string
-  readonly typePolicy: string
-  readonly idPolicy: string
-  constructor(parameters: PolicyAwsArnParameters<Partition>) {
+  readonly partition: Partition
+  readonly policyType: string
+  readonly policyId: string
+  constructor(parameters: AwsPolicyArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
-    this.typePolicy = parameters.typePolicy
-    this.idPolicy = parameters.idPolicy
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.policyType = parameters.policyType
+    this.policyId = parameters.policyId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:organizations::aws:policy/${this.typePolicy}/p-${this.idPolicy}` as const
+    return `arn:${this.partition}:organizations::aws:policy/${this.policyType}/p-${this.policyId}` as const
   }
 }
-export type { PolicyAwsArn }
-export function policyAwsArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PolicyAwsArnParameters<Partition>,
+export type { AwsPolicyArn }
+export function awsPolicyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AwsPolicyArnParameters<Partition>,
 ) {
-  return new PolicyAwsArn<Partition>(parameters)
+  return new AwsPolicyArn<Partition>(parameters)
 }
 
 export interface RootArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idOrganization: string
-  readonly idRoot: string
+  readonly organizationId: string
+  readonly rootId: string
 }
 class RootArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'root',
   `arn:${string}:organizations::${string}:root/o-${string}/r-${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'root' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idOrganization: string
-  readonly idRoot: string
+  readonly organizationId: string
+  readonly rootId: string
   constructor(parameters: RootArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idOrganization = parameters.idOrganization
-    this.idRoot = parameters.idRoot
+    this.organizationId = parameters.organizationId
+    this.rootId = parameters.rootId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:organizations::${this.account}:root/o-${this.idOrganization}/r-${this.idRoot}` as const
+    return `arn:${this.partition}:organizations::${this.account}:root/o-${this.organizationId}/r-${this.rootId}` as const
   }
 }
 export type { RootArn }

@@ -7,32 +7,32 @@ import {
 } from '../internal.js'
 
 export interface FilterArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idOwner: string
-  readonly idFilter: string
+  readonly ownerId: string
+  readonly filterId: string
 }
 class FilterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Filter',
   `arn:${string}:inspector2:${string}:${string}:owner/${string}/filter/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Filter' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idOwner: string
-  readonly idFilter: string
+  readonly ownerId: string
+  readonly filterId: string
   constructor(parameters: FilterArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idOwner = parameters.idOwner
-    this.idFilter = parameters.idFilter
+    this.ownerId = parameters.ownerId
+    this.filterId = parameters.filterId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:inspector2:${this.region}:${this.account}:owner/${this.idOwner}/filter/${this.idFilter}` as const
+    return `arn:${this.partition}:inspector2:${this.region}:${this.account}:owner/${this.ownerId}/filter/${this.filterId}` as const
   }
 }
 export type { FilterArn }
@@ -43,29 +43,29 @@ export function filterArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface FindingArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idFinding: string
+  readonly findingId: string
 }
 class FindingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Finding',
   `arn:${string}:inspector2:${string}:${string}:finding/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Finding' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idFinding: string
+  readonly findingId: string
   constructor(parameters: FindingArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idFinding = parameters.idFinding
+    this.findingId = parameters.findingId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:inspector2:${this.region}:${this.account}:finding/${this.idFinding}` as const
+    return `arn:${this.partition}:inspector2:${this.region}:${this.account}:finding/${this.findingId}` as const
   }
 }
 export type { FindingArn }
@@ -75,42 +75,42 @@ export function findingArn<Partition extends ArnPartition = 'aws'>(
   return new FindingArn<Partition>(parameters)
 }
 
-export interface ConfigurationScanCisArnParameters<
+export interface CisScanConfigurationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idOwner: string
-  readonly idConfigurationScanCis: string
+  readonly ownerId: string
+  readonly cisScanConfigurationId: string
 }
-class ConfigurationScanCisArn<
+class CisScanConfigurationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'CIS Scan Configuration',
   `arn:${string}:inspector2:${string}:${string}:owner/${string}/cis-configuration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'CIS Scan Configuration' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idOwner: string
-  readonly idConfigurationScanCis: string
-  constructor(parameters: ConfigurationScanCisArnParameters<Partition>) {
+  readonly ownerId: string
+  readonly cisScanConfigurationId: string
+  constructor(parameters: CisScanConfigurationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idOwner = parameters.idOwner
-    this.idConfigurationScanCis = parameters.idConfigurationScanCis
+    this.ownerId = parameters.ownerId
+    this.cisScanConfigurationId = parameters.cisScanConfigurationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:inspector2:${this.region}:${this.account}:owner/${this.idOwner}/cis-configuration/${this.idConfigurationScanCis}` as const
+    return `arn:${this.partition}:inspector2:${this.region}:${this.account}:owner/${this.ownerId}/cis-configuration/${this.cisScanConfigurationId}` as const
   }
 }
-export type { ConfigurationScanCisArn }
-export function configurationScanCisArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ConfigurationScanCisArnParameters<Partition>,
+export type { CisScanConfigurationArn }
+export function cisScanConfigurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CisScanConfigurationArnParameters<Partition>,
 ) {
-  return new ConfigurationScanCisArn<Partition>(parameters)
+  return new CisScanConfigurationArn<Partition>(parameters)
 }

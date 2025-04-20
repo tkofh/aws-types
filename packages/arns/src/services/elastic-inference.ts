@@ -9,10 +9,10 @@ import {
 export interface AcceleratorArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAccelerator: string
+  readonly acceleratorId: string
 }
 class AcceleratorArn<
   Partition extends ArnPartition = 'aws',
@@ -21,19 +21,19 @@ class AcceleratorArn<
   `arn:${string}:elastic-inference:${string}:${string}:elastic-inference-accelerator/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'accelerator' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAccelerator: string
+  readonly acceleratorId: string
   constructor(parameters: AcceleratorArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idAccelerator = parameters.idAccelerator
+    this.acceleratorId = parameters.acceleratorId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elastic-inference:${this.region}:${this.account}:elastic-inference-accelerator/${this.idAccelerator}` as const
+    return `arn:${this.partition}:elastic-inference:${this.region}:${this.account}:elastic-inference-accelerator/${this.acceleratorId}` as const
   }
 }
 export type { AcceleratorArn }

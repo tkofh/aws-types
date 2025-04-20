@@ -7,8 +7,8 @@ import {
 } from '../internal.js'
 
 export interface AliasArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly alias: string
 }
@@ -17,13 +17,13 @@ class AliasArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:kms:${string}:${string}:alias/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'alias' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly alias: string
   constructor(parameters: AliasArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.alias = parameters.alias
@@ -40,29 +40,29 @@ export function aliasArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface KeyArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idKey: string
+  readonly keyId: string
 }
 class KeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'key',
   `arn:${string}:kms:${string}:${string}:key/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'key' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idKey: string
+  readonly keyId: string
   constructor(parameters: KeyArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idKey = parameters.idKey
+    this.keyId = parameters.keyId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:kms:${this.region}:${this.account}:key/${this.idKey}` as const
+    return `arn:${this.partition}:kms:${this.region}:${this.account}:key/${this.keyId}` as const
   }
 }
 export type { KeyArn }

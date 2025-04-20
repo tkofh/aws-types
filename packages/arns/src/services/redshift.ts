@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameCluster: string
+  readonly clusterName: string
 }
 class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'cluster',
   `arn:${string}:redshift:${string}:${string}:cluster:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'cluster' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameCluster: string
+  readonly clusterName: string
   constructor(parameters: ClusterArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameCluster = parameters.nameCluster
+    this.clusterName = parameters.clusterName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:cluster:${this.nameCluster}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:cluster:${this.clusterName}` as const
   }
 }
 export type { ClusterArn }
@@ -39,289 +39,289 @@ export function clusterArn<Partition extends ArnPartition = 'aws'>(
   return new ClusterArn<Partition>(parameters)
 }
 
-export interface ShareDataArnParameters<
+export interface DataShareArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly namespaceClusterProducer: string
-  readonly nameShareData: string
+  readonly producerClusterNamespace: string
+  readonly dataShareName: string
 }
-class ShareDataArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class DataShareArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'datashare',
   `arn:${string}:redshift:${string}:${string}:datashare:${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'datashare' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly namespaceClusterProducer: string
-  readonly nameShareData: string
-  constructor(parameters: ShareDataArnParameters<Partition>) {
+  readonly producerClusterNamespace: string
+  readonly dataShareName: string
+  constructor(parameters: DataShareArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.namespaceClusterProducer = parameters.namespaceClusterProducer
-    this.nameShareData = parameters.nameShareData
+    this.producerClusterNamespace = parameters.producerClusterNamespace
+    this.dataShareName = parameters.dataShareName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:datashare:${this.namespaceClusterProducer}/${this.nameShareData}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:datashare:${this.producerClusterNamespace}/${this.dataShareName}` as const
   }
 }
-export type { ShareDataArn }
-export function shareDataArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ShareDataArnParameters<Partition>,
+export type { DataShareArn }
+export function dataShareArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DataShareArnParameters<Partition>,
 ) {
-  return new ShareDataArn<Partition>(parameters)
+  return new DataShareArn<Partition>(parameters)
 }
 
-export interface GroupDbArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface DbGroupArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameCluster: string
-  readonly groupDb: string
+  readonly clusterName: string
+  readonly dbGroup: string
 }
-class GroupDbArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class DbGroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'dbgroup',
   `arn:${string}:redshift:${string}:${string}:dbgroup:${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'dbgroup' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameCluster: string
-  readonly groupDb: string
-  constructor(parameters: GroupDbArnParameters<Partition>) {
+  readonly clusterName: string
+  readonly dbGroup: string
+  constructor(parameters: DbGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameCluster = parameters.nameCluster
-    this.groupDb = parameters.groupDb
+    this.clusterName = parameters.clusterName
+    this.dbGroup = parameters.dbGroup
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:dbgroup:${this.nameCluster}/${this.groupDb}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:dbgroup:${this.clusterName}/${this.dbGroup}` as const
   }
 }
-export type { GroupDbArn }
-export function groupDbArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupDbArnParameters<Partition>,
+export type { DbGroupArn }
+export function dbGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DbGroupArnParameters<Partition>,
 ) {
-  return new GroupDbArn<Partition>(parameters)
+  return new DbGroupArn<Partition>(parameters)
 }
 
-export interface NameDbArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface DbNameArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameCluster: string
-  readonly nameDb: string
+  readonly clusterName: string
+  readonly dbName: string
 }
-class NameDbArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class DbNameArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'dbname',
   `arn:${string}:redshift:${string}:${string}:dbname:${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'dbname' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameCluster: string
-  readonly nameDb: string
-  constructor(parameters: NameDbArnParameters<Partition>) {
+  readonly clusterName: string
+  readonly dbName: string
+  constructor(parameters: DbNameArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameCluster = parameters.nameCluster
-    this.nameDb = parameters.nameDb
+    this.clusterName = parameters.clusterName
+    this.dbName = parameters.dbName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:dbname:${this.nameCluster}/${this.nameDb}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:dbname:${this.clusterName}/${this.dbName}` as const
   }
 }
-export type { NameDbArn }
-export function nameDbArn<Partition extends ArnPartition = 'aws'>(
-  parameters: NameDbArnParameters<Partition>,
+export type { DbNameArn }
+export function dbNameArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DbNameArnParameters<Partition>,
 ) {
-  return new NameDbArn<Partition>(parameters)
+  return new DbNameArn<Partition>(parameters)
 }
 
-export interface UserDbArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface DbUserArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameCluster: string
-  readonly userDb: string
+  readonly clusterName: string
+  readonly dbUser: string
 }
-class UserDbArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class DbUserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'dbuser',
   `arn:${string}:redshift:${string}:${string}:dbuser:${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'dbuser' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameCluster: string
-  readonly userDb: string
-  constructor(parameters: UserDbArnParameters<Partition>) {
+  readonly clusterName: string
+  readonly dbUser: string
+  constructor(parameters: DbUserArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameCluster = parameters.nameCluster
-    this.userDb = parameters.userDb
+    this.clusterName = parameters.clusterName
+    this.dbUser = parameters.dbUser
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:dbuser:${this.nameCluster}/${this.userDb}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:dbuser:${this.clusterName}/${this.dbUser}` as const
   }
 }
-export type { UserDbArn }
-export function userDbArn<Partition extends ArnPartition = 'aws'>(
-  parameters: UserDbArnParameters<Partition>,
+export type { DbUserArn }
+export function dbUserArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DbUserArnParameters<Partition>,
 ) {
-  return new UserDbArn<Partition>(parameters)
+  return new DbUserArn<Partition>(parameters)
 }
 
-export interface SubscriptionEventArnParameters<
+export interface EventSubscriptionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSubscriptionEvent: string
+  readonly eventSubscriptionName: string
 }
-class SubscriptionEventArn<
+class EventSubscriptionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'eventsubscription',
   `arn:${string}:redshift:${string}:${string}:eventsubscription:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'eventsubscription' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameSubscriptionEvent: string
-  constructor(parameters: SubscriptionEventArnParameters<Partition>) {
+  readonly eventSubscriptionName: string
+  constructor(parameters: EventSubscriptionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameSubscriptionEvent = parameters.nameSubscriptionEvent
+    this.eventSubscriptionName = parameters.eventSubscriptionName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:eventsubscription:${this.nameSubscriptionEvent}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:eventsubscription:${this.eventSubscriptionName}` as const
   }
 }
-export type { SubscriptionEventArn }
-export function subscriptionEventArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SubscriptionEventArnParameters<Partition>,
+export type { EventSubscriptionArn }
+export function eventSubscriptionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EventSubscriptionArnParameters<Partition>,
 ) {
-  return new SubscriptionEventArn<Partition>(parameters)
+  return new EventSubscriptionArn<Partition>(parameters)
 }
 
-export interface CertificateClientHsmArnParameters<
+export interface HsmClientCertificateArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCertificateClientHsm: string
+  readonly hsmClientCertificateId: string
 }
-class CertificateClientHsmArn<
+class HsmClientCertificateArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'hsmclientcertificate',
   `arn:${string}:redshift:${string}:${string}:hsmclientcertificate:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'hsmclientcertificate' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCertificateClientHsm: string
-  constructor(parameters: CertificateClientHsmArnParameters<Partition>) {
+  readonly hsmClientCertificateId: string
+  constructor(parameters: HsmClientCertificateArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idCertificateClientHsm = parameters.idCertificateClientHsm
+    this.hsmClientCertificateId = parameters.hsmClientCertificateId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:hsmclientcertificate:${this.idCertificateClientHsm}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:hsmclientcertificate:${this.hsmClientCertificateId}` as const
   }
 }
-export type { CertificateClientHsmArn }
-export function certificateClientHsmArn<Partition extends ArnPartition = 'aws'>(
-  parameters: CertificateClientHsmArnParameters<Partition>,
+export type { HsmClientCertificateArn }
+export function hsmClientCertificateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: HsmClientCertificateArnParameters<Partition>,
 ) {
-  return new CertificateClientHsmArn<Partition>(parameters)
+  return new HsmClientCertificateArn<Partition>(parameters)
 }
 
-export interface ConfigurationHsmArnParameters<
+export interface HsmConfigurationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idConfigurationHsm: string
+  readonly hsmConfigurationId: string
 }
-class ConfigurationHsmArn<
+class HsmConfigurationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'hsmconfiguration',
   `arn:${string}:redshift:${string}:${string}:hsmconfiguration:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'hsmconfiguration' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idConfigurationHsm: string
-  constructor(parameters: ConfigurationHsmArnParameters<Partition>) {
+  readonly hsmConfigurationId: string
+  constructor(parameters: HsmConfigurationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idConfigurationHsm = parameters.idConfigurationHsm
+    this.hsmConfigurationId = parameters.hsmConfigurationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:hsmconfiguration:${this.idConfigurationHsm}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:hsmconfiguration:${this.hsmConfigurationId}` as const
   }
 }
-export type { ConfigurationHsmArn }
-export function configurationHsmArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ConfigurationHsmArnParameters<Partition>,
+export type { HsmConfigurationArn }
+export function hsmConfigurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: HsmConfigurationArnParameters<Partition>,
 ) {
-  return new ConfigurationHsmArn<Partition>(parameters)
+  return new HsmConfigurationArn<Partition>(parameters)
 }
 
 export interface NamespaceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly namespaceCluster: string
+  readonly clusterNamespace: string
 }
 class NamespaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'namespace',
   `arn:${string}:redshift:${string}:${string}:namespace:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'namespace' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly namespaceCluster: string
+  readonly clusterNamespace: string
   constructor(parameters: NamespaceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.namespaceCluster = parameters.namespaceCluster
+    this.clusterNamespace = parameters.clusterNamespace
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:namespace:${this.namespaceCluster}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:namespace:${this.clusterNamespace}` as const
   }
 }
 export type { NamespaceArn }
@@ -331,137 +331,137 @@ export function namespaceArn<Partition extends ArnPartition = 'aws'>(
   return new NamespaceArn<Partition>(parameters)
 }
 
-export interface GroupParameterArnParameters<
+export interface ParameterGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupParameter: string
+  readonly parameterGroupName: string
 }
-class GroupParameterArn<
+class ParameterGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'parametergroup',
   `arn:${string}:redshift:${string}:${string}:parametergroup:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'parametergroup' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupParameter: string
-  constructor(parameters: GroupParameterArnParameters<Partition>) {
+  readonly parameterGroupName: string
+  constructor(parameters: ParameterGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameGroupParameter = parameters.nameGroupParameter
+    this.parameterGroupName = parameters.parameterGroupName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:parametergroup:${this.nameGroupParameter}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:parametergroup:${this.parameterGroupName}` as const
   }
 }
-export type { GroupParameterArn }
-export function groupParameterArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupParameterArnParameters<Partition>,
+export type { ParameterGroupArn }
+export function parameterGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ParameterGroupArnParameters<Partition>,
 ) {
-  return new GroupParameterArn<Partition>(parameters)
+  return new ParameterGroupArn<Partition>(parameters)
 }
 
-export interface GroupSecurityArnParameters<
+export interface SecurityGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupSecurity: string
+  readonly securityGroupName: string
   readonly owner: string
-  readonly idGroupSecurityEc2: string
+  readonly ec2SecurityGroupId: string
 }
-class GroupSecurityArn<
+class SecurityGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'securitygroup',
   `arn:${string}:redshift:${string}:${string}:securitygroup:${string}/ec2securitygroup/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'securitygroup' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupSecurity: string
+  readonly securityGroupName: string
   readonly owner: string
-  readonly idGroupSecurityEc2: string
-  constructor(parameters: GroupSecurityArnParameters<Partition>) {
+  readonly ec2SecurityGroupId: string
+  constructor(parameters: SecurityGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameGroupSecurity = parameters.nameGroupSecurity
+    this.securityGroupName = parameters.securityGroupName
     this.owner = parameters.owner
-    this.idGroupSecurityEc2 = parameters.idGroupSecurityEc2
+    this.ec2SecurityGroupId = parameters.ec2SecurityGroupId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:securitygroup:${this.nameGroupSecurity}/ec2securitygroup/${this.owner}/${this.idGroupSecurityEc2}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:securitygroup:${this.securityGroupName}/ec2securitygroup/${this.owner}/${this.ec2SecurityGroupId}` as const
   }
 }
-export type { GroupSecurityArn }
-export function groupSecurityArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupSecurityArnParameters<Partition>,
+export type { SecurityGroupArn }
+export function securityGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SecurityGroupArnParameters<Partition>,
 ) {
-  return new GroupSecurityArn<Partition>(parameters)
+  return new SecurityGroupArn<Partition>(parameters)
 }
 
-export interface CidrIngressGroupSecurityArnParameters<
+export interface SecurityGroupIngressCidrArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupSecurity: string
-  readonly rangeIp: string
+  readonly securityGroupName: string
+  readonly ipRange: string
 }
-class CidrIngressGroupSecurityArn<
+class SecurityGroupIngressCidrArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'securitygroupingress-cidr',
   `arn:${string}:redshift:${string}:${string}:securitygroupingress:${string}/cidrip/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'securitygroupingress-cidr' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupSecurity: string
-  readonly rangeIp: string
-  constructor(parameters: CidrIngressGroupSecurityArnParameters<Partition>) {
+  readonly securityGroupName: string
+  readonly ipRange: string
+  constructor(parameters: SecurityGroupIngressCidrArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameGroupSecurity = parameters.nameGroupSecurity
-    this.rangeIp = parameters.rangeIp
+    this.securityGroupName = parameters.securityGroupName
+    this.ipRange = parameters.ipRange
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:securitygroupingress:${this.nameGroupSecurity}/cidrip/${this.rangeIp}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:securitygroupingress:${this.securityGroupName}/cidrip/${this.ipRange}` as const
   }
 }
-export type { CidrIngressGroupSecurityArn }
-export function cidrIngressGroupSecurityArn<
+export type { SecurityGroupIngressCidrArn }
+export function securityGroupIngressCidrArn<
   Partition extends ArnPartition = 'aws',
->(parameters: CidrIngressGroupSecurityArnParameters<Partition>) {
-  return new CidrIngressGroupSecurityArn<Partition>(parameters)
+>(parameters: SecurityGroupIngressCidrArnParameters<Partition>) {
+  return new SecurityGroupIngressCidrArn<Partition>(parameters)
 }
 
-export interface GroupSecurityEc2IngressGroupSecurityArnParameters<
+export interface SecurityGroupIngressEc2SecurityGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupSecurity: string
+  readonly securityGroupName: string
   readonly owner: string
-  readonly idGroupSecurityEc2: string
+  readonly ec2SecurityGroupId: string
 }
-class GroupSecurityEc2IngressGroupSecurityArn<
+class SecurityGroupIngressEc2SecurityGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'securitygroupingress-ec2securitygroup',
@@ -469,61 +469,61 @@ class GroupSecurityEc2IngressGroupSecurityArn<
 > {
   readonly [ArnResourceTypeBrand] =
     'securitygroupingress-ec2securitygroup' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupSecurity: string
+  readonly securityGroupName: string
   readonly owner: string
-  readonly idGroupSecurityEc2: string
+  readonly ec2SecurityGroupId: string
   constructor(
-    parameters: GroupSecurityEc2IngressGroupSecurityArnParameters<Partition>,
+    parameters: SecurityGroupIngressEc2SecurityGroupArnParameters<Partition>,
   ) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameGroupSecurity = parameters.nameGroupSecurity
+    this.securityGroupName = parameters.securityGroupName
     this.owner = parameters.owner
-    this.idGroupSecurityEc2 = parameters.idGroupSecurityEc2
+    this.ec2SecurityGroupId = parameters.ec2SecurityGroupId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:securitygroupingress:${this.nameGroupSecurity}/ec2securitygroup/${this.owner}/${this.idGroupSecurityEc2}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:securitygroupingress:${this.securityGroupName}/ec2securitygroup/${this.owner}/${this.ec2SecurityGroupId}` as const
   }
 }
-export type { GroupSecurityEc2IngressGroupSecurityArn }
-export function groupSecurityEc2IngressGroupSecurityArn<
+export type { SecurityGroupIngressEc2SecurityGroupArn }
+export function securityGroupIngressEc2SecurityGroupArn<
   Partition extends ArnPartition = 'aws',
->(parameters: GroupSecurityEc2IngressGroupSecurityArnParameters<Partition>) {
-  return new GroupSecurityEc2IngressGroupSecurityArn<Partition>(parameters)
+>(parameters: SecurityGroupIngressEc2SecurityGroupArnParameters<Partition>) {
+  return new SecurityGroupIngressEc2SecurityGroupArn<Partition>(parameters)
 }
 
 export interface SnapshotArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameCluster: string
-  readonly nameSnapshot: string
+  readonly clusterName: string
+  readonly snapshotName: string
 }
 class SnapshotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'snapshot',
   `arn:${string}:redshift:${string}:${string}:snapshot:${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'snapshot' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameCluster: string
-  readonly nameSnapshot: string
+  readonly clusterName: string
+  readonly snapshotName: string
   constructor(parameters: SnapshotArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameCluster = parameters.nameCluster
-    this.nameSnapshot = parameters.nameSnapshot
+    this.clusterName = parameters.clusterName
+    this.snapshotName = parameters.snapshotName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:snapshot:${this.nameCluster}/${this.nameSnapshot}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:snapshot:${this.clusterName}/${this.snapshotName}` as const
   }
 }
 export type { SnapshotArn }
@@ -533,222 +533,222 @@ export function snapshotArn<Partition extends ArnPartition = 'aws'>(
   return new SnapshotArn<Partition>(parameters)
 }
 
-export interface GrantCopySnapshotArnParameters<
+export interface SnapshotCopyGrantArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGrantCopySnapshot: string
+  readonly snapshotCopyGrantName: string
 }
-class GrantCopySnapshotArn<
+class SnapshotCopyGrantArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'snapshotcopygrant',
   `arn:${string}:redshift:${string}:${string}:snapshotcopygrant:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'snapshotcopygrant' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGrantCopySnapshot: string
-  constructor(parameters: GrantCopySnapshotArnParameters<Partition>) {
+  readonly snapshotCopyGrantName: string
+  constructor(parameters: SnapshotCopyGrantArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameGrantCopySnapshot = parameters.nameGrantCopySnapshot
+    this.snapshotCopyGrantName = parameters.snapshotCopyGrantName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:snapshotcopygrant:${this.nameGrantCopySnapshot}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:snapshotcopygrant:${this.snapshotCopyGrantName}` as const
   }
 }
-export type { GrantCopySnapshotArn }
-export function grantCopySnapshotArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GrantCopySnapshotArnParameters<Partition>,
+export type { SnapshotCopyGrantArn }
+export function snapshotCopyGrantArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SnapshotCopyGrantArnParameters<Partition>,
 ) {
-  return new GrantCopySnapshotArn<Partition>(parameters)
+  return new SnapshotCopyGrantArn<Partition>(parameters)
 }
 
-export interface ScheduleSnapshotArnParameters<
+export interface SnapshotScheduleArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly identifierSchedule: string
+  readonly scheduleIdentifier: string
 }
-class ScheduleSnapshotArn<
+class SnapshotScheduleArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'snapshotschedule',
   `arn:${string}:redshift:${string}:${string}:snapshotschedule:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'snapshotschedule' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly identifierSchedule: string
-  constructor(parameters: ScheduleSnapshotArnParameters<Partition>) {
+  readonly scheduleIdentifier: string
+  constructor(parameters: SnapshotScheduleArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.identifierSchedule = parameters.identifierSchedule
+    this.scheduleIdentifier = parameters.scheduleIdentifier
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:snapshotschedule:${this.identifierSchedule}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:snapshotschedule:${this.scheduleIdentifier}` as const
   }
 }
-export type { ScheduleSnapshotArn }
-export function scheduleSnapshotArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ScheduleSnapshotArnParameters<Partition>,
+export type { SnapshotScheduleArn }
+export function snapshotScheduleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SnapshotScheduleArnParameters<Partition>,
 ) {
-  return new ScheduleSnapshotArn<Partition>(parameters)
+  return new SnapshotScheduleArn<Partition>(parameters)
 }
 
-export interface GroupSubnetArnParameters<
+export interface SubnetGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupSubnet: string
+  readonly subnetGroupName: string
 }
-class GroupSubnetArn<
+class SubnetGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'subnetgroup',
   `arn:${string}:redshift:${string}:${string}:subnetgroup:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'subnetgroup' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameGroupSubnet: string
-  constructor(parameters: GroupSubnetArnParameters<Partition>) {
+  readonly subnetGroupName: string
+  constructor(parameters: SubnetGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameGroupSubnet = parameters.nameGroupSubnet
+    this.subnetGroupName = parameters.subnetGroupName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:subnetgroup:${this.nameGroupSubnet}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:subnetgroup:${this.subnetGroupName}` as const
   }
 }
-export type { GroupSubnetArn }
-export function groupSubnetArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupSubnetArnParameters<Partition>,
+export type { SubnetGroupArn }
+export function subnetGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SubnetGroupArnParameters<Partition>,
 ) {
-  return new GroupSubnetArn<Partition>(parameters)
+  return new SubnetGroupArn<Partition>(parameters)
 }
 
-export interface LimitUsageArnParameters<
+export interface UsageLimitArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idLimitUsage: string
+  readonly usageLimitId: string
 }
-class LimitUsageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class UsageLimitArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'usagelimit',
   `arn:${string}:redshift:${string}:${string}:usagelimit:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'usagelimit' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idLimitUsage: string
-  constructor(parameters: LimitUsageArnParameters<Partition>) {
+  readonly usageLimitId: string
+  constructor(parameters: UsageLimitArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idLimitUsage = parameters.idLimitUsage
+    this.usageLimitId = parameters.usageLimitId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:usagelimit:${this.idLimitUsage}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:usagelimit:${this.usageLimitId}` as const
   }
 }
-export type { LimitUsageArn }
-export function limitUsageArn<Partition extends ArnPartition = 'aws'>(
-  parameters: LimitUsageArnParameters<Partition>,
+export type { UsageLimitArn }
+export function usageLimitArn<Partition extends ArnPartition = 'aws'>(
+  parameters: UsageLimitArnParameters<Partition>,
 ) {
-  return new LimitUsageArn<Partition>(parameters)
+  return new UsageLimitArn<Partition>(parameters)
 }
 
-export interface ApplicationIdcRedshiftArnParameters<
+export interface RedshiftIdcApplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApplicationIdcRedshift: string
+  readonly redshiftIdcApplicationId: string
 }
-class ApplicationIdcRedshiftArn<
+class RedshiftIdcApplicationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'redshiftidcapplication',
   `arn:${string}:redshift:${string}:${string}:redshiftidcapplication:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'redshiftidcapplication' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApplicationIdcRedshift: string
-  constructor(parameters: ApplicationIdcRedshiftArnParameters<Partition>) {
+  readonly redshiftIdcApplicationId: string
+  constructor(parameters: RedshiftIdcApplicationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApplicationIdcRedshift = parameters.idApplicationIdcRedshift
+    this.redshiftIdcApplicationId = parameters.redshiftIdcApplicationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:redshiftidcapplication:${this.idApplicationIdcRedshift}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:redshiftidcapplication:${this.redshiftIdcApplicationId}` as const
   }
 }
-export type { ApplicationIdcRedshiftArn }
-export function applicationIdcRedshiftArn<
+export type { RedshiftIdcApplicationArn }
+export function redshiftIdcApplicationArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ApplicationIdcRedshiftArnParameters<Partition>) {
-  return new ApplicationIdcRedshiftArn<Partition>(parameters)
+>(parameters: RedshiftIdcApplicationArnParameters<Partition>) {
+  return new RedshiftIdcApplicationArn<Partition>(parameters)
 }
 
-export interface ApplicationQev2idcArnParameters<
+export interface Qev2idcApplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApplicationIdcQev2: string
+  readonly qev2IdcApplicationId: string
 }
-class ApplicationQev2idcArn<
+class Qev2idcApplicationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'qev2idcapplication',
   `arn:${string}:redshift:${string}:${string}:qev2idcapplication:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'qev2idcapplication' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApplicationIdcQev2: string
-  constructor(parameters: ApplicationQev2idcArnParameters<Partition>) {
+  readonly qev2IdcApplicationId: string
+  constructor(parameters: Qev2idcApplicationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApplicationIdcQev2 = parameters.idApplicationIdcQev2
+    this.qev2IdcApplicationId = parameters.qev2IdcApplicationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift:${this.region}:${this.account}:qev2idcapplication:${this.idApplicationIdcQev2}` as const
+    return `arn:${this.partition}:redshift:${this.region}:${this.account}:qev2idcapplication:${this.qev2IdcApplicationId}` as const
   }
 }
-export type { ApplicationQev2idcArn }
-export function applicationQev2idcArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ApplicationQev2idcArnParameters<Partition>,
+export type { Qev2idcApplicationArn }
+export function qev2idcApplicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: Qev2idcApplicationArnParameters<Partition>,
 ) {
-  return new ApplicationQev2idcArn<Partition>(parameters)
+  return new Qev2idcApplicationArn<Partition>(parameters)
 }

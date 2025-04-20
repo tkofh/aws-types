@@ -6,67 +6,67 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ProfileConnectorArnParameters<
+export interface ConnectorProfileArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProfile: string
+  readonly profileName: string
 }
-class ProfileConnectorArn<
+class ConnectorProfileArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'connectorprofile',
   `arn:${string}:appflow:${string}:${string}:connectorprofile/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'connectorprofile' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProfile: string
-  constructor(parameters: ProfileConnectorArnParameters<Partition>) {
+  readonly profileName: string
+  constructor(parameters: ConnectorProfileArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameProfile = parameters.nameProfile
+    this.profileName = parameters.profileName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appflow:${this.region}:${this.account}:connectorprofile/${this.nameProfile}` as const
+    return `arn:${this.partition}:appflow:${this.region}:${this.account}:connectorprofile/${this.profileName}` as const
   }
 }
-export type { ProfileConnectorArn }
-export function profileConnectorArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ProfileConnectorArnParameters<Partition>,
+export type { ConnectorProfileArn }
+export function connectorProfileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConnectorProfileArnParameters<Partition>,
 ) {
-  return new ProfileConnectorArn<Partition>(parameters)
+  return new ConnectorProfileArn<Partition>(parameters)
 }
 
 export interface FlowArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameFlow: string
+  readonly flowName: string
 }
 class FlowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'flow',
   `arn:${string}:appflow:${string}:${string}:flow/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'flow' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameFlow: string
+  readonly flowName: string
   constructor(parameters: FlowArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameFlow = parameters.nameFlow
+    this.flowName = parameters.flowName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appflow:${this.region}:${this.account}:flow/${this.nameFlow}` as const
+    return `arn:${this.partition}:appflow:${this.region}:${this.account}:flow/${this.flowName}` as const
   }
 }
 export type { FlowArn }
@@ -79,29 +79,29 @@ export function flowArn<Partition extends ArnPartition = 'aws'>(
 export interface ConnectorArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly labelConnector: string
+  readonly connectorLabel: string
 }
 class ConnectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'connector',
   `arn:${string}:appflow:${string}:${string}:connector/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'connector' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly labelConnector: string
+  readonly connectorLabel: string
   constructor(parameters: ConnectorArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.labelConnector = parameters.labelConnector
+    this.connectorLabel = parameters.connectorLabel
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appflow:${this.region}:${this.account}:connector/${this.labelConnector}` as const
+    return `arn:${this.partition}:appflow:${this.region}:${this.account}:connector/${this.connectorLabel}` as const
   }
 }
 export type { ConnectorArn }

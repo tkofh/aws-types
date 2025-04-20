@@ -6,100 +6,100 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface SystemFileArnParameters<
+export interface FileSystemArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSystemFile: string
+  readonly fileSystemId: string
 }
-class SystemFileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class FileSystemArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'file-system',
   `arn:${string}:fsx:${string}:${string}:file-system/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'file-system' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSystemFile: string
-  constructor(parameters: SystemFileArnParameters<Partition>) {
+  readonly fileSystemId: string
+  constructor(parameters: FileSystemArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idSystemFile = parameters.idSystemFile
+    this.fileSystemId = parameters.fileSystemId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:fsx:${this.region}:${this.account}:file-system/${this.idSystemFile}` as const
+    return `arn:${this.partition}:fsx:${this.region}:${this.account}:file-system/${this.fileSystemId}` as const
   }
 }
-export type { SystemFileArn }
-export function systemFileArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SystemFileArnParameters<Partition>,
+export type { FileSystemArn }
+export function fileSystemArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FileSystemArnParameters<Partition>,
 ) {
-  return new SystemFileArn<Partition>(parameters)
+  return new FileSystemArn<Partition>(parameters)
 }
 
-export interface CacheFileArnParameters<
+export interface FileCacheArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCacheFile: string
+  readonly fileCacheId: string
 }
-class CacheFileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class FileCacheArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'file-cache',
   `arn:${string}:fsx:${string}:${string}:file-cache/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'file-cache' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCacheFile: string
-  constructor(parameters: CacheFileArnParameters<Partition>) {
+  readonly fileCacheId: string
+  constructor(parameters: FileCacheArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idCacheFile = parameters.idCacheFile
+    this.fileCacheId = parameters.fileCacheId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:fsx:${this.region}:${this.account}:file-cache/${this.idCacheFile}` as const
+    return `arn:${this.partition}:fsx:${this.region}:${this.account}:file-cache/${this.fileCacheId}` as const
   }
 }
-export type { CacheFileArn }
-export function cacheFileArn<Partition extends ArnPartition = 'aws'>(
-  parameters: CacheFileArnParameters<Partition>,
+export type { FileCacheArn }
+export function fileCacheArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FileCacheArnParameters<Partition>,
 ) {
-  return new CacheFileArn<Partition>(parameters)
+  return new FileCacheArn<Partition>(parameters)
 }
 
 export interface BackupArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idBackup: string
+  readonly backupId: string
 }
 class BackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'backup',
   `arn:${string}:fsx:${string}:${string}:backup/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'backup' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idBackup: string
+  readonly backupId: string
   constructor(parameters: BackupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idBackup = parameters.idBackup
+    this.backupId = parameters.backupId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:fsx:${this.region}:${this.account}:backup/${this.idBackup}` as const
+    return `arn:${this.partition}:fsx:${this.region}:${this.account}:backup/${this.backupId}` as const
   }
 }
 export type { BackupArn }
@@ -109,70 +109,70 @@ export function backupArn<Partition extends ArnPartition = 'aws'>(
   return new BackupArn<Partition>(parameters)
 }
 
-export interface MachineVirtualStorageArnParameters<
+export interface StorageVirtualMachineArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSystemFile: string
-  readonly idMachineVirtualStorage: string
+  readonly fileSystemId: string
+  readonly storageVirtualMachineId: string
 }
-class MachineVirtualStorageArn<
+class StorageVirtualMachineArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'storage-virtual-machine',
   `arn:${string}:fsx:${string}:${string}:storage-virtual-machine/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'storage-virtual-machine' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSystemFile: string
-  readonly idMachineVirtualStorage: string
-  constructor(parameters: MachineVirtualStorageArnParameters<Partition>) {
+  readonly fileSystemId: string
+  readonly storageVirtualMachineId: string
+  constructor(parameters: StorageVirtualMachineArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idSystemFile = parameters.idSystemFile
-    this.idMachineVirtualStorage = parameters.idMachineVirtualStorage
+    this.fileSystemId = parameters.fileSystemId
+    this.storageVirtualMachineId = parameters.storageVirtualMachineId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:fsx:${this.region}:${this.account}:storage-virtual-machine/${this.idSystemFile}/${this.idMachineVirtualStorage}` as const
+    return `arn:${this.partition}:fsx:${this.region}:${this.account}:storage-virtual-machine/${this.fileSystemId}/${this.storageVirtualMachineId}` as const
   }
 }
-export type { MachineVirtualStorageArn }
-export function machineVirtualStorageArn<
+export type { StorageVirtualMachineArn }
+export function storageVirtualMachineArn<
   Partition extends ArnPartition = 'aws',
->(parameters: MachineVirtualStorageArnParameters<Partition>) {
-  return new MachineVirtualStorageArn<Partition>(parameters)
+>(parameters: StorageVirtualMachineArnParameters<Partition>) {
+  return new StorageVirtualMachineArn<Partition>(parameters)
 }
 
 export interface TaskArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idTask: string
+  readonly taskId: string
 }
 class TaskArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'task',
   `arn:${string}:fsx:${string}:${string}:task/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'task' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idTask: string
+  readonly taskId: string
   constructor(parameters: TaskArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idTask = parameters.idTask
+    this.taskId = parameters.taskId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:fsx:${this.region}:${this.account}:task/${this.idTask}` as const
+    return `arn:${this.partition}:fsx:${this.region}:${this.account}:task/${this.taskId}` as const
   }
 }
 export type { TaskArn }
@@ -185,11 +185,11 @@ export function taskArn<Partition extends ArnPartition = 'aws'>(
 export interface AssociationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCacheFileOrIdSystemFile: string
-  readonly idAssociationRepositoryData: string
+  readonly fileSystemIdOrFileCacheId: string
+  readonly dataRepositoryAssociationId: string
 }
 class AssociationArn<
   Partition extends ArnPartition = 'aws',
@@ -198,21 +198,21 @@ class AssociationArn<
   `arn:${string}:fsx:${string}:${string}:association/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'association' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCacheFileOrIdSystemFile: string
-  readonly idAssociationRepositoryData: string
+  readonly fileSystemIdOrFileCacheId: string
+  readonly dataRepositoryAssociationId: string
   constructor(parameters: AssociationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idCacheFileOrIdSystemFile = parameters.idCacheFileOrIdSystemFile
-    this.idAssociationRepositoryData = parameters.idAssociationRepositoryData
+    this.fileSystemIdOrFileCacheId = parameters.fileSystemIdOrFileCacheId
+    this.dataRepositoryAssociationId = parameters.dataRepositoryAssociationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:fsx:${this.region}:${this.account}:association/${this.idCacheFileOrIdSystemFile}/${this.idAssociationRepositoryData}` as const
+    return `arn:${this.partition}:fsx:${this.region}:${this.account}:association/${this.fileSystemIdOrFileCacheId}/${this.dataRepositoryAssociationId}` as const
   }
 }
 export type { AssociationArn }
@@ -223,32 +223,32 @@ export function associationArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface VolumeArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSystemFile: string
-  readonly idVolume: string
+  readonly fileSystemId: string
+  readonly volumeId: string
 }
 class VolumeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'volume',
   `arn:${string}:fsx:${string}:${string}:volume/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'volume' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSystemFile: string
-  readonly idVolume: string
+  readonly fileSystemId: string
+  readonly volumeId: string
   constructor(parameters: VolumeArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idSystemFile = parameters.idSystemFile
-    this.idVolume = parameters.idVolume
+    this.fileSystemId = parameters.fileSystemId
+    this.volumeId = parameters.volumeId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:fsx:${this.region}:${this.account}:volume/${this.idSystemFile}/${this.idVolume}` as const
+    return `arn:${this.partition}:fsx:${this.region}:${this.account}:volume/${this.fileSystemId}/${this.volumeId}` as const
   }
 }
 export type { VolumeArn }
@@ -259,32 +259,32 @@ export function volumeArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface SnapshotArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idVolume: string
-  readonly idSnapshot: string
+  readonly volumeId: string
+  readonly snapshotId: string
 }
 class SnapshotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'snapshot',
   `arn:${string}:fsx:${string}:${string}:snapshot/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'snapshot' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idVolume: string
-  readonly idSnapshot: string
+  readonly volumeId: string
+  readonly snapshotId: string
   constructor(parameters: SnapshotArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idVolume = parameters.idVolume
-    this.idSnapshot = parameters.idSnapshot
+    this.volumeId = parameters.volumeId
+    this.snapshotId = parameters.snapshotId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:fsx:${this.region}:${this.account}:snapshot/${this.idVolume}/${this.idSnapshot}` as const
+    return `arn:${this.partition}:fsx:${this.region}:${this.account}:snapshot/${this.volumeId}/${this.snapshotId}` as const
   }
 }
 export type { SnapshotArn }

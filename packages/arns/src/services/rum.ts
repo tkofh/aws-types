@@ -6,28 +6,28 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ResourceMonitorAppArnParameters<
+export interface AppMonitorResourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly name: string
 }
-class ResourceMonitorAppArn<
+class AppMonitorResourceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'AppMonitorResource',
   `arn:${string}:rum:${string}:${string}:appmonitor/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'AppMonitorResource' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly name: string
-  constructor(parameters: ResourceMonitorAppArnParameters<Partition>) {
+  constructor(parameters: AppMonitorResourceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.name = parameters.name
@@ -36,9 +36,9 @@ class ResourceMonitorAppArn<
     return `arn:${this.partition}:rum:${this.region}:${this.account}:appmonitor/${this.name}` as const
   }
 }
-export type { ResourceMonitorAppArn }
-export function resourceMonitorAppArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ResourceMonitorAppArnParameters<Partition>,
+export type { AppMonitorResourceArn }
+export function appMonitorResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppMonitorResourceArnParameters<Partition>,
 ) {
-  return new ResourceMonitorAppArn<Partition>(parameters)
+  return new AppMonitorResourceArn<Partition>(parameters)
 }

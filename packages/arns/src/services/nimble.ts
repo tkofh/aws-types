@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface StudioArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idStudio: string
+  readonly studioId: string
 }
 class StudioArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'studio',
   `arn:${string}:nimble:${string}:${string}:studio/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'studio' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idStudio: string
+  readonly studioId: string
   constructor(parameters: StudioArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idStudio = parameters.idStudio
+    this.studioId = parameters.studioId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:nimble:${this.region}:${this.account}:studio/${this.idStudio}` as const
+    return `arn:${this.partition}:nimble:${this.region}:${this.account}:studio/${this.studioId}` as const
   }
 }
 export type { StudioArn }
@@ -39,215 +39,215 @@ export function studioArn<Partition extends ArnPartition = 'aws'>(
   return new StudioArn<Partition>(parameters)
 }
 
-export interface ImageStreamingArnParameters<
+export interface StreamingImageArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idImageStreaming: string
+  readonly streamingImageId: string
 }
-class ImageStreamingArn<
+class StreamingImageArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'streaming-image',
   `arn:${string}:nimble:${string}:${string}:streaming-image/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'streaming-image' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idImageStreaming: string
-  constructor(parameters: ImageStreamingArnParameters<Partition>) {
+  readonly streamingImageId: string
+  constructor(parameters: StreamingImageArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idImageStreaming = parameters.idImageStreaming
+    this.streamingImageId = parameters.streamingImageId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:nimble:${this.region}:${this.account}:streaming-image/${this.idImageStreaming}` as const
+    return `arn:${this.partition}:nimble:${this.region}:${this.account}:streaming-image/${this.streamingImageId}` as const
   }
 }
-export type { ImageStreamingArn }
-export function imageStreamingArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ImageStreamingArnParameters<Partition>,
+export type { StreamingImageArn }
+export function streamingImageArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StreamingImageArnParameters<Partition>,
 ) {
-  return new ImageStreamingArn<Partition>(parameters)
+  return new StreamingImageArn<Partition>(parameters)
 }
 
-export interface ComponentStudioArnParameters<
+export interface StudioComponentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idComponentStudio: string
+  readonly studioComponentId: string
 }
-class ComponentStudioArn<
+class StudioComponentArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'studio-component',
   `arn:${string}:nimble:${string}:${string}:studio-component/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'studio-component' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idComponentStudio: string
-  constructor(parameters: ComponentStudioArnParameters<Partition>) {
+  readonly studioComponentId: string
+  constructor(parameters: StudioComponentArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idComponentStudio = parameters.idComponentStudio
+    this.studioComponentId = parameters.studioComponentId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:nimble:${this.region}:${this.account}:studio-component/${this.idComponentStudio}` as const
+    return `arn:${this.partition}:nimble:${this.region}:${this.account}:studio-component/${this.studioComponentId}` as const
   }
 }
-export type { ComponentStudioArn }
-export function componentStudioArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ComponentStudioArnParameters<Partition>,
+export type { StudioComponentArn }
+export function studioComponentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StudioComponentArnParameters<Partition>,
 ) {
-  return new ComponentStudioArn<Partition>(parameters)
+  return new StudioComponentArn<Partition>(parameters)
 }
 
-export interface ProfileLaunchArnParameters<
+export interface LaunchProfileArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idProfileLaunch: string
+  readonly launchProfileId: string
 }
-class ProfileLaunchArn<
+class LaunchProfileArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'launch-profile',
   `arn:${string}:nimble:${string}:${string}:launch-profile/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'launch-profile' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idProfileLaunch: string
-  constructor(parameters: ProfileLaunchArnParameters<Partition>) {
+  readonly launchProfileId: string
+  constructor(parameters: LaunchProfileArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idProfileLaunch = parameters.idProfileLaunch
+    this.launchProfileId = parameters.launchProfileId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:nimble:${this.region}:${this.account}:launch-profile/${this.idProfileLaunch}` as const
+    return `arn:${this.partition}:nimble:${this.region}:${this.account}:launch-profile/${this.launchProfileId}` as const
   }
 }
-export type { ProfileLaunchArn }
-export function profileLaunchArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ProfileLaunchArnParameters<Partition>,
+export type { LaunchProfileArn }
+export function launchProfileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LaunchProfileArnParameters<Partition>,
 ) {
-  return new ProfileLaunchArn<Partition>(parameters)
+  return new LaunchProfileArn<Partition>(parameters)
 }
 
-export interface SessionStreamingArnParameters<
+export interface StreamingSessionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSessionStreaming: string
+  readonly streamingSessionId: string
 }
-class SessionStreamingArn<
+class StreamingSessionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'streaming-session',
   `arn:${string}:nimble:${string}:${string}:streaming-session/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'streaming-session' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSessionStreaming: string
-  constructor(parameters: SessionStreamingArnParameters<Partition>) {
+  readonly streamingSessionId: string
+  constructor(parameters: StreamingSessionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idSessionStreaming = parameters.idSessionStreaming
+    this.streamingSessionId = parameters.streamingSessionId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:nimble:${this.region}:${this.account}:streaming-session/${this.idSessionStreaming}` as const
+    return `arn:${this.partition}:nimble:${this.region}:${this.account}:streaming-session/${this.streamingSessionId}` as const
   }
 }
-export type { SessionStreamingArn }
-export function sessionStreamingArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SessionStreamingArnParameters<Partition>,
+export type { StreamingSessionArn }
+export function streamingSessionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StreamingSessionArnParameters<Partition>,
 ) {
-  return new SessionStreamingArn<Partition>(parameters)
+  return new StreamingSessionArn<Partition>(parameters)
 }
 
-export interface BackupSessionStreamingArnParameters<
+export interface StreamingSessionBackupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idBackupSessionStreaming: string
+  readonly streamingSessionBackupId: string
 }
-class BackupSessionStreamingArn<
+class StreamingSessionBackupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'streaming-session-backup',
   `arn:${string}:nimble:${string}:${string}:streaming-session-backup/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'streaming-session-backup' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idBackupSessionStreaming: string
-  constructor(parameters: BackupSessionStreamingArnParameters<Partition>) {
+  readonly streamingSessionBackupId: string
+  constructor(parameters: StreamingSessionBackupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idBackupSessionStreaming = parameters.idBackupSessionStreaming
+    this.streamingSessionBackupId = parameters.streamingSessionBackupId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:nimble:${this.region}:${this.account}:streaming-session-backup/${this.idBackupSessionStreaming}` as const
+    return `arn:${this.partition}:nimble:${this.region}:${this.account}:streaming-session-backup/${this.streamingSessionBackupId}` as const
   }
 }
-export type { BackupSessionStreamingArn }
-export function backupSessionStreamingArn<
+export type { StreamingSessionBackupArn }
+export function streamingSessionBackupArn<
   Partition extends ArnPartition = 'aws',
->(parameters: BackupSessionStreamingArnParameters<Partition>) {
-  return new BackupSessionStreamingArn<Partition>(parameters)
+>(parameters: StreamingSessionBackupArnParameters<Partition>) {
+  return new StreamingSessionBackupArn<Partition>(parameters)
 }
 
 export interface EulaArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEula: string
+  readonly eulaId: string
 }
 class EulaArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'eula',
   `arn:${string}:nimble:${string}:${string}:eula/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'eula' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEula: string
+  readonly eulaId: string
   constructor(parameters: EulaArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idEula = parameters.idEula
+    this.eulaId = parameters.eulaId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:nimble:${this.region}:${this.account}:eula/${this.idEula}` as const
+    return `arn:${this.partition}:nimble:${this.region}:${this.account}:eula/${this.eulaId}` as const
   }
 }
 export type { EulaArn }
@@ -257,39 +257,39 @@ export function eulaArn<Partition extends ArnPartition = 'aws'>(
   return new EulaArn<Partition>(parameters)
 }
 
-export interface AcceptanceEulaArnParameters<
+export interface EulaAcceptanceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAcceptanceEula: string
+  readonly eulaAcceptanceId: string
 }
-class AcceptanceEulaArn<
+class EulaAcceptanceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'eula-acceptance',
   `arn:${string}:nimble:${string}:${string}:eula-acceptance/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'eula-acceptance' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAcceptanceEula: string
-  constructor(parameters: AcceptanceEulaArnParameters<Partition>) {
+  readonly eulaAcceptanceId: string
+  constructor(parameters: EulaAcceptanceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idAcceptanceEula = parameters.idAcceptanceEula
+    this.eulaAcceptanceId = parameters.eulaAcceptanceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:nimble:${this.region}:${this.account}:eula-acceptance/${this.idAcceptanceEula}` as const
+    return `arn:${this.partition}:nimble:${this.region}:${this.account}:eula-acceptance/${this.eulaAcceptanceId}` as const
   }
 }
-export type { AcceptanceEulaArn }
-export function acceptanceEulaArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AcceptanceEulaArnParameters<Partition>,
+export type { EulaAcceptanceArn }
+export function eulaAcceptanceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EulaAcceptanceArnParameters<Partition>,
 ) {
-  return new AcceptanceEulaArn<Partition>(parameters)
+  return new EulaAcceptanceArn<Partition>(parameters)
 }

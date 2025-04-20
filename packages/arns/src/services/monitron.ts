@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
 class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'project',
   `arn:${string}:monitron:${string}:${string}:project/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'project' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
   constructor(parameters: ProjectArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:monitron:${this.region}:${this.account}:project/${this.idResource}` as const
+    return `arn:${this.partition}:monitron:${this.region}:${this.account}:project/${this.resourceId}` as const
   }
 }
 export type { ProjectArn }

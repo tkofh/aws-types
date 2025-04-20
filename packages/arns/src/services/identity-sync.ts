@@ -6,79 +6,79 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ResourceProfileSyncArnParameters<
+export interface SyncProfileResourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProfileSync: string
+  readonly syncProfileName: string
 }
-class ResourceProfileSyncArn<
+class SyncProfileResourceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'SyncProfileResource',
   `arn:${string}:identity-sync:${string}:${string}:profile/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'SyncProfileResource' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProfileSync: string
-  constructor(parameters: ResourceProfileSyncArnParameters<Partition>) {
+  readonly syncProfileName: string
+  constructor(parameters: SyncProfileResourceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameProfileSync = parameters.nameProfileSync
+    this.syncProfileName = parameters.syncProfileName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:identity-sync:${this.region}:${this.account}:profile/${this.nameProfileSync}` as const
+    return `arn:${this.partition}:identity-sync:${this.region}:${this.account}:profile/${this.syncProfileName}` as const
   }
 }
-export type { ResourceProfileSyncArn }
-export function resourceProfileSyncArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ResourceProfileSyncArnParameters<Partition>,
+export type { SyncProfileResourceArn }
+export function syncProfileResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SyncProfileResourceArnParameters<Partition>,
 ) {
-  return new ResourceProfileSyncArn<Partition>(parameters)
+  return new SyncProfileResourceArn<Partition>(parameters)
 }
 
-export interface ResourceTargetSyncArnParameters<
+export interface SyncTargetResourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProfileSync: string
-  readonly nameTargetSync: string
+  readonly syncProfileName: string
+  readonly syncTargetName: string
 }
-class ResourceTargetSyncArn<
+class SyncTargetResourceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'SyncTargetResource',
   `arn:${string}:identity-sync:${string}:${string}:target/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'SyncTargetResource' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProfileSync: string
-  readonly nameTargetSync: string
-  constructor(parameters: ResourceTargetSyncArnParameters<Partition>) {
+  readonly syncProfileName: string
+  readonly syncTargetName: string
+  constructor(parameters: SyncTargetResourceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameProfileSync = parameters.nameProfileSync
-    this.nameTargetSync = parameters.nameTargetSync
+    this.syncProfileName = parameters.syncProfileName
+    this.syncTargetName = parameters.syncTargetName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:identity-sync:${this.region}:${this.account}:target/${this.nameProfileSync}/${this.nameTargetSync}` as const
+    return `arn:${this.partition}:identity-sync:${this.region}:${this.account}:target/${this.syncProfileName}/${this.syncTargetName}` as const
   }
 }
-export type { ResourceTargetSyncArn }
-export function resourceTargetSyncArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ResourceTargetSyncArnParameters<Partition>,
+export type { SyncTargetResourceArn }
+export function syncTargetResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SyncTargetResourceArnParameters<Partition>,
 ) {
-  return new ResourceTargetSyncArn<Partition>(parameters)
+  return new SyncTargetResourceArn<Partition>(parameters)
 }

@@ -134,8 +134,8 @@ function buildResourceStanza(resource: Resource) {
     dfn(
       `export interface ${pc}ArnParameters<Partition extends ArnPartition = 'aws'>`,
       Array.from(resource.arn.matchAll(PARAMETER_PATTERN), ({ groups }) => {
-        const parameter = groups?.parameter ?? ''
-        return `readonly ${camelCaseArnParameter(parameter)}${parameter === 'partition' ? '?' : ''}: ${parameter === 'partition' ? 'Partition | undefined' : parameter === 'region' ? 'ArnRegion<Partition>' : 'string'}`
+        const parameter = camelCaseArnParameter(groups?.parameter ?? '')
+        return `readonly ${parameter}${parameter === 'partition' ? '?' : ''}: ${parameter === 'partition' ? 'Partition | undefined' : parameter === 'region' ? 'ArnRegion<Partition>' : 'string'}`
       }),
     ),
     dfn(
@@ -145,8 +145,8 @@ function buildResourceStanza(resource: Resource) {
         ...Array.from(
           resource.arn.matchAll(PARAMETER_PATTERN),
           ({ groups }) => {
-            const parameter = groups?.parameter ?? ''
-            return `readonly ${camelCaseArnParameter(parameter)}: ${parameter === 'partition' ? 'Partition' : parameter === 'region' ? 'ArnRegion<Partition>' : 'string'}`
+            const parameter = camelCaseArnParameter(groups?.parameter ?? '')
+            return `readonly ${parameter}: ${parameter === 'partition' ? 'Partition' : parameter === 'region' ? 'ArnRegion<Partition>' : 'string'}`
           },
         ),
         dfn(`constructor(parameters: ${pc}ArnParameters<Partition>)`, [
@@ -154,8 +154,8 @@ function buildResourceStanza(resource: Resource) {
           ...Array.from(
             resource.arn.matchAll(PARAMETER_PATTERN),
             ({ groups }) => {
-              const parameter = groups?.parameter ?? ''
-              return `this.${camelCaseArnParameter(parameter)} = ${parameter === 'partition' ? `(parameters.${camelCaseArnParameter(parameter)} ?? 'aws') as Partition` : `parameters.${camelCaseArnParameter(parameter)}`}`
+              const parameter = camelCaseArnParameter(groups?.parameter ?? '')
+              return `this.${parameter} = ${parameter === 'partition' ? `(parameters.${parameter} ?? 'aws') as Partition` : `parameters.${parameter}`}`
             },
           ),
         ]),

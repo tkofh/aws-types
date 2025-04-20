@@ -9,10 +9,10 @@ import {
 export interface CertificateArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCertificate: string
+  readonly certificateId: string
 }
 class CertificateArn<
   Partition extends ArnPartition = 'aws',
@@ -21,19 +21,19 @@ class CertificateArn<
   `arn:${string}:acm:${string}:${string}:certificate/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'certificate' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idCertificate: string
+  readonly certificateId: string
   constructor(parameters: CertificateArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idCertificate = parameters.idCertificate
+    this.certificateId = parameters.certificateId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:acm:${this.region}:${this.account}:certificate/${this.idCertificate}` as const
+    return `arn:${this.partition}:acm:${this.region}:${this.account}:certificate/${this.certificateId}` as const
   }
 }
 export type { CertificateArn }

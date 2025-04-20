@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface AdapterArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAdapter: string
+  readonly adapterId: string
 }
 class AdapterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'adapter',
   `arn:${string}:textract:${string}:${string}:/adapters/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'adapter' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAdapter: string
+  readonly adapterId: string
   constructor(parameters: AdapterArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idAdapter = parameters.idAdapter
+    this.adapterId = parameters.adapterId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:textract:${this.region}:${this.account}:/adapters/${this.idAdapter}` as const
+    return `arn:${this.partition}:textract:${this.region}:${this.account}:/adapters/${this.adapterId}` as const
   }
 }
 export type { AdapterArn }
@@ -39,42 +39,42 @@ export function adapterArn<Partition extends ArnPartition = 'aws'>(
   return new AdapterArn<Partition>(parameters)
 }
 
-export interface VersionAdapterArnParameters<
+export interface AdapterVersionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAdapter: string
-  readonly versionAdapter: string
+  readonly adapterId: string
+  readonly adapterVersion: string
 }
-class VersionAdapterArn<
+class AdapterVersionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'adapterversion',
   `arn:${string}:textract:${string}:${string}:/adapters/${string}/versions/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'adapterversion' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idAdapter: string
-  readonly versionAdapter: string
-  constructor(parameters: VersionAdapterArnParameters<Partition>) {
+  readonly adapterId: string
+  readonly adapterVersion: string
+  constructor(parameters: AdapterVersionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idAdapter = parameters.idAdapter
-    this.versionAdapter = parameters.versionAdapter
+    this.adapterId = parameters.adapterId
+    this.adapterVersion = parameters.adapterVersion
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:textract:${this.region}:${this.account}:/adapters/${this.idAdapter}/versions/${this.versionAdapter}` as const
+    return `arn:${this.partition}:textract:${this.region}:${this.account}:/adapters/${this.adapterId}/versions/${this.adapterVersion}` as const
   }
 }
-export type { VersionAdapterArn }
-export function versionAdapterArn<Partition extends ArnPartition = 'aws'>(
-  parameters: VersionAdapterArnParameters<Partition>,
+export type { AdapterVersionArn }
+export function adapterVersionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AdapterVersionArnParameters<Partition>,
 ) {
-  return new VersionAdapterArn<Partition>(parameters)
+  return new AdapterVersionArn<Partition>(parameters)
 }

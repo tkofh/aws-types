@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface JobArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJob: string
+  readonly jobId: string
 }
 class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'job',
   `arn:${string}:elastictranscoder:${string}:${string}:job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'job' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJob: string
+  readonly jobId: string
   constructor(parameters: JobArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idJob = parameters.idJob
+    this.jobId = parameters.jobId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elastictranscoder:${this.region}:${this.account}:job/${this.idJob}` as const
+    return `arn:${this.partition}:elastictranscoder:${this.region}:${this.account}:job/${this.jobId}` as const
   }
 }
 export type { JobArn }
@@ -40,29 +40,29 @@ export function jobArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface PipelineArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPipeline: string
+  readonly pipelineId: string
 }
 class PipelineArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'pipeline',
   `arn:${string}:elastictranscoder:${string}:${string}:pipeline/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'pipeline' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPipeline: string
+  readonly pipelineId: string
   constructor(parameters: PipelineArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idPipeline = parameters.idPipeline
+    this.pipelineId = parameters.pipelineId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elastictranscoder:${this.region}:${this.account}:pipeline/${this.idPipeline}` as const
+    return `arn:${this.partition}:elastictranscoder:${this.region}:${this.account}:pipeline/${this.pipelineId}` as const
   }
 }
 export type { PipelineArn }
@@ -73,29 +73,29 @@ export function pipelineArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface PresetArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPreset: string
+  readonly presetId: string
 }
 class PresetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'preset',
   `arn:${string}:elastictranscoder:${string}:${string}:preset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'preset' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idPreset: string
+  readonly presetId: string
   constructor(parameters: PresetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idPreset = parameters.idPreset
+    this.presetId = parameters.presetId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elastictranscoder:${this.region}:${this.account}:preset/${this.idPreset}` as const
+    return `arn:${this.partition}:elastictranscoder:${this.region}:${this.account}:preset/${this.presetId}` as const
   }
 }
 export type { PresetArn }

@@ -9,10 +9,10 @@ import {
 export interface EnvironmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
+  readonly environmentId: string
 }
 class EnvironmentArn<
   Partition extends ArnPartition = 'aws',
@@ -21,19 +21,19 @@ class EnvironmentArn<
   `arn:${string}:finspace:${string}:${string}:environment/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'environment' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
+  readonly environmentId: string
   constructor(parameters: EnvironmentArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idEnvironment = parameters.idEnvironment
+    this.environmentId = parameters.environmentId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:finspace:${this.region}:${this.account}:environment/${this.idEnvironment}` as const
+    return `arn:${this.partition}:finspace:${this.region}:${this.account}:environment/${this.environmentId}` as const
   }
 }
 export type { EnvironmentArn }
@@ -44,29 +44,29 @@ export function environmentArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface UserArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idUser: string
+  readonly userId: string
 }
 class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'user',
   `arn:${string}:finspace:${string}:${string}:user/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'user' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idUser: string
+  readonly userId: string
   constructor(parameters: UserArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idUser = parameters.idUser
+    this.userId = parameters.userId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:finspace:${this.region}:${this.account}:user/${this.idUser}` as const
+    return `arn:${this.partition}:finspace:${this.region}:${this.account}:user/${this.userId}` as const
   }
 }
 export type { UserArn }
@@ -76,268 +76,268 @@ export function userArn<Partition extends ArnPartition = 'aws'>(
   return new UserArn<Partition>(parameters)
 }
 
-export interface EnvironmentKxArnParameters<
+export interface KxEnvironmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
+  readonly environmentId: string
 }
-class EnvironmentKxArn<
+class KxEnvironmentArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'kxEnvironment',
   `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'kxEnvironment' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
-  constructor(parameters: EnvironmentKxArnParameters<Partition>) {
+  readonly environmentId: string
+  constructor(parameters: KxEnvironmentArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idEnvironment = parameters.idEnvironment
+    this.environmentId = parameters.environmentId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:finspace:${this.region}:${this.account}:kxEnvironment/${this.idEnvironment}` as const
+    return `arn:${this.partition}:finspace:${this.region}:${this.account}:kxEnvironment/${this.environmentId}` as const
   }
 }
-export type { EnvironmentKxArn }
-export function environmentKxArn<Partition extends ArnPartition = 'aws'>(
-  parameters: EnvironmentKxArnParameters<Partition>,
+export type { KxEnvironmentArn }
+export function kxEnvironmentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KxEnvironmentArnParameters<Partition>,
 ) {
-  return new EnvironmentKxArn<Partition>(parameters)
+  return new KxEnvironmentArn<Partition>(parameters)
 }
 
-export interface UserKxArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface KxUserArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
-  readonly nameUser: string
+  readonly environmentId: string
+  readonly userName: string
 }
-class UserKxArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class KxUserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'kxUser',
   `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxUser/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'kxUser' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
-  readonly nameUser: string
-  constructor(parameters: UserKxArnParameters<Partition>) {
+  readonly environmentId: string
+  readonly userName: string
+  constructor(parameters: KxUserArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idEnvironment = parameters.idEnvironment
-    this.nameUser = parameters.nameUser
+    this.environmentId = parameters.environmentId
+    this.userName = parameters.userName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:finspace:${this.region}:${this.account}:kxEnvironment/${this.idEnvironment}/kxUser/${this.nameUser}` as const
+    return `arn:${this.partition}:finspace:${this.region}:${this.account}:kxEnvironment/${this.environmentId}/kxUser/${this.userName}` as const
   }
 }
-export type { UserKxArn }
-export function userKxArn<Partition extends ArnPartition = 'aws'>(
-  parameters: UserKxArnParameters<Partition>,
+export type { KxUserArn }
+export function kxUserArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KxUserArnParameters<Partition>,
 ) {
-  return new UserKxArn<Partition>(parameters)
+  return new KxUserArn<Partition>(parameters)
 }
 
-export interface ClusterKxArnParameters<
+export interface KxClusterArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
-  readonly clusterKx: string
+  readonly environmentId: string
+  readonly kxCluster: string
 }
-class ClusterKxArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class KxClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'kxCluster',
   `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxCluster/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'kxCluster' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
-  readonly clusterKx: string
-  constructor(parameters: ClusterKxArnParameters<Partition>) {
+  readonly environmentId: string
+  readonly kxCluster: string
+  constructor(parameters: KxClusterArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idEnvironment = parameters.idEnvironment
-    this.clusterKx = parameters.clusterKx
+    this.environmentId = parameters.environmentId
+    this.kxCluster = parameters.kxCluster
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:finspace:${this.region}:${this.account}:kxEnvironment/${this.idEnvironment}/kxCluster/${this.clusterKx}` as const
+    return `arn:${this.partition}:finspace:${this.region}:${this.account}:kxEnvironment/${this.environmentId}/kxCluster/${this.kxCluster}` as const
   }
 }
-export type { ClusterKxArn }
-export function clusterKxArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ClusterKxArnParameters<Partition>,
+export type { KxClusterArn }
+export function kxClusterArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KxClusterArnParameters<Partition>,
 ) {
-  return new ClusterKxArn<Partition>(parameters)
+  return new KxClusterArn<Partition>(parameters)
 }
 
-export interface DatabaseKxArnParameters<
+export interface KxDatabaseArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
-  readonly databaseKx: string
+  readonly environmentId: string
+  readonly kxDatabase: string
 }
-class DatabaseKxArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class KxDatabaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'kxDatabase',
   `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxDatabase/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'kxDatabase' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
-  readonly databaseKx: string
-  constructor(parameters: DatabaseKxArnParameters<Partition>) {
+  readonly environmentId: string
+  readonly kxDatabase: string
+  constructor(parameters: KxDatabaseArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idEnvironment = parameters.idEnvironment
-    this.databaseKx = parameters.databaseKx
+    this.environmentId = parameters.environmentId
+    this.kxDatabase = parameters.kxDatabase
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:finspace:${this.region}:${this.account}:kxEnvironment/${this.idEnvironment}/kxDatabase/${this.databaseKx}` as const
+    return `arn:${this.partition}:finspace:${this.region}:${this.account}:kxEnvironment/${this.environmentId}/kxDatabase/${this.kxDatabase}` as const
   }
 }
-export type { DatabaseKxArn }
-export function databaseKxArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DatabaseKxArnParameters<Partition>,
+export type { KxDatabaseArn }
+export function kxDatabaseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KxDatabaseArnParameters<Partition>,
 ) {
-  return new DatabaseKxArn<Partition>(parameters)
+  return new KxDatabaseArn<Partition>(parameters)
 }
 
-export interface GroupScalingKxArnParameters<
+export interface KxScalingGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
-  readonly groupScalingKx: string
+  readonly environmentId: string
+  readonly kxScalingGroup: string
 }
-class GroupScalingKxArn<
+class KxScalingGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'kxScalingGroup',
   `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxScalingGroup/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'kxScalingGroup' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
-  readonly groupScalingKx: string
-  constructor(parameters: GroupScalingKxArnParameters<Partition>) {
+  readonly environmentId: string
+  readonly kxScalingGroup: string
+  constructor(parameters: KxScalingGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idEnvironment = parameters.idEnvironment
-    this.groupScalingKx = parameters.groupScalingKx
+    this.environmentId = parameters.environmentId
+    this.kxScalingGroup = parameters.kxScalingGroup
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:finspace:${this.region}:${this.account}:kxEnvironment/${this.idEnvironment}/kxScalingGroup/${this.groupScalingKx}` as const
+    return `arn:${this.partition}:finspace:${this.region}:${this.account}:kxEnvironment/${this.environmentId}/kxScalingGroup/${this.kxScalingGroup}` as const
   }
 }
-export type { GroupScalingKxArn }
-export function groupScalingKxArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupScalingKxArnParameters<Partition>,
+export type { KxScalingGroupArn }
+export function kxScalingGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KxScalingGroupArnParameters<Partition>,
 ) {
-  return new GroupScalingKxArn<Partition>(parameters)
+  return new KxScalingGroupArn<Partition>(parameters)
 }
 
-export interface ViewDataKxArnParameters<
+export interface KxDataViewArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
-  readonly databaseKx: string
-  readonly viewDataKx: string
+  readonly environmentId: string
+  readonly kxDatabase: string
+  readonly kxDataView: string
 }
-class ViewDataKxArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class KxDataViewArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'kxDataview',
   `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxDatabase/${string}/kxDataview/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'kxDataview' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
-  readonly databaseKx: string
-  readonly viewDataKx: string
-  constructor(parameters: ViewDataKxArnParameters<Partition>) {
+  readonly environmentId: string
+  readonly kxDatabase: string
+  readonly kxDataView: string
+  constructor(parameters: KxDataViewArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idEnvironment = parameters.idEnvironment
-    this.databaseKx = parameters.databaseKx
-    this.viewDataKx = parameters.viewDataKx
+    this.environmentId = parameters.environmentId
+    this.kxDatabase = parameters.kxDatabase
+    this.kxDataView = parameters.kxDataView
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:finspace:${this.region}:${this.account}:kxEnvironment/${this.idEnvironment}/kxDatabase/${this.databaseKx}/kxDataview/${this.viewDataKx}` as const
+    return `arn:${this.partition}:finspace:${this.region}:${this.account}:kxEnvironment/${this.environmentId}/kxDatabase/${this.kxDatabase}/kxDataview/${this.kxDataView}` as const
   }
 }
-export type { ViewDataKxArn }
-export function viewDataKxArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ViewDataKxArnParameters<Partition>,
+export type { KxDataViewArn }
+export function kxDataViewArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KxDataViewArnParameters<Partition>,
 ) {
-  return new ViewDataKxArn<Partition>(parameters)
+  return new KxDataViewArn<Partition>(parameters)
 }
 
-export interface VolumeKxArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface KxVolumeArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
-  readonly volumeKx: string
+  readonly environmentId: string
+  readonly kxVolume: string
 }
-class VolumeKxArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class KxVolumeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'kxVolume',
   `arn:${string}:finspace:${string}:${string}:kxEnvironment/${string}/kxVolume/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'kxVolume' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idEnvironment: string
-  readonly volumeKx: string
-  constructor(parameters: VolumeKxArnParameters<Partition>) {
+  readonly environmentId: string
+  readonly kxVolume: string
+  constructor(parameters: KxVolumeArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idEnvironment = parameters.idEnvironment
-    this.volumeKx = parameters.volumeKx
+    this.environmentId = parameters.environmentId
+    this.kxVolume = parameters.kxVolume
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:finspace:${this.region}:${this.account}:kxEnvironment/${this.idEnvironment}/kxVolume/${this.volumeKx}` as const
+    return `arn:${this.partition}:finspace:${this.region}:${this.account}:kxEnvironment/${this.environmentId}/kxVolume/${this.kxVolume}` as const
   }
 }
-export type { VolumeKxArn }
-export function volumeKxArn<Partition extends ArnPartition = 'aws'>(
-  parameters: VolumeKxArnParameters<Partition>,
+export type { KxVolumeArn }
+export function kxVolumeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KxVolumeArnParameters<Partition>,
 ) {
-  return new VolumeKxArn<Partition>(parameters)
+  return new KxVolumeArn<Partition>(parameters)
 }

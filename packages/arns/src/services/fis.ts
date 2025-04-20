@@ -7,8 +7,8 @@ import {
 } from '../internal.js'
 
 export interface ActionArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
@@ -17,13 +17,13 @@ class ActionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:fis:${string}:${string}:action/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'action' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
   constructor(parameters: ActionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -42,8 +42,8 @@ export function actionArn<Partition extends ArnPartition = 'aws'>(
 export interface ExperimentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
@@ -52,13 +52,13 @@ class ExperimentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:fis:${string}:${string}:experiment/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'experiment' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
   constructor(parameters: ExperimentArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -74,28 +74,28 @@ export function experimentArn<Partition extends ArnPartition = 'aws'>(
   return new ExperimentArn<Partition>(parameters)
 }
 
-export interface TemplateExperimentArnParameters<
+export interface ExperimentTemplateArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class TemplateExperimentArn<
+class ExperimentTemplateArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'experiment-template',
   `arn:${string}:fis:${string}:${string}:experiment-template/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'experiment-template' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: TemplateExperimentArnParameters<Partition>) {
+  constructor(parameters: ExperimentTemplateArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -104,35 +104,35 @@ class TemplateExperimentArn<
     return `arn:${this.partition}:fis:${this.region}:${this.account}:experiment-template/${this.id}` as const
   }
 }
-export type { TemplateExperimentArn }
-export function templateExperimentArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TemplateExperimentArnParameters<Partition>,
+export type { ExperimentTemplateArn }
+export function experimentTemplateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ExperimentTemplateArnParameters<Partition>,
 ) {
-  return new TemplateExperimentArn<Partition>(parameters)
+  return new ExperimentTemplateArn<Partition>(parameters)
 }
 
-export interface LeverSafetyArnParameters<
+export interface SafetyLeverArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
 }
-class LeverSafetyArn<
+class SafetyLeverArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'safety-lever',
   `arn:${string}:fis:${string}:${string}:safety-lever/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'safety-lever' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  constructor(parameters: LeverSafetyArnParameters<Partition>) {
+  constructor(parameters: SafetyLeverArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -141,9 +141,9 @@ class LeverSafetyArn<
     return `arn:${this.partition}:fis:${this.region}:${this.account}:safety-lever/${this.id}` as const
   }
 }
-export type { LeverSafetyArn }
-export function leverSafetyArn<Partition extends ArnPartition = 'aws'>(
-  parameters: LeverSafetyArnParameters<Partition>,
+export type { SafetyLeverArn }
+export function safetyLeverArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SafetyLeverArnParameters<Partition>,
 ) {
-  return new LeverSafetyArn<Partition>(parameters)
+  return new SafetyLeverArn<Partition>(parameters)
 }

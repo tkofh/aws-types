@@ -6,177 +6,177 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface EnvironmentComputeArnParameters<
+export interface ComputeEnvironmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameEnvironmentCompute: string
+  readonly computeEnvironmentName: string
 }
-class EnvironmentComputeArn<
+class ComputeEnvironmentArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'compute-environment',
   `arn:${string}:batch:${string}:${string}:compute-environment/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'compute-environment' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameEnvironmentCompute: string
-  constructor(parameters: EnvironmentComputeArnParameters<Partition>) {
+  readonly computeEnvironmentName: string
+  constructor(parameters: ComputeEnvironmentArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameEnvironmentCompute = parameters.nameEnvironmentCompute
+    this.computeEnvironmentName = parameters.computeEnvironmentName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:batch:${this.region}:${this.account}:compute-environment/${this.nameEnvironmentCompute}` as const
+    return `arn:${this.partition}:batch:${this.region}:${this.account}:compute-environment/${this.computeEnvironmentName}` as const
   }
 }
-export type { EnvironmentComputeArn }
-export function environmentComputeArn<Partition extends ArnPartition = 'aws'>(
-  parameters: EnvironmentComputeArnParameters<Partition>,
+export type { ComputeEnvironmentArn }
+export function computeEnvironmentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ComputeEnvironmentArnParameters<Partition>,
 ) {
-  return new EnvironmentComputeArn<Partition>(parameters)
+  return new ComputeEnvironmentArn<Partition>(parameters)
 }
 
-export interface QueueJobArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface JobQueueArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameQueueJob: string
+  readonly jobQueueName: string
 }
-class QueueJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class JobQueueArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'job-queue',
   `arn:${string}:batch:${string}:${string}:job-queue/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'job-queue' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameQueueJob: string
-  constructor(parameters: QueueJobArnParameters<Partition>) {
+  readonly jobQueueName: string
+  constructor(parameters: JobQueueArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameQueueJob = parameters.nameQueueJob
+    this.jobQueueName = parameters.jobQueueName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:batch:${this.region}:${this.account}:job-queue/${this.nameQueueJob}` as const
+    return `arn:${this.partition}:batch:${this.region}:${this.account}:job-queue/${this.jobQueueName}` as const
   }
 }
-export type { QueueJobArn }
-export function queueJobArn<Partition extends ArnPartition = 'aws'>(
-  parameters: QueueJobArnParameters<Partition>,
+export type { JobQueueArn }
+export function jobQueueArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobQueueArnParameters<Partition>,
 ) {
-  return new QueueJobArn<Partition>(parameters)
+  return new JobQueueArn<Partition>(parameters)
 }
 
-export interface DefinitionJobArnParameters<
+export interface JobDefinitionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameDefinitionJob: string
+  readonly jobDefinitionName: string
 }
-class DefinitionJobArn<
+class JobDefinitionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'job-definition',
   `arn:${string}:batch:${string}:${string}:job-definition/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'job-definition' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameDefinitionJob: string
-  constructor(parameters: DefinitionJobArnParameters<Partition>) {
+  readonly jobDefinitionName: string
+  constructor(parameters: JobDefinitionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameDefinitionJob = parameters.nameDefinitionJob
+    this.jobDefinitionName = parameters.jobDefinitionName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:batch:${this.region}:${this.account}:job-definition/${this.nameDefinitionJob}` as const
+    return `arn:${this.partition}:batch:${this.region}:${this.account}:job-definition/${this.jobDefinitionName}` as const
   }
 }
-export type { DefinitionJobArn }
-export function definitionJobArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DefinitionJobArnParameters<Partition>,
+export type { JobDefinitionArn }
+export function jobDefinitionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobDefinitionArnParameters<Partition>,
 ) {
-  return new DefinitionJobArn<Partition>(parameters)
+  return new JobDefinitionArn<Partition>(parameters)
 }
 
-export interface RevisionDefinitionJobArnParameters<
+export interface JobDefinitionRevisionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameDefinitionJob: string
+  readonly jobDefinitionName: string
   readonly revision: string
 }
-class RevisionDefinitionJobArn<
+class JobDefinitionRevisionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'job-definition-revision',
   `arn:${string}:batch:${string}:${string}:job-definition/${string}:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'job-definition-revision' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameDefinitionJob: string
+  readonly jobDefinitionName: string
   readonly revision: string
-  constructor(parameters: RevisionDefinitionJobArnParameters<Partition>) {
+  constructor(parameters: JobDefinitionRevisionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameDefinitionJob = parameters.nameDefinitionJob
+    this.jobDefinitionName = parameters.jobDefinitionName
     this.revision = parameters.revision
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:batch:${this.region}:${this.account}:job-definition/${this.nameDefinitionJob}:${this.revision}` as const
+    return `arn:${this.partition}:batch:${this.region}:${this.account}:job-definition/${this.jobDefinitionName}:${this.revision}` as const
   }
 }
-export type { RevisionDefinitionJobArn }
-export function revisionDefinitionJobArn<
+export type { JobDefinitionRevisionArn }
+export function jobDefinitionRevisionArn<
   Partition extends ArnPartition = 'aws',
->(parameters: RevisionDefinitionJobArnParameters<Partition>) {
-  return new RevisionDefinitionJobArn<Partition>(parameters)
+>(parameters: JobDefinitionRevisionArnParameters<Partition>) {
+  return new JobDefinitionRevisionArn<Partition>(parameters)
 }
 
 export interface JobArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJob: string
+  readonly jobId: string
 }
 class JobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'job',
   `arn:${string}:batch:${string}:${string}:job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'job' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJob: string
+  readonly jobId: string
   constructor(parameters: JobArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idJob = parameters.idJob
+    this.jobId = parameters.jobId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:batch:${this.region}:${this.account}:job/${this.idJob}` as const
+    return `arn:${this.partition}:batch:${this.region}:${this.account}:job/${this.jobId}` as const
   }
 }
 export type { JobArn }
@@ -186,39 +186,39 @@ export function jobArn<Partition extends ArnPartition = 'aws'>(
   return new JobArn<Partition>(parameters)
 }
 
-export interface PolicySchedulingArnParameters<
+export interface SchedulingPolicyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly namePolicyScheduling: string
+  readonly schedulingPolicyName: string
 }
-class PolicySchedulingArn<
+class SchedulingPolicyArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'scheduling-policy',
   `arn:${string}:batch:${string}:${string}:scheduling-policy/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'scheduling-policy' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly namePolicyScheduling: string
-  constructor(parameters: PolicySchedulingArnParameters<Partition>) {
+  readonly schedulingPolicyName: string
+  constructor(parameters: SchedulingPolicyArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.namePolicyScheduling = parameters.namePolicyScheduling
+    this.schedulingPolicyName = parameters.schedulingPolicyName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:batch:${this.region}:${this.account}:scheduling-policy/${this.namePolicyScheduling}` as const
+    return `arn:${this.partition}:batch:${this.region}:${this.account}:scheduling-policy/${this.schedulingPolicyName}` as const
   }
 }
-export type { PolicySchedulingArn }
-export function policySchedulingArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PolicySchedulingArnParameters<Partition>,
+export type { SchedulingPolicyArn }
+export function schedulingPolicyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SchedulingPolicyArnParameters<Partition>,
 ) {
-  return new PolicySchedulingArn<Partition>(parameters)
+  return new SchedulingPolicyArn<Partition>(parameters)
 }

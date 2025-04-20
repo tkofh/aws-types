@@ -9,32 +9,32 @@ import {
 export interface DatasourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApiGraphql: string
-  readonly nameSourceData: string
+  readonly graphqlApiId: string
+  readonly dataSourceName: string
 }
 class DatasourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'datasource',
   `arn:${string}:appsync:${string}:${string}:apis/${string}/datasources/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'datasource' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApiGraphql: string
-  readonly nameSourceData: string
+  readonly graphqlApiId: string
+  readonly dataSourceName: string
   constructor(parameters: DatasourceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApiGraphql = parameters.idApiGraphql
-    this.nameSourceData = parameters.nameSourceData
+    this.graphqlApiId = parameters.graphqlApiId
+    this.dataSourceName = parameters.dataSourceName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appsync:${this.region}:${this.account}:apis/${this.idApiGraphql}/datasources/${this.nameSourceData}` as const
+    return `arn:${this.partition}:appsync:${this.region}:${this.account}:apis/${this.graphqlApiId}/datasources/${this.dataSourceName}` as const
   }
 }
 export type { DatasourceArn }
@@ -45,29 +45,29 @@ export function datasourceArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface DomainArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameDomain: string
+  readonly domainName: string
 }
 class DomainArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'domain',
   `arn:${string}:appsync:${string}:${string}:domainnames/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'domain' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameDomain: string
+  readonly domainName: string
   constructor(parameters: DomainArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameDomain = parameters.nameDomain
+    this.domainName = parameters.domainName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appsync:${this.region}:${this.account}:domainnames/${this.nameDomain}` as const
+    return `arn:${this.partition}:appsync:${this.region}:${this.account}:domainnames/${this.domainName}` as const
   }
 }
 export type { DomainArn }
@@ -77,71 +77,71 @@ export function domainArn<Partition extends ArnPartition = 'aws'>(
   return new DomainArn<Partition>(parameters)
 }
 
-export interface ApiGraphqlArnParameters<
+export interface GraphqlApiArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApiGraphql: string
+  readonly graphqlApiId: string
 }
-class ApiGraphqlArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class GraphqlApiArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'graphqlapi',
   `arn:${string}:appsync:${string}:${string}:apis/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'graphqlapi' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApiGraphql: string
-  constructor(parameters: ApiGraphqlArnParameters<Partition>) {
+  readonly graphqlApiId: string
+  constructor(parameters: GraphqlApiArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApiGraphql = parameters.idApiGraphql
+    this.graphqlApiId = parameters.graphqlApiId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appsync:${this.region}:${this.account}:apis/${this.idApiGraphql}` as const
+    return `arn:${this.partition}:appsync:${this.region}:${this.account}:apis/${this.graphqlApiId}` as const
   }
 }
-export type { ApiGraphqlArn }
-export function apiGraphqlArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ApiGraphqlArnParameters<Partition>,
+export type { GraphqlApiArn }
+export function graphqlApiArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GraphqlApiArnParameters<Partition>,
 ) {
-  return new ApiGraphqlArn<Partition>(parameters)
+  return new GraphqlApiArn<Partition>(parameters)
 }
 
 export interface FieldArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApiGraphql: string
-  readonly nameType: string
-  readonly nameField: string
+  readonly graphqlApiId: string
+  readonly typeName: string
+  readonly fieldName: string
 }
 class FieldArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'field',
   `arn:${string}:appsync:${string}:${string}:apis/${string}/types/${string}/fields/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'field' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApiGraphql: string
-  readonly nameType: string
-  readonly nameField: string
+  readonly graphqlApiId: string
+  readonly typeName: string
+  readonly fieldName: string
   constructor(parameters: FieldArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApiGraphql = parameters.idApiGraphql
-    this.nameType = parameters.nameType
-    this.nameField = parameters.nameField
+    this.graphqlApiId = parameters.graphqlApiId
+    this.typeName = parameters.typeName
+    this.fieldName = parameters.fieldName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appsync:${this.region}:${this.account}:apis/${this.idApiGraphql}/types/${this.nameType}/fields/${this.nameField}` as const
+    return `arn:${this.partition}:appsync:${this.region}:${this.account}:apis/${this.graphqlApiId}/types/${this.typeName}/fields/${this.fieldName}` as const
   }
 }
 export type { FieldArn }
@@ -152,32 +152,32 @@ export function fieldArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface TypeArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApiGraphql: string
-  readonly nameType: string
+  readonly graphqlApiId: string
+  readonly typeName: string
 }
 class TypeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'type',
   `arn:${string}:appsync:${string}:${string}:apis/${string}/types/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'type' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApiGraphql: string
-  readonly nameType: string
+  readonly graphqlApiId: string
+  readonly typeName: string
   constructor(parameters: TypeArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApiGraphql = parameters.idApiGraphql
-    this.nameType = parameters.nameType
+    this.graphqlApiId = parameters.graphqlApiId
+    this.typeName = parameters.typeName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appsync:${this.region}:${this.account}:apis/${this.idApiGraphql}/types/${this.nameType}` as const
+    return `arn:${this.partition}:appsync:${this.region}:${this.account}:apis/${this.graphqlApiId}/types/${this.typeName}` as const
   }
 }
 export type { TypeArn }
@@ -188,32 +188,32 @@ export function typeArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface FunctionArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApiGraphql: string
-  readonly idFunction: string
+  readonly graphqlApiId: string
+  readonly functionId: string
 }
 class FunctionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'function',
   `arn:${string}:appsync:${string}:${string}:apis/${string}/functions/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'function' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApiGraphql: string
-  readonly idFunction: string
+  readonly graphqlApiId: string
+  readonly functionId: string
   constructor(parameters: FunctionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApiGraphql = parameters.idApiGraphql
-    this.idFunction = parameters.idFunction
+    this.graphqlApiId = parameters.graphqlApiId
+    this.functionId = parameters.functionId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appsync:${this.region}:${this.account}:apis/${this.idApiGraphql}/functions/${this.idFunction}` as const
+    return `arn:${this.partition}:appsync:${this.region}:${this.account}:apis/${this.graphqlApiId}/functions/${this.functionId}` as const
   }
 }
 export type { FunctionArn }
@@ -223,82 +223,82 @@ export function functionArn<Partition extends ArnPartition = 'aws'>(
   return new FunctionArn<Partition>(parameters)
 }
 
-export interface AssociationApiSourceArnParameters<
+export interface SourceApiAssociationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApiGraphqlMerged: string
-  readonly idAssociation: string
+  readonly mergedGraphqlApiId: string
+  readonly associationId: string
 }
-class AssociationApiSourceArn<
+class SourceApiAssociationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'sourceApiAssociation',
   `arn:${string}:appsync:${string}:${string}:apis/${string}/sourceApiAssociations/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'sourceApiAssociation' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApiGraphqlMerged: string
-  readonly idAssociation: string
-  constructor(parameters: AssociationApiSourceArnParameters<Partition>) {
+  readonly mergedGraphqlApiId: string
+  readonly associationId: string
+  constructor(parameters: SourceApiAssociationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApiGraphqlMerged = parameters.idApiGraphqlMerged
-    this.idAssociation = parameters.idAssociation
+    this.mergedGraphqlApiId = parameters.mergedGraphqlApiId
+    this.associationId = parameters.associationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appsync:${this.region}:${this.account}:apis/${this.idApiGraphqlMerged}/sourceApiAssociations/${this.idAssociation}` as const
+    return `arn:${this.partition}:appsync:${this.region}:${this.account}:apis/${this.mergedGraphqlApiId}/sourceApiAssociations/${this.associationId}` as const
   }
 }
-export type { AssociationApiSourceArn }
-export function associationApiSourceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AssociationApiSourceArnParameters<Partition>,
+export type { SourceApiAssociationArn }
+export function sourceApiAssociationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SourceApiAssociationArnParameters<Partition>,
 ) {
-  return new AssociationApiSourceArn<Partition>(parameters)
+  return new SourceApiAssociationArn<Partition>(parameters)
 }
 
-export interface AssociationApiMergedArnParameters<
+export interface MergedApiAssociationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApiGraphqlSource: string
-  readonly idAssociation: string
+  readonly sourceGraphqlApiId: string
+  readonly associationId: string
 }
-class AssociationApiMergedArn<
+class MergedApiAssociationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'mergedApiAssociation',
   `arn:${string}:appsync:${string}:${string}:apis/${string}/mergedApiAssociations/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'mergedApiAssociation' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idApiGraphqlSource: string
-  readonly idAssociation: string
-  constructor(parameters: AssociationApiMergedArnParameters<Partition>) {
+  readonly sourceGraphqlApiId: string
+  readonly associationId: string
+  constructor(parameters: MergedApiAssociationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idApiGraphqlSource = parameters.idApiGraphqlSource
-    this.idAssociation = parameters.idAssociation
+    this.sourceGraphqlApiId = parameters.sourceGraphqlApiId
+    this.associationId = parameters.associationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appsync:${this.region}:${this.account}:apis/${this.idApiGraphqlSource}/mergedApiAssociations/${this.idAssociation}` as const
+    return `arn:${this.partition}:appsync:${this.region}:${this.account}:apis/${this.sourceGraphqlApiId}/mergedApiAssociations/${this.associationId}` as const
   }
 }
-export type { AssociationApiMergedArn }
-export function associationApiMergedArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AssociationApiMergedArnParameters<Partition>,
+export type { MergedApiAssociationArn }
+export function mergedApiAssociationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MergedApiAssociationArnParameters<Partition>,
 ) {
-  return new AssociationApiMergedArn<Partition>(parameters)
+  return new MergedApiAssociationArn<Partition>(parameters)
 }

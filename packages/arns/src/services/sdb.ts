@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface DomainArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameDomain: string
+  readonly domainName: string
 }
 class DomainArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'domain',
   `arn:${string}:sdb:${string}:${string}:domain/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'domain' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameDomain: string
+  readonly domainName: string
   constructor(parameters: DomainArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameDomain = parameters.nameDomain
+    this.domainName = parameters.domainName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sdb:${this.region}:${this.account}:domain/${this.nameDomain}` as const
+    return `arn:${this.partition}:sdb:${this.region}:${this.account}:domain/${this.domainName}` as const
   }
 }
 export type { DomainArn }

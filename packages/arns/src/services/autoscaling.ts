@@ -6,82 +6,82 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface GroupAutoscalingArnParameters<
+export interface AutoscalingGroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idGroup: string
-  readonly nameFriendlyGroup: string
+  readonly groupId: string
+  readonly groupFriendlyName: string
 }
-class GroupAutoscalingArn<
+class AutoscalingGroupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'autoScalingGroup',
   `arn:${string}:autoscaling:${string}:${string}:autoScalingGroup:${string}:autoScalingGroupName/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'autoScalingGroup' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idGroup: string
-  readonly nameFriendlyGroup: string
-  constructor(parameters: GroupAutoscalingArnParameters<Partition>) {
+  readonly groupId: string
+  readonly groupFriendlyName: string
+  constructor(parameters: AutoscalingGroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idGroup = parameters.idGroup
-    this.nameFriendlyGroup = parameters.nameFriendlyGroup
+    this.groupId = parameters.groupId
+    this.groupFriendlyName = parameters.groupFriendlyName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:autoscaling:${this.region}:${this.account}:autoScalingGroup:${this.idGroup}:autoScalingGroupName/${this.nameFriendlyGroup}` as const
+    return `arn:${this.partition}:autoscaling:${this.region}:${this.account}:autoScalingGroup:${this.groupId}:autoScalingGroupName/${this.groupFriendlyName}` as const
   }
 }
-export type { GroupAutoscalingArn }
-export function groupAutoscalingArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupAutoscalingArnParameters<Partition>,
+export type { AutoscalingGroupArn }
+export function autoscalingGroupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AutoscalingGroupArnParameters<Partition>,
 ) {
-  return new GroupAutoscalingArn<Partition>(parameters)
+  return new AutoscalingGroupArn<Partition>(parameters)
 }
 
-export interface ConfigurationLaunchArnParameters<
+export interface LaunchConfigurationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  readonly nameConfigurationLaunch: string
+  readonly launchConfigurationName: string
 }
-class ConfigurationLaunchArn<
+class LaunchConfigurationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'launchConfiguration',
   `arn:${string}:autoscaling:${string}:${string}:launchConfiguration:${string}:launchConfigurationName/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'launchConfiguration' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
   readonly id: string
-  readonly nameConfigurationLaunch: string
-  constructor(parameters: ConfigurationLaunchArnParameters<Partition>) {
+  readonly launchConfigurationName: string
+  constructor(parameters: LaunchConfigurationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
-    this.nameConfigurationLaunch = parameters.nameConfigurationLaunch
+    this.launchConfigurationName = parameters.launchConfigurationName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:autoscaling:${this.region}:${this.account}:launchConfiguration:${this.id}:launchConfigurationName/${this.nameConfigurationLaunch}` as const
+    return `arn:${this.partition}:autoscaling:${this.region}:${this.account}:launchConfiguration:${this.id}:launchConfigurationName/${this.launchConfigurationName}` as const
   }
 }
-export type { ConfigurationLaunchArn }
-export function configurationLaunchArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ConfigurationLaunchArnParameters<Partition>,
+export type { LaunchConfigurationArn }
+export function launchConfigurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LaunchConfigurationArnParameters<Partition>,
 ) {
-  return new ConfigurationLaunchArn<Partition>(parameters)
+  return new LaunchConfigurationArn<Partition>(parameters)
 }

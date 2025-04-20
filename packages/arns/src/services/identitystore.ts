@@ -6,58 +6,58 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface StoreIdentityArnParameters<
+export interface IdentityStoreArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idStoreIdentity: string
+  readonly identityStoreId: string
 }
-class StoreIdentityArn<
+class IdentityStoreArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'Identitystore',
   `arn:${string}:identitystore::${string}:identitystore/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Identitystore' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idStoreIdentity: string
-  constructor(parameters: StoreIdentityArnParameters<Partition>) {
+  readonly identityStoreId: string
+  constructor(parameters: IdentityStoreArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idStoreIdentity = parameters.idStoreIdentity
+    this.identityStoreId = parameters.identityStoreId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:identitystore::${this.account}:identitystore/${this.idStoreIdentity}` as const
+    return `arn:${this.partition}:identitystore::${this.account}:identitystore/${this.identityStoreId}` as const
   }
 }
-export type { StoreIdentityArn }
-export function storeIdentityArn<Partition extends ArnPartition = 'aws'>(
-  parameters: StoreIdentityArnParameters<Partition>,
+export type { IdentityStoreArn }
+export function identityStoreArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IdentityStoreArnParameters<Partition>,
 ) {
-  return new StoreIdentityArn<Partition>(parameters)
+  return new IdentityStoreArn<Partition>(parameters)
 }
 
 export interface UserArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly idUser: string
+  readonly partition?: Partition | undefined
+  readonly userId: string
 }
 class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'User',
   `arn:${string}:identitystore:::user/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'User' as const
-  readonly partition: string
-  readonly idUser: string
+  readonly partition: Partition
+  readonly userId: string
   constructor(parameters: UserArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
-    this.idUser = parameters.idUser
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.userId = parameters.userId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:identitystore:::user/${this.idUser}` as const
+    return `arn:${this.partition}:identitystore:::user/${this.userId}` as const
   }
 }
 export type { UserArn }
@@ -68,23 +68,23 @@ export function userArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface GroupArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly idGroup: string
+  readonly partition?: Partition | undefined
+  readonly groupId: string
 }
 class GroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Group',
   `arn:${string}:identitystore:::group/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Group' as const
-  readonly partition: string
-  readonly idGroup: string
+  readonly partition: Partition
+  readonly groupId: string
   constructor(parameters: GroupArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
-    this.idGroup = parameters.idGroup
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.groupId = parameters.groupId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:identitystore:::group/${this.idGroup}` as const
+    return `arn:${this.partition}:identitystore:::group/${this.groupId}` as const
   }
 }
 export type { GroupArn }
@@ -94,111 +94,111 @@ export function groupArn<Partition extends ArnPartition = 'aws'>(
   return new GroupArn<Partition>(parameters)
 }
 
-export interface MembershipGroupArnParameters<
+export interface GroupMembershipArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly idMembership: string
+  readonly partition?: Partition | undefined
+  readonly membershipId: string
 }
-class MembershipGroupArn<
+class GroupMembershipArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'GroupMembership',
   `arn:${string}:identitystore:::membership/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'GroupMembership' as const
-  readonly partition: string
-  readonly idMembership: string
-  constructor(parameters: MembershipGroupArnParameters<Partition>) {
+  readonly partition: Partition
+  readonly membershipId: string
+  constructor(parameters: GroupMembershipArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
-    this.idMembership = parameters.idMembership
+    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.membershipId = parameters.membershipId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:identitystore:::membership/${this.idMembership}` as const
+    return `arn:${this.partition}:identitystore:::membership/${this.membershipId}` as const
   }
 }
-export type { MembershipGroupArn }
-export function membershipGroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: MembershipGroupArnParameters<Partition>,
+export type { GroupMembershipArn }
+export function groupMembershipArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupMembershipArnParameters<Partition>,
 ) {
-  return new MembershipGroupArn<Partition>(parameters)
+  return new GroupMembershipArn<Partition>(parameters)
 }
 
-export interface UsersAllArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
+export interface AllUsersArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
 }
-class UsersAllArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class AllUsersArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'AllUsers',
   `arn:${string}:identitystore:::user/*`
 > {
   readonly [ArnResourceTypeBrand] = 'AllUsers' as const
-  readonly partition: string
-  constructor(parameters: UsersAllArnParameters<Partition>) {
+  readonly partition: Partition
+  constructor(parameters: AllUsersArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
   }
   [StringifyArnBrand]() {
     return `arn:${this.partition}:identitystore:::user/*` as const
   }
 }
-export type { UsersAllArn }
-export function usersAllArn<Partition extends ArnPartition = 'aws'>(
-  parameters: UsersAllArnParameters<Partition>,
+export type { AllUsersArn }
+export function allUsersArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AllUsersArnParameters<Partition>,
 ) {
-  return new UsersAllArn<Partition>(parameters)
+  return new AllUsersArn<Partition>(parameters)
 }
 
-export interface GroupsAllArnParameters<
+export interface AllGroupsArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
 }
-class GroupsAllArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class AllGroupsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'AllGroups',
   `arn:${string}:identitystore:::group/*`
 > {
   readonly [ArnResourceTypeBrand] = 'AllGroups' as const
-  readonly partition: string
-  constructor(parameters: GroupsAllArnParameters<Partition>) {
+  readonly partition: Partition
+  constructor(parameters: AllGroupsArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
   }
   [StringifyArnBrand]() {
     return `arn:${this.partition}:identitystore:::group/*` as const
   }
 }
-export type { GroupsAllArn }
-export function groupsAllArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GroupsAllArnParameters<Partition>,
+export type { AllGroupsArn }
+export function allGroupsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AllGroupsArnParameters<Partition>,
 ) {
-  return new GroupsAllArn<Partition>(parameters)
+  return new AllGroupsArn<Partition>(parameters)
 }
 
-export interface MembershipsGroupAllArnParameters<
+export interface AllGroupMembershipsArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
 }
-class MembershipsGroupAllArn<
+class AllGroupMembershipsArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'AllGroupMemberships',
   `arn:${string}:identitystore:::membership/*`
 > {
   readonly [ArnResourceTypeBrand] = 'AllGroupMemberships' as const
-  readonly partition: string
-  constructor(parameters: MembershipsGroupAllArnParameters<Partition>) {
+  readonly partition: Partition
+  constructor(parameters: AllGroupMembershipsArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
   }
   [StringifyArnBrand]() {
     return `arn:${this.partition}:identitystore:::membership/*` as const
   }
 }
-export type { MembershipsGroupAllArn }
-export function membershipsGroupAllArn<Partition extends ArnPartition = 'aws'>(
-  parameters: MembershipsGroupAllArnParameters<Partition>,
+export type { AllGroupMembershipsArn }
+export function allGroupMembershipsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AllGroupMembershipsArnParameters<Partition>,
 ) {
-  return new MembershipsGroupAllArn<Partition>(parameters)
+  return new AllGroupMembershipsArn<Partition>(parameters)
 }

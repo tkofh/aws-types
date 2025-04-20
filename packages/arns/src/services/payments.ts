@@ -6,36 +6,36 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface InstrumentPaymentArnParameters<
+export interface PaymentInstrumentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class InstrumentPaymentArn<
+class PaymentInstrumentArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'payment-instrument',
   `arn:${string}:payments::${string}:payment-instrument:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'payment-instrument' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: InstrumentPaymentArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: PaymentInstrumentArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:payments::${this.account}:payment-instrument:${this.idResource}` as const
+    return `arn:${this.partition}:payments::${this.account}:payment-instrument:${this.resourceId}` as const
   }
 }
-export type { InstrumentPaymentArn }
-export function instrumentPaymentArn<Partition extends ArnPartition = 'aws'>(
-  parameters: InstrumentPaymentArnParameters<Partition>,
+export type { PaymentInstrumentArn }
+export function paymentInstrumentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PaymentInstrumentArnParameters<Partition>,
 ) {
-  return new InstrumentPaymentArn<Partition>(parameters)
+  return new PaymentInstrumentArn<Partition>(parameters)
 }

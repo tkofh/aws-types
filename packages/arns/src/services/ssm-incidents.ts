@@ -6,107 +6,107 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface PlanResponseArnParameters<
+export interface ResponsePlanArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly planResponse: string
+  readonly responsePlan: string
 }
-class PlanResponseArn<
+class ResponsePlanArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'response-plan',
   `arn:${string}:ssm-incidents::${string}:response-plan/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'response-plan' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly planResponse: string
-  constructor(parameters: PlanResponseArnParameters<Partition>) {
+  readonly responsePlan: string
+  constructor(parameters: ResponsePlanArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.planResponse = parameters.planResponse
+    this.responsePlan = parameters.responsePlan
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ssm-incidents::${this.account}:response-plan/${this.planResponse}` as const
+    return `arn:${this.partition}:ssm-incidents::${this.account}:response-plan/${this.responsePlan}` as const
   }
 }
-export type { PlanResponseArn }
-export function planResponseArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PlanResponseArnParameters<Partition>,
+export type { ResponsePlanArn }
+export function responsePlanArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResponsePlanArnParameters<Partition>,
 ) {
-  return new PlanResponseArn<Partition>(parameters)
+  return new ResponsePlanArn<Partition>(parameters)
 }
 
-export interface RecordIncidentArnParameters<
+export interface IncidentRecordArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly planResponse: string
-  readonly recordIncident: string
+  readonly responsePlan: string
+  readonly incidentRecord: string
 }
-class RecordIncidentArn<
+class IncidentRecordArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'incident-record',
   `arn:${string}:ssm-incidents::${string}:incident-record/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'incident-record' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly planResponse: string
-  readonly recordIncident: string
-  constructor(parameters: RecordIncidentArnParameters<Partition>) {
+  readonly responsePlan: string
+  readonly incidentRecord: string
+  constructor(parameters: IncidentRecordArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.planResponse = parameters.planResponse
-    this.recordIncident = parameters.recordIncident
+    this.responsePlan = parameters.responsePlan
+    this.incidentRecord = parameters.incidentRecord
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ssm-incidents::${this.account}:incident-record/${this.planResponse}/${this.recordIncident}` as const
+    return `arn:${this.partition}:ssm-incidents::${this.account}:incident-record/${this.responsePlan}/${this.incidentRecord}` as const
   }
 }
-export type { RecordIncidentArn }
-export function recordIncidentArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RecordIncidentArnParameters<Partition>,
+export type { IncidentRecordArn }
+export function incidentRecordArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IncidentRecordArnParameters<Partition>,
 ) {
-  return new RecordIncidentArn<Partition>(parameters)
+  return new IncidentRecordArn<Partition>(parameters)
 }
 
-export interface SetReplicationArnParameters<
+export interface ReplicationSetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly setReplication: string
+  readonly replicationSet: string
 }
-class SetReplicationArn<
+class ReplicationSetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'replication-set',
   `arn:${string}:ssm-incidents::${string}:replication-set/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'replication-set' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly setReplication: string
-  constructor(parameters: SetReplicationArnParameters<Partition>) {
+  readonly replicationSet: string
+  constructor(parameters: ReplicationSetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.setReplication = parameters.setReplication
+    this.replicationSet = parameters.replicationSet
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ssm-incidents::${this.account}:replication-set/${this.setReplication}` as const
+    return `arn:${this.partition}:ssm-incidents::${this.account}:replication-set/${this.replicationSet}` as const
   }
 }
-export type { SetReplicationArn }
-export function setReplicationArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SetReplicationArnParameters<Partition>,
+export type { ReplicationSetArn }
+export function replicationSetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ReplicationSetArnParameters<Partition>,
 ) {
-  return new SetReplicationArn<Partition>(parameters)
+  return new ReplicationSetArn<Partition>(parameters)
 }

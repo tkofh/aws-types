@@ -6,22 +6,22 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface LakeDataArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface DataLakeArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
 }
-class LakeDataArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class DataLakeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'data-lake',
   `arn:${string}:securitylake:${string}:${string}:data-lake/default`
 > {
   readonly [ArnResourceTypeBrand] = 'data-lake' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  constructor(parameters: LakeDataArnParameters<Partition>) {
+  constructor(parameters: DataLakeArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
   }
@@ -29,39 +29,39 @@ class LakeDataArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
     return `arn:${this.partition}:securitylake:${this.region}:${this.account}:data-lake/default` as const
   }
 }
-export type { LakeDataArn }
-export function lakeDataArn<Partition extends ArnPartition = 'aws'>(
-  parameters: LakeDataArnParameters<Partition>,
+export type { DataLakeArn }
+export function dataLakeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DataLakeArnParameters<Partition>,
 ) {
-  return new LakeDataArn<Partition>(parameters)
+  return new DataLakeArn<Partition>(parameters)
 }
 
 export interface SubscriberArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSubscriber: string
+  readonly subscriberId: string
 }
 class SubscriberArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'subscriber',
   `arn:${string}:securitylake:${string}:${string}:subscriber/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'subscriber' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idSubscriber: string
+  readonly subscriberId: string
   constructor(parameters: SubscriberArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idSubscriber = parameters.idSubscriber
+    this.subscriberId = parameters.subscriberId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:securitylake:${this.region}:${this.account}:subscriber/${this.idSubscriber}` as const
+    return `arn:${this.partition}:securitylake:${this.region}:${this.account}:subscriber/${this.subscriberId}` as const
   }
 }
 export type { SubscriberArn }

@@ -6,111 +6,111 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface RuleEventArnParameters<
+export interface EventRuleArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idConfigurationNotification: string
-  readonly idRuleEvent: string
+  readonly notificationConfigurationId: string
+  readonly eventRuleId: string
 }
-class RuleEventArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class EventRuleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'EventRule',
   `arn:${string}:notifications::${string}:configuration/${string}/rule/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'EventRule' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idConfigurationNotification: string
-  readonly idRuleEvent: string
-  constructor(parameters: RuleEventArnParameters<Partition>) {
+  readonly notificationConfigurationId: string
+  readonly eventRuleId: string
+  constructor(parameters: EventRuleArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idConfigurationNotification = parameters.idConfigurationNotification
-    this.idRuleEvent = parameters.idRuleEvent
+    this.notificationConfigurationId = parameters.notificationConfigurationId
+    this.eventRuleId = parameters.eventRuleId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:notifications::${this.account}:configuration/${this.idConfigurationNotification}/rule/${this.idRuleEvent}` as const
+    return `arn:${this.partition}:notifications::${this.account}:configuration/${this.notificationConfigurationId}/rule/${this.eventRuleId}` as const
   }
 }
-export type { RuleEventArn }
-export function ruleEventArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RuleEventArnParameters<Partition>,
+export type { EventRuleArn }
+export function eventRuleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EventRuleArnParameters<Partition>,
 ) {
-  return new RuleEventArn<Partition>(parameters)
+  return new EventRuleArn<Partition>(parameters)
 }
 
-export interface ConfigurationNotificationArnParameters<
+export interface NotificationConfigurationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
+  readonly partition?: Partition | undefined
   readonly account: string
-  readonly idConfigurationNotification: string
+  readonly notificationConfigurationId: string
 }
-class ConfigurationNotificationArn<
+class NotificationConfigurationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'NotificationConfiguration',
   `arn:${string}:notifications::${string}:configuration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'NotificationConfiguration' as const
-  readonly partition: string
+  readonly partition: Partition
   readonly account: string
-  readonly idConfigurationNotification: string
-  constructor(parameters: ConfigurationNotificationArnParameters<Partition>) {
+  readonly notificationConfigurationId: string
+  constructor(parameters: NotificationConfigurationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.account = parameters.account
-    this.idConfigurationNotification = parameters.idConfigurationNotification
+    this.notificationConfigurationId = parameters.notificationConfigurationId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:notifications::${this.account}:configuration/${this.idConfigurationNotification}` as const
+    return `arn:${this.partition}:notifications::${this.account}:configuration/${this.notificationConfigurationId}` as const
   }
 }
-export type { ConfigurationNotificationArn }
-export function configurationNotificationArn<
+export type { NotificationConfigurationArn }
+export function notificationConfigurationArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ConfigurationNotificationArnParameters<Partition>) {
-  return new ConfigurationNotificationArn<Partition>(parameters)
+>(parameters: NotificationConfigurationArnParameters<Partition>) {
+  return new NotificationConfigurationArn<Partition>(parameters)
 }
 
-export interface EventNotificationArnParameters<
+export interface NotificationEventArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idConfigurationNotification: string
-  readonly idEventNotification: string
+  readonly notificationConfigurationId: string
+  readonly notificationEventId: string
 }
-class EventNotificationArn<
+class NotificationEventArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'NotificationEvent',
   `arn:${string}:notifications:${string}:${string}:configuration/${string}/event/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'NotificationEvent' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idConfigurationNotification: string
-  readonly idEventNotification: string
-  constructor(parameters: EventNotificationArnParameters<Partition>) {
+  readonly notificationConfigurationId: string
+  readonly notificationEventId: string
+  constructor(parameters: NotificationEventArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idConfigurationNotification = parameters.idConfigurationNotification
-    this.idEventNotification = parameters.idEventNotification
+    this.notificationConfigurationId = parameters.notificationConfigurationId
+    this.notificationEventId = parameters.notificationEventId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:notifications:${this.region}:${this.account}:configuration/${this.idConfigurationNotification}/event/${this.idEventNotification}` as const
+    return `arn:${this.partition}:notifications:${this.region}:${this.account}:configuration/${this.notificationConfigurationId}/event/${this.notificationEventId}` as const
   }
 }
-export type { EventNotificationArn }
-export function eventNotificationArn<Partition extends ArnPartition = 'aws'>(
-  parameters: EventNotificationArnParameters<Partition>,
+export type { NotificationEventArn }
+export function notificationEventArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NotificationEventArnParameters<Partition>,
 ) {
-  return new EventNotificationArn<Partition>(parameters)
+  return new NotificationEventArn<Partition>(parameters)
 }

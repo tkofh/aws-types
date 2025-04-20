@@ -6,74 +6,74 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ProfileSigningArnParameters<
+export interface SigningProfileArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProfile: string
+  readonly profileName: string
 }
-class ProfileSigningArn<
+class SigningProfileArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'signing-profile',
   `arn:${string}:signer:${string}:${string}:/signing-profiles/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'signing-profile' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameProfile: string
-  constructor(parameters: ProfileSigningArnParameters<Partition>) {
+  readonly profileName: string
+  constructor(parameters: SigningProfileArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameProfile = parameters.nameProfile
+    this.profileName = parameters.profileName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:signer:${this.region}:${this.account}:/signing-profiles/${this.nameProfile}` as const
+    return `arn:${this.partition}:signer:${this.region}:${this.account}:/signing-profiles/${this.profileName}` as const
   }
 }
-export type { ProfileSigningArn }
-export function profileSigningArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ProfileSigningArnParameters<Partition>,
+export type { SigningProfileArn }
+export function signingProfileArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SigningProfileArnParameters<Partition>,
 ) {
-  return new ProfileSigningArn<Partition>(parameters)
+  return new SigningProfileArn<Partition>(parameters)
 }
 
-export interface JobSigningArnParameters<
+export interface SigningJobArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJob: string
+  readonly jobId: string
 }
-class JobSigningArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class SigningJobArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'signing-job',
   `arn:${string}:signer:${string}:${string}:/signing-jobs/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'signing-job' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idJob: string
-  constructor(parameters: JobSigningArnParameters<Partition>) {
+  readonly jobId: string
+  constructor(parameters: SigningJobArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idJob = parameters.idJob
+    this.jobId = parameters.jobId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:signer:${this.region}:${this.account}:/signing-jobs/${this.idJob}` as const
+    return `arn:${this.partition}:signer:${this.region}:${this.account}:/signing-jobs/${this.jobId}` as const
   }
 }
-export type { JobSigningArn }
-export function jobSigningArn<Partition extends ArnPartition = 'aws'>(
-  parameters: JobSigningArnParameters<Partition>,
+export type { SigningJobArn }
+export function signingJobArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SigningJobArnParameters<Partition>,
 ) {
-  return new JobSigningArn<Partition>(parameters)
+  return new SigningJobArn<Partition>(parameters)
 }

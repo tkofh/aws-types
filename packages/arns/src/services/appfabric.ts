@@ -6,110 +6,110 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface BundleAppArnParameters<
+export interface AppBundleArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly identifierBundleApp: string
+  readonly appBundleIdentifier: string
 }
-class BundleAppArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class AppBundleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'appbundle',
   `arn:${string}:appfabric:${string}:${string}:appbundle/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'appbundle' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly identifierBundleApp: string
-  constructor(parameters: BundleAppArnParameters<Partition>) {
+  readonly appBundleIdentifier: string
+  constructor(parameters: AppBundleArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.identifierBundleApp = parameters.identifierBundleApp
+    this.appBundleIdentifier = parameters.appBundleIdentifier
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appfabric:${this.region}:${this.account}:appbundle/${this.identifierBundleApp}` as const
+    return `arn:${this.partition}:appfabric:${this.region}:${this.account}:appbundle/${this.appBundleIdentifier}` as const
   }
 }
-export type { BundleAppArn }
-export function bundleAppArn<Partition extends ArnPartition = 'aws'>(
-  parameters: BundleAppArnParameters<Partition>,
+export type { AppBundleArn }
+export function appBundleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppBundleArnParameters<Partition>,
 ) {
-  return new BundleAppArn<Partition>(parameters)
+  return new AppBundleArn<Partition>(parameters)
 }
 
-export interface AuthorizationAppArnParameters<
+export interface AppAuthorizationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idBundleApp: string
-  readonly identifierAuthorizationApp: string
+  readonly appBundleId: string
+  readonly appAuthorizationIdentifier: string
 }
-class AuthorizationAppArn<
+class AppAuthorizationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'appauthorization',
   `arn:${string}:appfabric:${string}:${string}:appbundle/${string}/appauthorization/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'appauthorization' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idBundleApp: string
-  readonly identifierAuthorizationApp: string
-  constructor(parameters: AuthorizationAppArnParameters<Partition>) {
+  readonly appBundleId: string
+  readonly appAuthorizationIdentifier: string
+  constructor(parameters: AppAuthorizationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idBundleApp = parameters.idBundleApp
-    this.identifierAuthorizationApp = parameters.identifierAuthorizationApp
+    this.appBundleId = parameters.appBundleId
+    this.appAuthorizationIdentifier = parameters.appAuthorizationIdentifier
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appfabric:${this.region}:${this.account}:appbundle/${this.idBundleApp}/appauthorization/${this.identifierAuthorizationApp}` as const
+    return `arn:${this.partition}:appfabric:${this.region}:${this.account}:appbundle/${this.appBundleId}/appauthorization/${this.appAuthorizationIdentifier}` as const
   }
 }
-export type { AuthorizationAppArn }
-export function authorizationAppArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AuthorizationAppArnParameters<Partition>,
+export type { AppAuthorizationArn }
+export function appAuthorizationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppAuthorizationArnParameters<Partition>,
 ) {
-  return new AuthorizationAppArn<Partition>(parameters)
+  return new AppAuthorizationArn<Partition>(parameters)
 }
 
 export interface IngestionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idBundleApp: string
-  readonly identifierIngestion: string
+  readonly appBundleId: string
+  readonly ingestionIdentifier: string
 }
 class IngestionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'ingestion',
   `arn:${string}:appfabric:${string}:${string}:appbundle/${string}/ingestion/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ingestion' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idBundleApp: string
-  readonly identifierIngestion: string
+  readonly appBundleId: string
+  readonly ingestionIdentifier: string
   constructor(parameters: IngestionArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idBundleApp = parameters.idBundleApp
-    this.identifierIngestion = parameters.identifierIngestion
+    this.appBundleId = parameters.appBundleId
+    this.ingestionIdentifier = parameters.ingestionIdentifier
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appfabric:${this.region}:${this.account}:appbundle/${this.idBundleApp}/ingestion/${this.identifierIngestion}` as const
+    return `arn:${this.partition}:appfabric:${this.region}:${this.account}:appbundle/${this.appBundleId}/ingestion/${this.ingestionIdentifier}` as const
   }
 }
 export type { IngestionArn }
@@ -119,46 +119,46 @@ export function ingestionArn<Partition extends ArnPartition = 'aws'>(
   return new IngestionArn<Partition>(parameters)
 }
 
-export interface DestinationIngestionArnParameters<
+export interface IngestionDestinationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idBundleApp: string
-  readonly identifierIngestion: string
-  readonly identifierDestinationIngestion: string
+  readonly appBundleId: string
+  readonly ingestionIdentifier: string
+  readonly ingestionDestinationIdentifier: string
 }
-class DestinationIngestionArn<
+class IngestionDestinationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ingestiondestination',
   `arn:${string}:appfabric:${string}:${string}:appbundle/${string}/ingestion/${string}/ingestiondestination/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ingestiondestination' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idBundleApp: string
-  readonly identifierIngestion: string
-  readonly identifierDestinationIngestion: string
-  constructor(parameters: DestinationIngestionArnParameters<Partition>) {
+  readonly appBundleId: string
+  readonly ingestionIdentifier: string
+  readonly ingestionDestinationIdentifier: string
+  constructor(parameters: IngestionDestinationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idBundleApp = parameters.idBundleApp
-    this.identifierIngestion = parameters.identifierIngestion
-    this.identifierDestinationIngestion =
-      parameters.identifierDestinationIngestion
+    this.appBundleId = parameters.appBundleId
+    this.ingestionIdentifier = parameters.ingestionIdentifier
+    this.ingestionDestinationIdentifier =
+      parameters.ingestionDestinationIdentifier
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appfabric:${this.region}:${this.account}:appbundle/${this.idBundleApp}/ingestion/${this.identifierIngestion}/ingestiondestination/${this.identifierDestinationIngestion}` as const
+    return `arn:${this.partition}:appfabric:${this.region}:${this.account}:appbundle/${this.appBundleId}/ingestion/${this.ingestionIdentifier}/ingestiondestination/${this.ingestionDestinationIdentifier}` as const
   }
 }
-export type { DestinationIngestionArn }
-export function destinationIngestionArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DestinationIngestionArnParameters<Partition>,
+export type { IngestionDestinationArn }
+export function ingestionDestinationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IngestionDestinationArnParameters<Partition>,
 ) {
-  return new DestinationIngestionArn<Partition>(parameters)
+  return new IngestionDestinationArn<Partition>(parameters)
 }

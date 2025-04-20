@@ -7,32 +7,32 @@ import {
 } from '../internal.js'
 
 export interface ChecksArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly codeCategory: string
-  readonly idCheck: string
+  readonly categoryCode: string
+  readonly checkId: string
 }
 class ChecksArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'checks',
   `arn:${string}:trustedadvisor:${string}:${string}:checks/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'checks' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly codeCategory: string
-  readonly idCheck: string
+  readonly categoryCode: string
+  readonly checkId: string
   constructor(parameters: ChecksArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.codeCategory = parameters.codeCategory
-    this.idCheck = parameters.idCheck
+    this.categoryCode = parameters.categoryCode
+    this.checkId = parameters.checkId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:trustedadvisor:${this.region}:${this.account}:checks/${this.codeCategory}/${this.idCheck}` as const
+    return `arn:${this.partition}:trustedadvisor:${this.region}:${this.account}:checks/${this.categoryCode}/${this.checkId}` as const
   }
 }
 export type { ChecksArn }

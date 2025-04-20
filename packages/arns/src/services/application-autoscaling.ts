@@ -6,39 +6,39 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface TargetScalableArnParameters<
+export interface ScalableTargetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
+  readonly resourceId: string
 }
-class TargetScalableArn<
+class ScalableTargetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ScalableTarget',
   `arn:${string}:application-autoscaling:${string}:${string}:scalable-target/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ScalableTarget' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly idResource: string
-  constructor(parameters: TargetScalableArnParameters<Partition>) {
+  readonly resourceId: string
+  constructor(parameters: ScalableTargetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idResource = parameters.idResource
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:application-autoscaling:${this.region}:${this.account}:scalable-target/${this.idResource}` as const
+    return `arn:${this.partition}:application-autoscaling:${this.region}:${this.account}:scalable-target/${this.resourceId}` as const
   }
 }
-export type { TargetScalableArn }
-export function targetScalableArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TargetScalableArnParameters<Partition>,
+export type { ScalableTargetArn }
+export function scalableTargetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ScalableTargetArnParameters<Partition>,
 ) {
-  return new TargetScalableArn<Partition>(parameters)
+  return new ScalableTargetArn<Partition>(parameters)
 }

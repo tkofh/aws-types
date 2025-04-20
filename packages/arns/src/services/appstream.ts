@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface FleetArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameFleet: string
+  readonly fleetName: string
 }
 class FleetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'fleet',
   `arn:${string}:appstream:${string}:${string}:fleet/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'fleet' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameFleet: string
+  readonly fleetName: string
   constructor(parameters: FleetArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameFleet = parameters.nameFleet
+    this.fleetName = parameters.fleetName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appstream:${this.region}:${this.account}:fleet/${this.nameFleet}` as const
+    return `arn:${this.partition}:appstream:${this.region}:${this.account}:fleet/${this.fleetName}` as const
   }
 }
 export type { FleetArn }
@@ -40,29 +40,29 @@ export function fleetArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ImageArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameImage: string
+  readonly imageName: string
 }
 class ImageArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'image',
   `arn:${string}:appstream:${string}:${string}:image/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'image' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameImage: string
+  readonly imageName: string
   constructor(parameters: ImageArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameImage = parameters.nameImage
+    this.imageName = parameters.imageName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appstream:${this.region}:${this.account}:image/${this.nameImage}` as const
+    return `arn:${this.partition}:appstream:${this.region}:${this.account}:image/${this.imageName}` as const
   }
 }
 export type { ImageArn }
@@ -72,67 +72,67 @@ export function imageArn<Partition extends ArnPartition = 'aws'>(
   return new ImageArn<Partition>(parameters)
 }
 
-export interface BuilderImageArnParameters<
+export interface ImageBuilderArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameBuilderImage: string
+  readonly imageBuilderName: string
 }
-class BuilderImageArn<
+class ImageBuilderArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'image-builder',
   `arn:${string}:appstream:${string}:${string}:image-builder/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'image-builder' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameBuilderImage: string
-  constructor(parameters: BuilderImageArnParameters<Partition>) {
+  readonly imageBuilderName: string
+  constructor(parameters: ImageBuilderArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameBuilderImage = parameters.nameBuilderImage
+    this.imageBuilderName = parameters.imageBuilderName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appstream:${this.region}:${this.account}:image-builder/${this.nameBuilderImage}` as const
+    return `arn:${this.partition}:appstream:${this.region}:${this.account}:image-builder/${this.imageBuilderName}` as const
   }
 }
-export type { BuilderImageArn }
-export function builderImageArn<Partition extends ArnPartition = 'aws'>(
-  parameters: BuilderImageArnParameters<Partition>,
+export type { ImageBuilderArn }
+export function imageBuilderArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ImageBuilderArnParameters<Partition>,
 ) {
-  return new BuilderImageArn<Partition>(parameters)
+  return new ImageBuilderArn<Partition>(parameters)
 }
 
 export interface StackArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameStack: string
+  readonly stackName: string
 }
 class StackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'stack',
   `arn:${string}:appstream:${string}:${string}:stack/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'stack' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameStack: string
+  readonly stackName: string
   constructor(parameters: StackArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameStack = parameters.nameStack
+    this.stackName = parameters.stackName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appstream:${this.region}:${this.account}:stack/${this.nameStack}` as const
+    return `arn:${this.partition}:appstream:${this.region}:${this.account}:stack/${this.stackName}` as const
   }
 }
 export type { StackArn }
@@ -142,46 +142,46 @@ export function stackArn<Partition extends ArnPartition = 'aws'>(
   return new StackArn<Partition>(parameters)
 }
 
-export interface BlockAppArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+export interface AppBlockArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameBlockApp: string
+  readonly appBlockName: string
 }
-class BlockAppArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class AppBlockArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'app-block',
   `arn:${string}:appstream:${string}:${string}:app-block/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'app-block' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameBlockApp: string
-  constructor(parameters: BlockAppArnParameters<Partition>) {
+  readonly appBlockName: string
+  constructor(parameters: AppBlockArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameBlockApp = parameters.nameBlockApp
+    this.appBlockName = parameters.appBlockName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appstream:${this.region}:${this.account}:app-block/${this.nameBlockApp}` as const
+    return `arn:${this.partition}:appstream:${this.region}:${this.account}:app-block/${this.appBlockName}` as const
   }
 }
-export type { BlockAppArn }
-export function blockAppArn<Partition extends ArnPartition = 'aws'>(
-  parameters: BlockAppArnParameters<Partition>,
+export type { AppBlockArn }
+export function appBlockArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppBlockArnParameters<Partition>,
 ) {
-  return new BlockAppArn<Partition>(parameters)
+  return new AppBlockArn<Partition>(parameters)
 }
 
 export interface ApplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameApplication: string
+  readonly applicationName: string
 }
 class ApplicationArn<
   Partition extends ArnPartition = 'aws',
@@ -190,19 +190,19 @@ class ApplicationArn<
   `arn:${string}:appstream:${string}:${string}:application/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'application' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameApplication: string
+  readonly applicationName: string
   constructor(parameters: ApplicationArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameApplication = parameters.nameApplication
+    this.applicationName = parameters.applicationName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appstream:${this.region}:${this.account}:application/${this.nameApplication}` as const
+    return `arn:${this.partition}:appstream:${this.region}:${this.account}:application/${this.applicationName}` as const
   }
 }
 export type { ApplicationArn }
@@ -212,39 +212,39 @@ export function applicationArn<Partition extends ArnPartition = 'aws'>(
   return new ApplicationArn<Partition>(parameters)
 }
 
-export interface BuilderBlockAppArnParameters<
+export interface AppBlockBuilderArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameBuilderBlockApp: string
+  readonly appBlockBuilderName: string
 }
-class BuilderBlockAppArn<
+class AppBlockBuilderArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'app-block-builder',
   `arn:${string}:appstream:${string}:${string}:app-block-builder/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'app-block-builder' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameBuilderBlockApp: string
-  constructor(parameters: BuilderBlockAppArnParameters<Partition>) {
+  readonly appBlockBuilderName: string
+  constructor(parameters: AppBlockBuilderArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameBuilderBlockApp = parameters.nameBuilderBlockApp
+    this.appBlockBuilderName = parameters.appBlockBuilderName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:appstream:${this.region}:${this.account}:app-block-builder/${this.nameBuilderBlockApp}` as const
+    return `arn:${this.partition}:appstream:${this.region}:${this.account}:app-block-builder/${this.appBlockBuilderName}` as const
   }
 }
-export type { BuilderBlockAppArn }
-export function builderBlockAppArn<Partition extends ArnPartition = 'aws'>(
-  parameters: BuilderBlockAppArnParameters<Partition>,
+export type { AppBlockBuilderArn }
+export function appBlockBuilderArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppBlockBuilderArnParameters<Partition>,
 ) {
-  return new BuilderBlockAppArn<Partition>(parameters)
+  return new AppBlockBuilderArn<Partition>(parameters)
 }

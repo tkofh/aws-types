@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface NetworkArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameNetwork: string
+  readonly networkName: string
 }
 class NetworkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'network',
   `arn:${string}:private-networks:${string}:${string}:network/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'network' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameNetwork: string
+  readonly networkName: string
   constructor(parameters: NetworkArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameNetwork = parameters.nameNetwork
+    this.networkName = parameters.networkName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:private-networks:${this.region}:${this.account}:network/${this.nameNetwork}` as const
+    return `arn:${this.partition}:private-networks:${this.region}:${this.account}:network/${this.networkName}` as const
   }
 }
 export type { NetworkArn }
@@ -39,113 +39,113 @@ export function networkArn<Partition extends ArnPartition = 'aws'>(
   return new NetworkArn<Partition>(parameters)
 }
 
-export interface SiteNetworkArnParameters<
+export interface NetworkSiteArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameNetwork: string
-  readonly nameSiteNetwork: string
+  readonly networkName: string
+  readonly networkSiteName: string
 }
-class SiteNetworkArn<
+class NetworkSiteArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'network-site',
   `arn:${string}:private-networks:${string}:${string}:network-site/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'network-site' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameNetwork: string
-  readonly nameSiteNetwork: string
-  constructor(parameters: SiteNetworkArnParameters<Partition>) {
+  readonly networkName: string
+  readonly networkSiteName: string
+  constructor(parameters: NetworkSiteArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameNetwork = parameters.nameNetwork
-    this.nameSiteNetwork = parameters.nameSiteNetwork
+    this.networkName = parameters.networkName
+    this.networkSiteName = parameters.networkSiteName
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:private-networks:${this.region}:${this.account}:network-site/${this.nameNetwork}/${this.nameSiteNetwork}` as const
+    return `arn:${this.partition}:private-networks:${this.region}:${this.account}:network-site/${this.networkName}/${this.networkSiteName}` as const
   }
 }
-export type { SiteNetworkArn }
-export function siteNetworkArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SiteNetworkArnParameters<Partition>,
+export type { NetworkSiteArn }
+export function networkSiteArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NetworkSiteArnParameters<Partition>,
 ) {
-  return new SiteNetworkArn<Partition>(parameters)
+  return new NetworkSiteArn<Partition>(parameters)
 }
 
-export interface ResourceNetworkArnParameters<
+export interface NetworkResourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameNetwork: string
-  readonly idResource: string
+  readonly networkName: string
+  readonly resourceId: string
 }
-class ResourceNetworkArn<
+class NetworkResourceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'network-resource',
   `arn:${string}:private-networks:${string}:${string}:network-resource/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'network-resource' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameNetwork: string
-  readonly idResource: string
-  constructor(parameters: ResourceNetworkArnParameters<Partition>) {
+  readonly networkName: string
+  readonly resourceId: string
+  constructor(parameters: NetworkResourceArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameNetwork = parameters.nameNetwork
-    this.idResource = parameters.idResource
+    this.networkName = parameters.networkName
+    this.resourceId = parameters.resourceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:private-networks:${this.region}:${this.account}:network-resource/${this.nameNetwork}/${this.idResource}` as const
+    return `arn:${this.partition}:private-networks:${this.region}:${this.account}:network-resource/${this.networkName}/${this.resourceId}` as const
   }
 }
-export type { ResourceNetworkArn }
-export function resourceNetworkArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ResourceNetworkArnParameters<Partition>,
+export type { NetworkResourceArn }
+export function networkResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NetworkResourceArnParameters<Partition>,
 ) {
-  return new ResourceNetworkArn<Partition>(parameters)
+  return new NetworkResourceArn<Partition>(parameters)
 }
 
 export interface OrderArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameNetwork: string
-  readonly idOrder: string
+  readonly networkName: string
+  readonly orderId: string
 }
 class OrderArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'order',
   `arn:${string}:private-networks:${string}:${string}:order/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'order' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameNetwork: string
-  readonly idOrder: string
+  readonly networkName: string
+  readonly orderId: string
   constructor(parameters: OrderArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameNetwork = parameters.nameNetwork
-    this.idOrder = parameters.idOrder
+    this.networkName = parameters.networkName
+    this.orderId = parameters.orderId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:private-networks:${this.region}:${this.account}:order/${this.nameNetwork}/${this.idOrder}` as const
+    return `arn:${this.partition}:private-networks:${this.region}:${this.account}:order/${this.networkName}/${this.orderId}` as const
   }
 }
 export type { OrderArn }
@@ -155,42 +155,42 @@ export function orderArn<Partition extends ArnPartition = 'aws'>(
   return new OrderArn<Partition>(parameters)
 }
 
-export interface IdentifierDeviceArnParameters<
+export interface DeviceIdentifierArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition: string
-  readonly region: string
+  readonly partition?: Partition | undefined
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameNetwork: string
-  readonly idDevice: string
+  readonly networkName: string
+  readonly deviceId: string
 }
-class IdentifierDeviceArn<
+class DeviceIdentifierArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'device-identifier',
   `arn:${string}:private-networks:${string}:${string}:device-identifier/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'device-identifier' as const
-  readonly partition: string
-  readonly region: string
+  readonly partition: Partition
+  readonly region: ArnRegion<Partition>
   readonly account: string
-  readonly nameNetwork: string
-  readonly idDevice: string
-  constructor(parameters: IdentifierDeviceArnParameters<Partition>) {
+  readonly networkName: string
+  readonly deviceId: string
+  constructor(parameters: DeviceIdentifierArnParameters<Partition>) {
     super()
-    this.partition = parameters.partition
+    this.partition = (parameters.partition ?? 'aws') as Partition
     this.region = parameters.region
     this.account = parameters.account
-    this.nameNetwork = parameters.nameNetwork
-    this.idDevice = parameters.idDevice
+    this.networkName = parameters.networkName
+    this.deviceId = parameters.deviceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:private-networks:${this.region}:${this.account}:device-identifier/${this.nameNetwork}/${this.idDevice}` as const
+    return `arn:${this.partition}:private-networks:${this.region}:${this.account}:device-identifier/${this.networkName}/${this.deviceId}` as const
   }
 }
-export type { IdentifierDeviceArn }
-export function identifierDeviceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: IdentifierDeviceArnParameters<Partition>,
+export type { DeviceIdentifierArn }
+export function deviceIdentifierArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeviceIdentifierArnParameters<Partition>,
 ) {
-  return new IdentifierDeviceArn<Partition>(parameters)
+  return new DeviceIdentifierArn<Partition>(parameters)
 }
