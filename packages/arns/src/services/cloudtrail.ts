@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface TrailArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly trailName: string
+  readonly nameTrail: string
 }
 class TrailArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'trail',
   `arn:${string}:cloudtrail:${string}:${string}:trail/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'trail' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly trailName: string
+  readonly nameTrail: string
   constructor(parameters: TrailArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.trailName = parameters.trailName
+    this.nameTrail = parameters.nameTrail
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudtrail:${this.region}:${this.account}:trail/${this.trailName}` as const
+    return `arn:${this.partition}:cloudtrail:${this.region}:${this.account}:trail/${this.nameTrail}` as const
   }
 }
 export type { TrailArn }
@@ -39,67 +39,67 @@ export function trailArn<Partition extends ArnPartition = 'aws'>(
   return new TrailArn<Partition>(parameters)
 }
 
-export interface EventdatastoreArnParameters<
+export interface StoreDataEventArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly eventDataStoreId: string
+  readonly idDatastoreEvent: string
 }
-class EventdatastoreArn<
+class StoreDataEventArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'eventdatastore',
   `arn:${string}:cloudtrail:${string}:${string}:eventdatastore/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'eventdatastore' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly eventDataStoreId: string
-  constructor(parameters: EventdatastoreArnParameters<Partition>) {
+  readonly idDatastoreEvent: string
+  constructor(parameters: StoreDataEventArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.eventDataStoreId = parameters.eventDataStoreId
+    this.idDatastoreEvent = parameters.idDatastoreEvent
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudtrail:${this.region}:${this.account}:eventdatastore/${this.eventDataStoreId}` as const
+    return `arn:${this.partition}:cloudtrail:${this.region}:${this.account}:eventdatastore/${this.idDatastoreEvent}` as const
   }
 }
-export type { EventdatastoreArn }
-export function eventdatastoreArn<Partition extends ArnPartition = 'aws'>(
-  parameters: EventdatastoreArnParameters<Partition>,
+export type { StoreDataEventArn }
+export function storeDataEventArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StoreDataEventArnParameters<Partition>,
 ) {
-  return new EventdatastoreArn<Partition>(parameters)
+  return new StoreDataEventArn<Partition>(parameters)
 }
 
 export interface ChannelArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly channelId: string
+  readonly idChannel: string
 }
 class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'channel',
   `arn:${string}:cloudtrail:${string}:${string}:channel/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'channel' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly channelId: string
+  readonly idChannel: string
   constructor(parameters: ChannelArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.channelId = parameters.channelId
+    this.idChannel = parameters.idChannel
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudtrail:${this.region}:${this.account}:channel/${this.channelId}` as const
+    return `arn:${this.partition}:cloudtrail:${this.region}:${this.account}:channel/${this.idChannel}` as const
   }
 }
 export type { ChannelArn }

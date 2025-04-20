@@ -6,70 +6,70 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ScheduleGroupArnParameters<
+export interface GroupScheduleArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly groupName: string
+  readonly nameGroup: string
 }
-class ScheduleGroupArn<
+class GroupScheduleArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'schedule-group',
   `arn:${string}:scheduler:${string}:${string}:schedule-group/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'schedule-group' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly groupName: string
-  constructor(parameters: ScheduleGroupArnParameters<Partition>) {
+  readonly nameGroup: string
+  constructor(parameters: GroupScheduleArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.groupName = parameters.groupName
+    this.nameGroup = parameters.nameGroup
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:scheduler:${this.region}:${this.account}:schedule-group/${this.groupName}` as const
+    return `arn:${this.partition}:scheduler:${this.region}:${this.account}:schedule-group/${this.nameGroup}` as const
   }
 }
-export type { ScheduleGroupArn }
-export function scheduleGroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ScheduleGroupArnParameters<Partition>,
+export type { GroupScheduleArn }
+export function groupScheduleArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupScheduleArnParameters<Partition>,
 ) {
-  return new ScheduleGroupArn<Partition>(parameters)
+  return new GroupScheduleArn<Partition>(parameters)
 }
 
 export interface ScheduleArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly groupName: string
-  readonly scheduleName: string
+  readonly nameGroup: string
+  readonly nameSchedule: string
 }
 class ScheduleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'schedule',
   `arn:${string}:scheduler:${string}:${string}:schedule/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'schedule' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly groupName: string
-  readonly scheduleName: string
+  readonly nameGroup: string
+  readonly nameSchedule: string
   constructor(parameters: ScheduleArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.groupName = parameters.groupName
-    this.scheduleName = parameters.scheduleName
+    this.nameGroup = parameters.nameGroup
+    this.nameSchedule = parameters.nameSchedule
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:scheduler:${this.region}:${this.account}:schedule/${this.groupName}/${this.scheduleName}` as const
+    return `arn:${this.partition}:scheduler:${this.region}:${this.account}:schedule/${this.nameGroup}/${this.nameSchedule}` as const
   }
 }
 export type { ScheduleArn }

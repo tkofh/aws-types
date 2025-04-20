@@ -6,190 +6,190 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface MatchingWorkflowArnParameters<
+export interface WorkflowMatchingArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly workflowName: string
+  readonly nameWorkflow: string
 }
-class MatchingWorkflowArn<
+class WorkflowMatchingArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'MatchingWorkflow',
   `arn:${string}:entityresolution:${string}:${string}:matchingworkflow/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'MatchingWorkflow' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly workflowName: string
-  constructor(parameters: MatchingWorkflowArnParameters<Partition>) {
+  readonly nameWorkflow: string
+  constructor(parameters: WorkflowMatchingArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.workflowName = parameters.workflowName
+    this.nameWorkflow = parameters.nameWorkflow
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:entityresolution:${this.region}:${this.account}:matchingworkflow/${this.workflowName}` as const
+    return `arn:${this.partition}:entityresolution:${this.region}:${this.account}:matchingworkflow/${this.nameWorkflow}` as const
   }
 }
-export type { MatchingWorkflowArn }
-export function matchingWorkflowArn<Partition extends ArnPartition = 'aws'>(
-  parameters: MatchingWorkflowArnParameters<Partition>,
+export type { WorkflowMatchingArn }
+export function workflowMatchingArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkflowMatchingArnParameters<Partition>,
 ) {
-  return new MatchingWorkflowArn<Partition>(parameters)
+  return new WorkflowMatchingArn<Partition>(parameters)
 }
 
-export interface SchemaMappingArnParameters<
+export interface MappingSchemaArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly schemaName: string
+  readonly nameSchema: string
 }
-class SchemaMappingArn<
+class MappingSchemaArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'SchemaMapping',
   `arn:${string}:entityresolution:${string}:${string}:schemamapping/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'SchemaMapping' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly schemaName: string
-  constructor(parameters: SchemaMappingArnParameters<Partition>) {
+  readonly nameSchema: string
+  constructor(parameters: MappingSchemaArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.schemaName = parameters.schemaName
+    this.nameSchema = parameters.nameSchema
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:entityresolution:${this.region}:${this.account}:schemamapping/${this.schemaName}` as const
+    return `arn:${this.partition}:entityresolution:${this.region}:${this.account}:schemamapping/${this.nameSchema}` as const
   }
 }
-export type { SchemaMappingArn }
-export function schemaMappingArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SchemaMappingArnParameters<Partition>,
+export type { MappingSchemaArn }
+export function mappingSchemaArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MappingSchemaArnParameters<Partition>,
 ) {
-  return new SchemaMappingArn<Partition>(parameters)
+  return new MappingSchemaArn<Partition>(parameters)
 }
 
-export interface IdMappingWorkflowArnParameters<
+export interface WorkflowMappingIdArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly workflowName: string
+  readonly nameWorkflow: string
 }
-class IdMappingWorkflowArn<
+class WorkflowMappingIdArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'IdMappingWorkflow',
   `arn:${string}:entityresolution:${string}:${string}:idmappingworkflow/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'IdMappingWorkflow' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly workflowName: string
-  constructor(parameters: IdMappingWorkflowArnParameters<Partition>) {
+  readonly nameWorkflow: string
+  constructor(parameters: WorkflowMappingIdArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.workflowName = parameters.workflowName
+    this.nameWorkflow = parameters.nameWorkflow
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:entityresolution:${this.region}:${this.account}:idmappingworkflow/${this.workflowName}` as const
+    return `arn:${this.partition}:entityresolution:${this.region}:${this.account}:idmappingworkflow/${this.nameWorkflow}` as const
   }
 }
-export type { IdMappingWorkflowArn }
-export function idMappingWorkflowArn<Partition extends ArnPartition = 'aws'>(
-  parameters: IdMappingWorkflowArnParameters<Partition>,
+export type { WorkflowMappingIdArn }
+export function workflowMappingIdArn<Partition extends ArnPartition = 'aws'>(
+  parameters: WorkflowMappingIdArnParameters<Partition>,
 ) {
-  return new IdMappingWorkflowArn<Partition>(parameters)
+  return new WorkflowMappingIdArn<Partition>(parameters)
 }
 
-export interface ProviderServiceArnParameters<
+export interface ServiceProviderArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly providerName: string
-  readonly providerServiceName: string
+  readonly nameProvider: string
+  readonly nameServiceProvider: string
 }
-class ProviderServiceArn<
+class ServiceProviderArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ProviderService',
   `arn:${string}:entityresolution:${string}:${string}:providerservice/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ProviderService' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly providerName: string
-  readonly providerServiceName: string
-  constructor(parameters: ProviderServiceArnParameters<Partition>) {
+  readonly nameProvider: string
+  readonly nameServiceProvider: string
+  constructor(parameters: ServiceProviderArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.providerName = parameters.providerName
-    this.providerServiceName = parameters.providerServiceName
+    this.nameProvider = parameters.nameProvider
+    this.nameServiceProvider = parameters.nameServiceProvider
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:entityresolution:${this.region}:${this.account}:providerservice/${this.providerName}/${this.providerServiceName}` as const
+    return `arn:${this.partition}:entityresolution:${this.region}:${this.account}:providerservice/${this.nameProvider}/${this.nameServiceProvider}` as const
   }
 }
-export type { ProviderServiceArn }
-export function providerServiceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ProviderServiceArnParameters<Partition>,
+export type { ServiceProviderArn }
+export function serviceProviderArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ServiceProviderArnParameters<Partition>,
 ) {
-  return new ProviderServiceArn<Partition>(parameters)
+  return new ServiceProviderArn<Partition>(parameters)
 }
 
-export interface IdNamespaceArnParameters<
+export interface NamespaceIdArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly idNamespaceName: string
+  readonly nameNamespaceId: string
 }
-class IdNamespaceArn<
+class NamespaceIdArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'IdNamespace',
   `arn:${string}:entityresolution:${string}:${string}:idnamespace/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'IdNamespace' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly idNamespaceName: string
-  constructor(parameters: IdNamespaceArnParameters<Partition>) {
+  readonly nameNamespaceId: string
+  constructor(parameters: NamespaceIdArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.idNamespaceName = parameters.idNamespaceName
+    this.nameNamespaceId = parameters.nameNamespaceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:entityresolution:${this.region}:${this.account}:idnamespace/${this.idNamespaceName}` as const
+    return `arn:${this.partition}:entityresolution:${this.region}:${this.account}:idnamespace/${this.nameNamespaceId}` as const
   }
 }
-export type { IdNamespaceArn }
-export function idNamespaceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: IdNamespaceArnParameters<Partition>,
+export type { NamespaceIdArn }
+export function namespaceIdArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NamespaceIdArnParameters<Partition>,
 ) {
-  return new IdNamespaceArn<Partition>(parameters)
+  return new NamespaceIdArn<Partition>(parameters)
 }

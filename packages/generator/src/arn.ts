@@ -1,6 +1,12 @@
-import { camelCase, pascalCase } from 'change-case'
-import { Chunk, DateTime, Effect, type Iterable, Order, Stream } from 'effect'
+import { camelCase } from 'change-case'
+import { Chunk, Effect, Order, Stream } from 'effect'
 import { type Resource, type Service, services } from './data/services.js'
+import {
+  camelCaseArnParameter,
+  camelCaseResource,
+  pascalCaseArnParameter,
+  pascalCaseResource,
+} from './lexicon.js'
 import { writeFile } from './shared/fs.js'
 import { packageJson } from './shared/package-json.js'
 
@@ -120,52 +126,48 @@ const writeBuildConfig = writeFile(
 
 const PARAMETER_PATTERN = /\${(?<parameter>[A-Za-z0-9]+)}/g
 
-export function writeResourceArnsFile(resource: Resource) {}
-
 function buildResourceStanza(resource: Resource) {
-  const pascalCaseResource = pascalCase(resource.resource)
+  const pc = pascalCaseResource(resource.resource)
+  const cc = camelCaseResource(resource.resource)
 
   return [
     dfn(
-      `export interface ${pascalCaseResource}ArnParameters<Partition extends ArnPartition = 'aws'>`,
+      `export interface ${pc}ArnParameters<Partition extends ArnPartition = 'aws'>`,
       Array.from(resource.arn.matchAll(PARAMETER_PATTERN), ({ groups }) => {
-        const parameter = camelCase(groups?.parameter ?? '')
-        return `readonly ${parameter}${parameter === 'partition' ? '?' : ''}: ${parameter === 'partition' ? 'Partition | undefined' : parameter === 'region' ? 'ArnRegion<Partition>' : 'string'}`
+        const parameter = groups?.parameter ?? ''
+        return `readonly ${camelCaseArnParameter(parameter)}${parameter === 'partition' ? '?' : ''}: ${parameter === 'partition' ? 'Partition | undefined' : parameter === 'region' ? 'ArnRegion<Partition>' : 'string'}`
       }),
     ),
     dfn(
-      `class ${pascalCaseResource}Arn<Partition extends ArnPartition = 'aws'> extends InternalArn<'${resource.resource}', \`${resource.arn.replace(PARAMETER_PATTERN, () => '${string}')}\`>`,
+      `class ${pc}Arn<Partition extends ArnPartition = 'aws'> extends InternalArn<'${resource.resource}', \`${resource.arn.replace(PARAMETER_PATTERN, () => '${string}')}\`>`,
       [
         `readonly [ArnResourceTypeBrand] = '${resource.resource}' as const`,
         ...Array.from(
           resource.arn.matchAll(PARAMETER_PATTERN),
           ({ groups }) => {
-            const parameter = camelCase(groups?.parameter ?? '')
-            return `readonly ${parameter}: ${parameter === 'partition' ? 'Partition' : parameter === 'region' ? 'ArnRegion<Partition>' : 'string'}`
+            const parameter = groups?.parameter ?? ''
+            return `readonly ${camelCaseArnParameter(parameter)}: ${parameter === 'partition' ? 'Partition' : parameter === 'region' ? 'ArnRegion<Partition>' : 'string'}`
           },
         ),
-        dfn(
-          `constructor(parameters: ${pascalCaseResource}ArnParameters<Partition>)`,
-          [
-            'super()',
-            ...Array.from(
-              resource.arn.matchAll(PARAMETER_PATTERN),
-              ({ groups }) => {
-                const parameter = camelCase(groups?.parameter ?? '')
-                return `this.${parameter} = ${parameter === 'partition' ? `(parameters.${parameter} ?? 'aws') as Partition` : `parameters.${parameter}`}`
-              },
-            ),
-          ],
-        ),
+        dfn(`constructor(parameters: ${pc}ArnParameters<Partition>)`, [
+          'super()',
+          ...Array.from(
+            resource.arn.matchAll(PARAMETER_PATTERN),
+            ({ groups }) => {
+              const parameter = groups?.parameter ?? ''
+              return `this.${camelCaseArnParameter(parameter)} = ${parameter === 'partition' ? `(parameters.${camelCaseArnParameter(parameter)} ?? 'aws') as Partition` : `parameters.${camelCaseArnParameter(parameter)}`}`
+            },
+          ),
+        ]),
         dfn('[StringifyArnBrand]()', [
-          `return \`${resource.arn.replace(PARAMETER_PATTERN, (_, parameter) => `\${this.${camelCase(parameter)}}`)}\` as const`,
+          `return \`${resource.arn.replace(PARAMETER_PATTERN, (_, parameter) => `\${this.${camelCaseArnParameter(parameter)}}`)}\` as const`,
         ]),
       ],
     ),
-    `export type { ${pascalCaseResource}Arn }`,
+    `export type { ${pc}Arn }`,
     dfn(
-      `export function ${camelCase(resource.resource)}Arn<Partition extends ArnPartition = 'aws'>(parameters: ${pascalCaseResource}ArnParameters<Partition>)`,
-      [`return new ${pascalCaseResource}Arn<Partition>(parameters)`],
+      `export function ${cc}Arn<Partition extends ArnPartition = 'aws'>(parameters: ${pc}ArnParameters<Partition>)`,
+      [`return new ${pc}Arn<Partition>(parameters)`],
     ),
   ].join('\n')
 }

@@ -6,26 +6,26 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface AnomalysubscriptionArnParameters<
+export interface SubscriptionAnomalyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly identifier: string
 }
-class AnomalysubscriptionArn<
+class SubscriptionAnomalyArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'anomalysubscription',
   `arn:${string}:ce::${string}:anomalysubscription/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'anomalysubscription' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly identifier: string
-  constructor(parameters: AnomalysubscriptionArnParameters<Partition>) {
+  constructor(parameters: SubscriptionAnomalyArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.identifier = parameters.identifier
   }
@@ -33,33 +33,33 @@ class AnomalysubscriptionArn<
     return `arn:${this.partition}:ce::${this.account}:anomalysubscription/${this.identifier}` as const
   }
 }
-export type { AnomalysubscriptionArn }
-export function anomalysubscriptionArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AnomalysubscriptionArnParameters<Partition>,
+export type { SubscriptionAnomalyArn }
+export function subscriptionAnomalyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SubscriptionAnomalyArnParameters<Partition>,
 ) {
-  return new AnomalysubscriptionArn<Partition>(parameters)
+  return new SubscriptionAnomalyArn<Partition>(parameters)
 }
 
-export interface AnomalymonitorArnParameters<
+export interface MonitorAnomalyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly identifier: string
 }
-class AnomalymonitorArn<
+class MonitorAnomalyArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'anomalymonitor',
   `arn:${string}:ce::${string}:anomalymonitor/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'anomalymonitor' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly identifier: string
-  constructor(parameters: AnomalymonitorArnParameters<Partition>) {
+  constructor(parameters: MonitorAnomalyArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.identifier = parameters.identifier
   }
@@ -67,33 +67,33 @@ class AnomalymonitorArn<
     return `arn:${this.partition}:ce::${this.account}:anomalymonitor/${this.identifier}` as const
   }
 }
-export type { AnomalymonitorArn }
-export function anomalymonitorArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AnomalymonitorArnParameters<Partition>,
+export type { MonitorAnomalyArn }
+export function monitorAnomalyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MonitorAnomalyArnParameters<Partition>,
 ) {
-  return new AnomalymonitorArn<Partition>(parameters)
+  return new MonitorAnomalyArn<Partition>(parameters)
 }
 
-export interface CostcategoryArnParameters<
+export interface CategoryCostArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly identifier: string
 }
-class CostcategoryArn<
+class CategoryCostArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'costcategory',
   `arn:${string}:ce::${string}:costcategory/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'costcategory' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly identifier: string
-  constructor(parameters: CostcategoryArnParameters<Partition>) {
+  constructor(parameters: CategoryCostArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.identifier = parameters.identifier
   }
@@ -101,9 +101,9 @@ class CostcategoryArn<
     return `arn:${this.partition}:ce::${this.account}:costcategory/${this.identifier}` as const
   }
 }
-export type { CostcategoryArn }
-export function costcategoryArn<Partition extends ArnPartition = 'aws'>(
-  parameters: CostcategoryArnParameters<Partition>,
+export type { CategoryCostArn }
+export function categoryCostArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CategoryCostArnParameters<Partition>,
 ) {
-  return new CostcategoryArn<Partition>(parameters)
+  return new CategoryCostArn<Partition>(parameters)
 }

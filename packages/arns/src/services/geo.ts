@@ -6,100 +6,100 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ApiKeyArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+export interface KeyApiArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly keyName: string
+  readonly nameKey: string
 }
-class ApiKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class KeyApiArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'api-key',
   `arn:${string}:geo:${string}:${string}:api-key/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'api-key' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly keyName: string
-  constructor(parameters: ApiKeyArnParameters<Partition>) {
+  readonly nameKey: string
+  constructor(parameters: KeyApiArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.keyName = parameters.keyName
+    this.nameKey = parameters.nameKey
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:geo:${this.region}:${this.account}:api-key/${this.keyName}` as const
+    return `arn:${this.partition}:geo:${this.region}:${this.account}:api-key/${this.nameKey}` as const
   }
 }
-export type { ApiKeyArn }
-export function apiKeyArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ApiKeyArnParameters<Partition>,
+export type { KeyApiArn }
+export function keyApiArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KeyApiArnParameters<Partition>,
 ) {
-  return new ApiKeyArn<Partition>(parameters)
+  return new KeyApiArn<Partition>(parameters)
 }
 
-export interface GeofenceCollectionArnParameters<
+export interface CollectionGeofenceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly geofenceCollectionName: string
+  readonly nameCollectionGeofence: string
 }
-class GeofenceCollectionArn<
+class CollectionGeofenceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'geofence-collection',
   `arn:${string}:geo:${string}:${string}:geofence-collection/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'geofence-collection' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly geofenceCollectionName: string
-  constructor(parameters: GeofenceCollectionArnParameters<Partition>) {
+  readonly nameCollectionGeofence: string
+  constructor(parameters: CollectionGeofenceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.geofenceCollectionName = parameters.geofenceCollectionName
+    this.nameCollectionGeofence = parameters.nameCollectionGeofence
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:geo:${this.region}:${this.account}:geofence-collection/${this.geofenceCollectionName}` as const
+    return `arn:${this.partition}:geo:${this.region}:${this.account}:geofence-collection/${this.nameCollectionGeofence}` as const
   }
 }
-export type { GeofenceCollectionArn }
-export function geofenceCollectionArn<Partition extends ArnPartition = 'aws'>(
-  parameters: GeofenceCollectionArnParameters<Partition>,
+export type { CollectionGeofenceArn }
+export function collectionGeofenceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CollectionGeofenceArnParameters<Partition>,
 ) {
-  return new GeofenceCollectionArn<Partition>(parameters)
+  return new CollectionGeofenceArn<Partition>(parameters)
 }
 
 export interface MapArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly mapName: string
+  readonly nameMap: string
 }
 class MapArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'map',
   `arn:${string}:geo:${string}:${string}:map/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'map' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly mapName: string
+  readonly nameMap: string
   constructor(parameters: MapArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.mapName = parameters.mapName
+    this.nameMap = parameters.nameMap
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:geo:${this.region}:${this.account}:map/${this.mapName}` as const
+    return `arn:${this.partition}:geo:${this.region}:${this.account}:map/${this.nameMap}` as const
   }
 }
 export type { MapArn }
@@ -109,102 +109,102 @@ export function mapArn<Partition extends ArnPartition = 'aws'>(
   return new MapArn<Partition>(parameters)
 }
 
-export interface PlaceIndexArnParameters<
+export interface IndexPlaceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly indexName: string
+  readonly nameIndex: string
 }
-class PlaceIndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class IndexPlaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'place-index',
   `arn:${string}:geo:${string}:${string}:place-index/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'place-index' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly indexName: string
-  constructor(parameters: PlaceIndexArnParameters<Partition>) {
+  readonly nameIndex: string
+  constructor(parameters: IndexPlaceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.indexName = parameters.indexName
+    this.nameIndex = parameters.nameIndex
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:geo:${this.region}:${this.account}:place-index/${this.indexName}` as const
+    return `arn:${this.partition}:geo:${this.region}:${this.account}:place-index/${this.nameIndex}` as const
   }
 }
-export type { PlaceIndexArn }
-export function placeIndexArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PlaceIndexArnParameters<Partition>,
+export type { IndexPlaceArn }
+export function indexPlaceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IndexPlaceArnParameters<Partition>,
 ) {
-  return new PlaceIndexArn<Partition>(parameters)
+  return new IndexPlaceArn<Partition>(parameters)
 }
 
-export interface RouteCalculatorArnParameters<
+export interface CalculatorRouteArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly calculatorName: string
+  readonly nameCalculator: string
 }
-class RouteCalculatorArn<
+class CalculatorRouteArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'route-calculator',
   `arn:${string}:geo:${string}:${string}:route-calculator/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'route-calculator' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly calculatorName: string
-  constructor(parameters: RouteCalculatorArnParameters<Partition>) {
+  readonly nameCalculator: string
+  constructor(parameters: CalculatorRouteArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.calculatorName = parameters.calculatorName
+    this.nameCalculator = parameters.nameCalculator
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:geo:${this.region}:${this.account}:route-calculator/${this.calculatorName}` as const
+    return `arn:${this.partition}:geo:${this.region}:${this.account}:route-calculator/${this.nameCalculator}` as const
   }
 }
-export type { RouteCalculatorArn }
-export function routeCalculatorArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RouteCalculatorArnParameters<Partition>,
+export type { CalculatorRouteArn }
+export function calculatorRouteArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CalculatorRouteArnParameters<Partition>,
 ) {
-  return new RouteCalculatorArn<Partition>(parameters)
+  return new CalculatorRouteArn<Partition>(parameters)
 }
 
 export interface TrackerArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly trackerName: string
+  readonly nameTracker: string
 }
 class TrackerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'tracker',
   `arn:${string}:geo:${string}:${string}:tracker/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'tracker' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly trackerName: string
+  readonly nameTracker: string
   constructor(parameters: TrackerArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.trackerName = parameters.trackerName
+    this.nameTracker = parameters.nameTracker
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:geo:${this.region}:${this.account}:tracker/${this.trackerName}` as const
+    return `arn:${this.partition}:geo:${this.region}:${this.account}:tracker/${this.nameTracker}` as const
   }
 }
 export type { TrackerArn }

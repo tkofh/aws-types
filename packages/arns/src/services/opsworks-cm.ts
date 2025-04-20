@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface ServerArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly serverName: string
-  readonly uniqueId: string
+  readonly nameServer: string
+  readonly idUnique: string
 }
 class ServerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'server',
   `arn:${string}:opsworks-cm::${string}:server/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'server' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly serverName: string
-  readonly uniqueId: string
+  readonly nameServer: string
+  readonly idUnique: string
   constructor(parameters: ServerArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.serverName = parameters.serverName
-    this.uniqueId = parameters.uniqueId
+    this.nameServer = parameters.nameServer
+    this.idUnique = parameters.idUnique
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:opsworks-cm::${this.account}:server/${this.serverName}/${this.uniqueId}` as const
+    return `arn:${this.partition}:opsworks-cm::${this.account}:server/${this.nameServer}/${this.idUnique}` as const
   }
 }
 export type { ServerArn }
@@ -40,26 +40,26 @@ export function serverArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface BackupArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly serverName: string
+  readonly nameServer: string
 }
 class BackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'backup',
   `arn:${string}:opsworks-cm::${string}:backup/${string}-{Date-and-Time-Stamp-of-Backup}`
 > {
   readonly [ArnResourceTypeBrand] = 'backup' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly serverName: string
+  readonly nameServer: string
   constructor(parameters: BackupArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.serverName = parameters.serverName
+    this.nameServer = parameters.nameServer
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:opsworks-cm::${this.account}:backup/${this.serverName}-{Date-and-Time-Stamp-of-Backup}` as const
+    return `arn:${this.partition}:opsworks-cm::${this.account}:backup/${this.nameServer}-{Date-and-Time-Stamp-of-Backup}` as const
   }
 }
 export type { BackupArn }

@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly dbClusterInstanceName: string
+  readonly nameInstanceClusterDb: string
 }
 class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'cluster',
   `arn:${string}:rds:${string}:${string}:cluster:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'cluster' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly dbClusterInstanceName: string
+  readonly nameInstanceClusterDb: string
   constructor(parameters: ClusterArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.dbClusterInstanceName = parameters.dbClusterInstanceName
+    this.nameInstanceClusterDb = parameters.nameInstanceClusterDb
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:rds:${this.region}:${this.account}:cluster:${this.dbClusterInstanceName}` as const
+    return `arn:${this.partition}:rds:${this.region}:${this.account}:cluster:${this.nameInstanceClusterDb}` as const
   }
 }
 export type { ClusterArn }

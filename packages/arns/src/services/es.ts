@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface DomainArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainName: string
+  readonly nameDomain: string
 }
 class DomainArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'domain',
   `arn:${string}:es:${string}:${string}:domain/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'domain' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainName: string
+  readonly nameDomain: string
   constructor(parameters: DomainArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.domainName = parameters.domainName
+    this.nameDomain = parameters.nameDomain
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:es:${this.region}:${this.account}:domain/${this.domainName}` as const
+    return `arn:${this.partition}:es:${this.region}:${this.account}:domain/${this.nameDomain}` as const
   }
 }
 export type { DomainArn }
@@ -39,60 +39,60 @@ export function domainArn<Partition extends ArnPartition = 'aws'>(
   return new DomainArn<Partition>(parameters)
 }
 
-export interface EsRoleArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+export interface RoleEsArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition: string
   readonly account: string
 }
-class EsRoleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class RoleEsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'es_role',
   `arn:${string}:iam::${string}:role/aws-service-role/es.amazonaws.com/AWSServiceRoleForAmazonOpenSearchService`
 > {
   readonly [ArnResourceTypeBrand] = 'es_role' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  constructor(parameters: EsRoleArnParameters<Partition>) {
+  constructor(parameters: RoleEsArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
   }
   [StringifyArnBrand]() {
     return `arn:${this.partition}:iam::${this.account}:role/aws-service-role/es.amazonaws.com/AWSServiceRoleForAmazonOpenSearchService` as const
   }
 }
-export type { EsRoleArn }
-export function esRoleArn<Partition extends ArnPartition = 'aws'>(
-  parameters: EsRoleArnParameters<Partition>,
+export type { RoleEsArn }
+export function roleEsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RoleEsArnParameters<Partition>,
 ) {
-  return new EsRoleArn<Partition>(parameters)
+  return new RoleEsArn<Partition>(parameters)
 }
 
-export interface OpensearchserviceRoleArnParameters<
+export interface RoleServiceSearchOpenArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
 }
-class OpensearchserviceRoleArn<
+class RoleServiceSearchOpenArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'opensearchservice_role',
   `arn:${string}:iam::${string}:role/aws-service-role/opensearchservice.amazonaws.com/AWSServiceRoleForAmazonOpenSearchService`
 > {
   readonly [ArnResourceTypeBrand] = 'opensearchservice_role' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  constructor(parameters: OpensearchserviceRoleArnParameters<Partition>) {
+  constructor(parameters: RoleServiceSearchOpenArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
   }
   [StringifyArnBrand]() {
     return `arn:${this.partition}:iam::${this.account}:role/aws-service-role/opensearchservice.amazonaws.com/AWSServiceRoleForAmazonOpenSearchService` as const
   }
 }
-export type { OpensearchserviceRoleArn }
-export function opensearchserviceRoleArn<
+export type { RoleServiceSearchOpenArn }
+export function roleServiceSearchOpenArn<
   Partition extends ArnPartition = 'aws',
->(parameters: OpensearchserviceRoleArnParameters<Partition>) {
-  return new OpensearchserviceRoleArn<Partition>(parameters)
+>(parameters: RoleServiceSearchOpenArnParameters<Partition>) {
+  return new RoleServiceSearchOpenArn<Partition>(parameters)
 }

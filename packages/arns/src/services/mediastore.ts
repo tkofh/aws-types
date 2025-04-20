@@ -9,29 +9,29 @@ import {
 export interface ContainerArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly containerName: string
+  readonly nameContainer: string
 }
 class ContainerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'container',
   `arn:${string}:mediastore:${string}:${string}:container/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'container' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly containerName: string
+  readonly nameContainer: string
   constructor(parameters: ContainerArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.containerName = parameters.containerName
+    this.nameContainer = parameters.nameContainer
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:mediastore:${this.region}:${this.account}:container/${this.containerName}` as const
+    return `arn:${this.partition}:mediastore:${this.region}:${this.account}:container/${this.nameContainer}` as const
   }
 }
 export type { ContainerArn }
@@ -42,32 +42,32 @@ export function containerArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ObjectArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly containerName: string
-  readonly objectPath: string
+  readonly nameContainer: string
+  readonly pathObject: string
 }
 class ObjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'object',
   `arn:${string}:mediastore:${string}:${string}:container/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'object' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly containerName: string
-  readonly objectPath: string
+  readonly nameContainer: string
+  readonly pathObject: string
   constructor(parameters: ObjectArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.containerName = parameters.containerName
-    this.objectPath = parameters.objectPath
+    this.nameContainer = parameters.nameContainer
+    this.pathObject = parameters.pathObject
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:mediastore:${this.region}:${this.account}:container/${this.containerName}/${this.objectPath}` as const
+    return `arn:${this.partition}:mediastore:${this.region}:${this.account}:container/${this.nameContainer}/${this.pathObject}` as const
   }
 }
 export type { ObjectArn }
@@ -78,32 +78,32 @@ export function objectArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface FolderArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly containerName: string
-  readonly folderPath: string
+  readonly nameContainer: string
+  readonly pathFolder: string
 }
 class FolderArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'folder',
   `arn:${string}:mediastore:${string}:${string}:container/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'folder' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly containerName: string
-  readonly folderPath: string
+  readonly nameContainer: string
+  readonly pathFolder: string
   constructor(parameters: FolderArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.containerName = parameters.containerName
-    this.folderPath = parameters.folderPath
+    this.nameContainer = parameters.nameContainer
+    this.pathFolder = parameters.pathFolder
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:mediastore:${this.region}:${this.account}:container/${this.containerName}/${this.folderPath}` as const
+    return `arn:${this.partition}:mediastore:${this.region}:${this.account}:container/${this.nameContainer}/${this.pathFolder}` as const
   }
 }
 export type { FolderArn }

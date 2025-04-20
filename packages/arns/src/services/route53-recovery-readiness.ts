@@ -6,95 +6,95 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ReadinesscheckArnParameters<
+export interface CheckReadinessArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
-class ReadinesscheckArn<
+class CheckReadinessArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'readinesscheck',
   `arn:${string}:route53-recovery-readiness::${string}:readiness-check/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'readinesscheck' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
-  constructor(parameters: ReadinesscheckArnParameters<Partition>) {
+  readonly idResource: string
+  constructor(parameters: CheckReadinessArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53-recovery-readiness::${this.account}:readiness-check/${this.resourceId}` as const
+    return `arn:${this.partition}:route53-recovery-readiness::${this.account}:readiness-check/${this.idResource}` as const
   }
 }
-export type { ReadinesscheckArn }
-export function readinesscheckArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ReadinesscheckArnParameters<Partition>,
+export type { CheckReadinessArn }
+export function checkReadinessArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CheckReadinessArnParameters<Partition>,
 ) {
-  return new ReadinesscheckArn<Partition>(parameters)
+  return new CheckReadinessArn<Partition>(parameters)
 }
 
-export interface ResourcesetArnParameters<
+export interface SetResourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
-class ResourcesetArn<
+class SetResourceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'resourceset',
   `arn:${string}:route53-recovery-readiness::${string}:resource-set/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'resourceset' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
-  constructor(parameters: ResourcesetArnParameters<Partition>) {
+  readonly idResource: string
+  constructor(parameters: SetResourceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53-recovery-readiness::${this.account}:resource-set/${this.resourceId}` as const
+    return `arn:${this.partition}:route53-recovery-readiness::${this.account}:resource-set/${this.idResource}` as const
   }
 }
-export type { ResourcesetArn }
-export function resourcesetArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ResourcesetArnParameters<Partition>,
+export type { SetResourceArn }
+export function setResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SetResourceArnParameters<Partition>,
 ) {
-  return new ResourcesetArn<Partition>(parameters)
+  return new SetResourceArn<Partition>(parameters)
 }
 
 export interface CellArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
 class CellArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'cell',
   `arn:${string}:route53-recovery-readiness::${string}:cell/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'cell' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
   constructor(parameters: CellArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53-recovery-readiness::${this.account}:cell/${this.resourceId}` as const
+    return `arn:${this.partition}:route53-recovery-readiness::${this.account}:cell/${this.idResource}` as const
   }
 }
 export type { CellArn }
@@ -104,36 +104,36 @@ export function cellArn<Partition extends ArnPartition = 'aws'>(
   return new CellArn<Partition>(parameters)
 }
 
-export interface RecoverygroupArnParameters<
+export interface GroupRecoveryArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
-class RecoverygroupArn<
+class GroupRecoveryArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'recoverygroup',
   `arn:${string}:route53-recovery-readiness::${string}:recovery-group/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'recoverygroup' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
-  constructor(parameters: RecoverygroupArnParameters<Partition>) {
+  readonly idResource: string
+  constructor(parameters: GroupRecoveryArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53-recovery-readiness::${this.account}:recovery-group/${this.resourceId}` as const
+    return `arn:${this.partition}:route53-recovery-readiness::${this.account}:recovery-group/${this.idResource}` as const
   }
 }
-export type { RecoverygroupArn }
-export function recoverygroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RecoverygroupArnParameters<Partition>,
+export type { GroupRecoveryArn }
+export function groupRecoveryArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupRecoveryArnParameters<Partition>,
 ) {
-  return new RecoverygroupArn<Partition>(parameters)
+  return new GroupRecoveryArn<Partition>(parameters)
 }

@@ -6,36 +6,36 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface EmailContactResourceArnParameters<
+export interface ResourceContactEmailArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly emailContactId: string
+  readonly idContactEmail: string
 }
-class EmailContactResourceArn<
+class ResourceContactEmailArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'EmailContactResource',
   `arn:${string}:notifications-contacts::${string}:emailcontact/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'EmailContactResource' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly emailContactId: string
-  constructor(parameters: EmailContactResourceArnParameters<Partition>) {
+  readonly idContactEmail: string
+  constructor(parameters: ResourceContactEmailArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.emailContactId = parameters.emailContactId
+    this.idContactEmail = parameters.idContactEmail
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:notifications-contacts::${this.account}:emailcontact/${this.emailContactId}` as const
+    return `arn:${this.partition}:notifications-contacts::${this.account}:emailcontact/${this.idContactEmail}` as const
   }
 }
-export type { EmailContactResourceArn }
-export function emailContactResourceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: EmailContactResourceArnParameters<Partition>,
+export type { ResourceContactEmailArn }
+export function resourceContactEmailArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResourceContactEmailArnParameters<Partition>,
 ) {
-  return new EmailContactResourceArn<Partition>(parameters)
+  return new ResourceContactEmailArn<Partition>(parameters)
 }

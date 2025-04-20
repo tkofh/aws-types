@@ -6,39 +6,39 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface RescoreExecutionPlanArnParameters<
+export interface PlanExecutionRescoreArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly rescoreExecutionPlanId: string
+  readonly idPlanExecutionRescore: string
 }
-class RescoreExecutionPlanArn<
+class PlanExecutionRescoreArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'rescore-execution-plan',
   `arn:${string}:kendra-ranking:${string}:${string}:rescore-execution-plan/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'rescore-execution-plan' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly rescoreExecutionPlanId: string
-  constructor(parameters: RescoreExecutionPlanArnParameters<Partition>) {
+  readonly idPlanExecutionRescore: string
+  constructor(parameters: PlanExecutionRescoreArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.rescoreExecutionPlanId = parameters.rescoreExecutionPlanId
+    this.idPlanExecutionRescore = parameters.idPlanExecutionRescore
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:kendra-ranking:${this.region}:${this.account}:rescore-execution-plan/${this.rescoreExecutionPlanId}` as const
+    return `arn:${this.partition}:kendra-ranking:${this.region}:${this.account}:rescore-execution-plan/${this.idPlanExecutionRescore}` as const
   }
 }
-export type { RescoreExecutionPlanArn }
-export function rescoreExecutionPlanArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RescoreExecutionPlanArnParameters<Partition>,
+export type { PlanExecutionRescoreArn }
+export function planExecutionRescoreArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PlanExecutionRescoreArnParameters<Partition>,
 ) {
-  return new RescoreExecutionPlanArn<Partition>(parameters)
+  return new PlanExecutionRescoreArn<Partition>(parameters)
 }

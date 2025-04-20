@@ -7,7 +7,7 @@ import {
 } from '../internal.js'
 
 export interface AttackArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly id: string
 }
@@ -16,12 +16,12 @@ class AttackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:shield::${string}:attack/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'attack' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly id: string
   constructor(parameters: AttackArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.id = parameters.id
   }
@@ -39,7 +39,7 @@ export function attackArn<Partition extends ArnPartition = 'aws'>(
 export interface ProtectionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly id: string
 }
@@ -48,12 +48,12 @@ class ProtectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:shield::${string}:protection/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'protection' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly id: string
   constructor(parameters: ProtectionArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.id = parameters.id
   }
@@ -68,26 +68,26 @@ export function protectionArn<Partition extends ArnPartition = 'aws'>(
   return new ProtectionArn<Partition>(parameters)
 }
 
-export interface ProtectionGroupArnParameters<
+export interface GroupProtectionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly id: string
 }
-class ProtectionGroupArn<
+class GroupProtectionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'protection-group',
   `arn:${string}:shield::${string}:protection-group/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'protection-group' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly id: string
-  constructor(parameters: ProtectionGroupArnParameters<Partition>) {
+  constructor(parameters: GroupProtectionArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.id = parameters.id
   }
@@ -95,9 +95,9 @@ class ProtectionGroupArn<
     return `arn:${this.partition}:shield::${this.account}:protection-group/${this.id}` as const
   }
 }
-export type { ProtectionGroupArn }
-export function protectionGroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ProtectionGroupArnParameters<Partition>,
+export type { GroupProtectionArn }
+export function groupProtectionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupProtectionArnParameters<Partition>,
 ) {
-  return new ProtectionGroupArn<Partition>(parameters)
+  return new GroupProtectionArn<Partition>(parameters)
 }

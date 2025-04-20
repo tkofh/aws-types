@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface DetectorArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly detectorId: string
+  readonly idDetector: string
 }
 class DetectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'detector',
   `arn:${string}:guardduty:${string}:${string}:detector/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'detector' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly detectorId: string
+  readonly idDetector: string
   constructor(parameters: DetectorArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.detectorId = parameters.detectorId
+    this.idDetector = parameters.idDetector
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:guardduty:${this.region}:${this.account}:detector/${this.detectorId}` as const
+    return `arn:${this.partition}:guardduty:${this.region}:${this.account}:detector/${this.idDetector}` as const
   }
 }
 export type { DetectorArn }
@@ -40,32 +40,32 @@ export function detectorArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface FilterArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly detectorId: string
-  readonly filterName: string
+  readonly idDetector: string
+  readonly nameFilter: string
 }
 class FilterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'filter',
   `arn:${string}:guardduty:${string}:${string}:detector/${string}/filter/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'filter' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly detectorId: string
-  readonly filterName: string
+  readonly idDetector: string
+  readonly nameFilter: string
   constructor(parameters: FilterArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.detectorId = parameters.detectorId
-    this.filterName = parameters.filterName
+    this.idDetector = parameters.idDetector
+    this.nameFilter = parameters.nameFilter
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:guardduty:${this.region}:${this.account}:detector/${this.detectorId}/filter/${this.filterName}` as const
+    return `arn:${this.partition}:guardduty:${this.region}:${this.account}:detector/${this.idDetector}/filter/${this.nameFilter}` as const
   }
 }
 export type { FilterArn }
@@ -75,155 +75,155 @@ export function filterArn<Partition extends ArnPartition = 'aws'>(
   return new FilterArn<Partition>(parameters)
 }
 
-export interface IpsetArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+export interface SetIpArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly detectorId: string
-  readonly ipSetId: string
+  readonly idDetector: string
+  readonly idSetIp: string
 }
-class IpsetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class SetIpArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'ipset',
   `arn:${string}:guardduty:${string}:${string}:detector/${string}/ipset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ipset' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly detectorId: string
-  readonly ipSetId: string
-  constructor(parameters: IpsetArnParameters<Partition>) {
+  readonly idDetector: string
+  readonly idSetIp: string
+  constructor(parameters: SetIpArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.detectorId = parameters.detectorId
-    this.ipSetId = parameters.ipSetId
+    this.idDetector = parameters.idDetector
+    this.idSetIp = parameters.idSetIp
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:guardduty:${this.region}:${this.account}:detector/${this.detectorId}/ipset/${this.ipSetId}` as const
+    return `arn:${this.partition}:guardduty:${this.region}:${this.account}:detector/${this.idDetector}/ipset/${this.idSetIp}` as const
   }
 }
-export type { IpsetArn }
-export function ipsetArn<Partition extends ArnPartition = 'aws'>(
-  parameters: IpsetArnParameters<Partition>,
+export type { SetIpArn }
+export function setIpArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SetIpArnParameters<Partition>,
 ) {
-  return new IpsetArn<Partition>(parameters)
+  return new SetIpArn<Partition>(parameters)
 }
 
-export interface ThreatintelsetArnParameters<
+export interface SetIntelThreatArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly detectorId: string
-  readonly threatIntelSetId: string
+  readonly idDetector: string
+  readonly idSetIntelThreat: string
 }
-class ThreatintelsetArn<
+class SetIntelThreatArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'threatintelset',
   `arn:${string}:guardduty:${string}:${string}:detector/${string}/threatintelset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'threatintelset' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly detectorId: string
-  readonly threatIntelSetId: string
-  constructor(parameters: ThreatintelsetArnParameters<Partition>) {
+  readonly idDetector: string
+  readonly idSetIntelThreat: string
+  constructor(parameters: SetIntelThreatArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.detectorId = parameters.detectorId
-    this.threatIntelSetId = parameters.threatIntelSetId
+    this.idDetector = parameters.idDetector
+    this.idSetIntelThreat = parameters.idSetIntelThreat
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:guardduty:${this.region}:${this.account}:detector/${this.detectorId}/threatintelset/${this.threatIntelSetId}` as const
+    return `arn:${this.partition}:guardduty:${this.region}:${this.account}:detector/${this.idDetector}/threatintelset/${this.idSetIntelThreat}` as const
   }
 }
-export type { ThreatintelsetArn }
-export function threatintelsetArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ThreatintelsetArnParameters<Partition>,
+export type { SetIntelThreatArn }
+export function setIntelThreatArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SetIntelThreatArnParameters<Partition>,
 ) {
-  return new ThreatintelsetArn<Partition>(parameters)
+  return new SetIntelThreatArn<Partition>(parameters)
 }
 
-export interface PublishingDestinationArnParameters<
+export interface DestinationPublishingArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly detectorId: string
-  readonly publishingDestinationId: string
+  readonly idDetector: string
+  readonly idDestinationPublishing: string
 }
-class PublishingDestinationArn<
+class DestinationPublishingArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'publishingDestination',
   `arn:${string}:guardduty:${string}:${string}:detector/${string}/publishingDestination/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'publishingDestination' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly detectorId: string
-  readonly publishingDestinationId: string
-  constructor(parameters: PublishingDestinationArnParameters<Partition>) {
+  readonly idDetector: string
+  readonly idDestinationPublishing: string
+  constructor(parameters: DestinationPublishingArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.detectorId = parameters.detectorId
-    this.publishingDestinationId = parameters.publishingDestinationId
+    this.idDetector = parameters.idDetector
+    this.idDestinationPublishing = parameters.idDestinationPublishing
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:guardduty:${this.region}:${this.account}:detector/${this.detectorId}/publishingDestination/${this.publishingDestinationId}` as const
+    return `arn:${this.partition}:guardduty:${this.region}:${this.account}:detector/${this.idDetector}/publishingDestination/${this.idDestinationPublishing}` as const
   }
 }
-export type { PublishingDestinationArn }
-export function publishingDestinationArn<
+export type { DestinationPublishingArn }
+export function destinationPublishingArn<
   Partition extends ArnPartition = 'aws',
->(parameters: PublishingDestinationArnParameters<Partition>) {
-  return new PublishingDestinationArn<Partition>(parameters)
+>(parameters: DestinationPublishingArnParameters<Partition>) {
+  return new DestinationPublishingArn<Partition>(parameters)
 }
 
-export interface MalwareprotectionplanArnParameters<
+export interface PlanProtectionMalwareArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly malwareProtectionPlanId: string
+  readonly idPlanProtectionMalware: string
 }
-class MalwareprotectionplanArn<
+class PlanProtectionMalwareArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'malwareprotectionplan',
   `arn:${string}:guardduty:${string}:${string}:malware-protection-plan/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'malwareprotectionplan' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly malwareProtectionPlanId: string
-  constructor(parameters: MalwareprotectionplanArnParameters<Partition>) {
+  readonly idPlanProtectionMalware: string
+  constructor(parameters: PlanProtectionMalwareArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.malwareProtectionPlanId = parameters.malwareProtectionPlanId
+    this.idPlanProtectionMalware = parameters.idPlanProtectionMalware
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:guardduty:${this.region}:${this.account}:malware-protection-plan/${this.malwareProtectionPlanId}` as const
+    return `arn:${this.partition}:guardduty:${this.region}:${this.account}:malware-protection-plan/${this.idPlanProtectionMalware}` as const
   }
 }
-export type { MalwareprotectionplanArn }
-export function malwareprotectionplanArn<
+export type { PlanProtectionMalwareArn }
+export function planProtectionMalwareArn<
   Partition extends ArnPartition = 'aws',
->(parameters: MalwareprotectionplanArnParameters<Partition>) {
-  return new MalwareprotectionplanArn<Partition>(parameters)
+>(parameters: PlanProtectionMalwareArnParameters<Partition>) {
+  return new PlanProtectionMalwareArn<Partition>(parameters)
 }

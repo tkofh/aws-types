@@ -6,28 +6,28 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface EnvironmentTemplateArnParameters<
+export interface TemplateEnvironmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
 }
-class EnvironmentTemplateArn<
+class TemplateEnvironmentArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'environment-template',
   `arn:${string}:proton:${string}:${string}:environment-template/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'environment-template' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
-  constructor(parameters: EnvironmentTemplateArnParameters<Partition>) {
+  constructor(parameters: TemplateEnvironmentArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.name = parameters.name
@@ -36,66 +36,66 @@ class EnvironmentTemplateArn<
     return `arn:${this.partition}:proton:${this.region}:${this.account}:environment-template/${this.name}` as const
   }
 }
-export type { EnvironmentTemplateArn }
-export function environmentTemplateArn<Partition extends ArnPartition = 'aws'>(
-  parameters: EnvironmentTemplateArnParameters<Partition>,
+export type { TemplateEnvironmentArn }
+export function templateEnvironmentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TemplateEnvironmentArnParameters<Partition>,
 ) {
-  return new EnvironmentTemplateArn<Partition>(parameters)
+  return new TemplateEnvironmentArn<Partition>(parameters)
 }
 
-export interface EnvironmentTemplateVersionArnParameters<
+export interface VersionTemplateEnvironmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly templateName: string
-  readonly majorVersion: string
-  readonly minorVersion: string
+  readonly nameTemplate: string
+  readonly versionMajor: string
+  readonly versionMinor: string
 }
-class EnvironmentTemplateVersionArn<
+class VersionTemplateEnvironmentArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'environment-template-version',
   `arn:${string}:proton:${string}:${string}:environment-template/${string}:${string}.${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'environment-template-version' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly templateName: string
-  readonly majorVersion: string
-  readonly minorVersion: string
-  constructor(parameters: EnvironmentTemplateVersionArnParameters<Partition>) {
+  readonly nameTemplate: string
+  readonly versionMajor: string
+  readonly versionMinor: string
+  constructor(parameters: VersionTemplateEnvironmentArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.templateName = parameters.templateName
-    this.majorVersion = parameters.majorVersion
-    this.minorVersion = parameters.minorVersion
+    this.nameTemplate = parameters.nameTemplate
+    this.versionMajor = parameters.versionMajor
+    this.versionMinor = parameters.versionMinor
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:proton:${this.region}:${this.account}:environment-template/${this.templateName}:${this.majorVersion}.${this.minorVersion}` as const
+    return `arn:${this.partition}:proton:${this.region}:${this.account}:environment-template/${this.nameTemplate}:${this.versionMajor}.${this.versionMinor}` as const
   }
 }
-export type { EnvironmentTemplateVersionArn }
-export function environmentTemplateVersionArn<
+export type { VersionTemplateEnvironmentArn }
+export function versionTemplateEnvironmentArn<
   Partition extends ArnPartition = 'aws',
->(parameters: EnvironmentTemplateVersionArnParameters<Partition>) {
-  return new EnvironmentTemplateVersionArn<Partition>(parameters)
+>(parameters: VersionTemplateEnvironmentArnParameters<Partition>) {
+  return new VersionTemplateEnvironmentArn<Partition>(parameters)
 }
 
-export interface EnvironmentTemplateMajorVersionArnParameters<
+export interface VersionMajorTemplateEnvironmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly templateName: string
-  readonly majorVersionId: string
+  readonly nameTemplate: string
+  readonly idVersionMajor: string
 }
-class EnvironmentTemplateMajorVersionArn<
+class VersionMajorTemplateEnvironmentArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'environment-template-major-version',
@@ -103,43 +103,43 @@ class EnvironmentTemplateMajorVersionArn<
 > {
   readonly [ArnResourceTypeBrand] =
     'environment-template-major-version' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly templateName: string
-  readonly majorVersionId: string
+  readonly nameTemplate: string
+  readonly idVersionMajor: string
   constructor(
-    parameters: EnvironmentTemplateMajorVersionArnParameters<Partition>,
+    parameters: VersionMajorTemplateEnvironmentArnParameters<Partition>,
   ) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.templateName = parameters.templateName
-    this.majorVersionId = parameters.majorVersionId
+    this.nameTemplate = parameters.nameTemplate
+    this.idVersionMajor = parameters.idVersionMajor
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:proton:${this.region}:${this.account}:environment-template/${this.templateName}:${this.majorVersionId}` as const
+    return `arn:${this.partition}:proton:${this.region}:${this.account}:environment-template/${this.nameTemplate}:${this.idVersionMajor}` as const
   }
 }
-export type { EnvironmentTemplateMajorVersionArn }
-export function environmentTemplateMajorVersionArn<
+export type { VersionMajorTemplateEnvironmentArn }
+export function versionMajorTemplateEnvironmentArn<
   Partition extends ArnPartition = 'aws',
->(parameters: EnvironmentTemplateMajorVersionArnParameters<Partition>) {
-  return new EnvironmentTemplateMajorVersionArn<Partition>(parameters)
+>(parameters: VersionMajorTemplateEnvironmentArnParameters<Partition>) {
+  return new VersionMajorTemplateEnvironmentArn<Partition>(parameters)
 }
 
-export interface EnvironmentTemplateMinorVersionArnParameters<
+export interface VersionMinorTemplateEnvironmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly templateName: string
-  readonly majorVersionId: string
-  readonly minorVersionId: string
+  readonly nameTemplate: string
+  readonly idVersionMajor: string
+  readonly idVersionMinor: string
 }
-class EnvironmentTemplateMinorVersionArn<
+class VersionMinorTemplateEnvironmentArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'environment-template-minor-version',
@@ -147,56 +147,56 @@ class EnvironmentTemplateMinorVersionArn<
 > {
   readonly [ArnResourceTypeBrand] =
     'environment-template-minor-version' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly templateName: string
-  readonly majorVersionId: string
-  readonly minorVersionId: string
+  readonly nameTemplate: string
+  readonly idVersionMajor: string
+  readonly idVersionMinor: string
   constructor(
-    parameters: EnvironmentTemplateMinorVersionArnParameters<Partition>,
+    parameters: VersionMinorTemplateEnvironmentArnParameters<Partition>,
   ) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.templateName = parameters.templateName
-    this.majorVersionId = parameters.majorVersionId
-    this.minorVersionId = parameters.minorVersionId
+    this.nameTemplate = parameters.nameTemplate
+    this.idVersionMajor = parameters.idVersionMajor
+    this.idVersionMinor = parameters.idVersionMinor
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:proton:${this.region}:${this.account}:environment-template/${this.templateName}:${this.majorVersionId}.${this.minorVersionId}` as const
+    return `arn:${this.partition}:proton:${this.region}:${this.account}:environment-template/${this.nameTemplate}:${this.idVersionMajor}.${this.idVersionMinor}` as const
   }
 }
-export type { EnvironmentTemplateMinorVersionArn }
-export function environmentTemplateMinorVersionArn<
+export type { VersionMinorTemplateEnvironmentArn }
+export function versionMinorTemplateEnvironmentArn<
   Partition extends ArnPartition = 'aws',
->(parameters: EnvironmentTemplateMinorVersionArnParameters<Partition>) {
-  return new EnvironmentTemplateMinorVersionArn<Partition>(parameters)
+>(parameters: VersionMinorTemplateEnvironmentArnParameters<Partition>) {
+  return new VersionMinorTemplateEnvironmentArn<Partition>(parameters)
 }
 
-export interface ServiceTemplateArnParameters<
+export interface TemplateServiceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
 }
-class ServiceTemplateArn<
+class TemplateServiceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'service-template',
   `arn:${string}:proton:${string}:${string}:service-template/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'service-template' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
-  constructor(parameters: ServiceTemplateArnParameters<Partition>) {
+  constructor(parameters: TemplateServiceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.name = parameters.name
@@ -205,144 +205,144 @@ class ServiceTemplateArn<
     return `arn:${this.partition}:proton:${this.region}:${this.account}:service-template/${this.name}` as const
   }
 }
-export type { ServiceTemplateArn }
-export function serviceTemplateArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ServiceTemplateArnParameters<Partition>,
+export type { TemplateServiceArn }
+export function templateServiceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TemplateServiceArnParameters<Partition>,
 ) {
-  return new ServiceTemplateArn<Partition>(parameters)
+  return new TemplateServiceArn<Partition>(parameters)
 }
 
-export interface ServiceTemplateVersionArnParameters<
+export interface VersionTemplateServiceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly templateName: string
-  readonly majorVersion: string
-  readonly minorVersion: string
+  readonly nameTemplate: string
+  readonly versionMajor: string
+  readonly versionMinor: string
 }
-class ServiceTemplateVersionArn<
+class VersionTemplateServiceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'service-template-version',
   `arn:${string}:proton:${string}:${string}:service-template/${string}:${string}.${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'service-template-version' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly templateName: string
-  readonly majorVersion: string
-  readonly minorVersion: string
-  constructor(parameters: ServiceTemplateVersionArnParameters<Partition>) {
+  readonly nameTemplate: string
+  readonly versionMajor: string
+  readonly versionMinor: string
+  constructor(parameters: VersionTemplateServiceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.templateName = parameters.templateName
-    this.majorVersion = parameters.majorVersion
-    this.minorVersion = parameters.minorVersion
+    this.nameTemplate = parameters.nameTemplate
+    this.versionMajor = parameters.versionMajor
+    this.versionMinor = parameters.versionMinor
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:proton:${this.region}:${this.account}:service-template/${this.templateName}:${this.majorVersion}.${this.minorVersion}` as const
+    return `arn:${this.partition}:proton:${this.region}:${this.account}:service-template/${this.nameTemplate}:${this.versionMajor}.${this.versionMinor}` as const
   }
 }
-export type { ServiceTemplateVersionArn }
-export function serviceTemplateVersionArn<
+export type { VersionTemplateServiceArn }
+export function versionTemplateServiceArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ServiceTemplateVersionArnParameters<Partition>) {
-  return new ServiceTemplateVersionArn<Partition>(parameters)
+>(parameters: VersionTemplateServiceArnParameters<Partition>) {
+  return new VersionTemplateServiceArn<Partition>(parameters)
 }
 
-export interface ServiceTemplateMajorVersionArnParameters<
+export interface VersionMajorTemplateServiceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly templateName: string
-  readonly majorVersionId: string
+  readonly nameTemplate: string
+  readonly idVersionMajor: string
 }
-class ServiceTemplateMajorVersionArn<
+class VersionMajorTemplateServiceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'service-template-major-version',
   `arn:${string}:proton:${string}:${string}:service-template/${string}:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'service-template-major-version' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly templateName: string
-  readonly majorVersionId: string
-  constructor(parameters: ServiceTemplateMajorVersionArnParameters<Partition>) {
+  readonly nameTemplate: string
+  readonly idVersionMajor: string
+  constructor(parameters: VersionMajorTemplateServiceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.templateName = parameters.templateName
-    this.majorVersionId = parameters.majorVersionId
+    this.nameTemplate = parameters.nameTemplate
+    this.idVersionMajor = parameters.idVersionMajor
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:proton:${this.region}:${this.account}:service-template/${this.templateName}:${this.majorVersionId}` as const
+    return `arn:${this.partition}:proton:${this.region}:${this.account}:service-template/${this.nameTemplate}:${this.idVersionMajor}` as const
   }
 }
-export type { ServiceTemplateMajorVersionArn }
-export function serviceTemplateMajorVersionArn<
+export type { VersionMajorTemplateServiceArn }
+export function versionMajorTemplateServiceArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ServiceTemplateMajorVersionArnParameters<Partition>) {
-  return new ServiceTemplateMajorVersionArn<Partition>(parameters)
+>(parameters: VersionMajorTemplateServiceArnParameters<Partition>) {
+  return new VersionMajorTemplateServiceArn<Partition>(parameters)
 }
 
-export interface ServiceTemplateMinorVersionArnParameters<
+export interface VersionMinorTemplateServiceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly templateName: string
-  readonly majorVersionId: string
-  readonly minorVersionId: string
+  readonly nameTemplate: string
+  readonly idVersionMajor: string
+  readonly idVersionMinor: string
 }
-class ServiceTemplateMinorVersionArn<
+class VersionMinorTemplateServiceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'service-template-minor-version',
   `arn:${string}:proton:${string}:${string}:service-template/${string}:${string}.${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'service-template-minor-version' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly templateName: string
-  readonly majorVersionId: string
-  readonly minorVersionId: string
-  constructor(parameters: ServiceTemplateMinorVersionArnParameters<Partition>) {
+  readonly nameTemplate: string
+  readonly idVersionMajor: string
+  readonly idVersionMinor: string
+  constructor(parameters: VersionMinorTemplateServiceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.templateName = parameters.templateName
-    this.majorVersionId = parameters.majorVersionId
-    this.minorVersionId = parameters.minorVersionId
+    this.nameTemplate = parameters.nameTemplate
+    this.idVersionMajor = parameters.idVersionMajor
+    this.idVersionMinor = parameters.idVersionMinor
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:proton:${this.region}:${this.account}:service-template/${this.templateName}:${this.majorVersionId}.${this.minorVersionId}` as const
+    return `arn:${this.partition}:proton:${this.region}:${this.account}:service-template/${this.nameTemplate}:${this.idVersionMajor}.${this.idVersionMinor}` as const
   }
 }
-export type { ServiceTemplateMinorVersionArn }
-export function serviceTemplateMinorVersionArn<
+export type { VersionMinorTemplateServiceArn }
+export function versionMinorTemplateServiceArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ServiceTemplateMinorVersionArnParameters<Partition>) {
-  return new ServiceTemplateMinorVersionArn<Partition>(parameters)
+>(parameters: VersionMinorTemplateServiceArnParameters<Partition>) {
+  return new VersionMinorTemplateServiceArn<Partition>(parameters)
 }
 
 export interface EnvironmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
 }
@@ -353,13 +353,13 @@ class EnvironmentArn<
   `arn:${string}:proton:${string}:${string}:environment/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'environment' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
   constructor(parameters: EnvironmentArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.name = parameters.name
@@ -376,8 +376,8 @@ export function environmentArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ServiceArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
 }
@@ -386,13 +386,13 @@ class ServiceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:proton:${string}:${string}:service/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'service' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
   constructor(parameters: ServiceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.name = parameters.name
@@ -408,70 +408,70 @@ export function serviceArn<Partition extends ArnPartition = 'aws'>(
   return new ServiceArn<Partition>(parameters)
 }
 
-export interface ServiceInstanceArnParameters<
+export interface InstanceServiceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serviceName: string
+  readonly nameService: string
   readonly name: string
 }
-class ServiceInstanceArn<
+class InstanceServiceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'service-instance',
   `arn:${string}:proton:${string}:${string}:service/${string}/service-instance/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'service-instance' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serviceName: string
+  readonly nameService: string
   readonly name: string
-  constructor(parameters: ServiceInstanceArnParameters<Partition>) {
+  constructor(parameters: InstanceServiceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.serviceName = parameters.serviceName
+    this.nameService = parameters.nameService
     this.name = parameters.name
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:proton:${this.region}:${this.account}:service/${this.serviceName}/service-instance/${this.name}` as const
+    return `arn:${this.partition}:proton:${this.region}:${this.account}:service/${this.nameService}/service-instance/${this.name}` as const
   }
 }
-export type { ServiceInstanceArn }
-export function serviceInstanceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ServiceInstanceArnParameters<Partition>,
+export type { InstanceServiceArn }
+export function instanceServiceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InstanceServiceArnParameters<Partition>,
 ) {
-  return new ServiceInstanceArn<Partition>(parameters)
+  return new InstanceServiceArn<Partition>(parameters)
 }
 
-export interface EnvironmentAccountConnectionArnParameters<
+export interface ConnectionAccountEnvironmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly id: string
 }
-class EnvironmentAccountConnectionArn<
+class ConnectionAccountEnvironmentArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'environment-account-connection',
   `arn:${string}:proton:${string}:${string}:environment-account-connection/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'environment-account-connection' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly id: string
   constructor(
-    parameters: EnvironmentAccountConnectionArnParameters<Partition>,
+    parameters: ConnectionAccountEnvironmentArnParameters<Partition>,
   ) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -480,18 +480,18 @@ class EnvironmentAccountConnectionArn<
     return `arn:${this.partition}:proton:${this.region}:${this.account}:environment-account-connection/${this.id}` as const
   }
 }
-export type { EnvironmentAccountConnectionArn }
-export function environmentAccountConnectionArn<
+export type { ConnectionAccountEnvironmentArn }
+export function connectionAccountEnvironmentArn<
   Partition extends ArnPartition = 'aws',
->(parameters: EnvironmentAccountConnectionArnParameters<Partition>) {
-  return new EnvironmentAccountConnectionArn<Partition>(parameters)
+>(parameters: ConnectionAccountEnvironmentArnParameters<Partition>) {
+  return new ConnectionAccountEnvironmentArn<Partition>(parameters)
 }
 
 export interface RepositoryArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly provider: string
   readonly name: string
@@ -501,14 +501,14 @@ class RepositoryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:proton:${string}:${string}:repository/${string}:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'repository' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly provider: string
   readonly name: string
   constructor(parameters: RepositoryArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.provider = parameters.provider
@@ -528,8 +528,8 @@ export function repositoryArn<Partition extends ArnPartition = 'aws'>(
 export interface ComponentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly id: string
 }
@@ -538,13 +538,13 @@ class ComponentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:proton:${string}:${string}:component/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'component' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly id: string
   constructor(parameters: ComponentArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -563,8 +563,8 @@ export function componentArn<Partition extends ArnPartition = 'aws'>(
 export interface DeploymentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly id: string
 }
@@ -573,13 +573,13 @@ class DeploymentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:proton:${string}:${string}:deployment/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'deployment' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly id: string
   constructor(parameters: DeploymentArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id

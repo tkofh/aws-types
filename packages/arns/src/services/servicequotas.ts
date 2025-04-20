@@ -7,32 +7,32 @@ import {
 } from '../internal.js'
 
 export interface QuotaArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serviceCode: string
-  readonly quotaCode: string
+  readonly codeService: string
+  readonly codeQuota: string
 }
 class QuotaArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'quota',
   `arn:${string}:servicequotas:${string}:${string}:${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'quota' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serviceCode: string
-  readonly quotaCode: string
+  readonly codeService: string
+  readonly codeQuota: string
   constructor(parameters: QuotaArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.serviceCode = parameters.serviceCode
-    this.quotaCode = parameters.quotaCode
+    this.codeService = parameters.codeService
+    this.codeQuota = parameters.codeQuota
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:servicequotas:${this.region}:${this.account}:${this.serviceCode}/${this.quotaCode}` as const
+    return `arn:${this.partition}:servicequotas:${this.region}:${this.account}:${this.codeService}/${this.codeQuota}` as const
   }
 }
 export type { QuotaArn }

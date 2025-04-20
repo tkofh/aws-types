@@ -6,36 +6,36 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ConfigurationManagerArnParameters<
+export interface ManagerConfigurationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly configurationManagerId: string
+  readonly idManagerConfiguration: string
 }
-class ConfigurationManagerArn<
+class ManagerConfigurationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'configuration-manager',
   `arn:${string}:ssm-quicksetup::${string}:configuration-manager/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'configuration-manager' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly configurationManagerId: string
-  constructor(parameters: ConfigurationManagerArnParameters<Partition>) {
+  readonly idManagerConfiguration: string
+  constructor(parameters: ManagerConfigurationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.configurationManagerId = parameters.configurationManagerId
+    this.idManagerConfiguration = parameters.idManagerConfiguration
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ssm-quicksetup::${this.account}:configuration-manager/${this.configurationManagerId}` as const
+    return `arn:${this.partition}:ssm-quicksetup::${this.account}:configuration-manager/${this.idManagerConfiguration}` as const
   }
 }
-export type { ConfigurationManagerArn }
-export function configurationManagerArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ConfigurationManagerArnParameters<Partition>,
+export type { ManagerConfigurationArn }
+export function managerConfigurationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ManagerConfigurationArnParameters<Partition>,
 ) {
-  return new ConfigurationManagerArn<Partition>(parameters)
+  return new ManagerConfigurationArn<Partition>(parameters)
 }

@@ -6,176 +6,176 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface AllowListArnParameters<
+export interface ListAllowArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
-class AllowListArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class ListAllowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'AllowList',
   `arn:${string}:macie2:${string}:${string}:allow-list/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'AllowList' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
-  constructor(parameters: AllowListArnParameters<Partition>) {
+  readonly idResource: string
+  constructor(parameters: ListAllowArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:macie2:${this.region}:${this.account}:allow-list/${this.resourceId}` as const
+    return `arn:${this.partition}:macie2:${this.region}:${this.account}:allow-list/${this.idResource}` as const
   }
 }
-export type { AllowListArn }
-export function allowListArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AllowListArnParameters<Partition>,
+export type { ListAllowArn }
+export function listAllowArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ListAllowArnParameters<Partition>,
 ) {
-  return new AllowListArn<Partition>(parameters)
+  return new ListAllowArn<Partition>(parameters)
 }
 
-export interface ClassificationJobArnParameters<
+export interface JobClassificationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
-class ClassificationJobArn<
+class JobClassificationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ClassificationJob',
   `arn:${string}:macie2:${string}:${string}:classification-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ClassificationJob' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
-  constructor(parameters: ClassificationJobArnParameters<Partition>) {
+  readonly idResource: string
+  constructor(parameters: JobClassificationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:macie2:${this.region}:${this.account}:classification-job/${this.resourceId}` as const
+    return `arn:${this.partition}:macie2:${this.region}:${this.account}:classification-job/${this.idResource}` as const
   }
 }
-export type { ClassificationJobArn }
-export function classificationJobArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ClassificationJobArnParameters<Partition>,
+export type { JobClassificationArn }
+export function jobClassificationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobClassificationArnParameters<Partition>,
 ) {
-  return new ClassificationJobArn<Partition>(parameters)
+  return new JobClassificationArn<Partition>(parameters)
 }
 
-export interface CustomDataIdentifierArnParameters<
+export interface IdentifierDataCustomArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
-class CustomDataIdentifierArn<
+class IdentifierDataCustomArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'CustomDataIdentifier',
   `arn:${string}:macie2:${string}:${string}:custom-data-identifier/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'CustomDataIdentifier' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
-  constructor(parameters: CustomDataIdentifierArnParameters<Partition>) {
+  readonly idResource: string
+  constructor(parameters: IdentifierDataCustomArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:macie2:${this.region}:${this.account}:custom-data-identifier/${this.resourceId}` as const
+    return `arn:${this.partition}:macie2:${this.region}:${this.account}:custom-data-identifier/${this.idResource}` as const
   }
 }
-export type { CustomDataIdentifierArn }
-export function customDataIdentifierArn<Partition extends ArnPartition = 'aws'>(
-  parameters: CustomDataIdentifierArnParameters<Partition>,
+export type { IdentifierDataCustomArn }
+export function identifierDataCustomArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IdentifierDataCustomArnParameters<Partition>,
 ) {
-  return new CustomDataIdentifierArn<Partition>(parameters)
+  return new IdentifierDataCustomArn<Partition>(parameters)
 }
 
-export interface FindingsFilterArnParameters<
+export interface FilterFindingsArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
-class FindingsFilterArn<
+class FilterFindingsArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'FindingsFilter',
   `arn:${string}:macie2:${string}:${string}:findings-filter/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'FindingsFilter' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
-  constructor(parameters: FindingsFilterArnParameters<Partition>) {
+  readonly idResource: string
+  constructor(parameters: FilterFindingsArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:macie2:${this.region}:${this.account}:findings-filter/${this.resourceId}` as const
+    return `arn:${this.partition}:macie2:${this.region}:${this.account}:findings-filter/${this.idResource}` as const
   }
 }
-export type { FindingsFilterArn }
-export function findingsFilterArn<Partition extends ArnPartition = 'aws'>(
-  parameters: FindingsFilterArnParameters<Partition>,
+export type { FilterFindingsArn }
+export function filterFindingsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FilterFindingsArnParameters<Partition>,
 ) {
-  return new FindingsFilterArn<Partition>(parameters)
+  return new FilterFindingsArn<Partition>(parameters)
 }
 
 export interface MemberArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
 class MemberArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Member',
   `arn:${string}:macie2:${string}:${string}:member/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Member' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
   constructor(parameters: MemberArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:macie2:${this.region}:${this.account}:member/${this.resourceId}` as const
+    return `arn:${this.partition}:macie2:${this.region}:${this.account}:member/${this.idResource}` as const
   }
 }
 export type { MemberArn }

@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface ChannelArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly channelId: string
+  readonly idChannel: string
 }
 class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'channel',
   `arn:${string}:cloudtrail:${string}:${string}:channel/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'channel' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly channelId: string
+  readonly idChannel: string
   constructor(parameters: ChannelArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.channelId = parameters.channelId
+    this.idChannel = parameters.idChannel
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudtrail:${this.region}:${this.account}:channel/${this.channelId}` as const
+    return `arn:${this.partition}:cloudtrail:${this.region}:${this.account}:channel/${this.idChannel}` as const
   }
 }
 export type { ChannelArn }

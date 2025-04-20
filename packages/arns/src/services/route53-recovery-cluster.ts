@@ -6,39 +6,39 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface RoutingcontrolArnParameters<
+export interface ControlRoutingArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly controlPanelId: string
-  readonly routingControlId: string
+  readonly idPanelControl: string
+  readonly idControlRouting: string
 }
-class RoutingcontrolArn<
+class ControlRoutingArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'routingcontrol',
   `arn:${string}:route53-recovery-control::${string}:controlpanel/${string}/routingcontrol/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'routingcontrol' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly controlPanelId: string
-  readonly routingControlId: string
-  constructor(parameters: RoutingcontrolArnParameters<Partition>) {
+  readonly idPanelControl: string
+  readonly idControlRouting: string
+  constructor(parameters: ControlRoutingArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.controlPanelId = parameters.controlPanelId
-    this.routingControlId = parameters.routingControlId
+    this.idPanelControl = parameters.idPanelControl
+    this.idControlRouting = parameters.idControlRouting
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53-recovery-control::${this.account}:controlpanel/${this.controlPanelId}/routingcontrol/${this.routingControlId}` as const
+    return `arn:${this.partition}:route53-recovery-control::${this.account}:controlpanel/${this.idPanelControl}/routingcontrol/${this.idControlRouting}` as const
   }
 }
-export type { RoutingcontrolArn }
-export function routingcontrolArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RoutingcontrolArnParameters<Partition>,
+export type { ControlRoutingArn }
+export function controlRoutingArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ControlRoutingArnParameters<Partition>,
 ) {
-  return new RoutingcontrolArn<Partition>(parameters)
+  return new ControlRoutingArn<Partition>(parameters)
 }

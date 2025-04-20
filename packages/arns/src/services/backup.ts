@@ -6,147 +6,147 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface BackupVaultArnParameters<
+export interface VaultBackupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly backupVaultName: string
+  readonly nameVaultBackup: string
 }
-class BackupVaultArn<
+class VaultBackupArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'backupVault',
   `arn:${string}:backup:${string}:${string}:backup-vault:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'backupVault' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly backupVaultName: string
-  constructor(parameters: BackupVaultArnParameters<Partition>) {
+  readonly nameVaultBackup: string
+  constructor(parameters: VaultBackupArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.backupVaultName = parameters.backupVaultName
+    this.nameVaultBackup = parameters.nameVaultBackup
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:backup:${this.region}:${this.account}:backup-vault:${this.backupVaultName}` as const
+    return `arn:${this.partition}:backup:${this.region}:${this.account}:backup-vault:${this.nameVaultBackup}` as const
   }
 }
-export type { BackupVaultArn }
-export function backupVaultArn<Partition extends ArnPartition = 'aws'>(
-  parameters: BackupVaultArnParameters<Partition>,
+export type { VaultBackupArn }
+export function vaultBackupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VaultBackupArnParameters<Partition>,
 ) {
-  return new BackupVaultArn<Partition>(parameters)
+  return new VaultBackupArn<Partition>(parameters)
 }
 
-export interface BackupPlanArnParameters<
+export interface PlanBackupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly backupPlanId: string
+  readonly idPlanBackup: string
 }
-class BackupPlanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class PlanBackupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'backupPlan',
   `arn:${string}:backup:${string}:${string}:backup-plan:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'backupPlan' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly backupPlanId: string
-  constructor(parameters: BackupPlanArnParameters<Partition>) {
+  readonly idPlanBackup: string
+  constructor(parameters: PlanBackupArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.backupPlanId = parameters.backupPlanId
+    this.idPlanBackup = parameters.idPlanBackup
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:backup:${this.region}:${this.account}:backup-plan:${this.backupPlanId}` as const
+    return `arn:${this.partition}:backup:${this.region}:${this.account}:backup-plan:${this.idPlanBackup}` as const
   }
 }
-export type { BackupPlanArn }
-export function backupPlanArn<Partition extends ArnPartition = 'aws'>(
-  parameters: BackupPlanArnParameters<Partition>,
+export type { PlanBackupArn }
+export function planBackupArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PlanBackupArnParameters<Partition>,
 ) {
-  return new BackupPlanArn<Partition>(parameters)
+  return new PlanBackupArn<Partition>(parameters)
 }
 
-export interface RecoveryPointArnParameters<
+export interface PointRecoveryArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly vendor: string
-  readonly region: ArnRegion<Partition>
-  readonly resourceType: string
-  readonly recoveryPointId: string
+  readonly region: string
+  readonly typeResource: string
+  readonly idPointRecovery: string
 }
-class RecoveryPointArn<
+class PointRecoveryArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'recoveryPoint',
   `arn:${string}:${string}:${string}:*:${string}:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'recoveryPoint' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly vendor: string
-  readonly region: ArnRegion<Partition>
-  readonly resourceType: string
-  readonly recoveryPointId: string
-  constructor(parameters: RecoveryPointArnParameters<Partition>) {
+  readonly region: string
+  readonly typeResource: string
+  readonly idPointRecovery: string
+  constructor(parameters: PointRecoveryArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.vendor = parameters.vendor
     this.region = parameters.region
-    this.resourceType = parameters.resourceType
-    this.recoveryPointId = parameters.recoveryPointId
+    this.typeResource = parameters.typeResource
+    this.idPointRecovery = parameters.idPointRecovery
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:${this.vendor}:${this.region}:*:${this.resourceType}:${this.recoveryPointId}` as const
+    return `arn:${this.partition}:${this.vendor}:${this.region}:*:${this.typeResource}:${this.idPointRecovery}` as const
   }
 }
-export type { RecoveryPointArn }
-export function recoveryPointArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RecoveryPointArnParameters<Partition>,
+export type { PointRecoveryArn }
+export function pointRecoveryArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PointRecoveryArnParameters<Partition>,
 ) {
-  return new RecoveryPointArn<Partition>(parameters)
+  return new PointRecoveryArn<Partition>(parameters)
 }
 
 export interface FrameworkArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly frameworkName: string
-  readonly frameworkId: string
+  readonly nameFramework: string
+  readonly idFramework: string
 }
 class FrameworkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'framework',
   `arn:${string}:backup:${string}:${string}:framework:${string}-${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'framework' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly frameworkName: string
-  readonly frameworkId: string
+  readonly nameFramework: string
+  readonly idFramework: string
   constructor(parameters: FrameworkArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.frameworkName = parameters.frameworkName
-    this.frameworkId = parameters.frameworkId
+    this.nameFramework = parameters.nameFramework
+    this.idFramework = parameters.idFramework
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:backup:${this.region}:${this.account}:framework:${this.frameworkName}-${this.frameworkId}` as const
+    return `arn:${this.partition}:backup:${this.region}:${this.account}:framework:${this.nameFramework}-${this.idFramework}` as const
   }
 }
 export type { FrameworkArn }
@@ -156,115 +156,115 @@ export function frameworkArn<Partition extends ArnPartition = 'aws'>(
   return new FrameworkArn<Partition>(parameters)
 }
 
-export interface ReportPlanArnParameters<
+export interface PlanReportArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly reportPlanName: string
-  readonly reportPlanId: string
+  readonly namePlanReport: string
+  readonly idPlanReport: string
 }
-class ReportPlanArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class PlanReportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'reportPlan',
   `arn:${string}:backup:${string}:${string}:report-plan:${string}-${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'reportPlan' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly reportPlanName: string
-  readonly reportPlanId: string
-  constructor(parameters: ReportPlanArnParameters<Partition>) {
+  readonly namePlanReport: string
+  readonly idPlanReport: string
+  constructor(parameters: PlanReportArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.reportPlanName = parameters.reportPlanName
-    this.reportPlanId = parameters.reportPlanId
+    this.namePlanReport = parameters.namePlanReport
+    this.idPlanReport = parameters.idPlanReport
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:backup:${this.region}:${this.account}:report-plan:${this.reportPlanName}-${this.reportPlanId}` as const
+    return `arn:${this.partition}:backup:${this.region}:${this.account}:report-plan:${this.namePlanReport}-${this.idPlanReport}` as const
   }
 }
-export type { ReportPlanArn }
-export function reportPlanArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ReportPlanArnParameters<Partition>,
+export type { PlanReportArn }
+export function planReportArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PlanReportArnParameters<Partition>,
 ) {
-  return new ReportPlanArn<Partition>(parameters)
+  return new PlanReportArn<Partition>(parameters)
 }
 
-export interface LegalHoldArnParameters<
+export interface HoldLegalArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly legalHoldId: string
+  readonly idHoldLegal: string
 }
-class LegalHoldArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class HoldLegalArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'legalHold',
   `arn:${string}:backup:${string}:${string}:legal-hold:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'legalHold' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly legalHoldId: string
-  constructor(parameters: LegalHoldArnParameters<Partition>) {
+  readonly idHoldLegal: string
+  constructor(parameters: HoldLegalArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.legalHoldId = parameters.legalHoldId
+    this.idHoldLegal = parameters.idHoldLegal
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:backup:${this.region}:${this.account}:legal-hold:${this.legalHoldId}` as const
+    return `arn:${this.partition}:backup:${this.region}:${this.account}:legal-hold:${this.idHoldLegal}` as const
   }
 }
-export type { LegalHoldArn }
-export function legalHoldArn<Partition extends ArnPartition = 'aws'>(
-  parameters: LegalHoldArnParameters<Partition>,
+export type { HoldLegalArn }
+export function holdLegalArn<Partition extends ArnPartition = 'aws'>(
+  parameters: HoldLegalArnParameters<Partition>,
 ) {
-  return new LegalHoldArn<Partition>(parameters)
+  return new HoldLegalArn<Partition>(parameters)
 }
 
-export interface RestoreTestingPlanArnParameters<
+export interface PlanTestingRestoreArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly restoreTestingPlanName: string
-  readonly restoreTestingPlanId: string
+  readonly namePlanTestingRestore: string
+  readonly idPlanTestingRestore: string
 }
-class RestoreTestingPlanArn<
+class PlanTestingRestoreArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'restoreTestingPlan',
   `arn:${string}:backup:${string}:${string}:restore-testing-plan:${string}-${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'restoreTestingPlan' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly restoreTestingPlanName: string
-  readonly restoreTestingPlanId: string
-  constructor(parameters: RestoreTestingPlanArnParameters<Partition>) {
+  readonly namePlanTestingRestore: string
+  readonly idPlanTestingRestore: string
+  constructor(parameters: PlanTestingRestoreArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.restoreTestingPlanName = parameters.restoreTestingPlanName
-    this.restoreTestingPlanId = parameters.restoreTestingPlanId
+    this.namePlanTestingRestore = parameters.namePlanTestingRestore
+    this.idPlanTestingRestore = parameters.idPlanTestingRestore
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:backup:${this.region}:${this.account}:restore-testing-plan:${this.restoreTestingPlanName}-${this.restoreTestingPlanId}` as const
+    return `arn:${this.partition}:backup:${this.region}:${this.account}:restore-testing-plan:${this.namePlanTestingRestore}-${this.idPlanTestingRestore}` as const
   }
 }
-export type { RestoreTestingPlanArn }
-export function restoreTestingPlanArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RestoreTestingPlanArnParameters<Partition>,
+export type { PlanTestingRestoreArn }
+export function planTestingRestoreArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PlanTestingRestoreArnParameters<Partition>,
 ) {
-  return new RestoreTestingPlanArn<Partition>(parameters)
+  return new PlanTestingRestoreArn<Partition>(parameters)
 }

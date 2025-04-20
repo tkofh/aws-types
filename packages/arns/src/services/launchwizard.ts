@@ -9,29 +9,29 @@ import {
 export interface DeploymentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly deploymentId: string
+  readonly idDeployment: string
 }
 class DeploymentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'deployment',
   `arn:${string}:launchwizard:${string}:${string}:deployment/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'deployment' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly deploymentId: string
+  readonly idDeployment: string
   constructor(parameters: DeploymentArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.deploymentId = parameters.deploymentId
+    this.idDeployment = parameters.idDeployment
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:launchwizard:${this.region}:${this.account}:deployment/${this.deploymentId}` as const
+    return `arn:${this.partition}:launchwizard:${this.region}:${this.account}:deployment/${this.idDeployment}` as const
   }
 }
 export type { DeploymentArn }

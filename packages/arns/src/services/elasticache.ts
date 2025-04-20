@@ -6,178 +6,178 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ParametergroupArnParameters<
+export interface GroupParameterArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly cacheParameterGroupName: string
+  readonly nameGroupParameterCache: string
 }
-class ParametergroupArn<
+class GroupParameterArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'parametergroup',
   `arn:${string}:elasticache:${string}:${string}:parametergroup:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'parametergroup' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly cacheParameterGroupName: string
-  constructor(parameters: ParametergroupArnParameters<Partition>) {
+  readonly nameGroupParameterCache: string
+  constructor(parameters: GroupParameterArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.cacheParameterGroupName = parameters.cacheParameterGroupName
+    this.nameGroupParameterCache = parameters.nameGroupParameterCache
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:parametergroup:${this.cacheParameterGroupName}` as const
+    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:parametergroup:${this.nameGroupParameterCache}` as const
   }
 }
-export type { ParametergroupArn }
-export function parametergroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ParametergroupArnParameters<Partition>,
+export type { GroupParameterArn }
+export function groupParameterArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupParameterArnParameters<Partition>,
 ) {
-  return new ParametergroupArn<Partition>(parameters)
+  return new GroupParameterArn<Partition>(parameters)
 }
 
-export interface SecuritygroupArnParameters<
+export interface GroupSecurityArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly cacheSecurityGroupName: string
+  readonly nameGroupSecurityCache: string
 }
-class SecuritygroupArn<
+class GroupSecurityArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'securitygroup',
   `arn:${string}:elasticache:${string}:${string}:securitygroup:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'securitygroup' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly cacheSecurityGroupName: string
-  constructor(parameters: SecuritygroupArnParameters<Partition>) {
+  readonly nameGroupSecurityCache: string
+  constructor(parameters: GroupSecurityArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.cacheSecurityGroupName = parameters.cacheSecurityGroupName
+    this.nameGroupSecurityCache = parameters.nameGroupSecurityCache
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:securitygroup:${this.cacheSecurityGroupName}` as const
+    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:securitygroup:${this.nameGroupSecurityCache}` as const
   }
 }
-export type { SecuritygroupArn }
-export function securitygroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SecuritygroupArnParameters<Partition>,
+export type { GroupSecurityArn }
+export function groupSecurityArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupSecurityArnParameters<Partition>,
 ) {
-  return new SecuritygroupArn<Partition>(parameters)
+  return new GroupSecurityArn<Partition>(parameters)
 }
 
-export interface SubnetgroupArnParameters<
+export interface GroupSubnetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly cacheSubnetGroupName: string
+  readonly nameGroupSubnetCache: string
 }
-class SubnetgroupArn<
+class GroupSubnetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'subnetgroup',
   `arn:${string}:elasticache:${string}:${string}:subnetgroup:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'subnetgroup' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly cacheSubnetGroupName: string
-  constructor(parameters: SubnetgroupArnParameters<Partition>) {
+  readonly nameGroupSubnetCache: string
+  constructor(parameters: GroupSubnetArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.cacheSubnetGroupName = parameters.cacheSubnetGroupName
+    this.nameGroupSubnetCache = parameters.nameGroupSubnetCache
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:subnetgroup:${this.cacheSubnetGroupName}` as const
+    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:subnetgroup:${this.nameGroupSubnetCache}` as const
   }
 }
-export type { SubnetgroupArn }
-export function subnetgroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SubnetgroupArnParameters<Partition>,
+export type { GroupSubnetArn }
+export function groupSubnetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupSubnetArnParameters<Partition>,
 ) {
-  return new SubnetgroupArn<Partition>(parameters)
+  return new GroupSubnetArn<Partition>(parameters)
 }
 
-export interface ReplicationgroupArnParameters<
+export interface GroupReplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly replicationGroupId: string
+  readonly idGroupReplication: string
 }
-class ReplicationgroupArn<
+class GroupReplicationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'replicationgroup',
   `arn:${string}:elasticache:${string}:${string}:replicationgroup:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'replicationgroup' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly replicationGroupId: string
-  constructor(parameters: ReplicationgroupArnParameters<Partition>) {
+  readonly idGroupReplication: string
+  constructor(parameters: GroupReplicationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.replicationGroupId = parameters.replicationGroupId
+    this.idGroupReplication = parameters.idGroupReplication
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:replicationgroup:${this.replicationGroupId}` as const
+    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:replicationgroup:${this.idGroupReplication}` as const
   }
 }
-export type { ReplicationgroupArn }
-export function replicationgroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ReplicationgroupArnParameters<Partition>,
+export type { GroupReplicationArn }
+export function groupReplicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupReplicationArnParameters<Partition>,
 ) {
-  return new ReplicationgroupArn<Partition>(parameters)
+  return new GroupReplicationArn<Partition>(parameters)
 }
 
 export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly cacheClusterId: string
+  readonly idClusterCache: string
 }
 class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'cluster',
   `arn:${string}:elasticache:${string}:${string}:cluster:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'cluster' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly cacheClusterId: string
+  readonly idClusterCache: string
   constructor(parameters: ClusterArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.cacheClusterId = parameters.cacheClusterId
+    this.idClusterCache = parameters.idClusterCache
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:cluster:${this.cacheClusterId}` as const
+    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:cluster:${this.idClusterCache}` as const
   }
 }
 export type { ClusterArn }
@@ -187,67 +187,67 @@ export function clusterArn<Partition extends ArnPartition = 'aws'>(
   return new ClusterArn<Partition>(parameters)
 }
 
-export interface ReservedInstanceArnParameters<
+export interface InstanceReservedArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly reservedCacheNodeId: string
+  readonly idNodeCacheReserved: string
 }
-class ReservedInstanceArn<
+class InstanceReservedArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'reserved-instance',
   `arn:${string}:elasticache:${string}:${string}:reserved-instance:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'reserved-instance' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly reservedCacheNodeId: string
-  constructor(parameters: ReservedInstanceArnParameters<Partition>) {
+  readonly idNodeCacheReserved: string
+  constructor(parameters: InstanceReservedArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.reservedCacheNodeId = parameters.reservedCacheNodeId
+    this.idNodeCacheReserved = parameters.idNodeCacheReserved
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:reserved-instance:${this.reservedCacheNodeId}` as const
+    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:reserved-instance:${this.idNodeCacheReserved}` as const
   }
 }
-export type { ReservedInstanceArn }
-export function reservedInstanceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ReservedInstanceArnParameters<Partition>,
+export type { InstanceReservedArn }
+export function instanceReservedArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InstanceReservedArnParameters<Partition>,
 ) {
-  return new ReservedInstanceArn<Partition>(parameters)
+  return new InstanceReservedArn<Partition>(parameters)
 }
 
 export interface SnapshotArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly snapshotName: string
+  readonly nameSnapshot: string
 }
 class SnapshotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'snapshot',
   `arn:${string}:elasticache:${string}:${string}:snapshot:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'snapshot' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly snapshotName: string
+  readonly nameSnapshot: string
   constructor(parameters: SnapshotArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.snapshotName = parameters.snapshotName
+    this.nameSnapshot = parameters.nameSnapshot
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:snapshot:${this.snapshotName}` as const
+    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:snapshot:${this.nameSnapshot}` as const
   }
 }
 export type { SnapshotArn }
@@ -257,64 +257,64 @@ export function snapshotArn<Partition extends ArnPartition = 'aws'>(
   return new SnapshotArn<Partition>(parameters)
 }
 
-export interface GlobalreplicationgroupArnParameters<
+export interface GroupReplicationGlobalArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly globalReplicationGroupId: string
+  readonly idGroupReplicationGlobal: string
 }
-class GlobalreplicationgroupArn<
+class GroupReplicationGlobalArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'globalreplicationgroup',
   `arn:${string}:elasticache::${string}:globalreplicationgroup:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'globalreplicationgroup' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly globalReplicationGroupId: string
-  constructor(parameters: GlobalreplicationgroupArnParameters<Partition>) {
+  readonly idGroupReplicationGlobal: string
+  constructor(parameters: GroupReplicationGlobalArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.globalReplicationGroupId = parameters.globalReplicationGroupId
+    this.idGroupReplicationGlobal = parameters.idGroupReplicationGlobal
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticache::${this.account}:globalreplicationgroup:${this.globalReplicationGroupId}` as const
+    return `arn:${this.partition}:elasticache::${this.account}:globalreplicationgroup:${this.idGroupReplicationGlobal}` as const
   }
 }
-export type { GlobalreplicationgroupArn }
-export function globalreplicationgroupArn<
+export type { GroupReplicationGlobalArn }
+export function groupReplicationGlobalArn<
   Partition extends ArnPartition = 'aws',
->(parameters: GlobalreplicationgroupArnParameters<Partition>) {
-  return new GlobalreplicationgroupArn<Partition>(parameters)
+>(parameters: GroupReplicationGlobalArnParameters<Partition>) {
+  return new GroupReplicationGlobalArn<Partition>(parameters)
 }
 
 export interface UserArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly userId: string
+  readonly idUser: string
 }
 class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'user',
   `arn:${string}:elasticache:${string}:${string}:user:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'user' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly userId: string
+  readonly idUser: string
   constructor(parameters: UserArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.userId = parameters.userId
+    this.idUser = parameters.idUser
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:user:${this.userId}` as const
+    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:user:${this.idUser}` as const
   }
 }
 export type { UserArn }
@@ -324,111 +324,111 @@ export function userArn<Partition extends ArnPartition = 'aws'>(
   return new UserArn<Partition>(parameters)
 }
 
-export interface UsergroupArnParameters<
+export interface GroupUserArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly userGroupId: string
+  readonly idGroupUser: string
 }
-class UsergroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class GroupUserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'usergroup',
   `arn:${string}:elasticache:${string}:${string}:usergroup:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'usergroup' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly userGroupId: string
-  constructor(parameters: UsergroupArnParameters<Partition>) {
+  readonly idGroupUser: string
+  constructor(parameters: GroupUserArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.userGroupId = parameters.userGroupId
+    this.idGroupUser = parameters.idGroupUser
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:usergroup:${this.userGroupId}` as const
+    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:usergroup:${this.idGroupUser}` as const
   }
 }
-export type { UsergroupArn }
-export function usergroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: UsergroupArnParameters<Partition>,
+export type { GroupUserArn }
+export function groupUserArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupUserArnParameters<Partition>,
 ) {
-  return new UsergroupArn<Partition>(parameters)
+  return new GroupUserArn<Partition>(parameters)
 }
 
-export interface ServerlesscacheArnParameters<
+export interface CacheServerlessArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serverlessCacheName: string
+  readonly nameCacheServerless: string
 }
-class ServerlesscacheArn<
+class CacheServerlessArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'serverlesscache',
   `arn:${string}:elasticache:${string}:${string}:serverlesscache:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'serverlesscache' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serverlessCacheName: string
-  constructor(parameters: ServerlesscacheArnParameters<Partition>) {
+  readonly nameCacheServerless: string
+  constructor(parameters: CacheServerlessArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.serverlessCacheName = parameters.serverlessCacheName
+    this.nameCacheServerless = parameters.nameCacheServerless
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:serverlesscache:${this.serverlessCacheName}` as const
+    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:serverlesscache:${this.nameCacheServerless}` as const
   }
 }
-export type { ServerlesscacheArn }
-export function serverlesscacheArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ServerlesscacheArnParameters<Partition>,
+export type { CacheServerlessArn }
+export function cacheServerlessArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CacheServerlessArnParameters<Partition>,
 ) {
-  return new ServerlesscacheArn<Partition>(parameters)
+  return new CacheServerlessArn<Partition>(parameters)
 }
 
-export interface ServerlesscachesnapshotArnParameters<
+export interface SnapshotCacheServerlessArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serverlessCacheSnapshotName: string
+  readonly nameSnapshotCacheServerless: string
 }
-class ServerlesscachesnapshotArn<
+class SnapshotCacheServerlessArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'serverlesscachesnapshot',
   `arn:${string}:elasticache:${string}:${string}:serverlesscachesnapshot:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'serverlesscachesnapshot' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serverlessCacheSnapshotName: string
-  constructor(parameters: ServerlesscachesnapshotArnParameters<Partition>) {
+  readonly nameSnapshotCacheServerless: string
+  constructor(parameters: SnapshotCacheServerlessArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.serverlessCacheSnapshotName = parameters.serverlessCacheSnapshotName
+    this.nameSnapshotCacheServerless = parameters.nameSnapshotCacheServerless
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:serverlesscachesnapshot:${this.serverlessCacheSnapshotName}` as const
+    return `arn:${this.partition}:elasticache:${this.region}:${this.account}:serverlesscachesnapshot:${this.nameSnapshotCacheServerless}` as const
   }
 }
-export type { ServerlesscachesnapshotArn }
-export function serverlesscachesnapshotArn<
+export type { SnapshotCacheServerlessArn }
+export function snapshotCacheServerlessArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ServerlesscachesnapshotArnParameters<Partition>) {
-  return new ServerlesscachesnapshotArn<Partition>(parameters)
+>(parameters: SnapshotCacheServerlessArnParameters<Partition>) {
+  return new SnapshotCacheServerlessArn<Partition>(parameters)
 }

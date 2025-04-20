@@ -6,39 +6,39 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface MlflowTrackingServerArnParameters<
+export interface ServerTrackingMlflowArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly mlflowTrackingServerName: string
+  readonly nameServerTrackingFlowMl: string
 }
-class MlflowTrackingServerArn<
+class ServerTrackingMlflowArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'mlflow-tracking-server',
   `arn:${string}:sagemaker:${string}:${string}:mlflow-tracking-server/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'mlflow-tracking-server' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly mlflowTrackingServerName: string
-  constructor(parameters: MlflowTrackingServerArnParameters<Partition>) {
+  readonly nameServerTrackingFlowMl: string
+  constructor(parameters: ServerTrackingMlflowArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.mlflowTrackingServerName = parameters.mlflowTrackingServerName
+    this.nameServerTrackingFlowMl = parameters.nameServerTrackingFlowMl
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sagemaker:${this.region}:${this.account}:mlflow-tracking-server/${this.mlflowTrackingServerName}` as const
+    return `arn:${this.partition}:sagemaker:${this.region}:${this.account}:mlflow-tracking-server/${this.nameServerTrackingFlowMl}` as const
   }
 }
-export type { MlflowTrackingServerArn }
-export function mlflowTrackingServerArn<Partition extends ArnPartition = 'aws'>(
-  parameters: MlflowTrackingServerArnParameters<Partition>,
+export type { ServerTrackingMlflowArn }
+export function serverTrackingMlflowArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ServerTrackingMlflowArnParameters<Partition>,
 ) {
-  return new MlflowTrackingServerArn<Partition>(parameters)
+  return new ServerTrackingMlflowArn<Partition>(parameters)
 }

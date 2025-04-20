@@ -7,26 +7,26 @@ import {
 } from '../internal.js'
 
 export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
 class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'cluster',
   `arn:${string}:route53-recovery-control::${string}:cluster/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'cluster' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
   constructor(parameters: ClusterArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53-recovery-control::${this.account}:cluster/${this.resourceId}` as const
+    return `arn:${this.partition}:route53-recovery-control::${this.account}:cluster/${this.idResource}` as const
   }
 }
 export type { ClusterArn }
@@ -36,108 +36,108 @@ export function clusterArn<Partition extends ArnPartition = 'aws'>(
   return new ClusterArn<Partition>(parameters)
 }
 
-export interface ControlpanelArnParameters<
+export interface PanelControlArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly controlPanelId: string
+  readonly idPanelControl: string
 }
-class ControlpanelArn<
+class PanelControlArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'controlpanel',
   `arn:${string}:route53-recovery-control::${string}:controlpanel/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'controlpanel' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly controlPanelId: string
-  constructor(parameters: ControlpanelArnParameters<Partition>) {
+  readonly idPanelControl: string
+  constructor(parameters: PanelControlArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.controlPanelId = parameters.controlPanelId
+    this.idPanelControl = parameters.idPanelControl
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53-recovery-control::${this.account}:controlpanel/${this.controlPanelId}` as const
+    return `arn:${this.partition}:route53-recovery-control::${this.account}:controlpanel/${this.idPanelControl}` as const
   }
 }
-export type { ControlpanelArn }
-export function controlpanelArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ControlpanelArnParameters<Partition>,
+export type { PanelControlArn }
+export function panelControlArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PanelControlArnParameters<Partition>,
 ) {
-  return new ControlpanelArn<Partition>(parameters)
+  return new PanelControlArn<Partition>(parameters)
 }
 
-export interface RoutingcontrolArnParameters<
+export interface ControlRoutingArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly controlPanelId: string
-  readonly routingControlId: string
+  readonly idPanelControl: string
+  readonly idControlRouting: string
 }
-class RoutingcontrolArn<
+class ControlRoutingArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'routingcontrol',
   `arn:${string}:route53-recovery-control::${string}:controlpanel/${string}/routingcontrol/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'routingcontrol' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly controlPanelId: string
-  readonly routingControlId: string
-  constructor(parameters: RoutingcontrolArnParameters<Partition>) {
+  readonly idPanelControl: string
+  readonly idControlRouting: string
+  constructor(parameters: ControlRoutingArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.controlPanelId = parameters.controlPanelId
-    this.routingControlId = parameters.routingControlId
+    this.idPanelControl = parameters.idPanelControl
+    this.idControlRouting = parameters.idControlRouting
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53-recovery-control::${this.account}:controlpanel/${this.controlPanelId}/routingcontrol/${this.routingControlId}` as const
+    return `arn:${this.partition}:route53-recovery-control::${this.account}:controlpanel/${this.idPanelControl}/routingcontrol/${this.idControlRouting}` as const
   }
 }
-export type { RoutingcontrolArn }
-export function routingcontrolArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RoutingcontrolArnParameters<Partition>,
+export type { ControlRoutingArn }
+export function controlRoutingArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ControlRoutingArnParameters<Partition>,
 ) {
-  return new RoutingcontrolArn<Partition>(parameters)
+  return new ControlRoutingArn<Partition>(parameters)
 }
 
-export interface SafetyruleArnParameters<
+export interface RuleSafetyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly controlPanelId: string
-  readonly safetyRuleId: string
+  readonly idPanelControl: string
+  readonly idRuleSafety: string
 }
-class SafetyruleArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class RuleSafetyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'safetyrule',
   `arn:${string}:route53-recovery-control::${string}:controlpanel/${string}/safetyrule/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'safetyrule' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly controlPanelId: string
-  readonly safetyRuleId: string
-  constructor(parameters: SafetyruleArnParameters<Partition>) {
+  readonly idPanelControl: string
+  readonly idRuleSafety: string
+  constructor(parameters: RuleSafetyArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.controlPanelId = parameters.controlPanelId
-    this.safetyRuleId = parameters.safetyRuleId
+    this.idPanelControl = parameters.idPanelControl
+    this.idRuleSafety = parameters.idRuleSafety
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:route53-recovery-control::${this.account}:controlpanel/${this.controlPanelId}/safetyrule/${this.safetyRuleId}` as const
+    return `arn:${this.partition}:route53-recovery-control::${this.account}:controlpanel/${this.idPanelControl}/safetyrule/${this.idRuleSafety}` as const
   }
 }
-export type { SafetyruleArn }
-export function safetyruleArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SafetyruleArnParameters<Partition>,
+export type { RuleSafetyArn }
+export function ruleSafetyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RuleSafetyArnParameters<Partition>,
 ) {
-  return new SafetyruleArn<Partition>(parameters)
+  return new RuleSafetyArn<Partition>(parameters)
 }

@@ -9,10 +9,10 @@ import {
 export interface AssociationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
 class AssociationArn<
   Partition extends ArnPartition = 'aws',
@@ -21,19 +21,19 @@ class AssociationArn<
   `arn:${string}:codeguru-reviewer:${string}:${string}:association:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'association' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
   constructor(parameters: AssociationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:codeguru-reviewer:${this.region}:${this.account}:association:${this.resourceId}` as const
+    return `arn:${this.partition}:codeguru-reviewer:${this.region}:${this.account}:association:${this.idResource}` as const
   }
 }
 export type { AssociationArn }
@@ -43,40 +43,40 @@ export function associationArn<Partition extends ArnPartition = 'aws'>(
   return new AssociationArn<Partition>(parameters)
 }
 
-export interface CodereviewArnParameters<
+export interface ReviewCodeArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
-  readonly codeReviewId: string
+  readonly idResource: string
+  readonly idReviewCode: string
 }
-class CodereviewArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class ReviewCodeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'codereview',
   `arn:${string}:codeguru-reviewer:${string}:${string}:association:${string}:codereview:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'codereview' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
-  readonly codeReviewId: string
-  constructor(parameters: CodereviewArnParameters<Partition>) {
+  readonly idResource: string
+  readonly idReviewCode: string
+  constructor(parameters: ReviewCodeArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
-    this.codeReviewId = parameters.codeReviewId
+    this.idResource = parameters.idResource
+    this.idReviewCode = parameters.idReviewCode
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:codeguru-reviewer:${this.region}:${this.account}:association:${this.resourceId}:codereview:${this.codeReviewId}` as const
+    return `arn:${this.partition}:codeguru-reviewer:${this.region}:${this.account}:association:${this.idResource}:codereview:${this.idReviewCode}` as const
   }
 }
-export type { CodereviewArn }
-export function codereviewArn<Partition extends ArnPartition = 'aws'>(
-  parameters: CodereviewArnParameters<Partition>,
+export type { ReviewCodeArn }
+export function reviewCodeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ReviewCodeArnParameters<Partition>,
 ) {
-  return new CodereviewArn<Partition>(parameters)
+  return new ReviewCodeArn<Partition>(parameters)
 }

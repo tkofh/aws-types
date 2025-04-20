@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface PipelineArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly pipelineId: string
+  readonly idPipeline: string
 }
 class PipelineArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'pipeline',
   `arn:${string}:datapipeline:${string}:${string}:pipeline/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'pipeline' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly pipelineId: string
+  readonly idPipeline: string
   constructor(parameters: PipelineArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pipelineId = parameters.pipelineId
+    this.idPipeline = parameters.idPipeline
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:datapipeline:${this.region}:${this.account}:pipeline/${this.pipelineId}` as const
+    return `arn:${this.partition}:datapipeline:${this.region}:${this.account}:pipeline/${this.idPipeline}` as const
   }
 }
 export type { PipelineArn }

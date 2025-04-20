@@ -7,26 +7,26 @@ import {
 } from '../internal.js'
 
 export interface BudgetArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly budgetName: string
+  readonly nameBudget: string
 }
 class BudgetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'budget',
   `arn:${string}:budgets::${string}:budget/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'budget' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly budgetName: string
+  readonly nameBudget: string
   constructor(parameters: BudgetArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.budgetName = parameters.budgetName
+    this.nameBudget = parameters.nameBudget
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:budgets::${this.account}:budget/${this.budgetName}` as const
+    return `arn:${this.partition}:budgets::${this.account}:budget/${this.nameBudget}` as const
   }
 }
 export type { BudgetArn }
@@ -36,39 +36,39 @@ export function budgetArn<Partition extends ArnPartition = 'aws'>(
   return new BudgetArn<Partition>(parameters)
 }
 
-export interface BudgetActionArnParameters<
+export interface ActionBudgetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly budgetName: string
-  readonly actionId: string
+  readonly nameBudget: string
+  readonly idAction: string
 }
-class BudgetActionArn<
+class ActionBudgetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'budgetAction',
   `arn:${string}:budgets::${string}:budget/${string}/action/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'budgetAction' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly budgetName: string
-  readonly actionId: string
-  constructor(parameters: BudgetActionArnParameters<Partition>) {
+  readonly nameBudget: string
+  readonly idAction: string
+  constructor(parameters: ActionBudgetArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.budgetName = parameters.budgetName
-    this.actionId = parameters.actionId
+    this.nameBudget = parameters.nameBudget
+    this.idAction = parameters.idAction
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:budgets::${this.account}:budget/${this.budgetName}/action/${this.actionId}` as const
+    return `arn:${this.partition}:budgets::${this.account}:budget/${this.nameBudget}/action/${this.idAction}` as const
   }
 }
-export type { BudgetActionArn }
-export function budgetActionArn<Partition extends ArnPartition = 'aws'>(
-  parameters: BudgetActionArnParameters<Partition>,
+export type { ActionBudgetArn }
+export function actionBudgetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ActionBudgetArnParameters<Partition>,
 ) {
-  return new BudgetActionArn<Partition>(parameters)
+  return new ActionBudgetArn<Partition>(parameters)
 }

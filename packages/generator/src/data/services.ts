@@ -64,6 +64,11 @@ export const services: Stream.Stream<
         ),
       ),
     ),
+    Effect.map((content) =>
+      content
+        .replace('ConsumerCreationTimpstamp', 'ConsumerCreationTimestamp')
+        .replace('Ece2SecuritygroupId', 'Ec2SecurityGroupId'),
+    ),
     Effect.flatMap(Schema.decodeUnknown(IamData)),
   ),
 )

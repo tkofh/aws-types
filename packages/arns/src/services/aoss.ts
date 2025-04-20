@@ -9,29 +9,29 @@ import {
 export interface CollectionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly collectionId: string
+  readonly idCollection: string
 }
 class CollectionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Collection',
   `arn:${string}:aoss:${string}:${string}:collection/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Collection' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly collectionId: string
+  readonly idCollection: string
   constructor(parameters: CollectionArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.collectionId = parameters.collectionId
+    this.idCollection = parameters.idCollection
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:aoss:${this.region}:${this.account}:collection/${this.collectionId}` as const
+    return `arn:${this.partition}:aoss:${this.region}:${this.account}:collection/${this.idCollection}` as const
   }
 }
 export type { CollectionArn }
@@ -44,8 +44,8 @@ export function collectionArn<Partition extends ArnPartition = 'aws'>(
 export interface DashboardsArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
 }
 class DashboardsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
@@ -53,12 +53,12 @@ class DashboardsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:aoss:${string}:${string}:dashboards/default`
 > {
   readonly [ArnResourceTypeBrand] = 'Dashboards' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   constructor(parameters: DashboardsArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
   }

@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterId: string
+  readonly idCluster: string
 }
 class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'cluster',
   `arn:${string}:elasticmapreduce:${string}:${string}:cluster/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'cluster' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterId: string
+  readonly idCluster: string
   constructor(parameters: ClusterArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.clusterId = parameters.clusterId
+    this.idCluster = parameters.idCluster
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticmapreduce:${this.region}:${this.account}:cluster/${this.clusterId}` as const
+    return `arn:${this.partition}:elasticmapreduce:${this.region}:${this.account}:cluster/${this.idCluster}` as const
   }
 }
 export type { ClusterArn }
@@ -40,29 +40,29 @@ export function clusterArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface EditorArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly editorId: string
+  readonly idEditor: string
 }
 class EditorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'editor',
   `arn:${string}:elasticmapreduce:${string}:${string}:editor/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'editor' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly editorId: string
+  readonly idEditor: string
   constructor(parameters: EditorArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.editorId = parameters.editorId
+    this.idEditor = parameters.idEditor
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticmapreduce:${this.region}:${this.account}:editor/${this.editorId}` as const
+    return `arn:${this.partition}:elasticmapreduce:${this.region}:${this.account}:editor/${this.idEditor}` as const
   }
 }
 export type { EditorArn }
@@ -72,67 +72,67 @@ export function editorArn<Partition extends ArnPartition = 'aws'>(
   return new EditorArn<Partition>(parameters)
 }
 
-export interface NotebookExecutionArnParameters<
+export interface ExecutionNotebookArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly notebookExecutionId: string
+  readonly idExecutionNotebook: string
 }
-class NotebookExecutionArn<
+class ExecutionNotebookArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'notebook-execution',
   `arn:${string}:elasticmapreduce:${string}:${string}:notebook-execution/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'notebook-execution' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly notebookExecutionId: string
-  constructor(parameters: NotebookExecutionArnParameters<Partition>) {
+  readonly idExecutionNotebook: string
+  constructor(parameters: ExecutionNotebookArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.notebookExecutionId = parameters.notebookExecutionId
+    this.idExecutionNotebook = parameters.idExecutionNotebook
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticmapreduce:${this.region}:${this.account}:notebook-execution/${this.notebookExecutionId}` as const
+    return `arn:${this.partition}:elasticmapreduce:${this.region}:${this.account}:notebook-execution/${this.idExecutionNotebook}` as const
   }
 }
-export type { NotebookExecutionArn }
-export function notebookExecutionArn<Partition extends ArnPartition = 'aws'>(
-  parameters: NotebookExecutionArnParameters<Partition>,
+export type { ExecutionNotebookArn }
+export function executionNotebookArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ExecutionNotebookArnParameters<Partition>,
 ) {
-  return new NotebookExecutionArn<Partition>(parameters)
+  return new ExecutionNotebookArn<Partition>(parameters)
 }
 
 export interface StudioArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly studioId: string
+  readonly idStudio: string
 }
 class StudioArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'studio',
   `arn:${string}:elasticmapreduce:${string}:${string}:studio/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'studio' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly studioId: string
+  readonly idStudio: string
   constructor(parameters: StudioArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.studioId = parameters.studioId
+    this.idStudio = parameters.idStudio
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticmapreduce:${this.region}:${this.account}:studio/${this.studioId}` as const
+    return `arn:${this.partition}:elasticmapreduce:${this.region}:${this.account}:studio/${this.idStudio}` as const
   }
 }
 export type { StudioArn }

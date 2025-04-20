@@ -6,48 +6,48 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ExecuteApiGeneralArnParameters<
+export interface GeneralApiExecuteArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly apiId: string
+  readonly idApi: string
   readonly stage: string
   readonly method: string
-  readonly apiSpecificResourcePath: string
+  readonly pathResourceSpecificApi: string
 }
-class ExecuteApiGeneralArn<
+class GeneralApiExecuteArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'execute-api-general',
   `arn:${string}:execute-api:${string}:${string}:${string}/${string}/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'execute-api-general' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly apiId: string
+  readonly idApi: string
   readonly stage: string
   readonly method: string
-  readonly apiSpecificResourcePath: string
-  constructor(parameters: ExecuteApiGeneralArnParameters<Partition>) {
+  readonly pathResourceSpecificApi: string
+  constructor(parameters: GeneralApiExecuteArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.apiId = parameters.apiId
+    this.idApi = parameters.idApi
     this.stage = parameters.stage
     this.method = parameters.method
-    this.apiSpecificResourcePath = parameters.apiSpecificResourcePath
+    this.pathResourceSpecificApi = parameters.pathResourceSpecificApi
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:execute-api:${this.region}:${this.account}:${this.apiId}/${this.stage}/${this.method}/${this.apiSpecificResourcePath}` as const
+    return `arn:${this.partition}:execute-api:${this.region}:${this.account}:${this.idApi}/${this.stage}/${this.method}/${this.pathResourceSpecificApi}` as const
   }
 }
-export type { ExecuteApiGeneralArn }
-export function executeApiGeneralArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ExecuteApiGeneralArnParameters<Partition>,
+export type { GeneralApiExecuteArn }
+export function generalApiExecuteArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GeneralApiExecuteArnParameters<Partition>,
 ) {
-  return new ExecuteApiGeneralArn<Partition>(parameters)
+  return new GeneralApiExecuteArn<Partition>(parameters)
 }

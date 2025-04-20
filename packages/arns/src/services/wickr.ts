@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface NetworkArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly networkId: string
+  readonly idNetwork: string
 }
 class NetworkArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'network',
   `arn:${string}:wickr:${string}:${string}:network/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'network' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly networkId: string
+  readonly idNetwork: string
   constructor(parameters: NetworkArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.networkId = parameters.networkId
+    this.idNetwork = parameters.idNetwork
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:wickr:${this.region}:${this.account}:network/${this.networkId}` as const
+    return `arn:${this.partition}:wickr:${this.region}:${this.account}:network/${this.idNetwork}` as const
   }
 }
 export type { NetworkArn }

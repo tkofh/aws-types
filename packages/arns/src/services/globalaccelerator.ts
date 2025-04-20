@@ -9,9 +9,9 @@ import {
 export interface AcceleratorArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
 class AcceleratorArn<
   Partition extends ArnPartition = 'aws',
@@ -20,17 +20,17 @@ class AcceleratorArn<
   `arn:${string}:globalaccelerator::${string}:accelerator/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'accelerator' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
   constructor(parameters: AcceleratorArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:globalaccelerator::${this.account}:accelerator/${this.resourceId}` as const
+    return `arn:${this.partition}:globalaccelerator::${this.account}:accelerator/${this.idResource}` as const
   }
 }
 export type { AcceleratorArn }
@@ -41,29 +41,29 @@ export function acceleratorArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ListenerArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
-  readonly listenerId: string
+  readonly idResource: string
+  readonly idListener: string
 }
 class ListenerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'listener',
   `arn:${string}:globalaccelerator::${string}:accelerator/${string}/listener/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'listener' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
-  readonly listenerId: string
+  readonly idResource: string
+  readonly idListener: string
   constructor(parameters: ListenerArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
-    this.listenerId = parameters.listenerId
+    this.idResource = parameters.idResource
+    this.idListener = parameters.idListener
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:globalaccelerator::${this.account}:accelerator/${this.resourceId}/listener/${this.listenerId}` as const
+    return `arn:${this.partition}:globalaccelerator::${this.account}:accelerator/${this.idResource}/listener/${this.idListener}` as const
   }
 }
 export type { ListenerArn }
@@ -73,69 +73,69 @@ export function listenerArn<Partition extends ArnPartition = 'aws'>(
   return new ListenerArn<Partition>(parameters)
 }
 
-export interface EndpointgroupArnParameters<
+export interface GroupEndpointArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
-  readonly listenerId: string
-  readonly endpointGroupId: string
+  readonly idResource: string
+  readonly idListener: string
+  readonly idGroupEndpoint: string
 }
-class EndpointgroupArn<
+class GroupEndpointArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'endpointgroup',
   `arn:${string}:globalaccelerator::${string}:accelerator/${string}/listener/${string}/endpoint-group/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'endpointgroup' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
-  readonly listenerId: string
-  readonly endpointGroupId: string
-  constructor(parameters: EndpointgroupArnParameters<Partition>) {
+  readonly idResource: string
+  readonly idListener: string
+  readonly idGroupEndpoint: string
+  constructor(parameters: GroupEndpointArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
-    this.listenerId = parameters.listenerId
-    this.endpointGroupId = parameters.endpointGroupId
+    this.idResource = parameters.idResource
+    this.idListener = parameters.idListener
+    this.idGroupEndpoint = parameters.idGroupEndpoint
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:globalaccelerator::${this.account}:accelerator/${this.resourceId}/listener/${this.listenerId}/endpoint-group/${this.endpointGroupId}` as const
+    return `arn:${this.partition}:globalaccelerator::${this.account}:accelerator/${this.idResource}/listener/${this.idListener}/endpoint-group/${this.idGroupEndpoint}` as const
   }
 }
-export type { EndpointgroupArn }
-export function endpointgroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: EndpointgroupArnParameters<Partition>,
+export type { GroupEndpointArn }
+export function groupEndpointArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupEndpointArnParameters<Partition>,
 ) {
-  return new EndpointgroupArn<Partition>(parameters)
+  return new GroupEndpointArn<Partition>(parameters)
 }
 
 export interface AttachmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
 class AttachmentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'attachment',
   `arn:${string}:globalaccelerator::${string}:attachment/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'attachment' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
   constructor(parameters: AttachmentArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:globalaccelerator::${this.account}:attachment/${this.resourceId}` as const
+    return `arn:${this.partition}:globalaccelerator::${this.account}:attachment/${this.idResource}` as const
   }
 }
 export type { AttachmentArn }

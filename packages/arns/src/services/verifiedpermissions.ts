@@ -6,36 +6,36 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface PolicyStoreArnParameters<
+export interface StorePolicyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly policyStoreId: string
+  readonly idStorePolicy: string
 }
-class PolicyStoreArn<
+class StorePolicyArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'policy-store',
   `arn:${string}:verifiedpermissions::${string}:policy-store/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'policy-store' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly policyStoreId: string
-  constructor(parameters: PolicyStoreArnParameters<Partition>) {
+  readonly idStorePolicy: string
+  constructor(parameters: StorePolicyArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.policyStoreId = parameters.policyStoreId
+    this.idStorePolicy = parameters.idStorePolicy
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:verifiedpermissions::${this.account}:policy-store/${this.policyStoreId}` as const
+    return `arn:${this.partition}:verifiedpermissions::${this.account}:policy-store/${this.idStorePolicy}` as const
   }
 }
-export type { PolicyStoreArn }
-export function policyStoreArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PolicyStoreArnParameters<Partition>,
+export type { StorePolicyArn }
+export function storePolicyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StorePolicyArnParameters<Partition>,
 ) {
-  return new PolicyStoreArn<Partition>(parameters)
+  return new StorePolicyArn<Partition>(parameters)
 }

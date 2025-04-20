@@ -6,39 +6,39 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface IdentitypoolArnParameters<
+export interface PoolIdentityArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly identityPoolId: string
+  readonly idPoolIdentity: string
 }
-class IdentitypoolArn<
+class PoolIdentityArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'identitypool',
   `arn:${string}:cognito-identity:${string}:${string}:identitypool/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'identitypool' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly identityPoolId: string
-  constructor(parameters: IdentitypoolArnParameters<Partition>) {
+  readonly idPoolIdentity: string
+  constructor(parameters: PoolIdentityArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.identityPoolId = parameters.identityPoolId
+    this.idPoolIdentity = parameters.idPoolIdentity
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cognito-identity:${this.region}:${this.account}:identitypool/${this.identityPoolId}` as const
+    return `arn:${this.partition}:cognito-identity:${this.region}:${this.account}:identitypool/${this.idPoolIdentity}` as const
   }
 }
-export type { IdentitypoolArn }
-export function identitypoolArn<Partition extends ArnPartition = 'aws'>(
-  parameters: IdentitypoolArnParameters<Partition>,
+export type { PoolIdentityArn }
+export function poolIdentityArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PoolIdentityArnParameters<Partition>,
 ) {
-  return new IdentitypoolArn<Partition>(parameters)
+  return new PoolIdentityArn<Partition>(parameters)
 }

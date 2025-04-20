@@ -6,161 +6,161 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface WirelessDeviceArnParameters<
+export interface DeviceWirelessArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly wirelessDeviceId: string
+  readonly idDeviceWireless: string
 }
-class WirelessDeviceArn<
+class DeviceWirelessArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'WirelessDevice',
   `arn:${string}:iotwireless:${string}:${string}:WirelessDevice/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'WirelessDevice' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly wirelessDeviceId: string
-  constructor(parameters: WirelessDeviceArnParameters<Partition>) {
+  readonly idDeviceWireless: string
+  constructor(parameters: DeviceWirelessArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.wirelessDeviceId = parameters.wirelessDeviceId
+    this.idDeviceWireless = parameters.idDeviceWireless
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:WirelessDevice/${this.wirelessDeviceId}` as const
+    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:WirelessDevice/${this.idDeviceWireless}` as const
   }
 }
-export type { WirelessDeviceArn }
-export function wirelessDeviceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: WirelessDeviceArnParameters<Partition>,
+export type { DeviceWirelessArn }
+export function deviceWirelessArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DeviceWirelessArnParameters<Partition>,
 ) {
-  return new WirelessDeviceArn<Partition>(parameters)
+  return new DeviceWirelessArn<Partition>(parameters)
 }
 
-export interface WirelessGatewayArnParameters<
+export interface GatewayWirelessArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly wirelessGatewayId: string
+  readonly idGatewayWireless: string
 }
-class WirelessGatewayArn<
+class GatewayWirelessArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'WirelessGateway',
   `arn:${string}:iotwireless:${string}:${string}:WirelessGateway/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'WirelessGateway' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly wirelessGatewayId: string
-  constructor(parameters: WirelessGatewayArnParameters<Partition>) {
+  readonly idGatewayWireless: string
+  constructor(parameters: GatewayWirelessArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.wirelessGatewayId = parameters.wirelessGatewayId
+    this.idGatewayWireless = parameters.idGatewayWireless
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:WirelessGateway/${this.wirelessGatewayId}` as const
+    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:WirelessGateway/${this.idGatewayWireless}` as const
   }
 }
-export type { WirelessGatewayArn }
-export function wirelessGatewayArn<Partition extends ArnPartition = 'aws'>(
-  parameters: WirelessGatewayArnParameters<Partition>,
+export type { GatewayWirelessArn }
+export function gatewayWirelessArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GatewayWirelessArnParameters<Partition>,
 ) {
-  return new WirelessGatewayArn<Partition>(parameters)
+  return new GatewayWirelessArn<Partition>(parameters)
 }
 
-export interface DeviceProfileArnParameters<
+export interface ProfileDeviceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly deviceProfileId: string
+  readonly idProfileDevice: string
 }
-class DeviceProfileArn<
+class ProfileDeviceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'DeviceProfile',
   `arn:${string}:iotwireless:${string}:${string}:DeviceProfile/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'DeviceProfile' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly deviceProfileId: string
-  constructor(parameters: DeviceProfileArnParameters<Partition>) {
+  readonly idProfileDevice: string
+  constructor(parameters: ProfileDeviceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.deviceProfileId = parameters.deviceProfileId
+    this.idProfileDevice = parameters.idProfileDevice
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:DeviceProfile/${this.deviceProfileId}` as const
+    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:DeviceProfile/${this.idProfileDevice}` as const
   }
 }
-export type { DeviceProfileArn }
-export function deviceProfileArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DeviceProfileArnParameters<Partition>,
+export type { ProfileDeviceArn }
+export function profileDeviceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProfileDeviceArnParameters<Partition>,
 ) {
-  return new DeviceProfileArn<Partition>(parameters)
+  return new ProfileDeviceArn<Partition>(parameters)
 }
 
-export interface ServiceProfileArnParameters<
+export interface ProfileServiceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serviceProfileId: string
+  readonly idProfileService: string
 }
-class ServiceProfileArn<
+class ProfileServiceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ServiceProfile',
   `arn:${string}:iotwireless:${string}:${string}:ServiceProfile/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ServiceProfile' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serviceProfileId: string
-  constructor(parameters: ServiceProfileArnParameters<Partition>) {
+  readonly idProfileService: string
+  constructor(parameters: ProfileServiceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.serviceProfileId = parameters.serviceProfileId
+    this.idProfileService = parameters.idProfileService
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:ServiceProfile/${this.serviceProfileId}` as const
+    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:ServiceProfile/${this.idProfileService}` as const
   }
 }
-export type { ServiceProfileArn }
-export function serviceProfileArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ServiceProfileArnParameters<Partition>,
+export type { ProfileServiceArn }
+export function profileServiceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProfileServiceArnParameters<Partition>,
 ) {
-  return new ServiceProfileArn<Partition>(parameters)
+  return new ProfileServiceArn<Partition>(parameters)
 }
 
 export interface DestinationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly destinationName: string
+  readonly nameDestination: string
 }
 class DestinationArn<
   Partition extends ArnPartition = 'aws',
@@ -169,19 +169,19 @@ class DestinationArn<
   `arn:${string}:iotwireless:${string}:${string}:Destination/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Destination' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly destinationName: string
+  readonly nameDestination: string
   constructor(parameters: DestinationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.destinationName = parameters.destinationName
+    this.nameDestination = parameters.nameDestination
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:Destination/${this.destinationName}` as const
+    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:Destination/${this.nameDestination}` as const
   }
 }
 export type { DestinationArn }
@@ -191,219 +191,219 @@ export function destinationArn<Partition extends ArnPartition = 'aws'>(
   return new DestinationArn<Partition>(parameters)
 }
 
-export interface SidewalkAccountArnParameters<
+export interface AccountSidewalkArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly sidewalkAccountId: string
+  readonly idAccountSidewalk: string
 }
-class SidewalkAccountArn<
+class AccountSidewalkArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'SidewalkAccount',
   `arn:${string}:iotwireless:${string}:${string}:SidewalkAccount/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'SidewalkAccount' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly sidewalkAccountId: string
-  constructor(parameters: SidewalkAccountArnParameters<Partition>) {
+  readonly idAccountSidewalk: string
+  constructor(parameters: AccountSidewalkArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.sidewalkAccountId = parameters.sidewalkAccountId
+    this.idAccountSidewalk = parameters.idAccountSidewalk
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:SidewalkAccount/${this.sidewalkAccountId}` as const
+    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:SidewalkAccount/${this.idAccountSidewalk}` as const
   }
 }
-export type { SidewalkAccountArn }
-export function sidewalkAccountArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SidewalkAccountArnParameters<Partition>,
+export type { AccountSidewalkArn }
+export function accountSidewalkArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AccountSidewalkArnParameters<Partition>,
 ) {
-  return new SidewalkAccountArn<Partition>(parameters)
+  return new AccountSidewalkArn<Partition>(parameters)
 }
 
-export interface WirelessGatewayTaskDefinitionArnParameters<
+export interface DefinitionTaskGatewayWirelessArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly wirelessGatewayTaskDefinitionId: string
+  readonly idDefinitionTaskGatewayWireless: string
 }
-class WirelessGatewayTaskDefinitionArn<
+class DefinitionTaskGatewayWirelessArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'WirelessGatewayTaskDefinition',
   `arn:${string}:iotwireless:${string}:${string}:WirelessGatewayTaskDefinition/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'WirelessGatewayTaskDefinition' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly wirelessGatewayTaskDefinitionId: string
+  readonly idDefinitionTaskGatewayWireless: string
   constructor(
-    parameters: WirelessGatewayTaskDefinitionArnParameters<Partition>,
+    parameters: DefinitionTaskGatewayWirelessArnParameters<Partition>,
   ) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.wirelessGatewayTaskDefinitionId =
-      parameters.wirelessGatewayTaskDefinitionId
+    this.idDefinitionTaskGatewayWireless =
+      parameters.idDefinitionTaskGatewayWireless
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:WirelessGatewayTaskDefinition/${this.wirelessGatewayTaskDefinitionId}` as const
+    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:WirelessGatewayTaskDefinition/${this.idDefinitionTaskGatewayWireless}` as const
   }
 }
-export type { WirelessGatewayTaskDefinitionArn }
-export function wirelessGatewayTaskDefinitionArn<
+export type { DefinitionTaskGatewayWirelessArn }
+export function definitionTaskGatewayWirelessArn<
   Partition extends ArnPartition = 'aws',
->(parameters: WirelessGatewayTaskDefinitionArnParameters<Partition>) {
-  return new WirelessGatewayTaskDefinitionArn<Partition>(parameters)
+>(parameters: DefinitionTaskGatewayWirelessArnParameters<Partition>) {
+  return new DefinitionTaskGatewayWirelessArn<Partition>(parameters)
 }
 
-export interface FuotaTaskArnParameters<
+export interface TaskFuotaArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly fuotaTaskId: string
+  readonly idTaskFuota: string
 }
-class FuotaTaskArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class TaskFuotaArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'FuotaTask',
   `arn:${string}:iotwireless:${string}:${string}:FuotaTask/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'FuotaTask' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly fuotaTaskId: string
-  constructor(parameters: FuotaTaskArnParameters<Partition>) {
+  readonly idTaskFuota: string
+  constructor(parameters: TaskFuotaArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.fuotaTaskId = parameters.fuotaTaskId
+    this.idTaskFuota = parameters.idTaskFuota
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:FuotaTask/${this.fuotaTaskId}` as const
+    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:FuotaTask/${this.idTaskFuota}` as const
   }
 }
-export type { FuotaTaskArn }
-export function fuotaTaskArn<Partition extends ArnPartition = 'aws'>(
-  parameters: FuotaTaskArnParameters<Partition>,
+export type { TaskFuotaArn }
+export function taskFuotaArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TaskFuotaArnParameters<Partition>,
 ) {
-  return new FuotaTaskArn<Partition>(parameters)
+  return new TaskFuotaArn<Partition>(parameters)
 }
 
-export interface MulticastGroupArnParameters<
+export interface GroupMulticastArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly multicastGroupId: string
+  readonly idGroupMulticast: string
 }
-class MulticastGroupArn<
+class GroupMulticastArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'MulticastGroup',
   `arn:${string}:iotwireless:${string}:${string}:MulticastGroup/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'MulticastGroup' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly multicastGroupId: string
-  constructor(parameters: MulticastGroupArnParameters<Partition>) {
+  readonly idGroupMulticast: string
+  constructor(parameters: GroupMulticastArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.multicastGroupId = parameters.multicastGroupId
+    this.idGroupMulticast = parameters.idGroupMulticast
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:MulticastGroup/${this.multicastGroupId}` as const
+    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:MulticastGroup/${this.idGroupMulticast}` as const
   }
 }
-export type { MulticastGroupArn }
-export function multicastGroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: MulticastGroupArnParameters<Partition>,
+export type { GroupMulticastArn }
+export function groupMulticastArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupMulticastArnParameters<Partition>,
 ) {
-  return new MulticastGroupArn<Partition>(parameters)
+  return new GroupMulticastArn<Partition>(parameters)
 }
 
-export interface NetworkAnalyzerConfigurationArnParameters<
+export interface ConfigurationAnalyzerNetworkArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly networkAnalyzerConfigurationName: string
+  readonly nameConfigurationAnalyzerNetwork: string
 }
-class NetworkAnalyzerConfigurationArn<
+class ConfigurationAnalyzerNetworkArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'NetworkAnalyzerConfiguration',
   `arn:${string}:iotwireless:${string}:${string}:NetworkAnalyzerConfiguration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'NetworkAnalyzerConfiguration' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly networkAnalyzerConfigurationName: string
+  readonly nameConfigurationAnalyzerNetwork: string
   constructor(
-    parameters: NetworkAnalyzerConfigurationArnParameters<Partition>,
+    parameters: ConfigurationAnalyzerNetworkArnParameters<Partition>,
   ) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.networkAnalyzerConfigurationName =
-      parameters.networkAnalyzerConfigurationName
+    this.nameConfigurationAnalyzerNetwork =
+      parameters.nameConfigurationAnalyzerNetwork
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:NetworkAnalyzerConfiguration/${this.networkAnalyzerConfigurationName}` as const
+    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:NetworkAnalyzerConfiguration/${this.nameConfigurationAnalyzerNetwork}` as const
   }
 }
-export type { NetworkAnalyzerConfigurationArn }
-export function networkAnalyzerConfigurationArn<
+export type { ConfigurationAnalyzerNetworkArn }
+export function configurationAnalyzerNetworkArn<
   Partition extends ArnPartition = 'aws',
->(parameters: NetworkAnalyzerConfigurationArnParameters<Partition>) {
-  return new NetworkAnalyzerConfigurationArn<Partition>(parameters)
+>(parameters: ConfigurationAnalyzerNetworkArnParameters<Partition>) {
+  return new ConfigurationAnalyzerNetworkArn<Partition>(parameters)
 }
 
 export interface ThingArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly thingName: string
+  readonly nameThing: string
 }
 class ThingArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'thing',
   `arn:${string}:iot:${string}:${string}:thing/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'thing' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly thingName: string
+  readonly nameThing: string
   constructor(parameters: ThingArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.thingName = parameters.thingName
+    this.nameThing = parameters.nameThing
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iot:${this.region}:${this.account}:thing/${this.thingName}` as const
+    return `arn:${this.partition}:iot:${this.region}:${this.account}:thing/${this.nameThing}` as const
   }
 }
 export type { ThingArn }
@@ -414,8 +414,8 @@ export function thingArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface CertArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly certificate: string
 }
@@ -424,13 +424,13 @@ class CertArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:iot:${string}:${string}:cert/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'cert' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly certificate: string
   constructor(parameters: CertArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.certificate = parameters.certificate
@@ -446,37 +446,37 @@ export function certArn<Partition extends ArnPartition = 'aws'>(
   return new CertArn<Partition>(parameters)
 }
 
-export interface ImportTaskArnParameters<
+export interface TaskImportArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly importTaskId: string
+  readonly idTaskImport: string
 }
-class ImportTaskArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class TaskImportArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'ImportTask',
   `arn:${string}:iotwireless:${string}:${string}:ImportTask/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ImportTask' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly importTaskId: string
-  constructor(parameters: ImportTaskArnParameters<Partition>) {
+  readonly idTaskImport: string
+  constructor(parameters: TaskImportArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.importTaskId = parameters.importTaskId
+    this.idTaskImport = parameters.idTaskImport
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:ImportTask/${this.importTaskId}` as const
+    return `arn:${this.partition}:iotwireless:${this.region}:${this.account}:ImportTask/${this.idTaskImport}` as const
   }
 }
-export type { ImportTaskArn }
-export function importTaskArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ImportTaskArnParameters<Partition>,
+export type { TaskImportArn }
+export function taskImportArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TaskImportArnParameters<Partition>,
 ) {
-  return new ImportTaskArn<Partition>(parameters)
+  return new TaskImportArn<Partition>(parameters)
 }

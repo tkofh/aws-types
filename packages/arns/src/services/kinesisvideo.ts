@@ -7,32 +7,32 @@ import {
 } from '../internal.js'
 
 export interface StreamArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly streamName: string
-  readonly creationTime: string
+  readonly nameStream: string
+  readonly timeCreation: string
 }
 class StreamArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'stream',
   `arn:${string}:kinesisvideo:${string}:${string}:stream/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'stream' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly streamName: string
-  readonly creationTime: string
+  readonly nameStream: string
+  readonly timeCreation: string
   constructor(parameters: StreamArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.streamName = parameters.streamName
-    this.creationTime = parameters.creationTime
+    this.nameStream = parameters.nameStream
+    this.timeCreation = parameters.timeCreation
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:kinesisvideo:${this.region}:${this.account}:stream/${this.streamName}/${this.creationTime}` as const
+    return `arn:${this.partition}:kinesisvideo:${this.region}:${this.account}:stream/${this.nameStream}/${this.timeCreation}` as const
   }
 }
 export type { StreamArn }
@@ -43,32 +43,32 @@ export function streamArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ChannelArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly channelName: string
-  readonly creationTime: string
+  readonly nameChannel: string
+  readonly timeCreation: string
 }
 class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'channel',
   `arn:${string}:kinesisvideo:${string}:${string}:channel/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'channel' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly channelName: string
-  readonly creationTime: string
+  readonly nameChannel: string
+  readonly timeCreation: string
   constructor(parameters: ChannelArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.channelName = parameters.channelName
-    this.creationTime = parameters.creationTime
+    this.nameChannel = parameters.nameChannel
+    this.timeCreation = parameters.timeCreation
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:kinesisvideo:${this.region}:${this.account}:channel/${this.channelName}/${this.creationTime}` as const
+    return `arn:${this.partition}:kinesisvideo:${this.region}:${this.account}:channel/${this.nameChannel}/${this.timeCreation}` as const
   }
 }
 export type { ChannelArn }

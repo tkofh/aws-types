@@ -6,58 +6,58 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface PermissionSetArnParameters<
+export interface SetPermissionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly instanceId: string
-  readonly permissionSetId: string
+  readonly partition: string
+  readonly idInstance: string
+  readonly idSetPermission: string
 }
-class PermissionSetArn<
+class SetPermissionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'PermissionSet',
   `arn:${string}:sso:::permissionSet/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'PermissionSet' as const
-  readonly partition: Partition
-  readonly instanceId: string
-  readonly permissionSetId: string
-  constructor(parameters: PermissionSetArnParameters<Partition>) {
+  readonly partition: string
+  readonly idInstance: string
+  readonly idSetPermission: string
+  constructor(parameters: SetPermissionArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
-    this.instanceId = parameters.instanceId
-    this.permissionSetId = parameters.permissionSetId
+    this.partition = parameters.partition
+    this.idInstance = parameters.idInstance
+    this.idSetPermission = parameters.idSetPermission
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sso:::permissionSet/${this.instanceId}/${this.permissionSetId}` as const
+    return `arn:${this.partition}:sso:::permissionSet/${this.idInstance}/${this.idSetPermission}` as const
   }
 }
-export type { PermissionSetArn }
-export function permissionSetArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PermissionSetArnParameters<Partition>,
+export type { SetPermissionArn }
+export function setPermissionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SetPermissionArnParameters<Partition>,
 ) {
-  return new PermissionSetArn<Partition>(parameters)
+  return new SetPermissionArn<Partition>(parameters)
 }
 
 export interface AccountArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly accountId: string
+  readonly partition: string
+  readonly idAccount: string
 }
 class AccountArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Account',
   `arn:${string}:sso:::account/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Account' as const
-  readonly partition: Partition
-  readonly accountId: string
+  readonly partition: string
+  readonly idAccount: string
   constructor(parameters: AccountArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
-    this.accountId = parameters.accountId
+    this.partition = parameters.partition
+    this.idAccount = parameters.idAccount
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sso:::account/${this.accountId}` as const
+    return `arn:${this.partition}:sso:::account/${this.idAccount}` as const
   }
 }
 export type { AccountArn }
@@ -68,23 +68,23 @@ export function accountArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface InstanceArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly instanceId: string
+  readonly partition: string
+  readonly idInstance: string
 }
 class InstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Instance',
   `arn:${string}:sso:::instance/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Instance' as const
-  readonly partition: Partition
-  readonly instanceId: string
+  readonly partition: string
+  readonly idInstance: string
   constructor(parameters: InstanceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
-    this.instanceId = parameters.instanceId
+    this.partition = parameters.partition
+    this.idInstance = parameters.idInstance
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sso:::instance/${this.instanceId}` as const
+    return `arn:${this.partition}:sso:::instance/${this.idInstance}` as const
   }
 }
 export type { InstanceArn }
@@ -97,10 +97,10 @@ export function instanceArn<Partition extends ArnPartition = 'aws'>(
 export interface ApplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly accountId: string
-  readonly instanceId: string
-  readonly applicationId: string
+  readonly partition: string
+  readonly idAccount: string
+  readonly idInstance: string
+  readonly idApplication: string
 }
 class ApplicationArn<
   Partition extends ArnPartition = 'aws',
@@ -109,19 +109,19 @@ class ApplicationArn<
   `arn:${string}:sso::${string}:application/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Application' as const
-  readonly partition: Partition
-  readonly accountId: string
-  readonly instanceId: string
-  readonly applicationId: string
+  readonly partition: string
+  readonly idAccount: string
+  readonly idInstance: string
+  readonly idApplication: string
   constructor(parameters: ApplicationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
-    this.accountId = parameters.accountId
-    this.instanceId = parameters.instanceId
-    this.applicationId = parameters.applicationId
+    this.partition = parameters.partition
+    this.idAccount = parameters.idAccount
+    this.idInstance = parameters.idInstance
+    this.idApplication = parameters.idApplication
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sso::${this.accountId}:application/${this.instanceId}/${this.applicationId}` as const
+    return `arn:${this.partition}:sso::${this.idAccount}:application/${this.idInstance}/${this.idApplication}` as const
   }
 }
 export type { ApplicationArn }
@@ -131,70 +131,70 @@ export function applicationArn<Partition extends ArnPartition = 'aws'>(
   return new ApplicationArn<Partition>(parameters)
 }
 
-export interface TrustedTokenIssuerArnParameters<
+export interface IssuerTokenTrustedArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly accountId: string
-  readonly instanceId: string
-  readonly trustedTokenIssuerId: string
+  readonly partition: string
+  readonly idAccount: string
+  readonly idInstance: string
+  readonly idIssuerTokenTrusted: string
 }
-class TrustedTokenIssuerArn<
+class IssuerTokenTrustedArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'TrustedTokenIssuer',
   `arn:${string}:sso::${string}:trustedTokenIssuer/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'TrustedTokenIssuer' as const
-  readonly partition: Partition
-  readonly accountId: string
-  readonly instanceId: string
-  readonly trustedTokenIssuerId: string
-  constructor(parameters: TrustedTokenIssuerArnParameters<Partition>) {
+  readonly partition: string
+  readonly idAccount: string
+  readonly idInstance: string
+  readonly idIssuerTokenTrusted: string
+  constructor(parameters: IssuerTokenTrustedArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
-    this.accountId = parameters.accountId
-    this.instanceId = parameters.instanceId
-    this.trustedTokenIssuerId = parameters.trustedTokenIssuerId
+    this.partition = parameters.partition
+    this.idAccount = parameters.idAccount
+    this.idInstance = parameters.idInstance
+    this.idIssuerTokenTrusted = parameters.idIssuerTokenTrusted
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sso::${this.accountId}:trustedTokenIssuer/${this.instanceId}/${this.trustedTokenIssuerId}` as const
+    return `arn:${this.partition}:sso::${this.idAccount}:trustedTokenIssuer/${this.idInstance}/${this.idIssuerTokenTrusted}` as const
   }
 }
-export type { TrustedTokenIssuerArn }
-export function trustedTokenIssuerArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TrustedTokenIssuerArnParameters<Partition>,
+export type { IssuerTokenTrustedArn }
+export function issuerTokenTrustedArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IssuerTokenTrustedArnParameters<Partition>,
 ) {
-  return new TrustedTokenIssuerArn<Partition>(parameters)
+  return new IssuerTokenTrustedArn<Partition>(parameters)
 }
 
-export interface ApplicationProviderArnParameters<
+export interface ProviderApplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly applicationProviderId: string
+  readonly partition: string
+  readonly idProviderApplication: string
 }
-class ApplicationProviderArn<
+class ProviderApplicationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ApplicationProvider',
   `arn:${string}:sso::aws:applicationProvider/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ApplicationProvider' as const
-  readonly partition: Partition
-  readonly applicationProviderId: string
-  constructor(parameters: ApplicationProviderArnParameters<Partition>) {
+  readonly partition: string
+  readonly idProviderApplication: string
+  constructor(parameters: ProviderApplicationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
-    this.applicationProviderId = parameters.applicationProviderId
+    this.partition = parameters.partition
+    this.idProviderApplication = parameters.idProviderApplication
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sso::aws:applicationProvider/${this.applicationProviderId}` as const
+    return `arn:${this.partition}:sso::aws:applicationProvider/${this.idProviderApplication}` as const
   }
 }
-export type { ApplicationProviderArn }
-export function applicationProviderArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ApplicationProviderArnParameters<Partition>,
+export type { ProviderApplicationArn }
+export function providerApplicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProviderApplicationArnParameters<Partition>,
 ) {
-  return new ApplicationProviderArn<Partition>(parameters)
+  return new ProviderApplicationArn<Partition>(parameters)
 }

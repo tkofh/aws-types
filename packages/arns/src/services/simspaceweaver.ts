@@ -9,29 +9,29 @@ import {
 export interface SimulationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly simulationName: string
+  readonly nameSimulation: string
 }
 class SimulationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Simulation',
   `arn:${string}:simspaceweaver:${string}:${string}:simulation/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Simulation' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly simulationName: string
+  readonly nameSimulation: string
   constructor(parameters: SimulationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.simulationName = parameters.simulationName
+    this.nameSimulation = parameters.nameSimulation
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:simspaceweaver:${this.region}:${this.account}:simulation/${this.simulationName}` as const
+    return `arn:${this.partition}:simspaceweaver:${this.region}:${this.account}:simulation/${this.nameSimulation}` as const
   }
 }
 export type { SimulationArn }

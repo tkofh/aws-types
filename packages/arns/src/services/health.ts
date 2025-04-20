@@ -7,26 +7,26 @@ import {
 } from '../internal.js'
 
 export interface EventArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly service: string
-  readonly eventTypeCode: string
+  readonly codeTypeEvent: string
 }
 class EventArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'event',
   `arn:${string}:health:*::event/${string}/${string}/*`
 > {
   readonly [ArnResourceTypeBrand] = 'event' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly service: string
-  readonly eventTypeCode: string
+  readonly codeTypeEvent: string
   constructor(parameters: EventArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.service = parameters.service
-    this.eventTypeCode = parameters.eventTypeCode
+    this.codeTypeEvent = parameters.codeTypeEvent
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:health:*::event/${this.service}/${this.eventTypeCode}/*` as const
+    return `arn:${this.partition}:health:*::event/${this.service}/${this.codeTypeEvent}/*` as const
   }
 }
 export type { EventArn }

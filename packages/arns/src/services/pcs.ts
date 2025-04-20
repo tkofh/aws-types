@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterIdentifier: string
+  readonly identifierCluster: string
 }
 class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'cluster',
   `arn:${string}:pcs:${string}:${string}:cluster/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'cluster' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterIdentifier: string
+  readonly identifierCluster: string
   constructor(parameters: ClusterArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.clusterIdentifier = parameters.clusterIdentifier
+    this.identifierCluster = parameters.identifierCluster
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:pcs:${this.region}:${this.account}:cluster/${this.clusterIdentifier}` as const
+    return `arn:${this.partition}:pcs:${this.region}:${this.account}:cluster/${this.identifierCluster}` as const
   }
 }
 export type { ClusterArn }
@@ -39,73 +39,73 @@ export function clusterArn<Partition extends ArnPartition = 'aws'>(
   return new ClusterArn<Partition>(parameters)
 }
 
-export interface ComputenodegroupArnParameters<
+export interface NodegroupComputeArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterIdentifier: string
-  readonly computeNodeGroupIdentifier: string
+  readonly identifierCluster: string
+  readonly identifierGroupNodeCompute: string
 }
-class ComputenodegroupArn<
+class NodegroupComputeArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'computenodegroup',
   `arn:${string}:pcs:${string}:${string}:cluster/${string}/computenodegroup/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'computenodegroup' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterIdentifier: string
-  readonly computeNodeGroupIdentifier: string
-  constructor(parameters: ComputenodegroupArnParameters<Partition>) {
+  readonly identifierCluster: string
+  readonly identifierGroupNodeCompute: string
+  constructor(parameters: NodegroupComputeArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.clusterIdentifier = parameters.clusterIdentifier
-    this.computeNodeGroupIdentifier = parameters.computeNodeGroupIdentifier
+    this.identifierCluster = parameters.identifierCluster
+    this.identifierGroupNodeCompute = parameters.identifierGroupNodeCompute
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:pcs:${this.region}:${this.account}:cluster/${this.clusterIdentifier}/computenodegroup/${this.computeNodeGroupIdentifier}` as const
+    return `arn:${this.partition}:pcs:${this.region}:${this.account}:cluster/${this.identifierCluster}/computenodegroup/${this.identifierGroupNodeCompute}` as const
   }
 }
-export type { ComputenodegroupArn }
-export function computenodegroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ComputenodegroupArnParameters<Partition>,
+export type { NodegroupComputeArn }
+export function nodegroupComputeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NodegroupComputeArnParameters<Partition>,
 ) {
-  return new ComputenodegroupArn<Partition>(parameters)
+  return new NodegroupComputeArn<Partition>(parameters)
 }
 
 export interface QueueArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterIdentifier: string
-  readonly queueIdentifier: string
+  readonly identifierCluster: string
+  readonly identifierQueue: string
 }
 class QueueArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'queue',
   `arn:${string}:pcs:${string}:${string}:cluster/${string}/queue/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'queue' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterIdentifier: string
-  readonly queueIdentifier: string
+  readonly identifierCluster: string
+  readonly identifierQueue: string
   constructor(parameters: QueueArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.clusterIdentifier = parameters.clusterIdentifier
-    this.queueIdentifier = parameters.queueIdentifier
+    this.identifierCluster = parameters.identifierCluster
+    this.identifierQueue = parameters.identifierQueue
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:pcs:${this.region}:${this.account}:cluster/${this.clusterIdentifier}/queue/${this.queueIdentifier}` as const
+    return `arn:${this.partition}:pcs:${this.region}:${this.account}:cluster/${this.identifierCluster}/queue/${this.identifierQueue}` as const
   }
 }
 export type { QueueArn }

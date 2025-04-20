@@ -6,39 +6,39 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface DeliverystreamArnParameters<
+export interface StreamDeliveryArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly deliveryStreamName: string
+  readonly nameStreamDelivery: string
 }
-class DeliverystreamArn<
+class StreamDeliveryArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'deliverystream',
   `arn:${string}:firehose:${string}:${string}:deliverystream/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'deliverystream' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly deliveryStreamName: string
-  constructor(parameters: DeliverystreamArnParameters<Partition>) {
+  readonly nameStreamDelivery: string
+  constructor(parameters: StreamDeliveryArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.deliveryStreamName = parameters.deliveryStreamName
+    this.nameStreamDelivery = parameters.nameStreamDelivery
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:firehose:${this.region}:${this.account}:deliverystream/${this.deliveryStreamName}` as const
+    return `arn:${this.partition}:firehose:${this.region}:${this.account}:deliverystream/${this.nameStreamDelivery}` as const
   }
 }
-export type { DeliverystreamArn }
-export function deliverystreamArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DeliverystreamArnParameters<Partition>,
+export type { StreamDeliveryArn }
+export function streamDeliveryArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StreamDeliveryArnParameters<Partition>,
 ) {
-  return new DeliverystreamArn<Partition>(parameters)
+  return new StreamDeliveryArn<Partition>(parameters)
 }

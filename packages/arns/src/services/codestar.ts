@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly projectId: string
+  readonly idProject: string
 }
 class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'project',
   `arn:${string}:codestar:${string}:${string}:project/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'project' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly projectId: string
+  readonly idProject: string
   constructor(parameters: ProjectArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.projectId = parameters.projectId
+    this.idProject = parameters.idProject
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:codestar:${this.region}:${this.account}:project/${this.projectId}` as const
+    return `arn:${this.partition}:codestar:${this.region}:${this.account}:project/${this.idProject}` as const
   }
 }
 export type { ProjectArn }
@@ -40,26 +40,26 @@ export function projectArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface UserArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly awsUserName: string
+  readonly nameUserAws: string
 }
 class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'user',
   `arn:${string}:iam::${string}:user/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'user' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly awsUserName: string
+  readonly nameUserAws: string
   constructor(parameters: UserArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.awsUserName = parameters.awsUserName
+    this.nameUserAws = parameters.nameUserAws
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iam::${this.account}:user/${this.awsUserName}` as const
+    return `arn:${this.partition}:iam::${this.account}:user/${this.nameUserAws}` as const
   }
 }
 export type { UserArn }

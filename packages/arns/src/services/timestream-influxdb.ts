@@ -6,74 +6,74 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface DbInstanceArnParameters<
+export interface InstanceDbArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly dbInstanceIdentifier: string
+  readonly identifierInstanceDb: string
 }
-class DbInstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class InstanceDbArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'db-instance',
   `arn:${string}:timestream-influxdb:${string}:${string}:db-instance/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'db-instance' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly dbInstanceIdentifier: string
-  constructor(parameters: DbInstanceArnParameters<Partition>) {
+  readonly identifierInstanceDb: string
+  constructor(parameters: InstanceDbArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.dbInstanceIdentifier = parameters.dbInstanceIdentifier
+    this.identifierInstanceDb = parameters.identifierInstanceDb
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:timestream-influxdb:${this.region}:${this.account}:db-instance/${this.dbInstanceIdentifier}` as const
+    return `arn:${this.partition}:timestream-influxdb:${this.region}:${this.account}:db-instance/${this.identifierInstanceDb}` as const
   }
 }
-export type { DbInstanceArn }
-export function dbInstanceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DbInstanceArnParameters<Partition>,
+export type { InstanceDbArn }
+export function instanceDbArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InstanceDbArnParameters<Partition>,
 ) {
-  return new DbInstanceArn<Partition>(parameters)
+  return new InstanceDbArn<Partition>(parameters)
 }
 
-export interface DbParameterGroupArnParameters<
+export interface GroupParameterDbArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly dbParameterGroupIdentifier: string
+  readonly identifierGroupParameterDb: string
 }
-class DbParameterGroupArn<
+class GroupParameterDbArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'db-parameter-group',
   `arn:${string}:timestream-influxdb:${string}:${string}:db-parameter-group/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'db-parameter-group' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly dbParameterGroupIdentifier: string
-  constructor(parameters: DbParameterGroupArnParameters<Partition>) {
+  readonly identifierGroupParameterDb: string
+  constructor(parameters: GroupParameterDbArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.dbParameterGroupIdentifier = parameters.dbParameterGroupIdentifier
+    this.identifierGroupParameterDb = parameters.identifierGroupParameterDb
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:timestream-influxdb:${this.region}:${this.account}:db-parameter-group/${this.dbParameterGroupIdentifier}` as const
+    return `arn:${this.partition}:timestream-influxdb:${this.region}:${this.account}:db-parameter-group/${this.identifierGroupParameterDb}` as const
   }
 }
-export type { DbParameterGroupArn }
-export function dbParameterGroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DbParameterGroupArnParameters<Partition>,
+export type { GroupParameterDbArn }
+export function groupParameterDbArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupParameterDbArnParameters<Partition>,
 ) {
-  return new DbParameterGroupArn<Partition>(parameters)
+  return new GroupParameterDbArn<Partition>(parameters)
 }

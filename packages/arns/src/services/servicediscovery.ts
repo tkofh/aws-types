@@ -9,29 +9,29 @@ import {
 export interface NamespaceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly namespaceId: string
+  readonly idNamespace: string
 }
 class NamespaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'namespace',
   `arn:${string}:servicediscovery:${string}:${string}:namespace/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'namespace' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly namespaceId: string
+  readonly idNamespace: string
   constructor(parameters: NamespaceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.namespaceId = parameters.namespaceId
+    this.idNamespace = parameters.idNamespace
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:servicediscovery:${this.region}:${this.account}:namespace/${this.namespaceId}` as const
+    return `arn:${this.partition}:servicediscovery:${this.region}:${this.account}:namespace/${this.idNamespace}` as const
   }
 }
 export type { NamespaceArn }
@@ -42,29 +42,29 @@ export function namespaceArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ServiceArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serviceId: string
+  readonly idService: string
 }
 class ServiceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'service',
   `arn:${string}:servicediscovery:${string}:${string}:service/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'service' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serviceId: string
+  readonly idService: string
   constructor(parameters: ServiceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.serviceId = parameters.serviceId
+    this.idService = parameters.idService
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:servicediscovery:${this.region}:${this.account}:service/${this.serviceId}` as const
+    return `arn:${this.partition}:servicediscovery:${this.region}:${this.account}:service/${this.idService}` as const
   }
 }
 export type { ServiceArn }

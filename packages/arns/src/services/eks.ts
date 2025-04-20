@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface ClusterArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterName: string
+  readonly nameCluster: string
 }
 class ClusterArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'cluster',
   `arn:${string}:eks:${string}:${string}:cluster/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'cluster' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterName: string
+  readonly nameCluster: string
   constructor(parameters: ClusterArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.clusterName = parameters.clusterName
+    this.nameCluster = parameters.nameCluster
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:eks:${this.region}:${this.account}:cluster/${this.clusterName}` as const
+    return `arn:${this.partition}:eks:${this.region}:${this.account}:cluster/${this.nameCluster}` as const
   }
 }
 export type { ClusterArn }
@@ -42,35 +42,35 @@ export function clusterArn<Partition extends ArnPartition = 'aws'>(
 export interface NodegroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterName: string
-  readonly nodegroupName: string
-  readonly uuid: string
+  readonly nameCluster: string
+  readonly nameGroupNode: string
+  readonly idUu: string
 }
 class NodegroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'nodegroup',
   `arn:${string}:eks:${string}:${string}:nodegroup/${string}/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'nodegroup' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterName: string
-  readonly nodegroupName: string
-  readonly uuid: string
+  readonly nameCluster: string
+  readonly nameGroupNode: string
+  readonly idUu: string
   constructor(parameters: NodegroupArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.clusterName = parameters.clusterName
-    this.nodegroupName = parameters.nodegroupName
-    this.uuid = parameters.uuid
+    this.nameCluster = parameters.nameCluster
+    this.nameGroupNode = parameters.nameGroupNode
+    this.idUu = parameters.idUu
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:eks:${this.region}:${this.account}:nodegroup/${this.clusterName}/${this.nodegroupName}/${this.uuid}` as const
+    return `arn:${this.partition}:eks:${this.region}:${this.account}:nodegroup/${this.nameCluster}/${this.nameGroupNode}/${this.idUu}` as const
   }
 }
 export type { NodegroupArn }
@@ -81,35 +81,35 @@ export function nodegroupArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface AddonArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterName: string
-  readonly addonName: string
-  readonly uuid: string
+  readonly nameCluster: string
+  readonly nameAddon: string
+  readonly idUu: string
 }
 class AddonArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'addon',
   `arn:${string}:eks:${string}:${string}:addon/${string}/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'addon' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterName: string
-  readonly addonName: string
-  readonly uuid: string
+  readonly nameCluster: string
+  readonly nameAddon: string
+  readonly idUu: string
   constructor(parameters: AddonArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.clusterName = parameters.clusterName
-    this.addonName = parameters.addonName
-    this.uuid = parameters.uuid
+    this.nameCluster = parameters.nameCluster
+    this.nameAddon = parameters.nameAddon
+    this.idUu = parameters.idUu
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:eks:${this.region}:${this.account}:addon/${this.clusterName}/${this.addonName}/${this.uuid}` as const
+    return `arn:${this.partition}:eks:${this.region}:${this.account}:addon/${this.nameCluster}/${this.nameAddon}/${this.idUu}` as const
   }
 }
 export type { AddonArn }
@@ -119,248 +119,248 @@ export function addonArn<Partition extends ArnPartition = 'aws'>(
   return new AddonArn<Partition>(parameters)
 }
 
-export interface FargateprofileArnParameters<
+export interface ProfileFargateArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterName: string
-  readonly fargateProfileName: string
-  readonly uuid: string
+  readonly nameCluster: string
+  readonly nameProfileFargate: string
+  readonly idUu: string
 }
-class FargateprofileArn<
+class ProfileFargateArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'fargateprofile',
   `arn:${string}:eks:${string}:${string}:fargateprofile/${string}/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'fargateprofile' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterName: string
-  readonly fargateProfileName: string
-  readonly uuid: string
-  constructor(parameters: FargateprofileArnParameters<Partition>) {
+  readonly nameCluster: string
+  readonly nameProfileFargate: string
+  readonly idUu: string
+  constructor(parameters: ProfileFargateArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.clusterName = parameters.clusterName
-    this.fargateProfileName = parameters.fargateProfileName
-    this.uuid = parameters.uuid
+    this.nameCluster = parameters.nameCluster
+    this.nameProfileFargate = parameters.nameProfileFargate
+    this.idUu = parameters.idUu
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:eks:${this.region}:${this.account}:fargateprofile/${this.clusterName}/${this.fargateProfileName}/${this.uuid}` as const
+    return `arn:${this.partition}:eks:${this.region}:${this.account}:fargateprofile/${this.nameCluster}/${this.nameProfileFargate}/${this.idUu}` as const
   }
 }
-export type { FargateprofileArn }
-export function fargateprofileArn<Partition extends ArnPartition = 'aws'>(
-  parameters: FargateprofileArnParameters<Partition>,
+export type { ProfileFargateArn }
+export function profileFargateArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProfileFargateArnParameters<Partition>,
 ) {
-  return new FargateprofileArn<Partition>(parameters)
+  return new ProfileFargateArn<Partition>(parameters)
 }
 
-export interface IdentityproviderconfigArnParameters<
+export interface ConfigProviderIdentityArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterName: string
-  readonly identityProviderType: string
-  readonly identityProviderConfigName: string
-  readonly uuid: string
+  readonly nameCluster: string
+  readonly typeProviderIdentity: string
+  readonly nameConfigProviderIdentity: string
+  readonly idUu: string
 }
-class IdentityproviderconfigArn<
+class ConfigProviderIdentityArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'identityproviderconfig',
   `arn:${string}:eks:${string}:${string}:identityproviderconfig/${string}/${string}/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'identityproviderconfig' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterName: string
-  readonly identityProviderType: string
-  readonly identityProviderConfigName: string
-  readonly uuid: string
-  constructor(parameters: IdentityproviderconfigArnParameters<Partition>) {
+  readonly nameCluster: string
+  readonly typeProviderIdentity: string
+  readonly nameConfigProviderIdentity: string
+  readonly idUu: string
+  constructor(parameters: ConfigProviderIdentityArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.clusterName = parameters.clusterName
-    this.identityProviderType = parameters.identityProviderType
-    this.identityProviderConfigName = parameters.identityProviderConfigName
-    this.uuid = parameters.uuid
+    this.nameCluster = parameters.nameCluster
+    this.typeProviderIdentity = parameters.typeProviderIdentity
+    this.nameConfigProviderIdentity = parameters.nameConfigProviderIdentity
+    this.idUu = parameters.idUu
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:eks:${this.region}:${this.account}:identityproviderconfig/${this.clusterName}/${this.identityProviderType}/${this.identityProviderConfigName}/${this.uuid}` as const
+    return `arn:${this.partition}:eks:${this.region}:${this.account}:identityproviderconfig/${this.nameCluster}/${this.typeProviderIdentity}/${this.nameConfigProviderIdentity}/${this.idUu}` as const
   }
 }
-export type { IdentityproviderconfigArn }
-export function identityproviderconfigArn<
+export type { ConfigProviderIdentityArn }
+export function configProviderIdentityArn<
   Partition extends ArnPartition = 'aws',
->(parameters: IdentityproviderconfigArnParameters<Partition>) {
-  return new IdentityproviderconfigArn<Partition>(parameters)
+>(parameters: ConfigProviderIdentityArnParameters<Partition>) {
+  return new ConfigProviderIdentityArn<Partition>(parameters)
 }
 
-export interface EksAnywhereSubscriptionArnParameters<
+export interface SubscriptionAnywhereEksArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly uuid: string
+  readonly idUu: string
 }
-class EksAnywhereSubscriptionArn<
+class SubscriptionAnywhereEksArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'eks-anywhere-subscription',
   `arn:${string}:eks:${string}:${string}:eks-anywhere-subscription/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'eks-anywhere-subscription' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly uuid: string
-  constructor(parameters: EksAnywhereSubscriptionArnParameters<Partition>) {
+  readonly idUu: string
+  constructor(parameters: SubscriptionAnywhereEksArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.uuid = parameters.uuid
+    this.idUu = parameters.idUu
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:eks:${this.region}:${this.account}:eks-anywhere-subscription/${this.uuid}` as const
+    return `arn:${this.partition}:eks:${this.region}:${this.account}:eks-anywhere-subscription/${this.idUu}` as const
   }
 }
-export type { EksAnywhereSubscriptionArn }
-export function eksAnywhereSubscriptionArn<
+export type { SubscriptionAnywhereEksArn }
+export function subscriptionAnywhereEksArn<
   Partition extends ArnPartition = 'aws',
->(parameters: EksAnywhereSubscriptionArnParameters<Partition>) {
-  return new EksAnywhereSubscriptionArn<Partition>(parameters)
+>(parameters: SubscriptionAnywhereEksArnParameters<Partition>) {
+  return new SubscriptionAnywhereEksArn<Partition>(parameters)
 }
 
-export interface PodidentityassociationArnParameters<
+export interface AssociationIdentityPodArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterName: string
-  readonly uuid: string
+  readonly nameCluster: string
+  readonly idUu: string
 }
-class PodidentityassociationArn<
+class AssociationIdentityPodArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'podidentityassociation',
   `arn:${string}:eks:${string}:${string}:podidentityassociation/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'podidentityassociation' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterName: string
-  readonly uuid: string
-  constructor(parameters: PodidentityassociationArnParameters<Partition>) {
+  readonly nameCluster: string
+  readonly idUu: string
+  constructor(parameters: AssociationIdentityPodArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.clusterName = parameters.clusterName
-    this.uuid = parameters.uuid
+    this.nameCluster = parameters.nameCluster
+    this.idUu = parameters.idUu
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:eks:${this.region}:${this.account}:podidentityassociation/${this.clusterName}/${this.uuid}` as const
+    return `arn:${this.partition}:eks:${this.region}:${this.account}:podidentityassociation/${this.nameCluster}/${this.idUu}` as const
   }
 }
-export type { PodidentityassociationArn }
-export function podidentityassociationArn<
+export type { AssociationIdentityPodArn }
+export function associationIdentityPodArn<
   Partition extends ArnPartition = 'aws',
->(parameters: PodidentityassociationArnParameters<Partition>) {
-  return new PodidentityassociationArn<Partition>(parameters)
+>(parameters: AssociationIdentityPodArnParameters<Partition>) {
+  return new AssociationIdentityPodArn<Partition>(parameters)
 }
 
-export interface AccessEntryArnParameters<
+export interface EntryAccessArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterName: string
-  readonly iamIdentityType: string
-  readonly iamIdentityAccountId: string
-  readonly iamIdentityName: string
-  readonly uuid: string
+  readonly nameCluster: string
+  readonly typeIdentityIam: string
+  readonly idAccountIdentityIam: string
+  readonly nameIdentityIam: string
+  readonly idUu: string
 }
-class AccessEntryArn<
+class EntryAccessArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'access-entry',
   `arn:${string}:eks:${string}:${string}:access-entry/${string}/${string}/${string}/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'access-entry' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly clusterName: string
-  readonly iamIdentityType: string
-  readonly iamIdentityAccountId: string
-  readonly iamIdentityName: string
-  readonly uuid: string
-  constructor(parameters: AccessEntryArnParameters<Partition>) {
+  readonly nameCluster: string
+  readonly typeIdentityIam: string
+  readonly idAccountIdentityIam: string
+  readonly nameIdentityIam: string
+  readonly idUu: string
+  constructor(parameters: EntryAccessArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.clusterName = parameters.clusterName
-    this.iamIdentityType = parameters.iamIdentityType
-    this.iamIdentityAccountId = parameters.iamIdentityAccountId
-    this.iamIdentityName = parameters.iamIdentityName
-    this.uuid = parameters.uuid
+    this.nameCluster = parameters.nameCluster
+    this.typeIdentityIam = parameters.typeIdentityIam
+    this.idAccountIdentityIam = parameters.idAccountIdentityIam
+    this.nameIdentityIam = parameters.nameIdentityIam
+    this.idUu = parameters.idUu
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:eks:${this.region}:${this.account}:access-entry/${this.clusterName}/${this.iamIdentityType}/${this.iamIdentityAccountId}/${this.iamIdentityName}/${this.uuid}` as const
+    return `arn:${this.partition}:eks:${this.region}:${this.account}:access-entry/${this.nameCluster}/${this.typeIdentityIam}/${this.idAccountIdentityIam}/${this.nameIdentityIam}/${this.idUu}` as const
   }
 }
-export type { AccessEntryArn }
-export function accessEntryArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AccessEntryArnParameters<Partition>,
+export type { EntryAccessArn }
+export function entryAccessArn<Partition extends ArnPartition = 'aws'>(
+  parameters: EntryAccessArnParameters<Partition>,
 ) {
-  return new AccessEntryArn<Partition>(parameters)
+  return new EntryAccessArn<Partition>(parameters)
 }
 
-export interface AccessPolicyArnParameters<
+export interface PolicyAccessArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly accessPolicyName: string
+  readonly partition: string
+  readonly namePolicyAccess: string
 }
-class AccessPolicyArn<
+class PolicyAccessArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'access-policy',
   `arn:${string}:eks::aws:cluster-access-policy/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'access-policy' as const
-  readonly partition: Partition
-  readonly accessPolicyName: string
-  constructor(parameters: AccessPolicyArnParameters<Partition>) {
+  readonly partition: string
+  readonly namePolicyAccess: string
+  constructor(parameters: PolicyAccessArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
-    this.accessPolicyName = parameters.accessPolicyName
+    this.partition = parameters.partition
+    this.namePolicyAccess = parameters.namePolicyAccess
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:eks::aws:cluster-access-policy/${this.accessPolicyName}` as const
+    return `arn:${this.partition}:eks::aws:cluster-access-policy/${this.namePolicyAccess}` as const
   }
 }
-export type { AccessPolicyArn }
-export function accessPolicyArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AccessPolicyArnParameters<Partition>,
+export type { PolicyAccessArn }
+export function policyAccessArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PolicyAccessArnParameters<Partition>,
 ) {
-  return new AccessPolicyArn<Partition>(parameters)
+  return new PolicyAccessArn<Partition>(parameters)
 }

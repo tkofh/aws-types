@@ -9,29 +9,29 @@ import {
 export interface AssistantArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly assistantId: string
+  readonly idAssistant: string
 }
 class AssistantArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Assistant',
   `arn:${string}:wisdom:${string}:${string}:assistant/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Assistant' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly assistantId: string
+  readonly idAssistant: string
   constructor(parameters: AssistantArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.assistantId = parameters.assistantId
+    this.idAssistant = parameters.idAssistant
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:wisdom:${this.region}:${this.account}:assistant/${this.assistantId}` as const
+    return `arn:${this.partition}:wisdom:${this.region}:${this.account}:assistant/${this.idAssistant}` as const
   }
 }
 export type { AssistantArn }
@@ -41,73 +41,73 @@ export function assistantArn<Partition extends ArnPartition = 'aws'>(
   return new AssistantArn<Partition>(parameters)
 }
 
-export interface AssistantAssociationArnParameters<
+export interface AssociationAssistantArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly assistantId: string
-  readonly assistantAssociationId: string
+  readonly idAssistant: string
+  readonly idAssociationAssistant: string
 }
-class AssistantAssociationArn<
+class AssociationAssistantArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'AssistantAssociation',
   `arn:${string}:wisdom:${string}:${string}:association/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'AssistantAssociation' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly assistantId: string
-  readonly assistantAssociationId: string
-  constructor(parameters: AssistantAssociationArnParameters<Partition>) {
+  readonly idAssistant: string
+  readonly idAssociationAssistant: string
+  constructor(parameters: AssociationAssistantArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.assistantId = parameters.assistantId
-    this.assistantAssociationId = parameters.assistantAssociationId
+    this.idAssistant = parameters.idAssistant
+    this.idAssociationAssistant = parameters.idAssociationAssistant
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:wisdom:${this.region}:${this.account}:association/${this.assistantId}/${this.assistantAssociationId}` as const
+    return `arn:${this.partition}:wisdom:${this.region}:${this.account}:association/${this.idAssistant}/${this.idAssociationAssistant}` as const
   }
 }
-export type { AssistantAssociationArn }
-export function assistantAssociationArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AssistantAssociationArnParameters<Partition>,
+export type { AssociationAssistantArn }
+export function associationAssistantArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AssociationAssistantArnParameters<Partition>,
 ) {
-  return new AssistantAssociationArn<Partition>(parameters)
+  return new AssociationAssistantArn<Partition>(parameters)
 }
 
 export interface ContentArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly knowledgeBaseId: string
-  readonly contentId: string
+  readonly idBaseKnowledge: string
+  readonly idContent: string
 }
 class ContentArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Content',
   `arn:${string}:wisdom:${string}:${string}:content/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Content' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly knowledgeBaseId: string
-  readonly contentId: string
+  readonly idBaseKnowledge: string
+  readonly idContent: string
   constructor(parameters: ContentArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.knowledgeBaseId = parameters.knowledgeBaseId
-    this.contentId = parameters.contentId
+    this.idBaseKnowledge = parameters.idBaseKnowledge
+    this.idContent = parameters.idContent
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:wisdom:${this.region}:${this.account}:content/${this.knowledgeBaseId}/${this.contentId}` as const
+    return `arn:${this.partition}:wisdom:${this.region}:${this.account}:content/${this.idBaseKnowledge}/${this.idContent}` as const
   }
 }
 export type { ContentArn }
@@ -117,153 +117,153 @@ export function contentArn<Partition extends ArnPartition = 'aws'>(
   return new ContentArn<Partition>(parameters)
 }
 
-export interface ContentAssociationArnParameters<
+export interface AssociationContentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly knowledgeBaseId: string
-  readonly contentId: string
-  readonly contentAssociationId: string
+  readonly idBaseKnowledge: string
+  readonly idContent: string
+  readonly idAssociationContent: string
 }
-class ContentAssociationArn<
+class AssociationContentArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ContentAssociation',
   `arn:${string}:wisdom:${string}:${string}:content-association/${string}/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ContentAssociation' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly knowledgeBaseId: string
-  readonly contentId: string
-  readonly contentAssociationId: string
-  constructor(parameters: ContentAssociationArnParameters<Partition>) {
+  readonly idBaseKnowledge: string
+  readonly idContent: string
+  readonly idAssociationContent: string
+  constructor(parameters: AssociationContentArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.knowledgeBaseId = parameters.knowledgeBaseId
-    this.contentId = parameters.contentId
-    this.contentAssociationId = parameters.contentAssociationId
+    this.idBaseKnowledge = parameters.idBaseKnowledge
+    this.idContent = parameters.idContent
+    this.idAssociationContent = parameters.idAssociationContent
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:wisdom:${this.region}:${this.account}:content-association/${this.knowledgeBaseId}/${this.contentId}/${this.contentAssociationId}` as const
+    return `arn:${this.partition}:wisdom:${this.region}:${this.account}:content-association/${this.idBaseKnowledge}/${this.idContent}/${this.idAssociationContent}` as const
   }
 }
-export type { ContentAssociationArn }
-export function contentAssociationArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ContentAssociationArnParameters<Partition>,
+export type { AssociationContentArn }
+export function associationContentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AssociationContentArnParameters<Partition>,
 ) {
-  return new ContentAssociationArn<Partition>(parameters)
+  return new AssociationContentArn<Partition>(parameters)
 }
 
-export interface KnowledgeBaseArnParameters<
+export interface BaseKnowledgeArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly knowledgeBaseId: string
+  readonly idBaseKnowledge: string
 }
-class KnowledgeBaseArn<
+class BaseKnowledgeArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'KnowledgeBase',
   `arn:${string}:wisdom:${string}:${string}:knowledge-base/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'KnowledgeBase' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly knowledgeBaseId: string
-  constructor(parameters: KnowledgeBaseArnParameters<Partition>) {
+  readonly idBaseKnowledge: string
+  constructor(parameters: BaseKnowledgeArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.knowledgeBaseId = parameters.knowledgeBaseId
+    this.idBaseKnowledge = parameters.idBaseKnowledge
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:wisdom:${this.region}:${this.account}:knowledge-base/${this.knowledgeBaseId}` as const
+    return `arn:${this.partition}:wisdom:${this.region}:${this.account}:knowledge-base/${this.idBaseKnowledge}` as const
   }
 }
-export type { KnowledgeBaseArn }
-export function knowledgeBaseArn<Partition extends ArnPartition = 'aws'>(
-  parameters: KnowledgeBaseArnParameters<Partition>,
+export type { BaseKnowledgeArn }
+export function baseKnowledgeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BaseKnowledgeArnParameters<Partition>,
 ) {
-  return new KnowledgeBaseArn<Partition>(parameters)
+  return new BaseKnowledgeArn<Partition>(parameters)
 }
 
-export interface MessageTemplateArnParameters<
+export interface TemplateMessageArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly knowledgeBaseId: string
-  readonly messageTemplateId: string
+  readonly idBaseKnowledge: string
+  readonly idTemplateMessage: string
 }
-class MessageTemplateArn<
+class TemplateMessageArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'MessageTemplate',
   `arn:${string}:wisdom:${string}:${string}:message-template/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'MessageTemplate' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly knowledgeBaseId: string
-  readonly messageTemplateId: string
-  constructor(parameters: MessageTemplateArnParameters<Partition>) {
+  readonly idBaseKnowledge: string
+  readonly idTemplateMessage: string
+  constructor(parameters: TemplateMessageArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.knowledgeBaseId = parameters.knowledgeBaseId
-    this.messageTemplateId = parameters.messageTemplateId
+    this.idBaseKnowledge = parameters.idBaseKnowledge
+    this.idTemplateMessage = parameters.idTemplateMessage
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:wisdom:${this.region}:${this.account}:message-template/${this.knowledgeBaseId}/${this.messageTemplateId}` as const
+    return `arn:${this.partition}:wisdom:${this.region}:${this.account}:message-template/${this.idBaseKnowledge}/${this.idTemplateMessage}` as const
   }
 }
-export type { MessageTemplateArn }
-export function messageTemplateArn<Partition extends ArnPartition = 'aws'>(
-  parameters: MessageTemplateArnParameters<Partition>,
+export type { TemplateMessageArn }
+export function templateMessageArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TemplateMessageArnParameters<Partition>,
 ) {
-  return new MessageTemplateArn<Partition>(parameters)
+  return new TemplateMessageArn<Partition>(parameters)
 }
 
 export interface SessionArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly assistantId: string
-  readonly sessionId: string
+  readonly idAssistant: string
+  readonly idSession: string
 }
 class SessionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Session',
   `arn:${string}:wisdom:${string}:${string}:session/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Session' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly assistantId: string
-  readonly sessionId: string
+  readonly idAssistant: string
+  readonly idSession: string
   constructor(parameters: SessionArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.assistantId = parameters.assistantId
-    this.sessionId = parameters.sessionId
+    this.idAssistant = parameters.idAssistant
+    this.idSession = parameters.idSession
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:wisdom:${this.region}:${this.account}:session/${this.assistantId}/${this.sessionId}` as const
+    return `arn:${this.partition}:wisdom:${this.region}:${this.account}:session/${this.idAssistant}/${this.idSession}` as const
   }
 }
 export type { SessionArn }
@@ -273,42 +273,42 @@ export function sessionArn<Partition extends ArnPartition = 'aws'>(
   return new SessionArn<Partition>(parameters)
 }
 
-export interface QuickResponseArnParameters<
+export interface ResponseQuickArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly knowledgeBaseId: string
-  readonly quickResponseId: string
+  readonly idBaseKnowledge: string
+  readonly idResponseQuick: string
 }
-class QuickResponseArn<
+class ResponseQuickArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'QuickResponse',
   `arn:${string}:wisdom:${string}:${string}:quick-response/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'QuickResponse' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly knowledgeBaseId: string
-  readonly quickResponseId: string
-  constructor(parameters: QuickResponseArnParameters<Partition>) {
+  readonly idBaseKnowledge: string
+  readonly idResponseQuick: string
+  constructor(parameters: ResponseQuickArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.knowledgeBaseId = parameters.knowledgeBaseId
-    this.quickResponseId = parameters.quickResponseId
+    this.idBaseKnowledge = parameters.idBaseKnowledge
+    this.idResponseQuick = parameters.idResponseQuick
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:wisdom:${this.region}:${this.account}:quick-response/${this.knowledgeBaseId}/${this.quickResponseId}` as const
+    return `arn:${this.partition}:wisdom:${this.region}:${this.account}:quick-response/${this.idBaseKnowledge}/${this.idResponseQuick}` as const
   }
 }
-export type { QuickResponseArn }
-export function quickResponseArn<Partition extends ArnPartition = 'aws'>(
-  parameters: QuickResponseArnParameters<Partition>,
+export type { ResponseQuickArn }
+export function responseQuickArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ResponseQuickArnParameters<Partition>,
 ) {
-  return new QuickResponseArn<Partition>(parameters)
+  return new ResponseQuickArn<Partition>(parameters)
 }

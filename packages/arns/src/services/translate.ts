@@ -9,10 +9,10 @@ import {
 export interface TerminologyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceName: string
+  readonly nameResource: string
 }
 class TerminologyArn<
   Partition extends ArnPartition = 'aws',
@@ -21,19 +21,19 @@ class TerminologyArn<
   `arn:${string}:translate:${string}:${string}:terminology/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'terminology' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceName: string
+  readonly nameResource: string
   constructor(parameters: TerminologyArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceName = parameters.resourceName
+    this.nameResource = parameters.nameResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:translate:${this.region}:${this.account}:terminology/${this.resourceName}` as const
+    return `arn:${this.partition}:translate:${this.region}:${this.account}:terminology/${this.nameResource}` as const
   }
 }
 export type { TerminologyArn }
@@ -43,39 +43,39 @@ export function terminologyArn<Partition extends ArnPartition = 'aws'>(
   return new TerminologyArn<Partition>(parameters)
 }
 
-export interface ParallelDataArnParameters<
+export interface DataParallelArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceName: string
+  readonly nameResource: string
 }
-class ParallelDataArn<
+class DataParallelArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'parallel-data',
   `arn:${string}:translate:${string}:${string}:parallel-data/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'parallel-data' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceName: string
-  constructor(parameters: ParallelDataArnParameters<Partition>) {
+  readonly nameResource: string
+  constructor(parameters: DataParallelArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceName = parameters.resourceName
+    this.nameResource = parameters.nameResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:translate:${this.region}:${this.account}:parallel-data/${this.resourceName}` as const
+    return `arn:${this.partition}:translate:${this.region}:${this.account}:parallel-data/${this.nameResource}` as const
   }
 }
-export type { ParallelDataArn }
-export function parallelDataArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ParallelDataArnParameters<Partition>,
+export type { DataParallelArn }
+export function dataParallelArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DataParallelArnParameters<Partition>,
 ) {
-  return new ParallelDataArn<Partition>(parameters)
+  return new DataParallelArn<Partition>(parameters)
 }

@@ -7,8 +7,8 @@ import {
 } from '../internal.js'
 
 export interface FirewallArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
 }
@@ -17,13 +17,13 @@ class FirewallArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:network-firewall:${string}:${string}:firewall/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Firewall' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
   constructor(parameters: FirewallArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.name = parameters.name
@@ -39,28 +39,28 @@ export function firewallArn<Partition extends ArnPartition = 'aws'>(
   return new FirewallArn<Partition>(parameters)
 }
 
-export interface FirewallPolicyArnParameters<
+export interface PolicyFirewallArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
 }
-class FirewallPolicyArn<
+class PolicyFirewallArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'FirewallPolicy',
   `arn:${string}:network-firewall:${string}:${string}:firewall-policy/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'FirewallPolicy' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
-  constructor(parameters: FirewallPolicyArnParameters<Partition>) {
+  constructor(parameters: PolicyFirewallArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.name = parameters.name
@@ -69,35 +69,35 @@ class FirewallPolicyArn<
     return `arn:${this.partition}:network-firewall:${this.region}:${this.account}:firewall-policy/${this.name}` as const
   }
 }
-export type { FirewallPolicyArn }
-export function firewallPolicyArn<Partition extends ArnPartition = 'aws'>(
-  parameters: FirewallPolicyArnParameters<Partition>,
+export type { PolicyFirewallArn }
+export function policyFirewallArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PolicyFirewallArnParameters<Partition>,
 ) {
-  return new FirewallPolicyArn<Partition>(parameters)
+  return new PolicyFirewallArn<Partition>(parameters)
 }
 
-export interface StatefulRuleGroupArnParameters<
+export interface GroupRuleStatefulArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
 }
-class StatefulRuleGroupArn<
+class GroupRuleStatefulArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'StatefulRuleGroup',
   `arn:${string}:network-firewall:${string}:${string}:stateful-rulegroup/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'StatefulRuleGroup' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
-  constructor(parameters: StatefulRuleGroupArnParameters<Partition>) {
+  constructor(parameters: GroupRuleStatefulArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.name = parameters.name
@@ -106,35 +106,35 @@ class StatefulRuleGroupArn<
     return `arn:${this.partition}:network-firewall:${this.region}:${this.account}:stateful-rulegroup/${this.name}` as const
   }
 }
-export type { StatefulRuleGroupArn }
-export function statefulRuleGroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: StatefulRuleGroupArnParameters<Partition>,
+export type { GroupRuleStatefulArn }
+export function groupRuleStatefulArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupRuleStatefulArnParameters<Partition>,
 ) {
-  return new StatefulRuleGroupArn<Partition>(parameters)
+  return new GroupRuleStatefulArn<Partition>(parameters)
 }
 
-export interface StatelessRuleGroupArnParameters<
+export interface GroupRuleStatelessArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
 }
-class StatelessRuleGroupArn<
+class GroupRuleStatelessArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'StatelessRuleGroup',
   `arn:${string}:network-firewall:${string}:${string}:stateless-rulegroup/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'StatelessRuleGroup' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
-  constructor(parameters: StatelessRuleGroupArnParameters<Partition>) {
+  constructor(parameters: GroupRuleStatelessArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.name = parameters.name
@@ -143,35 +143,35 @@ class StatelessRuleGroupArn<
     return `arn:${this.partition}:network-firewall:${this.region}:${this.account}:stateless-rulegroup/${this.name}` as const
   }
 }
-export type { StatelessRuleGroupArn }
-export function statelessRuleGroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: StatelessRuleGroupArnParameters<Partition>,
+export type { GroupRuleStatelessArn }
+export function groupRuleStatelessArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupRuleStatelessArnParameters<Partition>,
 ) {
-  return new StatelessRuleGroupArn<Partition>(parameters)
+  return new GroupRuleStatelessArn<Partition>(parameters)
 }
 
-export interface TlsInspectionConfigurationArnParameters<
+export interface ConfigurationInspectionTlsArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
 }
-class TlsInspectionConfigurationArn<
+class ConfigurationInspectionTlsArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'TLSInspectionConfiguration',
   `arn:${string}:network-firewall:${string}:${string}:tls-configuration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'TLSInspectionConfiguration' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly name: string
-  constructor(parameters: TlsInspectionConfigurationArnParameters<Partition>) {
+  constructor(parameters: ConfigurationInspectionTlsArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.name = parameters.name
@@ -180,9 +180,9 @@ class TlsInspectionConfigurationArn<
     return `arn:${this.partition}:network-firewall:${this.region}:${this.account}:tls-configuration/${this.name}` as const
   }
 }
-export type { TlsInspectionConfigurationArn }
-export function tlsInspectionConfigurationArn<
+export type { ConfigurationInspectionTlsArn }
+export function configurationInspectionTlsArn<
   Partition extends ArnPartition = 'aws',
->(parameters: TlsInspectionConfigurationArnParameters<Partition>) {
-  return new TlsInspectionConfigurationArn<Partition>(parameters)
+>(parameters: ConfigurationInspectionTlsArnParameters<Partition>) {
+  return new ConfigurationInspectionTlsArn<Partition>(parameters)
 }

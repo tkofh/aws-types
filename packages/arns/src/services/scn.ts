@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface InstanceArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly instanceId: string
+  readonly idInstance: string
 }
 class InstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'instance',
   `arn:${string}:scn:${string}:${string}:instance/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'instance' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly instanceId: string
+  readonly idInstance: string
   constructor(parameters: InstanceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.instanceId = parameters.instanceId
+    this.idInstance = parameters.idInstance
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:scn:${this.region}:${this.account}:instance/${this.instanceId}` as const
+    return `arn:${this.partition}:scn:${this.region}:${this.account}:instance/${this.idInstance}` as const
   }
 }
 export type { InstanceArn }
@@ -39,121 +39,121 @@ export function instanceArn<Partition extends ArnPartition = 'aws'>(
   return new InstanceArn<Partition>(parameters)
 }
 
-export interface BillOfMaterialsImportJobArnParameters<
+export interface JobImportMaterialsOfBillArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly instanceId: string
-  readonly jobId: string
+  readonly idInstance: string
+  readonly idJob: string
 }
-class BillOfMaterialsImportJobArn<
+class JobImportMaterialsOfBillArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'bill-of-materials-import-job',
   `arn:${string}:scn:${string}:${string}:instance/${string}/bill-of-materials-import-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'bill-of-materials-import-job' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly instanceId: string
-  readonly jobId: string
-  constructor(parameters: BillOfMaterialsImportJobArnParameters<Partition>) {
+  readonly idInstance: string
+  readonly idJob: string
+  constructor(parameters: JobImportMaterialsOfBillArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.instanceId = parameters.instanceId
-    this.jobId = parameters.jobId
+    this.idInstance = parameters.idInstance
+    this.idJob = parameters.idJob
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:scn:${this.region}:${this.account}:instance/${this.instanceId}/bill-of-materials-import-job/${this.jobId}` as const
+    return `arn:${this.partition}:scn:${this.region}:${this.account}:instance/${this.idInstance}/bill-of-materials-import-job/${this.idJob}` as const
   }
 }
-export type { BillOfMaterialsImportJobArn }
-export function billOfMaterialsImportJobArn<
+export type { JobImportMaterialsOfBillArn }
+export function jobImportMaterialsOfBillArn<
   Partition extends ArnPartition = 'aws',
->(parameters: BillOfMaterialsImportJobArnParameters<Partition>) {
-  return new BillOfMaterialsImportJobArn<Partition>(parameters)
+>(parameters: JobImportMaterialsOfBillArnParameters<Partition>) {
+  return new JobImportMaterialsOfBillArn<Partition>(parameters)
 }
 
-export interface DataIntegrationFlowArnParameters<
+export interface FlowIntegrationDataArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly instanceId: string
-  readonly flowName: string
+  readonly idInstance: string
+  readonly nameFlow: string
 }
-class DataIntegrationFlowArn<
+class FlowIntegrationDataArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'data-integration-flow',
   `arn:${string}:scn:${string}:${string}:instance/${string}/data-integration-flows/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'data-integration-flow' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly instanceId: string
-  readonly flowName: string
-  constructor(parameters: DataIntegrationFlowArnParameters<Partition>) {
+  readonly idInstance: string
+  readonly nameFlow: string
+  constructor(parameters: FlowIntegrationDataArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.instanceId = parameters.instanceId
-    this.flowName = parameters.flowName
+    this.idInstance = parameters.idInstance
+    this.nameFlow = parameters.nameFlow
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:scn:${this.region}:${this.account}:instance/${this.instanceId}/data-integration-flows/${this.flowName}` as const
+    return `arn:${this.partition}:scn:${this.region}:${this.account}:instance/${this.idInstance}/data-integration-flows/${this.nameFlow}` as const
   }
 }
-export type { DataIntegrationFlowArn }
-export function dataIntegrationFlowArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DataIntegrationFlowArnParameters<Partition>,
+export type { FlowIntegrationDataArn }
+export function flowIntegrationDataArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FlowIntegrationDataArnParameters<Partition>,
 ) {
-  return new DataIntegrationFlowArn<Partition>(parameters)
+  return new FlowIntegrationDataArn<Partition>(parameters)
 }
 
-export interface DatasetArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+export interface SetDataArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly instanceId: string
+  readonly idInstance: string
   readonly namespace: string
-  readonly datasetName: string
+  readonly nameSetData: string
 }
-class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class SetDataArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'dataset',
   `arn:${string}:scn:${string}:${string}:instance/${string}/namespaces/${string}/datasets/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'dataset' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly instanceId: string
+  readonly idInstance: string
   readonly namespace: string
-  readonly datasetName: string
-  constructor(parameters: DatasetArnParameters<Partition>) {
+  readonly nameSetData: string
+  constructor(parameters: SetDataArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.instanceId = parameters.instanceId
+    this.idInstance = parameters.idInstance
     this.namespace = parameters.namespace
-    this.datasetName = parameters.datasetName
+    this.nameSetData = parameters.nameSetData
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:scn:${this.region}:${this.account}:instance/${this.instanceId}/namespaces/${this.namespace}/datasets/${this.datasetName}` as const
+    return `arn:${this.partition}:scn:${this.region}:${this.account}:instance/${this.idInstance}/namespaces/${this.namespace}/datasets/${this.nameSetData}` as const
   }
 }
-export type { DatasetArn }
-export function datasetArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DatasetArnParameters<Partition>,
+export type { SetDataArn }
+export function setDataArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SetDataArnParameters<Partition>,
 ) {
-  return new DatasetArn<Partition>(parameters)
+  return new SetDataArn<Partition>(parameters)
 }

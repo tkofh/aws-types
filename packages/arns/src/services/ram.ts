@@ -6,103 +6,103 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ResourceShareArnParameters<
+export interface ShareResourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourcePath: string
+  readonly pathResource: string
 }
-class ResourceShareArn<
+class ShareResourceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'resource-share',
   `arn:${string}:ram:${string}:${string}:resource-share/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'resource-share' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourcePath: string
-  constructor(parameters: ResourceShareArnParameters<Partition>) {
+  readonly pathResource: string
+  constructor(parameters: ShareResourceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourcePath = parameters.resourcePath
+    this.pathResource = parameters.pathResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ram:${this.region}:${this.account}:resource-share/${this.resourcePath}` as const
+    return `arn:${this.partition}:ram:${this.region}:${this.account}:resource-share/${this.pathResource}` as const
   }
 }
-export type { ResourceShareArn }
-export function resourceShareArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ResourceShareArnParameters<Partition>,
+export type { ShareResourceArn }
+export function shareResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ShareResourceArnParameters<Partition>,
 ) {
-  return new ResourceShareArn<Partition>(parameters)
+  return new ShareResourceArn<Partition>(parameters)
 }
 
-export interface ResourceShareInvitationArnParameters<
+export interface InvitationShareResourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourcePath: string
+  readonly pathResource: string
 }
-class ResourceShareInvitationArn<
+class InvitationShareResourceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'resource-share-invitation',
   `arn:${string}:ram:${string}:${string}:resource-share-invitation/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'resource-share-invitation' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourcePath: string
-  constructor(parameters: ResourceShareInvitationArnParameters<Partition>) {
+  readonly pathResource: string
+  constructor(parameters: InvitationShareResourceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourcePath = parameters.resourcePath
+    this.pathResource = parameters.pathResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ram:${this.region}:${this.account}:resource-share-invitation/${this.resourcePath}` as const
+    return `arn:${this.partition}:ram:${this.region}:${this.account}:resource-share-invitation/${this.pathResource}` as const
   }
 }
-export type { ResourceShareInvitationArn }
-export function resourceShareInvitationArn<
+export type { InvitationShareResourceArn }
+export function invitationShareResourceArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ResourceShareInvitationArnParameters<Partition>) {
-  return new ResourceShareInvitationArn<Partition>(parameters)
+>(parameters: InvitationShareResourceArnParameters<Partition>) {
+  return new InvitationShareResourceArn<Partition>(parameters)
 }
 
 export interface PermissionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly resourcePath: string
+  readonly pathResource: string
 }
 class PermissionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'permission',
   `arn:${string}:ram::${string}:permission/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'permission' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly resourcePath: string
+  readonly pathResource: string
   constructor(parameters: PermissionArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.resourcePath = parameters.resourcePath
+    this.pathResource = parameters.pathResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ram::${this.account}:permission/${this.resourcePath}` as const
+    return `arn:${this.partition}:ram::${this.account}:permission/${this.pathResource}` as const
   }
 }
 export type { PermissionArn }
@@ -112,39 +112,39 @@ export function permissionArn<Partition extends ArnPartition = 'aws'>(
   return new PermissionArn<Partition>(parameters)
 }
 
-export interface CustomerManagedPermissionArnParameters<
+export interface PermissionManagedCustomerArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourcePath: string
+  readonly pathResource: string
 }
-class CustomerManagedPermissionArn<
+class PermissionManagedCustomerArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'customer-managed-permission',
   `arn:${string}:ram:${string}:${string}:permission/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'customer-managed-permission' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourcePath: string
-  constructor(parameters: CustomerManagedPermissionArnParameters<Partition>) {
+  readonly pathResource: string
+  constructor(parameters: PermissionManagedCustomerArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourcePath = parameters.resourcePath
+    this.pathResource = parameters.pathResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ram:${this.region}:${this.account}:permission/${this.resourcePath}` as const
+    return `arn:${this.partition}:ram:${this.region}:${this.account}:permission/${this.pathResource}` as const
   }
 }
-export type { CustomerManagedPermissionArn }
-export function customerManagedPermissionArn<
+export type { PermissionManagedCustomerArn }
+export function permissionManagedCustomerArn<
   Partition extends ArnPartition = 'aws',
->(parameters: CustomerManagedPermissionArnParameters<Partition>) {
-  return new CustomerManagedPermissionArn<Partition>(parameters)
+>(parameters: PermissionManagedCustomerArnParameters<Partition>) {
+  return new PermissionManagedCustomerArn<Partition>(parameters)
 }

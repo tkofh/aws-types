@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface GraphArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
 class GraphArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Graph',
   `arn:${string}:detective:${string}:${string}:graph:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Graph' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
   constructor(parameters: GraphArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:detective:${this.region}:${this.account}:graph:${this.resourceId}` as const
+    return `arn:${this.partition}:detective:${this.region}:${this.account}:graph:${this.idResource}` as const
   }
 }
 export type { GraphArn }

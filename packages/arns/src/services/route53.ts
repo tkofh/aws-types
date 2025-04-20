@@ -6,39 +6,39 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface CidrcollectionArnParameters<
+export interface CollectionCidrArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly id: string
 }
-class CidrcollectionArn<
+class CollectionCidrArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'cidrcollection',
   `arn:${string}:route53:::cidrcollection/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'cidrcollection' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly id: string
-  constructor(parameters: CidrcollectionArnParameters<Partition>) {
+  constructor(parameters: CollectionCidrArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.id = parameters.id
   }
   [StringifyArnBrand]() {
     return `arn:${this.partition}:route53:::cidrcollection/${this.id}` as const
   }
 }
-export type { CidrcollectionArn }
-export function cidrcollectionArn<Partition extends ArnPartition = 'aws'>(
-  parameters: CidrcollectionArnParameters<Partition>,
+export type { CollectionCidrArn }
+export function collectionCidrArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CollectionCidrArnParameters<Partition>,
 ) {
-  return new CidrcollectionArn<Partition>(parameters)
+  return new CollectionCidrArn<Partition>(parameters)
 }
 
 export interface ChangeArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly id: string
 }
 class ChangeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
@@ -46,11 +46,11 @@ class ChangeArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:route53:::change/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'change' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly id: string
   constructor(parameters: ChangeArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.id = parameters.id
   }
   [StringifyArnBrand]() {
@@ -64,214 +64,214 @@ export function changeArn<Partition extends ArnPartition = 'aws'>(
   return new ChangeArn<Partition>(parameters)
 }
 
-export interface DelegationsetArnParameters<
+export interface SetDelegationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly id: string
 }
-class DelegationsetArn<
+class SetDelegationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'delegationset',
   `arn:${string}:route53:::delegationset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'delegationset' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly id: string
-  constructor(parameters: DelegationsetArnParameters<Partition>) {
+  constructor(parameters: SetDelegationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.id = parameters.id
   }
   [StringifyArnBrand]() {
     return `arn:${this.partition}:route53:::delegationset/${this.id}` as const
   }
 }
-export type { DelegationsetArn }
-export function delegationsetArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DelegationsetArnParameters<Partition>,
+export type { SetDelegationArn }
+export function setDelegationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SetDelegationArnParameters<Partition>,
 ) {
-  return new DelegationsetArn<Partition>(parameters)
+  return new SetDelegationArn<Partition>(parameters)
 }
 
-export interface HealthcheckArnParameters<
+export interface CheckHealthArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly id: string
 }
-class HealthcheckArn<
+class CheckHealthArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'healthcheck',
   `arn:${string}:route53:::healthcheck/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'healthcheck' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly id: string
-  constructor(parameters: HealthcheckArnParameters<Partition>) {
+  constructor(parameters: CheckHealthArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.id = parameters.id
   }
   [StringifyArnBrand]() {
     return `arn:${this.partition}:route53:::healthcheck/${this.id}` as const
   }
 }
-export type { HealthcheckArn }
-export function healthcheckArn<Partition extends ArnPartition = 'aws'>(
-  parameters: HealthcheckArnParameters<Partition>,
+export type { CheckHealthArn }
+export function checkHealthArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CheckHealthArnParameters<Partition>,
 ) {
-  return new HealthcheckArn<Partition>(parameters)
+  return new CheckHealthArn<Partition>(parameters)
 }
 
-export interface HostedzoneArnParameters<
+export interface ZoneHostedArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly id: string
 }
-class HostedzoneArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class ZoneHostedArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'hostedzone',
   `arn:${string}:route53:::hostedzone/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'hostedzone' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly id: string
-  constructor(parameters: HostedzoneArnParameters<Partition>) {
+  constructor(parameters: ZoneHostedArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.id = parameters.id
   }
   [StringifyArnBrand]() {
     return `arn:${this.partition}:route53:::hostedzone/${this.id}` as const
   }
 }
-export type { HostedzoneArn }
-export function hostedzoneArn<Partition extends ArnPartition = 'aws'>(
-  parameters: HostedzoneArnParameters<Partition>,
+export type { ZoneHostedArn }
+export function zoneHostedArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ZoneHostedArnParameters<Partition>,
 ) {
-  return new HostedzoneArn<Partition>(parameters)
+  return new ZoneHostedArn<Partition>(parameters)
 }
 
-export interface TrafficpolicyArnParameters<
+export interface PolicyTrafficArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly id: string
 }
-class TrafficpolicyArn<
+class PolicyTrafficArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'trafficpolicy',
   `arn:${string}:route53:::trafficpolicy/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'trafficpolicy' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly id: string
-  constructor(parameters: TrafficpolicyArnParameters<Partition>) {
+  constructor(parameters: PolicyTrafficArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.id = parameters.id
   }
   [StringifyArnBrand]() {
     return `arn:${this.partition}:route53:::trafficpolicy/${this.id}` as const
   }
 }
-export type { TrafficpolicyArn }
-export function trafficpolicyArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TrafficpolicyArnParameters<Partition>,
+export type { PolicyTrafficArn }
+export function policyTrafficArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PolicyTrafficArnParameters<Partition>,
 ) {
-  return new TrafficpolicyArn<Partition>(parameters)
+  return new PolicyTrafficArn<Partition>(parameters)
 }
 
-export interface TrafficpolicyinstanceArnParameters<
+export interface InstancePolicyTrafficArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly id: string
 }
-class TrafficpolicyinstanceArn<
+class InstancePolicyTrafficArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'trafficpolicyinstance',
   `arn:${string}:route53:::trafficpolicyinstance/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'trafficpolicyinstance' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly id: string
-  constructor(parameters: TrafficpolicyinstanceArnParameters<Partition>) {
+  constructor(parameters: InstancePolicyTrafficArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.id = parameters.id
   }
   [StringifyArnBrand]() {
     return `arn:${this.partition}:route53:::trafficpolicyinstance/${this.id}` as const
   }
 }
-export type { TrafficpolicyinstanceArn }
-export function trafficpolicyinstanceArn<
+export type { InstancePolicyTrafficArn }
+export function instancePolicyTrafficArn<
   Partition extends ArnPartition = 'aws',
->(parameters: TrafficpolicyinstanceArnParameters<Partition>) {
-  return new TrafficpolicyinstanceArn<Partition>(parameters)
+>(parameters: InstancePolicyTrafficArnParameters<Partition>) {
+  return new InstancePolicyTrafficArn<Partition>(parameters)
 }
 
-export interface QueryloggingconfigArnParameters<
+export interface ConfigLoggingQueryArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly id: string
 }
-class QueryloggingconfigArn<
+class ConfigLoggingQueryArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'queryloggingconfig',
   `arn:${string}:route53:::queryloggingconfig/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'queryloggingconfig' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly id: string
-  constructor(parameters: QueryloggingconfigArnParameters<Partition>) {
+  constructor(parameters: ConfigLoggingQueryArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.id = parameters.id
   }
   [StringifyArnBrand]() {
     return `arn:${this.partition}:route53:::queryloggingconfig/${this.id}` as const
   }
 }
-export type { QueryloggingconfigArn }
-export function queryloggingconfigArn<Partition extends ArnPartition = 'aws'>(
-  parameters: QueryloggingconfigArnParameters<Partition>,
+export type { ConfigLoggingQueryArn }
+export function configLoggingQueryArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConfigLoggingQueryArnParameters<Partition>,
 ) {
-  return new QueryloggingconfigArn<Partition>(parameters)
+  return new ConfigLoggingQueryArn<Partition>(parameters)
 }
 
 export interface VpcArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly vpcId: string
+  readonly idVpc: string
 }
 class VpcArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'vpc',
   `arn:${string}:ec2:${string}:${string}:vpc/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'vpc' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly vpcId: string
+  readonly idVpc: string
   constructor(parameters: VpcArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.vpcId = parameters.vpcId
+    this.idVpc = parameters.idVpc
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ec2:${this.region}:${this.account}:vpc/${this.vpcId}` as const
+    return `arn:${this.partition}:ec2:${this.region}:${this.account}:vpc/${this.idVpc}` as const
   }
 }
 export type { VpcArn }

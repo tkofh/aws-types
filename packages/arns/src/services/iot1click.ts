@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface DeviceArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly deviceId: string
+  readonly idDevice: string
 }
 class DeviceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'device',
   `arn:${string}:iot1click:${string}:${string}:devices/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'device' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly deviceId: string
+  readonly idDevice: string
   constructor(parameters: DeviceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.deviceId = parameters.deviceId
+    this.idDevice = parameters.idDevice
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iot1click:${this.region}:${this.account}:devices/${this.deviceId}` as const
+    return `arn:${this.partition}:iot1click:${this.region}:${this.account}:devices/${this.idDevice}` as const
   }
 }
 export type { DeviceArn }
@@ -40,29 +40,29 @@ export function deviceArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ProjectArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly projectName: string
+  readonly nameProject: string
 }
 class ProjectArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'project',
   `arn:${string}:iot1click:${string}:${string}:projects/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'project' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly projectName: string
+  readonly nameProject: string
   constructor(parameters: ProjectArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.projectName = parameters.projectName
+    this.nameProject = parameters.nameProject
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iot1click:${this.region}:${this.account}:projects/${this.projectName}` as const
+    return `arn:${this.partition}:iot1click:${this.region}:${this.account}:projects/${this.nameProject}` as const
   }
 }
 export type { ProjectArn }

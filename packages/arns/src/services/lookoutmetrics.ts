@@ -6,105 +6,105 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface AnomalyDetectorArnParameters<
+export interface DetectorAnomalyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly anomalyDetectorName: string
+  readonly nameDetectorAnomaly: string
 }
-class AnomalyDetectorArn<
+class DetectorAnomalyArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'AnomalyDetector',
   `arn:${string}:lookoutmetrics:${string}:${string}:AnomalyDetector:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'AnomalyDetector' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly anomalyDetectorName: string
-  constructor(parameters: AnomalyDetectorArnParameters<Partition>) {
+  readonly nameDetectorAnomaly: string
+  constructor(parameters: DetectorAnomalyArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.anomalyDetectorName = parameters.anomalyDetectorName
+    this.nameDetectorAnomaly = parameters.nameDetectorAnomaly
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:lookoutmetrics:${this.region}:${this.account}:AnomalyDetector:${this.anomalyDetectorName}` as const
+    return `arn:${this.partition}:lookoutmetrics:${this.region}:${this.account}:AnomalyDetector:${this.nameDetectorAnomaly}` as const
   }
 }
-export type { AnomalyDetectorArn }
-export function anomalyDetectorArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AnomalyDetectorArnParameters<Partition>,
+export type { DetectorAnomalyArn }
+export function detectorAnomalyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DetectorAnomalyArnParameters<Partition>,
 ) {
-  return new AnomalyDetectorArn<Partition>(parameters)
+  return new DetectorAnomalyArn<Partition>(parameters)
 }
 
-export interface MetricSetArnParameters<
+export interface SetMetricArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly anomalyDetectorName: string
-  readonly metricSetName: string
+  readonly nameDetectorAnomaly: string
+  readonly nameSetMetric: string
 }
-class MetricSetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class SetMetricArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'MetricSet',
   `arn:${string}:lookoutmetrics:${string}:${string}:MetricSet/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'MetricSet' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly anomalyDetectorName: string
-  readonly metricSetName: string
-  constructor(parameters: MetricSetArnParameters<Partition>) {
+  readonly nameDetectorAnomaly: string
+  readonly nameSetMetric: string
+  constructor(parameters: SetMetricArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.anomalyDetectorName = parameters.anomalyDetectorName
-    this.metricSetName = parameters.metricSetName
+    this.nameDetectorAnomaly = parameters.nameDetectorAnomaly
+    this.nameSetMetric = parameters.nameSetMetric
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:lookoutmetrics:${this.region}:${this.account}:MetricSet/${this.anomalyDetectorName}/${this.metricSetName}` as const
+    return `arn:${this.partition}:lookoutmetrics:${this.region}:${this.account}:MetricSet/${this.nameDetectorAnomaly}/${this.nameSetMetric}` as const
   }
 }
-export type { MetricSetArn }
-export function metricSetArn<Partition extends ArnPartition = 'aws'>(
-  parameters: MetricSetArnParameters<Partition>,
+export type { SetMetricArn }
+export function setMetricArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SetMetricArnParameters<Partition>,
 ) {
-  return new MetricSetArn<Partition>(parameters)
+  return new SetMetricArn<Partition>(parameters)
 }
 
 export interface AlertArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly alertName: string
+  readonly nameAlert: string
 }
 class AlertArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Alert',
   `arn:${string}:lookoutmetrics:${string}:${string}:Alert:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Alert' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly alertName: string
+  readonly nameAlert: string
   constructor(parameters: AlertArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.alertName = parameters.alertName
+    this.nameAlert = parameters.nameAlert
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:lookoutmetrics:${this.region}:${this.account}:Alert:${this.alertName}` as const
+    return `arn:${this.partition}:lookoutmetrics:${this.region}:${this.account}:Alert:${this.nameAlert}` as const
   }
 }
 export type { AlertArn }

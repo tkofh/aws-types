@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface InstanceArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly instanceId: string
+  readonly idInstance: string
 }
 class InstanceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'instance',
   `arn:${string}:ec2:${string}:${string}:instance/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'instance' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly instanceId: string
+  readonly idInstance: string
   constructor(parameters: InstanceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.instanceId = parameters.instanceId
+    this.idInstance = parameters.idInstance
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ec2:${this.region}:${this.account}:instance/${this.instanceId}` as const
+    return `arn:${this.partition}:ec2:${this.region}:${this.account}:instance/${this.idInstance}` as const
   }
 }
 export type { InstanceArn }
@@ -39,39 +39,39 @@ export function instanceArn<Partition extends ArnPartition = 'aws'>(
   return new InstanceArn<Partition>(parameters)
 }
 
-export interface InstanceConnectEndpointArnParameters<
+export interface EndpointConnectInstanceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly instanceConnectEndpointId: string
+  readonly idEndpointConnectInstance: string
 }
-class InstanceConnectEndpointArn<
+class EndpointConnectInstanceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'instance-connect-endpoint',
   `arn:${string}:ec2:${string}:${string}:instance-connect-endpoint/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'instance-connect-endpoint' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly instanceConnectEndpointId: string
-  constructor(parameters: InstanceConnectEndpointArnParameters<Partition>) {
+  readonly idEndpointConnectInstance: string
+  constructor(parameters: EndpointConnectInstanceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.instanceConnectEndpointId = parameters.instanceConnectEndpointId
+    this.idEndpointConnectInstance = parameters.idEndpointConnectInstance
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ec2:${this.region}:${this.account}:instance-connect-endpoint/${this.instanceConnectEndpointId}` as const
+    return `arn:${this.partition}:ec2:${this.region}:${this.account}:instance-connect-endpoint/${this.idEndpointConnectInstance}` as const
   }
 }
-export type { InstanceConnectEndpointArn }
-export function instanceConnectEndpointArn<
+export type { EndpointConnectInstanceArn }
+export function endpointConnectInstanceArn<
   Partition extends ArnPartition = 'aws',
->(parameters: InstanceConnectEndpointArnParameters<Partition>) {
-  return new InstanceConnectEndpointArn<Partition>(parameters)
+>(parameters: EndpointConnectInstanceArnParameters<Partition>) {
+  return new EndpointConnectInstanceArn<Partition>(parameters)
 }

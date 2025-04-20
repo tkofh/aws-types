@@ -9,29 +9,29 @@ import {
 export interface ConnectorArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly connectorId: string
+  readonly idConnector: string
 }
 class ConnectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Connector',
   `arn:${string}:pca-connector-ad:${string}:${string}:connector/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Connector' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly connectorId: string
+  readonly idConnector: string
   constructor(parameters: ConnectorArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.connectorId = parameters.connectorId
+    this.idConnector = parameters.idConnector
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:pca-connector-ad:${this.region}:${this.account}:connector/${this.connectorId}` as const
+    return `arn:${this.partition}:pca-connector-ad:${this.region}:${this.account}:connector/${this.idConnector}` as const
   }
 }
 export type { ConnectorArn }
@@ -41,107 +41,107 @@ export function connectorArn<Partition extends ArnPartition = 'aws'>(
   return new ConnectorArn<Partition>(parameters)
 }
 
-export interface DirectoryRegistrationArnParameters<
+export interface RegistrationDirectoryArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly directoryId: string
+  readonly idDirectory: string
 }
-class DirectoryRegistrationArn<
+class RegistrationDirectoryArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'DirectoryRegistration',
   `arn:${string}:pca-connector-ad:${string}:${string}:directory-registration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'DirectoryRegistration' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly directoryId: string
-  constructor(parameters: DirectoryRegistrationArnParameters<Partition>) {
+  readonly idDirectory: string
+  constructor(parameters: RegistrationDirectoryArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.directoryId = parameters.directoryId
+    this.idDirectory = parameters.idDirectory
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:pca-connector-ad:${this.region}:${this.account}:directory-registration/${this.directoryId}` as const
+    return `arn:${this.partition}:pca-connector-ad:${this.region}:${this.account}:directory-registration/${this.idDirectory}` as const
   }
 }
-export type { DirectoryRegistrationArn }
-export function directoryRegistrationArn<
+export type { RegistrationDirectoryArn }
+export function registrationDirectoryArn<
   Partition extends ArnPartition = 'aws',
->(parameters: DirectoryRegistrationArnParameters<Partition>) {
-  return new DirectoryRegistrationArn<Partition>(parameters)
+>(parameters: RegistrationDirectoryArnParameters<Partition>) {
+  return new RegistrationDirectoryArn<Partition>(parameters)
 }
 
-export interface ServicePrincipalNameArnParameters<
+export interface NamePrincipalServiceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly directoryId: string
+  readonly idDirectory: string
 }
-class ServicePrincipalNameArn<
+class NamePrincipalServiceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ServicePrincipalName',
   `arn:${string}:pca-connector-ad:${string}:${string}:directory-registration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ServicePrincipalName' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly directoryId: string
-  constructor(parameters: ServicePrincipalNameArnParameters<Partition>) {
+  readonly idDirectory: string
+  constructor(parameters: NamePrincipalServiceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.directoryId = parameters.directoryId
+    this.idDirectory = parameters.idDirectory
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:pca-connector-ad:${this.region}:${this.account}:directory-registration/${this.directoryId}` as const
+    return `arn:${this.partition}:pca-connector-ad:${this.region}:${this.account}:directory-registration/${this.idDirectory}` as const
   }
 }
-export type { ServicePrincipalNameArn }
-export function servicePrincipalNameArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ServicePrincipalNameArnParameters<Partition>,
+export type { NamePrincipalServiceArn }
+export function namePrincipalServiceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NamePrincipalServiceArnParameters<Partition>,
 ) {
-  return new ServicePrincipalNameArn<Partition>(parameters)
+  return new NamePrincipalServiceArn<Partition>(parameters)
 }
 
 export interface TemplateArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly connectorId: string
-  readonly templateId: string
+  readonly idConnector: string
+  readonly idTemplate: string
 }
 class TemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Template',
   `arn:${string}:pca-connector-ad:${string}:${string}:connector/${string}/template/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Template' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly connectorId: string
-  readonly templateId: string
+  readonly idConnector: string
+  readonly idTemplate: string
   constructor(parameters: TemplateArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.connectorId = parameters.connectorId
-    this.templateId = parameters.templateId
+    this.idConnector = parameters.idConnector
+    this.idTemplate = parameters.idTemplate
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:pca-connector-ad:${this.region}:${this.account}:connector/${this.connectorId}/template/${this.templateId}` as const
+    return `arn:${this.partition}:pca-connector-ad:${this.region}:${this.account}:connector/${this.idConnector}/template/${this.idTemplate}` as const
   }
 }
 export type { TemplateArn }
@@ -151,44 +151,44 @@ export function templateArn<Partition extends ArnPartition = 'aws'>(
   return new TemplateArn<Partition>(parameters)
 }
 
-export interface TemplateGroupAccessControlEntryArnParameters<
+export interface EntryControlAccessGroupTemplateArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly connectorId: string
-  readonly templateId: string
+  readonly idConnector: string
+  readonly idTemplate: string
 }
-class TemplateGroupAccessControlEntryArn<
+class EntryControlAccessGroupTemplateArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'TemplateGroupAccessControlEntry',
   `arn:${string}:pca-connector-ad:${string}:${string}:connector/${string}/template/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'TemplateGroupAccessControlEntry' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly connectorId: string
-  readonly templateId: string
+  readonly idConnector: string
+  readonly idTemplate: string
   constructor(
-    parameters: TemplateGroupAccessControlEntryArnParameters<Partition>,
+    parameters: EntryControlAccessGroupTemplateArnParameters<Partition>,
   ) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.connectorId = parameters.connectorId
-    this.templateId = parameters.templateId
+    this.idConnector = parameters.idConnector
+    this.idTemplate = parameters.idTemplate
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:pca-connector-ad:${this.region}:${this.account}:connector/${this.connectorId}/template/${this.templateId}` as const
+    return `arn:${this.partition}:pca-connector-ad:${this.region}:${this.account}:connector/${this.idConnector}/template/${this.idTemplate}` as const
   }
 }
-export type { TemplateGroupAccessControlEntryArn }
-export function templateGroupAccessControlEntryArn<
+export type { EntryControlAccessGroupTemplateArn }
+export function entryControlAccessGroupTemplateArn<
   Partition extends ArnPartition = 'aws',
->(parameters: TemplateGroupAccessControlEntryArnParameters<Partition>) {
-  return new TemplateGroupAccessControlEntryArn<Partition>(parameters)
+>(parameters: EntryControlAccessGroupTemplateArnParameters<Partition>) {
+  return new EntryControlAccessGroupTemplateArn<Partition>(parameters)
 }

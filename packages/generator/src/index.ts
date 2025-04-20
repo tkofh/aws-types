@@ -1,7 +1,7 @@
 import { Command } from '@effect/cli'
 import { FetchHttpClient } from '@effect/platform'
 import { NodeContext, NodeRuntime } from '@effect/platform-node'
-import { Effect } from 'effect'
+import { Effect, HashSet, Sink, Stream } from 'effect'
 import pkg from '../package.json' with { type: 'json' }
 import { writeArnPackage } from './arn.js'
 import { writeIamPackage } from './iam.js'
@@ -9,9 +9,7 @@ import { PackagesBasePath } from './shared/fs.js'
 
 const cli = Command.run(
   Command.make('generate', {}, () =>
-    Effect.all([writeArnPackage, writeIamPackage]).pipe(
-      Effect.flatMap(Effect.log),
-    ),
+    Effect.all([writeArnPackage]).pipe(Effect.asVoid),
   ),
   { name: pkg.name, version: pkg.version },
 )

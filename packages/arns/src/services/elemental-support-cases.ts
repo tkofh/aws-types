@@ -7,26 +7,26 @@ import {
 } from '../internal.js'
 
 export interface CaseArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
 class CaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'case',
   `arn:${string}:elemental-support-cases::${string}:case/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'case' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
   constructor(parameters: CaseArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elemental-support-cases::${this.account}:case/${this.resourceId}` as const
+    return `arn:${this.partition}:elemental-support-cases::${this.account}:case/${this.idResource}` as const
   }
 }
 export type { CaseArn }

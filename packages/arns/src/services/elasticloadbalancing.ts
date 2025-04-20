@@ -6,375 +6,375 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface LoadbalancerArnParameters<
+export interface BalancerLoadArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly loadBalancerName: string
+  readonly nameBalancerLoad: string
 }
-class LoadbalancerArn<
+class BalancerLoadArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'loadbalancer',
   `arn:${string}:elasticloadbalancing:${string}:${string}:loadbalancer/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'loadbalancer' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly loadBalancerName: string
-  constructor(parameters: LoadbalancerArnParameters<Partition>) {
+  readonly nameBalancerLoad: string
+  constructor(parameters: BalancerLoadArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.loadBalancerName = parameters.loadBalancerName
+    this.nameBalancerLoad = parameters.nameBalancerLoad
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:loadbalancer/${this.loadBalancerName}` as const
+    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:loadbalancer/${this.nameBalancerLoad}` as const
   }
 }
-export type { LoadbalancerArn }
-export function loadbalancerArn<Partition extends ArnPartition = 'aws'>(
-  parameters: LoadbalancerArnParameters<Partition>,
+export type { BalancerLoadArn }
+export function balancerLoadArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BalancerLoadArnParameters<Partition>,
 ) {
-  return new LoadbalancerArn<Partition>(parameters)
+  return new BalancerLoadArn<Partition>(parameters)
 }
 
-export interface ListenerAppArnParameters<
+export interface AppListenerArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly loadBalancerName: string
-  readonly loadBalancerId: string
-  readonly listenerId: string
+  readonly nameBalancerLoad: string
+  readonly idBalancerLoad: string
+  readonly idListener: string
 }
-class ListenerAppArn<
+class AppListenerArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'listener/app',
   `arn:${string}:elasticloadbalancing:${string}:${string}:listener/app/${string}/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'listener/app' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly loadBalancerName: string
-  readonly loadBalancerId: string
-  readonly listenerId: string
-  constructor(parameters: ListenerAppArnParameters<Partition>) {
+  readonly nameBalancerLoad: string
+  readonly idBalancerLoad: string
+  readonly idListener: string
+  constructor(parameters: AppListenerArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.loadBalancerName = parameters.loadBalancerName
-    this.loadBalancerId = parameters.loadBalancerId
-    this.listenerId = parameters.listenerId
+    this.nameBalancerLoad = parameters.nameBalancerLoad
+    this.idBalancerLoad = parameters.idBalancerLoad
+    this.idListener = parameters.idListener
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:listener/app/${this.loadBalancerName}/${this.loadBalancerId}/${this.listenerId}` as const
+    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:listener/app/${this.nameBalancerLoad}/${this.idBalancerLoad}/${this.idListener}` as const
   }
 }
-export type { ListenerAppArn }
-export function listenerAppArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ListenerAppArnParameters<Partition>,
+export type { AppListenerArn }
+export function appListenerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppListenerArnParameters<Partition>,
 ) {
-  return new ListenerAppArn<Partition>(parameters)
+  return new AppListenerArn<Partition>(parameters)
 }
 
-export interface ListenerRuleAppArnParameters<
+export interface AppRuleListenerArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly loadBalancerName: string
-  readonly loadBalancerId: string
-  readonly listenerId: string
-  readonly listenerRuleId: string
+  readonly nameBalancerLoad: string
+  readonly idBalancerLoad: string
+  readonly idListener: string
+  readonly idRuleListener: string
 }
-class ListenerRuleAppArn<
+class AppRuleListenerArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'listener-rule/app',
   `arn:${string}:elasticloadbalancing:${string}:${string}:listener-rule/app/${string}/${string}/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'listener-rule/app' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly loadBalancerName: string
-  readonly loadBalancerId: string
-  readonly listenerId: string
-  readonly listenerRuleId: string
-  constructor(parameters: ListenerRuleAppArnParameters<Partition>) {
+  readonly nameBalancerLoad: string
+  readonly idBalancerLoad: string
+  readonly idListener: string
+  readonly idRuleListener: string
+  constructor(parameters: AppRuleListenerArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.loadBalancerName = parameters.loadBalancerName
-    this.loadBalancerId = parameters.loadBalancerId
-    this.listenerId = parameters.listenerId
-    this.listenerRuleId = parameters.listenerRuleId
+    this.nameBalancerLoad = parameters.nameBalancerLoad
+    this.idBalancerLoad = parameters.idBalancerLoad
+    this.idListener = parameters.idListener
+    this.idRuleListener = parameters.idRuleListener
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:listener-rule/app/${this.loadBalancerName}/${this.loadBalancerId}/${this.listenerId}/${this.listenerRuleId}` as const
+    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:listener-rule/app/${this.nameBalancerLoad}/${this.idBalancerLoad}/${this.idListener}/${this.idRuleListener}` as const
   }
 }
-export type { ListenerRuleAppArn }
-export function listenerRuleAppArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ListenerRuleAppArnParameters<Partition>,
+export type { AppRuleListenerArn }
+export function appRuleListenerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppRuleListenerArnParameters<Partition>,
 ) {
-  return new ListenerRuleAppArn<Partition>(parameters)
+  return new AppRuleListenerArn<Partition>(parameters)
 }
 
-export interface ListenerNetArnParameters<
+export interface NetListenerArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly loadBalancerName: string
-  readonly loadBalancerId: string
-  readonly listenerId: string
+  readonly nameBalancerLoad: string
+  readonly idBalancerLoad: string
+  readonly idListener: string
 }
-class ListenerNetArn<
+class NetListenerArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'listener/net',
   `arn:${string}:elasticloadbalancing:${string}:${string}:listener/net/${string}/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'listener/net' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly loadBalancerName: string
-  readonly loadBalancerId: string
-  readonly listenerId: string
-  constructor(parameters: ListenerNetArnParameters<Partition>) {
+  readonly nameBalancerLoad: string
+  readonly idBalancerLoad: string
+  readonly idListener: string
+  constructor(parameters: NetListenerArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.loadBalancerName = parameters.loadBalancerName
-    this.loadBalancerId = parameters.loadBalancerId
-    this.listenerId = parameters.listenerId
+    this.nameBalancerLoad = parameters.nameBalancerLoad
+    this.idBalancerLoad = parameters.idBalancerLoad
+    this.idListener = parameters.idListener
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:listener/net/${this.loadBalancerName}/${this.loadBalancerId}/${this.listenerId}` as const
+    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:listener/net/${this.nameBalancerLoad}/${this.idBalancerLoad}/${this.idListener}` as const
   }
 }
-export type { ListenerNetArn }
-export function listenerNetArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ListenerNetArnParameters<Partition>,
+export type { NetListenerArn }
+export function netListenerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NetListenerArnParameters<Partition>,
 ) {
-  return new ListenerNetArn<Partition>(parameters)
+  return new NetListenerArn<Partition>(parameters)
 }
 
-export interface ListenerRuleNetArnParameters<
+export interface NetRuleListenerArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly loadBalancerName: string
-  readonly loadBalancerId: string
-  readonly listenerId: string
-  readonly listenerRuleId: string
+  readonly nameBalancerLoad: string
+  readonly idBalancerLoad: string
+  readonly idListener: string
+  readonly idRuleListener: string
 }
-class ListenerRuleNetArn<
+class NetRuleListenerArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'listener-rule/net',
   `arn:${string}:elasticloadbalancing:${string}:${string}:listener-rule/net/${string}/${string}/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'listener-rule/net' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly loadBalancerName: string
-  readonly loadBalancerId: string
-  readonly listenerId: string
-  readonly listenerRuleId: string
-  constructor(parameters: ListenerRuleNetArnParameters<Partition>) {
+  readonly nameBalancerLoad: string
+  readonly idBalancerLoad: string
+  readonly idListener: string
+  readonly idRuleListener: string
+  constructor(parameters: NetRuleListenerArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.loadBalancerName = parameters.loadBalancerName
-    this.loadBalancerId = parameters.loadBalancerId
-    this.listenerId = parameters.listenerId
-    this.listenerRuleId = parameters.listenerRuleId
+    this.nameBalancerLoad = parameters.nameBalancerLoad
+    this.idBalancerLoad = parameters.idBalancerLoad
+    this.idListener = parameters.idListener
+    this.idRuleListener = parameters.idRuleListener
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:listener-rule/net/${this.loadBalancerName}/${this.loadBalancerId}/${this.listenerId}/${this.listenerRuleId}` as const
+    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:listener-rule/net/${this.nameBalancerLoad}/${this.idBalancerLoad}/${this.idListener}/${this.idRuleListener}` as const
   }
 }
-export type { ListenerRuleNetArn }
-export function listenerRuleNetArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ListenerRuleNetArnParameters<Partition>,
+export type { NetRuleListenerArn }
+export function netRuleListenerArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NetRuleListenerArnParameters<Partition>,
 ) {
-  return new ListenerRuleNetArn<Partition>(parameters)
+  return new NetRuleListenerArn<Partition>(parameters)
 }
 
-export interface LoadbalancerAppArnParameters<
+export interface AppBalancerLoadArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly loadBalancerName: string
-  readonly loadBalancerId: string
+  readonly nameBalancerLoad: string
+  readonly idBalancerLoad: string
 }
-class LoadbalancerAppArn<
+class AppBalancerLoadArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'loadbalancer/app/',
   `arn:${string}:elasticloadbalancing:${string}:${string}:loadbalancer/app/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'loadbalancer/app/' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly loadBalancerName: string
-  readonly loadBalancerId: string
-  constructor(parameters: LoadbalancerAppArnParameters<Partition>) {
+  readonly nameBalancerLoad: string
+  readonly idBalancerLoad: string
+  constructor(parameters: AppBalancerLoadArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.loadBalancerName = parameters.loadBalancerName
-    this.loadBalancerId = parameters.loadBalancerId
+    this.nameBalancerLoad = parameters.nameBalancerLoad
+    this.idBalancerLoad = parameters.idBalancerLoad
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:loadbalancer/app/${this.loadBalancerName}/${this.loadBalancerId}` as const
+    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:loadbalancer/app/${this.nameBalancerLoad}/${this.idBalancerLoad}` as const
   }
 }
-export type { LoadbalancerAppArn }
-export function loadbalancerAppArn<Partition extends ArnPartition = 'aws'>(
-  parameters: LoadbalancerAppArnParameters<Partition>,
+export type { AppBalancerLoadArn }
+export function appBalancerLoadArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AppBalancerLoadArnParameters<Partition>,
 ) {
-  return new LoadbalancerAppArn<Partition>(parameters)
+  return new AppBalancerLoadArn<Partition>(parameters)
 }
 
-export interface LoadbalancerNetArnParameters<
+export interface NetBalancerLoadArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly loadBalancerName: string
-  readonly loadBalancerId: string
+  readonly nameBalancerLoad: string
+  readonly idBalancerLoad: string
 }
-class LoadbalancerNetArn<
+class NetBalancerLoadArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'loadbalancer/net/',
   `arn:${string}:elasticloadbalancing:${string}:${string}:loadbalancer/net/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'loadbalancer/net/' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly loadBalancerName: string
-  readonly loadBalancerId: string
-  constructor(parameters: LoadbalancerNetArnParameters<Partition>) {
+  readonly nameBalancerLoad: string
+  readonly idBalancerLoad: string
+  constructor(parameters: NetBalancerLoadArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.loadBalancerName = parameters.loadBalancerName
-    this.loadBalancerId = parameters.loadBalancerId
+    this.nameBalancerLoad = parameters.nameBalancerLoad
+    this.idBalancerLoad = parameters.idBalancerLoad
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:loadbalancer/net/${this.loadBalancerName}/${this.loadBalancerId}` as const
+    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:loadbalancer/net/${this.nameBalancerLoad}/${this.idBalancerLoad}` as const
   }
 }
-export type { LoadbalancerNetArn }
-export function loadbalancerNetArn<Partition extends ArnPartition = 'aws'>(
-  parameters: LoadbalancerNetArnParameters<Partition>,
+export type { NetBalancerLoadArn }
+export function netBalancerLoadArn<Partition extends ArnPartition = 'aws'>(
+  parameters: NetBalancerLoadArnParameters<Partition>,
 ) {
-  return new LoadbalancerNetArn<Partition>(parameters)
+  return new NetBalancerLoadArn<Partition>(parameters)
 }
 
-export interface TargetgroupArnParameters<
+export interface GroupTargetArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly targetGroupName: string
-  readonly targetGroupId: string
+  readonly nameGroupTarget: string
+  readonly idGroupTarget: string
 }
-class TargetgroupArn<
+class GroupTargetArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'targetgroup',
   `arn:${string}:elasticloadbalancing:${string}:${string}:targetgroup/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'targetgroup' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly targetGroupName: string
-  readonly targetGroupId: string
-  constructor(parameters: TargetgroupArnParameters<Partition>) {
+  readonly nameGroupTarget: string
+  readonly idGroupTarget: string
+  constructor(parameters: GroupTargetArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.targetGroupName = parameters.targetGroupName
-    this.targetGroupId = parameters.targetGroupId
+    this.nameGroupTarget = parameters.nameGroupTarget
+    this.idGroupTarget = parameters.idGroupTarget
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:targetgroup/${this.targetGroupName}/${this.targetGroupId}` as const
+    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:targetgroup/${this.nameGroupTarget}/${this.idGroupTarget}` as const
   }
 }
-export type { TargetgroupArn }
-export function targetgroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TargetgroupArnParameters<Partition>,
+export type { GroupTargetArn }
+export function groupTargetArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupTargetArnParameters<Partition>,
 ) {
-  return new TargetgroupArn<Partition>(parameters)
+  return new GroupTargetArn<Partition>(parameters)
 }
 
-export interface TruststoreArnParameters<
+export interface StoreTrustArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly trustStoreName: string
-  readonly trustStoreId: string
+  readonly nameStoreTrust: string
+  readonly idStoreTrust: string
 }
-class TruststoreArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class StoreTrustArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'truststore',
   `arn:${string}:elasticloadbalancing:${string}:${string}:truststore/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'truststore' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly trustStoreName: string
-  readonly trustStoreId: string
-  constructor(parameters: TruststoreArnParameters<Partition>) {
+  readonly nameStoreTrust: string
+  readonly idStoreTrust: string
+  constructor(parameters: StoreTrustArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.trustStoreName = parameters.trustStoreName
-    this.trustStoreId = parameters.trustStoreId
+    this.nameStoreTrust = parameters.nameStoreTrust
+    this.idStoreTrust = parameters.idStoreTrust
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:truststore/${this.trustStoreName}/${this.trustStoreId}` as const
+    return `arn:${this.partition}:elasticloadbalancing:${this.region}:${this.account}:truststore/${this.nameStoreTrust}/${this.idStoreTrust}` as const
   }
 }
-export type { TruststoreArn }
-export function truststoreArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TruststoreArnParameters<Partition>,
+export type { StoreTrustArn }
+export function storeTrustArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StoreTrustArnParameters<Partition>,
 ) {
-  return new TruststoreArn<Partition>(parameters)
+  return new StoreTrustArn<Partition>(parameters)
 }

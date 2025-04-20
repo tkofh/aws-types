@@ -6,39 +6,39 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ProfilingGroupArnParameters<
+export interface GroupProfilingArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly profilingGroupName: string
+  readonly nameGroupProfiling: string
 }
-class ProfilingGroupArn<
+class GroupProfilingArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ProfilingGroup',
   `arn:${string}:codeguru-profiler:${string}:${string}:profilingGroup/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ProfilingGroup' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly profilingGroupName: string
-  constructor(parameters: ProfilingGroupArnParameters<Partition>) {
+  readonly nameGroupProfiling: string
+  constructor(parameters: GroupProfilingArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.profilingGroupName = parameters.profilingGroupName
+    this.nameGroupProfiling = parameters.nameGroupProfiling
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:codeguru-profiler:${this.region}:${this.account}:profilingGroup/${this.profilingGroupName}` as const
+    return `arn:${this.partition}:codeguru-profiler:${this.region}:${this.account}:profilingGroup/${this.nameGroupProfiling}` as const
   }
 }
-export type { ProfilingGroupArn }
-export function profilingGroupArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ProfilingGroupArnParameters<Partition>,
+export type { GroupProfilingArn }
+export function groupProfilingArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GroupProfilingArnParameters<Partition>,
 ) {
-  return new ProfilingGroupArn<Partition>(parameters)
+  return new GroupProfilingArn<Partition>(parameters)
 }

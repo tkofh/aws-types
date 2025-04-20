@@ -7,32 +7,32 @@ import {
 } from '../internal.js'
 
 export interface ServiceArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serviceId: string
-  readonly requestPath: string
+  readonly idService: string
+  readonly pathRequest: string
 }
 class ServiceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Service',
   `arn:${string}:vpc-lattice:${string}:${string}:service/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Service' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serviceId: string
-  readonly requestPath: string
+  readonly idService: string
+  readonly pathRequest: string
   constructor(parameters: ServiceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.serviceId = parameters.serviceId
-    this.requestPath = parameters.requestPath
+    this.idService = parameters.idService
+    this.pathRequest = parameters.pathRequest
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:vpc-lattice:${this.region}:${this.account}:service/${this.serviceId}/${this.requestPath}` as const
+    return `arn:${this.partition}:vpc-lattice:${this.region}:${this.account}:service/${this.idService}/${this.pathRequest}` as const
   }
 }
 export type { ServiceArn }
@@ -42,37 +42,37 @@ export function serviceArn<Partition extends ArnPartition = 'aws'>(
   return new ServiceArn<Partition>(parameters)
 }
 
-export interface TcpServiceArnParameters<
+export interface ServiceTcpArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serviceId: string
+  readonly idService: string
 }
-class TcpServiceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class ServiceTcpArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'TCP Service',
   `arn:${string}:vpc-lattice:${string}:${string}:service/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'TCP Service' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serviceId: string
-  constructor(parameters: TcpServiceArnParameters<Partition>) {
+  readonly idService: string
+  constructor(parameters: ServiceTcpArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.serviceId = parameters.serviceId
+    this.idService = parameters.idService
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:vpc-lattice:${this.region}:${this.account}:service/${this.serviceId}` as const
+    return `arn:${this.partition}:vpc-lattice:${this.region}:${this.account}:service/${this.idService}` as const
   }
 }
-export type { TcpServiceArn }
-export function tcpServiceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TcpServiceArnParameters<Partition>,
+export type { ServiceTcpArn }
+export function serviceTcpArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ServiceTcpArnParameters<Partition>,
 ) {
-  return new TcpServiceArn<Partition>(parameters)
+  return new ServiceTcpArn<Partition>(parameters)
 }

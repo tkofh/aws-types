@@ -7,26 +7,26 @@ import {
 } from '../internal.js'
 
 export interface GatewayArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly gatewayId: string
+  readonly idGateway: string
 }
 class GatewayArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'gateway',
   `arn:${string}:backup-gateway::${string}:gateway/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'gateway' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly gatewayId: string
+  readonly idGateway: string
   constructor(parameters: GatewayArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.gatewayId = parameters.gatewayId
+    this.idGateway = parameters.idGateway
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:backup-gateway::${this.account}:gateway/${this.gatewayId}` as const
+    return `arn:${this.partition}:backup-gateway::${this.account}:gateway/${this.idGateway}` as const
   }
 }
 export type { GatewayArn }
@@ -39,26 +39,26 @@ export function gatewayArn<Partition extends ArnPartition = 'aws'>(
 export interface HypervisorArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly hypervisorId: string
+  readonly idHypervisor: string
 }
 class HypervisorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'hypervisor',
   `arn:${string}:backup-gateway::${string}:hypervisor/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'hypervisor' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly hypervisorId: string
+  readonly idHypervisor: string
   constructor(parameters: HypervisorArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.hypervisorId = parameters.hypervisorId
+    this.idHypervisor = parameters.idHypervisor
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:backup-gateway::${this.account}:hypervisor/${this.hypervisorId}` as const
+    return `arn:${this.partition}:backup-gateway::${this.account}:hypervisor/${this.idHypervisor}` as const
   }
 }
 export type { HypervisorArn }
@@ -68,36 +68,36 @@ export function hypervisorArn<Partition extends ArnPartition = 'aws'>(
   return new HypervisorArn<Partition>(parameters)
 }
 
-export interface VirtualmachineArnParameters<
+export interface MachineVirtualArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly virtualmachineId: string
+  readonly idMachineVirtual: string
 }
-class VirtualmachineArn<
+class MachineVirtualArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'virtualmachine',
   `arn:${string}:backup-gateway::${string}:vm/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'virtualmachine' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly virtualmachineId: string
-  constructor(parameters: VirtualmachineArnParameters<Partition>) {
+  readonly idMachineVirtual: string
+  constructor(parameters: MachineVirtualArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.virtualmachineId = parameters.virtualmachineId
+    this.idMachineVirtual = parameters.idMachineVirtual
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:backup-gateway::${this.account}:vm/${this.virtualmachineId}` as const
+    return `arn:${this.partition}:backup-gateway::${this.account}:vm/${this.idMachineVirtual}` as const
   }
 }
-export type { VirtualmachineArn }
-export function virtualmachineArn<Partition extends ArnPartition = 'aws'>(
-  parameters: VirtualmachineArnParameters<Partition>,
+export type { MachineVirtualArn }
+export function machineVirtualArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MachineVirtualArnParameters<Partition>,
 ) {
-  return new VirtualmachineArn<Partition>(parameters)
+  return new MachineVirtualArn<Partition>(parameters)
 }

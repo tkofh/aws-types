@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface WorkflowArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
 class WorkflowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'workflow',
   `arn:${string}:migrationhub-orchestrator:${string}:${string}:workflow/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'workflow' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
   constructor(parameters: WorkflowArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:migrationhub-orchestrator:${this.region}:${this.account}:workflow/${this.resourceId}` as const
+    return `arn:${this.partition}:migrationhub-orchestrator:${this.region}:${this.account}:workflow/${this.idResource}` as const
   }
 }
 export type { WorkflowArn }
@@ -40,29 +40,29 @@ export function workflowArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface TemplateArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
 class TemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'template',
   `arn:${string}:migrationhub-orchestrator:${string}:${string}:template/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'template' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
   constructor(parameters: TemplateArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:migrationhub-orchestrator:${this.region}:${this.account}:template/${this.resourceId}` as const
+    return `arn:${this.partition}:migrationhub-orchestrator:${this.region}:${this.account}:template/${this.idResource}` as const
   }
 }
 export type { TemplateArn }

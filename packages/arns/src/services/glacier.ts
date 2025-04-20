@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface VaultArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly vaultName: string
+  readonly nameVault: string
 }
 class VaultArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'vault',
   `arn:${string}:glacier:${string}:${string}:vaults/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'vault' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly vaultName: string
+  readonly nameVault: string
   constructor(parameters: VaultArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.vaultName = parameters.vaultName
+    this.nameVault = parameters.nameVault
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:glacier:${this.region}:${this.account}:vaults/${this.vaultName}` as const
+    return `arn:${this.partition}:glacier:${this.region}:${this.account}:vaults/${this.nameVault}` as const
   }
 }
 export type { VaultArn }

@@ -9,29 +9,29 @@ import {
 export interface DirectoryArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly directoryId: string
+  readonly idDirectory: string
 }
 class DirectoryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'directory',
   `arn:${string}:ds:${string}:${string}:directory/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'directory' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly directoryId: string
+  readonly idDirectory: string
   constructor(parameters: DirectoryArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.directoryId = parameters.directoryId
+    this.idDirectory = parameters.idDirectory
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ds:${this.region}:${this.account}:directory/${this.directoryId}` as const
+    return `arn:${this.partition}:ds:${this.region}:${this.account}:directory/${this.idDirectory}` as const
   }
 }
 export type { DirectoryArn }

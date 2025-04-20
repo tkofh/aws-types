@@ -6,53 +6,53 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface AnalysistemplateArnParameters<
+export interface TemplateAnalysisArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly membershipId: string
-  readonly analysisTemplateId: string
+  readonly idMembership: string
+  readonly idTemplateAnalysis: string
 }
-class AnalysistemplateArn<
+class TemplateAnalysisArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'analysistemplate',
   `arn:${string}:cleanrooms:${string}:${string}:membership/${string}/analysistemplate/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'analysistemplate' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly membershipId: string
-  readonly analysisTemplateId: string
-  constructor(parameters: AnalysistemplateArnParameters<Partition>) {
+  readonly idMembership: string
+  readonly idTemplateAnalysis: string
+  constructor(parameters: TemplateAnalysisArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.membershipId = parameters.membershipId
-    this.analysisTemplateId = parameters.analysisTemplateId
+    this.idMembership = parameters.idMembership
+    this.idTemplateAnalysis = parameters.idTemplateAnalysis
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:membership/${this.membershipId}/analysistemplate/${this.analysisTemplateId}` as const
+    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:membership/${this.idMembership}/analysistemplate/${this.idTemplateAnalysis}` as const
   }
 }
-export type { AnalysistemplateArn }
-export function analysistemplateArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AnalysistemplateArnParameters<Partition>,
+export type { TemplateAnalysisArn }
+export function templateAnalysisArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TemplateAnalysisArnParameters<Partition>,
 ) {
-  return new AnalysistemplateArn<Partition>(parameters)
+  return new TemplateAnalysisArn<Partition>(parameters)
 }
 
 export interface CollaborationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly collaborationId: string
+  readonly idCollaboration: string
 }
 class CollaborationArn<
   Partition extends ArnPartition = 'aws',
@@ -61,19 +61,19 @@ class CollaborationArn<
   `arn:${string}:cleanrooms:${string}:${string}:collaboration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'collaboration' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly collaborationId: string
+  readonly idCollaboration: string
   constructor(parameters: CollaborationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.collaborationId = parameters.collaborationId
+    this.idCollaboration = parameters.idCollaboration
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:collaboration/${this.collaborationId}` as const
+    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:collaboration/${this.idCollaboration}` as const
   }
 }
 export type { CollaborationArn }
@@ -83,16 +83,16 @@ export function collaborationArn<Partition extends ArnPartition = 'aws'>(
   return new CollaborationArn<Partition>(parameters)
 }
 
-export interface ConfiguredaudiencemodelassociationArnParameters<
+export interface AssociationModelAudienceConfiguredArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly membershipId: string
-  readonly configuredAudienceModelAssociationId: string
+  readonly idMembership: string
+  readonly idAssociationModelAudienceConfigured: string
 }
-class ConfiguredaudiencemodelassociationArn<
+class AssociationModelAudienceConfiguredArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'configuredaudiencemodelassociation',
@@ -100,216 +100,216 @@ class ConfiguredaudiencemodelassociationArn<
 > {
   readonly [ArnResourceTypeBrand] =
     'configuredaudiencemodelassociation' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly membershipId: string
-  readonly configuredAudienceModelAssociationId: string
+  readonly idMembership: string
+  readonly idAssociationModelAudienceConfigured: string
   constructor(
-    parameters: ConfiguredaudiencemodelassociationArnParameters<Partition>,
+    parameters: AssociationModelAudienceConfiguredArnParameters<Partition>,
   ) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.membershipId = parameters.membershipId
-    this.configuredAudienceModelAssociationId =
-      parameters.configuredAudienceModelAssociationId
+    this.idMembership = parameters.idMembership
+    this.idAssociationModelAudienceConfigured =
+      parameters.idAssociationModelAudienceConfigured
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:membership/${this.membershipId}/configuredaudiencemodelassociation/${this.configuredAudienceModelAssociationId}` as const
+    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:membership/${this.idMembership}/configuredaudiencemodelassociation/${this.idAssociationModelAudienceConfigured}` as const
   }
 }
-export type { ConfiguredaudiencemodelassociationArn }
-export function configuredaudiencemodelassociationArn<
+export type { AssociationModelAudienceConfiguredArn }
+export function associationModelAudienceConfiguredArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ConfiguredaudiencemodelassociationArnParameters<Partition>) {
-  return new ConfiguredaudiencemodelassociationArn<Partition>(parameters)
+>(parameters: AssociationModelAudienceConfiguredArnParameters<Partition>) {
+  return new AssociationModelAudienceConfiguredArn<Partition>(parameters)
 }
 
-export interface ConfiguredtableArnParameters<
+export interface TableConfiguredArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly configuredTableId: string
+  readonly idTableConfigured: string
 }
-class ConfiguredtableArn<
+class TableConfiguredArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'configuredtable',
   `arn:${string}:cleanrooms:${string}:${string}:configuredtable/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'configuredtable' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly configuredTableId: string
-  constructor(parameters: ConfiguredtableArnParameters<Partition>) {
+  readonly idTableConfigured: string
+  constructor(parameters: TableConfiguredArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.configuredTableId = parameters.configuredTableId
+    this.idTableConfigured = parameters.idTableConfigured
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:configuredtable/${this.configuredTableId}` as const
+    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:configuredtable/${this.idTableConfigured}` as const
   }
 }
-export type { ConfiguredtableArn }
-export function configuredtableArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ConfiguredtableArnParameters<Partition>,
+export type { TableConfiguredArn }
+export function tableConfiguredArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TableConfiguredArnParameters<Partition>,
 ) {
-  return new ConfiguredtableArn<Partition>(parameters)
+  return new TableConfiguredArn<Partition>(parameters)
 }
 
-export interface ConfiguredtableassociationArnParameters<
+export interface AssociationTableConfiguredArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly membershipId: string
-  readonly configuredTableAssociationId: string
+  readonly idMembership: string
+  readonly idAssociationTableConfigured: string
 }
-class ConfiguredtableassociationArn<
+class AssociationTableConfiguredArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'configuredtableassociation',
   `arn:${string}:cleanrooms:${string}:${string}:membership/${string}/configuredtableassociation/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'configuredtableassociation' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly membershipId: string
-  readonly configuredTableAssociationId: string
-  constructor(parameters: ConfiguredtableassociationArnParameters<Partition>) {
+  readonly idMembership: string
+  readonly idAssociationTableConfigured: string
+  constructor(parameters: AssociationTableConfiguredArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.membershipId = parameters.membershipId
-    this.configuredTableAssociationId = parameters.configuredTableAssociationId
+    this.idMembership = parameters.idMembership
+    this.idAssociationTableConfigured = parameters.idAssociationTableConfigured
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:membership/${this.membershipId}/configuredtableassociation/${this.configuredTableAssociationId}` as const
+    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:membership/${this.idMembership}/configuredtableassociation/${this.idAssociationTableConfigured}` as const
   }
 }
-export type { ConfiguredtableassociationArn }
-export function configuredtableassociationArn<
+export type { AssociationTableConfiguredArn }
+export function associationTableConfiguredArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ConfiguredtableassociationArnParameters<Partition>) {
-  return new ConfiguredtableassociationArn<Partition>(parameters)
+>(parameters: AssociationTableConfiguredArnParameters<Partition>) {
+  return new AssociationTableConfiguredArn<Partition>(parameters)
 }
 
-export interface IdmappingtableArnParameters<
+export interface TableMappingIdArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly membershipId: string
-  readonly idMappingTableId: string
+  readonly idMembership: string
+  readonly idTableMappingId: string
 }
-class IdmappingtableArn<
+class TableMappingIdArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'idmappingtable',
   `arn:${string}:cleanrooms:${string}:${string}:membership/${string}/idmappingtable/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'idmappingtable' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly membershipId: string
-  readonly idMappingTableId: string
-  constructor(parameters: IdmappingtableArnParameters<Partition>) {
+  readonly idMembership: string
+  readonly idTableMappingId: string
+  constructor(parameters: TableMappingIdArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.membershipId = parameters.membershipId
-    this.idMappingTableId = parameters.idMappingTableId
+    this.idMembership = parameters.idMembership
+    this.idTableMappingId = parameters.idTableMappingId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:membership/${this.membershipId}/idmappingtable/${this.idMappingTableId}` as const
+    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:membership/${this.idMembership}/idmappingtable/${this.idTableMappingId}` as const
   }
 }
-export type { IdmappingtableArn }
-export function idmappingtableArn<Partition extends ArnPartition = 'aws'>(
-  parameters: IdmappingtableArnParameters<Partition>,
+export type { TableMappingIdArn }
+export function tableMappingIdArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TableMappingIdArnParameters<Partition>,
 ) {
-  return new IdmappingtableArn<Partition>(parameters)
+  return new TableMappingIdArn<Partition>(parameters)
 }
 
-export interface IdnamespaceassociationArnParameters<
+export interface AssociationNamespaceIdArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly membershipId: string
-  readonly idNamespaceAssociationId: string
+  readonly idMembership: string
+  readonly idAssociationNamespaceId: string
 }
-class IdnamespaceassociationArn<
+class AssociationNamespaceIdArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'idnamespaceassociation',
   `arn:${string}:cleanrooms:${string}:${string}:membership/${string}/idnamespaceassociation/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'idnamespaceassociation' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly membershipId: string
-  readonly idNamespaceAssociationId: string
-  constructor(parameters: IdnamespaceassociationArnParameters<Partition>) {
+  readonly idMembership: string
+  readonly idAssociationNamespaceId: string
+  constructor(parameters: AssociationNamespaceIdArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.membershipId = parameters.membershipId
-    this.idNamespaceAssociationId = parameters.idNamespaceAssociationId
+    this.idMembership = parameters.idMembership
+    this.idAssociationNamespaceId = parameters.idAssociationNamespaceId
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:membership/${this.membershipId}/idnamespaceassociation/${this.idNamespaceAssociationId}` as const
+    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:membership/${this.idMembership}/idnamespaceassociation/${this.idAssociationNamespaceId}` as const
   }
 }
-export type { IdnamespaceassociationArn }
-export function idnamespaceassociationArn<
+export type { AssociationNamespaceIdArn }
+export function associationNamespaceIdArn<
   Partition extends ArnPartition = 'aws',
->(parameters: IdnamespaceassociationArnParameters<Partition>) {
-  return new IdnamespaceassociationArn<Partition>(parameters)
+>(parameters: AssociationNamespaceIdArnParameters<Partition>) {
+  return new AssociationNamespaceIdArn<Partition>(parameters)
 }
 
 export interface MembershipArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly membershipId: string
+  readonly idMembership: string
 }
 class MembershipArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'membership',
   `arn:${string}:cleanrooms:${string}:${string}:membership/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'membership' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly membershipId: string
+  readonly idMembership: string
   constructor(parameters: MembershipArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.membershipId = parameters.membershipId
+    this.idMembership = parameters.idMembership
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:membership/${this.membershipId}` as const
+    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:membership/${this.idMembership}` as const
   }
 }
 export type { MembershipArn }
@@ -319,42 +319,42 @@ export function membershipArn<Partition extends ArnPartition = 'aws'>(
   return new MembershipArn<Partition>(parameters)
 }
 
-export interface PrivacybudgettemplateArnParameters<
+export interface TemplateBudgetPrivacyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly membershipId: string
-  readonly privacyBudgetTemplateId: string
+  readonly idMembership: string
+  readonly idTemplateBudgetPrivacy: string
 }
-class PrivacybudgettemplateArn<
+class TemplateBudgetPrivacyArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'privacybudgettemplate',
   `arn:${string}:cleanrooms:${string}:${string}:membership/${string}/privacybudgettemplate/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'privacybudgettemplate' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly membershipId: string
-  readonly privacyBudgetTemplateId: string
-  constructor(parameters: PrivacybudgettemplateArnParameters<Partition>) {
+  readonly idMembership: string
+  readonly idTemplateBudgetPrivacy: string
+  constructor(parameters: TemplateBudgetPrivacyArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.membershipId = parameters.membershipId
-    this.privacyBudgetTemplateId = parameters.privacyBudgetTemplateId
+    this.idMembership = parameters.idMembership
+    this.idTemplateBudgetPrivacy = parameters.idTemplateBudgetPrivacy
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:membership/${this.membershipId}/privacybudgettemplate/${this.privacyBudgetTemplateId}` as const
+    return `arn:${this.partition}:cleanrooms:${this.region}:${this.account}:membership/${this.idMembership}/privacybudgettemplate/${this.idTemplateBudgetPrivacy}` as const
   }
 }
-export type { PrivacybudgettemplateArn }
-export function privacybudgettemplateArn<
+export type { TemplateBudgetPrivacyArn }
+export function templateBudgetPrivacyArn<
   Partition extends ArnPartition = 'aws',
->(parameters: PrivacybudgettemplateArnParameters<Partition>) {
-  return new PrivacybudgettemplateArn<Partition>(parameters)
+>(parameters: TemplateBudgetPrivacyArnParameters<Partition>) {
+  return new TemplateBudgetPrivacyArn<Partition>(parameters)
 }

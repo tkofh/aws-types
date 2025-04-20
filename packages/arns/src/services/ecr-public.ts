@@ -9,26 +9,26 @@ import {
 export interface RepositoryArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly repositoryName: string
+  readonly nameRepository: string
 }
 class RepositoryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'repository',
   `arn:${string}:ecr-public::${string}:repository/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'repository' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly repositoryName: string
+  readonly nameRepository: string
   constructor(parameters: RepositoryArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.repositoryName = parameters.repositoryName
+    this.nameRepository = parameters.nameRepository
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ecr-public::${this.account}:repository/${this.repositoryName}` as const
+    return `arn:${this.partition}:ecr-public::${this.account}:repository/${this.nameRepository}` as const
   }
 }
 export type { RepositoryArn }
@@ -39,26 +39,26 @@ export function repositoryArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface RegistryArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly registryId: string
+  readonly idRegistry: string
 }
 class RegistryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'registry',
   `arn:${string}:ecr-public::${string}:registry/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'registry' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly registryId: string
+  readonly idRegistry: string
   constructor(parameters: RegistryArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.registryId = parameters.registryId
+    this.idRegistry = parameters.idRegistry
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:ecr-public::${this.account}:registry/${this.registryId}` as const
+    return `arn:${this.partition}:ecr-public::${this.account}:registry/${this.idRegistry}` as const
   }
 }
 export type { RegistryArn }

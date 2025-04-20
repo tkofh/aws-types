@@ -9,10 +9,10 @@ import {
 export interface EnvironmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly environmentId: string
+  readonly idEnvironment: string
 }
 class EnvironmentArn<
   Partition extends ArnPartition = 'aws',
@@ -21,19 +21,19 @@ class EnvironmentArn<
   `arn:${string}:refactor-spaces:${string}:${string}:environment/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'environment' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly environmentId: string
+  readonly idEnvironment: string
   constructor(parameters: EnvironmentArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.environmentId = parameters.environmentId
+    this.idEnvironment = parameters.idEnvironment
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:refactor-spaces:${this.region}:${this.account}:environment/${this.environmentId}` as const
+    return `arn:${this.partition}:refactor-spaces:${this.region}:${this.account}:environment/${this.idEnvironment}` as const
   }
 }
 export type { EnvironmentArn }
@@ -46,11 +46,11 @@ export function environmentArn<Partition extends ArnPartition = 'aws'>(
 export interface ApplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly environmentId: string
-  readonly applicationId: string
+  readonly idEnvironment: string
+  readonly idApplication: string
 }
 class ApplicationArn<
   Partition extends ArnPartition = 'aws',
@@ -59,21 +59,21 @@ class ApplicationArn<
   `arn:${string}:refactor-spaces:${string}:${string}:environment/${string}/application/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'application' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly environmentId: string
-  readonly applicationId: string
+  readonly idEnvironment: string
+  readonly idApplication: string
   constructor(parameters: ApplicationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.environmentId = parameters.environmentId
-    this.applicationId = parameters.applicationId
+    this.idEnvironment = parameters.idEnvironment
+    this.idApplication = parameters.idApplication
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:refactor-spaces:${this.region}:${this.account}:environment/${this.environmentId}/application/${this.applicationId}` as const
+    return `arn:${this.partition}:refactor-spaces:${this.region}:${this.account}:environment/${this.idEnvironment}/application/${this.idApplication}` as const
   }
 }
 export type { ApplicationArn }
@@ -84,35 +84,35 @@ export function applicationArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ServiceArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly environmentId: string
-  readonly applicationId: string
-  readonly serviceId: string
+  readonly idEnvironment: string
+  readonly idApplication: string
+  readonly idService: string
 }
 class ServiceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'service',
   `arn:${string}:refactor-spaces:${string}:${string}:environment/${string}/application/${string}/service/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'service' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly environmentId: string
-  readonly applicationId: string
-  readonly serviceId: string
+  readonly idEnvironment: string
+  readonly idApplication: string
+  readonly idService: string
   constructor(parameters: ServiceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.environmentId = parameters.environmentId
-    this.applicationId = parameters.applicationId
-    this.serviceId = parameters.serviceId
+    this.idEnvironment = parameters.idEnvironment
+    this.idApplication = parameters.idApplication
+    this.idService = parameters.idService
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:refactor-spaces:${this.region}:${this.account}:environment/${this.environmentId}/application/${this.applicationId}/service/${this.serviceId}` as const
+    return `arn:${this.partition}:refactor-spaces:${this.region}:${this.account}:environment/${this.idEnvironment}/application/${this.idApplication}/service/${this.idService}` as const
   }
 }
 export type { ServiceArn }
@@ -123,35 +123,35 @@ export function serviceArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface RouteArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly environmentId: string
-  readonly applicationId: string
-  readonly routeId: string
+  readonly idEnvironment: string
+  readonly idApplication: string
+  readonly idRoute: string
 }
 class RouteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'route',
   `arn:${string}:refactor-spaces:${string}:${string}:environment/${string}/application/${string}/route/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'route' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly environmentId: string
-  readonly applicationId: string
-  readonly routeId: string
+  readonly idEnvironment: string
+  readonly idApplication: string
+  readonly idRoute: string
   constructor(parameters: RouteArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.environmentId = parameters.environmentId
-    this.applicationId = parameters.applicationId
-    this.routeId = parameters.routeId
+    this.idEnvironment = parameters.idEnvironment
+    this.idApplication = parameters.idApplication
+    this.idRoute = parameters.idRoute
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:refactor-spaces:${this.region}:${this.account}:environment/${this.environmentId}/application/${this.applicationId}/route/${this.routeId}` as const
+    return `arn:${this.partition}:refactor-spaces:${this.region}:${this.account}:environment/${this.idEnvironment}/application/${this.idApplication}/route/${this.idRoute}` as const
   }
 }
 export type { RouteArn }

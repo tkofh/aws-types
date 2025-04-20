@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface PolicyArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceName: string
+  readonly nameResource: string
 }
 class PolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'policy',
   `arn:${string}:dlm:${string}:${string}:policy/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'policy' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceName: string
+  readonly nameResource: string
   constructor(parameters: PolicyArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceName = parameters.resourceName
+    this.nameResource = parameters.nameResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:dlm:${this.region}:${this.account}:policy/${this.resourceName}` as const
+    return `arn:${this.partition}:dlm:${this.region}:${this.account}:policy/${this.nameResource}` as const
   }
 }
 export type { PolicyArn }

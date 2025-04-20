@@ -6,187 +6,187 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface FunctionPackageArnParameters<
+export interface PackageFunctionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly functionPackageId: string
+  readonly idPackageFunction: string
 }
-class FunctionPackageArn<
+class PackageFunctionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'function-package',
   `arn:${string}:tnb:${string}:${string}:function-package/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'function-package' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly functionPackageId: string
-  constructor(parameters: FunctionPackageArnParameters<Partition>) {
+  readonly idPackageFunction: string
+  constructor(parameters: PackageFunctionArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.functionPackageId = parameters.functionPackageId
+    this.idPackageFunction = parameters.idPackageFunction
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:tnb:${this.region}:${this.account}:function-package/${this.functionPackageId}` as const
+    return `arn:${this.partition}:tnb:${this.region}:${this.account}:function-package/${this.idPackageFunction}` as const
   }
 }
-export type { FunctionPackageArn }
-export function functionPackageArn<Partition extends ArnPartition = 'aws'>(
-  parameters: FunctionPackageArnParameters<Partition>,
+export type { PackageFunctionArn }
+export function packageFunctionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PackageFunctionArnParameters<Partition>,
 ) {
-  return new FunctionPackageArn<Partition>(parameters)
+  return new PackageFunctionArn<Partition>(parameters)
 }
 
-export interface NetworkPackageArnParameters<
+export interface PackageNetworkArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly networkPackageId: string
+  readonly idPackageNetwork: string
 }
-class NetworkPackageArn<
+class PackageNetworkArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'network-package',
   `arn:${string}:tnb:${string}:${string}:network-package/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'network-package' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly networkPackageId: string
-  constructor(parameters: NetworkPackageArnParameters<Partition>) {
+  readonly idPackageNetwork: string
+  constructor(parameters: PackageNetworkArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.networkPackageId = parameters.networkPackageId
+    this.idPackageNetwork = parameters.idPackageNetwork
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:tnb:${this.region}:${this.account}:network-package/${this.networkPackageId}` as const
+    return `arn:${this.partition}:tnb:${this.region}:${this.account}:network-package/${this.idPackageNetwork}` as const
   }
 }
-export type { NetworkPackageArn }
-export function networkPackageArn<Partition extends ArnPartition = 'aws'>(
-  parameters: NetworkPackageArnParameters<Partition>,
+export type { PackageNetworkArn }
+export function packageNetworkArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PackageNetworkArnParameters<Partition>,
 ) {
-  return new NetworkPackageArn<Partition>(parameters)
+  return new PackageNetworkArn<Partition>(parameters)
 }
 
-export interface NetworkInstanceArnParameters<
+export interface InstanceNetworkArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly networkInstanceId: string
+  readonly idInstanceNetwork: string
 }
-class NetworkInstanceArn<
+class InstanceNetworkArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'network-instance',
   `arn:${string}:tnb:${string}:${string}:network-instance/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'network-instance' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly networkInstanceId: string
-  constructor(parameters: NetworkInstanceArnParameters<Partition>) {
+  readonly idInstanceNetwork: string
+  constructor(parameters: InstanceNetworkArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.networkInstanceId = parameters.networkInstanceId
+    this.idInstanceNetwork = parameters.idInstanceNetwork
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:tnb:${this.region}:${this.account}:network-instance/${this.networkInstanceId}` as const
+    return `arn:${this.partition}:tnb:${this.region}:${this.account}:network-instance/${this.idInstanceNetwork}` as const
   }
 }
-export type { NetworkInstanceArn }
-export function networkInstanceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: NetworkInstanceArnParameters<Partition>,
+export type { InstanceNetworkArn }
+export function instanceNetworkArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InstanceNetworkArnParameters<Partition>,
 ) {
-  return new NetworkInstanceArn<Partition>(parameters)
+  return new InstanceNetworkArn<Partition>(parameters)
 }
 
-export interface FunctionInstanceArnParameters<
+export interface InstanceFunctionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly functionInstanceId: string
+  readonly idInstanceFunction: string
 }
-class FunctionInstanceArn<
+class InstanceFunctionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'function-instance',
   `arn:${string}:tnb:${string}:${string}:function-instance/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'function-instance' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly functionInstanceId: string
-  constructor(parameters: FunctionInstanceArnParameters<Partition>) {
+  readonly idInstanceFunction: string
+  constructor(parameters: InstanceFunctionArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.functionInstanceId = parameters.functionInstanceId
+    this.idInstanceFunction = parameters.idInstanceFunction
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:tnb:${this.region}:${this.account}:function-instance/${this.functionInstanceId}` as const
+    return `arn:${this.partition}:tnb:${this.region}:${this.account}:function-instance/${this.idInstanceFunction}` as const
   }
 }
-export type { FunctionInstanceArn }
-export function functionInstanceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: FunctionInstanceArnParameters<Partition>,
+export type { InstanceFunctionArn }
+export function instanceFunctionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InstanceFunctionArnParameters<Partition>,
 ) {
-  return new FunctionInstanceArn<Partition>(parameters)
+  return new InstanceFunctionArn<Partition>(parameters)
 }
 
-export interface NetworkOperationArnParameters<
+export interface OperationNetworkArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly networkOperationId: string
+  readonly idOperationNetwork: string
 }
-class NetworkOperationArn<
+class OperationNetworkArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'network-operation',
   `arn:${string}:tnb:${string}:${string}:network-operation/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'network-operation' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly networkOperationId: string
-  constructor(parameters: NetworkOperationArnParameters<Partition>) {
+  readonly idOperationNetwork: string
+  constructor(parameters: OperationNetworkArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.networkOperationId = parameters.networkOperationId
+    this.idOperationNetwork = parameters.idOperationNetwork
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:tnb:${this.region}:${this.account}:network-operation/${this.networkOperationId}` as const
+    return `arn:${this.partition}:tnb:${this.region}:${this.account}:network-operation/${this.idOperationNetwork}` as const
   }
 }
-export type { NetworkOperationArn }
-export function networkOperationArn<Partition extends ArnPartition = 'aws'>(
-  parameters: NetworkOperationArnParameters<Partition>,
+export type { OperationNetworkArn }
+export function operationNetworkArn<Partition extends ArnPartition = 'aws'>(
+  parameters: OperationNetworkArnParameters<Partition>,
 ) {
-  return new NetworkOperationArn<Partition>(parameters)
+  return new OperationNetworkArn<Partition>(parameters)
 }

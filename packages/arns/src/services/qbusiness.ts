@@ -9,10 +9,10 @@ import {
 export interface ApplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationId: string
+  readonly idApplication: string
 }
 class ApplicationArn<
   Partition extends ArnPartition = 'aws',
@@ -21,19 +21,19 @@ class ApplicationArn<
   `arn:${string}:qbusiness:${string}:${string}:application/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'application' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationId: string
+  readonly idApplication: string
   constructor(parameters: ApplicationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.applicationId = parameters.applicationId
+    this.idApplication = parameters.idApplication
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.applicationId}` as const
+    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.idApplication}` as const
   }
 }
 export type { ApplicationArn }
@@ -46,32 +46,32 @@ export function applicationArn<Partition extends ArnPartition = 'aws'>(
 export interface RetrieverArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationId: string
-  readonly retrieverId: string
+  readonly idApplication: string
+  readonly idRetriever: string
 }
 class RetrieverArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'retriever',
   `arn:${string}:qbusiness:${string}:${string}:application/${string}/retriever/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'retriever' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationId: string
-  readonly retrieverId: string
+  readonly idApplication: string
+  readonly idRetriever: string
   constructor(parameters: RetrieverArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.applicationId = parameters.applicationId
-    this.retrieverId = parameters.retrieverId
+    this.idApplication = parameters.idApplication
+    this.idRetriever = parameters.idRetriever
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.applicationId}/retriever/${this.retrieverId}` as const
+    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.idApplication}/retriever/${this.idRetriever}` as const
   }
 }
 export type { RetrieverArn }
@@ -82,32 +82,32 @@ export function retrieverArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface IndexArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationId: string
-  readonly indexId: string
+  readonly idApplication: string
+  readonly idIndex: string
 }
 class IndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'index',
   `arn:${string}:qbusiness:${string}:${string}:application/${string}/index/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'index' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationId: string
-  readonly indexId: string
+  readonly idApplication: string
+  readonly idIndex: string
   constructor(parameters: IndexArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.applicationId = parameters.applicationId
-    this.indexId = parameters.indexId
+    this.idApplication = parameters.idApplication
+    this.idIndex = parameters.idIndex
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.applicationId}/index/${this.indexId}` as const
+    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.idApplication}/index/${this.idIndex}` as const
   }
 }
 export type { IndexArn }
@@ -117,74 +117,74 @@ export function indexArn<Partition extends ArnPartition = 'aws'>(
   return new IndexArn<Partition>(parameters)
 }
 
-export interface DataSourceArnParameters<
+export interface DatasourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationId: string
-  readonly indexId: string
-  readonly dataSourceId: string
+  readonly idApplication: string
+  readonly idIndex: string
+  readonly idSourceData: string
 }
-class DataSourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class DatasourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'data-source',
   `arn:${string}:qbusiness:${string}:${string}:application/${string}/index/${string}/data-source/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'data-source' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationId: string
-  readonly indexId: string
-  readonly dataSourceId: string
-  constructor(parameters: DataSourceArnParameters<Partition>) {
+  readonly idApplication: string
+  readonly idIndex: string
+  readonly idSourceData: string
+  constructor(parameters: DatasourceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.applicationId = parameters.applicationId
-    this.indexId = parameters.indexId
-    this.dataSourceId = parameters.dataSourceId
+    this.idApplication = parameters.idApplication
+    this.idIndex = parameters.idIndex
+    this.idSourceData = parameters.idSourceData
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.applicationId}/index/${this.indexId}/data-source/${this.dataSourceId}` as const
+    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.idApplication}/index/${this.idIndex}/data-source/${this.idSourceData}` as const
   }
 }
-export type { DataSourceArn }
-export function dataSourceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DataSourceArnParameters<Partition>,
+export type { DatasourceArn }
+export function datasourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DatasourceArnParameters<Partition>,
 ) {
-  return new DataSourceArn<Partition>(parameters)
+  return new DatasourceArn<Partition>(parameters)
 }
 
 export interface PluginArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationId: string
-  readonly pluginId: string
+  readonly idApplication: string
+  readonly idPlugin: string
 }
 class PluginArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'plugin',
   `arn:${string}:qbusiness:${string}:${string}:application/${string}/plugin/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'plugin' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationId: string
-  readonly pluginId: string
+  readonly idApplication: string
+  readonly idPlugin: string
   constructor(parameters: PluginArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.applicationId = parameters.applicationId
-    this.pluginId = parameters.pluginId
+    this.idApplication = parameters.idApplication
+    this.idPlugin = parameters.idPlugin
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.applicationId}/plugin/${this.pluginId}` as const
+    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.idApplication}/plugin/${this.idPlugin}` as const
   }
 }
 export type { PluginArn }
@@ -194,94 +194,94 @@ export function pluginArn<Partition extends ArnPartition = 'aws'>(
   return new PluginArn<Partition>(parameters)
 }
 
-export interface WebExperienceArnParameters<
+export interface ExperienceWebArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationId: string
-  readonly webExperienceId: string
+  readonly idApplication: string
+  readonly idExperienceWeb: string
 }
-class WebExperienceArn<
+class ExperienceWebArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'web-experience',
   `arn:${string}:qbusiness:${string}:${string}:application/${string}/web-experience/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'web-experience' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationId: string
-  readonly webExperienceId: string
-  constructor(parameters: WebExperienceArnParameters<Partition>) {
+  readonly idApplication: string
+  readonly idExperienceWeb: string
+  constructor(parameters: ExperienceWebArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.applicationId = parameters.applicationId
-    this.webExperienceId = parameters.webExperienceId
+    this.idApplication = parameters.idApplication
+    this.idExperienceWeb = parameters.idExperienceWeb
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.applicationId}/web-experience/${this.webExperienceId}` as const
+    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.idApplication}/web-experience/${this.idExperienceWeb}` as const
   }
 }
-export type { WebExperienceArn }
-export function webExperienceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: WebExperienceArnParameters<Partition>,
+export type { ExperienceWebArn }
+export function experienceWebArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ExperienceWebArnParameters<Partition>,
 ) {
-  return new WebExperienceArn<Partition>(parameters)
+  return new ExperienceWebArn<Partition>(parameters)
 }
 
-export interface UserLicenseArnParameters<
+export interface LicenseUserArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationId: string
-  readonly userLicenseId: string
+  readonly idApplication: string
+  readonly idLicenseUser: string
 }
-class UserLicenseArn<
+class LicenseUserArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'user-license',
   `arn:${string}:qbusiness:${string}:${string}:application/${string}/user-license/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'user-license' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationId: string
-  readonly userLicenseId: string
-  constructor(parameters: UserLicenseArnParameters<Partition>) {
+  readonly idApplication: string
+  readonly idLicenseUser: string
+  constructor(parameters: LicenseUserArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.applicationId = parameters.applicationId
-    this.userLicenseId = parameters.userLicenseId
+    this.idApplication = parameters.idApplication
+    this.idLicenseUser = parameters.idLicenseUser
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.applicationId}/user-license/${this.userLicenseId}` as const
+    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.idApplication}/user-license/${this.idLicenseUser}` as const
   }
 }
-export type { UserLicenseArn }
-export function userLicenseArn<Partition extends ArnPartition = 'aws'>(
-  parameters: UserLicenseArnParameters<Partition>,
+export type { LicenseUserArn }
+export function licenseUserArn<Partition extends ArnPartition = 'aws'>(
+  parameters: LicenseUserArnParameters<Partition>,
 ) {
-  return new UserLicenseArn<Partition>(parameters)
+  return new LicenseUserArn<Partition>(parameters)
 }
 
 export interface SubscriptionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationId: string
-  readonly subscriptionId: string
+  readonly idApplication: string
+  readonly idSubscription: string
 }
 class SubscriptionArn<
   Partition extends ArnPartition = 'aws',
@@ -290,21 +290,21 @@ class SubscriptionArn<
   `arn:${string}:qbusiness:${string}:${string}:application/${string}/subscription/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'subscription' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationId: string
-  readonly subscriptionId: string
+  readonly idApplication: string
+  readonly idSubscription: string
   constructor(parameters: SubscriptionArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.applicationId = parameters.applicationId
-    this.subscriptionId = parameters.subscriptionId
+    this.idApplication = parameters.idApplication
+    this.idSubscription = parameters.idSubscription
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.applicationId}/subscription/${this.subscriptionId}` as const
+    return `arn:${this.partition}:qbusiness:${this.region}:${this.account}:application/${this.idApplication}/subscription/${this.idSubscription}` as const
   }
 }
 export type { SubscriptionArn }

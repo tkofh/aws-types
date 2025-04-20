@@ -6,69 +6,69 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface BatchpredictionArnParameters<
+export interface PredictionBatchArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly batchPredictionId: string
+  readonly idPredictionBatch: string
 }
-class BatchpredictionArn<
+class PredictionBatchArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'batchprediction',
   `arn:${string}:machinelearning:${string}:${string}:batchprediction/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'batchprediction' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly batchPredictionId: string
-  constructor(parameters: BatchpredictionArnParameters<Partition>) {
+  readonly idPredictionBatch: string
+  constructor(parameters: PredictionBatchArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.batchPredictionId = parameters.batchPredictionId
+    this.idPredictionBatch = parameters.idPredictionBatch
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:machinelearning:${this.region}:${this.account}:batchprediction/${this.batchPredictionId}` as const
+    return `arn:${this.partition}:machinelearning:${this.region}:${this.account}:batchprediction/${this.idPredictionBatch}` as const
   }
 }
-export type { BatchpredictionArn }
-export function batchpredictionArn<Partition extends ArnPartition = 'aws'>(
-  parameters: BatchpredictionArnParameters<Partition>,
+export type { PredictionBatchArn }
+export function predictionBatchArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PredictionBatchArnParameters<Partition>,
 ) {
-  return new BatchpredictionArn<Partition>(parameters)
+  return new PredictionBatchArn<Partition>(parameters)
 }
 
 export interface DatasourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly datasourceId: string
+  readonly idSourceData: string
 }
 class DatasourceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'datasource',
   `arn:${string}:machinelearning:${string}:${string}:datasource/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'datasource' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly datasourceId: string
+  readonly idSourceData: string
   constructor(parameters: DatasourceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.datasourceId = parameters.datasourceId
+    this.idSourceData = parameters.idSourceData
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:machinelearning:${this.region}:${this.account}:datasource/${this.datasourceId}` as const
+    return `arn:${this.partition}:machinelearning:${this.region}:${this.account}:datasource/${this.idSourceData}` as const
   }
 }
 export type { DatasourceArn }
@@ -81,29 +81,29 @@ export function datasourceArn<Partition extends ArnPartition = 'aws'>(
 export interface EvaluationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly evaluationId: string
+  readonly idEvaluation: string
 }
 class EvaluationArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'evaluation',
   `arn:${string}:machinelearning:${string}:${string}:evaluation/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'evaluation' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly evaluationId: string
+  readonly idEvaluation: string
   constructor(parameters: EvaluationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.evaluationId = parameters.evaluationId
+    this.idEvaluation = parameters.idEvaluation
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:machinelearning:${this.region}:${this.account}:evaluation/${this.evaluationId}` as const
+    return `arn:${this.partition}:machinelearning:${this.region}:${this.account}:evaluation/${this.idEvaluation}` as const
   }
 }
 export type { EvaluationArn }
@@ -113,35 +113,35 @@ export function evaluationArn<Partition extends ArnPartition = 'aws'>(
   return new EvaluationArn<Partition>(parameters)
 }
 
-export interface MlmodelArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+export interface ModelMlArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly mlModelId: string
+  readonly idModelMl: string
 }
-class MlmodelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class ModelMlArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'mlmodel',
   `arn:${string}:machinelearning:${string}:${string}:mlmodel/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'mlmodel' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly mlModelId: string
-  constructor(parameters: MlmodelArnParameters<Partition>) {
+  readonly idModelMl: string
+  constructor(parameters: ModelMlArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.mlModelId = parameters.mlModelId
+    this.idModelMl = parameters.idModelMl
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:machinelearning:${this.region}:${this.account}:mlmodel/${this.mlModelId}` as const
+    return `arn:${this.partition}:machinelearning:${this.region}:${this.account}:mlmodel/${this.idModelMl}` as const
   }
 }
-export type { MlmodelArn }
-export function mlmodelArn<Partition extends ArnPartition = 'aws'>(
-  parameters: MlmodelArnParameters<Partition>,
+export type { ModelMlArn }
+export function modelMlArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelMlArnParameters<Partition>,
 ) {
-  return new MlmodelArn<Partition>(parameters)
+  return new ModelMlArn<Partition>(parameters)
 }

@@ -6,36 +6,36 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface KeyValueStoreArnParameters<
+export interface StoreValueKeyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
-class KeyValueStoreArn<
+class StoreValueKeyArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'key-value-store',
   `arn:${string}:cloudfront::${string}:key-value-store/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'key-value-store' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly resourceId: string
-  constructor(parameters: KeyValueStoreArnParameters<Partition>) {
+  readonly idResource: string
+  constructor(parameters: StoreValueKeyArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudfront::${this.account}:key-value-store/${this.resourceId}` as const
+    return `arn:${this.partition}:cloudfront::${this.account}:key-value-store/${this.idResource}` as const
   }
 }
-export type { KeyValueStoreArn }
-export function keyValueStoreArn<Partition extends ArnPartition = 'aws'>(
-  parameters: KeyValueStoreArnParameters<Partition>,
+export type { StoreValueKeyArn }
+export function storeValueKeyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StoreValueKeyArnParameters<Partition>,
 ) {
-  return new KeyValueStoreArn<Partition>(parameters)
+  return new StoreValueKeyArn<Partition>(parameters)
 }

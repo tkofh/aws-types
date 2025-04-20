@@ -6,39 +6,39 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface DeviceIdentityArnParameters<
+export interface IdentityDeviceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly deviceId: string
-  readonly identityId: string
+  readonly idDevice: string
+  readonly idIdentity: string
 }
-class DeviceIdentityArn<
+class IdentityDeviceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'DeviceIdentity',
   `arn:${string}:consoleapp::${string}:device/${string}/identity/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'DeviceIdentity' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly deviceId: string
-  readonly identityId: string
-  constructor(parameters: DeviceIdentityArnParameters<Partition>) {
+  readonly idDevice: string
+  readonly idIdentity: string
+  constructor(parameters: IdentityDeviceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.deviceId = parameters.deviceId
-    this.identityId = parameters.identityId
+    this.idDevice = parameters.idDevice
+    this.idIdentity = parameters.idIdentity
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:consoleapp::${this.account}:device/${this.deviceId}/identity/${this.identityId}` as const
+    return `arn:${this.partition}:consoleapp::${this.account}:device/${this.idDevice}/identity/${this.idIdentity}` as const
   }
 }
-export type { DeviceIdentityArn }
-export function deviceIdentityArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DeviceIdentityArnParameters<Partition>,
+export type { IdentityDeviceArn }
+export function identityDeviceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IdentityDeviceArnParameters<Partition>,
 ) {
-  return new DeviceIdentityArn<Partition>(parameters)
+  return new IdentityDeviceArn<Partition>(parameters)
 }

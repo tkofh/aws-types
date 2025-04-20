@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface CarArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
 class CarArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'car',
   `arn:${string}:deepracer:${string}:${string}:car/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'car' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
   constructor(parameters: CarArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:deepracer:${this.region}:${this.account}:car/${this.resourceId}` as const
+    return `arn:${this.partition}:deepracer:${this.region}:${this.account}:car/${this.idResource}` as const
   }
 }
 export type { CarArn }
@@ -39,49 +39,49 @@ export function carArn<Partition extends ArnPartition = 'aws'>(
   return new CarArn<Partition>(parameters)
 }
 
-export interface EvaluationJobArnParameters<
+export interface JobEvaluationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
-class EvaluationJobArn<
+class JobEvaluationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'evaluation_job',
   `arn:${string}:deepracer:${string}:${string}:evaluation_job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'evaluation_job' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
-  constructor(parameters: EvaluationJobArnParameters<Partition>) {
+  readonly idResource: string
+  constructor(parameters: JobEvaluationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:deepracer:${this.region}:${this.account}:evaluation_job/${this.resourceId}` as const
+    return `arn:${this.partition}:deepracer:${this.region}:${this.account}:evaluation_job/${this.idResource}` as const
   }
 }
-export type { EvaluationJobArn }
-export function evaluationJobArn<Partition extends ArnPartition = 'aws'>(
-  parameters: EvaluationJobArnParameters<Partition>,
+export type { JobEvaluationArn }
+export function jobEvaluationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobEvaluationArnParameters<Partition>,
 ) {
-  return new EvaluationJobArn<Partition>(parameters)
+  return new JobEvaluationArn<Partition>(parameters)
 }
 
 export interface LeaderboardArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
-  readonly resourceId: string
+  readonly partition: string
+  readonly region: string
+  readonly idResource: string
 }
 class LeaderboardArn<
   Partition extends ArnPartition = 'aws',
@@ -90,17 +90,17 @@ class LeaderboardArn<
   `arn:${string}:deepracer:${string}::leaderboard/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'leaderboard' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
-  readonly resourceId: string
+  readonly partition: string
+  readonly region: string
+  readonly idResource: string
   constructor(parameters: LeaderboardArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:deepracer:${this.region}::leaderboard/${this.resourceId}` as const
+    return `arn:${this.partition}:deepracer:${this.region}::leaderboard/${this.idResource}` as const
   }
 }
 export type { LeaderboardArn }
@@ -110,101 +110,101 @@ export function leaderboardArn<Partition extends ArnPartition = 'aws'>(
   return new LeaderboardArn<Partition>(parameters)
 }
 
-export interface LeaderboardEvaluationJobArnParameters<
+export interface JobEvaluationLeaderboardArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
-class LeaderboardEvaluationJobArn<
+class JobEvaluationLeaderboardArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'leaderboard_evaluation_job',
   `arn:${string}:deepracer:${string}:${string}:leaderboard_evaluation_job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'leaderboard_evaluation_job' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
-  constructor(parameters: LeaderboardEvaluationJobArnParameters<Partition>) {
+  readonly idResource: string
+  constructor(parameters: JobEvaluationLeaderboardArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:deepracer:${this.region}:${this.account}:leaderboard_evaluation_job/${this.resourceId}` as const
+    return `arn:${this.partition}:deepracer:${this.region}:${this.account}:leaderboard_evaluation_job/${this.idResource}` as const
   }
 }
-export type { LeaderboardEvaluationJobArn }
-export function leaderboardEvaluationJobArn<
+export type { JobEvaluationLeaderboardArn }
+export function jobEvaluationLeaderboardArn<
   Partition extends ArnPartition = 'aws',
->(parameters: LeaderboardEvaluationJobArnParameters<Partition>) {
-  return new LeaderboardEvaluationJobArn<Partition>(parameters)
+>(parameters: JobEvaluationLeaderboardArnParameters<Partition>) {
+  return new JobEvaluationLeaderboardArn<Partition>(parameters)
 }
 
-export interface ReinforcementLearningModelArnParameters<
+export interface ModelLearningReinforcementArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
-class ReinforcementLearningModelArn<
+class ModelLearningReinforcementArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'reinforcement_learning_model',
   `arn:${string}:deepracer:${string}:${string}:model/reinforcement_learning/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'reinforcement_learning_model' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
-  constructor(parameters: ReinforcementLearningModelArnParameters<Partition>) {
+  readonly idResource: string
+  constructor(parameters: ModelLearningReinforcementArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:deepracer:${this.region}:${this.account}:model/reinforcement_learning/${this.resourceId}` as const
+    return `arn:${this.partition}:deepracer:${this.region}:${this.account}:model/reinforcement_learning/${this.idResource}` as const
   }
 }
-export type { ReinforcementLearningModelArn }
-export function reinforcementLearningModelArn<
+export type { ModelLearningReinforcementArn }
+export function modelLearningReinforcementArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ReinforcementLearningModelArnParameters<Partition>) {
-  return new ReinforcementLearningModelArn<Partition>(parameters)
+>(parameters: ModelLearningReinforcementArnParameters<Partition>) {
+  return new ModelLearningReinforcementArn<Partition>(parameters)
 }
 
 export interface TrackArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
-  readonly resourceId: string
+  readonly partition: string
+  readonly region: string
+  readonly idResource: string
 }
 class TrackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'track',
   `arn:${string}:deepracer:${string}::track/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'track' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
-  readonly resourceId: string
+  readonly partition: string
+  readonly region: string
+  readonly idResource: string
   constructor(parameters: TrackArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:deepracer:${this.region}::track/${this.resourceId}` as const
+    return `arn:${this.partition}:deepracer:${this.region}::track/${this.idResource}` as const
   }
 }
 export type { TrackArn }
@@ -214,39 +214,39 @@ export function trackArn<Partition extends ArnPartition = 'aws'>(
   return new TrackArn<Partition>(parameters)
 }
 
-export interface TrainingJobArnParameters<
+export interface JobTrainingArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
-class TrainingJobArn<
+class JobTrainingArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'training_job',
   `arn:${string}:deepracer:${string}:${string}:training_job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'training_job' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
-  constructor(parameters: TrainingJobArnParameters<Partition>) {
+  readonly idResource: string
+  constructor(parameters: JobTrainingArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:deepracer:${this.region}:${this.account}:training_job/${this.resourceId}` as const
+    return `arn:${this.partition}:deepracer:${this.region}:${this.account}:training_job/${this.idResource}` as const
   }
 }
-export type { TrainingJobArn }
-export function trainingJobArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TrainingJobArnParameters<Partition>,
+export type { JobTrainingArn }
+export function jobTrainingArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobTrainingArnParameters<Partition>,
 ) {
-  return new TrainingJobArn<Partition>(parameters)
+  return new JobTrainingArn<Partition>(parameters)
 }

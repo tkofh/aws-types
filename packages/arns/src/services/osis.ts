@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface PipelineArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly pipelineName: string
+  readonly namePipeline: string
 }
 class PipelineArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'pipeline',
   `arn:${string}:osis:${string}:${string}:pipeline/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'pipeline' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly pipelineName: string
+  readonly namePipeline: string
   constructor(parameters: PipelineArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pipelineName = parameters.pipelineName
+    this.namePipeline = parameters.namePipeline
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:osis:${this.region}:${this.account}:pipeline/${this.pipelineName}` as const
+    return `arn:${this.partition}:osis:${this.region}:${this.account}:pipeline/${this.namePipeline}` as const
   }
 }
 export type { PipelineArn }
@@ -39,39 +39,39 @@ export function pipelineArn<Partition extends ArnPartition = 'aws'>(
   return new PipelineArn<Partition>(parameters)
 }
 
-export interface PipelineBlueprintArnParameters<
+export interface BlueprintPipelineArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly blueprintName: string
+  readonly nameBlueprint: string
 }
-class PipelineBlueprintArn<
+class BlueprintPipelineArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'pipeline-blueprint',
   `arn:${string}:osis:${string}:${string}:blueprint/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'pipeline-blueprint' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly blueprintName: string
-  constructor(parameters: PipelineBlueprintArnParameters<Partition>) {
+  readonly nameBlueprint: string
+  constructor(parameters: BlueprintPipelineArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.blueprintName = parameters.blueprintName
+    this.nameBlueprint = parameters.nameBlueprint
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:osis:${this.region}:${this.account}:blueprint/${this.blueprintName}` as const
+    return `arn:${this.partition}:osis:${this.region}:${this.account}:blueprint/${this.nameBlueprint}` as const
   }
 }
-export type { PipelineBlueprintArn }
-export function pipelineBlueprintArn<Partition extends ArnPartition = 'aws'>(
-  parameters: PipelineBlueprintArnParameters<Partition>,
+export type { BlueprintPipelineArn }
+export function blueprintPipelineArn<Partition extends ArnPartition = 'aws'>(
+  parameters: BlueprintPipelineArnParameters<Partition>,
 ) {
-  return new PipelineBlueprintArn<Partition>(parameters)
+  return new BlueprintPipelineArn<Partition>(parameters)
 }

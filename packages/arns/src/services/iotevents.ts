@@ -6,102 +6,102 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface DetectorModelArnParameters<
+export interface ModelDetectorArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly detectorModelName: string
+  readonly nameModelDetector: string
 }
-class DetectorModelArn<
+class ModelDetectorArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'detectorModel',
   `arn:${string}:iotevents:${string}:${string}:detectorModel/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'detectorModel' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly detectorModelName: string
-  constructor(parameters: DetectorModelArnParameters<Partition>) {
+  readonly nameModelDetector: string
+  constructor(parameters: ModelDetectorArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.detectorModelName = parameters.detectorModelName
+    this.nameModelDetector = parameters.nameModelDetector
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotevents:${this.region}:${this.account}:detectorModel/${this.detectorModelName}` as const
+    return `arn:${this.partition}:iotevents:${this.region}:${this.account}:detectorModel/${this.nameModelDetector}` as const
   }
 }
-export type { DetectorModelArn }
-export function detectorModelArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DetectorModelArnParameters<Partition>,
+export type { ModelDetectorArn }
+export function modelDetectorArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelDetectorArnParameters<Partition>,
 ) {
-  return new DetectorModelArn<Partition>(parameters)
+  return new ModelDetectorArn<Partition>(parameters)
 }
 
-export interface AlarmModelArnParameters<
+export interface ModelAlarmArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly alarmModelName: string
+  readonly nameModelAlarm: string
 }
-class AlarmModelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class ModelAlarmArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'alarmModel',
   `arn:${string}:iotevents:${string}:${string}:alarmModel/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'alarmModel' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly alarmModelName: string
-  constructor(parameters: AlarmModelArnParameters<Partition>) {
+  readonly nameModelAlarm: string
+  constructor(parameters: ModelAlarmArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.alarmModelName = parameters.alarmModelName
+    this.nameModelAlarm = parameters.nameModelAlarm
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotevents:${this.region}:${this.account}:alarmModel/${this.alarmModelName}` as const
+    return `arn:${this.partition}:iotevents:${this.region}:${this.account}:alarmModel/${this.nameModelAlarm}` as const
   }
 }
-export type { AlarmModelArn }
-export function alarmModelArn<Partition extends ArnPartition = 'aws'>(
-  parameters: AlarmModelArnParameters<Partition>,
+export type { ModelAlarmArn }
+export function modelAlarmArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelAlarmArnParameters<Partition>,
 ) {
-  return new AlarmModelArn<Partition>(parameters)
+  return new ModelAlarmArn<Partition>(parameters)
 }
 
 export interface InputArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly inputName: string
+  readonly nameInput: string
 }
 class InputArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'input',
   `arn:${string}:iotevents:${string}:${string}:input/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'input' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly inputName: string
+  readonly nameInput: string
   constructor(parameters: InputArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.inputName = parameters.inputName
+    this.nameInput = parameters.nameInput
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotevents:${this.region}:${this.account}:input/${this.inputName}` as const
+    return `arn:${this.partition}:iotevents:${this.region}:${this.account}:input/${this.nameInput}` as const
   }
 }
 export type { InputArn }

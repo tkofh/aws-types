@@ -6,64 +6,64 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface LicenseConfigurationArnParameters<
+export interface ConfigurationLicenseArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly licenseConfigurationId: string
+  readonly idConfigurationLicense: string
 }
-class LicenseConfigurationArn<
+class ConfigurationLicenseArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'license-configuration',
   `arn:${string}:license-manager:${string}:${string}:license-configuration:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'license-configuration' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly licenseConfigurationId: string
-  constructor(parameters: LicenseConfigurationArnParameters<Partition>) {
+  readonly idConfigurationLicense: string
+  constructor(parameters: ConfigurationLicenseArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.licenseConfigurationId = parameters.licenseConfigurationId
+    this.idConfigurationLicense = parameters.idConfigurationLicense
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:license-manager:${this.region}:${this.account}:license-configuration:${this.licenseConfigurationId}` as const
+    return `arn:${this.partition}:license-manager:${this.region}:${this.account}:license-configuration:${this.idConfigurationLicense}` as const
   }
 }
-export type { LicenseConfigurationArn }
-export function licenseConfigurationArn<Partition extends ArnPartition = 'aws'>(
-  parameters: LicenseConfigurationArnParameters<Partition>,
+export type { ConfigurationLicenseArn }
+export function configurationLicenseArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConfigurationLicenseArnParameters<Partition>,
 ) {
-  return new LicenseConfigurationArn<Partition>(parameters)
+  return new ConfigurationLicenseArn<Partition>(parameters)
 }
 
 export interface LicenseArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly licenseId: string
+  readonly idLicense: string
 }
 class LicenseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'license',
   `arn:${string}:license-manager::${string}:license:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'license' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly licenseId: string
+  readonly idLicense: string
   constructor(parameters: LicenseArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.licenseId = parameters.licenseId
+    this.idLicense = parameters.idLicense
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:license-manager::${this.account}:license:${this.licenseId}` as const
+    return `arn:${this.partition}:license-manager::${this.account}:license:${this.idLicense}` as const
   }
 }
 export type { LicenseArn }
@@ -74,26 +74,26 @@ export function licenseArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface GrantArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly grantId: string
+  readonly idGrant: string
 }
 class GrantArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'grant',
   `arn:${string}:license-manager::${string}:grant:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'grant' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly grantId: string
+  readonly idGrant: string
   constructor(parameters: GrantArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.grantId = parameters.grantId
+    this.idGrant = parameters.idGrant
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:license-manager::${this.account}:grant:${this.grantId}` as const
+    return `arn:${this.partition}:license-manager::${this.account}:grant:${this.idGrant}` as const
   }
 }
 export type { GrantArn }
@@ -103,39 +103,39 @@ export function grantArn<Partition extends ArnPartition = 'aws'>(
   return new GrantArn<Partition>(parameters)
 }
 
-export interface ReportGeneratorArnParameters<
+export interface GeneratorReportArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly reportGeneratorId: string
+  readonly idGeneratorReport: string
 }
-class ReportGeneratorArn<
+class GeneratorReportArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'report-generator',
   `arn:${string}:license-manager:${string}:${string}:report-generator:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'report-generator' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly reportGeneratorId: string
-  constructor(parameters: ReportGeneratorArnParameters<Partition>) {
+  readonly idGeneratorReport: string
+  constructor(parameters: GeneratorReportArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.reportGeneratorId = parameters.reportGeneratorId
+    this.idGeneratorReport = parameters.idGeneratorReport
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:license-manager:${this.region}:${this.account}:report-generator:${this.reportGeneratorId}` as const
+    return `arn:${this.partition}:license-manager:${this.region}:${this.account}:report-generator:${this.idGeneratorReport}` as const
   }
 }
-export type { ReportGeneratorArn }
-export function reportGeneratorArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ReportGeneratorArnParameters<Partition>,
+export type { GeneratorReportArn }
+export function generatorReportArn<Partition extends ArnPartition = 'aws'>(
+  parameters: GeneratorReportArnParameters<Partition>,
 ) {
-  return new ReportGeneratorArn<Partition>(parameters)
+  return new GeneratorReportArn<Partition>(parameters)
 }

@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface SecretArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly secretId: string
+  readonly idSecret: string
 }
 class SecretArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Secret',
   `arn:${string}:secretsmanager:${string}:${string}:secret:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Secret' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly secretId: string
+  readonly idSecret: string
   constructor(parameters: SecretArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.secretId = parameters.secretId
+    this.idSecret = parameters.idSecret
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:secretsmanager:${this.region}:${this.account}:secret:${this.secretId}` as const
+    return `arn:${this.partition}:secretsmanager:${this.region}:${this.account}:secret:${this.idSecret}` as const
   }
 }
 export type { SecretArn }

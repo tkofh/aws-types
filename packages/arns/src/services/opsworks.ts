@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface StackArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly stackId: string
+  readonly idStack: string
 }
 class StackArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'stack',
   `arn:${string}:opsworks:${string}:${string}:stack/${string}/`
 > {
   readonly [ArnResourceTypeBrand] = 'stack' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly stackId: string
+  readonly idStack: string
   constructor(parameters: StackArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.stackId = parameters.stackId
+    this.idStack = parameters.idStack
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:opsworks:${this.region}:${this.account}:stack/${this.stackId}/` as const
+    return `arn:${this.partition}:opsworks:${this.region}:${this.account}:stack/${this.idStack}/` as const
   }
 }
 export type { StackArn }

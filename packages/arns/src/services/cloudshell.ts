@@ -9,10 +9,10 @@ import {
 export interface EnvironmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly environmentId: string
+  readonly idEnvironment: string
 }
 class EnvironmentArn<
   Partition extends ArnPartition = 'aws',
@@ -21,19 +21,19 @@ class EnvironmentArn<
   `arn:${string}:cloudshell:${string}:${string}:environment/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Environment' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly environmentId: string
+  readonly idEnvironment: string
   constructor(parameters: EnvironmentArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.environmentId = parameters.environmentId
+    this.idEnvironment = parameters.idEnvironment
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudshell:${this.region}:${this.account}:environment/${this.environmentId}` as const
+    return `arn:${this.partition}:cloudshell:${this.region}:${this.account}:environment/${this.idEnvironment}` as const
   }
 }
 export type { EnvironmentArn }

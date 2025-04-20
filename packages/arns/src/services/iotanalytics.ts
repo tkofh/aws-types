@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface ChannelArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly channelName: string
+  readonly nameChannel: string
 }
 class ChannelArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'channel',
   `arn:${string}:iotanalytics:${string}:${string}:channel/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'channel' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly channelName: string
+  readonly nameChannel: string
   constructor(parameters: ChannelArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.channelName = parameters.channelName
+    this.nameChannel = parameters.nameChannel
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotanalytics:${this.region}:${this.account}:channel/${this.channelName}` as const
+    return `arn:${this.partition}:iotanalytics:${this.region}:${this.account}:channel/${this.nameChannel}` as const
   }
 }
 export type { ChannelArn }
@@ -39,98 +39,98 @@ export function channelArn<Partition extends ArnPartition = 'aws'>(
   return new ChannelArn<Partition>(parameters)
 }
 
-export interface DatasetArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+export interface SetDataArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly datasetName: string
+  readonly nameSetData: string
 }
-class DatasetArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class SetDataArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'dataset',
   `arn:${string}:iotanalytics:${string}:${string}:dataset/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'dataset' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly datasetName: string
-  constructor(parameters: DatasetArnParameters<Partition>) {
+  readonly nameSetData: string
+  constructor(parameters: SetDataArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.datasetName = parameters.datasetName
+    this.nameSetData = parameters.nameSetData
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotanalytics:${this.region}:${this.account}:dataset/${this.datasetName}` as const
+    return `arn:${this.partition}:iotanalytics:${this.region}:${this.account}:dataset/${this.nameSetData}` as const
   }
 }
-export type { DatasetArn }
-export function datasetArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DatasetArnParameters<Partition>,
+export type { SetDataArn }
+export function setDataArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SetDataArnParameters<Partition>,
 ) {
-  return new DatasetArn<Partition>(parameters)
+  return new SetDataArn<Partition>(parameters)
 }
 
-export interface DatastoreArnParameters<
+export interface StoreDataArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly datastoreName: string
+  readonly nameDatastore: string
 }
-class DatastoreArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class StoreDataArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'datastore',
   `arn:${string}:iotanalytics:${string}:${string}:datastore/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'datastore' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly datastoreName: string
-  constructor(parameters: DatastoreArnParameters<Partition>) {
+  readonly nameDatastore: string
+  constructor(parameters: StoreDataArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.datastoreName = parameters.datastoreName
+    this.nameDatastore = parameters.nameDatastore
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotanalytics:${this.region}:${this.account}:datastore/${this.datastoreName}` as const
+    return `arn:${this.partition}:iotanalytics:${this.region}:${this.account}:datastore/${this.nameDatastore}` as const
   }
 }
-export type { DatastoreArn }
-export function datastoreArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DatastoreArnParameters<Partition>,
+export type { StoreDataArn }
+export function storeDataArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StoreDataArnParameters<Partition>,
 ) {
-  return new DatastoreArn<Partition>(parameters)
+  return new StoreDataArn<Partition>(parameters)
 }
 
 export interface PipelineArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly pipelineName: string
+  readonly namePipeline: string
 }
 class PipelineArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'pipeline',
   `arn:${string}:iotanalytics:${string}:${string}:pipeline/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'pipeline' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly pipelineName: string
+  readonly namePipeline: string
   constructor(parameters: PipelineArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.pipelineName = parameters.pipelineName
+    this.namePipeline = parameters.namePipeline
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotanalytics:${this.region}:${this.account}:pipeline/${this.pipelineName}` as const
+    return `arn:${this.partition}:iotanalytics:${this.region}:${this.account}:pipeline/${this.namePipeline}` as const
   }
 }
 export type { PipelineArn }

@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface LexiconArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly lexiconName: string
+  readonly nameLexicon: string
 }
 class LexiconArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'lexicon',
   `arn:${string}:polly:${string}:${string}:lexicon/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'lexicon' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly lexiconName: string
+  readonly nameLexicon: string
   constructor(parameters: LexiconArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.lexiconName = parameters.lexiconName
+    this.nameLexicon = parameters.nameLexicon
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:polly:${this.region}:${this.account}:lexicon/${this.lexiconName}` as const
+    return `arn:${this.partition}:polly:${this.region}:${this.account}:lexicon/${this.nameLexicon}` as const
   }
 }
 export type { LexiconArn }

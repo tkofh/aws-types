@@ -6,140 +6,140 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface TestCaseArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+export interface CaseTestArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly testCaseId: string
+  readonly idCaseTest: string
 }
-class TestCaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class CaseTestArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'TestCase',
   `arn:${string}:apptest:${string}:${string}:testcase/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'TestCase' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly testCaseId: string
-  constructor(parameters: TestCaseArnParameters<Partition>) {
+  readonly idCaseTest: string
+  constructor(parameters: CaseTestArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.testCaseId = parameters.testCaseId
+    this.idCaseTest = parameters.idCaseTest
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:apptest:${this.region}:${this.account}:testcase/${this.testCaseId}` as const
+    return `arn:${this.partition}:apptest:${this.region}:${this.account}:testcase/${this.idCaseTest}` as const
   }
 }
-export type { TestCaseArn }
-export function testCaseArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TestCaseArnParameters<Partition>,
+export type { CaseTestArn }
+export function caseTestArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CaseTestArnParameters<Partition>,
 ) {
-  return new TestCaseArn<Partition>(parameters)
+  return new CaseTestArn<Partition>(parameters)
 }
 
-export interface TestConfigurationArnParameters<
+export interface ConfigurationTestArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly testConfigurationId: string
+  readonly idConfigurationTest: string
 }
-class TestConfigurationArn<
+class ConfigurationTestArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'TestConfiguration',
   `arn:${string}:apptest:${string}:${string}:testconfiguration/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'TestConfiguration' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly testConfigurationId: string
-  constructor(parameters: TestConfigurationArnParameters<Partition>) {
+  readonly idConfigurationTest: string
+  constructor(parameters: ConfigurationTestArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.testConfigurationId = parameters.testConfigurationId
+    this.idConfigurationTest = parameters.idConfigurationTest
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:apptest:${this.region}:${this.account}:testconfiguration/${this.testConfigurationId}` as const
+    return `arn:${this.partition}:apptest:${this.region}:${this.account}:testconfiguration/${this.idConfigurationTest}` as const
   }
 }
-export type { TestConfigurationArn }
-export function testConfigurationArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TestConfigurationArnParameters<Partition>,
+export type { ConfigurationTestArn }
+export function configurationTestArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConfigurationTestArnParameters<Partition>,
 ) {
-  return new TestConfigurationArn<Partition>(parameters)
+  return new ConfigurationTestArn<Partition>(parameters)
 }
 
-export interface TestRunArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+export interface RunTestArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly testRunId: string
+  readonly idRunTest: string
 }
-class TestRunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class RunTestArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'TestRun',
   `arn:${string}:apptest:${string}:${string}:testrun/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'TestRun' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly testRunId: string
-  constructor(parameters: TestRunArnParameters<Partition>) {
+  readonly idRunTest: string
+  constructor(parameters: RunTestArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.testRunId = parameters.testRunId
+    this.idRunTest = parameters.idRunTest
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:apptest:${this.region}:${this.account}:testrun/${this.testRunId}` as const
+    return `arn:${this.partition}:apptest:${this.region}:${this.account}:testrun/${this.idRunTest}` as const
   }
 }
-export type { TestRunArn }
-export function testRunArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TestRunArnParameters<Partition>,
+export type { RunTestArn }
+export function runTestArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RunTestArnParameters<Partition>,
 ) {
-  return new TestRunArn<Partition>(parameters)
+  return new RunTestArn<Partition>(parameters)
 }
 
-export interface TestSuiteArnParameters<
+export interface SuiteTestArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly testSuiteId: string
+  readonly idSuiteTest: string
 }
-class TestSuiteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class SuiteTestArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'TestSuite',
   `arn:${string}:apptest:${string}:${string}:testsuite/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'TestSuite' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly testSuiteId: string
-  constructor(parameters: TestSuiteArnParameters<Partition>) {
+  readonly idSuiteTest: string
+  constructor(parameters: SuiteTestArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.testSuiteId = parameters.testSuiteId
+    this.idSuiteTest = parameters.idSuiteTest
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:apptest:${this.region}:${this.account}:testsuite/${this.testSuiteId}` as const
+    return `arn:${this.partition}:apptest:${this.region}:${this.account}:testsuite/${this.idSuiteTest}` as const
   }
 }
-export type { TestSuiteArn }
-export function testSuiteArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TestSuiteArnParameters<Partition>,
+export type { SuiteTestArn }
+export function suiteTestArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SuiteTestArnParameters<Partition>,
 ) {
-  return new TestSuiteArn<Partition>(parameters)
+  return new SuiteTestArn<Partition>(parameters)
 }

@@ -6,39 +6,39 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface ChatbotConfigurationArnParameters<
+export interface ConfigurationChatbotArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly configurationType: string
-  readonly chatbotConfigurationName: string
+  readonly typeConfiguration: string
+  readonly nameConfigurationBotChat: string
 }
-class ChatbotConfigurationArn<
+class ConfigurationChatbotArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ChatbotConfiguration',
   `arn:${string}:chatbot::${string}:chat-configuration/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'ChatbotConfiguration' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly configurationType: string
-  readonly chatbotConfigurationName: string
-  constructor(parameters: ChatbotConfigurationArnParameters<Partition>) {
+  readonly typeConfiguration: string
+  readonly nameConfigurationBotChat: string
+  constructor(parameters: ConfigurationChatbotArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.configurationType = parameters.configurationType
-    this.chatbotConfigurationName = parameters.chatbotConfigurationName
+    this.typeConfiguration = parameters.typeConfiguration
+    this.nameConfigurationBotChat = parameters.nameConfigurationBotChat
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:chatbot::${this.account}:chat-configuration/${this.configurationType}/${this.chatbotConfigurationName}` as const
+    return `arn:${this.partition}:chatbot::${this.account}:chat-configuration/${this.typeConfiguration}/${this.nameConfigurationBotChat}` as const
   }
 }
-export type { ChatbotConfigurationArn }
-export function chatbotConfigurationArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ChatbotConfigurationArnParameters<Partition>,
+export type { ConfigurationChatbotArn }
+export function configurationChatbotArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConfigurationChatbotArnParameters<Partition>,
 ) {
-  return new ChatbotConfigurationArn<Partition>(parameters)
+  return new ConfigurationChatbotArn<Partition>(parameters)
 }

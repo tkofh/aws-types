@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface DomainsArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainName: string
+  readonly nameDomain: string
 }
 class DomainsArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'domains',
   `arn:${string}:profile:${string}:${string}:domains/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'domains' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainName: string
+  readonly nameDomain: string
   constructor(parameters: DomainsArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.domainName = parameters.domainName
+    this.nameDomain = parameters.nameDomain
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:profile:${this.region}:${this.account}:domains/${this.domainName}` as const
+    return `arn:${this.partition}:profile:${this.region}:${this.account}:domains/${this.nameDomain}` as const
   }
 }
 export type { DomainsArn }
@@ -39,53 +39,53 @@ export function domainsArn<Partition extends ArnPartition = 'aws'>(
   return new DomainsArn<Partition>(parameters)
 }
 
-export interface ObjectTypesArnParameters<
+export interface TypesObjectArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainName: string
-  readonly objectTypeName: string
+  readonly nameDomain: string
+  readonly nameTypeObject: string
 }
-class ObjectTypesArn<
+class TypesObjectArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'object-types',
   `arn:${string}:profile:${string}:${string}:domains/${string}/object-types/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'object-types' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainName: string
-  readonly objectTypeName: string
-  constructor(parameters: ObjectTypesArnParameters<Partition>) {
+  readonly nameDomain: string
+  readonly nameTypeObject: string
+  constructor(parameters: TypesObjectArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.domainName = parameters.domainName
-    this.objectTypeName = parameters.objectTypeName
+    this.nameDomain = parameters.nameDomain
+    this.nameTypeObject = parameters.nameTypeObject
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:profile:${this.region}:${this.account}:domains/${this.domainName}/object-types/${this.objectTypeName}` as const
+    return `arn:${this.partition}:profile:${this.region}:${this.account}:domains/${this.nameDomain}/object-types/${this.nameTypeObject}` as const
   }
 }
-export type { ObjectTypesArn }
-export function objectTypesArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ObjectTypesArnParameters<Partition>,
+export type { TypesObjectArn }
+export function typesObjectArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TypesObjectArnParameters<Partition>,
 ) {
-  return new ObjectTypesArn<Partition>(parameters)
+  return new TypesObjectArn<Partition>(parameters)
 }
 
 export interface IntegrationsArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainName: string
+  readonly nameDomain: string
   readonly uri: string
 }
 class IntegrationsArn<
@@ -95,21 +95,21 @@ class IntegrationsArn<
   `arn:${string}:profile:${string}:${string}:domains/${string}/integrations/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'integrations' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainName: string
+  readonly nameDomain: string
   readonly uri: string
   constructor(parameters: IntegrationsArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.domainName = parameters.domainName
+    this.nameDomain = parameters.nameDomain
     this.uri = parameters.uri
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:profile:${this.region}:${this.account}:domains/${this.domainName}/integrations/${this.uri}` as const
+    return `arn:${this.partition}:profile:${this.region}:${this.account}:domains/${this.nameDomain}/integrations/${this.uri}` as const
   }
 }
 export type { IntegrationsArn }
@@ -119,122 +119,122 @@ export function integrationsArn<Partition extends ArnPartition = 'aws'>(
   return new IntegrationsArn<Partition>(parameters)
 }
 
-export interface EventStreamsArnParameters<
+export interface StreamsEventArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainName: string
-  readonly eventStreamName: string
+  readonly nameDomain: string
+  readonly nameStreamEvent: string
 }
-class EventStreamsArn<
+class StreamsEventArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'event-streams',
   `arn:${string}:profile:${string}:${string}:domains/${string}/event-streams/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'event-streams' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainName: string
-  readonly eventStreamName: string
-  constructor(parameters: EventStreamsArnParameters<Partition>) {
+  readonly nameDomain: string
+  readonly nameStreamEvent: string
+  constructor(parameters: StreamsEventArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.domainName = parameters.domainName
-    this.eventStreamName = parameters.eventStreamName
+    this.nameDomain = parameters.nameDomain
+    this.nameStreamEvent = parameters.nameStreamEvent
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:profile:${this.region}:${this.account}:domains/${this.domainName}/event-streams/${this.eventStreamName}` as const
+    return `arn:${this.partition}:profile:${this.region}:${this.account}:domains/${this.nameDomain}/event-streams/${this.nameStreamEvent}` as const
   }
 }
-export type { EventStreamsArn }
-export function eventStreamsArn<Partition extends ArnPartition = 'aws'>(
-  parameters: EventStreamsArnParameters<Partition>,
+export type { StreamsEventArn }
+export function streamsEventArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StreamsEventArnParameters<Partition>,
 ) {
-  return new EventStreamsArn<Partition>(parameters)
+  return new StreamsEventArn<Partition>(parameters)
 }
 
-export interface CalculatedAttributesArnParameters<
+export interface AttributesCalculatedArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainName: string
-  readonly calculatedAttributeName: string
+  readonly nameDomain: string
+  readonly nameAttributeCalculated: string
 }
-class CalculatedAttributesArn<
+class AttributesCalculatedArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'calculated-attributes',
   `arn:${string}:profile:${string}:${string}:domains/${string}/calculated-attributes/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'calculated-attributes' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainName: string
-  readonly calculatedAttributeName: string
-  constructor(parameters: CalculatedAttributesArnParameters<Partition>) {
+  readonly nameDomain: string
+  readonly nameAttributeCalculated: string
+  constructor(parameters: AttributesCalculatedArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.domainName = parameters.domainName
-    this.calculatedAttributeName = parameters.calculatedAttributeName
+    this.nameDomain = parameters.nameDomain
+    this.nameAttributeCalculated = parameters.nameAttributeCalculated
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:profile:${this.region}:${this.account}:domains/${this.domainName}/calculated-attributes/${this.calculatedAttributeName}` as const
+    return `arn:${this.partition}:profile:${this.region}:${this.account}:domains/${this.nameDomain}/calculated-attributes/${this.nameAttributeCalculated}` as const
   }
 }
-export type { CalculatedAttributesArn }
-export function calculatedAttributesArn<Partition extends ArnPartition = 'aws'>(
-  parameters: CalculatedAttributesArnParameters<Partition>,
+export type { AttributesCalculatedArn }
+export function attributesCalculatedArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AttributesCalculatedArnParameters<Partition>,
 ) {
-  return new CalculatedAttributesArn<Partition>(parameters)
+  return new AttributesCalculatedArn<Partition>(parameters)
 }
 
-export interface SegmentDefinitionsArnParameters<
+export interface DefinitionsSegmentArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainName: string
-  readonly segmentDefinitionName: string
+  readonly nameDomain: string
+  readonly nameDefinitionSegment: string
 }
-class SegmentDefinitionsArn<
+class DefinitionsSegmentArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'segment-definitions',
   `arn:${string}:profile:${string}:${string}:domains/${string}/segment-definitions/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'segment-definitions' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainName: string
-  readonly segmentDefinitionName: string
-  constructor(parameters: SegmentDefinitionsArnParameters<Partition>) {
+  readonly nameDomain: string
+  readonly nameDefinitionSegment: string
+  constructor(parameters: DefinitionsSegmentArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.domainName = parameters.domainName
-    this.segmentDefinitionName = parameters.segmentDefinitionName
+    this.nameDomain = parameters.nameDomain
+    this.nameDefinitionSegment = parameters.nameDefinitionSegment
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:profile:${this.region}:${this.account}:domains/${this.domainName}/segment-definitions/${this.segmentDefinitionName}` as const
+    return `arn:${this.partition}:profile:${this.region}:${this.account}:domains/${this.nameDomain}/segment-definitions/${this.nameDefinitionSegment}` as const
   }
 }
-export type { SegmentDefinitionsArn }
-export function segmentDefinitionsArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SegmentDefinitionsArnParameters<Partition>,
+export type { DefinitionsSegmentArn }
+export function definitionsSegmentArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DefinitionsSegmentArnParameters<Partition>,
 ) {
-  return new SegmentDefinitionsArn<Partition>(parameters)
+  return new DefinitionsSegmentArn<Partition>(parameters)
 }

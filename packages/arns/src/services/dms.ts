@@ -9,8 +9,8 @@ import {
 export interface CertificateArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
 }
 class CertificateArn<
@@ -20,12 +20,12 @@ class CertificateArn<
   `arn:${string}:dms:${string}:${string}:cert:*`
 > {
   readonly [ArnResourceTypeBrand] = 'Certificate' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   constructor(parameters: CertificateArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
   }
@@ -40,26 +40,26 @@ export function certificateArn<Partition extends ArnPartition = 'aws'>(
   return new CertificateArn<Partition>(parameters)
 }
 
-export interface DataProviderArnParameters<
+export interface ProviderDataArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
 }
-class DataProviderArn<
+class ProviderDataArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'DataProvider',
   `arn:${string}:dms:${string}:${string}:data-provider:*`
 > {
   readonly [ArnResourceTypeBrand] = 'DataProvider' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  constructor(parameters: DataProviderArnParameters<Partition>) {
+  constructor(parameters: ProviderDataArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
   }
@@ -67,33 +67,33 @@ class DataProviderArn<
     return `arn:${this.partition}:dms:${this.region}:${this.account}:data-provider:*` as const
   }
 }
-export type { DataProviderArn }
-export function dataProviderArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DataProviderArnParameters<Partition>,
+export type { ProviderDataArn }
+export function providerDataArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProviderDataArnParameters<Partition>,
 ) {
-  return new DataProviderArn<Partition>(parameters)
+  return new ProviderDataArn<Partition>(parameters)
 }
 
-export interface DataMigrationArnParameters<
+export interface MigrationDataArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
 }
-class DataMigrationArn<
+class MigrationDataArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'DataMigration',
   `arn:${string}:dms:${string}:${string}:data-migration:*`
 > {
   readonly [ArnResourceTypeBrand] = 'DataMigration' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  constructor(parameters: DataMigrationArnParameters<Partition>) {
+  constructor(parameters: MigrationDataArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
   }
@@ -101,16 +101,16 @@ class DataMigrationArn<
     return `arn:${this.partition}:dms:${this.region}:${this.account}:data-migration:*` as const
   }
 }
-export type { DataMigrationArn }
-export function dataMigrationArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DataMigrationArnParameters<Partition>,
+export type { MigrationDataArn }
+export function migrationDataArn<Partition extends ArnPartition = 'aws'>(
+  parameters: MigrationDataArnParameters<Partition>,
 ) {
-  return new DataMigrationArn<Partition>(parameters)
+  return new MigrationDataArn<Partition>(parameters)
 }
 
 export interface EndpointArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
 }
 class EndpointArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
@@ -118,12 +118,12 @@ class EndpointArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:dms:${string}:${string}:endpoint:*`
 > {
   readonly [ArnResourceTypeBrand] = 'Endpoint' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   constructor(parameters: EndpointArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
   }
@@ -138,26 +138,26 @@ export function endpointArn<Partition extends ArnPartition = 'aws'>(
   return new EndpointArn<Partition>(parameters)
 }
 
-export interface EventSubscriptionArnParameters<
+export interface SubscriptionEventArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
 }
-class EventSubscriptionArn<
+class SubscriptionEventArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'EventSubscription',
   `arn:${string}:dms:${string}:${string}:es:*`
 > {
   readonly [ArnResourceTypeBrand] = 'EventSubscription' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  constructor(parameters: EventSubscriptionArnParameters<Partition>) {
+  constructor(parameters: SubscriptionEventArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
   }
@@ -165,33 +165,33 @@ class EventSubscriptionArn<
     return `arn:${this.partition}:dms:${this.region}:${this.account}:es:*` as const
   }
 }
-export type { EventSubscriptionArn }
-export function eventSubscriptionArn<Partition extends ArnPartition = 'aws'>(
-  parameters: EventSubscriptionArnParameters<Partition>,
+export type { SubscriptionEventArn }
+export function subscriptionEventArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SubscriptionEventArnParameters<Partition>,
 ) {
-  return new EventSubscriptionArn<Partition>(parameters)
+  return new SubscriptionEventArn<Partition>(parameters)
 }
 
-export interface InstanceProfileArnParameters<
+export interface ProfileInstanceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
 }
-class InstanceProfileArn<
+class ProfileInstanceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'InstanceProfile',
   `arn:${string}:dms:${string}:${string}:instance-profile:*`
 > {
   readonly [ArnResourceTypeBrand] = 'InstanceProfile' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  constructor(parameters: InstanceProfileArnParameters<Partition>) {
+  constructor(parameters: ProfileInstanceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
   }
@@ -199,33 +199,33 @@ class InstanceProfileArn<
     return `arn:${this.partition}:dms:${this.region}:${this.account}:instance-profile:*` as const
   }
 }
-export type { InstanceProfileArn }
-export function instanceProfileArn<Partition extends ArnPartition = 'aws'>(
-  parameters: InstanceProfileArnParameters<Partition>,
+export type { ProfileInstanceArn }
+export function profileInstanceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProfileInstanceArnParameters<Partition>,
 ) {
-  return new InstanceProfileArn<Partition>(parameters)
+  return new ProfileInstanceArn<Partition>(parameters)
 }
 
-export interface MigrationProjectArnParameters<
+export interface ProjectMigrationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
 }
-class MigrationProjectArn<
+class ProjectMigrationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'MigrationProject',
   `arn:${string}:dms:${string}:${string}:migration-project:*`
 > {
   readonly [ArnResourceTypeBrand] = 'MigrationProject' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  constructor(parameters: MigrationProjectArnParameters<Partition>) {
+  constructor(parameters: ProjectMigrationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
   }
@@ -233,33 +233,33 @@ class MigrationProjectArn<
     return `arn:${this.partition}:dms:${this.region}:${this.account}:migration-project:*` as const
   }
 }
-export type { MigrationProjectArn }
-export function migrationProjectArn<Partition extends ArnPartition = 'aws'>(
-  parameters: MigrationProjectArnParameters<Partition>,
+export type { ProjectMigrationArn }
+export function projectMigrationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProjectMigrationArnParameters<Partition>,
 ) {
-  return new MigrationProjectArn<Partition>(parameters)
+  return new ProjectMigrationArn<Partition>(parameters)
 }
 
-export interface ReplicationConfigArnParameters<
+export interface ConfigReplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
 }
-class ReplicationConfigArn<
+class ConfigReplicationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ReplicationConfig',
   `arn:${string}:dms:${string}:${string}:replication-config:*`
 > {
   readonly [ArnResourceTypeBrand] = 'ReplicationConfig' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  constructor(parameters: ReplicationConfigArnParameters<Partition>) {
+  constructor(parameters: ConfigReplicationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
   }
@@ -267,33 +267,33 @@ class ReplicationConfigArn<
     return `arn:${this.partition}:dms:${this.region}:${this.account}:replication-config:*` as const
   }
 }
-export type { ReplicationConfigArn }
-export function replicationConfigArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ReplicationConfigArnParameters<Partition>,
+export type { ConfigReplicationArn }
+export function configReplicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConfigReplicationArnParameters<Partition>,
 ) {
-  return new ReplicationConfigArn<Partition>(parameters)
+  return new ConfigReplicationArn<Partition>(parameters)
 }
 
-export interface ReplicationInstanceArnParameters<
+export interface InstanceReplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
 }
-class ReplicationInstanceArn<
+class InstanceReplicationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ReplicationInstance',
   `arn:${string}:dms:${string}:${string}:rep:*`
 > {
   readonly [ArnResourceTypeBrand] = 'ReplicationInstance' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  constructor(parameters: ReplicationInstanceArnParameters<Partition>) {
+  constructor(parameters: InstanceReplicationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
   }
@@ -301,33 +301,33 @@ class ReplicationInstanceArn<
     return `arn:${this.partition}:dms:${this.region}:${this.account}:rep:*` as const
   }
 }
-export type { ReplicationInstanceArn }
-export function replicationInstanceArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ReplicationInstanceArnParameters<Partition>,
+export type { InstanceReplicationArn }
+export function instanceReplicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: InstanceReplicationArnParameters<Partition>,
 ) {
-  return new ReplicationInstanceArn<Partition>(parameters)
+  return new InstanceReplicationArn<Partition>(parameters)
 }
 
-export interface ReplicationSubnetGroupArnParameters<
+export interface GroupSubnetReplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
 }
-class ReplicationSubnetGroupArn<
+class GroupSubnetReplicationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ReplicationSubnetGroup',
   `arn:${string}:dms:${string}:${string}:subgrp:*`
 > {
   readonly [ArnResourceTypeBrand] = 'ReplicationSubnetGroup' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  constructor(parameters: ReplicationSubnetGroupArnParameters<Partition>) {
+  constructor(parameters: GroupSubnetReplicationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
   }
@@ -335,33 +335,33 @@ class ReplicationSubnetGroupArn<
     return `arn:${this.partition}:dms:${this.region}:${this.account}:subgrp:*` as const
   }
 }
-export type { ReplicationSubnetGroupArn }
-export function replicationSubnetGroupArn<
+export type { GroupSubnetReplicationArn }
+export function groupSubnetReplicationArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ReplicationSubnetGroupArnParameters<Partition>) {
-  return new ReplicationSubnetGroupArn<Partition>(parameters)
+>(parameters: GroupSubnetReplicationArnParameters<Partition>) {
+  return new GroupSubnetReplicationArn<Partition>(parameters)
 }
 
-export interface ReplicationTaskArnParameters<
+export interface TaskReplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
 }
-class ReplicationTaskArn<
+class TaskReplicationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ReplicationTask',
   `arn:${string}:dms:${string}:${string}:task:*`
 > {
   readonly [ArnResourceTypeBrand] = 'ReplicationTask' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  constructor(parameters: ReplicationTaskArnParameters<Partition>) {
+  constructor(parameters: TaskReplicationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
   }
@@ -369,35 +369,35 @@ class ReplicationTaskArn<
     return `arn:${this.partition}:dms:${this.region}:${this.account}:task:*` as const
   }
 }
-export type { ReplicationTaskArn }
-export function replicationTaskArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ReplicationTaskArnParameters<Partition>,
+export type { TaskReplicationArn }
+export function taskReplicationArn<Partition extends ArnPartition = 'aws'>(
+  parameters: TaskReplicationArnParameters<Partition>,
 ) {
-  return new ReplicationTaskArn<Partition>(parameters)
+  return new TaskReplicationArn<Partition>(parameters)
 }
 
-export interface ReplicationTaskAssessmentRunArnParameters<
+export interface RunAssessmentTaskReplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
 }
-class ReplicationTaskAssessmentRunArn<
+class RunAssessmentTaskReplicationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ReplicationTaskAssessmentRun',
   `arn:${string}:dms:${string}:${string}:assessment-run:*`
 > {
   readonly [ArnResourceTypeBrand] = 'ReplicationTaskAssessmentRun' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   constructor(
-    parameters: ReplicationTaskAssessmentRunArnParameters<Partition>,
+    parameters: RunAssessmentTaskReplicationArnParameters<Partition>,
   ) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
   }
@@ -405,21 +405,21 @@ class ReplicationTaskAssessmentRunArn<
     return `arn:${this.partition}:dms:${this.region}:${this.account}:assessment-run:*` as const
   }
 }
-export type { ReplicationTaskAssessmentRunArn }
-export function replicationTaskAssessmentRunArn<
+export type { RunAssessmentTaskReplicationArn }
+export function runAssessmentTaskReplicationArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ReplicationTaskAssessmentRunArnParameters<Partition>) {
-  return new ReplicationTaskAssessmentRunArn<Partition>(parameters)
+>(parameters: RunAssessmentTaskReplicationArnParameters<Partition>) {
+  return new RunAssessmentTaskReplicationArn<Partition>(parameters)
 }
 
-export interface ReplicationTaskIndividualAssessmentArnParameters<
+export interface AssessmentIndividualTaskReplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
 }
-class ReplicationTaskIndividualAssessmentArn<
+class AssessmentIndividualTaskReplicationArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'ReplicationTaskIndividualAssessment',
@@ -427,14 +427,14 @@ class ReplicationTaskIndividualAssessmentArn<
 > {
   readonly [ArnResourceTypeBrand] =
     'ReplicationTaskIndividualAssessment' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   constructor(
-    parameters: ReplicationTaskIndividualAssessmentArnParameters<Partition>,
+    parameters: AssessmentIndividualTaskReplicationArnParameters<Partition>,
   ) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
   }
@@ -442,9 +442,9 @@ class ReplicationTaskIndividualAssessmentArn<
     return `arn:${this.partition}:dms:${this.region}:${this.account}:individual-assessment:*` as const
   }
 }
-export type { ReplicationTaskIndividualAssessmentArn }
-export function replicationTaskIndividualAssessmentArn<
+export type { AssessmentIndividualTaskReplicationArn }
+export function assessmentIndividualTaskReplicationArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ReplicationTaskIndividualAssessmentArnParameters<Partition>) {
-  return new ReplicationTaskIndividualAssessmentArn<Partition>(parameters)
+>(parameters: AssessmentIndividualTaskReplicationArnParameters<Partition>) {
+  return new AssessmentIndividualTaskReplicationArn<Partition>(parameters)
 }

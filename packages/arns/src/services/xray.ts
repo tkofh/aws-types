@@ -7,10 +7,10 @@ import {
 } from '../internal.js'
 
 export interface GroupArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly groupName: string
+  readonly nameGroup: string
   readonly id: string
 }
 class GroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
@@ -18,21 +18,21 @@ class GroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:xray:${string}:${string}:group/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'group' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly groupName: string
+  readonly nameGroup: string
   readonly id: string
   constructor(parameters: GroupArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.groupName = parameters.groupName
+    this.nameGroup = parameters.nameGroup
     this.id = parameters.id
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:xray:${this.region}:${this.account}:group/${this.groupName}/${this.id}` as const
+    return `arn:${this.partition}:xray:${this.region}:${this.account}:group/${this.nameGroup}/${this.id}` as const
   }
 }
 export type { GroupArn }
@@ -42,39 +42,39 @@ export function groupArn<Partition extends ArnPartition = 'aws'>(
   return new GroupArn<Partition>(parameters)
 }
 
-export interface SamplingRuleArnParameters<
+export interface RuleSamplingArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly samplingRuleName: string
+  readonly nameRuleSampling: string
 }
-class SamplingRuleArn<
+class RuleSamplingArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'sampling-rule',
   `arn:${string}:xray:${string}:${string}:sampling-rule/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'sampling-rule' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly samplingRuleName: string
-  constructor(parameters: SamplingRuleArnParameters<Partition>) {
+  readonly nameRuleSampling: string
+  constructor(parameters: RuleSamplingArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.samplingRuleName = parameters.samplingRuleName
+    this.nameRuleSampling = parameters.nameRuleSampling
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:xray:${this.region}:${this.account}:sampling-rule/${this.samplingRuleName}` as const
+    return `arn:${this.partition}:xray:${this.region}:${this.account}:sampling-rule/${this.nameRuleSampling}` as const
   }
 }
-export type { SamplingRuleArn }
-export function samplingRuleArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SamplingRuleArnParameters<Partition>,
+export type { RuleSamplingArn }
+export function ruleSamplingArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RuleSamplingArnParameters<Partition>,
 ) {
-  return new SamplingRuleArn<Partition>(parameters)
+  return new RuleSamplingArn<Partition>(parameters)
 }

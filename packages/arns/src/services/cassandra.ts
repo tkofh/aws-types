@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface KeyspaceArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly keyspaceName: string
+  readonly nameSpaceKey: string
 }
 class KeyspaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'keyspace',
   `arn:${string}:cassandra:${string}:${string}:/keyspace/${string}/`
 > {
   readonly [ArnResourceTypeBrand] = 'keyspace' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly keyspaceName: string
+  readonly nameSpaceKey: string
   constructor(parameters: KeyspaceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.keyspaceName = parameters.keyspaceName
+    this.nameSpaceKey = parameters.nameSpaceKey
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cassandra:${this.region}:${this.account}:/keyspace/${this.keyspaceName}/` as const
+    return `arn:${this.partition}:cassandra:${this.region}:${this.account}:/keyspace/${this.nameSpaceKey}/` as const
   }
 }
 export type { KeyspaceArn }
@@ -40,32 +40,32 @@ export function keyspaceArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface TableArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly keyspaceName: string
-  readonly tableName: string
+  readonly nameSpaceKey: string
+  readonly nameTable: string
 }
 class TableArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'table',
   `arn:${string}:cassandra:${string}:${string}:/keyspace/${string}/table/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'table' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly keyspaceName: string
-  readonly tableName: string
+  readonly nameSpaceKey: string
+  readonly nameTable: string
   constructor(parameters: TableArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.keyspaceName = parameters.keyspaceName
-    this.tableName = parameters.tableName
+    this.nameSpaceKey = parameters.nameSpaceKey
+    this.nameTable = parameters.nameTable
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cassandra:${this.region}:${this.account}:/keyspace/${this.keyspaceName}/table/${this.tableName}` as const
+    return `arn:${this.partition}:cassandra:${this.region}:${this.account}:/keyspace/${this.nameSpaceKey}/table/${this.nameTable}` as const
   }
 }
 export type { TableArn }

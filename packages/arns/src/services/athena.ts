@@ -6,69 +6,69 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface DatacatalogArnParameters<
+export interface CatalogDataArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly dataCatalogName: string
+  readonly nameCatalogData: string
 }
-class DatacatalogArn<
+class CatalogDataArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'datacatalog',
   `arn:${string}:athena:${string}:${string}:datacatalog/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'datacatalog' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly dataCatalogName: string
-  constructor(parameters: DatacatalogArnParameters<Partition>) {
+  readonly nameCatalogData: string
+  constructor(parameters: CatalogDataArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.dataCatalogName = parameters.dataCatalogName
+    this.nameCatalogData = parameters.nameCatalogData
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:athena:${this.region}:${this.account}:datacatalog/${this.dataCatalogName}` as const
+    return `arn:${this.partition}:athena:${this.region}:${this.account}:datacatalog/${this.nameCatalogData}` as const
   }
 }
-export type { DatacatalogArn }
-export function datacatalogArn<Partition extends ArnPartition = 'aws'>(
-  parameters: DatacatalogArnParameters<Partition>,
+export type { CatalogDataArn }
+export function catalogDataArn<Partition extends ArnPartition = 'aws'>(
+  parameters: CatalogDataArnParameters<Partition>,
 ) {
-  return new DatacatalogArn<Partition>(parameters)
+  return new CatalogDataArn<Partition>(parameters)
 }
 
 export interface WorkgroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly workGroupName: string
+  readonly nameWorkgroup: string
 }
 class WorkgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'workgroup',
   `arn:${string}:athena:${string}:${string}:workgroup/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'workgroup' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly workGroupName: string
+  readonly nameWorkgroup: string
   constructor(parameters: WorkgroupArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.workGroupName = parameters.workGroupName
+    this.nameWorkgroup = parameters.nameWorkgroup
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:athena:${this.region}:${this.account}:workgroup/${this.workGroupName}` as const
+    return `arn:${this.partition}:athena:${this.region}:${this.account}:workgroup/${this.nameWorkgroup}` as const
   }
 }
 export type { WorkgroupArn }
@@ -78,39 +78,39 @@ export function workgroupArn<Partition extends ArnPartition = 'aws'>(
   return new WorkgroupArn<Partition>(parameters)
 }
 
-export interface CapacityReservationArnParameters<
+export interface ReservationCapacityArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly capacityReservationName: string
+  readonly nameReservationCapacity: string
 }
-class CapacityReservationArn<
+class ReservationCapacityArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'capacity-reservation',
   `arn:${string}:athena:${string}:${string}:capacity-reservation/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'capacity-reservation' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly capacityReservationName: string
-  constructor(parameters: CapacityReservationArnParameters<Partition>) {
+  readonly nameReservationCapacity: string
+  constructor(parameters: ReservationCapacityArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.capacityReservationName = parameters.capacityReservationName
+    this.nameReservationCapacity = parameters.nameReservationCapacity
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:athena:${this.region}:${this.account}:capacity-reservation/${this.capacityReservationName}` as const
+    return `arn:${this.partition}:athena:${this.region}:${this.account}:capacity-reservation/${this.nameReservationCapacity}` as const
   }
 }
-export type { CapacityReservationArn }
-export function capacityReservationArn<Partition extends ArnPartition = 'aws'>(
-  parameters: CapacityReservationArnParameters<Partition>,
+export type { ReservationCapacityArn }
+export function reservationCapacityArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ReservationCapacityArnParameters<Partition>,
 ) {
-  return new CapacityReservationArn<Partition>(parameters)
+  return new ReservationCapacityArn<Partition>(parameters)
 }

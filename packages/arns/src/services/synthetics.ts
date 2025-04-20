@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface CanaryArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly canaryName: string
+  readonly nameCanary: string
 }
 class CanaryArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'canary',
   `arn:${string}:synthetics:${string}:${string}:canary:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'canary' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly canaryName: string
+  readonly nameCanary: string
   constructor(parameters: CanaryArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.canaryName = parameters.canaryName
+    this.nameCanary = parameters.nameCanary
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:synthetics:${this.region}:${this.account}:canary:${this.canaryName}` as const
+    return `arn:${this.partition}:synthetics:${this.region}:${this.account}:canary:${this.nameCanary}` as const
   }
 }
 export type { CanaryArn }
@@ -40,29 +40,29 @@ export function canaryArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface GroupArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly groupId: string
+  readonly idGroup: string
 }
 class GroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'group',
   `arn:${string}:synthetics:${string}:${string}:group:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'group' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly groupId: string
+  readonly idGroup: string
   constructor(parameters: GroupArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.groupId = parameters.groupId
+    this.idGroup = parameters.idGroup
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:synthetics:${this.region}:${this.account}:group:${this.groupId}` as const
+    return `arn:${this.partition}:synthetics:${this.region}:${this.account}:group:${this.idGroup}` as const
   }
 }
 export type { GroupArn }

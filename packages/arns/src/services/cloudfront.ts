@@ -9,9 +9,9 @@ import {
 export interface DistributionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly distributionId: string
+  readonly idDistribution: string
 }
 class DistributionArn<
   Partition extends ArnPartition = 'aws',
@@ -20,17 +20,17 @@ class DistributionArn<
   `arn:${string}:cloudfront::${string}:distribution/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'distribution' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly distributionId: string
+  readonly idDistribution: string
   constructor(parameters: DistributionArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.distributionId = parameters.distributionId
+    this.idDistribution = parameters.idDistribution
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudfront::${this.account}:distribution/${this.distributionId}` as const
+    return `arn:${this.partition}:cloudfront::${this.account}:distribution/${this.idDistribution}` as const
   }
 }
 export type { DistributionArn }
@@ -40,60 +40,60 @@ export function distributionArn<Partition extends ArnPartition = 'aws'>(
   return new DistributionArn<Partition>(parameters)
 }
 
-export interface StreamingDistributionArnParameters<
+export interface DistributionStreamingArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
-  readonly distributionId: string
+  readonly idDistribution: string
 }
-class StreamingDistributionArn<
+class DistributionStreamingArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'streaming-distribution',
   `arn:${string}:cloudfront::${string}:streaming-distribution/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'streaming-distribution' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
-  readonly distributionId: string
-  constructor(parameters: StreamingDistributionArnParameters<Partition>) {
+  readonly idDistribution: string
+  constructor(parameters: DistributionStreamingArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
-    this.distributionId = parameters.distributionId
+    this.idDistribution = parameters.idDistribution
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cloudfront::${this.account}:streaming-distribution/${this.distributionId}` as const
+    return `arn:${this.partition}:cloudfront::${this.account}:streaming-distribution/${this.idDistribution}` as const
   }
 }
-export type { StreamingDistributionArn }
-export function streamingDistributionArn<
+export type { DistributionStreamingArn }
+export function distributionStreamingArn<
   Partition extends ArnPartition = 'aws',
->(parameters: StreamingDistributionArnParameters<Partition>) {
-  return new StreamingDistributionArn<Partition>(parameters)
+>(parameters: DistributionStreamingArnParameters<Partition>) {
+  return new DistributionStreamingArn<Partition>(parameters)
 }
 
-export interface OriginAccessIdentityArnParameters<
+export interface IdentityAccessOriginArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly id: string
 }
-class OriginAccessIdentityArn<
+class IdentityAccessOriginArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'origin-access-identity',
   `arn:${string}:cloudfront::${string}:origin-access-identity/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'origin-access-identity' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly id: string
-  constructor(parameters: OriginAccessIdentityArnParameters<Partition>) {
+  constructor(parameters: IdentityAccessOriginArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.id = parameters.id
   }
@@ -101,33 +101,33 @@ class OriginAccessIdentityArn<
     return `arn:${this.partition}:cloudfront::${this.account}:origin-access-identity/${this.id}` as const
   }
 }
-export type { OriginAccessIdentityArn }
-export function originAccessIdentityArn<Partition extends ArnPartition = 'aws'>(
-  parameters: OriginAccessIdentityArnParameters<Partition>,
+export type { IdentityAccessOriginArn }
+export function identityAccessOriginArn<Partition extends ArnPartition = 'aws'>(
+  parameters: IdentityAccessOriginArnParameters<Partition>,
 ) {
-  return new OriginAccessIdentityArn<Partition>(parameters)
+  return new IdentityAccessOriginArn<Partition>(parameters)
 }
 
-export interface FieldLevelEncryptionConfigArnParameters<
+export interface ConfigEncryptionLevelFieldArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly id: string
 }
-class FieldLevelEncryptionConfigArn<
+class ConfigEncryptionLevelFieldArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'field-level-encryption-config',
   `arn:${string}:cloudfront::${string}:field-level-encryption-config/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'field-level-encryption-config' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly id: string
-  constructor(parameters: FieldLevelEncryptionConfigArnParameters<Partition>) {
+  constructor(parameters: ConfigEncryptionLevelFieldArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.id = parameters.id
   }
@@ -135,33 +135,33 @@ class FieldLevelEncryptionConfigArn<
     return `arn:${this.partition}:cloudfront::${this.account}:field-level-encryption-config/${this.id}` as const
   }
 }
-export type { FieldLevelEncryptionConfigArn }
-export function fieldLevelEncryptionConfigArn<
+export type { ConfigEncryptionLevelFieldArn }
+export function configEncryptionLevelFieldArn<
   Partition extends ArnPartition = 'aws',
->(parameters: FieldLevelEncryptionConfigArnParameters<Partition>) {
-  return new FieldLevelEncryptionConfigArn<Partition>(parameters)
+>(parameters: ConfigEncryptionLevelFieldArnParameters<Partition>) {
+  return new ConfigEncryptionLevelFieldArn<Partition>(parameters)
 }
 
-export interface FieldLevelEncryptionProfileArnParameters<
+export interface ProfileEncryptionLevelFieldArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly id: string
 }
-class FieldLevelEncryptionProfileArn<
+class ProfileEncryptionLevelFieldArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'field-level-encryption-profile',
   `arn:${string}:cloudfront::${string}:field-level-encryption-profile/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'field-level-encryption-profile' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly id: string
-  constructor(parameters: FieldLevelEncryptionProfileArnParameters<Partition>) {
+  constructor(parameters: ProfileEncryptionLevelFieldArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.id = parameters.id
   }
@@ -169,33 +169,33 @@ class FieldLevelEncryptionProfileArn<
     return `arn:${this.partition}:cloudfront::${this.account}:field-level-encryption-profile/${this.id}` as const
   }
 }
-export type { FieldLevelEncryptionProfileArn }
-export function fieldLevelEncryptionProfileArn<
+export type { ProfileEncryptionLevelFieldArn }
+export function profileEncryptionLevelFieldArn<
   Partition extends ArnPartition = 'aws',
->(parameters: FieldLevelEncryptionProfileArnParameters<Partition>) {
-  return new FieldLevelEncryptionProfileArn<Partition>(parameters)
+>(parameters: ProfileEncryptionLevelFieldArnParameters<Partition>) {
+  return new ProfileEncryptionLevelFieldArn<Partition>(parameters)
 }
 
-export interface CachePolicyArnParameters<
+export interface PolicyCacheArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly id: string
 }
-class CachePolicyArn<
+class PolicyCacheArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'cache-policy',
   `arn:${string}:cloudfront::${string}:cache-policy/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'cache-policy' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly id: string
-  constructor(parameters: CachePolicyArnParameters<Partition>) {
+  constructor(parameters: PolicyCacheArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.id = parameters.id
   }
@@ -203,33 +203,33 @@ class CachePolicyArn<
     return `arn:${this.partition}:cloudfront::${this.account}:cache-policy/${this.id}` as const
   }
 }
-export type { CachePolicyArn }
-export function cachePolicyArn<Partition extends ArnPartition = 'aws'>(
-  parameters: CachePolicyArnParameters<Partition>,
+export type { PolicyCacheArn }
+export function policyCacheArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PolicyCacheArnParameters<Partition>,
 ) {
-  return new CachePolicyArn<Partition>(parameters)
+  return new PolicyCacheArn<Partition>(parameters)
 }
 
-export interface OriginRequestPolicyArnParameters<
+export interface PolicyRequestOriginArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly id: string
 }
-class OriginRequestPolicyArn<
+class PolicyRequestOriginArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'origin-request-policy',
   `arn:${string}:cloudfront::${string}:origin-request-policy/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'origin-request-policy' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly id: string
-  constructor(parameters: OriginRequestPolicyArnParameters<Partition>) {
+  constructor(parameters: PolicyRequestOriginArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.id = parameters.id
   }
@@ -237,33 +237,33 @@ class OriginRequestPolicyArn<
     return `arn:${this.partition}:cloudfront::${this.account}:origin-request-policy/${this.id}` as const
   }
 }
-export type { OriginRequestPolicyArn }
-export function originRequestPolicyArn<Partition extends ArnPartition = 'aws'>(
-  parameters: OriginRequestPolicyArnParameters<Partition>,
+export type { PolicyRequestOriginArn }
+export function policyRequestOriginArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PolicyRequestOriginArnParameters<Partition>,
 ) {
-  return new OriginRequestPolicyArn<Partition>(parameters)
+  return new PolicyRequestOriginArn<Partition>(parameters)
 }
 
-export interface RealtimeLogConfigArnParameters<
+export interface ConfigLogRealtimeArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly name: string
 }
-class RealtimeLogConfigArn<
+class ConfigLogRealtimeArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'realtime-log-config',
   `arn:${string}:cloudfront::${string}:realtime-log-config/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'realtime-log-config' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly name: string
-  constructor(parameters: RealtimeLogConfigArnParameters<Partition>) {
+  constructor(parameters: ConfigLogRealtimeArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.name = parameters.name
   }
@@ -271,15 +271,15 @@ class RealtimeLogConfigArn<
     return `arn:${this.partition}:cloudfront::${this.account}:realtime-log-config/${this.name}` as const
   }
 }
-export type { RealtimeLogConfigArn }
-export function realtimeLogConfigArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RealtimeLogConfigArnParameters<Partition>,
+export type { ConfigLogRealtimeArn }
+export function configLogRealtimeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ConfigLogRealtimeArnParameters<Partition>,
 ) {
-  return new RealtimeLogConfigArn<Partition>(parameters)
+  return new ConfigLogRealtimeArn<Partition>(parameters)
 }
 
 export interface FunctionArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly name: string
 }
@@ -288,12 +288,12 @@ class FunctionArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:cloudfront::${string}:function/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'function' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly name: string
   constructor(parameters: FunctionArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.name = parameters.name
   }
@@ -308,26 +308,26 @@ export function functionArn<Partition extends ArnPartition = 'aws'>(
   return new FunctionArn<Partition>(parameters)
 }
 
-export interface KeyValueStoreArnParameters<
+export interface StoreValueKeyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly name: string
 }
-class KeyValueStoreArn<
+class StoreValueKeyArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'key-value-store',
   `arn:${string}:cloudfront::${string}:key-value-store/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'key-value-store' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly name: string
-  constructor(parameters: KeyValueStoreArnParameters<Partition>) {
+  constructor(parameters: StoreValueKeyArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.name = parameters.name
   }
@@ -335,33 +335,33 @@ class KeyValueStoreArn<
     return `arn:${this.partition}:cloudfront::${this.account}:key-value-store/${this.name}` as const
   }
 }
-export type { KeyValueStoreArn }
-export function keyValueStoreArn<Partition extends ArnPartition = 'aws'>(
-  parameters: KeyValueStoreArnParameters<Partition>,
+export type { StoreValueKeyArn }
+export function storeValueKeyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: StoreValueKeyArnParameters<Partition>,
 ) {
-  return new KeyValueStoreArn<Partition>(parameters)
+  return new StoreValueKeyArn<Partition>(parameters)
 }
 
-export interface ResponseHeadersPolicyArnParameters<
+export interface PolicyHeadersResponseArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly id: string
 }
-class ResponseHeadersPolicyArn<
+class PolicyHeadersResponseArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'response-headers-policy',
   `arn:${string}:cloudfront::${string}:response-headers-policy/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'response-headers-policy' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly id: string
-  constructor(parameters: ResponseHeadersPolicyArnParameters<Partition>) {
+  constructor(parameters: PolicyHeadersResponseArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.id = parameters.id
   }
@@ -369,33 +369,33 @@ class ResponseHeadersPolicyArn<
     return `arn:${this.partition}:cloudfront::${this.account}:response-headers-policy/${this.id}` as const
   }
 }
-export type { ResponseHeadersPolicyArn }
-export function responseHeadersPolicyArn<
+export type { PolicyHeadersResponseArn }
+export function policyHeadersResponseArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ResponseHeadersPolicyArnParameters<Partition>) {
-  return new ResponseHeadersPolicyArn<Partition>(parameters)
+>(parameters: PolicyHeadersResponseArnParameters<Partition>) {
+  return new PolicyHeadersResponseArn<Partition>(parameters)
 }
 
-export interface OriginAccessControlArnParameters<
+export interface ControlAccessOriginArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly id: string
 }
-class OriginAccessControlArn<
+class ControlAccessOriginArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'origin-access-control',
   `arn:${string}:cloudfront::${string}:origin-access-control/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'origin-access-control' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly id: string
-  constructor(parameters: OriginAccessControlArnParameters<Partition>) {
+  constructor(parameters: ControlAccessOriginArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.id = parameters.id
   }
@@ -403,33 +403,33 @@ class OriginAccessControlArn<
     return `arn:${this.partition}:cloudfront::${this.account}:origin-access-control/${this.id}` as const
   }
 }
-export type { OriginAccessControlArn }
-export function originAccessControlArn<Partition extends ArnPartition = 'aws'>(
-  parameters: OriginAccessControlArnParameters<Partition>,
+export type { ControlAccessOriginArn }
+export function controlAccessOriginArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ControlAccessOriginArnParameters<Partition>,
 ) {
-  return new OriginAccessControlArn<Partition>(parameters)
+  return new ControlAccessOriginArn<Partition>(parameters)
 }
 
-export interface ContinuousDeploymentPolicyArnParameters<
+export interface PolicyDeploymentContinuousArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
+  readonly partition: string
   readonly account: string
   readonly id: string
 }
-class ContinuousDeploymentPolicyArn<
+class PolicyDeploymentContinuousArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'continuous-deployment-policy',
   `arn:${string}:cloudfront::${string}:continuous-deployment-policy/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'continuous-deployment-policy' as const
-  readonly partition: Partition
+  readonly partition: string
   readonly account: string
   readonly id: string
-  constructor(parameters: ContinuousDeploymentPolicyArnParameters<Partition>) {
+  constructor(parameters: PolicyDeploymentContinuousArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.account = parameters.account
     this.id = parameters.id
   }
@@ -437,9 +437,9 @@ class ContinuousDeploymentPolicyArn<
     return `arn:${this.partition}:cloudfront::${this.account}:continuous-deployment-policy/${this.id}` as const
   }
 }
-export type { ContinuousDeploymentPolicyArn }
-export function continuousDeploymentPolicyArn<
+export type { PolicyDeploymentContinuousArn }
+export function policyDeploymentContinuousArn<
   Partition extends ArnPartition = 'aws',
->(parameters: ContinuousDeploymentPolicyArnParameters<Partition>) {
-  return new ContinuousDeploymentPolicyArn<Partition>(parameters)
+>(parameters: PolicyDeploymentContinuousArnParameters<Partition>) {
+  return new PolicyDeploymentContinuousArn<Partition>(parameters)
 }

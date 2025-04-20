@@ -9,10 +9,10 @@ import {
 export interface ApplicationArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationName: string
+  readonly nameApplication: string
 }
 class ApplicationArn<
   Partition extends ArnPartition = 'aws',
@@ -21,19 +21,19 @@ class ApplicationArn<
   `arn:${string}:kinesisanalytics:${string}:${string}:application/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'application' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly applicationName: string
+  readonly nameApplication: string
   constructor(parameters: ApplicationArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.applicationName = parameters.applicationName
+    this.nameApplication = parameters.nameApplication
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:kinesisanalytics:${this.region}:${this.account}:application/${this.applicationName}` as const
+    return `arn:${this.partition}:kinesisanalytics:${this.region}:${this.account}:application/${this.nameApplication}` as const
   }
 }
 export type { ApplicationArn }

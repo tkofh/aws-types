@@ -7,32 +7,32 @@ import {
 } from '../internal.js'
 
 export interface ViewArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly viewName: string
-  readonly viewUuid: string
+  readonly nameView: string
+  readonly idUuView: string
 }
 class ViewArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'view',
   `arn:${string}:resource-explorer-2:${string}:${string}:view/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'view' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly viewName: string
-  readonly viewUuid: string
+  readonly nameView: string
+  readonly idUuView: string
   constructor(parameters: ViewArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.viewName = parameters.viewName
-    this.viewUuid = parameters.viewUuid
+    this.nameView = parameters.nameView
+    this.idUuView = parameters.idUuView
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:resource-explorer-2:${this.region}:${this.account}:view/${this.viewName}/${this.viewUuid}` as const
+    return `arn:${this.partition}:resource-explorer-2:${this.region}:${this.account}:view/${this.nameView}/${this.idUuView}` as const
   }
 }
 export type { ViewArn }
@@ -43,29 +43,29 @@ export function viewArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface IndexArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly indexUuid: string
+  readonly idUuIndex: string
 }
 class IndexArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'index',
   `arn:${string}:resource-explorer-2:${string}:${string}:index/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'index' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly indexUuid: string
+  readonly idUuIndex: string
   constructor(parameters: IndexArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.indexUuid = parameters.indexUuid
+    this.idUuIndex = parameters.idUuIndex
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:resource-explorer-2:${this.region}:${this.account}:index/${this.indexUuid}` as const
+    return `arn:${this.partition}:resource-explorer-2:${this.region}:${this.account}:index/${this.idUuIndex}` as const
   }
 }
 export type { IndexArn }

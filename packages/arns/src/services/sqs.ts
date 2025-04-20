@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface QueueArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly queueName: string
+  readonly nameQueue: string
 }
 class QueueArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'queue',
   `arn:${string}:sqs:${string}:${string}:${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'queue' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly queueName: string
+  readonly nameQueue: string
   constructor(parameters: QueueArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.queueName = parameters.queueName
+    this.nameQueue = parameters.nameQueue
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:sqs:${this.region}:${this.account}:${this.queueName}` as const
+    return `arn:${this.partition}:sqs:${this.region}:${this.account}:${this.nameQueue}` as const
   }
 }
 export type { QueueArn }

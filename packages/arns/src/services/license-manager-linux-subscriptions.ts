@@ -6,39 +6,39 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface SubscriptionProviderArnParameters<
+export interface ProviderSubscriptionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly subscriptionProviderId: string
+  readonly idProviderSubscription: string
 }
-class SubscriptionProviderArn<
+class ProviderSubscriptionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'subscription-provider',
   `arn:${string}:license-manager-linux-subscriptions:${string}:${string}:subscription-provider/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'subscription-provider' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly subscriptionProviderId: string
-  constructor(parameters: SubscriptionProviderArnParameters<Partition>) {
+  readonly idProviderSubscription: string
+  constructor(parameters: ProviderSubscriptionArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.subscriptionProviderId = parameters.subscriptionProviderId
+    this.idProviderSubscription = parameters.idProviderSubscription
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:license-manager-linux-subscriptions:${this.region}:${this.account}:subscription-provider/${this.subscriptionProviderId}` as const
+    return `arn:${this.partition}:license-manager-linux-subscriptions:${this.region}:${this.account}:subscription-provider/${this.idProviderSubscription}` as const
   }
 }
-export type { SubscriptionProviderArn }
-export function subscriptionProviderArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SubscriptionProviderArnParameters<Partition>,
+export type { ProviderSubscriptionArn }
+export function providerSubscriptionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ProviderSubscriptionArnParameters<Partition>,
 ) {
-  return new SubscriptionProviderArn<Partition>(parameters)
+  return new ProviderSubscriptionArn<Partition>(parameters)
 }

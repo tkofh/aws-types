@@ -7,29 +7,29 @@ import {
 } from '../internal.js'
 
 export interface CampaignArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly campaignId: string
+  readonly idCampaign: string
 }
 class CampaignArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'campaign',
   `arn:${string}:connect-campaigns:${string}:${string}:campaign/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'campaign' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly campaignId: string
+  readonly idCampaign: string
   constructor(parameters: CampaignArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.campaignId = parameters.campaignId
+    this.idCampaign = parameters.idCampaign
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:connect-campaigns:${this.region}:${this.account}:campaign/${this.campaignId}` as const
+    return `arn:${this.partition}:connect-campaigns:${this.region}:${this.account}:campaign/${this.idCampaign}` as const
   }
 }
 export type { CampaignArn }

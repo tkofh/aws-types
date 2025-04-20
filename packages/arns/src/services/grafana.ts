@@ -9,29 +9,29 @@ import {
 export interface WorkspaceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
 }
 class WorkspaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'workspace',
   `arn:${string}:grafana:${string}:${string}:/workspaces/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'workspace' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly resourceId: string
+  readonly idResource: string
   constructor(parameters: WorkspaceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.resourceId = parameters.resourceId
+    this.idResource = parameters.idResource
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:grafana:${this.region}:${this.account}:/workspaces/${this.resourceId}` as const
+    return `arn:${this.partition}:grafana:${this.region}:${this.account}:/workspaces/${this.idResource}` as const
   }
 }
 export type { WorkspaceArn }

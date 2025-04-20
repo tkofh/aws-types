@@ -7,8 +7,8 @@ import {
 } from '../internal.js'
 
 export interface PolicyArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly id: string
 }
@@ -17,13 +17,13 @@ class PolicyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   `arn:${string}:fms:${string}:${string}:policy/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'policy' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly id: string
   constructor(parameters: PolicyArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -39,28 +39,28 @@ export function policyArn<Partition extends ArnPartition = 'aws'>(
   return new PolicyArn<Partition>(parameters)
 }
 
-export interface ApplicationsListArnParameters<
+export interface ListApplicationsArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly id: string
 }
-class ApplicationsListArn<
+class ListApplicationsArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'applications-list',
   `arn:${string}:fms:${string}:${string}:applications-list/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'applications-list' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly id: string
-  constructor(parameters: ApplicationsListArnParameters<Partition>) {
+  constructor(parameters: ListApplicationsArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -69,35 +69,35 @@ class ApplicationsListArn<
     return `arn:${this.partition}:fms:${this.region}:${this.account}:applications-list/${this.id}` as const
   }
 }
-export type { ApplicationsListArn }
-export function applicationsListArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ApplicationsListArnParameters<Partition>,
+export type { ListApplicationsArn }
+export function listApplicationsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ListApplicationsArnParameters<Partition>,
 ) {
-  return new ApplicationsListArn<Partition>(parameters)
+  return new ListApplicationsArn<Partition>(parameters)
 }
 
-export interface ProtocolsListArnParameters<
+export interface ListProtocolsArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly id: string
 }
-class ProtocolsListArn<
+class ListProtocolsArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'protocols-list',
   `arn:${string}:fms:${string}:${string}:protocols-list/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'protocols-list' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly id: string
-  constructor(parameters: ProtocolsListArnParameters<Partition>) {
+  constructor(parameters: ListProtocolsArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -106,35 +106,35 @@ class ProtocolsListArn<
     return `arn:${this.partition}:fms:${this.region}:${this.account}:protocols-list/${this.id}` as const
   }
 }
-export type { ProtocolsListArn }
-export function protocolsListArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ProtocolsListArnParameters<Partition>,
+export type { ListProtocolsArn }
+export function listProtocolsArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ListProtocolsArnParameters<Partition>,
 ) {
-  return new ProtocolsListArn<Partition>(parameters)
+  return new ListProtocolsArn<Partition>(parameters)
 }
 
-export interface ResourceSetArnParameters<
+export interface SetResourceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly id: string
 }
-class ResourceSetArn<
+class SetResourceArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'resource-set',
   `arn:${string}:fms:${string}:${string}:resource-set/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'resource-set' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
   readonly id: string
-  constructor(parameters: ResourceSetArnParameters<Partition>) {
+  constructor(parameters: SetResourceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
     this.id = parameters.id
@@ -143,9 +143,9 @@ class ResourceSetArn<
     return `arn:${this.partition}:fms:${this.region}:${this.account}:resource-set/${this.id}` as const
   }
 }
-export type { ResourceSetArn }
-export function resourceSetArn<Partition extends ArnPartition = 'aws'>(
-  parameters: ResourceSetArnParameters<Partition>,
+export type { SetResourceArn }
+export function setResourceArn<Partition extends ArnPartition = 'aws'>(
+  parameters: SetResourceArnParameters<Partition>,
 ) {
-  return new ResourceSetArn<Partition>(parameters)
+  return new SetResourceArn<Partition>(parameters)
 }

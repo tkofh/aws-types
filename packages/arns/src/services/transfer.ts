@@ -7,32 +7,32 @@ import {
 } from '../internal.js'
 
 export interface UserArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serverId: string
-  readonly userName: string
+  readonly idServer: string
+  readonly nameUser: string
 }
 class UserArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'user',
   `arn:${string}:transfer:${string}:${string}:user/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'user' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serverId: string
-  readonly userName: string
+  readonly idServer: string
+  readonly nameUser: string
   constructor(parameters: UserArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.serverId = parameters.serverId
-    this.userName = parameters.userName
+    this.idServer = parameters.idServer
+    this.nameUser = parameters.nameUser
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transfer:${this.region}:${this.account}:user/${this.serverId}/${this.userName}` as const
+    return `arn:${this.partition}:transfer:${this.region}:${this.account}:user/${this.idServer}/${this.nameUser}` as const
   }
 }
 export type { UserArn }
@@ -43,29 +43,29 @@ export function userArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ServerArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serverId: string
+  readonly idServer: string
 }
 class ServerArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'server',
   `arn:${string}:transfer:${string}:${string}:server/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'server' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serverId: string
+  readonly idServer: string
   constructor(parameters: ServerArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.serverId = parameters.serverId
+    this.idServer = parameters.idServer
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transfer:${this.region}:${this.account}:server/${this.serverId}` as const
+    return `arn:${this.partition}:transfer:${this.region}:${this.account}:server/${this.idServer}` as const
   }
 }
 export type { ServerArn }
@@ -76,29 +76,29 @@ export function serverArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface WorkflowArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly workflowId: string
+  readonly idWorkflow: string
 }
 class WorkflowArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'workflow',
   `arn:${string}:transfer:${string}:${string}:workflow/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'workflow' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly workflowId: string
+  readonly idWorkflow: string
   constructor(parameters: WorkflowArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.workflowId = parameters.workflowId
+    this.idWorkflow = parameters.idWorkflow
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transfer:${this.region}:${this.account}:workflow/${this.workflowId}` as const
+    return `arn:${this.partition}:transfer:${this.region}:${this.account}:workflow/${this.idWorkflow}` as const
   }
 }
 export type { WorkflowArn }
@@ -111,10 +111,10 @@ export function workflowArn<Partition extends ArnPartition = 'aws'>(
 export interface CertificateArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly certificateId: string
+  readonly idCertificate: string
 }
 class CertificateArn<
   Partition extends ArnPartition = 'aws',
@@ -123,19 +123,19 @@ class CertificateArn<
   `arn:${string}:transfer:${string}:${string}:certificate/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'certificate' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly certificateId: string
+  readonly idCertificate: string
   constructor(parameters: CertificateArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.certificateId = parameters.certificateId
+    this.idCertificate = parameters.idCertificate
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transfer:${this.region}:${this.account}:certificate/${this.certificateId}` as const
+    return `arn:${this.partition}:transfer:${this.region}:${this.account}:certificate/${this.idCertificate}` as const
   }
 }
 export type { CertificateArn }
@@ -148,29 +148,29 @@ export function certificateArn<Partition extends ArnPartition = 'aws'>(
 export interface ConnectorArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly connectorId: string
+  readonly idConnector: string
 }
 class ConnectorArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'connector',
   `arn:${string}:transfer:${string}:${string}:connector/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'connector' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly connectorId: string
+  readonly idConnector: string
   constructor(parameters: ConnectorArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.connectorId = parameters.connectorId
+    this.idConnector = parameters.idConnector
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transfer:${this.region}:${this.account}:connector/${this.connectorId}` as const
+    return `arn:${this.partition}:transfer:${this.region}:${this.account}:connector/${this.idConnector}` as const
   }
 }
 export type { ConnectorArn }
@@ -181,29 +181,29 @@ export function connectorArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface ProfileArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly profileId: string
+  readonly idProfile: string
 }
 class ProfileArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'profile',
   `arn:${string}:transfer:${string}:${string}:profile/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'profile' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly profileId: string
+  readonly idProfile: string
   constructor(parameters: ProfileArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.profileId = parameters.profileId
+    this.idProfile = parameters.idProfile
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transfer:${this.region}:${this.account}:profile/${this.profileId}` as const
+    return `arn:${this.partition}:transfer:${this.region}:${this.account}:profile/${this.idProfile}` as const
   }
 }
 export type { ProfileArn }
@@ -216,29 +216,29 @@ export function profileArn<Partition extends ArnPartition = 'aws'>(
 export interface AgreementArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly agreementId: string
+  readonly idAgreement: string
 }
 class AgreementArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'agreement',
   `arn:${string}:transfer:${string}:${string}:agreement/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'agreement' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly agreementId: string
+  readonly idAgreement: string
   constructor(parameters: AgreementArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.agreementId = parameters.agreementId
+    this.idAgreement = parameters.idAgreement
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transfer:${this.region}:${this.account}:agreement/${this.agreementId}` as const
+    return `arn:${this.partition}:transfer:${this.region}:${this.account}:agreement/${this.idAgreement}` as const
   }
 }
 export type { AgreementArn }
@@ -248,38 +248,38 @@ export function agreementArn<Partition extends ArnPartition = 'aws'>(
   return new AgreementArn<Partition>(parameters)
 }
 
-export interface HostKeyArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+export interface KeyHostArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serverId: string
-  readonly hostKeyId: string
+  readonly idServer: string
+  readonly idKeyHost: string
 }
-class HostKeyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class KeyHostArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'host-key',
   `arn:${string}:transfer:${string}:${string}:host-key/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'host-key' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly serverId: string
-  readonly hostKeyId: string
-  constructor(parameters: HostKeyArnParameters<Partition>) {
+  readonly idServer: string
+  readonly idKeyHost: string
+  constructor(parameters: KeyHostArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.serverId = parameters.serverId
-    this.hostKeyId = parameters.hostKeyId
+    this.idServer = parameters.idServer
+    this.idKeyHost = parameters.idKeyHost
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transfer:${this.region}:${this.account}:host-key/${this.serverId}/${this.hostKeyId}` as const
+    return `arn:${this.partition}:transfer:${this.region}:${this.account}:host-key/${this.idServer}/${this.idKeyHost}` as const
   }
 }
-export type { HostKeyArn }
-export function hostKeyArn<Partition extends ArnPartition = 'aws'>(
-  parameters: HostKeyArnParameters<Partition>,
+export type { KeyHostArn }
+export function keyHostArn<Partition extends ArnPartition = 'aws'>(
+  parameters: KeyHostArnParameters<Partition>,
 ) {
-  return new HostKeyArn<Partition>(parameters)
+  return new KeyHostArn<Partition>(parameters)
 }

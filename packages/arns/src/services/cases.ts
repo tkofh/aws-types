@@ -7,32 +7,32 @@ import {
 } from '../internal.js'
 
 export interface CaseArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainId: string
-  readonly caseId: string
+  readonly idDomain: string
+  readonly idCase: string
 }
 class CaseArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Case',
   `arn:${string}:cases:${string}:${string}:domain/${string}/case/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Case' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainId: string
-  readonly caseId: string
+  readonly idDomain: string
+  readonly idCase: string
   constructor(parameters: CaseArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.domainId = parameters.domainId
-    this.caseId = parameters.caseId
+    this.idDomain = parameters.idDomain
+    this.idCase = parameters.idCase
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cases:${this.region}:${this.account}:domain/${this.domainId}/case/${this.caseId}` as const
+    return `arn:${this.partition}:cases:${this.region}:${this.account}:domain/${this.idDomain}/case/${this.idCase}` as const
   }
 }
 export type { CaseArn }
@@ -43,29 +43,29 @@ export function caseArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface DomainArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainId: string
+  readonly idDomain: string
 }
 class DomainArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Domain',
   `arn:${string}:cases:${string}:${string}:domain/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Domain' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainId: string
+  readonly idDomain: string
   constructor(parameters: DomainArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.domainId = parameters.domainId
+    this.idDomain = parameters.idDomain
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cases:${this.region}:${this.account}:domain/${this.domainId}` as const
+    return `arn:${this.partition}:cases:${this.region}:${this.account}:domain/${this.idDomain}` as const
   }
 }
 export type { DomainArn }
@@ -76,32 +76,32 @@ export function domainArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface FieldArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainId: string
-  readonly fieldId: string
+  readonly idDomain: string
+  readonly idField: string
 }
 class FieldArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Field',
   `arn:${string}:cases:${string}:${string}:domain/${string}/field/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Field' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainId: string
-  readonly fieldId: string
+  readonly idDomain: string
+  readonly idField: string
   constructor(parameters: FieldArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.domainId = parameters.domainId
-    this.fieldId = parameters.fieldId
+    this.idDomain = parameters.idDomain
+    this.idField = parameters.idField
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cases:${this.region}:${this.account}:domain/${this.domainId}/field/${this.fieldId}` as const
+    return `arn:${this.partition}:cases:${this.region}:${this.account}:domain/${this.idDomain}/field/${this.idField}` as const
   }
 }
 export type { FieldArn }
@@ -112,32 +112,32 @@ export function fieldArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface LayoutArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainId: string
-  readonly layoutId: string
+  readonly idDomain: string
+  readonly idLayout: string
 }
 class LayoutArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Layout',
   `arn:${string}:cases:${string}:${string}:domain/${string}/layout/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Layout' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainId: string
-  readonly layoutId: string
+  readonly idDomain: string
+  readonly idLayout: string
   constructor(parameters: LayoutArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.domainId = parameters.domainId
-    this.layoutId = parameters.layoutId
+    this.idDomain = parameters.idDomain
+    this.idLayout = parameters.idLayout
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cases:${this.region}:${this.account}:domain/${this.domainId}/layout/${this.layoutId}` as const
+    return `arn:${this.partition}:cases:${this.region}:${this.account}:domain/${this.idDomain}/layout/${this.idLayout}` as const
   }
 }
 export type { LayoutArn }
@@ -147,76 +147,76 @@ export function layoutArn<Partition extends ArnPartition = 'aws'>(
   return new LayoutArn<Partition>(parameters)
 }
 
-export interface RelatedItemArnParameters<
+export interface ItemRelatedArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainId: string
-  readonly caseId: string
-  readonly relatedItemId: string
+  readonly idDomain: string
+  readonly idCase: string
+  readonly idItemRelated: string
 }
-class RelatedItemArn<
+class ItemRelatedArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'RelatedItem',
   `arn:${string}:cases:${string}:${string}:domain/${string}/case/${string}/related-item/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'RelatedItem' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainId: string
-  readonly caseId: string
-  readonly relatedItemId: string
-  constructor(parameters: RelatedItemArnParameters<Partition>) {
+  readonly idDomain: string
+  readonly idCase: string
+  readonly idItemRelated: string
+  constructor(parameters: ItemRelatedArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.domainId = parameters.domainId
-    this.caseId = parameters.caseId
-    this.relatedItemId = parameters.relatedItemId
+    this.idDomain = parameters.idDomain
+    this.idCase = parameters.idCase
+    this.idItemRelated = parameters.idItemRelated
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cases:${this.region}:${this.account}:domain/${this.domainId}/case/${this.caseId}/related-item/${this.relatedItemId}` as const
+    return `arn:${this.partition}:cases:${this.region}:${this.account}:domain/${this.idDomain}/case/${this.idCase}/related-item/${this.idItemRelated}` as const
   }
 }
-export type { RelatedItemArn }
-export function relatedItemArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RelatedItemArnParameters<Partition>,
+export type { ItemRelatedArn }
+export function itemRelatedArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ItemRelatedArnParameters<Partition>,
 ) {
-  return new RelatedItemArn<Partition>(parameters)
+  return new ItemRelatedArn<Partition>(parameters)
 }
 
 export interface TemplateArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainId: string
-  readonly templateId: string
+  readonly idDomain: string
+  readonly idTemplate: string
 }
 class TemplateArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Template',
   `arn:${string}:cases:${string}:${string}:domain/${string}/template/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Template' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly domainId: string
-  readonly templateId: string
+  readonly idDomain: string
+  readonly idTemplate: string
   constructor(parameters: TemplateArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.domainId = parameters.domainId
-    this.templateId = parameters.templateId
+    this.idDomain = parameters.idDomain
+    this.idTemplate = parameters.idTemplate
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:cases:${this.region}:${this.account}:domain/${this.domainId}/template/${this.templateId}` as const
+    return `arn:${this.partition}:cases:${this.region}:${this.account}:domain/${this.idDomain}/template/${this.idTemplate}` as const
   }
 }
 export type { TemplateArn }

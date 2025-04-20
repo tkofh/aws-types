@@ -9,29 +9,29 @@ import {
 export interface NamespaceArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly namespaceId: string
+  readonly idNamespace: string
 }
 class NamespaceArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'namespace',
   `arn:${string}:redshift-serverless:${string}:${string}:namespace/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'namespace' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly namespaceId: string
+  readonly idNamespace: string
   constructor(parameters: NamespaceArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.namespaceId = parameters.namespaceId
+    this.idNamespace = parameters.idNamespace
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift-serverless:${this.region}:${this.account}:namespace/${this.namespaceId}` as const
+    return `arn:${this.partition}:redshift-serverless:${this.region}:${this.account}:namespace/${this.idNamespace}` as const
   }
 }
 export type { NamespaceArn }
@@ -42,29 +42,29 @@ export function namespaceArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface SnapshotArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly snapshotId: string
+  readonly idSnapshot: string
 }
 class SnapshotArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'snapshot',
   `arn:${string}:redshift-serverless:${string}:${string}:snapshot/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'snapshot' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly snapshotId: string
+  readonly idSnapshot: string
   constructor(parameters: SnapshotArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.snapshotId = parameters.snapshotId
+    this.idSnapshot = parameters.idSnapshot
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift-serverless:${this.region}:${this.account}:snapshot/${this.snapshotId}` as const
+    return `arn:${this.partition}:redshift-serverless:${this.region}:${this.account}:snapshot/${this.idSnapshot}` as const
   }
 }
 export type { SnapshotArn }
@@ -77,29 +77,29 @@ export function snapshotArn<Partition extends ArnPartition = 'aws'>(
 export interface WorkgroupArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly workgroupId: string
+  readonly idWorkgroup: string
 }
 class WorkgroupArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'workgroup',
   `arn:${string}:redshift-serverless:${string}:${string}:workgroup/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'workgroup' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly workgroupId: string
+  readonly idWorkgroup: string
   constructor(parameters: WorkgroupArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.workgroupId = parameters.workgroupId
+    this.idWorkgroup = parameters.idWorkgroup
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift-serverless:${this.region}:${this.account}:workgroup/${this.workgroupId}` as const
+    return `arn:${this.partition}:redshift-serverless:${this.region}:${this.account}:workgroup/${this.idWorkgroup}` as const
   }
 }
 export type { WorkgroupArn }
@@ -109,76 +109,76 @@ export function workgroupArn<Partition extends ArnPartition = 'aws'>(
   return new WorkgroupArn<Partition>(parameters)
 }
 
-export interface RecoveryPointArnParameters<
+export interface PointRecoveryArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly recoveryPointId: string
+  readonly idPointRecovery: string
 }
-class RecoveryPointArn<
+class PointRecoveryArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'recoveryPoint',
   `arn:${string}:redshift-serverless:${string}:${string}:recoverypoint/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'recoveryPoint' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly recoveryPointId: string
-  constructor(parameters: RecoveryPointArnParameters<Partition>) {
+  readonly idPointRecovery: string
+  constructor(parameters: PointRecoveryArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.recoveryPointId = parameters.recoveryPointId
+    this.idPointRecovery = parameters.idPointRecovery
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift-serverless:${this.region}:${this.account}:recoverypoint/${this.recoveryPointId}` as const
+    return `arn:${this.partition}:redshift-serverless:${this.region}:${this.account}:recoverypoint/${this.idPointRecovery}` as const
   }
 }
-export type { RecoveryPointArn }
-export function recoveryPointArn<Partition extends ArnPartition = 'aws'>(
-  parameters: RecoveryPointArnParameters<Partition>,
+export type { PointRecoveryArn }
+export function pointRecoveryArn<Partition extends ArnPartition = 'aws'>(
+  parameters: PointRecoveryArnParameters<Partition>,
 ) {
-  return new RecoveryPointArn<Partition>(parameters)
+  return new PointRecoveryArn<Partition>(parameters)
 }
 
-export interface EndpointAccessArnParameters<
+export interface AccessEndpointArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly endpointAccessId: string
+  readonly idAccessEndpoint: string
 }
-class EndpointAccessArn<
+class AccessEndpointArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'endpointAccess',
   `arn:${string}:redshift-serverless:${string}:${string}:managedvpcendpoint/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'endpointAccess' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly endpointAccessId: string
-  constructor(parameters: EndpointAccessArnParameters<Partition>) {
+  readonly idAccessEndpoint: string
+  constructor(parameters: AccessEndpointArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.endpointAccessId = parameters.endpointAccessId
+    this.idAccessEndpoint = parameters.idAccessEndpoint
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:redshift-serverless:${this.region}:${this.account}:managedvpcendpoint/${this.endpointAccessId}` as const
+    return `arn:${this.partition}:redshift-serverless:${this.region}:${this.account}:managedvpcendpoint/${this.idAccessEndpoint}` as const
   }
 }
-export type { EndpointAccessArn }
-export function endpointAccessArn<Partition extends ArnPartition = 'aws'>(
-  parameters: EndpointAccessArnParameters<Partition>,
+export type { AccessEndpointArn }
+export function accessEndpointArn<Partition extends ArnPartition = 'aws'>(
+  parameters: AccessEndpointArnParameters<Partition>,
 ) {
-  return new EndpointAccessArn<Partition>(parameters)
+  return new AccessEndpointArn<Partition>(parameters)
 }

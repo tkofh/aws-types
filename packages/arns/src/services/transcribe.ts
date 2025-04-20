@@ -6,69 +6,69 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface TranscriptionjobArnParameters<
+export interface JobTranscriptionArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly jobName: string
+  readonly nameJob: string
 }
-class TranscriptionjobArn<
+class JobTranscriptionArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'transcriptionjob',
   `arn:${string}:transcribe:${string}:${string}:transcription-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'transcriptionjob' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly jobName: string
-  constructor(parameters: TranscriptionjobArnParameters<Partition>) {
+  readonly nameJob: string
+  constructor(parameters: JobTranscriptionArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.jobName = parameters.jobName
+    this.nameJob = parameters.nameJob
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:transcription-job/${this.jobName}` as const
+    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:transcription-job/${this.nameJob}` as const
   }
 }
-export type { TranscriptionjobArn }
-export function transcriptionjobArn<Partition extends ArnPartition = 'aws'>(
-  parameters: TranscriptionjobArnParameters<Partition>,
+export type { JobTranscriptionArn }
+export function jobTranscriptionArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobTranscriptionArnParameters<Partition>,
 ) {
-  return new TranscriptionjobArn<Partition>(parameters)
+  return new JobTranscriptionArn<Partition>(parameters)
 }
 
 export interface VocabularyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly vocabularyName: string
+  readonly nameVocabulary: string
 }
 class VocabularyArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'vocabulary',
   `arn:${string}:transcribe:${string}:${string}:vocabulary/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'vocabulary' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly vocabularyName: string
+  readonly nameVocabulary: string
   constructor(parameters: VocabularyArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.vocabularyName = parameters.vocabularyName
+    this.nameVocabulary = parameters.nameVocabulary
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:vocabulary/${this.vocabularyName}` as const
+    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:vocabulary/${this.nameVocabulary}` as const
   }
 }
 export type { VocabularyArn }
@@ -78,261 +78,261 @@ export function vocabularyArn<Partition extends ArnPartition = 'aws'>(
   return new VocabularyArn<Partition>(parameters)
 }
 
-export interface VocabularyfilterArnParameters<
+export interface FilterVocabularyArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly vocabularyFilterName: string
+  readonly nameFilterVocabulary: string
 }
-class VocabularyfilterArn<
+class FilterVocabularyArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'vocabularyfilter',
   `arn:${string}:transcribe:${string}:${string}:vocabulary-filter/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'vocabularyfilter' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly vocabularyFilterName: string
-  constructor(parameters: VocabularyfilterArnParameters<Partition>) {
+  readonly nameFilterVocabulary: string
+  constructor(parameters: FilterVocabularyArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.vocabularyFilterName = parameters.vocabularyFilterName
+    this.nameFilterVocabulary = parameters.nameFilterVocabulary
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:vocabulary-filter/${this.vocabularyFilterName}` as const
+    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:vocabulary-filter/${this.nameFilterVocabulary}` as const
   }
 }
-export type { VocabularyfilterArn }
-export function vocabularyfilterArn<Partition extends ArnPartition = 'aws'>(
-  parameters: VocabularyfilterArnParameters<Partition>,
+export type { FilterVocabularyArn }
+export function filterVocabularyArn<Partition extends ArnPartition = 'aws'>(
+  parameters: FilterVocabularyArnParameters<Partition>,
 ) {
-  return new VocabularyfilterArn<Partition>(parameters)
+  return new FilterVocabularyArn<Partition>(parameters)
 }
 
-export interface LanguagemodelArnParameters<
+export interface ModelLanguageArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly modelName: string
+  readonly nameModel: string
 }
-class LanguagemodelArn<
+class ModelLanguageArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'languagemodel',
   `arn:${string}:transcribe:${string}:${string}:language-model/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'languagemodel' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly modelName: string
-  constructor(parameters: LanguagemodelArnParameters<Partition>) {
+  readonly nameModel: string
+  constructor(parameters: ModelLanguageArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.modelName = parameters.modelName
+    this.nameModel = parameters.nameModel
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:language-model/${this.modelName}` as const
+    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:language-model/${this.nameModel}` as const
   }
 }
-export type { LanguagemodelArn }
-export function languagemodelArn<Partition extends ArnPartition = 'aws'>(
-  parameters: LanguagemodelArnParameters<Partition>,
+export type { ModelLanguageArn }
+export function modelLanguageArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ModelLanguageArnParameters<Partition>,
 ) {
-  return new LanguagemodelArn<Partition>(parameters)
+  return new ModelLanguageArn<Partition>(parameters)
 }
 
-export interface MedicaltranscriptionjobArnParameters<
+export interface JobTranscriptionMedicalArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly jobName: string
+  readonly nameJob: string
 }
-class MedicaltranscriptionjobArn<
+class JobTranscriptionMedicalArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'medicaltranscriptionjob',
   `arn:${string}:transcribe:${string}:${string}:medical-transcription-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'medicaltranscriptionjob' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly jobName: string
-  constructor(parameters: MedicaltranscriptionjobArnParameters<Partition>) {
+  readonly nameJob: string
+  constructor(parameters: JobTranscriptionMedicalArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.jobName = parameters.jobName
+    this.nameJob = parameters.nameJob
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:medical-transcription-job/${this.jobName}` as const
+    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:medical-transcription-job/${this.nameJob}` as const
   }
 }
-export type { MedicaltranscriptionjobArn }
-export function medicaltranscriptionjobArn<
+export type { JobTranscriptionMedicalArn }
+export function jobTranscriptionMedicalArn<
   Partition extends ArnPartition = 'aws',
->(parameters: MedicaltranscriptionjobArnParameters<Partition>) {
-  return new MedicaltranscriptionjobArn<Partition>(parameters)
+>(parameters: JobTranscriptionMedicalArnParameters<Partition>) {
+  return new JobTranscriptionMedicalArn<Partition>(parameters)
 }
 
-export interface MedicalvocabularyArnParameters<
+export interface VocabularyMedicalArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly vocabularyName: string
+  readonly nameVocabulary: string
 }
-class MedicalvocabularyArn<
+class VocabularyMedicalArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'medicalvocabulary',
   `arn:${string}:transcribe:${string}:${string}:medical-vocabulary/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'medicalvocabulary' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly vocabularyName: string
-  constructor(parameters: MedicalvocabularyArnParameters<Partition>) {
+  readonly nameVocabulary: string
+  constructor(parameters: VocabularyMedicalArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.vocabularyName = parameters.vocabularyName
+    this.nameVocabulary = parameters.nameVocabulary
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:medical-vocabulary/${this.vocabularyName}` as const
+    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:medical-vocabulary/${this.nameVocabulary}` as const
   }
 }
-export type { MedicalvocabularyArn }
-export function medicalvocabularyArn<Partition extends ArnPartition = 'aws'>(
-  parameters: MedicalvocabularyArnParameters<Partition>,
+export type { VocabularyMedicalArn }
+export function vocabularyMedicalArn<Partition extends ArnPartition = 'aws'>(
+  parameters: VocabularyMedicalArnParameters<Partition>,
 ) {
-  return new MedicalvocabularyArn<Partition>(parameters)
+  return new VocabularyMedicalArn<Partition>(parameters)
 }
 
-export interface CallanalyticsjobArnParameters<
+export interface JobAnalyticsCallArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly jobName: string
+  readonly nameJob: string
 }
-class CallanalyticsjobArn<
+class JobAnalyticsCallArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'callanalyticsjob',
   `arn:${string}:transcribe:${string}:${string}:analytics-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'callanalyticsjob' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly jobName: string
-  constructor(parameters: CallanalyticsjobArnParameters<Partition>) {
+  readonly nameJob: string
+  constructor(parameters: JobAnalyticsCallArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.jobName = parameters.jobName
+    this.nameJob = parameters.nameJob
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:analytics-job/${this.jobName}` as const
+    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:analytics-job/${this.nameJob}` as const
   }
 }
-export type { CallanalyticsjobArn }
-export function callanalyticsjobArn<Partition extends ArnPartition = 'aws'>(
-  parameters: CallanalyticsjobArnParameters<Partition>,
+export type { JobAnalyticsCallArn }
+export function jobAnalyticsCallArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobAnalyticsCallArnParameters<Partition>,
 ) {
-  return new CallanalyticsjobArn<Partition>(parameters)
+  return new JobAnalyticsCallArn<Partition>(parameters)
 }
 
-export interface CallanalyticscategoryArnParameters<
+export interface CategoryAnalyticsCallArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly categoryName: string
+  readonly nameCategory: string
 }
-class CallanalyticscategoryArn<
+class CategoryAnalyticsCallArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'callanalyticscategory',
   `arn:${string}:transcribe:${string}:${string}:analytics-category/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'callanalyticscategory' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly categoryName: string
-  constructor(parameters: CallanalyticscategoryArnParameters<Partition>) {
+  readonly nameCategory: string
+  constructor(parameters: CategoryAnalyticsCallArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.categoryName = parameters.categoryName
+    this.nameCategory = parameters.nameCategory
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:analytics-category/${this.categoryName}` as const
+    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:analytics-category/${this.nameCategory}` as const
   }
 }
-export type { CallanalyticscategoryArn }
-export function callanalyticscategoryArn<
+export type { CategoryAnalyticsCallArn }
+export function categoryAnalyticsCallArn<
   Partition extends ArnPartition = 'aws',
->(parameters: CallanalyticscategoryArnParameters<Partition>) {
-  return new CallanalyticscategoryArn<Partition>(parameters)
+>(parameters: CategoryAnalyticsCallArnParameters<Partition>) {
+  return new CategoryAnalyticsCallArn<Partition>(parameters)
 }
 
-export interface MedicalscribejobArnParameters<
+export interface JobMedicalscribeArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly jobName: string
+  readonly nameJob: string
 }
-class MedicalscribejobArn<
+class JobMedicalscribeArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'medicalscribejob',
   `arn:${string}:transcribe:${string}:${string}:medical-scribe-job/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'medicalscribejob' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly jobName: string
-  constructor(parameters: MedicalscribejobArnParameters<Partition>) {
+  readonly nameJob: string
+  constructor(parameters: JobMedicalscribeArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.jobName = parameters.jobName
+    this.nameJob = parameters.nameJob
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:medical-scribe-job/${this.jobName}` as const
+    return `arn:${this.partition}:transcribe:${this.region}:${this.account}:medical-scribe-job/${this.nameJob}` as const
   }
 }
-export type { MedicalscribejobArn }
-export function medicalscribejobArn<Partition extends ArnPartition = 'aws'>(
-  parameters: MedicalscribejobArnParameters<Partition>,
+export type { JobMedicalscribeArn }
+export function jobMedicalscribeArn<Partition extends ArnPartition = 'aws'>(
+  parameters: JobMedicalscribeArnParameters<Partition>,
 ) {
-  return new MedicalscribejobArn<Partition>(parameters)
+  return new JobMedicalscribeArn<Partition>(parameters)
 }

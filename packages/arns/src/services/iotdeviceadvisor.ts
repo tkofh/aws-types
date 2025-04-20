@@ -6,75 +6,75 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface SuitedefinitionArnParameters<
+export interface DefinitionSuiteArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly suiteDefinitionId: string
+  readonly idDefinitionSuite: string
 }
-class SuitedefinitionArn<
+class DefinitionSuiteArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'Suitedefinition',
   `arn:${string}:iotdeviceadvisor:${string}:${string}:suitedefinition/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Suitedefinition' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly suiteDefinitionId: string
-  constructor(parameters: SuitedefinitionArnParameters<Partition>) {
+  readonly idDefinitionSuite: string
+  constructor(parameters: DefinitionSuiteArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.suiteDefinitionId = parameters.suiteDefinitionId
+    this.idDefinitionSuite = parameters.idDefinitionSuite
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotdeviceadvisor:${this.region}:${this.account}:suitedefinition/${this.suiteDefinitionId}` as const
+    return `arn:${this.partition}:iotdeviceadvisor:${this.region}:${this.account}:suitedefinition/${this.idDefinitionSuite}` as const
   }
 }
-export type { SuitedefinitionArn }
-export function suitedefinitionArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SuitedefinitionArnParameters<Partition>,
+export type { DefinitionSuiteArn }
+export function definitionSuiteArn<Partition extends ArnPartition = 'aws'>(
+  parameters: DefinitionSuiteArnParameters<Partition>,
 ) {
-  return new SuitedefinitionArn<Partition>(parameters)
+  return new DefinitionSuiteArn<Partition>(parameters)
 }
 
-export interface SuiterunArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly region: ArnRegion<Partition>
+export interface RunSuiteArnParameters<Partition extends ArnPartition = 'aws'> {
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly suiteDefinitionId: string
-  readonly suiteRunId: string
+  readonly idDefinitionSuite: string
+  readonly idRunSuite: string
 }
-class SuiterunArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
+class RunSuiteArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'Suiterun',
   `arn:${string}:iotdeviceadvisor:${string}:${string}:suiterun/${string}/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'Suiterun' as const
-  readonly partition: Partition
-  readonly region: ArnRegion<Partition>
+  readonly partition: string
+  readonly region: string
   readonly account: string
-  readonly suiteDefinitionId: string
-  readonly suiteRunId: string
-  constructor(parameters: SuiterunArnParameters<Partition>) {
+  readonly idDefinitionSuite: string
+  readonly idRunSuite: string
+  constructor(parameters: RunSuiteArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
+    this.partition = parameters.partition
     this.region = parameters.region
     this.account = parameters.account
-    this.suiteDefinitionId = parameters.suiteDefinitionId
-    this.suiteRunId = parameters.suiteRunId
+    this.idDefinitionSuite = parameters.idDefinitionSuite
+    this.idRunSuite = parameters.idRunSuite
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:iotdeviceadvisor:${this.region}:${this.account}:suiterun/${this.suiteDefinitionId}/${this.suiteRunId}` as const
+    return `arn:${this.partition}:iotdeviceadvisor:${this.region}:${this.account}:suiterun/${this.idDefinitionSuite}/${this.idRunSuite}` as const
   }
 }
-export type { SuiterunArn }
-export function suiterunArn<Partition extends ArnPartition = 'aws'>(
-  parameters: SuiterunArnParameters<Partition>,
+export type { RunSuiteArn }
+export function runSuiteArn<Partition extends ArnPartition = 'aws'>(
+  parameters: RunSuiteArnParameters<Partition>,
 ) {
-  return new SuiterunArn<Partition>(parameters)
+  return new RunSuiteArn<Partition>(parameters)
 }

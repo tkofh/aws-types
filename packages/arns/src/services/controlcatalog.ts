@@ -6,55 +6,55 @@ import {
   StringifyArnBrand,
 } from '../internal.js'
 
-export interface CommonControlArnParameters<
+export interface ControlCommonArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly commonControlId: string
+  readonly partition: string
+  readonly idControlCommon: string
 }
-class CommonControlArn<
+class ControlCommonArn<
   Partition extends ArnPartition = 'aws',
 > extends InternalArn<
   'common-control',
   `arn:${string}:controlcatalog:::common-control/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'common-control' as const
-  readonly partition: Partition
-  readonly commonControlId: string
-  constructor(parameters: CommonControlArnParameters<Partition>) {
+  readonly partition: string
+  readonly idControlCommon: string
+  constructor(parameters: ControlCommonArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
-    this.commonControlId = parameters.commonControlId
+    this.partition = parameters.partition
+    this.idControlCommon = parameters.idControlCommon
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:controlcatalog:::common-control/${this.commonControlId}` as const
+    return `arn:${this.partition}:controlcatalog:::common-control/${this.idControlCommon}` as const
   }
 }
-export type { CommonControlArn }
-export function commonControlArn<Partition extends ArnPartition = 'aws'>(
-  parameters: CommonControlArnParameters<Partition>,
+export type { ControlCommonArn }
+export function controlCommonArn<Partition extends ArnPartition = 'aws'>(
+  parameters: ControlCommonArnParameters<Partition>,
 ) {
-  return new CommonControlArn<Partition>(parameters)
+  return new ControlCommonArn<Partition>(parameters)
 }
 
 export interface ControlArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly controlId: string
+  readonly partition: string
+  readonly idControl: string
 }
 class ControlArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'control',
   `arn:${string}:controlcatalog:::control/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'control' as const
-  readonly partition: Partition
-  readonly controlId: string
+  readonly partition: string
+  readonly idControl: string
   constructor(parameters: ControlArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
-    this.controlId = parameters.controlId
+    this.partition = parameters.partition
+    this.idControl = parameters.idControl
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:controlcatalog:::control/${this.controlId}` as const
+    return `arn:${this.partition}:controlcatalog:::control/${this.idControl}` as const
   }
 }
 export type { ControlArn }
@@ -65,23 +65,23 @@ export function controlArn<Partition extends ArnPartition = 'aws'>(
 }
 
 export interface DomainArnParameters<Partition extends ArnPartition = 'aws'> {
-  readonly partition?: Partition | undefined
-  readonly domainId: string
+  readonly partition: string
+  readonly idDomain: string
 }
 class DomainArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'domain',
   `arn:${string}:controlcatalog:::domain/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'domain' as const
-  readonly partition: Partition
-  readonly domainId: string
+  readonly partition: string
+  readonly idDomain: string
   constructor(parameters: DomainArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
-    this.domainId = parameters.domainId
+    this.partition = parameters.partition
+    this.idDomain = parameters.idDomain
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:controlcatalog:::domain/${this.domainId}` as const
+    return `arn:${this.partition}:controlcatalog:::domain/${this.idDomain}` as const
   }
 }
 export type { DomainArn }
@@ -94,23 +94,23 @@ export function domainArn<Partition extends ArnPartition = 'aws'>(
 export interface ObjectiveArnParameters<
   Partition extends ArnPartition = 'aws',
 > {
-  readonly partition?: Partition | undefined
-  readonly objectiveId: string
+  readonly partition: string
+  readonly idObjective: string
 }
 class ObjectiveArn<Partition extends ArnPartition = 'aws'> extends InternalArn<
   'objective',
   `arn:${string}:controlcatalog:::objective/${string}`
 > {
   readonly [ArnResourceTypeBrand] = 'objective' as const
-  readonly partition: Partition
-  readonly objectiveId: string
+  readonly partition: string
+  readonly idObjective: string
   constructor(parameters: ObjectiveArnParameters<Partition>) {
     super()
-    this.partition = (parameters.partition ?? 'aws') as Partition
-    this.objectiveId = parameters.objectiveId
+    this.partition = parameters.partition
+    this.idObjective = parameters.idObjective
   }
   [StringifyArnBrand]() {
-    return `arn:${this.partition}:controlcatalog:::objective/${this.objectiveId}` as const
+    return `arn:${this.partition}:controlcatalog:::objective/${this.idObjective}` as const
   }
 }
 export type { ObjectiveArn }
